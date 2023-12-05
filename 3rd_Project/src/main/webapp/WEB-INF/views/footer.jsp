@@ -7,7 +7,7 @@
 		left: 50px;
 		top: -23px;
 		position: relative;
-		margin-bottom: 150px;
+		margin-bottom: 100px;
 		font-family: 'MaruBuri-Regular';
 	}
 	#footer_vertical{
@@ -79,7 +79,8 @@
 	<div class="footer_content">
 		<br>
 		<b>당신의 숨겨진 아름다움을 찾아서 -</b><br><br><br>
-		&nbsp;&nbsp;&nbsp;<div id="footer_vertical"></div>&nbsp;&nbsp;<font id="footer_title">업무시간</font><div style="width: 138px; display:inline-block;"></div>
+		&nbsp;&nbsp;&nbsp;
+		<div id="footer_vertical"></div>&nbsp;&nbsp;<font id="footer_title">업무시간</font><div style="width: 138px; display:inline-block;"></div>
 		<div id="footer_vertical"></div>&nbsp;&nbsp;<font id="footer_title">휴무일</font><div style="width: 244px; display:inline-block;"></div>
 		<div id="footer_vertical"></div>&nbsp;&nbsp;<font id="footer_title">주소</font>
 		<br>
