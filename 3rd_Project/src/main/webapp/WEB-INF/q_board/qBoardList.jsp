@@ -2,22 +2,27 @@
     pageEncoding="UTF-8"%>
 <%@ include file="./../views/header.jsp" %>
 
-<center>
-
-</center>
-<article id="center" style="text-align: center; font-family: 'MaruBuri-Regular';" >
-	<script type="text/javascript">
+<style type="text/css">
+	table{
+		margin : auto;
+		margin-top:30px;
+		width:80%;
+	}
+</style>  
+<script type="text/javascript">
 
 	function write() {
 		location.href="write.qb"
 	}
 
 </script>
-<body bgcolor="pink">
+
+
+<article id="center" style="text-align: center; font-family: 'MaruBuri-Regular';" >
 
 <center>
-	<h2>게시판 목록(레코드 갯수 : ${ pageInfo.totalCount })</h2>
-		<form action="qBoardList.qb" method="get">
+	<h2>의견 게시판</h2>
+		<form action="list.bd" method="get">
 			<select name="whatColumn">
 				<option value="all">전체검색</option>
 				<option value="writer">작성자</option>
@@ -31,9 +36,9 @@
 
 <table border=1>
 
-	<tr>
-		<th align=right colspan=8 bgcolor="pink">
-			<input type=button value="글쓰기" onClick="write()">
+	<tr align=right>
+		<th colspan=8 bgcolor="yellow">
+			<input type=button value="글쓰기" onClick="insert()">
 		</th>
 	</tr>
 	<tr bgcolor="pink">
@@ -42,9 +47,7 @@
 		<th>작성자</th>
 		<th>내용</th>
 		<th>작성일</th>
-		<th>이메일</th>
-		<th>조회</th>
-		<th>IP</th>
+		<th>조회수</th>
 	</tr>
 	<c:if test="${ !empty list }">
 		<c:forEach var="bb" items="${ list }">
@@ -55,7 +58,7 @@
 					<c:if test="${ bb.re_level > 0 }">
 						<c:set var="wid" value="${bb.re_level * 20}"/>
 						<img src="<%= request.getContextPath() %>/resources/image/level.gif" width="${wid}">
-						<img src="<%= request.getContextPath() %>/resources/image/re.png">
+						<img src="<%= request.getContextPath() %>/resources/image/re.png" width="15px">
 					</c:if>
 						<a href="content.bd?num=${ bb.num }&pageNumber=${ pageInfo.pageNumber }">
 							${ bb.subject }</a>
@@ -68,9 +71,7 @@
 				<td>
 					<fmt:formatDate value="${bb.reg_date}" pattern="yyyy-MM-dd"/>
 				</td>
-				<td>${ bb.email }</td>
 				<td>${ bb.readcount }</td>
-				<td>${ bb.ip }</td>
 			</tr>
 		</c:forEach>
 	</c:if>
@@ -81,11 +82,12 @@
 	</c:if>
 </table>
 <center>
+<br>
 	${pageInfo.pagingHtml}
 </center> 
-</body>
 	
 </article>
+
 
 
 <%@ include file="./../views/footer.jsp" %>

@@ -20,7 +20,7 @@ import utility.Paging;
 @Controller
 public class QBoardListController {
 	@Autowired
-	private QBoardDao Qbdao;
+	private QBoardDao qdao;
 	
 	public final String command="/qBoardList.qb";
 	public final String viewPage="qBoardList";
@@ -38,12 +38,15 @@ public class QBoardListController {
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
 		
-		int totalCount = Qbdao.getTotalCount(map);
+		int totalCount = qdao.getTotalCount(map);
+		System.out.println("글 수:"+totalCount);
+		System.out.println("map:"+map);
 		String url = request.getContextPath()+command;
 		
 		Paging pageInfo = new Paging(pageNumber,null,totalCount,url,whatColumn,keyword);
 		
-		List<QBoardBean> list = Qbdao.getAllBoardList(pageInfo,map);
+		List<QBoardBean> list = qdao.getAllBoardList(pageInfo,map);
+		System.out.println("list:"+list);
 		
 		model.addAttribute("list",list);
 		model.addAttribute("pageInfo",pageInfo);

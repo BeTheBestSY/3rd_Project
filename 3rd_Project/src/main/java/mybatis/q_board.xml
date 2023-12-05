@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="sqlField_q_board">
+<mapper namespace="q_board.model.QBoardBean">
+
 
 		<select id="getAllBoardList" resultType="QBoard">
 			select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, ip		        

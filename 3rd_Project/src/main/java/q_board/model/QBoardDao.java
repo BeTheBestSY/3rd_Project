@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
 
 import utility.Paging;
 
-@Component("myBoard")
+@Component("QBoard")
 public class QBoardDao {
 
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
-	private String namespace="board.BoardBean.";
+	private String namespace="q_board.model.QBoardBean.";
 
 	public List<QBoardBean> getAllBoardList(Paging pageInfo, Map<String, String> map) {
 
