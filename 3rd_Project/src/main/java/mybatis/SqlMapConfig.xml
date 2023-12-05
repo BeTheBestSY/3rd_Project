@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<typeAliases>
+	</typeAliases>
+	<mappers>
+		<mapper resource="mybatis/celeb.xml"/>
+		<mapper resource="mybatis/company.xml"/>
+		<mapper resource="mybatis/user.xml"/>
+		<mapper resource="mybatis/product.xml"/>
+		<mapper resource="mybatis/color.xml"/>
+		<mapper resource="mybatis/mall.xml"/>
+		<mapper resource="mybatis/c_board.xml"/>
+		<mapper resource="mybatis/q_board.xml"/>
+	</mappers>
+</configuration>

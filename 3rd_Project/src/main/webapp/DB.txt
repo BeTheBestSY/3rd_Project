@@ -1,0 +1,83 @@
+-----------------------------------------------------------------
+--color 테이블 (퍼스널 컬러)
+-----------------------------------------------------------------
+
+drop sequence colseq;
+create sequence colseq nocache;
+
+drop table color cascade constraints;
+create table color(
+	col_num number primary key,
+	col_name varchar2(30) not null
+);
+
+insert into color values(colseq.nextval, '봄 라이트');
+insert into color values(colseq.nextval, '봄 브라이트');
+insert into color values(colseq.nextval, '여름 라이트');
+insert into color values(colseq.nextval, '여름 브라이트');
+insert into color values(colseq.nextval, '여름 뮤트');
+insert into color values(colseq.nextval, '가을 뮤트');
+insert into color values(colseq.nextval, '가을 스트롱');
+insert into color values(colseq.nextval, '가을 딥');
+insert into color values(colseq.nextval, '겨울 브라이트');
+insert into color values(colseq.nextval, '겨울 딥');
+
+select * from color order by col_num;
+
+
+-----------------------------------------------------------------
+--cart 테이블 (장바구니)
+-----------------------------------------------------------------
+
+drop sequence cartseq;
+create sequence cartseq nocache; 
+
+drop table cart cascade constraints;
+create table cart(
+	cart_num number primary key,
+	p_num number,
+	cart_order number
+);
+
+select * from cart order by cart_num;
+
+
+-----------------------------------------------------------------
+--temp_cart 테이블 (임시 장바구니)
+-----------------------------------------------------------------
+
+drop sequence temp_cartseq;
+create sequence temp_cartseq nocache; 
+
+drop table temp_cart cascade constraints;
+create table temp_cart(
+	o_num number primary key,
+	p_num number,
+	cart_order number
+);
+
+select * from temp_cart order by o_num;
+
+
+-----------------------------------------------------------------
+--orders 테이블 (주문)
+-----------------------------------------------------------------
+
+drop sequence ordersseq;
+create sequence ordersseq nocache;
+
+drop table orders cascade constraints;
+create table orders(
+	o_num number primary key,
+	p_num number,
+	u_id varchar2(20),
+	u_phone varchar2(20),
+	o_name varchar2(20),
+	o_addr varchar2(20),
+	o_date varchar2(20),
+	cart_order number
+);
+
+select * from orders order by o_num;
+
+
