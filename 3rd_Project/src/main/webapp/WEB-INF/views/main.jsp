@@ -23,7 +23,6 @@
 }
 </style>
 
-<br><br>
 <center>
 <img src="resources/image/main.gif" width="100%">
 <div style="color: white; top: -560px; position: relative; font-family: 'TheJamsil5Bold'; font-size: 28pt;">
