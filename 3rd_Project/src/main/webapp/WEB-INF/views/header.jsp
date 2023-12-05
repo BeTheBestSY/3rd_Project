@@ -16,7 +16,7 @@
 	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <style>
 	#center{
-		left: 355px;
+		left: 355px;  
 		position: relative;
 		width: 1200px;
 		padding: 10px 0px 100px 0px;
