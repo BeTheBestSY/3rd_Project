@@ -3,5 +3,75 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="sqlField_q_board">
+
+		<select id="getAllBoardList" resultType="QBoard">
+			select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, ip		        
+			from (select rownum as rank, num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, ip
+			from (select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, ip
+			from board
+			<if test="whatColumn=='writer'">
+				where writer like #{keyword}
+			</if>
+			<if test="whatColumn=='email'">
+				where email like #{keyword}
+			</if>
+			<if test="whatColumn=='content'">
+				where content like #{keyword}
+			</if>
+			order by ref desc, re_step asc ))
+		</select>
+		
+		<select id="getTotalCount" resultType="int">
+			select count(*) from board 
+			<if test="whatColumn=='writer'">
+				where writer like #{keyword}
+			</if>
+			<if test="whatColumn=='email'">
+				where email like #{keyword}
+			</if>
+			<if test="whatColumn=='content'">
+				where content like #{keyword}
+			</if>
+			order by num asc
+		</select>
+	
+		<select id="selectContent" resultType="QBoard">
+			select * from board where num = #{num}
+		</select>
+		
+		<select id="selectPw" resultType="int">
+			select count(*) from board where num=#{num} and passwd=#{passwd}
+		</select>
+		
+		<select id="replyBoard" resultType="QBoard">
+			SELECT ref, re_step FROM board where ref = #{ref} GROUP BY ref, re_step HAVING re_step >= #{re_step}
+		</select>
+		
+		<insert id="writeBoard">
+			insert into board
+			(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+			values
+			(board_seq.nextval,#{writer},#{email},#{subject},#{passwd},#{reg_date},board_seq.currval,0,0,#{content},#{ip})
+		</insert>
+		
+		<update id="updateBoard">
+			update board set writer = #{writer}, subject = #{subject}, email = #{email}, content = #{content} where num = #{num}
+		</update>
+		
+		<update id="plusStep">
+			update board set re_step=re_step+1 where ref=#{ref} and re_step>#{re_step}
+		</update>
+		
+		<update id="updateReadcount">
+			update board set readcount=readcount+1 where num=#{num}
+		</update>
+		
+		<insert id="insertReply">
+			insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip) values(board_seq.nextval,#{writer},#{email},#{subject},#{passwd},#{reg_date},#{ref},#{re_step},#{re_level},#{content},#{ip})
+		</insert>
+		
+		<delete id="deleteBoard">
+			delete from board where num = #{num}
+		</delete>
 	
 </mapper>
