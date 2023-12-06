@@ -15,7 +15,7 @@ public class QBoardDetailController {
 
 	@Autowired
 	private QBoardDao qdao;
-	
+	 
 	public final String command="/detail.qb";
 	public final String viewPage="qBoardDetail";
 	
