@@ -1,5 +1,5 @@
 -----------------------------------------------------------------
---color ���̺� (�۽��� �÷�)
+--color �뀒�씠釉� (�띁�뒪�꼸 而щ윭)
 -----------------------------------------------------------------
 
 drop sequence colseq;
@@ -11,22 +11,22 @@ create table color(
 	col_name varchar2(30) not null
 );
 
-insert into color values(colseq.nextval, '�� ����Ʈ');
-insert into color values(colseq.nextval, '�� �����Ʈ');
-insert into color values(colseq.nextval, '���� ����Ʈ');
-insert into color values(colseq.nextval, '���� �����Ʈ');
-insert into color values(colseq.nextval, '���� ��Ʈ');
-insert into color values(colseq.nextval, '���� ��Ʈ');
-insert into color values(colseq.nextval, '���� ��Ʈ��');
-insert into color values(colseq.nextval, '���� ��');
-insert into color values(colseq.nextval, '�ܿ� �����Ʈ');
-insert into color values(colseq.nextval, '�ܿ� ��');
+insert into color values(colseq.nextval, '遊� �씪�씠�듃');
+insert into color values(colseq.nextval, '遊� 釉뚮씪�씠�듃');
+insert into color values(colseq.nextval, '�뿬由� �씪�씠�듃');
+insert into color values(colseq.nextval, '�뿬由� 釉뚮씪�씠�듃');
+insert into color values(colseq.nextval, '�뿬由� 裕ㅽ듃');
+insert into color values(colseq.nextval, '媛��쓣 裕ㅽ듃');
+insert into color values(colseq.nextval, '媛��쓣 �뒪�듃濡�');
+insert into color values(colseq.nextval, '媛��쓣 �뵦');
+insert into color values(colseq.nextval, '寃⑥슱 釉뚮씪�씠�듃');
+insert into color values(colseq.nextval, '寃⑥슱 �뵦');
 
 select * from color order by col_num;
 
 
 -----------------------------------------------------------------
---cart ���̺� (��ٱ���)
+--cart �뀒�씠釉� (�옣諛붽뎄�땲)
 -----------------------------------------------------------------
 
 drop sequence cartseq;
@@ -43,7 +43,7 @@ select * from cart order by cart_num;
 
 
 -----------------------------------------------------------------
---temp_cart ���̺� (�ӽ� ��ٱ���)
+--temp_cart �뀒�씠釉� (�엫�떆 �옣諛붽뎄�땲)
 -----------------------------------------------------------------
 
 drop sequence temp_cartseq;
@@ -60,7 +60,7 @@ select * from temp_cart order by o_num;
 
 
 -----------------------------------------------------------------
---orders ���̺� (�ֹ�)
+--orders �뀒�씠釉� (二쇰Ц)
 -----------------------------------------------------------------
 
 drop sequence ordersseq;
@@ -80,4 +80,390 @@ create table orders(
 
 select * from orders order by o_num;
 
+-----------------------------------------------------------------
+--q_board �뀒�씠釉� (�쓽寃� 寃뚯떆�뙋)
+-----------------------------------------------------------------
 
+drop table q_board;
+
+create table q_board( 
+	q_num number not null primary key,
+	q_writer varchar2(30) not null,
+	q_email varchar2(30),
+	q_subject varchar2(200) not null,
+	q_password varchar2(20) not null,
+	q_regdate date not null,
+	q_readcount int default 0,
+	q_ref number not null,
+	q_re_step number not null,
+	q_re_level number not null,
+	q_content varchar2(1500) not null,
+	q_ip varchar2(15) not null
+);
+
+
+ drop sequence board_seq;
+create sequence board_seq
+<<<<<<< HEAD
+increment by 1
+start with 1
+ minvalue 1
+maxvalue 10000
+ nocache;
+
+ insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'김민정','mj01@gmail.com','컬러 진단 문의합니다.','1234','2023-12-06',12,0,0,'컬러 진단 받고 추천 화장품을 샀는데 별로면 환불 가능한가요?','127.0.0.1');
+=======
+  increment by 1
+  start with 1
+  minvalue 1
+  maxvalue 10000
+  nocache;
+  
+  	
+  -- 諛묒뿉 insert 臾몄� �엫�떆濡�! (�쁽�옱 board �뀒�씠釉� �궗�슜以묒씠�씪)--
+	
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a1','a1','a1','1234','2015-1-1',1,0,0,'�궡�슜1','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+
+<<<<<<< HEAD
+ insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'유지민','jimin00@naver.com','프로모션으로 상품을 구매했는데요','1234','2023-12-05',11,0,0,'혹시 가격이 똑같은 다른 상품으로 교환 가능할까요? 새상품입니다.','127.0.0.1');
+=======
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a2','a2','a2','1234','2015-1-1',2,0,0,'�궡�슜2','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+<<<<<<< HEAD
+ insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'김민지','mji@naver.com','문의드립니다.','1234','2023-12-05',10,0,0,'무통장 입금 가능한가요?','127.0.0.1');
+=======
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a21','a21','a21','1234','2015-1-1',2,4,1,'�궡�슜21','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+<<<<<<< HEAD
+ insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'강해린','haerin@gmail.com','입고 예정 문의요','1234','2023-12-05',9,0,0,'정확한 상품명은 모르는데 입고 예정이 있나요?','127.0.0.1');
+=======
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a22','a22','a22','1234','2015-1-1',2,1,1,'�궡�슜22','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+<<<<<<< HEAD
+ insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'이혜인','hyein@gmail.com','신상 화장품 언제쯤','1234','2023-12-04',8,0,0,'신상 화장품 언제쯤 들어오나요','127.0.0.1');
+=======
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a221','a221','a221','1234','2015-1-1',2,3,2,'�궡�슜221','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+<<<<<<< HEAD
+ insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'모지혜','jihye@gmail.com','묶음 배송 해주세요','1234','2023-12-06',7,0,0,'하나하나 뜯기 귀찮은데 묶음 배송 해주실 수 있나요','127.0.0.1');
+=======
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a222','a222','a222','1234','2015-1-1',2,2,2,'�궡�슜222','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+<<<<<<< HEAD
+-- insert 내용은 c_board 레코드 복붙한 것 나중에 추가예정
+=======
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a3','a3','a3','1234','2015-1-1',7,0,0,'�궡�슜3','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a31','a31','a31','1234','2015-1-1',7,6,1,'�궡�슜31','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a311','a311','a311','1234','2015-1-1',7,7,2,'�궡�슜311','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a32','a32','a32','1234','2015-1-1',7,2,1,'�궡�슜32','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a321','a321','a321','1234','2015-1-1',7,5,2,'�궡�슜321','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a322','a322','a322','1234','2015-1-1',7,3,2,'�궡�슜322','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a3221','a3221','a3221','1234','2015-1-1',7,4,3,'�궡�슜3221','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a33','a33','a33','1234','2015-1-1',7,1,1,'�궡�슜33','127.0.0.1');
+
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+commit;
+<<<<<<< HEAD
+=======
+  
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a1','a1','a1','1234','2015-1-1',1,0,0,'�궡�슜1','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+<<<<<<< HEAD
+-----------------------------------------------------------------
+--c_board 테이블 (의견 게시판)
+-----------------------------------------------------------------
+=======
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a2','a2','a2','1234','2015-1-1',2,0,0,'�궡�슜2','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+<<<<<<< HEAD
+drop table c_board;
+=======
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a21','a21','a21','1234','2015-1-1',2,4,1,'�궡�슜21','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+<<<<<<< HEAD
+create table c_board( 
+	c_num number not null primary key,
+	c_writer varchar2(30) not null,
+	c_email varchar2(30),
+	c_subject varchar2(200) not null,
+	c_password varchar2(20) not null,
+	c_regdate date not null,
+	c_readcount int default 0,
+	c_ref number not null,
+	c_re_step number not null,
+	c_re_level number not null,
+	c_content varchar2(1500) not null,
+	c_ip varchar2(15) not null
+);
+=======
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a22','a22','a22','1234','2015-1-1',2,1,1,'�궡�슜22','127.0.0.1');
+
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a221','a221','a221','1234','2015-1-1',2,3,2,'�궡�슜221','127.0.0.1');
+
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a222','a222','a222','1234','2015-1-1',2,2,2,'�궡�슜222','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+
+<<<<<<< HEAD
+ drop sequence board_seq;
+create sequence board_seq
+increment by 1
+start with 1
+ minvalue 1
+maxvalue 10000
+ nocache;
+=======
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a3','a3','a3','1234','2015-1-1',7,0,0,'�궡�슜3','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+<<<<<<< HEAD
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'김민정','mj01@gmail.com','컬러 진단 문의합니다.','1234','2023-12-06',12,0,0,'컬러 진단 받고 추천 화장품을 샀는데 별로면 환불 가능한가요?','127.0.0.1');
+=======
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a31','a31','a31','1234','2015-1-1',7,6,1,'�궡�슜31','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+<<<<<<< HEAD
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'유지민','jimin00@naver.com','프로모션으로 상품을 구매했는데요','1234','2023-12-05',11,0,0,'혹시 가격이 똑같은 다른 상품으로 교환 가능할까요? 새상품입니다.','127.0.0.1');
+=======
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a311','a311','a311','1234','2015-1-1',7,7,2,'�궡�슜311','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+<<<<<<< HEAD
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'김민지','mji@naver.com','문의드립니다.','1234','2023-12-05',10,0,0,'무통장 입금 가능한가요?','127.0.0.1');
+=======
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a32','a32','a32','1234','2015-1-1',7,2,1,'�궡�슜32','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+<<<<<<< HEAD
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'강해린','haerin@gmail.com','입고 예정 문의요','1234','2023-12-05',9,0,0,'정확한 상품명은 모르는데 입고 예정이 있나요?','127.0.0.1');
+=======
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a321','a321','a321','1234','2015-1-1',7,5,2,'�궡�슜321','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+<<<<<<< HEAD
+=======
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a322','a322','a322','1234','2015-1-1',7,3,2,'�궡�슜322','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+<<<<<<< HEAD
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'이혜인','hyein@gmail.com','신상 화장품 언제쯤','1234','2023-12-04',8,0,0,'신상 화장품 언제쯤 들어오나요','127.0.0.1');
+=======
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a3221','a3221','a3221','1234','2015-1-1',7,4,3,'�궡�슜3221','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+<<<<<<< HEAD
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'모지혜','jihye@gmail.com','묶음 배송 해주세요','1234','2023-12-06',7,0,0,'하나하나 뜯기 귀찮은데 묶음 배송 해주실 수 있나요','127.0.0.1');
+=======
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a33','a33','a33','1234','2015-1-1',7,1,1,'�궡�슜33','127.0.0.1');
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+
+
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'안유진','yoojun@gmail.com','교환 방법 문의','1234','2023-12-03',6,0,0,'교환 방법 좀 알려주세요','127.0.0.1');
+
+
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'김가을','autumn@gmail.com','구매 후 변심으로 인한 반품 문의','1234','2023-11-24',4,0,0,'뜯지도 않은 새상품인데 반품하고 싶어서요 가능할까요?','127.0.0.1');
+
+
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'김지원','jiwon@naver.com','지성 피부 화장품 문의드려요...','1234','2023-11-23',3,0,0,'컬러 진단 받고 추천 받은 화장품은 다 건성용이길래 지성 피부도 쓸 수 있는 화장품 추천해주세요','127.0.0.1');
+
+
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'이현서','hs07@gmail.com','배송비는 얼마인가요','1234','2023-11-23',2,0,0,'무료 배송은 얼마부터 가능한지...','127.0.0.1');
+
+
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'조미연','my@naver.com','반품할 때 비용이 드나요?','1234','2023-11-23',1,0,0,'정확한 반품 비용 알려주세여','127.0.0.1');
+
+
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'장원영','wonyoung@naver.com','반송 주소는 회사로 해야하나요','1234','2023-12-01',5,0,0,'반송 주소 알려주세요','127.0.0.1');
+
+commit;
+
+-----------------------------------------------------------------
+--users
+-----------------------------------------------------------------
+
+drop table users;
+create table users(
+ u_id varchar2(10) primary key,
+ u_name varchar2(30),
+ u_password varchar2(15),
+ u_phone varchar2(11), 
+ u_address varchar2(50), 
+ u_point int,
+ u_pay varchar2(20),
+ u_color varchar2(20) references color(col_name) on delete set null
+);
+
+insert into users
+values('admin', '관리자', '1234', '', '', '', '', '잘 모르겠음');
+
+commin;
+-----------------------------------------------------------------
+--product
+-----------------------------------------------------------------
+
+drop sequence pro_seq;
+create sequence pro_seq;
+
+drop table product;
+create table product(
+ p_num int primary key,
+ p_brand varchar2(20),
+ p_name varchar2(100),
+ p_price int,
+ p_point int,
+ p_stock int,
+ p_salevolume int,
+ p_contents varchar2(200),
+ p_ttlimg varchar2(20),
+ p_dtlimg varchar2(20),
+ p_color references color(col_name) on delete set null
+);
+
+insert into product values(	pro_seq.nextval,	'롬앤',	'쥬시 래스팅 틴트 #오리지널 05 피치미',	'1peach_ttl.jpg',	'1peach_dtl.jpg',	'봄 라이트',	8400,	840,	100,	0,	'여리여리한 복숭아를 내 입술에 저장, 설레는 복숭아 컬러'	);
+insert into product values(	pro_seq.nextval,	'포렌코즈',	'타투 글래스 틴트 03 아잘레아',	'1azalea_ttl.jpg',	'1azalea_dtl.jpg',	'봄 라이트',	10900,	1090,	100,	0,	'말린 장미에 코랄 핑크빛을 톡! 청순한 데일리 로즈 코랄 강력 추천'	);
+insert into product values(	pro_seq.nextval,	'투쿨포스쿨',	'플레르 틴트 02 휘슬링',	'1whistling_ttl.jpg',	'1whistling_dtl.jpg',	'봄 라이트',	10800,	1080,	100,	0,	'코랄에 탄산 넣은 듯 화사함이 톡톡 튀는 코랄빛 자몽에이드'	);
+insert into product values(	pro_seq.nextval,	'베네피트',	'차차틴트',	'1chacha_ttl.jpg',	'1chacha_dtl.jpg',	'봄 라이트',	27900,	2790,	100,	0,	'코랄의 정석, 망고 코랄 틴트'	);
+insert into product values(	pro_seq.nextval,	'페리페라',	'맑게 물든 선샤인 치크 18 수줍게인사해',	'peripera_ttl.jpg',	'peripera_dtl.jpg',	'봄 라이트',	6400,	640,	100,	0,	'안녕? 나 봄이야. 수줍게 비치는 햇살을 담아낸 뽀오얀 살몬 코랄'	);
+insert into product values(	pro_seq.nextval,	'크리니크',	'치크 팝 멜론 팝',	'clinique_ttl.jpg',	'1melon_dtl.jpg',	'봄 라이트',	35000,	3500,	100,	0,	'-'	);
+insert into product values(	pro_seq.nextval,	'어퓨',	'과즙팡 워터 블러셔 CR01 인간계복숭아',	'1ingan_ttl.jpg',	'1ingan_dtl.jpg',	'봄 라이트',	5600,	560,	100,	0,	'소프트 오렌지'	);
+insert into product values(	pro_seq.nextval,	'에뛰드하우스',	'룩 앳 마이 아이즈 카페 PK001 피치라떼',	'cafe_ttl.jpg',	'cafe_dtl.jpg',	'봄 라이트',	4000,	400,	100,	0,	'미세한 실버 펄감의 톤 보정용 화이트 코랄 핑크 컬러'	);
+insert into product values(	pro_seq.nextval,	'에스쁘아',	'리얼 아이 팔레트 5호 애프리콧 미',	'espoir2_ttl.jpg',	'1apricot_dtl.jpg',	'봄 라이트',	32000,	3200,	100,	0,	'뽀얗게 물드는 살구결 생기'	);
+insert into product values(	pro_seq.nextval,	'홀리카홀리카',	'마이페이브 바이브 아이 팔레트 #머추어피치',	'1mature_ttl.jpg',	'1mature_dtl.jpg',	'봄 라이트',	32000,	3200,	100,	0,	'다채롭게 무르익은 12가지의 각양각색의 프루츠 컬러 조합'	);
+insert into product values(	pro_seq.nextval,	'페리페라',	'잉크 더 벨벳 #7 비주얼갑',	'peripera3_ttl.jpg',	'peripera3_dtl.jpg',	'봄 브라이트',	8000,	800,	100,	0,	'레드 중의 비주얼 센터 레드! 오렌지 한 방울 떨어트린 맑은 레드'	);
+insert into product values(	pro_seq.nextval,	'삐아',	'라스트 벨벳 틴트 V02 생기갑',	'bbia_ttl.jpg',	'2extra_dtl.jpg',	'봄 브라이트',	11000,	1100,	100,	0,	'비비드한 오렌지 레드'	);
+insert into product values(	pro_seq.nextval,	'롬앤',	'제로 매트 립스틱 #오리지널 12 썸띵',	'2something_ttl.jpg',	'2something_dtl.jpg',	'봄 브라이트',	9600,	960,	100,	0,	'퓨어한 코랄과 레드가 만난 통통 튀는 코랄레드'	);
+insert into product values(	pro_seq.nextval,	'크리니크',	'치크 팝 피치 팝',	'clinique_ttl.jpg',	'2peach_dtl.jpg',	'봄 브라이트',	35000,	3500,	100,	0,	'-'	);
+insert into product values(	pro_seq.nextval,	'에뛰드하우스',	'룩 앳 마이 아이즈 쥬얼 OR207 상큼하다귤',	'2or_ttl.jpg',	'2or_dtl.jpg',	'봄 브라이트',	5500,	550,	100,	0,	'실버,골드,오렌지 펄들이 어울러져 상큼하게 빛나는 오렌지 글리터'	);
+insert into product values(	pro_seq.nextval,	'나스',	'블러쉬 오르가즘',	'2orgasm_ttl.jpg',	'2orgasm_dtl.jpg',	'봄 브라이트',	40500,	4050,	100,	0,	'빛나는 복숭아톤 핑크'	);
+insert into product values(	pro_seq.nextval,	'투쿨포스쿨',	'프로타주 펜슬 08 센티드 부케',	'2scented_ttl.jpg',	'2scented_dtl.jpg',	'봄 브라이트',	9900,	990,	100,	0,	'여린 살구빛 감도는 웜 코랄'	);
+insert into product values(	pro_seq.nextval,	'페리페라 ',	'올 테이크 무드 팔레트 #08 당근, 근데 이제 햇살을 곁들인',	'peripera2_ttl.jpg',	'peripera2_dtl.jpg',	'봄 브라이트',	16800,	1680,	100,	0,	'단 하나로 끝내는 올테이크 무드 팔레트'	);
+insert into product values(	pro_seq.nextval,	'데이지크',	'섀도우 팔레트 02 로즈 페탈',	'2rose_ttl.jpg',	'2rose_dtl.jpg',	'봄 브라이트',	27200,	2720,	100,	0,	'화사하게 피어나는 장미꽃 컬러를 담은 데이지크의 감성 아이 팔레트'	);
+insert into product values(	pro_seq.nextval,	'홀리카홀리카',	'아이 스팽 글리터 6호 쉘 파츠',	'2shell_ttl.jpg',	'2shell_dtl.jpg',	'봄 브라이트',	7900,	790,	100,	0,	'살구빔 베이스에 핑크 플레이크,오렌지&그린 펄 및 아쿠아&오렌지 스팽글 글리터가 신비롭게 반짝이는 컬러'	);
+insert into product values(	pro_seq.nextval,	'에뛰드하우스',	'에어 무스 아이즈 PK001 샤랄라 흩날리나 봄',	'3pk_ttl.jpg',	'3pk_dtl.jpg',	'여름 라이트',	6500,	650,	100,	0,	'촘촘하고 다채로운 펄들이 차르르 빛나 눈 두덩이와 눈 앞머리에 쓰기 좋은 오팔 글리터'	);
+insert into product values(	pro_seq.nextval,	'데이지크',	'쥬시 듀이 틴트 03 핑크 구아바',	'3guava_ttl.jpg',	'3guava_dtl.jpg',	'여름 라이트',	11900,	1190,	100,	0,	'피부에 동동 뜨지 않는 맑고 러블리한 느낌의 핑크 컬러'	);
+insert into product values(	pro_seq.nextval,	'퓌',	'미니 아이팔레트 글래스 02 여름',	'3summer_ttl.jpg',	'3summer_dtl.jpg',	'여름 라이트',	12000,	1200,	100,	0,	'손 안에 감기는 미니 사이즈로 손쉽게 표현하는 나만의 글래스 무드'	);
+insert into product values(	pro_seq.nextval,	'롬앤',	'듀이풀 워터 틴트 #밀크그로서리 10 머머핑크',	'3murmur_ttl.jpg',	'3murmur_dtl.jpg',	'여름 라이트',	9900,	990,	100,	0,	'진하게 우려낸 딸기우유 같은 쿨 핑크'	);
+insert into product values(	pro_seq.nextval,	'홀리카홀리카',	'피스매칭 블러셔 클린시리즈 클린핑크',	'3clean_ttl.jpg',	'3clean_dtl.jpg',	'여름 라이트',	6500,	650,	100,	0,	'흰끼 낭낭 청순한 핑크'	);
+insert into product values(	pro_seq.nextval,	'라카',	'프루티 글램 틴트 105 콜드',	'3cold_ttl.jpg',	'3cold_dtl.jpg',	'여름 라이트',	15000,	1500,	100,	0,	'물기 어린 과일처럼 투명감 있게 반짝이는 컬러들'	);
+insert into product values(	pro_seq.nextval,	'나스',	'블러쉬 스릴',	'3thrill_ttl.jpg',	'3thrill_dtl.jpg',	'여름 라이트',	40500,	4050,	100,	0,	'라이트 쿨 핑크'	);
+insert into product values(	pro_seq.nextval,	'크리니크',	'치크팝 발레리나팝',	'clinique_ttl.jpg',	'3ballet_dtl.jpg',	'여름 라이트',	35000,	3500,	100,	0,	'-'	);
+insert into product values(	pro_seq.nextval,	'포렌코즈',	'타투 글래스 틴트 06 프랑',	'forencos_ttl.jpg',	'forencos_dtl.jpg',	'여름 라이트',	10900,	1090,	100,	0,	'꽃보다 더 꽃 같은 데일리 핑크 부케 착 붙는 자연스러운 데일리 여린 핑크!'	);
+insert into product values(	pro_seq.nextval,	'릴리바이레드',	'무드키보드 04 #쿨멤버쉽',	'3cool_ttl.jpg',	'3cool_dtl.jpg',	'여름 라이트',	21900,	2190,	100,	0,	'맑은 푸른 기 한 방울을 더해 뜨지 않는 라벤더 핑크 쿨톤 회원을 위한 쿨 핑크 베리에이션'	);
+insert into product values(	pro_seq.nextval,	'에스쁘아',	'꾸뛰르 립 틴트 샤인 헤이 베스티',	'4bestie_ttl.jpg',	'4bestie_dtl.jpg',	'여름 브라이트',	14000,	1400,	100,	0,	'속 이야기까지 거리낌 없는 찐친과의 수다시간 꾸밈없이 솔직한 브라이트 핑크'	);
+insert into product values(	pro_seq.nextval,	'롬앤',	'쥬시 래스팅 틴트 #여라 27 핑크 팝시클',	'4popsicle_ttl.jpg',	'4popsicle_dtl.jpg',	'여름 브라이트',	8400,	840,	100,	0,	'맑은 핑크에 흰 기 한 방울을 넣어 민낯에도 부담스럽지 않은 청량한 여라 핑크'	);
+insert into product values(	pro_seq.nextval,	'페리페라',	'잉크 더 에어리 벨벳 #20 미모열일',	'4mimo_ttl.jpg',	'4mimo_dtl.jpg',	'여름 브라이트',	10000,	1000,	100,	0,	'단종템 부활! 푸른빛 더해 희소성 있는 푸시아 핑크 립'	);
+insert into product values(	pro_seq.nextval,	'네이밍',	'플러피 파우더 블러쉬 야미',	'4yummy_ttl.jpg',	'4yummy_dtl.jpg',	'여름 브라이트',	15000,	1500,	100,	0,	'딸기 우윳빛 베이비 핑크'	);
+insert into product values(	pro_seq.nextval,	'더샘',	'샘물 싱글 블러셔 PP05 라이 베리',	'4berry_ttl.jpg',	'saemmul_dtl.jpg',	'여름 브라이트',	5000,	500,	100,	0,	'웜톤도 쿨톤처럼 보이게하는 리얼 화이티쉬 연보라 컬러'	);
+insert into product values(	pro_seq.nextval,	'롬앤',	'베러 댄 치크 W01 오디밀크',	'romand_ttl.jpg',	'romand_dtl.jpg',	'여름 브라이트',	9900,	990,	100,	0,	'차게 얼린 오디를 우유에 한가득, 오디 크림'	);
+insert into product values(	pro_seq.nextval,	'아리따움',	'모노아이즈 M36 러버블데이',	'4love_ttl.jpg',	'4love_dtl.jpg',	'여름 브라이트',	5000,	500,	100,	0,	'톤다운 핑크빛으로 여리한 감성의 M36 러버블데이'	);
+insert into product values(	pro_seq.nextval,	'에스쁘아',	'리얼 아이 핸디 팔레트 2호 라이트 피오니',	'4peony_ttl.jpg',	'4peony_dtl.jpg',	'여름 브라이트',	24000,	2400,	100,	0,	'사랑스러운 발레핑크 피오니'	);
+insert into product values(	pro_seq.nextval,	'16브랜드',	'마이 매거진 노스텔지어 무드 Vol.07 라일락',	'4nos_ttl.jpg',	'4nos_dtl.jpg',	'여름 브라이트',	16900,	1690,	100,	0,	'은은하게 반짝이는 라일락 꽃 컬러!'	);
+insert into product values(	pro_seq.nextval,	'롬앤',	'베러 댄 아이즈 #우유 W01 말린 라벤더',	'4lavender_ttl.jpg',	'4lavender_dtl.jpg',	'여름 브라이트',	13600,	1360,	100,	0,	'우유에 빠져 더욱 뽀얘진 보라빛 컬러'	);
+insert into product values(	pro_seq.nextval,	'맥',	'파우더 키스 립스틱 서트리니스',	'5sul_ttl.jpg',	'5sul_dtl.jpg',	'여름 뮤트',	39000,	3900,	100,	0,	'베이비 핑크'	);
+insert into product values(	pro_seq.nextval,	'힌스',	'무드인핸서 마뜨 립스틱 얼루어',	'5allure_ttl.jpg',	'5allure_dtl.jpg',	'여름 뮤트',	15200,	1520,	100,	0,	'올타임 클래식 로즈 베이지. 덤덤한 듯 밀도 있게 배어나는 핑크빛 모브 베이지가 당신의 우아함을 드러나게 합니다.'	);
+insert into product values(	pro_seq.nextval,	'에스쁘아',	'꾸뛰르 립 틴트 블러 벨벳 5호 세레나데',	'espoir_ttl.jpg',	'espoir_dtl.jpg',	'여름 뮤트',	18700,	1870,	100,	0,	'크림 한 스푼 가미된 미지근한 소프트 핑크'	);
+insert into product values(	pro_seq.nextval,	'나스',	'블러쉬 임패션드',	'5im_ttl.jpg',	'5im_dtl.jpg',	'여름 뮤트',	40500,	4050,	100,	0,	'임패션드 핑크 오키드'	);
+insert into product values(	pro_seq.nextval,	'롬앤',	'베러 댄 치크 C02 블루베리칩',	'romand_ttl.jpg',	'romand_dtl.jpg',	'여름 뮤트',	9900,	990,	100,	0,	'잘 마른 블루베리처럼 옅은 뮤트 핑크'	);
+insert into product values(	pro_seq.nextval,	'바비브라운',	'롱웨어 크림 섀도우 스틱 더스티 모브',	'5dusty_ttl.jpg',	'5dusty_dtl.jpg',	'여름 뮤트',	52000,	5200,	100,	0,	'쉬머링 라벤더'	);
+insert into product values(	pro_seq.nextval,	'크리니크',	'치크 팝 로지 팝',	'clinique_ttl.jpg',	'5rosie_dtl.jpg',	'여름 뮤트',	35000,	3500,	100,	0,	'-'	);
+insert into product values(	pro_seq.nextval,	'페리페라',	'올 테이크 무드 팔레트 #04 뮤트로운 우리를 봐 로즈로워',	'peripera2_ttl.jpg',	'peripera2_dtl.jpg',	'여름 뮤트',	16800,	1680,	100,	0,	'단 하나로 끝내는 올테이크 무드 팔레트'	);
+insert into product values(	pro_seq.nextval,	'홀리카홀리카',	'마이페이브 무드 아이팔레트 02 무니',	'5moony_ttl.jpg',	'5moony_dtl.jpg',	'여름 뮤트',	19600,	1960,	100,	0,	'어스름한 새벽, 마음이 몽글 몽글해지는 멀베리 색감'	);
+insert into product values(	pro_seq.nextval,	'아리따움',	'리얼 아이 팔레트 4호 모브미',	'espoir2_ttl.jpg',	'5mauve_ttl.jpg',	'여름 뮤트',	32000,	3200,	100,	0,	'맑게 빛나는 라일락 모브'	);
+insert into product values(	pro_seq.nextval,	'헤라',	'센슈얼 파우더 매트 리퀴드 499호 로지스웨이드',	'6suede_ttl.jpg',	'6suede_dtl.jpg',	'가을 뮤트',	36000,	3600,	100,	0,	'#로지브라운'	);
+insert into product values(	pro_seq.nextval,	'포렌코즈',	'타투 끌레르 벨벳 틴트 19 모스',	'forencos2_ttl.jpg',	'6moss_dtl.jpg',	'가을 뮤트',	10900,	1090,	100,	0,	'노을은 뉘엿뉘엿, 들판에 한들한 코랄 한 송이, 코랄 베이지'	);
+insert into product values(	pro_seq.nextval,	'3CE',	'블러 워터 틴트 #LAYDOWN',	'6lay_ttl.jpg',	'6lay_dtl.jpg',	'가을 뮤트',	11900,	1190,	100,	0,	'오묘한 다운 톤 핑크 브라운 베이스'	);
+insert into product values(	pro_seq.nextval,	'에스쁘아',	'꾸뛰르 립 틴트 블러 벨벳 2호 문릿',	'espoir_ttl.jpg',	'espoir_dtl.jpg',	'가을 뮤트',	18700,	1870,	100,	0,	'누가 발라도 실패 없는 말린장미 에스쁘아 대표 MLBB'	);
+insert into product values(	pro_seq.nextval,	'더샘',	'샘물 싱글 블러셔 BE02 플래시 베이지',	'6flash_ttl.jpg',	'saemmul_dtl.jpg',	'가을 뮤트',	5000,	500,	100,	0,	'은은한 금 펄이 포함되어 건강한 느낌을 연출하는 톤 다운 베이지 컬러'	);
+insert into product values(	pro_seq.nextval,	'3CE',	'페이스 블러쉬 #NUDE PEACH',	'6nude_ttl.jpg',	'6nude_dtl.jpg',	'가을 뮤트',	14400,	1440,	100,	0,	'은은하고 부드러운 클래식 누드 피치'	);
+insert into product values(	pro_seq.nextval,	'나스',	'블러쉬 지나',	'6gina_ttl.jpg',	'6gina_dtl.jpg',	'가을 뮤트',	40500,	4050,	100,	0,	'매트 탠저린'	);
+insert into product values(	pro_seq.nextval,	'투쿨포스쿨',	'아트클래스 바이로댕 콜렉터즈 #1 브라운',	'6brown_ttl.jpg',	'6brown_dtl.jpg',	'가을 뮤트',	14900,	1490,	100,	0,	'브라운 베이스의 팔레트로 깊고 입체적인 눈매 연출 브라운 데일리 음영 메이크업'	);
+insert into product values(	pro_seq.nextval,	'롬앤',	'베러 댄 아이즈 #빛바랜음영 N01 말린 버들꽃',	'6willow_ttl.jpg',	'6willow_dtl.jpg',	'가을 뮤트',	13600,	1360,	100,	0,	'진하지 않은 부드러운 베이지 빛 음영'	);
+insert into product values(	pro_seq.nextval,	'데이지크',	'섀도우 팔레트 12 웜블렌딩',	'6warm_ttl.jpg',	'6warm_dtl.jpg',	'가을 뮤트',	27200,	2720,	100,	0,	'웜톤을 위한 베이직 컬러를 은은하게 우려낸 시나몬티 무펄 팔레트'	);
+insert into product values(	pro_seq.nextval,	'삐아',	'라스트 벨벳 틴트 V12 다정보스',	'bbia_ttl.jpg',	'7boss_dtl.jpg',	'가을 스트롱',	8800,	880,	100,	0,	'미드 톤의 오렌지 브라운'	);
+insert into product values(	pro_seq.nextval,	'포렌코즈',	'타투 끌레르 벨벳 틴트 05 브랭',	'forencos2_ttl.jpg',	'7brun_dtl.jpg',	'가을 스트롱',	10900,	1090,	100,	0,	'100일 말린 단풍 잎을 톡, 메이플 로즈'	);
+insert into product values(	pro_seq.nextval,	'맥',	'매트 립스틱 칠리',	'7chilly_ttl.jpg',	'7chilly_dtl.jpg',	'가을 스트롱',	39000,	3900,	100,	0,	'Warm brick red'	);
+insert into product values(	pro_seq.nextval,	'페리페라',	'잉크 더 벨벳 #1 브릭부심',	'peripera3_ttl.jpg',	'peripera3_dtl.jpg',	'가을 스트롱',	8000,	800,	100,	0,	'컬러 하나로 자신감 200% 입술 부심 넘치는 브릭 버건디'	);
+insert into product values(	pro_seq.nextval,	'에뛰드하우스',	'룩 앳 마이 아이즈 카페 BR405 까페라떼 우유많이',	'cafe_ttl.jpg',	'cafe_dtl.jpg',	'가을 스트롱',	4000,	400,	100,	0,	'까페라떼에 우유를 더 부은듯한 밀키 레드브라운 음영 컬러'	);
+insert into product values(	pro_seq.nextval,	'크리니크',	'치크 팝 누드 팝',	'clinique_ttl.jpg',	'7nude_dtl.jpg',	'가을 스트롱',	35000,	3500,	100,	0,	'-'	);
+insert into product values(	pro_seq.nextval,	'나스',	'블러쉬 러스터',	'7luster_ttl.jpg',	'7luster_dtl.jpg',	'가을 스트롱',	40500,	4050,	100,	0,	'골든 쉬어 살구색'	);
+insert into product values(	pro_seq.nextval,	'에뛰드하우스',	'룩 앳 마이 아이즈 BR402 시럽빼고 테이크아웃',	'7syrup_ttl.jpg',	'7syrup_dtl.jpg',	'가을 스트롱',	4000,	400,	100,	0,	'골드 펄이 함유된 브라운 쉬머 베이스로 삼각존, 라인, 음영 어디든 사용 가능한 베스트 컬러'	);
+insert into product values(	pro_seq.nextval,	'클리오',	'프로 아이 팔레트 02 브라운슈',	'7choux_ttl.jpg',	'7choux_dtl.jpg',	'가을 스트롱',	25500,	2550,	100,	0,	'베이직하고 시크한 골드 브라운'	);
+insert into product values(	pro_seq.nextval,	'3CE',	'멀티 아이 컬러 팔레트 #PLOT TWIST',	'7plot_ttl.jpg',	'7plot_dtl.jpg',	'가을 스트롱',	31590,	3159,	100,	0,	'그윽하고 또렷한 눈매를 연출해주는 부드럽고 스윗한 피넛 브라운'	);
+insert into product values(	pro_seq.nextval,	'롬앤',	'제로 벨벳 틴트 #오리지널 02 조이풀',	'8joyful_ttl.jpg',	'8joyful_dtl.jpg',	'가을 딥',	8900,	890,	100,	0,	'사람들 모두에게 즐거운 경험을 선사해 줄, MLBB 붉은 벽돌 컬러'	);
+insert into product values(	pro_seq.nextval,	'3CE',	'벨벳 립 틴트 #TAUPE',	'8taupe_ttl.jpg',	'8taupe_dtl.jpg',	'가을 딥',	13600,	1360,	100,	0,	'버건디를 철저히 배제한 진한 베이지 무드의 브릭 레드 컬러'	);
+insert into product values(	pro_seq.nextval,	'바비브라운',	'립칼라 번트 레드',	'8burnt_ttl.jpg',	'8burnt_dtl.jpg',	'가을 딥',	50000,	5000,	100,	0,	'벽돌빛의 붉은 색상'	);
+insert into product values(	pro_seq.nextval,	'맥',	'파우더 블러쉬 멜바',	'8mel_ttl.jpg',	'8mel_dtl.jpg',	'가을 딥',	36000,	3600,	100,	0,	'코랄빛 피치'	);
+insert into product values(	pro_seq.nextval,	'크리니크',	'치크 팝 피그 팝',	'clinique_ttl.jpg',	'8fig_dtl.jpg',	'가을 딥',	35000,	3500,	100,	0,		);
+insert into product values(	pro_seq.nextval,	'페리페라',	'맑게 물든 선샤인 치크 17 인간가을해',	'peripera_ttl.jpg',	'peripera_dtl.jpg',	'가을 딥',	6400,	640,	100,	0,	'분위기 뭐야! 완전 인간가을 그 자체♡ 가을의 무드를 담은 따스한 핑크 브라운'	);
+insert into product values(	pro_seq.nextval,	'롬앤 ',	'베러 댄 치크 C04 페어칩',	'romand_ttl.jpg',	'romand_dtl.jpg',	'가을 딥',	9900,	990,	100,	0,	'바짝 말린 배 껍질에 생기 한 방울, 베이지 브라운'	);
+insert into product values(	pro_seq.nextval,	'에뛰드하우스',	'플레이 컬러 아이즈 #베이크하우스',	'8bake_ttl.jpg',	'8bake_dtl.jpg',	'가을 딥',	28000,	2800,	100,	0,	'매일 아침 갓 구운 빵들이 가득한 베이커리 컬러를 담은 팔레트'	);
+insert into product values(	pro_seq.nextval,	'데이지크',	'섀도우 팔레트 11 초콜릿 퍼지',	'8fudge_ttl.jpg',	'8fudge_dtl.jpg',	'가을 딥',	27200,	2720,	100,	0,	'깊고 그윽한 초콜릿 브라운 무드를 담은 데이지크 아이 팔레트'	);
+insert into product values(	pro_seq.nextval,	'릴리바이레드',	'무드키보드 03 #당신의 최애 애쉬 올림',	'8ash_ttl.jpg',	'8ash_dtl.jpg',	'가을 딥',	21900,	2190,	100,	0,	'카키빛 뉴트럴 애쉬 컬러의 뉴트럴톤 섀도우 팔레트'	);
+insert into product values(	pro_seq.nextval,	'웨이크메이크',	'소프트 블러링 아이팔레트 02 생기블러링',	'9blur_ttl.jpg',	'9blur_dtl.jpg',	'겨울 브라이트',	23800,	2380,	100,	0,	'#로즈빛_생기음영'	);
+insert into product values(	pro_seq.nextval,	'롬앤',	'블러 퍼지 틴트 #에너제틱 브라이트 11 푸시아 바이브',	'9puchsia_ttl.jpg',	'9puchsia_dtl.jpg',	'겨울 브라이트',	13000,	1300,	100,	0,	'서늘한 푸시아가 담긴 리얼 쿨톤 핑크'	);
+insert into product values(	pro_seq.nextval,	'맥',	'매트 립스틱 레드 락',	'9red_ttl.jpg',	'9red_dtl.jpg',	'겨울 브라이트',	36000,	3600,	100,	0,	'클래식 레드'	);
+insert into product values(	pro_seq.nextval,	'페리페라',	'잉크 더 벨벳 #16 하트백만개',	'peripera3_ttl.jpg',	'peripera3_dtl.jpg',	'겨울 브라이트',	8000,	800,	100,	0,	'쿨 핑크가 돌아왔다! 더 이상 헤페지 않아도 되는 쿨톤 정착 레드 푸시아 핑크'	);
+insert into product values(	pro_seq.nextval,	'릴리바이레드',	'러브빔 치크밤 02 #순수빔',	'9soonsoo_ttl.jpg',	'9soonsoo_dtl.jpg',	'겨울 브라이트',	8400,	840,	100,	0,	'뽀용함 초과! 딸기우유빛으로 더 순수하게 밀키 핑크'	);
+insert into product values(	pro_seq.nextval,	'삐아',	'라스트 블러쉬 02 라벤더 블로썸',	'bbia2_ttl.jpg',	'bbia2_dtl.jpg',	'겨울 브라이트',	6175,	618,	100,	0,	'조명 ON! 청량한 라이트 라벤더'	);
+insert into product values(	pro_seq.nextval,	'언리시아',	'글리터피디아 NO.4 올오브 라벤더 포그',	'9fog_ttl.jpg',	'9fog_dtl.jpg',	'겨울 브라이트',	34000,	3400,	100,	0,	'라벤더 빛 베이스에 보라빛 실버 글리터로 신비롭고 투명하게 연출하는 글리터룩'	);
+insert into product values(	pro_seq.nextval,	'맥',	'레트로 매트 립스틱 릴렌트리슬리 레드',	'9retro_ttl.jpg',	'9retro_dtl.jpg',	'겨울 브라이트',	36000,	3600,	100,	0,	'밝은 핑크빛 코랄'	);
+insert into product values(	pro_seq.nextval,	'에스쁘아',	'리얼 아이 팔레트 6호 플럼소다',	'espoir2_ttl.jpg',	'9plum_dtl.jpg',	'겨울 브라이트',	32000,	3200,	100,	0,	'청량함이 터지는 플럼빛 체리 에이드'	);
+insert into product values(	pro_seq.nextval,	'삐아',	'라스트 블러쉬 05 베리 블로썸',	'bbia2_ttl.jpg',	'bbia2_dtl.jpg',	'겨울 브라이트',	6175,	618,	100,	0,	'상큼 폭발, 팝한 베리 핑크'	);
+insert into product values(	pro_seq.nextval,	'맥',	'레트로 매트 립스틱 플랫 아웃 패뷸러스',	'10fab_ttl.jpg',	'10fab_dtl.jpg',	'겨울 딥',	36000,	3600,	100,	0,	'밝은 자주'	);
+insert into product values(	pro_seq.nextval,	'맥',	'파우더 키스 리퀴드 버닝 러브',	'10burning_ttl.jpg',	'10burning_dtl.jpg',	'겨울 딥',	43000,	4300,	100,	0,	'Deep intense berry'	);
+insert into product values(	pro_seq.nextval,	'릴리바이레드',	'쥬시 라이어 워터 틴트 04 #블랙베리 데낄라인 척',	'10black_ttl.jpg',	'10black_dtl.jpg',	'겨울 딥',	9100,	910,	100,	0,	'깊이 있는 오묘함, 블러디 레드'	);
+insert into product values(	pro_seq.nextval,	'포렌코즈',	'타투 끌레르 벨벳 틴트 03 뮈니',	'forencos2_ttl.jpg',	'10minuit_dtl.jpg',	'겨울 딥',	10900,	1090,	100,	0,	'아찔하게 물드는 팝 핑크'	);
+insert into product values(	pro_seq.nextval,	'릴리바이레드',	'글리터존 샤워 05 스노우펄 샤워',	'10perl_ttl.jpg',	'10perl_dtl.jpg',	'겨울 딥',	5900,	590,	100,	0,	'골드, 그린, 블루, 홀로그램 펄이 조합된 클리어 화이트'	);
+insert into product values(	pro_seq.nextval,	'크리니크',	'치크 팝 팬지 팝',	'clinique_ttl.jpg',	'10pansy_dtl.jpg',	'겨울 딥',	35000,	3500,	100,	0,	'-'	);
+insert into product values(	pro_seq.nextval,	'페리페라',	'올 테이크 무드 팔레트 #11 포브스 선정 제법 젠쿨한 핑크',	'peripera2_ttl.jpg',	'peripera2_dtl.jpg',	'겨울 딥',	16800,	1680,	100,	0,	'단 하나로 끝내는 올테이크 무드 팔레트'	);
+insert into product values(	pro_seq.nextval,	'롬앤',	'베러 댄 아이즈 #뮤직 M02 말린 메밀꽃',	'10memil_ttl.jpg',	'10memil_dtl.jpg',	'겨울 딥',	13600,	1360,	100,	0,	'차가운 메밀처럼 쿨하디 쿨한 붉은기 없는 회갈색 컬러'	);
+insert into product values(	pro_seq.nextval,	'미샤',	'라스트 블러쉬 06 로즈블로썸',	'bbia2_ttl.jpg',	'bbia2_dtl.jpg',	'겨울 딥',	6175,	618,	100,	0,	'고혹적 무드의 말린 장미'	);
+insert into product values(	pro_seq.nextval,	'3CE',	'소프트 매트 립스틱 #AZURE PINK',	'10azure_ttl',	'10azure_dtl.jpg',	'겨울 딥',	14900,	1490,	100,	0,	'푸른 빛에 반사되어 맑게 차오르는 브라이트 핑크'	);
+
+commit;
