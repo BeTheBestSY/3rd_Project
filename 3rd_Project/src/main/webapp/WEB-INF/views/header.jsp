@@ -40,6 +40,14 @@
 	    font-style: normal;
 	}
 </style>
+<script>
+	function goLogin(){
+		location.href = "login.u";
+	}
+	function goRegister(){
+		location.href = "register.u";
+	}
+</script>
 </head>
 
 <body>
@@ -75,16 +83,16 @@
 					<c:if test="${id == null}">
 						<ul class="dropdown-menu text-small">
 							<li><a class="dropdown-item" onclick="goLogin()">로그인</a></li>
-							<li><a class="dropdown-item" href="<%=request.getContextPath()%>/members/registerForm.jsp">회원가입</a></li>
+							<li><a class="dropdown-item" onclick="goRegister()">회원가입</a></li>
 						</ul>
 					</c:if>
 					<c:if test="${id != null}">
-					<ul class="dropdown-menu text-small">
-						<li style="text-align: center;"><small>안녕하세요, <b><%=session.getAttribute("id")%></b>님</small></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" href="#">마이페이지</a></li>
-						<li><a class="dropdown-item" href="#">로그아웃</a></li>
-					</ul>
+						<ul class="dropdown-menu text-small">
+							<li style="text-align: center;"><small>안녕하세요, <b><%=session.getAttribute("id")%></b>님</small></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="#">마이페이지</a></li>
+							<li><a class="dropdown-item" href="#">로그아웃</a></li>
+						</ul>
 					</c:if>
 				</div>
 			</div>
