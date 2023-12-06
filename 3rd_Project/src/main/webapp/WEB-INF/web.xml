@@ -142,6 +142,23 @@
 		<url-pattern>*.q</url-pattern>
 	</servlet-mapping>
 	
+	
+	<servlet>
+		<servlet-name>ai</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ai</servlet-name>
+		<url-pattern>*.ai</url-pattern>
+	</servlet-mapping>
+	
+	
+	
 	<!-- 한글설정 완료! -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
