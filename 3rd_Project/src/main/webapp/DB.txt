@@ -83,7 +83,11 @@ create table orders(
    cart_order number
 );
 
+<<<<<<< HEAD
 select * from orders order by o_num;
+=======
+select * from order orders by o_num;
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 
 
 -----------------------------------------------------------------
