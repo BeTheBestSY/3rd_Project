@@ -54,7 +54,7 @@
 						<img src="resources/image/fyhbLogo.png" width="170"></a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 30px">
-						<a href="#" class="nav-link px-2 link-body-emphasis">AI 컬러진단</a>
+						<a href="colorAi.ai" class="nav-link px-2 link-body-emphasis">AI 컬러진단</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
 						<a href="#" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
