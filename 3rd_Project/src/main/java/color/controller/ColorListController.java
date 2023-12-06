@@ -19,4 +19,5 @@ public class ColorListController {
 	public String doAction() {
 		return viewPage;
 	}
+	// ÀúÀå¿ë
 }
