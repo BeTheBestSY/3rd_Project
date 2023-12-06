@@ -47,6 +47,7 @@ public class QBoardListController {
 		
 		List<QBoardBean> list = qdao.getAllBoardList(pageInfo,map);
 		System.out.println("list:"+list);
+		System.out.println(list.size());
 		
 		model.addAttribute("list",list);
 		model.addAttribute("pageInfo",pageInfo);
