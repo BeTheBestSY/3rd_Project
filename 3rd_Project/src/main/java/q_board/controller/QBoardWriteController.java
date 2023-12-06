@@ -28,7 +28,7 @@ public class QBoardWriteController {
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public String writeform() {
 		return viewPage;
-	}
+	} 
 	
 	@RequestMapping(value=command,method=RequestMethod.POST)
 	public String gowrite(

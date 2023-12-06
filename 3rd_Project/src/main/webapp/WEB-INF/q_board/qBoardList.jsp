@@ -194,7 +194,7 @@ section.notice {
 	}
 
 </script>
- 
+  
 
 <article id="center" style="text-align: center; font-family: 'MaruBuri-Regular';" >
 

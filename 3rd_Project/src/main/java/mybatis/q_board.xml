@@ -13,7 +13,7 @@
 			<if test="whatColumn=='q_subject'">
 				where q_subject like #{keyword}
 			</if>
-			 
+			  
 			<if test="whatColumn=='q_writer'">
 				where q_writer like #{keyword}
 			</if>
