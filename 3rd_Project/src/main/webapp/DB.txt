@@ -1,5 +1,5 @@
 -----------------------------------------------------------------
---color Å×ÀÌºí (ÆÛ½º³Î ÄÃ·¯)
+--color í…Œì´ë¸” (í¼ìŠ¤ë„ ì»¬ëŸ¬)
 -----------------------------------------------------------------
 
 drop sequence colseq;
@@ -11,22 +11,22 @@ create table color(
 	col_name varchar2(30) not null
 );
 
-insert into color values(colseq.nextval, 'º½ ¶óÀÌÆ®');
-insert into color values(colseq.nextval, 'º½ ºê¶óÀÌÆ®');
-insert into color values(colseq.nextval, '¿©¸§ ¶óÀÌÆ®');
-insert into color values(colseq.nextval, '¿©¸§ ºê¶óÀÌÆ®');
-insert into color values(colseq.nextval, '¿©¸§ ¹ÂÆ®');
-insert into color values(colseq.nextval, '°¡À» ¹ÂÆ®');
-insert into color values(colseq.nextval, '°¡À» ½ºÆ®·Õ');
-insert into color values(colseq.nextval, '°¡À» µö');
-insert into color values(colseq.nextval, '°Ü¿ï ºê¶óÀÌÆ®');
-insert into color values(colseq.nextval, '°Ü¿ï µö');
+insert into color values(colseq.nextval, 'ë´„ ë¼ì´íŠ¸');
+insert into color values(colseq.nextval, 'ë´„ ë¸Œë¼ì´íŠ¸');
+insert into color values(colseq.nextval, 'ì—¬ë¦„ ë¼ì´íŠ¸');
+insert into color values(colseq.nextval, 'ì—¬ë¦„ ë¸Œë¼ì´íŠ¸');
+insert into color values(colseq.nextval, 'ì—¬ë¦„ ë®¤íŠ¸');
+insert into color values(colseq.nextval, 'ê°€ì„ ë®¤íŠ¸');
+insert into color values(colseq.nextval, 'ê°€ì„ ìŠ¤íŠ¸ë¡±');
+insert into color values(colseq.nextval, 'ê°€ì„ ë”¥');
+insert into color values(colseq.nextval, 'ê²¨ìš¸ ë¸Œë¼ì´íŠ¸');
+insert into color values(colseq.nextval, 'ê²¨ìš¸ ë”¥');
 
 select * from color order by col_num;
 
 
 -----------------------------------------------------------------
---cart Å×ÀÌºí (Àå¹Ù±¸´Ï)
+--cart í…Œì´ë¸” (ì¥ë°”êµ¬ë‹ˆ)
 -----------------------------------------------------------------
 
 drop sequence cartseq;
@@ -43,7 +43,7 @@ select * from cart order by cart_num;
 
 
 -----------------------------------------------------------------
---temp_cart Å×ÀÌºí (ÀÓ½Ã Àå¹Ù±¸´Ï)
+--temp_cart í…Œì´ë¸” (ì„ì‹œ ì¥ë°”êµ¬ë‹ˆ)
 -----------------------------------------------------------------
 
 drop sequence temp_cartseq;
@@ -60,7 +60,7 @@ select * from temp_cart order by o_num;
 
 
 -----------------------------------------------------------------
---orders Å×ÀÌºí (ÁÖ¹®)
+--orders í…Œì´ë¸” (ì£¼ë¬¸)
 -----------------------------------------------------------------
 
 drop sequence ordersseq;
@@ -80,4 +80,124 @@ create table orders(
 
 select * from orders order by o_num;
 
+-----------------------------------------------------------------
+--q_board í…Œì´ë¸” (ì˜ê²¬ ê²Œì‹œíŒ)
+-----------------------------------------------------------------
 
+create table q_board( 
+	num number not null primary key,
+	writer varchar2(10) not null,
+	email varchar2(10),
+	subject varchar2(20) not null,
+	passwd varchar2(12) not null,
+	reg_date date not null,
+	readcount int default 0,
+	ref number not null,
+	re_step number not null,
+	re_level number not null,
+	content varchar2(20) not null,
+	ip varchar2(15) not null
+);
+
+drop sequence board_seq;
+create sequence board_seq
+  increment by 1
+  start with 1
+  minvalue 1
+  maxvalue 10000
+  nocache;
+  
+  	
+  -- ë°‘ì— insert ë¬¸ì€ ì„ì‹œë¡œ! (í˜„ì¬ board í…Œì´ë¸” ì‚¬ìš©ì¤‘ì´ë¼)--
+	
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a1','a1','a1','1234','2015-1-1',1,0,0,'ë‚´ìš©1','127.0.0.1');
+
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a2','a2','a2','1234','2015-1-1',2,0,0,'ë‚´ìš©2','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a21','a21','a21','1234','2015-1-1',2,4,1,'ë‚´ìš©21','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a22','a22','a22','1234','2015-1-1',2,1,1,'ë‚´ìš©22','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a221','a221','a221','1234','2015-1-1',2,3,2,'ë‚´ìš©221','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a222','a222','a222','1234','2015-1-1',2,2,2,'ë‚´ìš©222','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a3','a3','a3','1234','2015-1-1',7,0,0,'ë‚´ìš©3','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a31','a31','a31','1234','2015-1-1',7,6,1,'ë‚´ìš©31','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a311','a311','a311','1234','2015-1-1',7,7,2,'ë‚´ìš©311','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a32','a32','a32','1234','2015-1-1',7,2,1,'ë‚´ìš©32','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a321','a321','a321','1234','2015-1-1',7,5,2,'ë‚´ìš©321','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a322','a322','a322','1234','2015-1-1',7,3,2,'ë‚´ìš©322','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a3221','a3221','a3221','1234','2015-1-1',7,4,3,'ë‚´ìš©3221','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a33','a33','a33','1234','2015-1-1',7,1,1,'ë‚´ìš©33','127.0.0.1');
+
+
+commit;
+  
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a1','a1','a1','1234','2015-1-1',1,0,0,'ë‚´ìš©1','127.0.0.1');
+
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a2','a2','a2','1234','2015-1-1',2,0,0,'ë‚´ìš©2','127.0.0.1');
+
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a21','a21','a21','1234','2015-1-1',2,4,1,'ë‚´ìš©21','127.0.0.1');
+
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a22','a22','a22','1234','2015-1-1',2,1,1,'ë‚´ìš©22','127.0.0.1');
+
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a221','a221','a221','1234','2015-1-1',2,3,2,'ë‚´ìš©221','127.0.0.1');
+
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a222','a222','a222','1234','2015-1-1',2,2,2,'ë‚´ìš©222','127.0.0.1');
+
+
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a3','a3','a3','1234','2015-1-1',7,0,0,'ë‚´ìš©3','127.0.0.1');
+
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a31','a31','a31','1234','2015-1-1',7,6,1,'ë‚´ìš©31','127.0.0.1');
+
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a311','a311','a311','1234','2015-1-1',7,7,2,'ë‚´ìš©311','127.0.0.1');
+
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a32','a32','a32','1234','2015-1-1',7,2,1,'ë‚´ìš©32','127.0.0.1');
+
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a321','a321','a321','1234','2015-1-1',7,5,2,'ë‚´ìš©321','127.0.0.1');
+
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a322','a322','a322','1234','2015-1-1',7,3,2,'ë‚´ìš©322','127.0.0.1');
+
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a3221','a3221','a3221','1234','2015-1-1',7,4,3,'ë‚´ìš©3221','127.0.0.1');
+
+insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a33','a33','a33','1234','2015-1-1',7,1,1,'ë‚´ìš©33','127.0.0.1');
+
+
+commit;
