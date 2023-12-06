@@ -96,7 +96,7 @@
 
 <center style="font-family: 'MaruBuri-Regular'; padding-bottom: 0px; top: -170px; position: relative;">
 	<br><br><br><br><br><br><br><br>
-	<div id="btn" onclick="location.href='#'">
+	<div id="btn" onclick="location.href='colorAi.ai'">
 		<table>
 			<tr>
 				<td><img src="resources/image/ai.png" width="70"></td>
@@ -108,7 +108,7 @@
 		</table>
 	</div>
 	<br><br>
-	<div id="btn" onclick="location.href='#'">
+	<div id="btn" onclick="location.href='colList.col'">
 		<table>
 			<tr>
 				<td>&nbsp;&nbsp;<img src="resources/image/report.png" width="70"></td>
@@ -117,7 +117,7 @@
 					<span style="font-size: 13pt; color: graytext;">진단받은 컬러의 특징을 알려드릴게요.</span>
 				</td>
 			</tr>
-		</table> <!-- 커밋용 -->
+		</table>
 	</div>
 </center>
 

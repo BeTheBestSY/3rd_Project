@@ -12,11 +12,12 @@ public class ColorListController {
 	
 	@Autowired
 	private ColorDao colorDao;
-	private final String command = "/list.col";
+	private final String command = "/colList.col";
 	private final String viewPage = "main";
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction() {
+		
 		return viewPage;
 	}
 }
