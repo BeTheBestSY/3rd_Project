@@ -125,7 +125,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>c_board</servlet-name>
-		<url-pattern>*.c</url-pattern>
+		<url-pattern>*.cb</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -139,7 +139,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>q_board</servlet-name>
-		<url-pattern>*.q</url-pattern>
+		<url-pattern>*.qb</url-pattern>
 	</servlet-mapping>
 	
 	<!-- 한글설정 완료! -->

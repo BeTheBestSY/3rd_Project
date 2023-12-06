@@ -16,7 +16,7 @@
 	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <style>
 	#center{
-		left: 355px;
+		left: 355px;  
 		position: relative;
 		width: 1200px;
 		padding: 10px 0px 100px 0px;
@@ -60,7 +60,7 @@
 						<a href="#" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
-						<a href="#" class="nav-link px-2 link-body-emphasis">의견 게시판</a>
+						<a href="qBoardList.qb" class="nav-link px-2 link-body-emphasis">의견 게시판</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
 						<a href="#" class="nav-link px-2 link-body-emphasis">쇼핑하기</a>

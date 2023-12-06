@@ -5,6 +5,7 @@
   
 <configuration>
 	<typeAliases>
+		<typeAlias type="q_board.model.QBoardBean" alias="QBoard"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/celeb.xml"/>
