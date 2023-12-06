@@ -166,7 +166,7 @@ section.notice {
   margin-top:10px;
   margin-bottom:10px;
   
-} 
+}  
 
 .btn-white:hover, .btn-dark:focus {
   background: #373737;
