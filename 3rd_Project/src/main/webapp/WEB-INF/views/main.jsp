@@ -117,7 +117,7 @@
 					<span style="font-size: 13pt; color: graytext;">진단받은 컬러의 특징을 알려드릴게요.</span>
 				</td>
 			</tr>
-		</table>
+		</table> <!-- 커밋용 -->
 	</div>
 </center>
 
