@@ -21,7 +21,7 @@ import utility.Paging;
 public class QBoardListController {
 	@Autowired
 	private QBoardDao qdao;
-	
+	  
 	public final String command="/qBoardList.qb";
 	public final String viewPage="qBoardList";
 	
@@ -33,7 +33,7 @@ public class QBoardListController {
 				@RequestParam(value="pageNumber",required = false) String pageNumber,
 				HttpServletRequest request
 			) {
-		
+		whatColumn="all";
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
@@ -47,6 +47,7 @@ public class QBoardListController {
 		
 		List<QBoardBean> list = qdao.getAllBoardList(pageInfo,map);
 		System.out.println("list:"+list);
+		System.out.println(list.size());
 		
 		model.addAttribute("list",list);
 		model.addAttribute("pageInfo",pageInfo);

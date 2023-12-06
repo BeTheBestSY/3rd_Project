@@ -40,8 +40,16 @@
 	    font-style: normal;
 	}
 </style>
+<script>
+	function goLogin(){
+		location.href = "login.u";
+	}
+	function goRegister(){
+		location.href = "register.u";
+	}
+</script>
 </head>
-
+  
 <body>
 	<header class="p-3 mb-3 border-bottom" style="font-family: 'RIDIBatang';">
 		<div class="container">
@@ -65,7 +73,7 @@
 					<li style="margin-top: 10px; margin-left: 10px">
 						<a href="#" class="nav-link px-2 link-body-emphasis">쇼핑하기</a>
 					</li>
-				</ul>  
+				</ul>
 
 				<!-- 로그인아이콘 & 드롭다운 메뉴 -->
 				<div class="dropdown text-end" style="margin-right: 50px">
@@ -75,16 +83,16 @@
 					<c:if test="${id == null}">
 						<ul class="dropdown-menu text-small">
 							<li><a class="dropdown-item" onclick="goLogin()">로그인</a></li>
-							<li><a class="dropdown-item" href="<%=request.getContextPath()%>/members/registerForm.jsp">회원가입</a></li>
+							<li><a class="dropdown-item" onclick="goRegister()">회원가입</a></li>
 						</ul>
 					</c:if>
 					<c:if test="${id != null}">
-					<ul class="dropdown-menu text-small">
-						<li style="text-align: center;"><small>안녕하세요, <b><%=session.getAttribute("id")%></b>님</small></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" href="#">마이페이지</a></li>
-						<li><a class="dropdown-item" href="#">로그아웃</a></li>
-					</ul>
+						<ul class="dropdown-menu text-small">
+							<li style="text-align: center;"><small>안녕하세요, <b><%=session.getAttribute("id")%></b>님</small></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="#">마이페이지</a></li>
+							<li><a class="dropdown-item" href="#">로그아웃</a></li>
+						</ul>
 					</c:if>
 				</div>
 			</div>

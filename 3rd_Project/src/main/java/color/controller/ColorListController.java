@@ -20,4 +20,5 @@ public class ColorListController {
 		
 		return viewPage;
 	}
+	// ÀúÀå¿ë
 }
