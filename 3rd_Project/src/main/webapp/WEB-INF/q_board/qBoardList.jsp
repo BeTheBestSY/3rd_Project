@@ -52,26 +52,26 @@
 	<c:if test="${ !empty list }">
 		<c:forEach var="bb" items="${ list }">
 			<tr align=center>
-				<td>${ bb.num }</td>
+				<td>${ bb.q_num }</td>
 				<td align="left">
 					<c:set var="wid" value="0"/>
-					<c:if test="${ bb.re_level > 0 }">
+					<c:if test="${ bb.q_re_level > 0 }">
 						<c:set var="wid" value="${bb.re_level * 20}"/>
 						<img src="<%= request.getContextPath() %>/resources/image/level.gif" width="${wid}">
 						<img src="<%= request.getContextPath() %>/resources/image/re.png" width="15px">
 					</c:if>
 						<a href="content.bd?num=${ bb.num }&pageNumber=${ pageInfo.pageNumber }">
-							${ bb.subject }</a>
-					<c:if test="${ bb.readcount >= 10 }">
+							${ bb.q_subject }</a>
+					<c:if test="${ bb.q_readcount >= 10 }">
 						<img src="<%= request.getContextPath() %>/resources/image/hot.png">
 					</c:if>
 				</td>
-				<td>${ bb.writer }</td>
-				<td>${ bb.content }</td>
+				<td>${ bb.q_writer }</td>
+				<td>${ bb.q_content }</td>
 				<td>
-					<fmt:formatDate value="${bb.reg_date}" pattern="yyyy-MM-dd"/>
+					<fmt:formatDate value="${bb.q_regdate}" pattern="yyyy-MM-dd"/>
 				</td>
-				<td>${ bb.readcount }</td>
+				<td>${ bb.q_readcount }</td>
 			</tr>
 		</c:forEach>
 	</c:if>

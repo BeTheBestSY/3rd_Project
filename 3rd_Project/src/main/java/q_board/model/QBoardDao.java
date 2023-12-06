@@ -74,8 +74,8 @@ public class QBoardDao {
 
 		sqlSessionTemplate.update(namespace+"plusStep",bb);
 		
-		bb.setRe_step(bb.getRe_step()+1);
-		bb.setRe_level(bb.getRe_level()+1);
+		bb.setQ_re_step(bb.getQ_re_step()+1);
+		bb.setQ_re_level(bb.getQ_re_level()+1);
 
 		sqlSessionTemplate.insert(namespace+"insertReply",bb);
 		

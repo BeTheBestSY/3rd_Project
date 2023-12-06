@@ -6,73 +6,73 @@
 
 
 		<select id="getAllBoardList" resultType="QBoard">
-			select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, ip		        
-			from (select rownum as rank, num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, ip
-			from (select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, ip
-			from board
+			select q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip		        
+			from (select rownum as rank, q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip
+			from (select q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip
+			from q_board
 			<if test="whatColumn=='writer'">
-				where writer like #{keyword}
+				where q_writer like #{keyword}
 			</if>
 			<if test="whatColumn=='email'">
-				where email like #{keyword}
+				where q_email like #{keyword}
 			</if>
 			<if test="whatColumn=='content'">
-				where content like #{keyword}
+				where q_content like #{keyword}
 			</if>
-			order by ref desc, re_step asc ))
+			order by q_ref desc, q_re_step asc ))
 		</select>
 		
 		<select id="getTotalCount" resultType="int">
-			select count(*) from board 
+			select count(*) from q_board 
 			<if test="whatColumn=='writer'">
-				where writer like #{keyword}
+				where q_writer like #{keyword}
 			</if>
 			<if test="whatColumn=='email'">
-				where email like #{keyword}
+				where q_email like #{keyword}
 			</if>
 			<if test="whatColumn=='content'">
-				where content like #{keyword}
+				where q_content like #{keyword}
 			</if>
-			order by num asc
+			order by q_num asc
 		</select>
 	
 		<select id="selectContent" resultType="QBoard">
-			select * from board where num = #{num}
+			select * from q_board where q_num = #{q_num}
 		</select>
 		
 		<select id="selectPw" resultType="int">
-			select count(*) from board where num=#{num} and passwd=#{passwd}
+			select count(*) from q_board where q_num=#{q_num} and q_passwrd=#{q_password}
 		</select>
 		
 		<select id="replyBoard" resultType="QBoard">
-			SELECT ref, re_step FROM board where ref = #{ref} GROUP BY ref, re_step HAVING re_step >= #{re_step}
+			SELECT q_ref, q_re_step FROM q_board where q_ref = #{q_ref} GROUP BY q_ref, q_re_step HAVING q_re_step >= #{q_re_step}
 		</select>
 		
 		<insert id="writeBoard">
-			insert into board
-			(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+			insert into q_board
+			(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)
 			values
-			(board_seq.nextval,#{writer},#{email},#{subject},#{passwd},#{reg_date},board_seq.currval,0,0,#{content},#{ip})
+			(board_seq.nextval,#{q_writer},#{q_email},#{q_subject},#{q_password},#{q_regdate},board_seq.currval,0,0,#{q_content},#{q_ip})
 		</insert>
 		
 		<update id="updateBoard">
-			update board set writer = #{writer}, subject = #{subject}, email = #{email}, content = #{content} where num = #{num}
+			update board set q_writer = #{q_writer}, q_subject = #{q_subject}, q_email = #{q_email}, q_content = #{q_content} where q_num = #{q_num}
 		</update>
 		
 		<update id="plusStep">
-			update board set re_step=re_step+1 where ref=#{ref} and re_step>#{re_step}
+			update q_board set q_re_step=q_re_step+1 where q_ref=#{q_ref} and q_re_step>#{q_re_step}
 		</update>
 		
 		<update id="updateReadcount">
-			update board set readcount=readcount+1 where num=#{num}
+			update q_board set q_readcount=q_readcount+1 where q_num=#{q_num}
 		</update>
 		
 		<insert id="insertReply">
-			insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip) values(board_seq.nextval,#{writer},#{email},#{subject},#{passwd},#{reg_date},#{ref},#{re_step},#{re_level},#{content},#{ip})
+			insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip) values(board_seq.nextval,#{q_writer},#{q_email},#{q_subject},#{q_password},#{q_regdate},#{q_ref},#{q_re_step},#{q_re_level},#{q_content},#{q_ip})
 		</insert>
 		
 		<delete id="deleteBoard">
-			delete from board where num = #{num}
+			delete from q_board where q_num = #{q_num}
 		</delete>
 	
 </mapper>
