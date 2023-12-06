@@ -54,13 +54,8 @@
 						<img src="resources/image/fyhbLogo.png" width="170"></a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 30px">
-<<<<<<< HEAD
-						<a href="#asd" class="nav-link px-2 link-body-emphasis">AI 컬러진단</a>
-					</li> 
-=======
 						<a href="colorAi.ai" class="nav-link px-2 link-body-emphasis">AI 컬러진단</a>
 					</li>
->>>>>>> branch 'YJ' of https://github.com/BeTheBestSY/3rd_Project.git
 					<li style="margin-top: 10px; margin-left: 10px">
 						<a href="#" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
 					</li>
@@ -70,7 +65,7 @@
 					<li style="margin-top: 10px; margin-left: 10px">
 						<a href="#" class="nav-link px-2 link-body-emphasis">쇼핑하기</a>
 					</li>
-				</ul>  
+				</ul>
 
 				<!-- 로그인아이콘 & 드롭다운 메뉴 -->
 				<div class="dropdown text-end" style="margin-right: 50px">
