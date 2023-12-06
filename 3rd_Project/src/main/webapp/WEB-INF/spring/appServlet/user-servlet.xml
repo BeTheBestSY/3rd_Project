@@ -9,9 +9,9 @@
 
 <mvc:annotation-driven/> <!-- 유효성검사 -->
 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	<property name="prefix" value="/WEB-INF/user/"></property>
+	<property name="prefix" value="/WEB-INF/users/"></property>
 	<property name="suffix" value=".jsp"></property>
 </bean>
-<context:component-scan base-package="user" />
+<context:component-scan base-package="users" />
 
 </beans>
