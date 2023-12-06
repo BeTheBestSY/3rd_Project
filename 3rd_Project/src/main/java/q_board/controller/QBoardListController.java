@@ -33,7 +33,7 @@ public class QBoardListController {
 				@RequestParam(value="pageNumber",required = false) String pageNumber,
 				HttpServletRequest request
 			) {
-		
+		whatColumn="all";
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");

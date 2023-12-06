@@ -112,6 +112,7 @@ maxvalue 10000
 
  insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'김민정','mj01@gmail.com','컬러 진단 문의합니다.','1234','2023-12-06',12,0,0,'컬러 진단 받고 추천 화장품을 샀는데 별로면 환불 가능한가요?','127.0.0.1');
 
+
  insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'유지민','jimin00@naver.com','프로모션으로 상품을 구매했는데요','1234','2023-12-05',11,0,0,'혹시 가격이 똑같은 다른 상품으로 교환 가능할까요? 새상품입니다.','127.0.0.1');
 
  insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'김민지','mji@naver.com','문의드립니다.','1234','2023-12-05',10,0,0,'무통장 입금 가능한가요?','127.0.0.1');
@@ -122,24 +123,69 @@ maxvalue 10000
 
  insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'모지혜','jihye@gmail.com','묶음 배송 해주세요','1234','2023-12-06',7,0,0,'하나하나 뜯기 귀찮은데 묶음 배송 해주실 수 있나요','127.0.0.1');
 
+-- insert 내용은 c_board 레코드 복붙한 것 나중에 추가예정
 
- insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'안유진','yoojun@gmail.com','교환 방법 문의','1234','2023-12-03',6,0,0,'교환 방법 좀 알려주세요','127.0.0.1');
+commit;
+
+-----------------------------------------------------------------
+--c_board 테이블 (의견 게시판)
+-----------------------------------------------------------------
+
+drop table c_board;
+
+create table c_board( 
+	c_num number not null primary key,
+	c_writer varchar2(30) not null,
+	c_email varchar2(30),
+	c_subject varchar2(200) not null,
+	c_password varchar2(20) not null,
+	c_regdate date not null,
+	c_readcount int default 0,
+	c_ref number not null,
+	c_re_step number not null,
+	c_re_level number not null,
+	c_content varchar2(1500) not null,
+	c_ip varchar2(15) not null
+);
 
 
- insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'장원영','wonyoung@naver.com','반송 주소는 회사로 해야하나요','1234','2023-12-01',5,0,0,'반송 주소 알려주세요','127.0.0.1');
+ drop sequence board_seq;
+create sequence board_seq
+increment by 1
+start with 1
+ minvalue 1
+maxvalue 10000
+ nocache;
+
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'김민정','mj01@gmail.com','컬러 진단 문의합니다.','1234','2023-12-06',12,0,0,'컬러 진단 받고 추천 화장품을 샀는데 별로면 환불 가능한가요?','127.0.0.1');
+
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'유지민','jimin00@naver.com','프로모션으로 상품을 구매했는데요','1234','2023-12-05',11,0,0,'혹시 가격이 똑같은 다른 상품으로 교환 가능할까요? 새상품입니다.','127.0.0.1');
+
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'김민지','mji@naver.com','문의드립니다.','1234','2023-12-05',10,0,0,'무통장 입금 가능한가요?','127.0.0.1');
+
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'강해린','haerin@gmail.com','입고 예정 문의요','1234','2023-12-05',9,0,0,'정확한 상품명은 모르는데 입고 예정이 있나요?','127.0.0.1');
 
 
- insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'김가을','autumn@gmail.com','구매 후 변심으로 인한 반품 문의','1234','2023-11-24',4,0,0,'뜯지도 않은 새상품인데 반품하고 싶어서요 가능할까요?','127.0.0.1');
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'이혜인','hyein@gmail.com','신상 화장품 언제쯤','1234','2023-12-04',8,0,0,'신상 화장품 언제쯤 들어오나요','127.0.0.1');
+
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'모지혜','jihye@gmail.com','묶음 배송 해주세요','1234','2023-12-06',7,0,0,'하나하나 뜯기 귀찮은데 묶음 배송 해주실 수 있나요','127.0.0.1');
 
 
- insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'김지원','jiwon@naver.com','지성 피부 화장품 문의드려요...','1234','2023-11-23',3,0,0,'컬러 진단 받고 추천 받은 화장품은 다 건성용이길래 지성 피부도 쓸 수 있는 화장품 추천해주세요','127.0.0.1');
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'안유진','yoojun@gmail.com','교환 방법 문의','1234','2023-12-03',6,0,0,'교환 방법 좀 알려주세요','127.0.0.1');
 
 
- insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'이현서','hs07@gmail.com','배송비는 얼마인가요','1234','2023-11-23',2,0,0,'무료 배송은 얼마부터 가능한지...','127.0.0.1');
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'김가을','autumn@gmail.com','구매 후 변심으로 인한 반품 문의','1234','2023-11-24',4,0,0,'뜯지도 않은 새상품인데 반품하고 싶어서요 가능할까요?','127.0.0.1');
 
 
- insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'조미연','my@naver.com','반품할 때 비용이 드나요?','1234','2023-11-23',1,0,0,'정확한 반품 비용 알려주세여','127.0.0.1');
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'김지원','jiwon@naver.com','지성 피부 화장품 문의드려요...','1234','2023-11-23',3,0,0,'컬러 진단 받고 추천 받은 화장품은 다 건성용이길래 지성 피부도 쓸 수 있는 화장품 추천해주세요','127.0.0.1');
 
 
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'이현서','hs07@gmail.com','배송비는 얼마인가요','1234','2023-11-23',2,0,0,'무료 배송은 얼마부터 가능한지...','127.0.0.1');
+
+
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'조미연','my@naver.com','반품할 때 비용이 드나요?','1234','2023-11-23',1,0,0,'정확한 반품 비용 알려주세여','127.0.0.1');
+
+
+ insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'장원영','wonyoung@naver.com','반송 주소는 회사로 해야하나요','1234','2023-12-01',5,0,0,'반송 주소 알려주세요','127.0.0.1');
 
 commit;

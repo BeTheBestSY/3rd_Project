@@ -33,9 +33,7 @@ public class QBoardDao {
 	}
 
 	public QBoardBean selectContent(int q_num) {
-		
 		QBoardBean bb = sqlSessionTemplate.selectOne(namespace+"selectContent",q_num);
-		
 		return bb;
 	}
 
