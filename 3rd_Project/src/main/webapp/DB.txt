@@ -15,7 +15,6 @@ create table color(
    col_colimg varchar2(30)
 );
 
-<<<<<<< HEAD
 insert into color values(colseq.nextval, '봄 라이트', '1_ttl.jpg', '1_stl.jpg', '1_col.jpg');
 insert into color values(colseq.nextval, '봄 브라이트', '2_ttl.jpg', '2_stl.jpg', '2_col.jpg');
 insert into color values(colseq.nextval, '여름 라이트', '3_ttl.jpg', '3_stl.jpg', '3_col.jpg');
@@ -84,7 +83,7 @@ create table orders(
    cart_order number
 );
 
-select * from orders orders by o_num;
+select * from order orders by o_num;
 
 
 -----------------------------------------------------------------
