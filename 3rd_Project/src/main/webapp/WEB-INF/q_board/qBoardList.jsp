@@ -8,7 +8,7 @@
 		margin-top:30px;
 		width:80%;
 	}
-	table {
+table {
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -73,12 +73,7 @@ section.notice {
   word-break: break-all;
   vertical-align: middle;
 }
-.board-table a:hover {
-  text-decoration: underline;
-}
-.board-table th {
-  text-align: center;
-}
+
 
 .board-table .th-num {
   width: 100px;
@@ -86,27 +81,39 @@ section.notice {
 }
 
 .board-table .th-date {
-  width: 200px;
+  width: 100px;
+}
+.board-table .th-title {
+  width: 450px;
+}
+.board-table .th-readcount {
+  width: 100px;
+}
+.board-table .th-writer {
+  width: 100px;
 }
 
 .board-table th, .board-table td {
   padding: 14px 0;
+  padding-left:30px;
 }
 
 .board-table tbody td {
   border-top: 1px solid #e7e7e7;
-  text-align: center;
 }
 
 .board-table tbody th {
   padding-left: 28px;
   padding-right: 14px;
   border-top: 1px solid #e7e7e7;
-  text-align: left;
 }
 
 .board-table tbody th p{
   display: none;
+}
+
+.board-table a:hover {
+ background: transparent;
 }
 
 .btn {
@@ -148,12 +155,20 @@ section.notice {
   color: #fff;
 }
 
-.btn-dark {
-  background: #555;
-  color: #fff;
+.btn-white {
+  background: #fff;
+  color: #555;
+  border-color: #373737;
+  height:30px;
+  width:100px;
+  text-align:center;
+  float:right;
+  margin-top:10px;
+  margin-bottom:10px;
+  
 }
 
-.btn-dark:hover, .btn-dark:focus {
+.btn-white:hover, .btn-dark:focus {
   background: #373737;
   border-color: #373737;
   color: #fff;
@@ -185,6 +200,7 @@ section.notice {
   width: 1px;
   height: 1px;
 }
+
 	
 </style>  
 <script type="text/javascript">
@@ -194,50 +210,55 @@ section.notice {
 	}
 
 </script>
-  
 
-<article id="center" style="text-align: center; font-family: 'MaruBuri-Regular';" >
 
-<center>
-<div id="board-search">
+<article id="center" style="font-family: 'MaruBuri-Regular';" >
+
+	  <div class="page-title">
         <div class="container">
-            <div class="search-window"> 
-                <div class="search-wrap">
-				   <label for="search" class="blind">의견 게시판</label>
-					<form action="qBoardList.qb" method="get">
-						<select name="whatColumn">
-							<option value="all">전체검색</option>
-							<option value="q_subject">제목</option>
-							<option value="q_writer">작성자</option>
-						</select>
-						<input type="search" id="search" name="keyword">
-						<input type="submit" value="검색" class="btn btn-dark">
-				   </div>
-                </form>
+            <br>
+            
+            <h3>의견 게시판</h3>
+        </div>
+    </div>
+	
+	  <div id="board-search">
+        <div class="container">
+            <div class="search-window">
+                <form action="">
+                    <div class="search-wrap">
+		<form action="qBoardList.qb" method="get">
+			 <input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
+			<button type="submit" class="btn btn-dark">검색</button>
+		</form>
+		   </form>
             </div>
         </div>
     </div>
 </center>
 
-<table border=1>
 
-	<tr align=right>
-		<th align=right colspan=8 bgcolor="yellow">
-			<input type=button value="글쓰기" onClick="insert()">
-		</th>
-	</tr>
-	<tr bgcolor="pink">
-		<th width="10%" class="th-num">번호</th>
-		<th width="30%">제목</th>
-		<th width="15%">작성자</th>
-		<th width="17%">작성일</th>
-		<th width="13%">조회수</th>
+
+
+ <div id="board-list">
+        <div class="container">
+        
+<input type=button value="글쓰기" onClick="insert()" class="btn btn-white">
+            <table class="board-table">
+
+	
+	<tr>
+		<th scope="col" class="th-num" width="10%">번호</th>
+		<th scope="col" class="th-title" width="30%">제목</th>
+		<th width="15%" class="th-writer">작성자</th>
+		<th  scope="col" class="th-date"width="17%">작성일</th>
+		<th width="13%" class="th-readcount">조회수</th>
 	</tr>
 	<c:if test="${ !empty list }">
 		<c:forEach var="bb" items="${ list }">
 			<tr align=center>
 				<td>${ bb.q_num }</td>
-				<td align="left">
+				<td align="left" >
 					<c:set var="wid" value="0"/>
 					<c:if test="${ bb.q_re_level > 0 }">
 						<c:set var="wid" value="${bb.q_re_level * 20}"/>
@@ -250,8 +271,8 @@ section.notice {
 						<img src="<%= request.getContextPath() %>/resources/image/hot.png">
 					</c:if>
 				</td>
-				<td>${ bb.q_writer }</td>
-				<td>
+				<td align="left">${ bb.q_writer }</td>
+				<td align="left">
 					<fmt:formatDate value="${bb.q_regdate}" pattern="yyyy-MM-dd"/>
 				</td>
 				<td>${ bb.q_readcount }</td>
@@ -259,13 +280,15 @@ section.notice {
 		</c:forEach>
 	</c:if>
 	<c:if test="${ empty list }" >
-		<tr align=center bgcolor="pink">
+		<tr align=center>
 			<td colspan="8">작성된 글이 없습니다.</td>
 		</tr>
 	</c:if>
-</table>
-<center>
+ </table>
+        </div>
+    </div>
 <br>
+<center>
 	${pageInfo.pagingHtml}
 </center> 
 	
