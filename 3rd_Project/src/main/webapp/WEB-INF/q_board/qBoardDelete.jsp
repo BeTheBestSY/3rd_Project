@@ -10,7 +10,7 @@
 	<script>
 	
 		function goList(pageNumber){
-			location.href="qBoardList.bd?pageNumber="+pageNumber;
+			location.href="qBoardList.qb?pageNumber="+pageNumber;
 		}
 		
 		function check(){
