@@ -21,7 +21,7 @@ import utility.Paging;
 public class QBoardListController {
 	@Autowired
 	private QBoardDao qdao;
-	
+	 
 	public final String command="/qBoardList.qb";
 	public final String viewPage="qBoardList";
 	

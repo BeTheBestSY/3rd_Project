@@ -194,14 +194,14 @@ section.notice {
 	}
 
 </script>
-
+ 
 
 <article id="center" style="text-align: center; font-family: 'MaruBuri-Regular';" >
 
 <center>
 <div id="board-search">
         <div class="container">
-            <div class="search-window">
+            <div class="search-window"> 
                 <div class="search-wrap">
 				   <label for="search" class="blind">의견 게시판</label>
 					<form action="qBoardList.qb" method="get">

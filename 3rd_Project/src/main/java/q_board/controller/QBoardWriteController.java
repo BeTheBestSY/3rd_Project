@@ -21,7 +21,7 @@ public class QBoardWriteController {
 	@Autowired
 	private QBoardDao bdao;
 	
-	public final String command="/write.qb";
+	public final String command="/write.qb"; 
 	public final String viewPage="qBoardWrite";
 	public final String gotoPage="redirect:/qBoardList.qb";
 	
