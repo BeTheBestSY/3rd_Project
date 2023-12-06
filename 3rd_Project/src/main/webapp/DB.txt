@@ -1,5 +1,6 @@
+
 -----------------------------------------------------------------
---color �뀒�씠釉� (�띁�뒪�꼸 而щ윭)
+--color 테이블 (퍼스널 컬러)
 -----------------------------------------------------------------
 
 drop sequence colseq;
@@ -14,7 +15,6 @@ create table color(
    col_colimg varchar2(30)
 );
 
-<<<<<<< HEAD
 insert into color values(colseq.nextval, '봄 라이트', '1_ttl.jpg', '1_stl.jpg', '1_col.jpg');
 insert into color values(colseq.nextval, '봄 브라이트', '2_ttl.jpg', '2_stl.jpg', '2_col.jpg');
 insert into color values(colseq.nextval, '여름 라이트', '3_ttl.jpg', '3_stl.jpg', '3_col.jpg');
@@ -26,24 +26,12 @@ insert into color values(colseq.nextval, '가을 딥', '8_ttl.jpg', '8_stl.jpg',
 insert into color values(colseq.nextval, '겨울 브라이트', '9_ttl.jpg', '9_stl.jpg', '9_col.jpg');
 insert into color values(colseq.nextval, '겨울 딥', '10_ttl.jpg', '10_stl.jpg', '10_col.jpg');
 insert into color values(colseq.nextval, '잘 모르겠음', '', '', '');
-=======
-insert into color values(colseq.nextval, '遊� �씪�씠�듃');
-insert into color values(colseq.nextval, '遊� 釉뚮씪�씠�듃');
-insert into color values(colseq.nextval, '�뿬由� �씪�씠�듃');
-insert into color values(colseq.nextval, '�뿬由� 釉뚮씪�씠�듃');
-insert into color values(colseq.nextval, '�뿬由� 裕ㅽ듃');
-insert into color values(colseq.nextval, '媛��쓣 裕ㅽ듃');
-insert into color values(colseq.nextval, '媛��쓣 �뒪�듃濡�');
-insert into color values(colseq.nextval, '媛��쓣 �뵦');
-insert into color values(colseq.nextval, '寃⑥슱 釉뚮씪�씠�듃');
-insert into color values(colseq.nextval, '寃⑥슱 �뵦');
->>>>>>> refs/remotes/origin/master
 
 select * from color order by col_num;
 
 
 -----------------------------------------------------------------
---cart �뀒�씠釉� (�옣諛붽뎄�땲)
+--cart 테이블 (장바구니)
 -----------------------------------------------------------------
 
 drop sequence cartseq;
@@ -60,7 +48,7 @@ select * from cart order by cart_num;
 
 
 -----------------------------------------------------------------
---temp_cart �뀒�씠釉� (�엫�떆 �옣諛붽뎄�땲)
+--temp_cart 테이블 (임시 장바구니)
 -----------------------------------------------------------------
 
 drop sequence temp_cartseq;
@@ -77,7 +65,7 @@ select * from temp_cart order by o_num;
 
 
 -----------------------------------------------------------------
---orders �뀒�씠釉� (二쇰Ц)
+--orders 테이블 (주문)
 -----------------------------------------------------------------
 
 drop sequence ordersseq;
@@ -95,18 +83,13 @@ create table orders(
    cart_order number
 );
 
-select * from orders orders by o_num;
+select * from orders order by o_num;
 
 
 -----------------------------------------------------------------
-<<<<<<< HEAD
---celeb 테이블(퍼스널 컬러 별 연예인 소개)
-=======
---q_board �뀒�씠釉� (�쓽寃� 寃뚯떆�뙋)
->>>>>>> refs/remotes/origin/master
+--celeb 테이블 (퍼스널 컬러 별 연예인 소개)
 -----------------------------------------------------------------
 
-<<<<<<< HEAD
 -- CL_NAME : 연예인 이름
 -- CL_IMAGE : 연예인 이미지 파일명
 -- CL_COLOR : 연예인 퍼스널 컬러
@@ -377,10 +360,7 @@ insert into company values(	cmpseq.nextval,	'예슬 이미지',	'서울 성동�
 --q_board
 -----------------------------------------------------------------
 
-=======
->>>>>>> refs/remotes/origin/master
 drop table q_board;
-
 create table q_board( 
 	q_num number not null primary key,
 	q_writer varchar2(30) not null,
@@ -396,86 +376,22 @@ create table q_board(
 	q_ip varchar2(15) not null
 );
 
-
-<<<<<<< HEAD
 drop sequence board_seq;
-=======
- drop sequence board_seq;
->>>>>>> refs/remotes/origin/master
 create sequence board_seq
-<<<<<<< HEAD
 increment by 1
 start with 1
 minvalue 1
 maxvalue 10000
 nocache;
 
- insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'김민정','mj01@gmail.com','컬러 진단 문의합니다.','1234','2023-12-06',12,0,0,'컬러 진단 받고 추천 화장품을 샀는데 별로면 환불 가능한가요?','127.0.0.1');
-=======
-<<<<<<< HEAD
-increment by 1
-start with 1
- minvalue 1
-maxvalue 10000
- nocache;
+insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'김민정','mj01@gmail.com','컬러 진단 문의합니다.','1234','2023-12-06',12,0,0,'컬러 진단 받고 추천 화장품을 샀는데 별로면 환불 가능한가요?','127.0.0.1');
+insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'김민지','mji@naver.com','문의드립니다.','1234','2023-12-05',10,0,0,'무통장 입금 가능한가요?','127.0.0.1');
+insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'강해린','haerin@gmail.com','입고 예정 문의요','1234','2023-12-05',9,0,0,'정확한 상품명은 모르는데 입고 예정이 있나요?','127.0.0.1');
+insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'이혜인','hyein@gmail.com','신상 화장품 언제쯤','1234','2023-12-04',8,0,0,'신상 화장품 언제쯤 들어오나요','127.0.0.1');
+insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'모지혜','jihye@gmail.com','묶음 배송 해주세요','1234','2023-12-06',7,0,0,'하나하나 뜯기 귀찮은데 묶음 배송 해주실 수 있나요','127.0.0.1');
 
- insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'김민정','mj01@gmail.com','컬러 진단 문의합니다.','1234','2023-12-06',12,0,0,'컬러 진단 받고 추천 화장품을 샀는데 별로면 환불 가능한가요?','127.0.0.1');
-=======
->>>>>>> refs/remotes/origin/master
-  increment by 1
-  start with 1
-  minvalue 1
-  maxvalue 10000
-  nocache;
-  
-  	
-<<<<<<< HEAD
-=======
-  -- 諛묒뿉 insert 臾몄� �엫�떆濡�! (�쁽�옱 board �뀒�씠釉� �궗�슜以묒씠�씪)--
-	
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a1','a1','a1','1234','2015-1-1',1,0,0,'�궡�슜1','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
-
-<<<<<<< HEAD
- insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'유지민','jimin00@naver.com','프로모션으로 상품을 구매했는데요','1234','2023-12-05',11,0,0,'혹시 가격이 똑같은 다른 상품으로 교환 가능할까요? 새상품입니다.','127.0.0.1');
-=======
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a2','a2','a2','1234','2015-1-1',2,0,0,'�궡�슜2','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
-<<<<<<< HEAD
- insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'김민지','mji@naver.com','문의드립니다.','1234','2023-12-05',10,0,0,'무통장 입금 가능한가요?','127.0.0.1');
-=======
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a21','a21','a21','1234','2015-1-1',2,4,1,'�궡�슜21','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
-<<<<<<< HEAD
- insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'강해린','haerin@gmail.com','입고 예정 문의요','1234','2023-12-05',9,0,0,'정확한 상품명은 모르는데 입고 예정이 있나요?','127.0.0.1');
-=======
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a22','a22','a22','1234','2015-1-1',2,1,1,'�궡�슜22','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
-<<<<<<< HEAD
- insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'이혜인','hyein@gmail.com','신상 화장품 언제쯤','1234','2023-12-04',8,0,0,'신상 화장품 언제쯤 들어오나요','127.0.0.1');
-=======
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a221','a221','a221','1234','2015-1-1',2,3,2,'�궡�슜221','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
-<<<<<<< HEAD
- insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'모지혜','jihye@gmail.com','묶음 배송 해주세요','1234','2023-12-06',7,0,0,'하나하나 뜯기 귀찮은데 묶음 배송 해주실 수 있나요','127.0.0.1');
-=======
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a222','a222','a222','1234','2015-1-1',2,2,2,'�궡�슜222','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
-<<<<<<< HEAD
 -- insert 내용은 c_board 레코드 복붙한 것 나중에 추가예정
-=======
+
 insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
 values(board_seq.nextval,'a3','a3','a3','1234','2015-1-1',7,0,0,'�궡�슜3','127.0.0.1');
 
@@ -500,33 +416,14 @@ values(board_seq.nextval,'a3221','a3221','a3221','1234','2015-1-1',7,4,3,'�궡
 insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
 values(board_seq.nextval,'a33','a33','a33','1234','2015-1-1',7,1,1,'�궡�슜33','127.0.0.1');
 
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
 commit;
-<<<<<<< HEAD
-=======
-  
-insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a1','a1','a1','1234','2015-1-1',1,0,0,'�궡�슜1','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 
-<<<<<<< HEAD
+
 -----------------------------------------------------------------
 --c_board 테이블 (의견 게시판)
 -----------------------------------------------------------------
-=======
-insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a2','a2','a2','1234','2015-1-1',2,0,0,'�궡�슜2','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 
-<<<<<<< HEAD
 drop table c_board;
-=======
-insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a21','a21','a21','1234','2015-1-1',2,4,1,'�궡�슜21','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
-<<<<<<< HEAD
 create table c_board( 
 	c_num number not null primary key,
 	c_writer varchar2(30) not null,
@@ -541,98 +438,23 @@ create table c_board(
 	c_content varchar2(1500) not null,
 	c_ip varchar2(15) not null
 );
-=======
-insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a22','a22','a22','1234','2015-1-1',2,1,1,'�궡�슜22','127.0.0.1');
 
-insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a221','a221','a221','1234','2015-1-1',2,3,2,'�궡�슜221','127.0.0.1');
-
-insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a222','a222','a222','1234','2015-1-1',2,2,2,'�궡�슜222','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
-
-<<<<<<< HEAD
- drop sequence board_seq;
+drop sequence board_seq;
 create sequence board_seq
 increment by 1
 start with 1
- minvalue 1
+minvalue 1
 maxvalue 10000
- nocache;
-=======
-insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a3','a3','a3','1234','2015-1-1',7,0,0,'�궡�슜3','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+nocache;
 
-<<<<<<< HEAD
- insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'김민정','mj01@gmail.com','컬러 진단 문의합니다.','1234','2023-12-06',12,0,0,'컬러 진단 받고 추천 화장품을 샀는데 별로면 환불 가능한가요?','127.0.0.1');
-=======
-insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a31','a31','a31','1234','2015-1-1',7,6,1,'�궡�슜31','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
-<<<<<<< HEAD
- insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'유지민','jimin00@naver.com','프로모션으로 상품을 구매했는데요','1234','2023-12-05',11,0,0,'혹시 가격이 똑같은 다른 상품으로 교환 가능할까요? 새상품입니다.','127.0.0.1');
-=======
-insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a311','a311','a311','1234','2015-1-1',7,7,2,'�궡�슜311','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
-<<<<<<< HEAD
- insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'김민지','mji@naver.com','문의드립니다.','1234','2023-12-05',10,0,0,'무통장 입금 가능한가요?','127.0.0.1');
-=======
-insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a32','a32','a32','1234','2015-1-1',7,2,1,'�궡�슜32','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
-<<<<<<< HEAD
- insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'강해린','haerin@gmail.com','입고 예정 문의요','1234','2023-12-05',9,0,0,'정확한 상품명은 모르는데 입고 예정이 있나요?','127.0.0.1');
-=======
-insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a321','a321','a321','1234','2015-1-1',7,5,2,'�궡�슜321','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
-<<<<<<< HEAD
-=======
-insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a322','a322','a322','1234','2015-1-1',7,3,2,'�궡�슜322','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
-<<<<<<< HEAD
- insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'이혜인','hyein@gmail.com','신상 화장품 언제쯤','1234','2023-12-04',8,0,0,'신상 화장품 언제쯤 들어오나요','127.0.0.1');
-=======
-insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a3221','a3221','a3221','1234','2015-1-1',7,4,3,'�궡�슜3221','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
-<<<<<<< HEAD
- insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'모지혜','jihye@gmail.com','묶음 배송 해주세요','1234','2023-12-06',7,0,0,'하나하나 뜯기 귀찮은데 묶음 배송 해주실 수 있나요','127.0.0.1');
-=======
-insert into q_board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a33','a33','a33','1234','2015-1-1',7,1,1,'�궡�슜33','127.0.0.1');
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
-
-
- insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'안유진','yoojun@gmail.com','교환 방법 문의','1234','2023-12-03',6,0,0,'교환 방법 좀 알려주세요','127.0.0.1');
-
-
- insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'김가을','autumn@gmail.com','구매 후 변심으로 인한 반품 문의','1234','2023-11-24',4,0,0,'뜯지도 않은 새상품인데 반품하고 싶어서요 가능할까요?','127.0.0.1');
-
-
- insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'김지원','jiwon@naver.com','지성 피부 화장품 문의드려요...','1234','2023-11-23',3,0,0,'컬러 진단 받고 추천 받은 화장품은 다 건성용이길래 지성 피부도 쓸 수 있는 화장품 추천해주세요','127.0.0.1');
-
-
- insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'이현서','hs07@gmail.com','배송비는 얼마인가요','1234','2023-11-23',2,0,0,'무료 배송은 얼마부터 가능한지...','127.0.0.1');
-
-
- insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'조미연','my@naver.com','반품할 때 비용이 드나요?','1234','2023-11-23',1,0,0,'정확한 반품 비용 알려주세여','127.0.0.1');
-
-
- insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'장원영','wonyoung@naver.com','반송 주소는 회사로 해야하나요','1234','2023-12-01',5,0,0,'반송 주소 알려주세요','127.0.0.1');
-
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'안유진','yoojun@gmail.com','교환 방법 문의','1234','2023-12-03',6,0,0,'교환 방법 좀 알려주세요','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'김가을','autumn@gmail.com','구매 후 변심으로 인한 반품 문의','1234','2023-11-24',4,0,0,'뜯지도 않은 새상품인데 반품하고 싶어서요 가능할까요?','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'김지원','jiwon@naver.com','지성 피부 화장품 문의드려요...','1234','2023-11-23',3,0,0,'컬러 진단 받고 추천 받은 화장품은 다 건성용이길래 지성 피부도 쓸 수 있는 화장품 추천해주세요','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'이현서','hs07@gmail.com','배송비는 얼마인가요','1234','2023-11-23',2,0,0,'무료 배송은 얼마부터 가능한지...','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'조미연','my@naver.com','반품할 때 비용이 드나요?','1234','2023-11-23',1,0,0,'정확한 반품 비용 알려주세여','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'장원영','wonyoung@naver.com','반송 주소는 회사로 해야하나요','1234','2023-12-01',5,0,0,'반송 주소 알려주세요','127.0.0.1');
 commit;
+
 
 -----------------------------------------------------------------
 --users
@@ -653,7 +475,9 @@ create table users(
 insert into users
 values('admin', '관리자', '1234', '', '', '', '', '잘 모르겠음');
 
-commin;
+commit;
+
+
 -----------------------------------------------------------------
 --product
 -----------------------------------------------------------------
@@ -778,4 +602,130 @@ insert into product values(	pro_seq.nextval,	'미샤',	'라스트 블러쉬 06 �
 insert into product values(	pro_seq.nextval,	'3CE',	'소프트 매트 립스틱 #AZURE PINK',	'10azure_ttl',	'10azure_dtl.jpg',	'겨울 딥',	14900,	1490,	100,	0,	'푸른 빛에 반사되어 맑게 차오르는 브라이트 핑크'	);
 
 commit;
->>>>>>> refs/remotes/origin/master
+
+
+-----------------------------------------------------------------
+--company 테이블 (퍼스널 컬러 진단업체)
+-----------------------------------------------------------------
+
+drop sequence cmpseq;
+create sequence cmpseq 
+start with 1 
+increment by 1 
+nocache ;
+
+create table company( 
+	cmp_num number primary key,
+	cmp_name varchar2(50),
+	cmp_addr varchar2(50),
+	cmp_price number,
+	cmp_station varchar2(20),
+	cmp_x varchar2(20),
+	cmp_y varchar2(20)
+);
+
+insert into company values(	cmpseq.nextval,	'아란 퍼스널컬러 진단',	'서울 마포구 동교로18길 37 2층',	290000,	'홍대입구역, 합정역',	'126.9179178',	'37.5537583'	);
+insert into company values(	cmpseq.nextval,	'필린 퍼스널컬러진단 & 이미지컨설팅',	'서울 마포구 월드컵로10길 17 2층',	140000,	'망원역, 합정역',	'126.9126668',	'37.5548526'	);
+insert into company values(	cmpseq.nextval,	'컬러가산다 퍼스널컬러진단 홍대동교센터',	'서울 마포구 동교로 192-1 3층',	100000,	'홍대입구역',	'126.9227512',	'37.5572882'	);
+insert into company values(	cmpseq.nextval,	'담쁨퍼스널컬러진단',	'서울 마포구 와우산로29길 47 3층',	160000,	'홍대입구역',	'126.9273241',	'37.5556357'	);
+insert into company values(	cmpseq.nextval,	'메이크온전히 퍼스널컬러 진단',	'서울 마포구 와우산로35길 19 4층 메이크온전히',	200000,	'홍대입구역',	'126.9293858',	'37.5558635'	);
+insert into company values(	cmpseq.nextval,	'오띠모 퍼스널컬러 진단',	'서울 성동구 왕십리로16가길 10-30 6층',	140000,	'뚝섬역',	'127.0453339',	'37.5506313'	);
+insert into company values(	cmpseq.nextval,	'CCL컬러이미지융합연구소 퍼스널컬러 진단',	'서울 성동구 성수이로 66 서울숲 드림타워 711호',	150000,	'성수역',	'127.0561825',	'37.5405547'	);
+insert into company values(	cmpseq.nextval,	'한국패션심리연구원 퍼스널컬러진단',	'서울 강남구 선릉로 840 4층 한국패션심리연구원',	280000,	'압구정로데오역',	'127.0406647',	'37.5268112'	);
+insert into company values(	cmpseq.nextval,	'컬러가산다 퍼스널컬러진단 건대센터',	'서울 광진구 아차산로34길 36 3층',	100000,	'건대입구역 ',	'127.0689244',	'37.5386108'	);
+insert into company values(	cmpseq.nextval,	'조이컬러공방 퍼스널컬러진단',	'서울 은평구 통일로 780 미성아파트상가 1층 조이컬러공방',	180000,	'불광역',	'126.9283096',	'37.6149286'	);
+insert into company values(	cmpseq.nextval,	'컬러라이즈 퍼스널컬러 진단',	'서울 서초구 사임당로 173 서전빌딩 4층,9층',	140000,	'강남역 ',	'127.0285544',	'37.4927943'	);
+insert into company values(	cmpseq.nextval,	'컬러공방 퍼스널컬러진단',	'서울 서초구 사평대로57길 39-1 2층',	158000,	'신논현역 ',	'127.0226479',	'37.5059293'	);
+insert into company values(	cmpseq.nextval,	'컬러모아 퍼스널컬러진단',	'서울 서초구 강남대로83길 36 학산빌딩 2층 202호',	156000,	'신논현역 ',	'127.0216668',	'37.5057215'	);
+insert into company values(	cmpseq.nextval,	'픽컬러브랜딩센터 퍼스널컬러 진단 컬러리스트',	'서울 영등포구 문래북로 116',	169000,	'문래역',	'126.8980628',	'37.5194432'	);
+insert into company values(	cmpseq.nextval,	'컬러시그널 퍼스널컬러진단 실버점',	'서울 강남구 역삼로20길 12 성우빌딩 4층 컬러시그널',	138000,	'역삼역 ',	'127.0376275',	'37.4944506'	);
+insert into company values(	cmpseq.nextval,	'프롬컬러 퍼스널컬러 진단',	'서울 영등포구 문래로 180 센트럴 푸르지오시티 415호',	140000,	'영등포역,문래역',	'126.9019541',	'37.5179756'	);
+insert into company values(	cmpseq.nextval,	'더즈 퍼스널컬러 진단',	'서울 마포구 망원로 21 2층',	158000,	'망원역',	'126.899403',	'37.5563623'	);
+insert into company values(	cmpseq.nextval,	'유어컬러즈:컬러곰 퍼스널컬러진단',	'서울 강남구 학동로55길 17 4층',	140000,	'강남구청역',	'127.0415693',	'37.518603'	);
+insert into company values(	cmpseq.nextval,	'컬러앤센트 퍼스널컬러 진단',	'서울 서초구 방배천로16길 11-9 1층',	189000,	'총신대입구',	'126.9835279',	'37.4825026'	);
+insert into company values(	cmpseq.nextval,	'컬러홀릭 골격핏 퍼스널컬러진단',	'서울 강남구 테헤란로 310 13층 1301호',	152000,	'선릉역',	'127.0447848',	'37.5028251'	);
+insert into company values(	cmpseq.nextval,	'이음컬러 퍼스널컬러 진단',	'서울 구로구 경인로 661 신도림1차푸르지오 103동',	160000,	'신도림역',	'126.8877437',	'37.5094204'	);
+insert into company values(	cmpseq.nextval,	'디자인미 퍼스널컬러진단',	'서울 강남구 테헤란로 327 413호',	170000,	'선릉역 ',	'127.0470626',	'37.5045798'	);
+insert into company values(	cmpseq.nextval,	'푸른달컬러 퍼스널컬러 진단',	'서울 영등포구 도림천로19길 11 4층 411호',	158000,	'구로디지털단지역',	'126.9001891',	'37.4866104'	);
+insert into company values(	cmpseq.nextval,	'이안컬러랩 퍼스널컬러 진단',	'서울 서초구 사임당로 178 지하 1층 복도 끝 이안 컬러랩',	138000,	'강남역',	'127.0291018',	'37.4921331'	);
+insert into company values(	cmpseq.nextval,	'컬러블랑 퍼스널컬러진단',	'서울 송파구 올림픽로12길 62 2층 202호',	200000,	'삼전역 ',	'127.08292',	'37.5062097'	);
+insert into company values(	cmpseq.nextval,	'퍼스널리브 퍼스널컬러 진단',	'서울 관악구 신원로 35 8층 15호',	110000,	'신림역',	'126.9289185',	'37.4822382'	);
+insert into company values(	cmpseq.nextval,	'퍼스널컬러 진단 오운이미지랩',	'서울 강서구 공항대로 186 로뎀타워 706호',	120000,	'마곡역',	'126.8280371',	'37.5591043'	);
+insert into company values(	cmpseq.nextval,	'탑 컬러 퍼스널컬러 진단',	'서울 강서구 마곡중앙로 161-8 A동 10층 1011호',	120000,	'마곡나루역',	'126.8270966',	'37.5689359'	);
+insert into company values(	cmpseq.nextval,	'위올컬러 퍼스널컬러진단',	'서울 강동구 상일로12길 54 J파크 202호',	150000,	'강일역 ',	'127.174276',	'37.5548669'	);
+insert into company values(	cmpseq.nextval,	'퍼스널컬러, 골격진단 잇츠마이컬러',	'서울 강남구 강남대로128길 61 현성512빌딩 401호',	180000,	'학동역 ',	'127.0263162',	'37.512098'	);
+insert into company values(	cmpseq.nextval,	'오롯이컬러 퍼스널컬러 골격진단',	'서울 관악구 남부순환로 1911 2층',	180000,	'낙성대역',	'126.961871',	'37.4779955'	);
+insert into company values(	cmpseq.nextval,	'비비드강 퍼스널컬러',	'서울 마포구 양화로 193',	175000,	'홍대입구역 ',	'126.9258946',	'37.5587739'	);
+insert into company values(	cmpseq.nextval,	'퍼스널컬러 색다르다',	'서울 마포구 양화로 175 마젤란21',	160000,	'홍대입구역 ',	'126.924381',	'37.5577543'	);
+insert into company values(	cmpseq.nextval,	'느로아 퍼스널컬러',	'서울 마포구 동교로 248-2 3층 302호',	150000,	'홍대입구역',	'126.9245307',	'37.5621234'	);
+insert into company values(	cmpseq.nextval,	'컬러쏘싸이어티 퍼스널컬러',	'서울 마포구 동교로 215 컬러쏘싸이어티',	200000,	'홍대입구역',	'126.9234822',	'37.5592515'	);
+insert into company values(	cmpseq.nextval,	'온도팔레트 퍼스널컬러',	'서울 마포구 양화로 157 파라다이스텔 10층 1007호',	140000,	'홍대입구역',	'126.9229417',	'37.5566855'	);
+insert into company values(	cmpseq.nextval,	'컬러오브데이 퍼스널컬러진단',	'서울 성동구 서울숲9길 5 4층',	138000,	'뚝섬역 ',	'127.0435731',	'37.5483984'	);
+insert into company values(	cmpseq.nextval,	'컬러바이유 퍼스널컬러',	'서울 광진구 광나루로 386 건대 하이뷰 오피스텔 709호',	158000,	'어린이대공원역',	'127.0723072',	'37.547397'	);
+insert into company values(	cmpseq.nextval,	'청담퍼스널컬러세븐에이알',	'서울 강남구 영동대로 644 7F',	136000,	'청담역',	'127.0580297',	'37.5193096'	);
+insert into company values(	cmpseq.nextval,	'컬러츄',	'서울 성동구 연무장5가길 25 516호',	110000,	'성수역',	'127.0556438',	'37.5435802'	);
+insert into company values(	cmpseq.nextval,	'라새라색채연구소',	'서울 송파구 백제고분로 501 청호오피스텔 405호',	180000,	'한성백제역',	'127.1146774',	'37.5152322'	);
+insert into company values(	cmpseq.nextval,	'레츄',	'서울 중랑구 면목로43길 19 201',	180000,	'사가정역',	'127.0868158',	'37.5813337'	);
+insert into company values(	cmpseq.nextval,	'제이앤이미지퍼스널이미지브랜딩연구소',	'서울 강남구 삼성로 763 금탁프라자 3층, 301',	240000,	'청담역',	'127.0476713',	'37.522921'	);
+insert into company values(	cmpseq.nextval,	'누벨 이마주',	'서울 성동구 아차산로 126 성수동더리브 세종타워 303호',	280000,	'성수역',	'127.0582301',	'37.5434075'	);
+insert into company values(	cmpseq.nextval,	'몽끄컬러랩 본점',	'서울 강남구 압구정로28길 22-11 2층',	270000,	'압구정역',	'127.026623',	'37.5249935'	);
+insert into company values(	cmpseq.nextval,	'무드컬렉트 강남점',	'서울 강남구 테헤란로6길 7 4층',	260000,	'강남역',	'127.030679',	'37.4981759'	);
+insert into company values(	cmpseq.nextval,	'마이쇼퍼 압구정점',	'서울 강남구 언주로153길 10-6 2층',	260000,	'압구정역',	'127.0323979',	'37.5231212'	);
+insert into company values(	cmpseq.nextval,	'컬러에이치',	'서울 강남구 학동로1길 19 5층',	200000,	'논현역 ',	'127.021593',	'37.5126835'	);
+insert into company values(	cmpseq.nextval,	'컬러즈아트',	'서울 강남구 강남대로156길 20 정원빌딩 2층',	170000,	'신사역 ',	'127.0208133',	'37.5182433'	);
+insert into company values(	cmpseq.nextval,	'리씨엘 컬러 스튜디오',	'서울 강남구 삼성로57길 28 지석빌딩 6층 리씨엘',	170000,	'한티역',	'127.0587286',	'37.4976861'	);
+insert into company values(	cmpseq.nextval,	'무드플러스',	'서울 강남구 강남대로156길 18 범원빌딩 5층 502호',	170000,	'신사역',	'127.0206775',	'37.5181862'	);
+insert into company values(	cmpseq.nextval,	'다채로윤 퍼스널컬러',	'서울 송파구 백제고분로39길 29 301호',	130000,	'석촌역',	'127.1035534',	'37.5067333'	);
+insert into company values(	cmpseq.nextval,	'오콜로르 신사점',	'서울 강남구 강남대로156길 20 정원빌딩 2층',	180000,	'신사역',	'127.0208133',	'37.5182433'	);
+insert into company values(	cmpseq.nextval,	'삼월부티크',	'서울 강남구 압구정로4길 20 끄레아빌 203호',	180000,	'신사역',	'127.0203987',	'37.5213824'	);
+insert into company values(	cmpseq.nextval,	'예랑 뷰티 아카데미',	'서울 강남구 학동로38길 42 2층',	150000,	'학동역',	'127.0345859',	'37.5120685'	);
+insert into company values(	cmpseq.nextval,	'챠밍아틀리에 퍼스널컬러&메이크업',	'서울 강북구 도봉로 328 15층 1516호',	170000,	'수유역',	'127.0252072',	'37.6370653'	);
+insert into company values(	cmpseq.nextval,	'아니마레',	'서울 성북구 화랑로11길 17-9 1층 101호',	280000,	'월곡역',	'127.0410667',	'37.6031718'	);
+insert into company values(	cmpseq.nextval,	'딸로퍼스널컬러컨설팅',	'서울 서초구 방배천로2길 7',	160000,	'사당역',	'126.9834302',	'37.4772861'	);
+insert into company values(	cmpseq.nextval,	'컬러아르떼 퍼스널컬러',	'서울 종로구 대학로11길 27 4층',	200000,	'혜화역',	'127.0001313',	'37.5820484'	);
+insert into company values(	cmpseq.nextval,	'유컬러 퍼스널컬러',	'서울 강서구 곰달래로20길 18 풍원팰리스 B102호',	190000,	'까치산역',	'126.8426811',	'37.5293934'	);
+insert into company values(	cmpseq.nextval,	'컬러퀸 퍼스널컬러 진단',	'서울 성동구 성수일로 111 1214',	300000,	'뚝섬역',	'127.0515434',	'37.5502733'	);
+insert into company values(	cmpseq.nextval,	'컬러마인',	'서울 송파구 백제고분로7길 42-37',	130000,	'잠실새내역',	'127.0841686',	'37.5091894'	);
+insert into company values(	cmpseq.nextval,	'디어유어컬러',	'서울 송파구 충민로 66 7층 T-7014호',	120000,	'장지역',	'127.1249964',	'37.4776483'	);
+insert into company values(	cmpseq.nextval,	'룩스컬러',	'서울 송파구 석촌호수로 268 208호',	130000,	'석촌역',	'127.1057107',	'37.5097096'	);
+insert into company values(	cmpseq.nextval,	'컬러무이 퍼스널컬러',	'서울 동작구 동작대로9가길 21 1층 102호',	158000,	'사당역',	'126.9787727',	'37.4794938'	);
+insert into company values(	cmpseq.nextval,	'퍼스널컬러 온',	'서울 관악구 남부순환로218길 27 302(봉천동, 관전 G타워)',	170000,	'서울대입구역',	'126.9505017',	'37.4800384'	);
+insert into company values(	cmpseq.nextval,	'컬러 마지끄',	'서울 관악구 보라매로2길 28 1층 101호',	140000,	'당곡역 ',	'126.9294689',	'37.489718'	);
+insert into company values(	cmpseq.nextval,	'랑데부컬러',	'서울 관악구 봉천로14길 12 206호',	168000,	'당곡역',	'126.9297726',	'37.4874903'	);
+insert into company values(	cmpseq.nextval,	'컬러데이즈',	'서울 관악구 봉천로45길 8 5층',	180000,	'서울대입구역',	'126.9494539',	'37.48305'	);
+insert into company values(	cmpseq.nextval,	'퍼스널컬러나다움',	'서울 강서구 마곡서로 158 센트럴타워2차 1109호',	109000,	'마곡나루역',	'126.8254305',	'37.5681063'	);
+insert into company values(	cmpseq.nextval,	'퍼스널컬러 휴어',	'서울 강서구 공항대로 213 보타닉파크타워2 606호',	115000,	'마곡역',	'126.8313869',	'37.5596779'	);
+insert into company values(	cmpseq.nextval,	'퍼스널컬러 당신의 팔레트',	'서울 강서구 공항대로 200 706호(마곡동, 마곡지웰타워)',	130000,	'마곡역',	'126.8295014',	'37.5589733'	);
+insert into company values(	cmpseq.nextval,	'만나다컬러',	'서울 강서구 마곡서로 152 B동 6층 617호',	110000,	'마곡나루역',	'126.8256375',	'37.5676575'	);
+insert into company values(	cmpseq.nextval,	'컬러텔링 퍼스널컬러',	'서울 양천구 신정중앙로 68 4층 마이비지니스파트너',	179000,	'신정역',	'126.8593407',	'37.5266265'	);
+insert into company values(	cmpseq.nextval,	'퍼스널컬러 꼴로레',	'서울 영등포구 선유로49길 20-3 그린빌딩 302호',	100000,	'선유도역',	'126.8954354',	'37.5367193'	);
+insert into company values(	cmpseq.nextval,	'홀리몰리 퍼스널컬러',	'서울 마포구 백범로 8 2층 ILTER',	99000,	'신촌역',	'126.936773',	'37.554087'	);
+insert into company values(	cmpseq.nextval,	'세컨뉴 퍼스널컬러',	'서울 마포구 어울마당로 96 5층 504호',	110000,	'홍대입구역, 합정역',	'126.9222777',	'37.5535274'	);
+insert into company values(	cmpseq.nextval,	'오콜로르 여의도점',	'서울 영등포구 국제금융로6길 33 맨하탄빌딩 1106호',	180000,	'여의도역',	'126.9269161',	'37.520782'	);
+insert into company values(	cmpseq.nextval,	'더즈 퍼스널컬러 진단',	'서울 마포구 망원로 21 2층',	158000,	'망원역',	'126.899403',	'37.5563623'	);
+insert into company values(	cmpseq.nextval,	'블레스미 여의도점',	'서울 영등포구 국제금융로6길 30 백상빌딩 916-917호',	200000,	'여의도역 ',	'126.9265494',	'37.5217758'	);
+insert into company values(	cmpseq.nextval,	'라엘나',	'서울 영등포구 국제금융로6길 33',	119800,	'여의도역',	'126.9269161',	'37.520782'	);
+insert into company values(	cmpseq.nextval,	'프목 퍼스널컬러',	'서울 마포구 망원로3길 38 4층 fmoc',	180000,	'마포구청역',	'126.9009076',	'37.5583183'	);
+insert into company values(	cmpseq.nextval,	'유트룰리 퍼스널컬러',	'서울 마포구 어울마당로 136-11 2층 g-studio',	180000,	'홍대입구역',	'126.925538',	'37.5558634'	);
+insert into company values(	cmpseq.nextval,	'멜팅피 퍼퓸 앤 퍼스널컬러',	'서울 마포구 월드컵로10길 17 2층',	240000,	'망원역',	'126.9126668',	'37.5548526'	);
+insert into company values(	cmpseq.nextval,	'컬러오브유',	'서울 마포구 동교로 209 용평빌딩 3층 컬러오브유',	150000,	'홍대입구역',	'126.9233044',	'37.5587131'	);
+insert into company values(	cmpseq.nextval,	'컬러윙스',	'서울 마포구 마포대로10길 12 트레퍼빌딩 런치스페이스 4층',	180000,	'공덕역',	'126.9542159',	'37.5470198'	);
+insert into company values(	cmpseq.nextval,	'리얼컬러',	'서울 마포구 양화로 59 화승리버스텔 606호',	140000,	'합정역',	'126.9148716',	'37.5506416'	);
+insert into company values(	cmpseq.nextval,	'세임컬러',	'서울 서대문구 이화여대길 52-11 1층 101호',	130000,	'신촌역, 이대역',	'126.9451151',	'37.5593392'	);
+insert into company values(	cmpseq.nextval,	'엘리이미지연구소',	'서울 마포구 양화로 56',	140000,	'합정역',	'126.9148119',	'37.5495474'	);
+insert into company values(	cmpseq.nextval,	'컬러튜드',	'서울 마포구 신촌로 246-2 3층',	170000,	'아현역',	'126.9531414',	'37.5570282'	);
+insert into company values(	cmpseq.nextval,	'위드컬러랑',	'서울 마포구 백범로 8 339호',	110000,	'신촌역',	'126.936773',	'37.554087'	);
+insert into company values(	cmpseq.nextval,	'뷰티팔레트',	'서울 마포구 와우산로19길 6-5 이재빌딩 4층',	140000,	'상수역',	'126.9228152',	'37.5514953'	);
+insert into company values(	cmpseq.nextval,	'브리앙뜨 컬러',	'서울 은평구 은평로 91 Cj드림시티 B동 1008호',	159000,	'응암역',	'126.9178219',	'37.5997076'	);
+insert into company values(	cmpseq.nextval,	'도하뷰티',	'서울 서초구 사임당로 178 지하1층 도하뷰티',	138000,	'강남역',	'127.0291018',	'37.4921331'	);
+insert into company values(	cmpseq.nextval,	'온리',	'서울 용산구 한강대로10길 13 4층',	170000,	'신용산역',	'126.9642401',	'37.5239966'	);
+insert into company values(	cmpseq.nextval,	'솔이미지',	'서울 강남구 광평로56길 8-13',	176000,	'수서역',	'127.103178',	'37.4867729'	);
+insert into company values(	cmpseq.nextval,	'더이미지플러스',	'서울 서초구 강남대로 359 도씨에빛2 509호',	165000,	'강남역',	'127.0285982',	'37.4947834'	);
+insert into company values(	cmpseq.nextval,	'이미지유어즈',	'서울 강남구 도산대로53길 32 3F',	270000,	'압구정로데오역',	'127.0389638',	'37.5252804'	);
+insert into company values(	cmpseq.nextval,	'봄날',	'서울 중구 퇴계로20길 15 2층',	150000,	'명동역',	'126.9858911',	'37.5594979'	);
+insert into company values(	cmpseq.nextval,	'칼라코드 컬러연구소',	'서울 종로구 북촌로5나길 7-4',	200000,	'안국역',	'126.9820289',	'37.581264'	);
+insert into company values(	cmpseq.nextval,	'PIB연구소',	'서울 서초구 서초대로51길 29 7층',	180000,	'교대역',	'127.0136798',	'37.4963789'	);
+insert into company values(	cmpseq.nextval,	'이음에듀커뮤니케이션',	'서울 광진구 군자로 43 아스하임오피스텔 809호',	140000,	'어린이대공원역',	'127.0700222',	'37.547115'	);
+insert into company values(	cmpseq.nextval,	'예슬 이미지',	'서울 성동구 왕십리로 309',	132000,	'왕십리역',	'127.03461',	'37.5611981'	);
+
+

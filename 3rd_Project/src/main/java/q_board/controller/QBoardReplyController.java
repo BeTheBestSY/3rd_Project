@@ -1,12 +1,9 @@
 package q_board.controller;
-
 import java.io.IOException;
 import java.sql.Timestamp;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import q_board.model.QBoardBean;
 import q_board.model.QBoardDao;
 
@@ -76,10 +72,8 @@ public class QBoardReplyController {
 			return viewPage;
 		}
 		
-		
-		
 		bb.setQ_ref(q_ref);
-		bb.setQ_subject("[ë‹µê¸€]"+bb.getQ_subject());
+		bb.setQ_subject("[´ä±Û] "+bb.getQ_subject());
 		bb.setQ_re_step(q_re_step);
 		bb.setQ_re_level(q_re_level);
 		bb.setQ_ip(request.getRemoteAddr());
