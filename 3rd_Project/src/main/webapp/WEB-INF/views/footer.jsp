@@ -11,7 +11,7 @@
 		font-family: 'MaruBuri-Regular';
 	}
 	#footer_vertical{
-		width: 3px;
+		width: 3px; 
 		height: 18px;
 		background: #7C81BB;
 		display: inline-block;
