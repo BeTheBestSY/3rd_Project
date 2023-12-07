@@ -9,6 +9,7 @@ function handleClick(event) {
   console.log(event.target);
   // console.log(this);
   // 콘솔창을 보면 둘다 동일한 값이 나온다
+  // 저장용
 
   console.log(event.target.classList);
 
