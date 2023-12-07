@@ -7,11 +7,11 @@
 		left: 50px;
 		top: -23px;
 		position: relative;
-		margin-bottom: 150px;
+		margin-bottom: 100px;
 		font-family: 'MaruBuri-Regular';
 	}
 	#footer_vertical{
-		width: 3px;
+		width: 3px; 
 		height: 18px;
 		background: #7C81BB;
 		display: inline-block;
@@ -26,7 +26,33 @@
 		text-decoration: none;
 		color: graytext;
 	}
+    a.top {
+      position: fixed;
+      left: 96%;
+      bottom: 28px;
+      display: none;
+    }
 </style>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$(window).scroll(function() {
+			if ($(this).scrollTop() > 300) {
+				$('.top').fadeIn();
+			} else {
+				$('.top').fadeOut();
+			}
+		});
+		$('.top').click(function() {
+			$('html, body').animate({
+				scrollTop : 0
+			}, 400);
+			return false;
+		});
+	});
+</script>
+
+<a href="#" class="top"><img src="resources/image/arrow1.png" width="50"></a>
 
 <div class="container">
 	<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -53,7 +79,8 @@
 	<div class="footer_content">
 		<br>
 		<b>당신의 숨겨진 아름다움을 찾아서 -</b><br><br><br>
-		&nbsp;&nbsp;&nbsp;<div id="footer_vertical"></div>&nbsp;&nbsp;<font id="footer_title">업무시간</font><div style="width: 138px; display:inline-block;"></div>
+		&nbsp;&nbsp;&nbsp;
+		<div id="footer_vertical"></div>&nbsp;&nbsp;<font id="footer_title">업무시간</font><div style="width: 138px; display:inline-block;"></div>
 		<div id="footer_vertical"></div>&nbsp;&nbsp;<font id="footer_title">휴무일</font><div style="width: 244px; display:inline-block;"></div>
 		<div id="footer_vertical"></div>&nbsp;&nbsp;<font id="footer_title">주소</font>
 		<br>

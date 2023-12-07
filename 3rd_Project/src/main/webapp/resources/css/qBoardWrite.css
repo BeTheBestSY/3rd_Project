@@ -29,11 +29,12 @@ section.notice {
 }
 
 .page-title h3 {
-  font-size: 28px;
+  font-size: 25px;
   color: #333333;
-  font-weight: 400;
+  /* font-weight: 400; */
   text-align: center;
   float:left;
+  font-weight: bold;
 }
 
 .board-table {

@@ -15,7 +15,7 @@ public class QBoardDetailController {
 
 	@Autowired
 	private QBoardDao qdao;
-	
+	 
 	public final String command="/detail.qb";
 	public final String viewPage="qBoardDetail";
 	
@@ -28,7 +28,6 @@ public class QBoardDetailController {
 		
 		qdao.updateReadcount(q_num);
 		QBoardBean bb = qdao.selectContent(q_num);
-		System.out.println("q_num:"+q_num);
 		
 		model.addAttribute("pageNumber",pageNumber);
 		model.addAttribute("bb",bb);
