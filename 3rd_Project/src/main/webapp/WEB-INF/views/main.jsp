@@ -53,7 +53,7 @@
 		자신을 보다 생기있고 활기차게 보이게 해 주는 색상을 뜻합니다.
 	</p>
 	<br><br>
-	<p style="font-size: 11pt; color: gray; line-height: 220%;">
+	<p style="font-size: 11pt; color: #BDBDBD; line-height: 220%; font-family: 'RIDIBatang';">
 		퍼스널 컬러를 파악하는 것은 효과적으로 이미지를 관리하는 방법 중 하나입니다.<br>
 		어울리는 컬러를 활용하면 긍정적인 이미지를 얻을 수 있는 반면,<br>
 		어울리지 않는 컬러를 활용하면 피부가 거칠어보이거나 노안으로 보이는 등 단점이 극대화될 수 있습니다.

@@ -65,7 +65,7 @@
 						<a href="colorAi.ai" class="nav-link px-2 link-body-emphasis">AI 컬러진단</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
-						<a href="colList.col" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
+						<a href="colMain.col" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
 						<a href="qBoardList.qb" class="nav-link px-2 link-body-emphasis">의견 게시판</a>
