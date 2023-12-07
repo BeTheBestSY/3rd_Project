@@ -7,7 +7,7 @@
 
 <!DOCTYPE html> 
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
 <title>FIND YOUR Hidden Beauty</title>
 <link
