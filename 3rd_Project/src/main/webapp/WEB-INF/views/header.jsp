@@ -50,14 +50,17 @@
 				<!-- 메뉴 선택하기 -->
 				<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 					<li>
-						<a href="main.jsp" class="nav-link px-2 link-secondary">
+						<a href=".main" class="nav-link px-2 link-secondary">
 						<img src="resources/image/fyhbLogo.png" width="170"></a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 30px">
 						<a href="colorAi.ai" class="nav-link px-2 link-body-emphasis">AI 컬러진단</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
+<<<<<<< HEAD
 						<a href="company.cmp" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
+=======
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 						<a href="colMain.col" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">

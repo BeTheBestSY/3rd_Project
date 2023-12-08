@@ -105,11 +105,31 @@
 				onClick="location.href='#'">
 		</div>
 		<div class="col-lg-6" id="imageArea">
-			<div id="image1"></div>
-			<div id="image2"></div>
-			<div id="image3"></div>
-			<div id="image4"></div>
-			<div id="image5"></div>
+			<div id="image1">
+				<img src="resources/image/spring_ex.png" width="103%">
+				<span style="color: white; left: 10px; top: -365px; position: relative; font-size: 13pt; font-family: 'MaruBuri-Regular'; ">
+					봄 라이트 대표 연예인<br>' <b>채수빈</b> '
+				</span>
+			</div>
+			<div id="image2">
+				<img src="resources/image/winter_ex.png" width="100%">
+				<span style="color: white; left: 10px; top: -340px; position: relative; font-size: 13pt; font-family: 'MaruBuri-Regular'; ">
+					겨울 브라이트 대표 연예인<br>' <b>카리나</b> '
+				</span>
+			</div>
+			<div id="image3">
+				<br><br><br>
+				<img src="resources/image/summer_ex2.png" width="100%">
+			</div>
+			<div id="image4">
+				<img src="resources/image/summer_ex.png" width="105%">
+				<span style="color: white; left: 10px; top: -365px; position: relative; font-size: 13pt; font-family: 'MaruBuri-Regular'; ">
+					여름 브라이트 대표 연예인<br>' <b>이유비</b> '
+				</span>
+			</div>
+			<div id="image5">
+				<img src="resources/image/autumn_ex.png" width="105%">
+			</div>
 		</div>
 	</div>
 	
