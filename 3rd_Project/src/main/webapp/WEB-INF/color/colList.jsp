@@ -62,6 +62,8 @@ init();
 	 */
 </script>
 
+<!-- 저장용 -->
+
 <style>
 	#btnSpring, #btnSummer, #btnAutumn, #btnWinter {
 		border: 1px solid #EAEAEA;
