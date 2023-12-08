@@ -6,25 +6,25 @@
 <form action="register.u" method="post">
 <table border="1">
 	<tr>
-		<td>아이디</td>
-		<td>
-			<input type="text" name="u_id" placeholder="대/소문자, 숫자 포함 6자리 이상" required>
-		</td>
-	</tr>
-	<tr>
-		<td>이름</td>
+		<td>*이름</td>
 		<td>
 			<input type="text" name="u_name" required>
 		</td>
 	</tr>
 	<tr>
-		<td>패스워드</td>
+		<td>*아이디</td>
 		<td>
-			<input type="text" name="u_password" placeholder="대/소문자, 숫자 포함 8자리 이상"" required>
+			<input type="text" name="u_id" placeholder="영문소문자/숫자, 4~16자" required>
 		</td>
 	</tr>
 	<tr>
-		<td>휴대전화번호</td>
+		<td>*패스워드</td>
+		<td>
+			<input type="text" name="u_password" placeholder="영문 대소문자/숫자/특수문자 중 3가지 이상 조합, 8자~16자" required>
+		</td>
+	</tr>
+	<tr>
+		<td>*휴대전화번호</td>
 		<td>
 			<c:set var="firstList">010, 011, 016, 017, 018, 019</c:set>
 			<select name="u_phone">
@@ -53,7 +53,7 @@
 		</td>
 	</tr> -->
 	<tr>
-		<td>퍼스널컬러</td>
+		<td>*퍼스널컬러</td>
 		<td>
 			<c:set var="pcList">봄 라이트,봄 브라이트,여름 라이트,여름 브라이트,여름 뮤트,가을 뮤트,가을 스트롱,가을 딥,겨울 브라이트,겨울 딥,잘 모르겠음</c:set>
 			<select name="u_color">

@@ -63,20 +63,30 @@
 		margin-bottom: 70px;
 		padding-left: 20px;
 	}
-	#btn{
+	#btn1, #btn2{
 		width: 350px;
 		height: 60px;
 		border-radius: 50px 50px 50px 50px;
-		border: 1px solid #7C81BB;
 		margin-bottom: 15px;
 		background: white;
 		font-family: 'MaruBuri-Regular';
 		font-size: 13pt;
 		font-weight: bold;
+	}
+	#btn1{
+		border: 1px solid #7C81BB;
 		color: #7C81BB;
 	}
-	#btn:hover {
+	#btn2{
+		border: 1px solid #C98BA4;
+		color: #C98BA4;
+	}
+	#btn1:hover {
 		background: #7C81BB;
+		color: white;
+	}
+	#btn2:hover {
+		background: #C98BA4;
 		color: white;
 	}
 }
@@ -99,9 +109,9 @@
 				퍼스널 컬러 진단을 통해 개인에게 가장 잘 어울리는 색을 분석하여<br>
 				단점은 보완하고 장점을 극대화시켜 긍정적이고, 자신감 있는 이미지를 연출할 수 있습니다.
 			</div>
-			<input type="button" id="btn" value="컬러 별 특징 살펴보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;GO"
+			<input type="button" id="btn1" value="컬러 별 특징 살펴보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;GO"
 				onClick="location.href='colList.col'"><br>
-			<input type="button" id="btn" value="컬러 별 대표 연예인 알아보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;GO"
+			<input type="button" id="btn2" value="컬러 별 대표 연예인 알아보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;GO"
 				onClick="location.href='#'">
 		</div>
 		<div class="col-lg-6" id="imageArea">
