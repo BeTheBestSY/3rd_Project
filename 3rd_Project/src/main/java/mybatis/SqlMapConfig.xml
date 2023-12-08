@@ -13,7 +13,7 @@
 		<mapper resource="mybatis/company.xml"/>
 		<mapper resource="mybatis/user.xml"/>
 		<mapper resource="mybatis/product.xml"/>
-		<mapper resource="mybatis/color.xml"/>
+		<mapper resource="mybatis/color.xml"/> 
 		<mapper resource="mybatis/mall.xml"/>
 		<mapper resource="mybatis/c_board.xml"/>
 		<mapper resource="mybatis/q_board.xml"/>

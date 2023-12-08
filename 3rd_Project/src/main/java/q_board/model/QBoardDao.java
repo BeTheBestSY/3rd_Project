@@ -32,16 +32,14 @@ public class QBoardDao {
 		return totalCount;
 	}
 
-	public QBoardBean selectContent(int num) {
-		
-		QBoardBean bb = sqlSessionTemplate.selectOne(namespace+"selectContent",num);
-		
+	public QBoardBean selectContent(int q_num) {
+		QBoardBean bb = sqlSessionTemplate.selectOne(namespace+"selectContent",q_num);
 		return bb;
 	}
 
-	public void deleteBoard(int num) {
+	public void deleteBoard(int q_num) {
 
-		sqlSessionTemplate.delete(namespace+"deleteBoard",num);
+		sqlSessionTemplate.delete(namespace+"deleteBoard",q_num);
 		
 	}
 
@@ -64,9 +62,9 @@ public class QBoardDao {
 		
 	}
 	
-	public void updateReadcount(int num) {
+	public void updateReadcount(int q_num) {
 
-		sqlSessionTemplate.update(namespace+"updateReadcount", num);
+		sqlSessionTemplate.update(namespace+"updateReadcount", q_num);
 		
 	}
 

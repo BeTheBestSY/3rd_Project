@@ -40,16 +40,16 @@
 	    font-style: normal;
 	}
 </style>
-<script>
+<!-- <script>
 	function goLogin(){
 		location.href = "login.u";
 	}
 	function goRegister(){
 		location.href = "register.u";
 	}
-</script>
+</script> -->
 </head>
-
+  
 <body>
 	<header class="p-3 mb-3 border-bottom" style="font-family: 'RIDIBatang';">
 		<div class="container">
@@ -65,7 +65,7 @@
 						<a href="colorAi.ai" class="nav-link px-2 link-body-emphasis">AI 컬러진단</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
-						<a href="#" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
+						<a href="colMain.col" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
 						<a href="qBoardList.qb" class="nav-link px-2 link-body-emphasis">의견 게시판</a>
@@ -73,7 +73,7 @@
 					<li style="margin-top: 10px; margin-left: 10px">
 						<a href="#" class="nav-link px-2 link-body-emphasis">쇼핑하기</a>
 					</li>
-				</ul>  
+				</ul>
 
 				<!-- 로그인아이콘 & 드롭다운 메뉴 -->
 				<div class="dropdown text-end" style="margin-right: 50px">
@@ -82,8 +82,8 @@
 					</a>
 					<c:if test="${id == null}">
 						<ul class="dropdown-menu text-small">
-							<li><a class="dropdown-item" onclick="goLogin()">로그인</a></li>
-							<li><a class="dropdown-item" onclick="goRegister()">회원가입</a></li>
+							<li><a class="dropdown-item" href="login.u">로그인</a></li>
+							<li><a class="dropdown-item" href="register.u">회원가입</a></li>
 						</ul>
 					</c:if>
 					<c:if test="${id != null}">
@@ -91,7 +91,7 @@
 							<li style="text-align: center;"><small>안녕하세요, <b><%=session.getAttribute("id")%></b>님</small></li>
 							<li><hr class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="#">마이페이지</a></li>
-							<li><a class="dropdown-item" href="#">로그아웃</a></li>
+							<li><a class="dropdown-item" href="logout.u">로그아웃</a></li>
 						</ul>
 					</c:if>
 				</div>
