@@ -29,7 +29,7 @@
     a.top {
       position: fixed;
       left: 96%;
-      bottom: 40px;
+      bottom: 28px;
       display: none;
     }
 </style>
@@ -52,7 +52,7 @@
 	});
 </script>
 
-<a href="#" class="top"><img src="resources/image/arrow.png" width="50"></a>
+<a href="#" class="top"><img src="resources/image/arrow1.png" width="50"></a>
 
 <div class="container">
 	<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

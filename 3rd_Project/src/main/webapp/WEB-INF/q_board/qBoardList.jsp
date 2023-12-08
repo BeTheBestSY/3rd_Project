@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@ include file="./../views/header.jsp" %>
 
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardList.css">
 <style type="text/css">
-	
+	#noneHigtLight{
+		text-decoration: none;
+	}
+	#noneHigtLight:hover{
+		color: #7C81BB;
+	}
 </style>  
 <script type="text/javascript">
 
@@ -19,8 +25,7 @@
 
 	  <div class="page-title">
         <div class="container">
-            <br>
-            
+            <br><br><br>
             <h3>의견 게시판</h3>
         </div>
     </div>
@@ -41,25 +46,23 @@
 </center>
 
 
-
-
  <div id="board-list">
         <div class="container">
         
 <input type=button value="글쓰기" onClick="insert()" class="btn btn-white">
-            <table class="board-table">
+<table class="board-table" style="font-size: 13pt; text-align: center;">
 
 	
-	<tr>
+	<tr style="background: #f9f7f9;">
 		<th scope="col" class="th-num" width="10%">번호</th>
 		<th scope="col" class="th-title" width="30%">제목</th>
 		<th width="15%" class="th-writer">작성자</th>
-		<th  scope="col" class="th-date"width="17%">작성일</th>
+		<th scope="col" class="th-date" width="17%">작성일</th>
 		<th width="13%" class="th-readcount">조회수</th>
 	</tr>
 	<c:if test="${ !empty list }">
 		<c:forEach var="bb" items="${ list }">
-			<tr align=center>
+			<tr>
 				<td>${ bb.q_num }</td>
 				<td align="left" >
 					<c:set var="wid" value="0"/>
@@ -68,14 +71,14 @@
 						<img src="<%= request.getContextPath() %>/resources/image/level.gif" width="${wid}">
 						<img src="<%= request.getContextPath() %>/resources/image/re.png" width="2%">
 					</c:if>
-						<a href="detail.qb?q_num=${ bb.q_num }&pageNumber=${ pageInfo.pageNumber }">
+						<a href="detail.qb?q_num=${ bb.q_num }&pageNumber=${ pageInfo.pageNumber }" id="noneHigtLight">
 							${ bb.q_subject }&nbsp;</a>
 					<c:if test="${ bb.q_readcount >= 10 }">
 						<img src="<%= request.getContextPath() %>/resources/image/hot.png" width="2%">
 					</c:if>
 				</td>
-				<td align="left">${ bb.q_writer }</td>
-				<td align="left">
+				<td>${ bb.q_writer }</td>
+				<td>
 					<fmt:formatDate value="${bb.q_regdate}" pattern="yyyy-MM-dd"/>
 				</td>
 				<td>${ bb.q_readcount }</td>
@@ -83,18 +86,18 @@
 		</c:forEach>
 	</c:if>
 	<c:if test="${ empty list }" >
-		<tr align=center>
+		<tr>
 			<td colspan="8">작성된 글이 없습니다.</td>
 		</tr>
 	</c:if>
  </table>
         </div>
     </div>
-<br>
+<br><br>
 <center>
 	${pageInfo.pagingHtml}
 </center> 
-	
+
 </article>
 
 

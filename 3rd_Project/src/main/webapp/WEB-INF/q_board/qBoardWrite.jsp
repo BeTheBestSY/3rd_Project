@@ -15,59 +15,57 @@
 <%
 	application.setAttribute("flag",false);
 %>
+
+<br>
 <article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
 
 
 <div class="page-title">
     <div class="container">
         <br><br>
-        <h3>의견 남기기</h3>
+        <h3 style="font-size: 25pt; font-weight: bold;">의견 남기기</h3>
         <input type=button value="목록" onClick="goList()" class="btn btn-white"><br>
     </div>
 </div>
+<br><br><br><br><br>
+
  <div id="board-list">
-			
+	
 		<form:form commandName="bb" action="write.qb" method="post">
-		      <table class="board-table">
+		      <table class="board-table" style="font-size: 13pt;">
 				<tr>
 					<th align="left" bgcolor="#f9f7f9">제목</th>
 					<td align="left" colspan="3">
-						<input type="text" name="q_subject" value="${ bb.q_subject }">
-						<form:errors cssClass="err" path="q_subject" />
+						<input type="text" name="q_subject" value="${ bb.q_subject }" class="form-control" style="width: 94%;" placeholder="제목 몇글자로 입력해야하는지?" required>
 					</td>
 				</tr>
 				<tr>
 					<th align="left" bgcolor="#f9f7f9">작성자</th>
 					<td align="left">
-						<input type="text" name="q_writer" value="${ bb.q_writer }">
-						<form:errors cssClass="err" path="q_writer" />
+						<input type="text" name="q_writer" value="${ bb.q_writer }" class="form-control" style="width: 85%;" placeholder="작성자 몇글자로 입력해야하는지?" required>
 					</td>
 					<th align="left" bgcolor="#f9f7f9">이메일</th>
 					<td align="left">
-						<input type="text" name="q_email" value="${ bb.q_email }" >
-						<form:errors cssClass="err" path="q_email" />
+						<input type="email" name="q_email" value="${ bb.q_email }" class="form-control" style="width: 85%;" placeholder="이메일 관련" required>
 					</td>
 				</tr>
 				<tr>
 					<th align="left" bgcolor="#f9f7f9">내용</th>
 					<td align="left" colspan="3">
-						<textarea rows="10" cols="100" name="q_content" style="resize: none;">${ bb.q_content }</textarea>
-						<form:errors cssClass="err" path="q_content" />
+						<textarea rows="10" cols="100" name="q_content" class="form-control" style="width: 94%; resize: none;" required>${ bb.q_content }</textarea>
 					</td>
 				</tr>
 				<tr>
 					<th align="left" bgcolor="#f9f7f9">비밀번호</th>
 					<td align="left" colspan="3">
-						<input type="password" name="q_password" >
-						<form:errors cssClass="err" path="q_password" />
+						<input type="password" name="q_password" class="form-control" style="width: 35%; resize: none;" placeholder="비밀번호 몇글자로 입력해야하는지?" required>
 					</td>
 				</tr>
 						
 			 </table>
 			 <br><br>
 			 <center>
-				
-	 					<input type="submit" value="작성 완료" class="btn btn-dark">
+	 				<input type="submit" value="작성 완료" class="btn btn-dark" style="font-size: 13pt; width: 130px;">
 			</center>
 		</form:form>
 </article>

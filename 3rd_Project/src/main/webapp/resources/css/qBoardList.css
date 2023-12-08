@@ -20,10 +20,11 @@ section.notice {
   margin-bottom: 60px;
 }
 .page-title h3 {
-  font-size: 28px;
+  font-size: 35px;
   color: #333333;
-  font-weight: 400;
+  /* font-weight: 400; */
   text-align: center;
+  font-weight: bold;
 }
 
 #board-search .search-window {
@@ -95,7 +96,7 @@ section.notice {
 
 .board-table th, .board-table td {
   padding: 14px 0;
-  padding-left:30px;
+  padding-left:15px;
 }
 
 .board-table tbody td {
