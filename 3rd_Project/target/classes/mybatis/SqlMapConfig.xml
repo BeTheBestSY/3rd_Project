@@ -5,6 +5,7 @@
   
 <configuration>
 	<typeAliases>
+		<typeAlias type="company.model.CompanyBean" alias="myCompany"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/celeb.xml"/>
@@ -16,4 +17,7 @@
 		<mapper resource="mybatis/c_board.xml"/>
 		<mapper resource="mybatis/q_board.xml"/>
 	</mappers>
+ 
 </configuration>
+
+ 
