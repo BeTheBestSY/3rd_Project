@@ -34,6 +34,8 @@
 	});
 </script>
 
+<!-- 저장용 -->
+
 <style>
 	#mainArea{
 		text-align: center;
@@ -92,6 +94,8 @@
 	}
 }
 </style>
+
+<!-- 저장용 -->
 
 <%@ include file="./../views/header.jsp"%>
 
