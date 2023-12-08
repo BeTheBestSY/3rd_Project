@@ -95,6 +95,8 @@
 }
 </style>
 
+<!-- 저장용 -->
+
 <%@ include file="./../views/header.jsp"%>
 
 <article id="center" style="padding: 80px 0px 0px 0px; ">
