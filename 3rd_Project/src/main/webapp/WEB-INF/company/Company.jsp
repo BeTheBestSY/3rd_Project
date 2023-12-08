@@ -29,7 +29,7 @@ width: 500px;
 </head>
 <%@ include file="../views/header.jsp" %>
 <body>
-asd
+asd  
 <div id=wrap>
 
 	<form action="company.cmp" method="get">

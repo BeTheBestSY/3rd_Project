@@ -5,14 +5,19 @@
   
 <configuration>
 	<typeAliases>
+<<<<<<< HEAD
 		<typeAlias type="company.model.CompanyBean" alias="myCompany"/>
+=======
+		<typeAlias type="q_board.model.QBoardBean" alias="QBoard"/>
+		<typeAlias type="users.model.UsersBean" alias="Users"/>
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/celeb.xml"/>
 		<mapper resource="mybatis/company.xml"/>
 		<mapper resource="mybatis/user.xml"/>
 		<mapper resource="mybatis/product.xml"/>
-		<mapper resource="mybatis/color.xml"/>
+		<mapper resource="mybatis/color.xml"/> 
 		<mapper resource="mybatis/mall.xml"/>
 		<mapper resource="mybatis/c_board.xml"/>
 		<mapper resource="mybatis/q_board.xml"/>
