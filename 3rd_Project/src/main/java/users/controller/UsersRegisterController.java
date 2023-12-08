@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import users.model.UsersBean;
 import users.model.UsersDao;
- 
+  
 @Controller
 public class UsersRegisterController {
 	private final String command = "/register.u";
