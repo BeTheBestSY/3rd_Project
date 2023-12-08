@@ -51,7 +51,7 @@
 	}
 </style>
 
-<%@ include file="./../views/header.jsp" %>
+<%@ include file="./../views/header.jsp" %> 
 
 <article id="center">
 	<div id="title">
