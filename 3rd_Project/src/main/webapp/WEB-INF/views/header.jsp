@@ -82,7 +82,7 @@
 						<ul class="dropdown-menu text-small">
 							<li style="text-align: center;"><small>안녕하세요, <b><%=session.getAttribute("id")%></b>님</small></li>
 							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="mypage.u?u_id=${id }">마이페이지</a></li>
+							<li><a class="dropdown-item" href="mypage.u">마이페이지</a></li>
 							<li><a class="dropdown-item" href="logout.u">로그아웃</a></li>
 						</ul>
 					</c:if>

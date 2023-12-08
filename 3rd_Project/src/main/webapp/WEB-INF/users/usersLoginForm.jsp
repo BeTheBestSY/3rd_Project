@@ -11,7 +11,7 @@
 		</tr>
 		<tr>
 			<td>비밀번호</td>
-			<td><input type="text" name="u_password" required></td>
+			<td><input type="password" name="u_password" required></td>
 		</tr>
 		<tr>
 			<td colspan="2"><input type="submit" value="로그인"></td>
