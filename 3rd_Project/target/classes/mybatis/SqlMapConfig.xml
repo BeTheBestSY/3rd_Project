@@ -5,7 +5,7 @@
   
 <configuration>
 	<typeAliases>
- 
+
 		<typeAlias type="company.model.CompanyBean" alias="myCompany"/>
  
 		<typeAlias type="q_board.model.QBoardBean" alias="QBoard"/>
