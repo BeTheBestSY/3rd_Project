@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class UsersLogoutController {
 	private final String command = "/logout.u";
-	private final String gotoPage = "../views/main";
+	private final String gotoPage = "redirect:/.main";
 	
 	@RequestMapping(command)
 	public String doAction(HttpSession session) {
