@@ -23,11 +23,11 @@ body {
   width: 100%;
   margin: 0;
   color: #fff;
-  background: #1FB264;
+  background: #808080;
   border: none;
   padding: 10px;
-  border-radius: 4px;
-  border-bottom: 4px solid #15824B;
+  border-radius: 5px;
+  border-bottom: 5px solid #b3b3b3;
   transition: all .2s ease;
   outline: none;
   text-transform: uppercase;
@@ -35,7 +35,7 @@ body {
 }
 
 .file-upload-btn:hover {
-  background: #1AA059;
+  background: #4d4d4d;
   color: #ffffff;
   transition: all .2s ease;
   cursor: pointer;
@@ -64,18 +64,18 @@ body {
 
 .image-upload-wrap {
   margin-top: 20px;
-  border: 4px dashed #1FB264;
+  border: 4px dashed #cccccc;
   position: relative;
 }
 
 .image-dropping,
 .image-upload-wrap:hover {
-  background-color: #1FB264;
+  background-color: #cccccc;
   border: 4px dashed #ffffff;
 }
 
 .image-title-wrap {
-  padding: 0 15px 15px 15px;
+ 
   color: #222;
 }
 
@@ -84,9 +84,10 @@ body {
 }
 
 .drag-text h3 {
+  font-size:15px;
   font-weight: 100;
   text-transform: uppercase;
-  color: #15824B;
+  color: #808080;
   padding: 60px 0;
 }
 
@@ -98,14 +99,15 @@ body {
 }
 
 .remove-image {
-  width: 200px;
+  font-size:15px;
+  width: 300px;
   margin: 0;
   color: #fff;
   background: #cd4535;
   border: none;
   padding: 10px;
   border-radius: 4px;
-  border-bottom: 4px solid #b02818;
+/*   border-bottom: 4px solid #b02818; */
   transition: all .2s ease;
   outline: none;
   text-transform: uppercase;
@@ -125,16 +127,40 @@ body {
 }
 
   #label-container {
-      width: 600px;
-    background-color: white;
-    font-size: 20px;
-    color: #9A0B23;
-    border-radius: 10px;
-    border: 3px solid #FFA1AF;
+    width: 600px;
+    background-color: #cccccc;
+    font-size: 15px;
+   
+    border-radius: 10px;  
+    border: 3px solid white;
     margin-bottom: 8%;
     }
 
+#finish {
+  width: 560px;
+  margin: 0;
+  color: #fff;
+  background: #808080;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+ /*  border-bottom: 5px solid #b3b3b3; */
+  transition: all .2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+#finish:hover {
+  background: #4d4d4d;
+  color: #ffffff;
+  transition: all .2s ease;
+  cursor: pointer;
+}
 </style>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
 <!-- <div>Teachable Machine Image Model</div>
 <button type="button" onclick="init()">Start</button> 
@@ -176,7 +202,13 @@ body {
         // predict can take in an image, video or canvas html element
         var image = document.getElementById("face-image")
         const prediction = await model.predict(image, false);
-
+        
+        for (let i = 0; i < maxPredictions-1; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
+        
         if (prediction[0].className == "봄 라이트" && prediction[0].probability.toFixed(3) >= 0.5) {
           labelContainer.childNodes[0].innerHTML =  "봄 라이트입니다"  ;
         } else if (prediction[1].className == "봄 브라이트" && prediction[1].probability.toFixed(3) >= 0.5) {
@@ -210,16 +242,6 @@ body {
         // <!--            labelContainer.childNodes[i].innerHTML = classPrediction;-->
         // <!--        }-->
       }
-
-
-
-
-
-
-
-
-
-
 
     </script>
 
@@ -271,23 +293,28 @@ body {
 
     </script>
 
-<body>
+<body onload="init()">
 <%@ include file="header.jsp" %>
+	<!--
 	<center>
 	 <button id="start" type="button" onclick="init()">시작</button>
 	</center>
+	<div class="mb-3">
+	 <input class="form-control" type="file" id="formFile" style="width: 500px;">
+	</div>
+	 -->
      <br><br>
-     
-       <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	
+	<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
       <div class="file-upload">
         <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )"
-          style="font-family: 'Dovemayo_gothic';">이미지 넣기
+          style="font-family: 'Dovemayo_gothic';">이미지 선택
         </button>
 
         <div class="image-upload-wrap">
           <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
           <div class="drag-text">
-            <h3>이미지를 드래그하거나 파일을 선택해 주세요!</h3>
+            <h3>이미지 드래그</h3>
           </div>
         </div>
         <div class="file-upload-content">
