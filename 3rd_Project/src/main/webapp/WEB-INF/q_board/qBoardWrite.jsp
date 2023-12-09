@@ -36,17 +36,17 @@
 				<tr>
 					<th align="left" bgcolor="#f9f7f9">제목</th>
 					<td align="left" colspan="3">
-						<input type="text" name="q_subject" value="${ bb.q_subject }" class="form-control" style="width: 94%;" placeholder="제목 몇글자로 입력해야하는지?" required>
+						<input type="text" name="q_subject" value="${ bb.q_subject }" class="form-control" style="width: 94%;" maxlength="20" placeholder="20자 이내로 입력해주세요." required>
 					</td>
 				</tr>
 				<tr>
 					<th align="left" bgcolor="#f9f7f9">작성자</th>
 					<td align="left">
-						<input type="text" name="q_writer" value="${ bb.q_writer }" class="form-control" style="width: 85%;" placeholder="작성자 몇글자로 입력해야하는지?" required>
+						<input type="text" name="q_writer" value="${ bb.q_writer }" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
 					</td>
 					<th align="left" bgcolor="#f9f7f9">이메일</th>
 					<td align="left">
-						<input type="email" name="q_email" value="${ bb.q_email }" class="form-control" style="width: 85%;" placeholder="이메일 관련" required>
+						<input type="email" name="q_email" value="${ bb.q_email }" class="form-control" style="width: 85%;""  placeholder="ex) color@gmail.com" required>
 					</td>
 				</tr>
 				<tr>
@@ -58,7 +58,7 @@
 				<tr>
 					<th align="left" bgcolor="#f9f7f9">비밀번호</th>
 					<td align="left" colspan="3">
-						<input type="password" name="q_password" class="form-control" style="width: 35%; resize: none;" placeholder="비밀번호 몇글자로 입력해야하는지?" required>
+						<input type="password" name="q_password" class="form-control" style="width: 35%; resize: none;" placeholder="12자 이내로 입력해주세요." maxlength="12" required>
 					</td>
 				</tr>
 						
