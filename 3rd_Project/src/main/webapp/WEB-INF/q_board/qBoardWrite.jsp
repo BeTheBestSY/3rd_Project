@@ -42,7 +42,7 @@
 				<tr>
 					<th align="left" bgcolor="#f9f7f9">작성자</th>
 					<td align="left">
-						<input type="text" name="q_writer" value="${ bb.q_writer }" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
+						<input type="text" name="q_writer" value="${id}" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
 					</td>
 					<th align="left" bgcolor="#f9f7f9">이메일</th>
 					<td align="left">
@@ -58,7 +58,7 @@
 				<tr>
 					<th align="left" bgcolor="#f9f7f9">비밀번호</th>
 					<td align="left" colspan="3">
-						<input type="password" name="q_password" class="form-control" style="width: 35%; resize: none;" placeholder="12자 이내로 입력해주세요." maxlength="12" required>
+						<input type="password" name="q_password" class="form-control" style="width: 35%; resize: none;" placeholder="8자 이내로 입력해주세요." maxlength="8" required>
 					</td>
 				</tr>
 						

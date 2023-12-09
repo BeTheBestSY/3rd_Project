@@ -22,4 +22,5 @@
 		<constructor-arg ref="sessionFactoryBean"/>
 	</bean>
 	
+	
 </beans>

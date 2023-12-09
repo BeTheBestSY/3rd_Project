@@ -75,6 +75,17 @@
 			<input type="button" value="목록으로" onClick="goList(${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">
 			</center>
 		</form:form>
+		
+		<c:forEach items="${replyList}" var="reply">
+		<li>
+		    <div>
+		        <p>${replyList.writer} / ${replyList.regdate}</p>
+		        <p>${replyList.content }</p>
+		    </div>
+		</li>    
+		</c:forEach>
+		
+		
 </article>
 
 </div>
