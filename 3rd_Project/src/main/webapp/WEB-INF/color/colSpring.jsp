@@ -69,15 +69,19 @@
     	<br><br><br>
     	<br><br>
     	<img src="resources/image/${cbsl.col_ttlImg}" width="100%"><br><br><br>
-    	<img src="resources/image/${cbsl.col_stlImg}" width="100%"><br><br><br>
-    	<img src="resources/image/${cbsl.col_colImg}" width="80%" style="margin: auto;"><br><br><br>
+    	<img src="resources/image/${cbsl.col_stlImg}" width="100%"><br><br><br><br>
+    	<div style="text-align: center; font-weight: bold; font-size: 15pt; font-family: 'MaruBuri-Regular';">* ${cbsl.col_name} 추천 색상 *</div>
+    	<br><br>
+    	<img src="resources/image/${cbsl.col_colImg}" width="100%" style="margin: auto;"><br><br><br>
     </div>
     <div id="sb">
     	<br><br><br>
     	<br><br>
     	<img src="resources/image/${cbsb.col_ttlImg}" width="100%"><br><br><br>
-    	<img src="resources/image/${cbsb.col_stlImg}" width="100%"><br><br><br>
-    	<img src="resources/image/${cbsb.col_colImg}" width="80%" style="margin: auto;"><br><br><br>
+    	<img src="resources/image/${cbsb.col_stlImg}" width="100%"><br><br><br><br>
+    	<div style="text-align: center; font-weight: bold; font-size: 15pt; font-family: 'MaruBuri-Regular';">* ${cbsb.col_name} 추천 색상 *</div>
+    	<br><br>
+    	<img src="resources/image/${cbsb.col_colImg}" width="100%" style="margin: auto;"><br><br><br>
     </div>
     
     <script type="text/javascript">

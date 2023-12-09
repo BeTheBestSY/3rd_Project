@@ -25,15 +25,21 @@ public class ColorDetailController {
 	
 	@RequestMapping(value=command_spring, method=RequestMethod.GET)
 	public String spring(Model model) {
-		ColorBean cbsl = colorDao.getSl();
-		ColorBean cbsb = colorDao.getSb();
+		ColorBean cbsl = colorDao.getColor("sl");
+		ColorBean cbsb = colorDao.getColor("sb");
 		model.addAttribute("cbsl", cbsl);
 		model.addAttribute("cbsb", cbsb);
 		return viewPage_spring;
 	}
 	
 	@RequestMapping(value=command_summer, method=RequestMethod.GET)
-	public String summer() {
+	public String summer(Model model) {
+		ColorBean cbsml = colorDao.getColor("sml");
+		ColorBean cbsmb = colorDao.getColor("smb");
+		ColorBean cbsm = colorDao.getColor("sm");
+		model.addAttribute("cbsml", cbsml);
+		model.addAttribute("cbsmb", cbsmb);
+		model.addAttribute("cbsm", cbsm);
 		return viewPage_summer;
 	}
 	
