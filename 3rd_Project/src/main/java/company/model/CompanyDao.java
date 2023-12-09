@@ -29,8 +29,15 @@ public class CompanyDao {
 	public int getTotalCount(Map<String, String> map) {
 		 
 		int totalCount = sqlSessionTemplate.selectOne(namespace+".getTotalCount", map);
-		System.out.println(totalCount+"asdasdasd");
+
 		return totalCount;
+	}
+
+	public CompanyBean getSelectOne(int cmp_num) {
+		
+		CompanyBean cb = sqlSessionTemplate.selectOne(namespace+".getSelectOne", cmp_num);
+		
+		return cb;
 	}
 
 }

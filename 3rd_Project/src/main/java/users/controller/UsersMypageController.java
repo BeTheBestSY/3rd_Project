@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +28,10 @@ public class UsersMypageController {
 	private UsersDao ud;
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
-	public String doAction(@RequestParam String u_id) {
-		//ud.getUser(u_id);
+	public String doAction(HttpSession session, Model model) {
+		String id = String.valueOf(session.getAttribute("id"));
+		UsersBean ub = ud.getUserById(id);
+		model.addAttribute("ub", ub);
 		return viewPage;
 	}
 	

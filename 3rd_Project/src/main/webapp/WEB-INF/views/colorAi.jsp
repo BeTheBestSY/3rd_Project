@@ -331,7 +331,11 @@ body {
 
         <div id="webcam-container"></div>  
         <div id="label-container"></div>
+       <a href="company.cmp" class="nav-link px-2 link-body-emphasis">회사</a>
       </center>
+      
+    
+						
 <%@ include file="footer.jsp" %>
 </body>
 </html>

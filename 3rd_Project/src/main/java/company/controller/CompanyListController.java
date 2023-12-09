@@ -26,12 +26,15 @@ public class CompanyListController {
 	
 	@RequestMapping(value = command)
 	public String list(
+			@RequestParam(value = "oneName", required = false) String oneName,
+			@RequestParam(value = "oneX", required = false) String oneX,
+			@RequestParam(value = "oneY", required = false) String oneY,
 			@RequestParam(value = "whatColumn", required = false) String whatColumn,
 			@RequestParam(value = "keyword", required = false) String keyword,
 			@RequestParam(value ="pageNumber", required = false) String pageNumber,
 			HttpServletRequest request,
 			Model model) {
-		
+		System.out.println("asdasd");
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");		
@@ -45,6 +48,10 @@ public class CompanyListController {
 			
 		model.addAttribute("list", list);
 		model.addAttribute("pageInfo", pageInfo);
+		
+		model.addAttribute("oneY", oneY);
+		model.addAttribute("oneX", oneX);
+		model.addAttribute("oneName", oneName);
 		
 		return viewPage;
 		

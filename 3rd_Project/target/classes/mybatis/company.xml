@@ -46,4 +46,8 @@
 			
 				order by cmp_num desc
 	</select>
+	
+	<select id="getSelectOne" resultType="myCompany" >
+		select * from company where cmp_num = #{cmp_num}
+	</select>
 </mapper>

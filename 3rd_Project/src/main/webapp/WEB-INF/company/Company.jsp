@@ -29,7 +29,7 @@ width: 500px;
 </head>
 <%@ include file="../views/header.jsp" %>
 <body>
-asd  
+ 
 <div id=wrap>
 
 	<form action="company.cmp" method="get">
@@ -54,6 +54,7 @@ asd
 		      <th scope="col">주소</th>
 		      <th scope="col">가격(2인기준)</th>
 		      <th scope="col">근처 역</th>
+		      <th scope="col">위치 검색</th>
 		    </tr>
 		  </thead>
 		  <tbody class="table-group-divider">
@@ -71,16 +72,50 @@ asd
 				      <th scope="row">${cb.cmp_num}</th>
 				      <td>${cb.cmp_name}</td>
 				      <td>${cb.cmp_addr}</td>
-				      <td>${cb.cmp_price}</td>
+				      <td>
+					      <fmt:formatNumber value="${cb.cmp_price }" pattern="#,###" />
+					  </td>
 				      <td>${cb.cmp_station}</td>
-				    </tr>
+				      <td>
+				      	<a href="marker.cmp?cmp_num=${cb.cmp_num}&pageNumber=${pageInfo.pageNumber}" class="nav-link px-2 link-secondary">
+						<img src="resources/image/marker.png" width="30"></a>
+				      </td>
+				    </tr>  
 		  	  </c:forEach>
 			</c:if>
 		  </tbody>
 		</table>
 	</div>
 </div>
+<center>
+sda
+${pageInfo.pagingHtml}
+</center>
+<br><br><br>
+<center>   
+<div id="staticMap" style="width:1024px;height:350px;"></div>
+</center>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f8fb6e61c9516794c3e829ce49ef713c"></script>
+	<script>
+	 
+// 이미지 지도에 표시할 마커입니다
+var marker = {
+		 
+    position: new kakao.maps.LatLng(${oneY}, ${oneX}), 
+    text: '${oneName}' // text 옵션을 설정하면 마커 위에 텍스트를 함께 표시할 수 있습니다
+};
+  
+var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div
+    staticMapOption = { 
+        center: new kakao.maps.LatLng(${oneY}, ${oneX}), // 이미지 지도의 중심좌표
+        level: 3, // 이미지 지도의 확대 레벨
+        marker: marker // 이미지 지도에 표시할 마커
+    };
 
+// 이미지 지도를 생성합니다
+var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+</script>
+${oneY},${oneX},${oneName}
 </body>
 <%@ include file="../views/footer.jsp" %>
 </html>

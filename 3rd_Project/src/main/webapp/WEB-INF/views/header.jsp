@@ -54,10 +54,15 @@
 						<img src="resources/image/fyhbLogo.png" width="170"></a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 30px">
+
 						<a href="colorAi.ai" class="nav-link px-2 link-body-emphasis">AI 컬러진단</a>
 					</li>
+
 					<li style="margin-top: 10px; margin-left: 10px">
-						<a href="colMain.col" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
+ 
+
+					<a href="colMain.col" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
+ 
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
 						<a href="qBoardList.qb" class="nav-link px-2 link-body-emphasis">의견 게시판</a>
@@ -82,7 +87,7 @@
 						<ul class="dropdown-menu text-small">
 							<li style="text-align: center;"><small>안녕하세요, <b><%=session.getAttribute("id")%></b>님</small></li>
 							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="mypage.u?u_id=${id }">마이페이지</a></li>
+							<li><a class="dropdown-item" href="mypage.u">마이페이지</a></li>
 							<li><a class="dropdown-item" href="logout.u">로그아웃</a></li>
 						</ul>
 					</c:if>
