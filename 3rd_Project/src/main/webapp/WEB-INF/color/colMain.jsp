@@ -63,20 +63,30 @@
 		margin-bottom: 70px;
 		padding-left: 20px;
 	}
-	#btn{
+	#btn1, #btn2{
 		width: 350px;
 		height: 60px;
 		border-radius: 50px 50px 50px 50px;
-		border: 1px solid #7C81BB;
 		margin-bottom: 15px;
 		background: white;
 		font-family: 'MaruBuri-Regular';
 		font-size: 13pt;
 		font-weight: bold;
+	}
+	#btn1{
+		border: 1px solid #7C81BB;
 		color: #7C81BB;
 	}
-	#btn:hover {
+	#btn2{
+		border: 1px solid #C98BA4;
+		color: #C98BA4;
+	}
+	#btn1:hover {
 		background: #7C81BB;
+		color: white;
+	}
+	#btn2:hover {
+		background: #C98BA4;
 		color: white;
 	}
 }
@@ -99,17 +109,37 @@
 				퍼스널 컬러 진단을 통해 개인에게 가장 잘 어울리는 색을 분석하여<br>
 				단점은 보완하고 장점을 극대화시켜 긍정적이고, 자신감 있는 이미지를 연출할 수 있습니다.
 			</div>
-			<input type="button" id="btn" value="컬러 별 특징 살펴보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;GO"
+			<input type="button" id="btn1" value="컬러 별 특징 살펴보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;GO"
 				onClick="location.href='colList.col'"><br>
-			<input type="button" id="btn" value="컬러 별 대표 연예인 알아보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;GO"
+			<input type="button" id="btn2" value="컬러 별 대표 연예인 알아보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;GO"
 				onClick="location.href='#'">
 		</div>
 		<div class="col-lg-6" id="imageArea">
-			<div id="image1"></div>
-			<div id="image2"></div>
-			<div id="image3"></div>
-			<div id="image4"></div>
-			<div id="image5"></div>
+			<div id="image1">
+				<img src="resources/image/spring_ex.png" width="103%">
+				<span style="color: white; left: 10px; top: -365px; position: relative; font-size: 13pt; font-family: 'MaruBuri-Regular'; ">
+					봄 라이트 대표 연예인<br>' <b>채수빈</b> '
+				</span>
+			</div>
+			<div id="image2">
+				<img src="resources/image/winter_ex.png" width="100%">
+				<span style="color: white; left: 10px; top: -340px; position: relative; font-size: 13pt; font-family: 'MaruBuri-Regular'; ">
+					겨울 브라이트 대표 연예인<br>' <b>카리나</b> '
+				</span>
+			</div>
+			<div id="image3">
+				<br><br><br>
+				<img src="resources/image/summer_ex2.png" width="100%">
+			</div>
+			<div id="image4">
+				<img src="resources/image/summer_ex.png" width="105%">
+				<span style="color: white; left: 10px; top: -365px; position: relative; font-size: 13pt; font-family: 'MaruBuri-Regular'; ">
+					여름 브라이트 대표 연예인<br>' <b>이유비</b> '
+				</span>
+			</div>
+			<div id="image5">
+				<img src="resources/image/autumn_ex.png" width="105%">
+			</div>
 		</div>
 	</div>
 	
