@@ -27,7 +27,7 @@
 		font-weight: bold;
 		font-family: 'RIDIBatang';
 	}
-	#navBack, #navSML, #navSMB, #navSM {
+	#navBack, #navAM, #navAS, #navAD {
 		width: 120px;
 		height: 45px;
 		border-radius: 50px;
@@ -36,7 +36,7 @@
 		text-align: center;
 		box-shadow: 3px 3px 3px 0px #BDBDBD;
 	}
-	#navBack:hover ,#navSML:hover, #navSMB:hover, #navSM:hover {
+	#navBack:hover ,#navAM:hover, #navAS:hover, #navAD:hover {
 		background-color: bisque;
 		cursor: pointer;
 	}
@@ -45,7 +45,7 @@
 		font-size: 20pt;
 		padding: 50px 0px 20px 0px;
 	}
-	#sml, #smb, #sm {
+	#am, #as, #ad {
 		width: 100%;
 		padding-bottom: 50px;
 	}
@@ -61,58 +61,58 @@
 
 <article id="center">
 	<div id="title">
-		<b>'여름'의 색상들을 소개해드릴게요!</b><br>
+		<b>'가을'의 색상들을 소개해드릴게요!</b><br>
 		<span style="font-family: 'RIDIBatang'; font-size: 13pt; line-height: 180%;">
 			아래 버튼을 클릭하여 해당 퍼스널 컬러로 이동해주세요.
 		</span><br>
 	</div>
 	<nav id="thisNav">
 		<button id="navBack" style="width: 60px;">&lt;&lt;</button>&nbsp;
-    	<button id="navSML">${cbsml.col_name}</button>&nbsp;
-    	<button id="navSMB">${cbsmb.col_name}</button>&nbsp;
-    	<button id="navSM">${cbsm.col_name}</button>
+    	<button id="navAM">${cbam.col_name}</button>&nbsp;
+    	<button id="navAS">${cbas.col_name}</button>&nbsp;
+    	<button id="navAD">${cbad.col_name}</button>
     </nav>
     
-    <div id="sml">
+    <div id="am">
     	<br><br><br>
     	<br><br>
-    	<img src="resources/image/${cbsml.col_ttlImg}" width="100%"><br><br><br>
-    	<img src="resources/image/${cbsml.col_stlImg}" width="100%"><br><br><br><br>
-    	<div id="recommend">▶ ${cbsml.col_name} 추천 색상 ◀</div>
+    	<img src="resources/image/${cbam.col_ttlImg}" width="100%"><br><br><br>
+    	<img src="resources/image/${cbam.col_stlImg}" width="100%"><br><br><br><br>
+    	<div id="recommend">▶ ${cbam.col_name} 추천 색상 ◀</div>
     	<br><br>
-    	<img src="resources/image/${cbsml.col_colImg}" width="100%" style="margin: auto;"><br><br><br>
+    	<img src="resources/image/${cbam.col_colImg}" width="100%" style="margin: auto;"><br><br><br>
     </div>
-    <div id="smb">
+    <div id="as">
     	<br><br><br>
     	<br><br>
-    	<img src="resources/image/${cbsmb.col_ttlImg}" width="100%"><br><br><br>
-    	<img src="resources/image/${cbsmb.col_stlImg}" width="100%"><br><br><br><br>
-    	<div id="recommend">▶ ${cbsmb.col_name} 추천 색상 ◀</div>
+    	<img src="resources/image/${cbas.col_ttlImg}" width="100%"><br><br><br>
+    	<img src="resources/image/${cbas.col_stlImg}" width="100%"><br><br><br><br>
+    	<div id="recommend">▶ ${cbas.col_name} 추천 색상 ◀</div>
     	<br><br>
-    	<img src="resources/image/${cbsmb.col_colImg}" width="100%" style="margin: auto;"><br><br><br>
+    	<img src="resources/image/${cbas.col_colImg}" width="100%" style="margin: auto;"><br><br><br>
     </div>
-    <div id="sm">
+    <div id="ad">
     	<br><br><br>
     	<br><br>
-    	<img src="resources/image/${cbsm.col_ttlImg}" width="100%"><br><br><br>
-    	<img src="resources/image/${cbsm.col_stlImg}" width="100%"><br><br><br><br>
-    	<div id="recommend">▶ ${cbsm.col_name} 추천 색상 ◀</div>
+    	<img src="resources/image/${cbad.col_ttlImg}" width="100%"><br><br><br>
+    	<img src="resources/image/${cbad.col_stlImg}" width="100%"><br><br><br><br>
+    	<div id="recommend">▶ ${cbad.col_name} 추천 색상 ◀</div>
     	<br><br>
-    	<img src="resources/image/${cbsm.col_colImg}" width="100%" style="margin: auto;"><br><br><br>
+    	<img src="resources/image/${cbad.col_colImg}" width="100%" style="margin: auto;"><br><br><br>
     </div>
     
     <script type="text/javascript">
     	document.querySelector("#navBack").addEventListener("click", (e) => {
 	  	  history.go(-1);
 	  	});
-    	document.querySelector("#navSML").addEventListener("click", (e) => {
-    	  document.querySelector("#sml").scrollIntoView({ behavior: "smooth" });
+    	document.querySelector("#navAM").addEventListener("click", (e) => {
+    	  document.querySelector("#am").scrollIntoView({ behavior: "smooth" });
     	});
-    	document.querySelector("#navSMB").addEventListener("click", (e) => {
-    	  document.querySelector("#smb").scrollIntoView({ behavior: "smooth" });
+    	document.querySelector("#navAS").addEventListener("click", (e) => {
+    	  document.querySelector("#as").scrollIntoView({ behavior: "smooth" });
     	});
-    	document.querySelector("#navSM").addEventListener("click", (e) => {
-      	  document.querySelector("#sm").scrollIntoView({ behavior: "smooth" });
+    	document.querySelector("#navAD").addEventListener("click", (e) => {
+      	  document.querySelector("#ad").scrollIntoView({ behavior: "smooth" });
       	});
 	</script>
 	   
