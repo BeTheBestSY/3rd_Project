@@ -58,7 +58,7 @@ public class QBoardDeleteController {
 		} else {
 			response.setContentType("text/html; charset=UTF-8");
 		    PrintWriter out = response.getWriter();
-		    out.println("<script>alert('Àß¸øµÈ ºñ¹Ğ¹øÈ£ÀÔ´Ï´Ù.');</script>");
+		    out.print("<script>alert('ì˜ëª»ëœ ë¹„ë°€ë²ˆí˜¸ì…ë‹ˆë‹¤.');</script>");
 		    out.flush();
 		    model.addAttribute("pageNumber",pageNumber);
 			model.addAttribute("bb",bb);

@@ -58,7 +58,7 @@
 				<tr>
 					<th align="left" bgcolor="#f9f7f9">비밀번호</th>
 					<td align="left" colspan="3">
-						<input type="password" name="q_password" class="form-control" style="width: 35%; resize: none;" placeholder="8자 이내로 입력해주세요." maxlength="8" required>
+						<input type="password" name="q_password" class="form-control" style="width: 35%; resize: none;" placeholder="4자 이내로 입력해주세요." maxlength="4" required>
 					</td>
 				</tr>
 						

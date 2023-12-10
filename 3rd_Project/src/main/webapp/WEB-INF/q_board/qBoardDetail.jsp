@@ -7,6 +7,9 @@
 </style>  
 <script type="text/javascript">
 
+	function reply(){
+		location.href="reply.qb";
+	}
 	function goList(pageNumber){
 		location.href="qBoardList.qb?pageNumber="+pageNumber;
 	}
@@ -23,11 +26,12 @@
 		location.href="qReply.qb?q_ref="+q_ref+"&q_re_step="+q_re_step+"&q_re_level="+q_re_level+"&pageNumber="+pageNumber+"&q_num="+q_num;
 	}
 	 
+	
 </script>
 <%
 	application.setAttribute("flag",false);
 %>
-<article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
+<article id="center" style=" font-family: 'MaruBuri-Regular';" >
 
 <br>
 <div class="page-title">
@@ -68,27 +72,36 @@
 						
 			 </table>
 			 <br><br>
-			 <center>
-			<input type="button" value="수정하기" onClick="goUpdate(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
-			<input type="button" value="삭제하기" onClick="goDelete(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
-			<input type="button" value="답글달기" onClick="goReply(${ bb.q_num },${ bb.q_ref },${ bb.q_re_step },${ bb.q_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
-			<input type="button" value="목록으로" onClick="goList(${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">
-			</center>
+			 
+			 <!-- 로그인 하지 않은 상태이면 목록 버튼만 -->
+			<c:if test="${id == null && id != bb.q_writer && id !='admin'}">
+			 	<center>
+					<input type="button" value="목록으로" onClick="goList(${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">
+				</center>
+			</c:if>
+			<!-- 세션이 작성자와 같거나 관리자가 아니면 수정, 삭제, 목록 버튼 보이게 -->
+			<c:if test="${id == bb.q_writer && id!='admin'}">
+				 <center>
+					<input type="button" value="수정하기" onClick="goUpdate(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+					<input type="button" value="삭제하기" onClick="goDelete(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+					<input type="button" value="목록으로" onClick="goList(${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">
+				
+				</center>
+			</c:if>
+			<!-- 아이디가 'admin'(관리자)면 답글달기 버튼까지 보이게 -->
+			<c:if test="${id == 'admin'}"> 
+				<center>
+					<input type="button" value="수정하기" onClick="goUpdate(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+					<input type="button" value="삭제하기" onClick="goDelete(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+					<input type="button" value="답글달기" onClick="goReply(${ bb.q_num },${ bb.q_ref },${ bb.q_re_step },${ bb.q_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+					<input type="button" value="목록으로" onClick="goList(${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">
+				</center>
+			</c:if>
+			
 		</form:form>
-		
-		<c:forEach items="${replyList}" var="reply">
-		<li>
-		    <div>
-		        <p>${replyList.writer} / ${replyList.regdate}</p>
-		        <p>${replyList.content }</p>
-		    </div>
-		</li>    
-		</c:forEach>
-		
 		
 </article>
 
-</div>
 
 
 <%@ include file="./../views/footer.jsp" %>

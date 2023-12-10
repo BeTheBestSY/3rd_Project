@@ -16,7 +16,11 @@ section.notice {
   padding: 80px 0;
 }
 
-
+#pagenation{
+	
+	bgcolor:#7C81BB;
+	
+}
 
 #whatColumn{
 	border: 1px solid #7C81BB;

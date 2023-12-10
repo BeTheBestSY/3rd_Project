@@ -37,7 +37,7 @@
 					<tr>
 					<th align="left" bgcolor="#f9f7f9">제목</th>
 					<td align="left" colspan="3">
-						<input type="text" name="q_subject" class="form-control" style="width: 94%;" maxlength="20" placeholder="20자 이내로 입력해주세요." required>
+						<input type="text" name="q_subject" value="${bb.q_subject}" class="form-control" style="width: 94%;" maxlength="20" placeholder="20자 이내로 입력해주세요." required>
 					</td>
 				</tr>
 				<tr>
@@ -59,7 +59,7 @@
 				<tr>
 					<th align="left" bgcolor="#f9f7f9">비밀번호</th>
 					<td align="left" colspan="3">
-						<input type="password" name="q_password" class="form-control" style="width: 35%; resize: none;" placeholder="12자 이내로 입력해주세요." maxlength="12" required>
+						<input type="password" name="q_password" class="form-control" style="width: 35%; resize: none;" placeholder="4자 이내로 입력해주세요." maxlength="4" required>
 					</td>
 				</tr>
 						

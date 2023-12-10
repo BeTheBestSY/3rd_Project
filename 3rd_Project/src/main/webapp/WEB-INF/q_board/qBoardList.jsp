@@ -101,7 +101,9 @@
     </div>
 <br><br>
 <center>
+<div id="pagenation">
 	${pageInfo.pagingHtml}
+</div>
 </center> 
 
 </article>
