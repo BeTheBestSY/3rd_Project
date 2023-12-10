@@ -120,7 +120,6 @@
 		&nbsp;&nbsp;아래 버튼을 클릭하시면 계절 별 자세한 설명을 확인할 수 있습니다!<br>
 		&nbsp;&nbsp;컬러 별 대표 연예인이 궁금하시다면 <a href="#" style="color: graytext;">여기</a>를 클릭해주세요.
 	</span>
-	<!-- 저장용 -->
 </article>
 
 <hr style="width: 61%; margin: auto; top: 80px; position: relative; z-index: 0; border: dashed 1px gray;">
