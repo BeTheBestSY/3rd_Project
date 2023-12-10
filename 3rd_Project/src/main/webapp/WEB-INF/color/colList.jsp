@@ -117,7 +117,8 @@
 	<span style="font-family: 'RIDIBatang'; font-size: 11pt; line-height: 180%; color: graytext;"> 
 		&nbsp;&nbsp;저희 Hidden Beauty에서는 톤을 크게 <u>4계절</u>로,<br>
 		&nbsp;&nbsp;자세하게는 <u>총 10가지</u>로 분류해서 진단해드리고 있어요.<br>
-		&nbsp;&nbsp;아래 버튼을 클릭하시면 계절 별 자세한 설명을 확인할 수 있습니다!
+		&nbsp;&nbsp;아래 버튼을 클릭하시면 계절 별 자세한 설명을 확인할 수 있습니다!<br>
+		&nbsp;&nbsp;컬러 별 대표 연예인이 궁금하시다면 <a href="#" style="color: graytext;">여기</a>를 클릭해주세요.
 	</span>
 </article>
 
