@@ -85,7 +85,6 @@
 				<table style="text-align: left; margin-left: 20px; width: 320px;"> 
 					<tr>
 						<td>아직 회원이 아니신가요?</td>
-<<<<<<< HEAD
 						<td><input type="button" value="회원가입" onClick="location.href='register.u'"></td>
 					</tr>
 					<tr>
@@ -95,17 +94,6 @@
 					<tr>
 						<td>비밀번호를 잃어버리셨나요?</td>
 						<td><input type="button" value="비밀번호 찾기" onClick="location.href='findpw.u'"></td>
-=======
-						<td><input type="button" value="회원가입" id="etcBtn" onClick="#"></td>
-					</tr>
-					<tr>
-						<td>아이디를 잃어버리셨나요?</td>
-						<td><input type="button" value="아이디 찾기" id="etcBtn" onClick="#"></td>
-					</tr>
-					<tr>
-						<td>비밀번호를 잃어버리셨나요?</td>
-						<td><input type="button" value="비밀번호 찾기" id="etcBtn" onClick="#"></td>
->>>>>>> 28442c646f164f782c7ddfde9167a2672fc2c8e1
 					</tr>
 				</table>
 			</td>
