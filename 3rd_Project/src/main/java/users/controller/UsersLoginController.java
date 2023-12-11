@@ -41,7 +41,7 @@ public class UsersLoginController {
 		}
 		
 		PrintWriter out = response.getWriter();
-		
+		  
 		if(ud.didYouJoin(ub)) { // 가입 한 회원 혹은 관리자이면
 			// 아이디 session 설정
 			session.setAttribute("id", ub.getU_id());
