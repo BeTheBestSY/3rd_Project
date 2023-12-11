@@ -38,6 +38,7 @@
     <div class="container">
         <br><br>
         <h3 style="font-size: 25pt; font-weight: bold;">의견 게시판</h3>
+        <input type=button value="목록" onClick="goList(${pageNumber})" class="btn btn-white"><br>
     </div>
 </div>
 <br><br><br><br><br>
@@ -73,18 +74,11 @@
 			 </table>
 			 <br><br>
 			 
-			 <!-- 로그인 하지 않은 상태이면 목록 버튼만 -->
-			<c:if test="${id == null && id != bb.q_writer && id !='admin'}">
-			 	<center>
-					<input type="button" value="목록으로" onClick="goList(${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">
-				</center>
-			</c:if>
 			<!-- 세션이 작성자와 같거나 관리자가 아니면 수정, 삭제, 목록 버튼 보이게 -->
 			<c:if test="${id == bb.q_writer && id!='admin'}">
 				 <center>
 					<input type="button" value="수정하기" onClick="goUpdate(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 					<input type="button" value="삭제하기" onClick="goDelete(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
-					<input type="button" value="목록으로" onClick="goList(${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">
 				
 				</center>
 			</c:if>
@@ -94,7 +88,6 @@
 					<input type="button" value="수정하기" onClick="goUpdate(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 					<input type="button" value="삭제하기" onClick="goDelete(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 					<input type="button" value="답글달기" onClick="goReply(${ bb.q_num },${ bb.q_ref },${ bb.q_re_step },${ bb.q_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
-					<input type="button" value="목록으로" onClick="goList(${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">
 				</center>
 			</c:if>
 			
