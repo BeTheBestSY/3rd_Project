@@ -8,7 +8,7 @@
 </style>
 
 <%@ include file="../views/header.jsp" %>
-
+<!-- 저장용 -->
 <div id="center" style="text-align: center;">
 	<br><br><br><br>
 	<div>
