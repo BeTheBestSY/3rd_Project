@@ -83,6 +83,7 @@
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 아이디</th>
 				<td>
+					<!-- 중복체크, 정규표현식 아직 -->
 					<input type="text" class="form-control" name="u_id" placeholder="영문 소문자+숫자, 4~16자" required> 
 				</td>
 			</tr>
@@ -99,7 +100,7 @@
 				</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
-				<th><font color="red">*</font> 휴대전화번호</th>
+				<th><font color="red">*</font> 전화번호</th>
 				<td>
 					<c:set var="firstList">010, 011, 016, 017, 018, 019</c:set>
 					<select name="u_phone" class="form-select" style="width: 20%; display: inline;">
@@ -107,7 +108,7 @@
 							<option value="${first }">${first }</option>
 						</c:forEach>
 					</select>
-					&nbsp;
+					-
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" maxlength="4" required> - 
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" maxlength="4" required>
 				</td>
