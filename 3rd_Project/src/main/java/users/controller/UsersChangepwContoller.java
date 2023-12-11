@@ -35,21 +35,18 @@ public class UsersChangepwContoller {
 						Model model) {
 		String u_id = String.valueOf(session.getAttribute("id"));
 		UsersBean ub = ud.getUserById(u_id);
-		// 1. ±âÁ¸ ºñ¹Ğ¹øÈ£¸¦ ¸Â°Ô ÀÔ·ÂÇß´Ù¸é
+		
 		if(ub.getU_password().equals(old_password)) {
-			// 1-1. ºñ¹Ğ¹øÈ£ È®ÀÎÀÌ ¸Â´Ù¸é
 			if(new_password.equals(new_password_chk)) {
 				ud.updatePassword(u_id, new_password);
-				model.addAttribute("msg", "º¯°æµÇ¾ú½À´Ï´Ù.");
+				model.addAttribute("msg", "ë¹„ë°€ë²ˆí˜¸ê°€ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.");
 				model.addAttribute("url", ".main");
-			// 1-2. ºñ¹Ğ¹øÈ£ È®ÀÎÀÌ Æ²·È´Ù¸é
 			} else {
-				model.addAttribute("msg", "º¯°æÇÏ½Ç ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+				model.addAttribute("msg", "ë³€ê²½í•˜ì‹¤ ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 				model.addAttribute("url", command+"?old_password="+old_password+"&new_password="+new_password+"&new_password_chk="+new_password_chk);
 			}
-		// 2. ±âÁ¸ ºñ¹Ğ¹øÈ£¸¦ Æ²¸®°Ô ÀÔ·ÂÇß´Ù¸é
 		} else {
-			model.addAttribute("msg", "ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+			model.addAttribute("msg", "ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 			model.addAttribute("url", command+"?old_password="+old_password+"&new_password="+new_password+"&new_password_chk="+new_password_chk);
 		}
 		return gotoPage;

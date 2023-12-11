@@ -50,12 +50,13 @@
 				<th>주소</th>
 				<!-- 05502,서울 송파구 한가람로 65,103호 -->
 				<!-- 서울 송파구 한가람로 65, 103호 (05502) -->
+				<!-- - -->
 				<td>
-					<input type="text" name="u_address" value="${fn:split(ub.u_address, ',')[0]}" id="sample4_postcode" placeholder="우편번호" value="">
+					<input type="text" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[0]}" id="sample4_postcode" placeholder="우편번호">
 					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" name="u_address" value="${fn:split(ub.u_address, ',')[1]}" id="sample4_roadAddress" placeholder="도로명주소">
+					<input type="text" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[1]}" id="sample4_roadAddress" placeholder="도로명주소">
 					<span id="guide" style="color:#999;display:none"></span>
-					<input type="text" name="u_address" value="${fn:split(ub.u_address, ',')[2]}" id="sample4_detailAddress" placeholder="상세주소">
+					<input type="text" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[2]}" id="sample4_detailAddress" placeholder="상세주소">
 				</td>
 			</tr>
 			<!-- <tr>
