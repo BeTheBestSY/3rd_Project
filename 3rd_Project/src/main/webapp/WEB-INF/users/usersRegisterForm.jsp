@@ -84,6 +84,7 @@
 				<th><font color="red">*</font> 아이디</th>
 				<td>
 					<!-- 중복체크, 정규표현식 아직 -->
+					<!-- 중복체크, 정규표현식 아직 -->
 					<input type="text" class="form-control" name="u_id" placeholder="영문 소문자+숫자, 4~16자" required> 
 				</td>
 			</tr>
