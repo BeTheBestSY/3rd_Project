@@ -10,7 +10,6 @@
 		height: 100px;
 	}
 </style>
-
 <div id="center" style="text-align: center;">
 <br><br>
 <hr style="border: 2px solid black; width: 80%; margin: auto;">
@@ -49,15 +48,15 @@
 				<table style="text-align: left; margin-left: 20px; width: 320px;"> 
 					<tr>
 						<td>아직 회원이 아니신가요?</td>
-						<td><input type="button" value="회원가입" onClick="#"></td>
+						<td><input type="button" value="회원가입" onClick="location.href='register.u'"></td>
 					</tr>
 					<tr>
 						<td>아이디를 잃어버리셨나요?</td>
-						<td><input type="button" value="아이디 찾기" onClick="#"></td>
+						<td><input type="button" value="아이디 찾기" onClick="location.href='findid.u'"></td>
 					</tr>
 					<tr>
 						<td>비밀번호를 잃어버리셨나요?</td>
-						<td><input type="button" value="비밀번호 찾기" onClick="#"></td>
+						<td><input type="button" value="비밀번호 찾기" onClick="location.href='findpw.u'"></td>
 					</tr>
 				</table>
 			</td>

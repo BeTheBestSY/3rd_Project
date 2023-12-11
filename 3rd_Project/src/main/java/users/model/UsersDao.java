@@ -33,4 +33,12 @@ public class UsersDao {
 		map.put("new_password", new_password);
 		sqlSessionTemplate.update(namespace+".updatePassword", map);
 	}
+
+	public String findId(UsersBean ub) {
+		return sqlSessionTemplate.selectOne(namespace+".findId", ub);
+	}
+
+	public String findPw(UsersBean ub) {
+		return sqlSessionTemplate.selectOne(namespace+".findPw", ub);
+	}
 }

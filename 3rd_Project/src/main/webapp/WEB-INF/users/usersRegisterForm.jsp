@@ -37,6 +37,7 @@
 		</td>
 	</tr>
 	<tr>
+		<!-- 팝업창에서 주소 클릭하면 팝업창이 닫히기 -->
 		<td>주소</td>
 		<td>
 			<input type="text" name="u_address" id="sample4_postcode" placeholder="우편번호">

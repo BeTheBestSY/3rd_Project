@@ -5,7 +5,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,7 +29,6 @@ public class UsersRegisterController {
 	public String doAction2(@ModelAttribute("ub") UsersBean ub, HttpSession session) {
 		String u_phone = ub.getU_phone().replace(",","-"); // 010-1234-5678
 		ub.setU_phone(u_phone);
-		//
 		String[] addrList = ub.getU_address().split(",");
 		String u_address = "";
 		u_address += addrList[1]+" "+addrList[2]+" ("+addrList[0]+")";
@@ -38,7 +36,7 @@ public class UsersRegisterController {
 		System.out.println(u_address); // 서울 강남구 테헤란로 125 1234 (06133)
 		
 		System.out.println(ub.getU_color());
-		// 중복체크하기
+		// 중복체크하기 => 아직 안함
 		// 회원가입하기
 		ud.register(ub);
 		// 가입한 회원의 아이디 세션 설정

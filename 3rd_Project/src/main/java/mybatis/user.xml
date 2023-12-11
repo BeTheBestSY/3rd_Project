@@ -20,4 +20,12 @@
 		set u_password=#{new_password}
 		where u_id=#{u_id}
 	</update>
+	<select id="findId" resultType="String">
+		select u_id from users
+		where u_name=#{u_name} and u_phone=#{u_phone}
+	</select>
+	<select id="findPw" resultType="String">
+		select u_password from users
+		where u_name=#{u_name} and u_id=#{u_id} and u_phone=#{u_phone}
+	</select>
 </mapper>
