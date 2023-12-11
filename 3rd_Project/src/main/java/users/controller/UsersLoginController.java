@@ -21,7 +21,8 @@ import users.model.UsersDao;
 public class UsersLoginController {
 	private final String command = "/login.u";
 	private final String viewPage = "usersLoginForm";
-	private final String gotoPage = "main";
+	private final String adminPage = "adminPage";
+	private final String gotoPage = "redirect:/.main";
 	@Autowired
 	private UsersDao ud;
 	
@@ -40,20 +41,22 @@ public class UsersLoginController {
 		}
 		
 		PrintWriter out = response.getWriter();
-		/* 가입된 회원인지 확인 */
-		if(ud.didYouJoin(ub)) { // 1-1. 가입 한 회원이면
+		
+		if(ud.didYouJoin(ub)) { // 가입 한 회원 혹은 관리자이면
 			// 아이디 session 설정
 			session.setAttribute("id", ub.getU_id());
-			return gotoPage;
+			if(ub.getU_id().equals("admin"))
+				return adminPage;
+			else
+				return gotoPage;
 			
-		} else { // 1-2. 가입 안 한 회원이면
+		} else { // 가입 안 한 회원이면
 			response.setContentType("text/html; charset=UTF-8");
 			// alert 띄우기
 			out.print("<script>alert('가입하지 않은 회원입니다.');</script>");
 			out.flush();
 			return viewPage;
 		}
-		
-		
+	
 	}
 }

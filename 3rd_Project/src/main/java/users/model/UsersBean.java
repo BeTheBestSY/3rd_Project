@@ -58,6 +58,6 @@ public class UsersBean {
 	public void setU_color(String u_color) {
 		this.u_color = u_color;
 	}
-	
+	// ÀúÀå¿ë
 	
 }

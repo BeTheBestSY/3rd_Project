@@ -29,17 +29,19 @@
 %>
 <article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
 
-
+<br>
 <div class="page-title">
     <div class="container">
         <br><br>
-        <h3>의견 게시판</h3>
+        <h3 style="font-size: 25pt; font-weight: bold;">의견 게시판</h3>
     </div>
 </div>
- <div id="board-list">
+<br><br><br><br><br>
+
+<div id="board-list">
 			
 		<form:form commandName="bb" action="write.qb" method="post">
-		      <table class="board-table">
+		      <table class="board-table" style="font-size: 13pt;">
 				<tr>
 					<th align="left" bgcolor="#f9f7f9" width="15%">제목</th>
 					<td align="left" colspan="3">
@@ -58,7 +60,8 @@
 				</tr>
 				<tr>
 					<th align="left" bgcolor="#f9f7f9">내용</th>
-					<td align="left" colspan="3" height="300px">
+					<td align="left" valign="top" colspan="3" height="300px">
+						<br>
 						${ bb.q_content }
 					</td>
 				</tr>
@@ -66,10 +69,10 @@
 			 </table>
 			 <br><br>
 			 <center>
-				<input type="button" value="수정하기" onClick="goUpdate(${ bb.q_num },${pageNumber})" class="btn btn-dark">
-			<input type="button" value="삭제하기" onClick="goDelete(${ bb.q_num },${pageNumber})" class="btn btn-dark">
-			<input type="button" value="답글달기" onClick="goReply(${ bb.q_num },${ bb.q_ref },${ bb.q_re_step },${ bb.q_re_level },${pageNumber})" class="btn btn-dark">
-			<input type="button" value="목록" onClick="goList(${pageNumber})" class="btn btn-dark">
+			<input type="button" value="수정하기" onClick="goUpdate(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+			<input type="button" value="삭제하기" onClick="goDelete(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+			<input type="button" value="답글달기" onClick="goReply(${ bb.q_num },${ bb.q_ref },${ bb.q_re_step },${ bb.q_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+			<input type="button" value="목록으로" onClick="goList(${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">
 			</center>
 		</form:form>
 </article>

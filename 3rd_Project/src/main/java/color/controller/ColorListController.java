@@ -10,13 +10,12 @@ import color.model.ColorDao;
 @Controller
 public class ColorListController {
 	
-	@Autowired
-	private ColorDao colorDao;
-	private final String command = "/list.col";
-	private final String viewPage = "main";
+	private final String command = "/colList.col";
+	private final String viewPage = "colList";
 	
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction() {
 		return viewPage;
 	}
+
 }

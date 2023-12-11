@@ -4,11 +4,20 @@
 
 <mapper namespace="sqlField_user">
 	<select id="didYouJoin" resultType="boolean">
-		select u_id from users
+		select count(*) from users
 		where u_id=#{u_id}
 	</select>
 	<insert id="register">
 		insert into users
-		values(#{u_id}, #{u_name}, #{u_password}, #{u_phone}, #{u_address}, #{u_color})
+		values(#{u_id}, #{u_name}, #{u_password}, #{u_phone}, #{u_address}, 0, '미정', #{u_color} )
 	</insert>
+	<select id="getUserById" resultType="Users">
+		select * from users
+		where u_id=#{u_id}
+	</select>
+	<update id="updatePassword">
+		update users
+		set u_password=#{new_password}
+		where u_id=#{u_id}
+	</update>
 </mapper>
