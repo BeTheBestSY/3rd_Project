@@ -21,7 +21,7 @@ public class QBoardDeleteController {
 
 	@Autowired
 	private QBoardDao qdao;
-	
+	 
 	public final String command="/qDelete.qb";
 	public final String viewPage="qBoardDelete";
 	public final String gotoPage="redirect:/qBoardList.qb";
