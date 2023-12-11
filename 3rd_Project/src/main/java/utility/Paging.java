@@ -241,37 +241,36 @@ public class Paging {
 		if (this.beginPage != 1) {
 			result += "&nbsp;<a href='" + url  
 					+ "?pageNumber=" + ( 1 ) + "&pageSize=" + this.pageSize 
-					+ added_param + "'>맨 처음</a>&nbsp;" ;
+					+ added_param + "' style='text-decoration: none; color: black;'>[처음으로]</a>&nbsp;" ;
 			result += "&nbsp;<a href='" + url 
 					+ "?pageNumber=" + (this.beginPage - 1 ) + "&pageSize=" + this.pageSize 
-					+ added_param + "'>이전</a>&nbsp;" ;
+					+ added_param + "' style='text-decoration: none; color: black;'>[이전]</a>&nbsp;" ;
 		}
 		
 		//가운데
 		for (int i = this.beginPage; i <= this.endPage ; i++) {
 			if ( i == this.pageNumber ) {
-				result += "&nbsp;<font color='red'>" + i + "</font>&nbsp;"	;
+				result += "&nbsp;<font style='text-decoration: none; background: #EDE5D8; font-size: 10pt;'>&nbsp;" + i + "&nbsp;</font>"	;
 						
 			} else {
 				result += "&nbsp;<a href='" + url   
 						+ "?pageNumber=" + i + "&pageSize=" + this.pageSize 
-						+ added_param + "'>" + i + "</a>&nbsp;" ;
-				
+						+ added_param + "' style='text-decoration: none; color: black; font-size: 10pt;'>&nbsp;" + i + "&nbsp;</a>" ;
 			}
 		}
 		
 		System.out.println("result:"+result); 
-		System.out.println();
+		System.out.println(); 
 		//다음, 맨 끝
 		if ( this.endPage != this.totalPage) { 
 			
 			result += "&nbsp;<a href='" + url  
 					+ "?pageNumber=" + (this.endPage + 1 ) + "&pageSize=" + this.pageSize 
-					+ added_param + "'>다음</a>&nbsp;" ;
+					+ added_param + "' style='text-decoration: none; color: black;'>[다음]</a>&nbsp;" ;
 			
 			result += "&nbsp;<a href='" + url  
 					+ "?pageNumber=" + (this.totalPage ) + "&pageSize=" + this.pageSize 
-					+ added_param + "'>맨 끝</a>&nbsp;" ;
+					+ added_param + "' style='text-decoration: none; color: black;'>[맨 끝으로]</a>&nbsp;" ;
 		}		
 		System.out.println("result2:"+result);
 		

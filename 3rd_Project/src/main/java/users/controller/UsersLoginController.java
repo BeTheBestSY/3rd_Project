@@ -41,7 +41,7 @@ public class UsersLoginController {
 		}
 		
 		PrintWriter out = response.getWriter();
-		
+		  
 		if(ud.didYouJoin(ub)) { // 가입 한 회원 혹은 관리자이면
 			// 아이디 session 설정
 			session.setAttribute("id", ub.getU_id());
@@ -50,10 +50,9 @@ public class UsersLoginController {
 			else
 				return gotoPage;
 			
-		} else { // 가입 안 한 회원이면
+		} else { 
 			response.setContentType("text/html; charset=UTF-8");
-			// alert 띄우기
-			out.print("<script>alert('가입하지 않은 회원입니다.');</script>");
+			out.print("<script>alert('가입되지 않은 회원입니다.');</script>");
 			out.flush();
 			return viewPage;
 		}

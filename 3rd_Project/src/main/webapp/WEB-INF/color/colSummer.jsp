@@ -48,6 +48,7 @@
 	#sml, #smb, #sm {
 		width: 100%;
 		padding-bottom: 50px;
+		text-align: center;
 	}
 	#recommend{
 		text-align: center; 
@@ -80,7 +81,10 @@
     	<img src="resources/image/${cbsml.col_stlImg}" width="100%"><br><br><br><br>
     	<div id="recommend">▶ ${cbsml.col_name} 추천 색상 ◀</div>
     	<br><br>
-    	<img src="resources/image/${cbsml.col_colImg}" width="100%" style="margin: auto;"><br><br><br>
+    	<img src="resources/image/${cbsml.col_colImg}" width="100%" style="margin: auto;"><br><br><br><br>
+    	<div id="recommend">▶ ${cbsml.col_name} 추천 코디 ◀</div>
+    	<br><br>
+    	<img src="resources/image/${cbsml.col_codiImg}" width="100%" style="margin: auto;"><br><br><br>
     </div>
     <div id="smb">
     	<br><br><br>
@@ -89,7 +93,10 @@
     	<img src="resources/image/${cbsmb.col_stlImg}" width="100%"><br><br><br><br>
     	<div id="recommend">▶ ${cbsmb.col_name} 추천 색상 ◀</div>
     	<br><br>
-    	<img src="resources/image/${cbsmb.col_colImg}" width="100%" style="margin: auto;"><br><br><br>
+    	<img src="resources/image/${cbsmb.col_colImg}" width="100%" style="margin: auto;"><br><br><br><br>
+    	<div id="recommend">▶ ${cbsmb.col_name} 추천 코디 ◀</div>
+    	<br><br>
+    	<img src="resources/image/${cbsmb.col_codiImg}" width="80%" style="margin: auto;"><br><br><br>
     </div>
     <div id="sm">
     	<br><br><br>
@@ -98,7 +105,9 @@
     	<img src="resources/image/${cbsm.col_stlImg}" width="100%"><br><br><br><br>
     	<div id="recommend">▶ ${cbsm.col_name} 추천 색상 ◀</div>
     	<br><br>
-    	<img src="resources/image/${cbsm.col_colImg}" width="100%" style="margin: auto;"><br><br><br>
+    	<img src="resources/image/${cbsm.col_colImg}" width="100%" style="margin: auto;"><br><br><br><br>
+    	<div id="recommend">▶ ${cbsm.col_name} 추천 코디 ◀</div>
+    	<img src="resources/image/${cbsm.col_codiImg}" width="100%" style="margin: auto;"><br><br><br>
     </div>
     
     <script type="text/javascript">

@@ -155,14 +155,14 @@
 		</div>
 		<div id="autumn">
 			<span id="seasonArea">가을</span><br><br>
-			<span id="sDetailArea">
+			<span id="sDetailArea"> 
 				차분하고 무거운 분위기의 부드러운 톤으로 이루어져 있어요.<br>
 				전반적으로 고급스럽고 강하면서도 편안 느낌을 줘요.<br>
-			</span><br><br>
+			</span><br><br> 
 			<input type="button" value="자세히 알아보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→" id="seasonBtn" onClick="location.href='autumn.col'"><br><br><br>
 			<img src="resources/image/pccs_autumn.png" id="seasonImg">
 		</div>
-		<div id="winter">
+		<div id="winter"> 
 			<span id="seasonArea">겨울</span><br><br>
 			<span id="sDetailArea">
 				차갑고 강렬하며 이지적인 느낌의 톤으로 이루어져 있어요.<br>

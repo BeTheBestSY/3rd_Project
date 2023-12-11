@@ -6,7 +6,7 @@
 		width: 610px;
 		height: 700px;
 		overflow: hidden;
-		left: -30px;
+		left: -50px;
 		position: relative;
 	}
 	#image1, #image2, #image3, #image4, #image5{
@@ -92,12 +92,12 @@
 }
 </style>
 
-<%@ include file="./../views/header.jsp" %>
+<%@ include file="./../views/header.jsp" %> 
 
 <article id="center">
 	<br>
 	<div class="row">
-		<div class="col-lg-6">
+		<div class="col-lg-6" style="left: -10px; position: relative;">
 			<div id="colorTitle">
 				'퍼스널 컬러' 란<br>
 				무엇을 말하는 걸까요?
