@@ -39,6 +39,7 @@
 			해당 정보를 바탕으로 아이디를 찾아드릴게요!
 		</span>
 		<!-- 저장용 -->
+		<!-- 저장용 -->
 	</div>
 	<br><br><br> 
 	<form action="findpw.u" method="post">
