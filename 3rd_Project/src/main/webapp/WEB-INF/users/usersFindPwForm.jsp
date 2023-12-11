@@ -38,6 +38,7 @@
 			가입 시 입력하신 성함, 아이디, 전화번호를 입력해주세요.<br>
 			해당 정보를 바탕으로 아이디를 찾아드릴게요!
 		</span>
+		<!-- 저장용 -->
 	</div>
 	<br><br><br> 
 	<form action="findpw.u" method="post">
