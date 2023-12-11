@@ -9,8 +9,6 @@
 
 <%@ include file="../views/header.jsp" %>
 
-<!-- 저장죵2 -->
-
 <div id="center" style="text-align: center;">
 	<br><br><br><br>
 	<div>
