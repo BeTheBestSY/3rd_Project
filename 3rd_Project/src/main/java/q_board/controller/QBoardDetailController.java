@@ -1,5 +1,9 @@
 package q_board.controller;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,16 +19,18 @@ public class QBoardDetailController {
 
 	@Autowired
 	private QBoardDao qdao;
+	
 	 
 	public final String command="/detail.qb";
 	public final String viewPage="qBoardDetail";
+	
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public String toDetailList(
 			Model model,
 			@RequestParam("q_num") int q_num,
 			@RequestParam("pageNumber") int pageNumber
-			) {
+			) throws Exception {
 		
 		qdao.updateReadcount(q_num);
 		QBoardBean bb = qdao.selectContent(q_num);
@@ -33,6 +39,8 @@ public class QBoardDetailController {
 		model.addAttribute("bb",bb);
 		
 		return viewPage;
+		
+		
 	}
 	
 }
