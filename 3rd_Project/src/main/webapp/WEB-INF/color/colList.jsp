@@ -162,7 +162,7 @@
 			<input type="button" value="자세히 알아보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→" id="seasonBtn" onClick="location.href='autumn.col'"><br><br><br>
 			<img src="resources/image/pccs_autumn.png" id="seasonImg">
 		</div>
-		<div id="winter">
+		<div id="winter"> 
 			<span id="seasonArea">겨울</span><br><br>
 			<span id="sDetailArea">
 				차갑고 강렬하며 이지적인 느낌의 톤으로 이루어져 있어요.<br>
