@@ -80,7 +80,9 @@
     	<img src="resources/image/${cbam.col_stlImg}" width="100%"><br><br><br><br>
     	<div id="recommend">▶ ${cbam.col_name} 추천 색상 ◀</div>
     	<br><br>
-    	<img src="resources/image/${cbam.col_colImg}" width="100%" style="margin: auto;"><br><br><br>
+    	<img src="resources/image/${cbam.col_colImg}" width="100%" style="margin: auto;"><br><br><br><br>
+    	<div id="recommend">▶ ${cbam.col_name} 추천 코디 ◀</div> 
+    	<img src="resources/image/${cbam.col_codiImg}" width="100%" style="margin: auto;"><br><br><br>
     </div>
     <div id="as">
     	<br><br><br>
@@ -89,7 +91,10 @@
     	<img src="resources/image/${cbas.col_stlImg}" width="100%"><br><br><br><br>
     	<div id="recommend">▶ ${cbas.col_name} 추천 색상 ◀</div>
     	<br><br>
-    	<img src="resources/image/${cbas.col_colImg}" width="100%" style="margin: auto;"><br><br><br>
+    	<img src="resources/image/${cbas.col_colImg}" width="100%" style="margin: auto;"><br><br><br><br>
+    	<div id="recommend">▶ ${cbas.col_name} 추천 코디 ◀</div>
+    	<br><br>
+    	<img src="resources/image/${cbas.col_codiImg}" width="100%" style="margin: auto;"><br><br><br>
     </div>
     <div id="ad">
     	<br><br><br>
@@ -98,7 +103,9 @@
     	<img src="resources/image/${cbad.col_stlImg}" width="100%"><br><br><br><br>
     	<div id="recommend">▶ ${cbad.col_name} 추천 색상 ◀</div>
     	<br><br>
-    	<img src="resources/image/${cbad.col_colImg}" width="100%" style="margin: auto;"><br><br><br>
+    	<img src="resources/image/${cbad.col_colImg}" width="100%" style="margin: auto;"><br><br><br><br>
+    	<div id="recommend">▶ ${cbad.col_name} 추천 코디 ◀</div>
+    	<img src="resources/image/${cbad.col_codiImg}" width="100%" style="margin: auto;"><br><br><br>
     </div>
     
     <script type="text/javascript">

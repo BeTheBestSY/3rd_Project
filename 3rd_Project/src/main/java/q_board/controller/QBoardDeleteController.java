@@ -58,7 +58,7 @@ public class QBoardDeleteController {
 		} else {
 			response.setContentType("text/html; charset=UTF-8");
 		    PrintWriter out = response.getWriter();
-		    out.println("<script>alert('비밀번호가 틀렸습니다.');</script>");
+		    out.print("<script>alert('잘못된 비밀번호입니다.');</script>");
 		    out.flush();
 		    model.addAttribute("pageNumber",pageNumber);
 			model.addAttribute("bb",bb);
