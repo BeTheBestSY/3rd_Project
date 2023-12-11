@@ -8,7 +8,9 @@
 </style>
 
 <%@ include file="../views/header.jsp" %>
-<!-- 저장용 -->
+
+<!-- 저장죵2 -->
+
 <div id="center" style="text-align: center;">
 	<br><br><br><br>
 	<div>
@@ -27,13 +29,14 @@
 			<tr>
 				<th>* 아이디</th>
 				<td>
-					<input type="text" name="u_id" placeholder="영문소문자/숫자, 4~16자" required>
+					<input type="text" name="u_id" placeholder="영문소문자/숫자, 4~16자" pattern="" required>
+					중복체크, 정규표현식 아직
 				</td>
 			</tr>
 			<tr>
 				<th>* 패스워드</th>
 				<td>
-					<input type="text" name="u_password" placeholder="영문 대소문자/숫자/특수문자 중 3가지 이상 조합, 8자~16자" required>
+					<input type="text" name="u_password" placeholder="영문 대소문자/숫자/특수문자 중 3가지 이상 조합, 8자~16자" pattern="" required>
 				</td>
 			</tr>
 			<tr>

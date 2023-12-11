@@ -1,4 +1,4 @@
-package q_board.controller;
+package c_board.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,27 +13,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import q_board.model.QBoardBean;
-import q_board.model.QBoardDao;
+import c_board.model.CBoardBean;
+import c_board.model.CBoardDao;
 
 @Controller
-public class QBoardDeleteController {
-
+public class CBoardDeleteController {
 	@Autowired
-	private QBoardDao qdao;
+	private CBoardDao cdao;
 	 
-	public final String command="/qDelete.qb";
-	public final String viewPage="qBoardDelete";
-	public final String gotoPage="redirect:/qBoardList.qb";
+	public final String command="/cDelete.cb";
+	public final String viewPage="cBoardDelete";
+	public final String gotoPage="redirect:/cBoardList.cb";
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public String deleteform(
 				Model model,
-				@RequestParam("q_num") int q_num,
+				@RequestParam("c_num") int c_num,
 				@RequestParam("pageNumber") int pageNumber
 			) {
 		
-		QBoardBean bb = qdao.selectContent(q_num);
+		CBoardBean bb = cdao.selectContent(c_num);
 		
 		model.addAttribute("pageNumber",pageNumber);
 		model.addAttribute("bb",bb);
@@ -44,15 +43,15 @@ public class QBoardDeleteController {
 	@RequestMapping(value=command,method=RequestMethod.POST)
 	public ModelAndView deletelist(
 								Model model, HttpServletResponse response,
-								@RequestParam("q_num") int q_num,
+								@RequestParam("c_num") int c_num,
 								@RequestParam("pageNumber") int pageNumber,
-								@RequestParam("q_password") String q_password) throws IOException {
+								@RequestParam("c_password") String c_password) throws IOException {
 		
 		ModelAndView mav = new ModelAndView();
-		QBoardBean bb = qdao.selectContent(q_num);
+		CBoardBean bb = cdao.selectContent(c_num);
 		
-		if(q_password.equals(bb.getQ_password())) {
-			qdao.deleteBoard(q_num);
+		if(c_password.equals(bb.getC_password())) {
+			cdao.deleteBoard(c_num);
 			mav.setViewName(gotoPage+"?pageNumber="+pageNumber);
 			return mav;
 		} else {
