@@ -1,5 +1,5 @@
 package users.model;
-
+ 
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +14,7 @@ public class UsersDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 	private String namespace = "sqlField_user";
 
-	// didYouJoin: °¡ÀÔÇÑ È¸¿øÀÌ¸é true, °¡ÀÔ¾ÈÇÑ È¸¿øÀÌ¸é false
+	// didYouJoin: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½Ì¸ï¿½ true, ï¿½ï¿½ï¿½Ô¾ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½Ì¸ï¿½ false
 	public boolean didYouJoin(UsersBean ub) {
 		return sqlSessionTemplate.selectOne(namespace+".didYouJoin", ub);
 	}
@@ -40,5 +40,13 @@ public class UsersDao {
 
 	public String findPw(UsersBean ub) {
 		return sqlSessionTemplate.selectOne(namespace+".findPw", ub);
+	}
+
+	public int updateUsers(UsersBean ub) {
+		return sqlSessionTemplate.update(namespace+".updateUsers", ub);
+	}
+
+	public void deleteUsers(String u_id) {
+		sqlSessionTemplate.delete(namespace+".deleteUsers", u_id);
 	}
 }

@@ -52,7 +52,7 @@ public class UsersLoginController {
 			
 		} else { 
 			response.setContentType("text/html; charset=UTF-8");
-			out.print("<script>alert('媛��엯�븯吏� �븡�� �쉶�썝�엯�땲�떎.');</script>");
+			out.print("<script>alert('가입되지 않은 회원입니다.');</script>");
 			out.flush();
 			return viewPage;
 		}

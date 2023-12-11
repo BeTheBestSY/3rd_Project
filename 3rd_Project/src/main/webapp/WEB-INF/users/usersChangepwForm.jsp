@@ -1,8 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../views/header.jsp" %>
+<script>
+	function msg(){
+		if(confirm('변경 하시겠습니까?'))
+			return true;
+		else
+			return false;
+	}
+</script>
 <div id="center">
-<form action="changepw.u" method="post">
+<form action="changepw.u" method="post" onSubmit="return msg()">
 	<table border="1">
 		<tr>
 			<th>기존 비밀번호</th>
