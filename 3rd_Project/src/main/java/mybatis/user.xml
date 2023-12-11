@@ -28,4 +28,9 @@
 		select u_password from users
 		where u_name=#{u_name} and u_id=#{u_id} and u_phone=#{u_phone}
 	</select>
+	<select id="updateUsers">
+		update users
+		set u_phone=#{u_phone}, u_address=#{u_address}, u_color=#{u_color}
+		where u_id=#{u_id}
+	</select>
 </mapper>

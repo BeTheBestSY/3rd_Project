@@ -29,11 +29,12 @@ public class UsersRegisterController {
 	public String doAction2(@ModelAttribute("ub") UsersBean ub, HttpSession session) {
 		String u_phone = ub.getU_phone().replace(",","-"); // 010-1234-5678
 		ub.setU_phone(u_phone);
-		String[] addrList = ub.getU_address().split(",");
-		String u_address = "";
-		u_address += addrList[1]+" "+addrList[2]+" ("+addrList[0]+")";
-		ub.setU_address(u_address);
-		
+		System.out.println(ub.getU_address()); // 23104,인천 옹진군 백령면 콩돌로 170,102호
+//		String[] addrList = ub.getU_address().split(",");
+//		String u_address = "";
+//		u_address += addrList[1]+" "+addrList[2]+" ("+addrList[0]+")";
+//		ub.setU_address(u_address);
+//		System.out.println(ub.getU_address());
 		ud.register(ub);
 		session.setAttribute("id", ub.getU_id());
 		return viewPage2;
