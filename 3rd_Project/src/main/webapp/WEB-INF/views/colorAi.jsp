@@ -159,14 +159,24 @@ body {
 }
 </style>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
 <!-- <div>Teachable Machine Image Model</div>
 <button type="button" onclick="init()">Start</button> 
 <div id="webcam-container"></div>
 <div id="label-container"></div>
 -->
+
+<%
+String id = (String) session.getAttribute("id");
+if(id==null){
+%>
+	<script type="text/javascript">
+	alert("로그인을 후 이용해주세요.")
+	 window.location.href = "login.u";
+	</script>
+<%
+};
+%>
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
