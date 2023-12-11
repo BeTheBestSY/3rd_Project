@@ -112,7 +112,7 @@
 			<input type="button" id="btn1" value="컬러 별 특징 살펴보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;GO"
 				onClick="location.href='colList.col'"><br>
 			<input type="button" id="btn2" value="컬러 별 대표 연예인 알아보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;GO"
-				onClick="location.href='#'">
+				onClick="location.href='celebList.cel'">
 		</div>
 		<div class="col-lg-6" id="imageArea">
 			<div id="image1">

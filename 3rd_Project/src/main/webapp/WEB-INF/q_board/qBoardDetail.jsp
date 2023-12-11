@@ -74,7 +74,7 @@
 			 </table>
 			 <br><br>
 			 
-			<!-- 세션이 작성자와 같거나 관리자가 아니면 수정, 삭제, 목록 버튼 보이게 -->
+			<!-- 세션이 작성자와 같거나 관리자가 아니면 수정, 삭제 버튼 보이게 -->
 			<c:if test="${id == bb.q_writer && id!='admin'}">
 				 <center>
 					<input type="button" value="수정하기" onClick="goUpdate(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;

@@ -97,130 +97,129 @@ drop table celeb cascade constraints;
 create table celeb(
    cl_name varchar2(30) not null,
    cl_image varchar2(30)not null,
-   cl_color number 
+   cl_color varchar2(50) 
 );
 
 -- 봄 라이트 --
-insert into celeb values('한선화', 'splt1.png', 1);
-insert into celeb values('채수빈', 'splt2.png', 1);
-insert into celeb values('윤아', 'splt3.png', 1);
-insert into celeb values('송혜교', 'splt4.png', 1);
-insert into celeb values('한지민', 'splt5.png', 1);
-insert into celeb values('아린', 'splt6.png', 1);
-insert into celeb values('효정', 'splt7.png', 1);
-insert into celeb values('혜리', 'splt8.png', 1);
-insert into celeb values('박민영', 'splt9.png', 1);
-insert into celeb values('설리', 'splt10.png', 1);
+insert into celeb values('한선화', 'splt1.png', '봄 라이트');
+insert into celeb values('채수빈', 'splt2.png', '봄 라이트');
+insert into celeb values('윤아', 'splt3.png', '봄 라이트');
+insert into celeb values('송혜교', 'splt4.png', '봄 라이트');
+insert into celeb values('한지민', 'splt5.png', '봄 라이트');
+insert into celeb values('아린', 'splt6.png', '봄 라이트');
+insert into celeb values('효정', 'splt7.png', '봄 라이트');
+insert into celeb values('혜리', 'splt8.png', '봄 라이트');
+insert into celeb values('박민영', 'splt9.png', '봄 라이트');
+insert into celeb values('설리', 'splt10.png', '봄 라이트');
 
 -- 봄 브라이트 --
-insert into celeb values('조이', 'spbr1.png', 2);
-insert into celeb values('민효린', 'spbr2.png', 2);
+insert into celeb values('조이', 'spbr1.png', '봄 브라이트');
+insert into celeb values('민효린', 'spbr2.png', '봄 브라이트');
 insert into celeb values('유정', 'spbr3', 2);
-insert into celeb values('아이유', 'spbr4.png', 2);
-insert into celeb values('제시카', 'spbr5.png', 2);
-insert into celeb values('나연', 'spbr6.png', 2);
-insert into celeb values('강민경', 'spbr7.png', 2);
-insert into celeb values('유빈', 'spbr8.png', 2);
-insert into celeb values('류수정', 'spbr9.png', 2);
-insert into celeb values('루다', 'spbr10.png', 2);
+insert into celeb values('아이유', 'spbr4.png', '봄 브라이트');
+insert into celeb values('제시카', 'spbr5.png', '봄 브라이트');
+insert into celeb values('나연', 'spbr6.png', '봄 브라이트');
+insert into celeb values('강민경', 'spbr7.png', '봄 브라이트');
+insert into celeb values('유빈', 'spbr8.png', '봄 브라이트');
+insert into celeb values('류수정', 'spbr9.png', '봄 브라이트');
+insert into celeb values('루다', 'spbr10.png', '봄 브라이트');
 
 -- 여름 라이트 --
-insert into celeb values('손예진', 'smlt1.png', 3);
-insert into celeb values('장원영', 'smlt2.png', 3);
-insert into celeb values('김연아', 'smlt3.png', 3);
-insert into celeb values('설현', 'smlt4.png', 3);
-insert into celeb values('손나은', 'smlt5.png', 3);
-insert into celeb values('차은우', 'smlt6.png', 3);
-insert into celeb values('송강', 'smlt7.png', 3);
-insert into celeb values('이영애', 'smlt8.png', 3);
-insert into celeb values('서현진', 'smlt9.png', 3);
-insert into celeb values('정채연', 'smlt10.png', 3);
+insert into celeb values('손예진', 'smlt1.png', '여름 라이트');
+insert into celeb values('장원영', 'smlt2.png', '여름 라이트');
+insert into celeb values('김연아', 'smlt3.png', '여름 라이트');
+insert into celeb values('설현', 'smlt4.png', '여름 라이트');
+insert into celeb values('손나은', 'smlt5.png', '여름 라이트');
+insert into celeb values('차은우', 'smlt6.png', '여름 라이트');
+insert into celeb values('송강', 'smlt7.png', '여름 라이트');
+insert into celeb values('이영애', 'smlt8.png', '여름 라이트');
+insert into celeb values('서현진', 'smlt9.png', '여름 라이트');
+insert into celeb values('정채연', 'smlt10.png', '여름 라이트');
 
 -- 여름 브라이트 --
-insert into celeb values('아이린', 'smbr1.png', 4);
-insert into celeb values('티파니', 'smbr2.png', 4);
-insert into celeb values('김소현', 'smbr3.png', 4);
-insert into celeb values('태연', 'smbr4.png', 4);
-insert into celeb values('설아', 'smbr5.png', 4);
-insert into celeb values('희진', 'smbr6.png', 4);
-insert into celeb values('다현', 'smbr7.png', 4);
-insert into celeb values('노정의', 'smbr8.png', 4);
-insert into celeb values('이유비', 'smbr9.png', 4);
-insert into celeb values('문별', 'smbr10.png', 4);
+insert into celeb values('아이린', 'smbr1.png', '여름 브라이트');
+insert into celeb values('티파니', 'smbr2.png', '여름 브라이트');
+insert into celeb values('김소현', 'smbr3.png', '여름 브라이트');
+insert into celeb values('태연', 'smbr4.png', '여름 브라이트');
+insert into celeb values('설아', 'smbr5.png', '여름 브라이트');
+insert into celeb values('희진', 'smbr6.png', '여름 브라이트');
+insert into celeb values('다현', 'smbr7.png', '여름 브라이트');
+insert into celeb values('노정의', 'smbr8.png', '여름 브라이트');
+insert into celeb values('이유비', 'smbr9.png', '여름 브라이트');
+insert into celeb values('문별', 'smbr10.png', '여름 브라이트');
 
 -- 여름 뮤트 --
-insert into celeb values('김고은', 'smmt1.png', 5);
-insert into celeb values('전지현', 'smmt2.png', 5);
-insert into celeb values('김태리', 'smmt3.png', 5);
-insert into celeb values('유재석', 'smmt4.png', 5);
-insert into celeb values('육성재', 'smmt5.png', 5);
-insert into celeb values('진', 'smmt6.png', 5);
-insert into celeb values('윤두준', 'smmt7.png', 5);
-insert into celeb values('이광수', 'smmt8.png', 5);
-insert into celeb values('사나', 'smmt9.png', 5);
-insert into celeb values('슬기', 'smmt10.png', 5);
+insert into celeb values('김고은', 'smmt1.png', '여름 뮤트');
+insert into celeb values('전지현', 'smmt2.png', '여름 뮤트');
+insert into celeb values('김태리', 'smmt3.png', '여름 뮤트');
+insert into celeb values('유재석', 'smmt4.png', '여름 뮤트');
+insert into celeb values('육성재', 'smmt5.png', '여름 뮤트');
+insert into celeb values('진', 'smmt6.png', '여름 뮤트');
+insert into celeb values('윤두준', 'smmt7.png', '여름 뮤트');
+insert into celeb values('이광수', 'smmt8.png', '여름 뮤트');
+insert into celeb values('사나', 'smmt9.png', '여름 뮤트');
+insert into celeb values('슬기', 'smmt10.png', '여름 뮤트');
 
 -- 가을 뮤트 --
-insert into celeb values('제니', 'atmt1.png', 6);
-insert into celeb values('신세경', 'atmt2.png', 6);
-insert into celeb values('로제', 'atmt3.png', 6);
-insert into celeb values('웬디', 'atmt4.png', 6);
-insert into celeb values('박서준', 'atmt5.png', 6);
-insert into celeb values('모모', 'atmt6.png', 6);
-insert into celeb values('유아', 'atmt7.png', 6);
-insert into celeb values('이성경', 'atmt8.png', 6);
-insert into celeb values('이나은', 'atmt9.png', 6);
-insert into celeb values('리사', 'atmt10.png', 6);
+insert into celeb values('제니', 'atmt1.png', '가을 뮤트');
+insert into celeb values('신세경', 'atmt2.png', '가을 뮤트');
+insert into celeb values('로제', 'atmt3.png', '가을 뮤트');
+insert into celeb values('웬디', 'atmt4.png', '가을 뮤트');
+insert into celeb values('박서준', 'atmt5.png', '가을 뮤트');
+insert into celeb values('모모', 'atmt6.png', '가을 뮤트');
+insert into celeb values('유아', 'atmt7.png', '가을 뮤트');
+insert into celeb values('이성경', 'atmt8.png', '가을 뮤트');
+insert into celeb values('이나은', 'atmt9.png', '가을 뮤트');
+insert into celeb values('리사', 'atmt10.png', '가을 뮤트');
 
 -- 가을 스트롱 --
-insert into celeb values('김민주', 'atst1.png', 7);
-insert into celeb values('예리', 'atst2.png', 7);
-insert into celeb values('해찬', 'atst3.png', 7);
-insert into celeb values('버논', 'atst4.png', 7);
-insert into celeb values('뷔', 'atst5.png', 7);
-insert into celeb values('화사', 'atst6.png', 7);
-insert into celeb values('한예슬', 'atst7.png', 7);
-insert into celeb values('현아', 'atst8.png', 7);
-insert into celeb values('김희선', 'atst9.png', 7);
-insert into celeb values('하니', 'atst10.png', 7);
+insert into celeb values('김민주', 'atst1.png', '가을 스트롱');
+insert into celeb values('예리', 'atst2.png', '가을 스트롱');
+insert into celeb values('해찬', 'atst3.png', '가을 스트롱');
+insert into celeb values('버논', 'atst4.png', '가을 스트롱');
+insert into celeb values('뷔', 'atst5.png', '가을 스트롱');
+insert into celeb values('화사', 'atst6.png', '가을 스트롱');
+insert into celeb values('한예슬', 'atst7.png', '가을 스트롱');
+insert into celeb values('현아', 'atst8.png', '가을 스트롱');
+insert into celeb values('김희선', 'atst9.png', '가을 스트롱');
+insert into celeb values('하니', 'atst10.png', '가을 스트롱');
 
 
 -- 가을 딥 --
-insert into celeb values('고윤정', 'atdp1.png', 8);
-insert into celeb values('이효리', 'atdp2.png', 8);
-insert into celeb values('김유정', 'atdp3.png', 8);
-insert into celeb values('전소미', 'atdp4.png', 8);
-insert into celeb values('예지', 'atdp5.png', 8);
-insert into celeb values('유나', 'atdp6.png', 8);
-insert into celeb values('김세정', 'atdp7.png', 8);
-insert into celeb values('케이', 'atdp8.png', 8);
-insert into celeb values('한고은', 'atdp9.png', 8);
-insert into celeb values('탕웨이', 'atdp10.png', 8);
+insert into celeb values('고윤정', 'atdp1.png', '가을 딥');
+insert into celeb values('김유정', 'atdp3.png', '가을 딥');
+insert into celeb values('전소미', 'atdp4.png', '가을 딥');
+insert into celeb values('예지', 'atdp5.png', '가을 딥');
+insert into celeb values('유나', 'atdp6.png', '가을 딥');
+insert into celeb values('김세정', 'atdp7.png', '가을 딥');
+insert into celeb values('케이', 'atdp8.png', '가을 딥');
+insert into celeb values('한고은', 'atdp9.png', '가을 딥');
+insert into celeb values('탕웨이', 'atdp10.png', '가을 딥');
 
 
 -- 겨울 브라이트 --
-insert into celeb values('채영', 'wtbr1.png', 9);
-insert into celeb values('양요섭', 'wtbr2.png', 9);
-insert into celeb values('비니', 'wtbr3.png', 9);
-insert into celeb values('선미', 'wtbr4.png', 9);
-insert into celeb values('청하', 'wtbr5.png', 9);
-insert into celeb values('카리나', 'wtbr6.png', 9);
-insert into celeb values('임지연', 'wtbr7.png', 9);
-insert into celeb values('김옥빈', 'wtbr8.png', 9);
-insert into celeb values('정은채', 'wtbr9.png', 9);
-insert into celeb values('유리', 'wtbr10.png', 9);
+insert into celeb values('채영', 'wtbr1.png', '겨울 브라이트');
+insert into celeb values('양요섭', 'wtbr2.png', '겨울 브라이트');
+insert into celeb values('비니', 'wtbr3.png', '겨울 브라이트');
+insert into celeb values('선미', 'wtbr4.png', '겨울 브라이트');
+insert into celeb values('청하', 'wtbr5.png', '겨울 브라이트');
+insert into celeb values('카리나', 'wtbr6.png', '겨울 브라이트');
+insert into celeb values('임지연', 'wtbr7.png', '겨울 브라이트');
+insert into celeb values('김옥빈', 'wtbr8.png', '겨울 브라이트');
+insert into celeb values('정은채', 'wtbr9.png', '겨울 브라이트');
+insert into celeb values('유리', 'wtbr10.png', '겨울 브라이트');
 
 -- 겨울 딥 --
-insert into celeb values('소연', 'wtdp1.png', 10);
-insert into celeb values('이수혁', 'wtdp2.png', 10);
-insert into celeb values('옥택연', 'wtdp3.png', 10);
-insert into celeb values('김혜수', 'wtdp4.png', 10);
-insert into celeb values('문근영', 'wtdp5.png', 10);
-insert into celeb values('지석진', 'wtdp6.png', 10);
-insert into celeb values('이다희', 'wtdp7.png', 10);
-insert into celeb values('디오', 'wtdp8.png', 10);
-insert into celeb values('지수', 'wtdp9.png', 10);
-insert into celeb values('이하늬', 'wtdp10.png', 10);
+insert into celeb values('소연', 'wtdp1.png', '겨울 딥');
+insert into celeb values('이수혁', 'wtdp2.png', '겨울 딥');
+insert into celeb values('옥택연', 'wtdp3.png', '겨울 딥');
+insert into celeb values('김혜수', 'wtdp4.png', '겨울 딥');
+insert into celeb values('문근영', 'wtdp5.png', '겨울 딥');
+insert into celeb values('지석진', 'wtdp6.png', '겨울 딥');
+insert into celeb values('이다희', 'wtdp7.png', '겨울 딥');
+insert into celeb values('디오', 'wtdp8.png', '겨울 딥');
+insert into celeb values('지수', 'wtdp9.png', '겨울 딥');
+insert into celeb values('이하늬', 'wtdp10.png', '겨울 딥');
 
 
 col cl_name for a10;
