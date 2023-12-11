@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
     
 <%@ include file="./../views/header.jsp" %>
-
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardList.css">
+<script src="selectbox.min.js"></script>
 <style type="text/css">
 	#noneHigtLight{
 		text-decoration: none;
@@ -36,15 +36,19 @@
                 <form action="">
                     <div class="search-wrap">
 		<form action="qBoardList.qb" method="get">
-			 <input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
+				<select name="whatColumn" id="whatColumn">
+					<option>선택</option>
+					<option value="all">전체검색</option>
+					<option value="q_subject">제목</option>
+					<option value="q_writer">작성자</option>
+				</select>
+			 	<input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
+			 	
 			<button type="submit" class="btn btn-dark">검색</button>
-		</form>
-		   </form>
             </div>
+		   </form>
         </div>
     </div>
-</center>
-
 
  <div id="board-list">
         <div class="container">
@@ -95,7 +99,9 @@
     </div>
 <br><br>
 <center>
+<div id="pagenation">
 	${pageInfo.pagingHtml}
+</div>
 </center> 
 
 </article>

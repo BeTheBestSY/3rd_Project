@@ -1,5 +1,5 @@
 -----------------------------------------------------------------
---color í…Œì´ë¸” (í¼ìŠ¤ë„ ì»¬ëŸ¬)
+--color Å×ÀÌºí (ÆÛ½º³Î ÄÃ·¯)
 -----------------------------------------------------------------
 
 drop sequence colseq;
@@ -14,23 +14,23 @@ create table color(
    col_colimg varchar2(30)
 );
 
-insert into color values(colseq.nextval, 'ë´„ ë¼ì´íŠ¸', '1_ttl.jpg', '1_stl.jpg', '1_col.jpg');
-insert into color values(colseq.nextval, 'ë´„ ë¸Œë¼ì´íŠ¸', '2_ttl.jpg', '2_stl.jpg', '2_col.jpg');
-insert into color values(colseq.nextval, 'ì—¬ë¦„ ë¼ì´íŠ¸', '3_ttl.jpg', '3_stl.jpg', '3_col.jpg');
-insert into color values(colseq.nextval, 'ì—¬ë¦„ ë¸Œë¼ì´íŠ¸', '4_ttl.jpg', '4_stl.jpg', '4_col.jpg');
-insert into color values(colseq.nextval, 'ì—¬ë¦„ ë®¤íŠ¸', '5_ttl.jpg', '5_stl.jpg', '5_col.jpg');
-insert into color values(colseq.nextval, 'ê°€ì„ ë®¤íŠ¸', '6_ttl.jpg', '6_stl.jpg', '6_col.jpg');
-insert into color values(colseq.nextval, 'ê°€ì„ ìŠ¤íŠ¸ë¡±', '7_ttl.jpg', '7_stl.jpg', '7_col.jpg');
-insert into color values(colseq.nextval, 'ê°€ì„ ë”¥', '8_ttl.jpg', '8_stl.jpg', '8_col.jpg');
-insert into color values(colseq.nextval, 'ê²¨ìš¸ ë¸Œë¼ì´íŠ¸', '9_ttl.jpg', '9_stl.jpg', '9_col.jpg');
-insert into color values(colseq.nextval, 'ê²¨ìš¸ ë”¥', '10_ttl.jpg', '10_stl.jpg', '10_col.jpg');
-insert into color values(colseq.nextval, 'ì˜ ëª¨ë¥´ê² ìŒ', '', '', '');
+insert into color values(colseq.nextval, 'º½ ¶óÀÌÆ®', '1_ttl.jpg', '1_stl.jpg', '1_col.jpg');
+insert into color values(colseq.nextval, 'º½ ºê¶óÀÌÆ®', '2_ttl.jpg', '2_stl.jpg', '2_col.jpg');
+insert into color values(colseq.nextval, '¿©¸§ ¶óÀÌÆ®', '3_ttl.jpg', '3_stl.jpg', '3_col.jpg');
+insert into color values(colseq.nextval, '¿©¸§ ºê¶óÀÌÆ®', '4_ttl.jpg', '4_stl.jpg', '4_col.jpg');
+insert into color values(colseq.nextval, '¿©¸§ ¹ÂÆ®', '5_ttl.jpg', '5_stl.jpg', '5_col.jpg');
+insert into color values(colseq.nextval, '°¡À» ¹ÂÆ®', '6_ttl.jpg', '6_stl.jpg', '6_col.jpg');
+insert into color values(colseq.nextval, '°¡À» ½ºÆ®·Õ', '7_ttl.jpg', '7_stl.jpg', '7_col.jpg');
+insert into color values(colseq.nextval, '°¡À» µö', '8_ttl.jpg', '8_stl.jpg', '8_col.jpg');
+insert into color values(colseq.nextval, '°Ü¿ï ºê¶óÀÌÆ®', '9_ttl.jpg', '9_stl.jpg', '9_col.jpg');
+insert into color values(colseq.nextval, '°Ü¿ï µö', '10_ttl.jpg', '10_stl.jpg', '10_col.jpg');
+insert into color values(colseq.nextval, 'Àß ¸ğ¸£°ÚÀ½', '', '', '');
 
 select * from color order by col_num;
 
 
 -----------------------------------------------------------------
---cart í…Œì´ë¸” (ì¥ë°”êµ¬ë‹ˆ)
+--cart Å×ÀÌºí (Àå¹Ù±¸´Ï)
 -----------------------------------------------------------------
 
 drop sequence cartseq;
@@ -47,7 +47,7 @@ select * from cart order by cart_num;
 
 
 -----------------------------------------------------------------
---temp_cart í…Œì´ë¸” (ì„ì‹œ ì¥ë°”êµ¬ë‹ˆ)
+--temp_cart Å×ÀÌºí (ÀÓ½Ã Àå¹Ù±¸´Ï)
 -----------------------------------------------------------------
 
 drop sequence temp_cartseq;
@@ -64,7 +64,7 @@ select * from temp_cart order by o_num;
 
 
 -----------------------------------------------------------------
---orders í…Œì´ë¸” (ì£¼ë¬¸)
+--orders Å×ÀÌºí (ÁÖ¹®)
 -----------------------------------------------------------------
 
 drop sequence ordersseq;
@@ -86,12 +86,12 @@ select * from orders orders by o_num;
 
 
 -----------------------------------------------------------------
---celeb í…Œì´ë¸” (í¼ìŠ¤ë„ ì»¬ëŸ¬ ë³„ ì—°ì˜ˆì¸ ì†Œê°œ)
+--celeb Å×ÀÌºí (ÆÛ½º³Î ÄÃ·¯ º° ¿¬¿¹ÀÎ ¼Ò°³)
 -----------------------------------------------------------------
 
--- CL_NAME : ì—°ì˜ˆì¸ ì´ë¦„
--- CL_IMAGE : ì—°ì˜ˆì¸ ì´ë¯¸ì§€ íŒŒì¼ëª…
--- CL_COLOR : ì—°ì˜ˆì¸ í¼ìŠ¤ë„ ì»¬ëŸ¬
+-- CL_NAME : ¿¬¿¹ÀÎ ÀÌ¸§
+-- CL_IMAGE : ¿¬¿¹ÀÎ ÀÌ¹ÌÁö ÆÄÀÏ¸í
+-- CL_COLOR : ¿¬¿¹ÀÎ ÆÛ½º³Î ÄÃ·¯
 
 drop table celeb cascade constraints;
 create table celeb(
@@ -100,127 +100,127 @@ create table celeb(
    cl_color number 
 );
 
--- ë´„ ë¼ì´íŠ¸ --
-insert into celeb values('í•œì„ í™”', 'splt1.png', 1);
-insert into celeb values('ì±„ìˆ˜ë¹ˆ', 'splt2.png', 1);
-insert into celeb values('ìœ¤ì•„', 'splt3.png', 1);
-insert into celeb values('ì†¡í˜œêµ', 'splt4.png', 1);
-insert into celeb values('í•œì§€ë¯¼', 'splt5.png', 1);
-insert into celeb values('ì•„ë¦°', 'splt6.png', 1);
-insert into celeb values('íš¨ì •', 'splt7.png', 1);
-insert into celeb values('í˜œë¦¬', 'splt8.png', 1);
-insert into celeb values('ë°•ë¯¼ì˜', 'splt9.png', 1);
-insert into celeb values('ì„¤ë¦¬', 'splt10.png', 1);
+-- º½ ¶óÀÌÆ® --
+insert into celeb values('ÇÑ¼±È­', 'splt1.png', 1);
+insert into celeb values('Ã¤¼öºó', 'splt2.png', 1);
+insert into celeb values('À±¾Æ', 'splt3.png', 1);
+insert into celeb values('¼ÛÇı±³', 'splt4.png', 1);
+insert into celeb values('ÇÑÁö¹Î', 'splt5.png', 1);
+insert into celeb values('¾Æ¸°', 'splt6.png', 1);
+insert into celeb values('È¿Á¤', 'splt7.png', 1);
+insert into celeb values('Çı¸®', 'splt8.png', 1);
+insert into celeb values('¹Ú¹Î¿µ', 'splt9.png', 1);
+insert into celeb values('¼³¸®', 'splt10.png', 1);
 
--- ë´„ ë¸Œë¼ì´íŠ¸ --
-insert into celeb values('ì¡°ì´', 'spbr1.png', 2);
-insert into celeb values('ë¯¼íš¨ë¦°', 'spbr2.png', 2);
-insert into celeb values('ìœ ì •', 'spbr3', 2);
-insert into celeb values('ì•„ì´ìœ ', 'spbr4.png', 2);
-insert into celeb values('ì œì‹œì¹´', 'spbr5.png', 2);
-insert into celeb values('ë‚˜ì—°', 'spbr6.png', 2);
-insert into celeb values('ê°•ë¯¼ê²½', 'spbr7.png', 2);
-insert into celeb values('ìœ ë¹ˆ', 'spbr8.png', 2);
-insert into celeb values('ë¥˜ìˆ˜ì •', 'spbr9.png', 2);
-insert into celeb values('ë£¨ë‹¤', 'spbr10.png', 2);
+-- º½ ºê¶óÀÌÆ® --
+insert into celeb values('Á¶ÀÌ', 'spbr1.png', 2);
+insert into celeb values('¹ÎÈ¿¸°', 'spbr2.png', 2);
+insert into celeb values('À¯Á¤', 'spbr3', 2);
+insert into celeb values('¾ÆÀÌÀ¯', 'spbr4.png', 2);
+insert into celeb values('Á¦½ÃÄ«', 'spbr5.png', 2);
+insert into celeb values('³ª¿¬', 'spbr6.png', 2);
+insert into celeb values('°­¹Î°æ', 'spbr7.png', 2);
+insert into celeb values('À¯ºó', 'spbr8.png', 2);
+insert into celeb values('·ù¼öÁ¤', 'spbr9.png', 2);
+insert into celeb values('·ç´Ù', 'spbr10.png', 2);
 
--- ì—¬ë¦„ ë¼ì´íŠ¸ --
-insert into celeb values('ì†ì˜ˆì§„', 'smlt1.png', 3);
-insert into celeb values('ì¥ì›ì˜', 'smlt2.png', 3);
-insert into celeb values('ê¹€ì—°ì•„', 'smlt3.png', 3);
-insert into celeb values('ì„¤í˜„', 'smlt4.png', 3);
-insert into celeb values('ì†ë‚˜ì€', 'smlt5.png', 3);
-insert into celeb values('ì°¨ì€ìš°', 'smlt6.png', 3);
-insert into celeb values('ì†¡ê°•', 'smlt7.png', 3);
-insert into celeb values('ì´ì˜ì• ', 'smlt8.png', 3);
-insert into celeb values('ì„œí˜„ì§„', 'smlt9.png', 3);
-insert into celeb values('ì •ì±„ì—°', 'smlt10.png', 3);
+-- ¿©¸§ ¶óÀÌÆ® --
+insert into celeb values('¼Õ¿¹Áø', 'smlt1.png', 3);
+insert into celeb values('Àå¿ø¿µ', 'smlt2.png', 3);
+insert into celeb values('±è¿¬¾Æ', 'smlt3.png', 3);
+insert into celeb values('¼³Çö', 'smlt4.png', 3);
+insert into celeb values('¼Õ³ªÀº', 'smlt5.png', 3);
+insert into celeb values('Â÷Àº¿ì', 'smlt6.png', 3);
+insert into celeb values('¼Û°­', 'smlt7.png', 3);
+insert into celeb values('ÀÌ¿µ¾Ö', 'smlt8.png', 3);
+insert into celeb values('¼­ÇöÁø', 'smlt9.png', 3);
+insert into celeb values('Á¤Ã¤¿¬', 'smlt10.png', 3);
 
--- ì—¬ë¦„ ë¸Œë¼ì´íŠ¸ --
-insert into celeb values('ì•„ì´ë¦°', 'smbr1.png', 4);
-insert into celeb values('í‹°íŒŒë‹ˆ', 'smbr2.png', 4);
-insert into celeb values('ê¹€ì†Œí˜„', 'smbr3.png', 4);
-insert into celeb values('íƒœì—°', 'smbr4.png', 4);
-insert into celeb values('ì„¤ì•„', 'smbr5.png', 4);
-insert into celeb values('í¬ì§„', 'smbr6.png', 4);
-insert into celeb values('ë‹¤í˜„', 'smbr7.png', 4);
-insert into celeb values('ë…¸ì •ì˜', 'smbr8.png', 4);
-insert into celeb values('ì´ìœ ë¹„', 'smbr9.png', 4);
-insert into celeb values('ë¬¸ë³„', 'smbr10.png', 4);
+-- ¿©¸§ ºê¶óÀÌÆ® --
+insert into celeb values('¾ÆÀÌ¸°', 'smbr1.png', 4);
+insert into celeb values('Æ¼ÆÄ´Ï', 'smbr2.png', 4);
+insert into celeb values('±è¼ÒÇö', 'smbr3.png', 4);
+insert into celeb values('ÅÂ¿¬', 'smbr4.png', 4);
+insert into celeb values('¼³¾Æ', 'smbr5.png', 4);
+insert into celeb values('ÈñÁø', 'smbr6.png', 4);
+insert into celeb values('´ÙÇö', 'smbr7.png', 4);
+insert into celeb values('³ëÁ¤ÀÇ', 'smbr8.png', 4);
+insert into celeb values('ÀÌÀ¯ºñ', 'smbr9.png', 4);
+insert into celeb values('¹®º°', 'smbr10.png', 4);
 
--- ì—¬ë¦„ ë®¤íŠ¸ --
-insert into celeb values('ê¹€ê³ ì€', 'smmt1.png', 5);
-insert into celeb values('ì „ì§€í˜„', 'smmt2.png', 5);
-insert into celeb values('ê¹€íƒœë¦¬', 'smmt3.png', 5);
-insert into celeb values('ìœ ì¬ì„', 'smmt4.png', 5);
-insert into celeb values('ìœ¡ì„±ì¬', 'smmt5.png', 5);
-insert into celeb values('ì§„', 'smmt6.png', 5);
-insert into celeb values('ìœ¤ë‘ì¤€', 'smmt7.png', 5);
-insert into celeb values('ì´ê´‘ìˆ˜', 'smmt8.png', 5);
-insert into celeb values('ì‚¬ë‚˜', 'smmt9.png', 5);
-insert into celeb values('ìŠ¬ê¸°', 'smmt10.png', 5);
+-- ¿©¸§ ¹ÂÆ® --
+insert into celeb values('±è°íÀº', 'smmt1.png', 5);
+insert into celeb values('ÀüÁöÇö', 'smmt2.png', 5);
+insert into celeb values('±èÅÂ¸®', 'smmt3.png', 5);
+insert into celeb values('À¯Àç¼®', 'smmt4.png', 5);
+insert into celeb values('À°¼ºÀç', 'smmt5.png', 5);
+insert into celeb values('Áø', 'smmt6.png', 5);
+insert into celeb values('À±µÎÁØ', 'smmt7.png', 5);
+insert into celeb values('ÀÌ±¤¼ö', 'smmt8.png', 5);
+insert into celeb values('»ç³ª', 'smmt9.png', 5);
+insert into celeb values('½½±â', 'smmt10.png', 5);
 
--- ê°€ì„ ë®¤íŠ¸ --
-insert into celeb values('ì œë‹ˆ', 'atmt1.png', 6);
-insert into celeb values('ì‹ ì„¸ê²½', 'atmt2.png', 6);
-insert into celeb values('ë¡œì œ', 'atmt3.png', 6);
-insert into celeb values('ì›¬ë””', 'atmt4.png', 6);
-insert into celeb values('ë°•ì„œì¤€', 'atmt5.png', 6);
-insert into celeb values('ëª¨ëª¨', 'atmt6.png', 6);
-insert into celeb values('ìœ ì•„', 'atmt7.png', 6);
-insert into celeb values('ì´ì„±ê²½', 'atmt8.png', 6);
-insert into celeb values('ì´ë‚˜ì€', 'atmt9.png', 6);
-insert into celeb values('ë¦¬ì‚¬', 'atmt10.png', 6);
+-- °¡À» ¹ÂÆ® --
+insert into celeb values('Á¦´Ï', 'atmt1.png', 6);
+insert into celeb values('½Å¼¼°æ', 'atmt2.png', 6);
+insert into celeb values('·ÎÁ¦', 'atmt3.png', 6);
+insert into celeb values('À¢µğ', 'atmt4.png', 6);
+insert into celeb values('¹Ú¼­ÁØ', 'atmt5.png', 6);
+insert into celeb values('¸ğ¸ğ', 'atmt6.png', 6);
+insert into celeb values('À¯¾Æ', 'atmt7.png', 6);
+insert into celeb values('ÀÌ¼º°æ', 'atmt8.png', 6);
+insert into celeb values('ÀÌ³ªÀº', 'atmt9.png', 6);
+insert into celeb values('¸®»ç', 'atmt10.png', 6);
 
--- ê°€ì„ ìŠ¤íŠ¸ë¡± --
-insert into celeb values('ê¹€ë¯¼ì£¼', 'atst1.png', 7);
-insert into celeb values('ì˜ˆë¦¬', 'atst2.png', 7);
-insert into celeb values('í•´ì°¬', 'atst3.png', 7);
-insert into celeb values('ë²„ë…¼', 'atst4.png', 7);
-insert into celeb values('ë·”', 'atst5.png', 7);
-insert into celeb values('í™”ì‚¬', 'atst6.png', 7);
-insert into celeb values('í•œì˜ˆìŠ¬', 'atst7.png', 7);
-insert into celeb values('í˜„ì•„', 'atst8.png', 7);
-insert into celeb values('ê¹€í¬ì„ ', 'atst9.png', 7);
-insert into celeb values('í•˜ë‹ˆ', 'atst10.png', 7);
-
-
--- ê°€ì„ ë”¥ --
-insert into celeb values('ê³ ìœ¤ì •', 'atdp1.png', 8);
-insert into celeb values('ì´íš¨ë¦¬', 'atdp2.png', 8);
-insert into celeb values('ê¹€ìœ ì •', 'atdp3.png', 8);
-insert into celeb values('ì „ì†Œë¯¸', 'atdp4.png', 8);
-insert into celeb values('ì˜ˆì§€', 'atdp5.png', 8);
-insert into celeb values('ìœ ë‚˜', 'atdp6.png', 8);
-insert into celeb values('ê¹€ì„¸ì •', 'atdp7.png', 8);
-insert into celeb values('ì¼€ì´', 'atdp8.png', 8);
-insert into celeb values('í•œê³ ì€', 'atdp9.png', 8);
-insert into celeb values('íƒ•ì›¨ì´', 'atdp10.png', 8);
+-- °¡À» ½ºÆ®·Õ --
+insert into celeb values('±è¹ÎÁÖ', 'atst1.png', 7);
+insert into celeb values('¿¹¸®', 'atst2.png', 7);
+insert into celeb values('ÇØÂù', 'atst3.png', 7);
+insert into celeb values('¹ö³í', 'atst4.png', 7);
+insert into celeb values('ºß', 'atst5.png', 7);
+insert into celeb values('È­»ç', 'atst6.png', 7);
+insert into celeb values('ÇÑ¿¹½½', 'atst7.png', 7);
+insert into celeb values('Çö¾Æ', 'atst8.png', 7);
+insert into celeb values('±èÈñ¼±', 'atst9.png', 7);
+insert into celeb values('ÇÏ´Ï', 'atst10.png', 7);
 
 
--- ê²¨ìš¸ ë¸Œë¼ì´íŠ¸ --
-insert into celeb values('ì±„ì˜', 'wtbr1.png', 9);
-insert into celeb values('ì–‘ìš”ì„­', 'wtbr2.png', 9);
-insert into celeb values('ë¹„ë‹ˆ', 'wtbr3.png', 9);
-insert into celeb values('ì„ ë¯¸', 'wtbr4.png', 9);
-insert into celeb values('ì²­í•˜', 'wtbr5.png', 9);
-insert into celeb values('ì¹´ë¦¬ë‚˜', 'wtbr6.png', 9);
-insert into celeb values('ì„ì§€ì—°', 'wtbr7.png', 9);
-insert into celeb values('ê¹€ì˜¥ë¹ˆ', 'wtbr8.png', 9);
-insert into celeb values('ì •ì€ì±„', 'wtbr9.png', 9);
-insert into celeb values('ìœ ë¦¬', 'wtbr10.png', 9);
+-- °¡À» µö --
+insert into celeb values('°íÀ±Á¤', 'atdp1.png', 8);
+insert into celeb values('ÀÌÈ¿¸®', 'atdp2.png', 8);
+insert into celeb values('±èÀ¯Á¤', 'atdp3.png', 8);
+insert into celeb values('Àü¼Ò¹Ì', 'atdp4.png', 8);
+insert into celeb values('¿¹Áö', 'atdp5.png', 8);
+insert into celeb values('À¯³ª', 'atdp6.png', 8);
+insert into celeb values('±è¼¼Á¤', 'atdp7.png', 8);
+insert into celeb values('ÄÉÀÌ', 'atdp8.png', 8);
+insert into celeb values('ÇÑ°íÀº', 'atdp9.png', 8);
+insert into celeb values('ÅÁ¿şÀÌ', 'atdp10.png', 8);
 
--- ê²¨ìš¸ ë”¥ --
-insert into celeb values('ì†Œì—°', 'wtdp1.png', 10);
-insert into celeb values('ì´ìˆ˜í˜', 'wtdp2.png', 10);
-insert into celeb values('ì˜¥íƒì—°', 'wtdp3.png', 10);
-insert into celeb values('ê¹€í˜œìˆ˜', 'wtdp4.png', 10);
-insert into celeb values('ë¬¸ê·¼ì˜', 'wtdp5.png', 10);
-insert into celeb values('ì§€ì„ì§„', 'wtdp6.png', 10);
-insert into celeb values('ì´ë‹¤í¬', 'wtdp7.png', 10);
-insert into celeb values('ë””ì˜¤', 'wtdp8.png', 10);
-insert into celeb values('ì§€ìˆ˜', 'wtdp9.png', 10);
-insert into celeb values('ì´í•˜ëŠ¬', 'wtdp10.png', 10);
+
+-- °Ü¿ï ºê¶óÀÌÆ® --
+insert into celeb values('Ã¤¿µ', 'wtbr1.png', 9);
+insert into celeb values('¾ç¿ä¼·', 'wtbr2.png', 9);
+insert into celeb values('ºñ´Ï', 'wtbr3.png', 9);
+insert into celeb values('¼±¹Ì', 'wtbr4.png', 9);
+insert into celeb values('Ã»ÇÏ', 'wtbr5.png', 9);
+insert into celeb values('Ä«¸®³ª', 'wtbr6.png', 9);
+insert into celeb values('ÀÓÁö¿¬', 'wtbr7.png', 9);
+insert into celeb values('±è¿Áºó', 'wtbr8.png', 9);
+insert into celeb values('Á¤ÀºÃ¤', 'wtbr9.png', 9);
+insert into celeb values('À¯¸®', 'wtbr10.png', 9);
+
+-- °Ü¿ï µö --
+insert into celeb values('¼Ò¿¬', 'wtdp1.png', 10);
+insert into celeb values('ÀÌ¼öÇõ', 'wtdp2.png', 10);
+insert into celeb values('¿ÁÅÃ¿¬', 'wtdp3.png', 10);
+insert into celeb values('±èÇı¼ö', 'wtdp4.png', 10);
+insert into celeb values('¹®±Ù¿µ', 'wtdp5.png', 10);
+insert into celeb values('Áö¼®Áø', 'wtdp6.png', 10);
+insert into celeb values('ÀÌ´ÙÈñ', 'wtdp7.png', 10);
+insert into celeb values('µğ¿À', 'wtdp8.png', 10);
+insert into celeb values('Áö¼ö', 'wtdp9.png', 10);
+insert into celeb values('ÀÌÇÏ´Ì', 'wtdp10.png', 10);
 
 
 col cl_name for a10;
@@ -228,131 +228,6 @@ col cl_image for a10;
 col cl_color for 999;
 
 select * from celeb order by cl_color;
-
-
------------------------------------------------------------------
---company í…Œì´ë¸” (í¼ìŠ¤ë„ ì»¬ëŸ¬ ì§„ë‹¨ì—…ì²´)
------------------------------------------------------------------
-
-drop sequence cmpseq;
-create sequence cmpseq 
-start with 1 
-increment by 1 
-nocache ;
-
-create table company( 
-	cmp_num number primary key,
-	cmp_name varchar2(50),
-	cmp_addr varchar2(50),
-	cmp_price number,
-	cmp_station varchar2(20),
-	cmp_x varchar2(20),
-	cmp_y varchar2(20)
-);
-
-insert into company values(	cmpseq.nextval,	'ì•„ë€ í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨',	'ì„œìš¸ ë§ˆí¬êµ¬ ë™êµë¡œ18ê¸¸ 37 2ì¸µ',	290000,	'í™ëŒ€ì…êµ¬ì—­, í•©ì •ì—­',	'126.9179178',	'37.5537583'	);
-insert into company values(	cmpseq.nextval,	'í•„ë¦° í¼ìŠ¤ë„ì»¬ëŸ¬ì§„ë‹¨ ì´ë¯¸ì§€ì»¨ì„¤íŒ…',	'ì„œìš¸ ë§ˆí¬êµ¬ ì›”ë“œì»µë¡œ10ê¸¸ 17 2ì¸µ',	140000,	'ë§ì›ì—­, í•©ì •ì—­',	'126.9126668',	'37.5548526'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ê°€ì‚°ë‹¤ í¼ìŠ¤ë„ì»¬ëŸ¬ì§„ë‹¨ í™ëŒ€ë™êµì„¼í„°',	'ì„œìš¸ ë§ˆí¬êµ¬ ë™êµë¡œ 192-1 3ì¸µ',	100000,	'í™ëŒ€ì…êµ¬ì—­',	'126.9227512',	'37.5572882'	);
-insert into company values(	cmpseq.nextval,	'ë‹´ì¨í¼ìŠ¤ë„ì»¬ëŸ¬ì§„ë‹¨',	'ì„œìš¸ ë§ˆí¬êµ¬ ì™€ìš°ì‚°ë¡œ29ê¸¸ 47 3ì¸µ',	160000,	'í™ëŒ€ì…êµ¬ì—­',	'126.9273241',	'37.5556357'	);
-insert into company values(	cmpseq.nextval,	'ë©”ì´í¬ì˜¨ì „íˆ í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨',	'ì„œìš¸ ë§ˆí¬êµ¬ ì™€ìš°ì‚°ë¡œ35ê¸¸ 19 4ì¸µ ë©”ì´í¬ì˜¨ì „íˆ',	200000,	'í™ëŒ€ì…êµ¬ì—­',	'126.9293858',	'37.5558635'	);
-insert into company values(	cmpseq.nextval,	'ì˜¤ë ëª¨ í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨',	'ì„œìš¸ ì„±ë™êµ¬ ì™•ì‹­ë¦¬ë¡œ16ê°€ê¸¸ 10-30 6ì¸µ',	140000,	'ëšì„¬ì—­',	'127.0453339',	'37.5506313'	);
-insert into company values(	cmpseq.nextval,	'CCLì»¬ëŸ¬ì´ë¯¸ì§€ìœµí•©ì—°êµ¬ì†Œ í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨',	'ì„œìš¸ ì„±ë™êµ¬ ì„±ìˆ˜ì´ë¡œ 66 ì„œìš¸ìˆ² ë“œë¦¼íƒ€ì›Œ 711í˜¸',	150000,	'ì„±ìˆ˜ì—­',	'127.0561825',	'37.5405547'	);
-insert into company values(	cmpseq.nextval,	'í•œêµ­íŒ¨ì…˜ì‹¬ë¦¬ì—°êµ¬ì› í¼ìŠ¤ë„ì»¬ëŸ¬ì§„ë‹¨',	'ì„œìš¸ ê°•ë‚¨êµ¬ ì„ ë¦‰ë¡œ 840 4ì¸µ í•œêµ­íŒ¨ì…˜ì‹¬ë¦¬ì—°êµ¬ì›',	280000,	'ì••êµ¬ì •ë¡œë°ì˜¤ì—­',	'127.0406647',	'37.5268112'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ê°€ì‚°ë‹¤ í¼ìŠ¤ë„ì»¬ëŸ¬ì§„ë‹¨ ê±´ëŒ€ì„¼í„°',	'ì„œìš¸ ê´‘ì§„êµ¬ ì•„ì°¨ì‚°ë¡œ34ê¸¸ 36 3ì¸µ',	100000,	'ê±´ëŒ€ì…êµ¬ì—­ ',	'127.0689244',	'37.5386108'	);
-insert into company values(	cmpseq.nextval,	'ì¡°ì´ì»¬ëŸ¬ê³µë°© í¼ìŠ¤ë„ì»¬ëŸ¬ì§„ë‹¨',	'ì„œìš¸ ì€í‰êµ¬ í†µì¼ë¡œ 780 ë¯¸ì„±ì•„íŒŒíŠ¸ìƒê°€ 1ì¸µ ì¡°ì´ì»¬ëŸ¬ê³µë°©',	180000,	'ë¶ˆê´‘ì—­',	'126.9283096',	'37.6149286'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ë¼ì´ì¦ˆ í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨',	'ì„œìš¸ ì„œì´ˆêµ¬ ì‚¬ì„ë‹¹ë¡œ 173 ì„œì „ë¹Œë”© 4ì¸µ,9ì¸µ',	140000,	'ê°•ë‚¨ì—­ ',	'127.0285544',	'37.4927943'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ê³µë°© í¼ìŠ¤ë„ì»¬ëŸ¬ì§„ë‹¨',	'ì„œìš¸ ì„œì´ˆêµ¬ ì‚¬í‰ëŒ€ë¡œ57ê¸¸ 39-1 2ì¸µ',	158000,	'ì‹ ë…¼í˜„ì—­ ',	'127.0226479',	'37.5059293'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ëª¨ì•„ í¼ìŠ¤ë„ì»¬ëŸ¬ì§„ë‹¨',	'ì„œìš¸ ì„œì´ˆêµ¬ ê°•ë‚¨ëŒ€ë¡œ83ê¸¸ 36 í•™ì‚°ë¹Œë”© 2ì¸µ 202í˜¸',	156000,	'ì‹ ë…¼í˜„ì—­ ',	'127.0216668',	'37.5057215'	);
-insert into company values(	cmpseq.nextval,	'í”½ì»¬ëŸ¬ë¸Œëœë”©ì„¼í„° í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨ ì»¬ëŸ¬ë¦¬ìŠ¤íŠ¸',	'ì„œìš¸ ì˜ë“±í¬êµ¬ ë¬¸ë˜ë¶ë¡œ 116',	169000,	'ë¬¸ë˜ì—­',	'126.8980628',	'37.5194432'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ì‹œê·¸ë„ í¼ìŠ¤ë„ì»¬ëŸ¬ì§„ë‹¨ ì‹¤ë²„ì ',	'ì„œìš¸ ê°•ë‚¨êµ¬ ì—­ì‚¼ë¡œ20ê¸¸ 12 ì„±ìš°ë¹Œë”© 4ì¸µ ì»¬ëŸ¬ì‹œê·¸ë„',	138000,	'ì—­ì‚¼ì—­ ',	'127.0376275',	'37.4944506'	);
-insert into company values(	cmpseq.nextval,	'í”„ë¡¬ì»¬ëŸ¬ í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨',	'ì„œìš¸ ì˜ë“±í¬êµ¬ ë¬¸ë˜ë¡œ 180 ì„¼íŠ¸ëŸ´ í‘¸ë¥´ì§€ì˜¤ì‹œí‹° 415í˜¸',	140000,	'ì˜ë“±í¬ì—­,ë¬¸ë˜ì—­',	'126.9019541',	'37.5179756'	);
-insert into company values(	cmpseq.nextval,	'ë”ì¦ˆ í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨',	'ì„œìš¸ ë§ˆí¬êµ¬ ë§ì›ë¡œ 21 2ì¸µ',	158000,	'ë§ì›ì—­',	'126.899403',	'37.5563623'	);
-insert into company values(	cmpseq.nextval,	'ìœ ì–´ì»¬ëŸ¬ì¦ˆ:ì»¬ëŸ¬ê³° í¼ìŠ¤ë„ì»¬ëŸ¬ì§„ë‹¨',	'ì„œìš¸ ê°•ë‚¨êµ¬ í•™ë™ë¡œ55ê¸¸ 17 4ì¸µ',	140000,	'ê°•ë‚¨êµ¬ì²­ì—­',	'127.0415693',	'37.518603'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ì•¤ì„¼íŠ¸ í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨',	'ì„œìš¸ ì„œì´ˆêµ¬ ë°©ë°°ì²œë¡œ16ê¸¸ 11-9 1ì¸µ',	189000,	'ì´ì‹ ëŒ€ì…êµ¬',	'126.9835279',	'37.4825026'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬í™€ë¦­ ê³¨ê²©í• í¼ìŠ¤ë„ì»¬ëŸ¬ì§„ë‹¨',	'ì„œìš¸ ê°•ë‚¨êµ¬ í…Œí—¤ë€ë¡œ 310 13ì¸µ 1301í˜¸',	152000,	'ì„ ë¦‰ì—­',	'127.0447848',	'37.5028251'	);
-insert into company values(	cmpseq.nextval,	'ì´ìŒì»¬ëŸ¬ í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨',	'ì„œìš¸ êµ¬ë¡œêµ¬ ê²½ì¸ë¡œ 661 ì‹ ë„ë¦¼1ì°¨í‘¸ë¥´ì§€ì˜¤ 103ë™',	160000,	'ì‹ ë„ë¦¼ì—­',	'126.8877437',	'37.5094204'	);
-insert into company values(	cmpseq.nextval,	'ë””ìì¸ë¯¸ í¼ìŠ¤ë„ì»¬ëŸ¬ì§„ë‹¨',	'ì„œìš¸ ê°•ë‚¨êµ¬ í…Œí—¤ë€ë¡œ 327 413í˜¸',	170000,	'ì„ ë¦‰ì—­ ',	'127.0470626',	'37.5045798'	);
-insert into company values(	cmpseq.nextval,	'í‘¸ë¥¸ë‹¬ì»¬ëŸ¬ í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨',	'ì„œìš¸ ì˜ë“±í¬êµ¬ ë„ë¦¼ì²œë¡œ19ê¸¸ 11 4ì¸µ 411í˜¸',	158000,	'êµ¬ë¡œë””ì§€í„¸ë‹¨ì§€ì—­',	'126.9001891',	'37.4866104'	);
-insert into company values(	cmpseq.nextval,	'ì´ì•ˆì»¬ëŸ¬ë© í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨',	'ì„œìš¸ ì„œì´ˆêµ¬ ì‚¬ì„ë‹¹ë¡œ 178 ì§€í•˜ 1ì¸µ ë³µë„ ë ì´ì•ˆ ì»¬ëŸ¬ë©',	138000,	'ê°•ë‚¨ì—­',	'127.0291018',	'37.4921331'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ë¸”ë‘ í¼ìŠ¤ë„ì»¬ëŸ¬ì§„ë‹¨',	'ì„œìš¸ ì†¡íŒŒêµ¬ ì˜¬ë¦¼í”½ë¡œ12ê¸¸ 62 2ì¸µ 202í˜¸',	200000,	'ì‚¼ì „ì—­ ',	'127.08292',	'37.5062097'	);
-insert into company values(	cmpseq.nextval,	'í¼ìŠ¤ë„ë¦¬ë¸Œ í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨',	'ì„œìš¸ ê´€ì•…êµ¬ ì‹ ì›ë¡œ 35 8ì¸µ 15í˜¸',	110000,	'ì‹ ë¦¼ì—­',	'126.9289185',	'37.4822382'	);
-insert into company values(	cmpseq.nextval,	'í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨ ì˜¤ìš´ì´ë¯¸ì§€ë©',	'ì„œìš¸ ê°•ì„œêµ¬ ê³µí•­ëŒ€ë¡œ 186 ë¡œë€íƒ€ì›Œ 706í˜¸',	120000,	'ë§ˆê³¡ì—­',	'126.8280371',	'37.5591043'	);
-insert into company values(	cmpseq.nextval,	'íƒ‘ ì»¬ëŸ¬ í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨',	'ì„œìš¸ ê°•ì„œêµ¬ ë§ˆê³¡ì¤‘ì•™ë¡œ 161-8 Aë™ 10ì¸µ 1011í˜¸',	120000,	'ë§ˆê³¡ë‚˜ë£¨ì—­',	'126.8270966',	'37.5689359'	);
-insert into company values(	cmpseq.nextval,	'ìœ„ì˜¬ì»¬ëŸ¬ í¼ìŠ¤ë„ì»¬ëŸ¬ì§„ë‹¨',	'ì„œìš¸ ê°•ë™êµ¬ ìƒì¼ë¡œ12ê¸¸ 54 JíŒŒí¬ 202í˜¸',	150000,	'ê°•ì¼ì—­ ',	'127.174276',	'37.5548669'	);
-insert into company values(	cmpseq.nextval,	'í¼ìŠ¤ë„ì»¬ëŸ¬, ê³¨ê²©ì§„ë‹¨ ì‡ì¸ ë§ˆì´ì»¬ëŸ¬',	'ì„œìš¸ ê°•ë‚¨êµ¬ ê°•ë‚¨ëŒ€ë¡œ128ê¸¸ 61 í˜„ì„±512ë¹Œë”© 401í˜¸',	180000,	'í•™ë™ì—­ ',	'127.0263162',	'37.512098'	);
-insert into company values(	cmpseq.nextval,	'ì˜¤ë¡¯ì´ì»¬ëŸ¬ í¼ìŠ¤ë„ì»¬ëŸ¬ ê³¨ê²©ì§„ë‹¨',	'ì„œìš¸ ê´€ì•…êµ¬ ë‚¨ë¶€ìˆœí™˜ë¡œ 1911 2ì¸µ',	180000,	'ë‚™ì„±ëŒ€ì—­',	'126.961871',	'37.4779955'	);
-insert into company values(	cmpseq.nextval,	'ë¹„ë¹„ë“œê°• í¼ìŠ¤ë„ì»¬ëŸ¬',	'ì„œìš¸ ë§ˆí¬êµ¬ ì–‘í™”ë¡œ 193',	175000,	'í™ëŒ€ì…êµ¬ì—­ ',	'126.9258946',	'37.5587739'	);
-insert into company values(	cmpseq.nextval,	'í¼ìŠ¤ë„ì»¬ëŸ¬ ìƒ‰ë‹¤ë¥´ë‹¤',	'ì„œìš¸ ë§ˆí¬êµ¬ ì–‘í™”ë¡œ 175 ë§ˆì ¤ë€21',	160000,	'í™ëŒ€ì…êµ¬ì—­ ',	'126.924381',	'37.5577543'	);
-insert into company values(	cmpseq.nextval,	'ëŠë¡œì•„ í¼ìŠ¤ë„ì»¬ëŸ¬',	'ì„œìš¸ ë§ˆí¬êµ¬ ë™êµë¡œ 248-2 3ì¸µ 302í˜¸',	150000,	'í™ëŒ€ì…êµ¬ì—­',	'126.9245307',	'37.5621234'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ì˜ì‹¸ì´ì–´í‹° í¼ìŠ¤ë„ì»¬ëŸ¬',	'ì„œìš¸ ë§ˆí¬êµ¬ ë™êµë¡œ 215 ì»¬ëŸ¬ì˜ì‹¸ì´ì–´í‹°',	200000,	'í™ëŒ€ì…êµ¬ì—­',	'126.9234822',	'37.5592515'	);
-insert into company values(	cmpseq.nextval,	'ì˜¨ë„íŒ”ë ˆíŠ¸ í¼ìŠ¤ë„ì»¬ëŸ¬',	'ì„œìš¸ ë§ˆí¬êµ¬ ì–‘í™”ë¡œ 157 íŒŒë¼ë‹¤ì´ìŠ¤í…” 10ì¸µ 1007í˜¸',	140000,	'í™ëŒ€ì…êµ¬ì—­',	'126.9229417',	'37.5566855'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ì˜¤ë¸Œë°ì´ í¼ìŠ¤ë„ì»¬ëŸ¬ì§„ë‹¨',	'ì„œìš¸ ì„±ë™êµ¬ ì„œìš¸ìˆ²9ê¸¸ 5 4ì¸µ',	138000,	'ëšì„¬ì—­ ',	'127.0435731',	'37.5483984'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ë°”ì´ìœ  í¼ìŠ¤ë„ì»¬ëŸ¬',	'ì„œìš¸ ê´‘ì§„êµ¬ ê´‘ë‚˜ë£¨ë¡œ 386 ê±´ëŒ€ í•˜ì´ë·° ì˜¤í”¼ìŠ¤í…” 709í˜¸',	158000,	'ì–´ë¦°ì´ëŒ€ê³µì›ì—­',	'127.0723072',	'37.547397'	);
-insert into company values(	cmpseq.nextval,	'ì²­ë‹´í¼ìŠ¤ë„ì»¬ëŸ¬ì„¸ë¸ì—ì´ì•Œ',	'ì„œìš¸ ê°•ë‚¨êµ¬ ì˜ë™ëŒ€ë¡œ 644 7F',	136000,	'ì²­ë‹´ì—­',	'127.0580297',	'37.5193096'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ì¸„',	'ì„œìš¸ ì„±ë™êµ¬ ì—°ë¬´ì¥5ê°€ê¸¸ 25 516í˜¸',	110000,	'ì„±ìˆ˜ì—­',	'127.0556438',	'37.5435802'	);
-insert into company values(	cmpseq.nextval,	'ë¼ìƒˆë¼ìƒ‰ì±„ì—°êµ¬ì†Œ',	'ì„œìš¸ ì†¡íŒŒêµ¬ ë°±ì œê³ ë¶„ë¡œ 501 ì²­í˜¸ì˜¤í”¼ìŠ¤í…” 405í˜¸',	180000,	'í•œì„±ë°±ì œì—­',	'127.1146774',	'37.5152322'	);
-insert into company values(	cmpseq.nextval,	'ë ˆì¸„',	'ì„œìš¸ ì¤‘ë‘êµ¬ ë©´ëª©ë¡œ43ê¸¸ 19 201',	180000,	'ì‚¬ê°€ì •ì—­',	'127.0868158',	'37.5813337'	);
-insert into company values(	cmpseq.nextval,	'ì œì´ì•¤ì´ë¯¸ì§€í¼ìŠ¤ë„ì´ë¯¸ì§€ë¸Œëœë”©ì—°êµ¬ì†Œ',	'ì„œìš¸ ê°•ë‚¨êµ¬ ì‚¼ì„±ë¡œ 763 ê¸ˆíƒí”„ë¼ì 3ì¸µ, 301',	240000,	'ì²­ë‹´ì—­',	'127.0476713',	'37.522921'	);
-insert into company values(	cmpseq.nextval,	'ëˆ„ë²¨ ì´ë§ˆì£¼',	'ì„œìš¸ ì„±ë™êµ¬ ì•„ì°¨ì‚°ë¡œ 126 ì„±ìˆ˜ë™ë”ë¦¬ë¸Œ ì„¸ì¢…íƒ€ì›Œ 303í˜¸',	280000,	'ì„±ìˆ˜ì—­',	'127.0582301',	'37.5434075'	);
-insert into company values(	cmpseq.nextval,	'ëª½ë„ì»¬ëŸ¬ë© ë³¸ì ',	'ì„œìš¸ ê°•ë‚¨êµ¬ ì••êµ¬ì •ë¡œ28ê¸¸ 22-11 2ì¸µ',	270000,	'ì••êµ¬ì •ì—­',	'127.026623',	'37.5249935'	);
-insert into company values(	cmpseq.nextval,	'ë¬´ë“œì»¬ë ‰íŠ¸ ê°•ë‚¨ì ',	'ì„œìš¸ ê°•ë‚¨êµ¬ í…Œí—¤ë€ë¡œ6ê¸¸ 7 4ì¸µ',	260000,	'ê°•ë‚¨ì—­',	'127.030679',	'37.4981759'	);
-insert into company values(	cmpseq.nextval,	'ë§ˆì´ì‡¼í¼ ì••êµ¬ì •ì ',	'ì„œìš¸ ê°•ë‚¨êµ¬ ì–¸ì£¼ë¡œ153ê¸¸ 10-6 2ì¸µ',	260000,	'ì••êµ¬ì •ì—­',	'127.0323979',	'37.5231212'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ì—ì´ì¹˜',	'ì„œìš¸ ê°•ë‚¨êµ¬ í•™ë™ë¡œ1ê¸¸ 19 5ì¸µ',	200000,	'ë…¼í˜„ì—­ ',	'127.021593',	'37.5126835'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ì¦ˆì•„íŠ¸',	'ì„œìš¸ ê°•ë‚¨êµ¬ ê°•ë‚¨ëŒ€ë¡œ156ê¸¸ 20 ì •ì›ë¹Œë”© 2ì¸µ',	170000,	'ì‹ ì‚¬ì—­ ',	'127.0208133',	'37.5182433'	);
-insert into company values(	cmpseq.nextval,	'ë¦¬ì”¨ì—˜ ì»¬ëŸ¬ ìŠ¤íŠœë””ì˜¤',	'ì„œìš¸ ê°•ë‚¨êµ¬ ì‚¼ì„±ë¡œ57ê¸¸ 28 ì§€ì„ë¹Œë”© 6ì¸µ ë¦¬ì”¨ì—˜',	170000,	'í•œí‹°ì—­',	'127.0587286',	'37.4976861'	);
-insert into company values(	cmpseq.nextval,	'ë¬´ë“œí”ŒëŸ¬ìŠ¤',	'ì„œìš¸ ê°•ë‚¨êµ¬ ê°•ë‚¨ëŒ€ë¡œ156ê¸¸ 18 ë²”ì›ë¹Œë”© 5ì¸µ 502í˜¸',	170000,	'ì‹ ì‚¬ì—­',	'127.0206775',	'37.5181862'	);
-insert into company values(	cmpseq.nextval,	'ë‹¤ì±„ë¡œìœ¤ í¼ìŠ¤ë„ì»¬ëŸ¬',	'ì„œìš¸ ì†¡íŒŒêµ¬ ë°±ì œê³ ë¶„ë¡œ39ê¸¸ 29 301í˜¸',	130000,	'ì„ì´Œì—­',	'127.1035534',	'37.5067333'	);
-insert into company values(	cmpseq.nextval,	'ì˜¤ì½œë¡œë¥´ ì‹ ì‚¬ì ',	'ì„œìš¸ ê°•ë‚¨êµ¬ ê°•ë‚¨ëŒ€ë¡œ156ê¸¸ 20 ì •ì›ë¹Œë”© 2ì¸µ',	180000,	'ì‹ ì‚¬ì—­',	'127.0208133',	'37.5182433'	);
-insert into company values(	cmpseq.nextval,	'ì‚¼ì›”ë¶€í‹°í¬',	'ì„œìš¸ ê°•ë‚¨êµ¬ ì••êµ¬ì •ë¡œ4ê¸¸ 20 ë„ë ˆì•„ë¹Œ 203í˜¸',	180000,	'ì‹ ì‚¬ì—­',	'127.0203987',	'37.5213824'	);
-insert into company values(	cmpseq.nextval,	'ì˜ˆë‘ ë·°í‹° ì•„ì¹´ë°ë¯¸',	'ì„œìš¸ ê°•ë‚¨êµ¬ í•™ë™ë¡œ38ê¸¸ 42 2ì¸µ',	150000,	'í•™ë™ì—­',	'127.0345859',	'37.5120685'	);
-insert into company values(	cmpseq.nextval,	'ì± ë°ì•„í‹€ë¦¬ì— í¼ìŠ¤ë„ì»¬ëŸ¬ ë©”ì´í¬ì—…',	'ì„œìš¸ ê°•ë¶êµ¬ ë„ë´‰ë¡œ 328 15ì¸µ 1516í˜¸',	170000,	'ìˆ˜ìœ ì—­',	'127.0252072',	'37.6370653'	);
-insert into company values(	cmpseq.nextval,	'ì•„ë‹ˆë§ˆë ˆ',	'ì„œìš¸ ì„±ë¶êµ¬ í™”ë‘ë¡œ11ê¸¸ 17-9 1ì¸µ 101í˜¸',	280000,	'ì›”ê³¡ì—­',	'127.0410667',	'37.6031718'	);
-insert into company values(	cmpseq.nextval,	'ë”¸ë¡œí¼ìŠ¤ë„ì»¬ëŸ¬ì»¨ì„¤íŒ…',	'ì„œìš¸ ì„œì´ˆêµ¬ ë°©ë°°ì²œë¡œ2ê¸¸ 7',	160000,	'ì‚¬ë‹¹ì—­',	'126.9834302',	'37.4772861'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ì•„ë¥´ë–¼ í¼ìŠ¤ë„ì»¬ëŸ¬',	'ì„œìš¸ ì¢…ë¡œêµ¬ ëŒ€í•™ë¡œ11ê¸¸ 27 4ì¸µ',	200000,	'í˜œí™”ì—­',	'127.0001313',	'37.5820484'	);
-insert into company values(	cmpseq.nextval,	'ìœ ì»¬ëŸ¬ í¼ìŠ¤ë„ì»¬ëŸ¬',	'ì„œìš¸ ê°•ì„œêµ¬ ê³°ë‹¬ë˜ë¡œ20ê¸¸ 18 í’ì›íŒ°ë¦¬ìŠ¤ B102í˜¸',	190000,	'ê¹Œì¹˜ì‚°ì—­',	'126.8426811',	'37.5293934'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬í€¸ í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨',	'ì„œìš¸ ì„±ë™êµ¬ ì„±ìˆ˜ì¼ë¡œ 111 1214',	300000,	'ëšì„¬ì—­',	'127.0515434',	'37.5502733'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ë§ˆì¸',	'ì„œìš¸ ì†¡íŒŒêµ¬ ë°±ì œê³ ë¶„ë¡œ7ê¸¸ 42-37',	130000,	'ì ì‹¤ìƒˆë‚´ì—­',	'127.0841686',	'37.5091894'	);
-insert into company values(	cmpseq.nextval,	'ë””ì–´ìœ ì–´ì»¬ëŸ¬',	'ì„œìš¸ ì†¡íŒŒêµ¬ ì¶©ë¯¼ë¡œ 66 7ì¸µ T-7014í˜¸',	120000,	'ì¥ì§€ì—­',	'127.1249964',	'37.4776483'	);
-insert into company values(	cmpseq.nextval,	'ë£©ìŠ¤ì»¬ëŸ¬',	'ì„œìš¸ ì†¡íŒŒêµ¬ ì„ì´Œí˜¸ìˆ˜ë¡œ 268 208í˜¸',	130000,	'ì„ì´Œì—­',	'127.1057107',	'37.5097096'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ë¬´ì´ í¼ìŠ¤ë„ì»¬ëŸ¬',	'ì„œìš¸ ë™ì‘êµ¬ ë™ì‘ëŒ€ë¡œ9ê°€ê¸¸ 21 1ì¸µ 102í˜¸',	158000,	'ì‚¬ë‹¹ì—­',	'126.9787727',	'37.4794938'	);
-insert into company values(	cmpseq.nextval,	'í¼ìŠ¤ë„ì»¬ëŸ¬ ì˜¨',	'ì„œìš¸ ê´€ì•…êµ¬ ë‚¨ë¶€ìˆœí™˜ë¡œ218ê¸¸ 27 302(ë´‰ì²œë™, ê´€ì „ Gíƒ€ì›Œ)',	170000,	'ì„œìš¸ëŒ€ì…êµ¬ì—­',	'126.9505017',	'37.4800384'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ ë§ˆì§€ë„',	'ì„œìš¸ ê´€ì•…êµ¬ ë³´ë¼ë§¤ë¡œ2ê¸¸ 28 1ì¸µ 101í˜¸',	140000,	'ë‹¹ê³¡ì—­ ',	'126.9294689',	'37.489718'	);
-insert into company values(	cmpseq.nextval,	'ë‘ë°ë¶€ì»¬ëŸ¬',	'ì„œìš¸ ê´€ì•…êµ¬ ë´‰ì²œë¡œ14ê¸¸ 12 206í˜¸',	168000,	'ë‹¹ê³¡ì—­',	'126.9297726',	'37.4874903'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ë°ì´ì¦ˆ',	'ì„œìš¸ ê´€ì•…êµ¬ ë´‰ì²œë¡œ45ê¸¸ 8 5ì¸µ',	180000,	'ì„œìš¸ëŒ€ì…êµ¬ì—­',	'126.9494539',	'37.48305'	);
-insert into company values(	cmpseq.nextval,	'í¼ìŠ¤ë„ì»¬ëŸ¬ë‚˜ë‹¤ì›€',	'ì„œìš¸ ê°•ì„œêµ¬ ë§ˆê³¡ì„œë¡œ 158 ì„¼íŠ¸ëŸ´íƒ€ì›Œ2ì°¨ 1109í˜¸',	109000,	'ë§ˆê³¡ë‚˜ë£¨ì—­',	'126.8254305',	'37.5681063'	);
-insert into company values(	cmpseq.nextval,	'í¼ìŠ¤ë„ì»¬ëŸ¬ íœ´ì–´',	'ì„œìš¸ ê°•ì„œêµ¬ ê³µí•­ëŒ€ë¡œ 213 ë³´íƒ€ë‹‰íŒŒí¬íƒ€ì›Œ2 606í˜¸',	115000,	'ë§ˆê³¡ì—­',	'126.8313869',	'37.5596779'	);
-insert into company values(	cmpseq.nextval,	'í¼ìŠ¤ë„ì»¬ëŸ¬ ë‹¹ì‹ ì˜ íŒ”ë ˆíŠ¸',	'ì„œìš¸ ê°•ì„œêµ¬ ê³µí•­ëŒ€ë¡œ 200 706í˜¸(ë§ˆê³¡ë™, ë§ˆê³¡ì§€ì›°íƒ€ì›Œ)',	130000,	'ë§ˆê³¡ì—­',	'126.8295014',	'37.5589733'	);
-insert into company values(	cmpseq.nextval,	'ë§Œë‚˜ë‹¤ì»¬ëŸ¬',	'ì„œìš¸ ê°•ì„œêµ¬ ë§ˆê³¡ì„œë¡œ 152 Bë™ 6ì¸µ 617í˜¸',	110000,	'ë§ˆê³¡ë‚˜ë£¨ì—­',	'126.8256375',	'37.5676575'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬í…”ë§ í¼ìŠ¤ë„ì»¬ëŸ¬',	'ì„œìš¸ ì–‘ì²œêµ¬ ì‹ ì •ì¤‘ì•™ë¡œ 68 4ì¸µ ë§ˆì´ë¹„ì§€ë‹ˆìŠ¤íŒŒíŠ¸ë„ˆ',	179000,	'ì‹ ì •ì—­',	'126.8593407',	'37.5266265'	);
-insert into company values(	cmpseq.nextval,	'í¼ìŠ¤ë„ì»¬ëŸ¬ ê¼´ë¡œë ˆ',	'ì„œìš¸ ì˜ë“±í¬êµ¬ ì„ ìœ ë¡œ49ê¸¸ 20-3 ê·¸ë¦°ë¹Œë”© 302í˜¸',	100000,	'ì„ ìœ ë„ì—­',	'126.8954354',	'37.5367193'	);
-insert into company values(	cmpseq.nextval,	'í™€ë¦¬ëª°ë¦¬ í¼ìŠ¤ë„ì»¬ëŸ¬',	'ì„œìš¸ ë§ˆí¬êµ¬ ë°±ë²”ë¡œ 8 2ì¸µ ILTER',	99000,	'ì‹ ì´Œì—­',	'126.936773',	'37.554087'	);
-insert into company values(	cmpseq.nextval,	'ì„¸ì»¨ë‰´ í¼ìŠ¤ë„ì»¬ëŸ¬',	'ì„œìš¸ ë§ˆí¬êµ¬ ì–´ìš¸ë§ˆë‹¹ë¡œ 96 5ì¸µ 504í˜¸',	110000,	'í™ëŒ€ì…êµ¬ì—­, í•©ì •ì—­',	'126.9222777',	'37.5535274'	);
-insert into company values(	cmpseq.nextval,	'ì˜¤ì½œë¡œë¥´ ì—¬ì˜ë„ì ',	'ì„œìš¸ ì˜ë“±í¬êµ¬ êµ­ì œê¸ˆìœµë¡œ6ê¸¸ 33 ë§¨í•˜íƒ„ë¹Œë”© 1106í˜¸',	180000,	'ì—¬ì˜ë„ì—­',	'126.9269161',	'37.520782'	);
-insert into company values(	cmpseq.nextval,	'ë”ì¦ˆ í¼ìŠ¤ë„ì»¬ëŸ¬ ì§„ë‹¨',	'ì„œìš¸ ë§ˆí¬êµ¬ ë§ì›ë¡œ 21 2ì¸µ',	158000,	'ë§ì›ì—­',	'126.899403',	'37.5563623'	);
-insert into company values(	cmpseq.nextval,	'ë¸”ë ˆìŠ¤ë¯¸ ì—¬ì˜ë„ì ',	'ì„œìš¸ ì˜ë“±í¬êµ¬ êµ­ì œê¸ˆìœµë¡œ6ê¸¸ 30 ë°±ìƒë¹Œë”© 916-917í˜¸',	200000,	'ì—¬ì˜ë„ì—­ ',	'126.9265494',	'37.5217758'	);
-insert into company values(	cmpseq.nextval,	'ë¼ì—˜ë‚˜',	'ì„œìš¸ ì˜ë“±í¬êµ¬ êµ­ì œê¸ˆìœµë¡œ6ê¸¸ 33',	119800,	'ì—¬ì˜ë„ì—­',	'126.9269161',	'37.520782'	);
-insert into company values(	cmpseq.nextval,	'í”„ëª© í¼ìŠ¤ë„ì»¬ëŸ¬',	'ì„œìš¸ ë§ˆí¬êµ¬ ë§ì›ë¡œ3ê¸¸ 38 4ì¸µ fmoc',	180000,	'ë§ˆí¬êµ¬ì²­ì—­',	'126.9009076',	'37.5583183'	);
-insert into company values(	cmpseq.nextval,	'ìœ íŠ¸ë£°ë¦¬ í¼ìŠ¤ë„ì»¬ëŸ¬',	'ì„œìš¸ ë§ˆí¬êµ¬ ì–´ìš¸ë§ˆë‹¹ë¡œ 136-11 2ì¸µ g-studio',	180000,	'í™ëŒ€ì…êµ¬ì—­',	'126.925538',	'37.5558634'	);
-insert into company values(	cmpseq.nextval,	'ë©œíŒ…í”¼ í¼í“¸ ì•¤ í¼ìŠ¤ë„ì»¬ëŸ¬',	'ì„œìš¸ ë§ˆí¬êµ¬ ì›”ë“œì»µë¡œ10ê¸¸ 17 2ì¸µ',	240000,	'ë§ì›ì—­',	'126.9126668',	'37.5548526'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ì˜¤ë¸Œìœ ',	'ì„œìš¸ ë§ˆí¬êµ¬ ë™êµë¡œ 209 ìš©í‰ë¹Œë”© 3ì¸µ ì»¬ëŸ¬ì˜¤ë¸Œìœ ',	150000,	'í™ëŒ€ì…êµ¬ì—­',	'126.9233044',	'37.5587131'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬ìœ™ìŠ¤',	'ì„œìš¸ ë§ˆí¬êµ¬ ë§ˆí¬ëŒ€ë¡œ10ê¸¸ 12 íŠ¸ë ˆí¼ë¹Œë”© ëŸ°ì¹˜ìŠ¤í˜ì´ìŠ¤ 4ì¸µ',	180000,	'ê³µë•ì—­',	'126.9542159',	'37.5470198'	);
-insert into company values(	cmpseq.nextval,	'ë¦¬ì–¼ì»¬ëŸ¬',	'ì„œìš¸ ë§ˆí¬êµ¬ ì–‘í™”ë¡œ 59 í™”ìŠ¹ë¦¬ë²„ìŠ¤í…” 606í˜¸',	140000,	'í•©ì •ì—­',	'126.9148716',	'37.5506416'	);
-insert into company values(	cmpseq.nextval,	'ì„¸ì„ì»¬ëŸ¬',	'ì„œìš¸ ì„œëŒ€ë¬¸êµ¬ ì´í™”ì—¬ëŒ€ê¸¸ 52-11 1ì¸µ 101í˜¸',	130000,	'ì‹ ì´Œì—­, ì´ëŒ€ì—­',	'126.9451151',	'37.5593392'	);
-insert into company values(	cmpseq.nextval,	'ì—˜ë¦¬ì´ë¯¸ì§€ì—°êµ¬ì†Œ',	'ì„œìš¸ ë§ˆí¬êµ¬ ì–‘í™”ë¡œ 56',	140000,	'í•©ì •ì—­',	'126.9148119',	'37.5495474'	);
-insert into company values(	cmpseq.nextval,	'ì»¬ëŸ¬íŠœë“œ',	'ì„œìš¸ ë§ˆí¬êµ¬ ì‹ ì´Œë¡œ 246-2 3ì¸µ',	170000,	'ì•„í˜„ì—­',	'126.9531414',	'37.5570282'	);
-insert into company values(	cmpseq.nextval,	'ìœ„ë“œì»¬ëŸ¬ë‘',	'ì„œìš¸ ë§ˆí¬êµ¬ ë°±ë²”ë¡œ 8 339í˜¸',	110000,	'ì‹ ì´Œì—­',	'126.936773',	'37.554087'	);
-insert into company values(	cmpseq.nextval,	'ë·°í‹°íŒ”ë ˆíŠ¸',	'ì„œìš¸ ë§ˆí¬êµ¬ ì™€ìš°ì‚°ë¡œ19ê¸¸ 6-5 ì´ì¬ë¹Œë”© 4ì¸µ',	140000,	'ìƒìˆ˜ì—­',	'126.9228152',	'37.5514953'	);
-insert into company values(	cmpseq.nextval,	'ë¸Œë¦¬ì•™ëœ¨ ì»¬ëŸ¬',	'ì„œìš¸ ì€í‰êµ¬ ì€í‰ë¡œ 91 Cjë“œë¦¼ì‹œí‹° Bë™ 1008í˜¸',	159000,	'ì‘ì•”ì—­',	'126.9178219',	'37.5997076'	);
-insert into company values(	cmpseq.nextval,	'ë„í•˜ë·°í‹°',	'ì„œìš¸ ì„œì´ˆêµ¬ ì‚¬ì„ë‹¹ë¡œ 178 ì§€í•˜1ì¸µ ë„í•˜ë·°í‹°',	138000,	'ê°•ë‚¨ì—­',	'127.0291018',	'37.4921331'	);
-insert into company values(	cmpseq.nextval,	'ì˜¨ë¦¬',	'ì„œìš¸ ìš©ì‚°êµ¬ í•œê°•ëŒ€ë¡œ10ê¸¸ 13 4ì¸µ',	170000,	'ì‹ ìš©ì‚°ì—­',	'126.9642401',	'37.5239966'	);
-insert into company values(	cmpseq.nextval,	'ì†”ì´ë¯¸ì§€',	'ì„œìš¸ ê°•ë‚¨êµ¬ ê´‘í‰ë¡œ56ê¸¸ 8-13',	176000,	'ìˆ˜ì„œì—­',	'127.103178',	'37.4867729'	);
-insert into company values(	cmpseq.nextval,	'ë”ì´ë¯¸ì§€í”ŒëŸ¬ìŠ¤',	'ì„œìš¸ ì„œì´ˆêµ¬ ê°•ë‚¨ëŒ€ë¡œ 359 ë„ì”¨ì—ë¹›2 509í˜¸',	165000,	'ê°•ë‚¨ì—­',	'127.0285982',	'37.4947834'	);
-insert into company values(	cmpseq.nextval,	'ì´ë¯¸ì§€ìœ ì–´ì¦ˆ',	'ì„œìš¸ ê°•ë‚¨êµ¬ ë„ì‚°ëŒ€ë¡œ53ê¸¸ 32 3F',	270000,	'ì••êµ¬ì •ë¡œë°ì˜¤ì—­',	'127.0389638',	'37.5252804'	);
-insert into company values(	cmpseq.nextval,	'ë´„ë‚ ',	'ì„œìš¸ ì¤‘êµ¬ í‡´ê³„ë¡œ20ê¸¸ 15 2ì¸µ',	150000,	'ëª…ë™ì—­',	'126.9858911',	'37.5594979'	);
-insert into company values(	cmpseq.nextval,	'ì¹¼ë¼ì½”ë“œ ì»¬ëŸ¬ì—°êµ¬ì†Œ',	'ì„œìš¸ ì¢…ë¡œêµ¬ ë¶ì´Œë¡œ5ë‚˜ê¸¸ 7-4',	200000,	'ì•ˆêµ­ì—­',	'126.9820289',	'37.581264'	);
-insert into company values(	cmpseq.nextval,	'PIBì—°êµ¬ì†Œ',	'ì„œìš¸ ì„œì´ˆêµ¬ ì„œì´ˆëŒ€ë¡œ51ê¸¸ 29 7ì¸µ',	180000,	'êµëŒ€ì—­',	'127.0136798',	'37.4963789'	);
-insert into company values(	cmpseq.nextval,	'ì´ìŒì—ë“€ì»¤ë®¤ë‹ˆì¼€ì´ì…˜',	'ì„œìš¸ ê´‘ì§„êµ¬ êµ°ìë¡œ 43 ì•„ìŠ¤í•˜ì„ì˜¤í”¼ìŠ¤í…” 809í˜¸',	140000,	'ì–´ë¦°ì´ëŒ€ê³µì›ì—­',	'127.0700222',	'37.547115'	);
-insert into company values(	cmpseq.nextval,	'ì˜ˆìŠ¬ ì´ë¯¸ì§€',	'ì„œìš¸ ì„±ë™êµ¬ ì™•ì‹­ë¦¬ë¡œ 309',	132000,	'ì™•ì‹­ë¦¬ì—­',	'127.03461',	'37.5611981'	);
 
 
 -----------------------------------------------------------------
@@ -383,43 +258,43 @@ minvalue 1
 maxvalue 10000
 nocache;
 
-insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'ê¹€ë¯¼ì •','mj01@gmail.com','ì»¬ëŸ¬ ì§„ë‹¨ ë¬¸ì˜í•©ë‹ˆë‹¤.','1234','2023-12-06',12,0,0,'ì»¬ëŸ¬ ì§„ë‹¨ ë°›ê³  ì¶”ì²œ í™”ì¥í’ˆì„ ìƒ€ëŠ”ë° ë³„ë¡œë©´ í™˜ë¶ˆ ê°€ëŠ¥í•œê°€ìš”?','127.0.0.1');
-insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'ê¹€ë¯¼ì§€','mji@naver.com','ë¬¸ì˜ë“œë¦½ë‹ˆë‹¤.','1234','2023-12-05',10,0,0,'ë¬´í†µì¥ ì…ê¸ˆ ê°€ëŠ¥í•œê°€ìš”?','127.0.0.1');
-insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'ê°•í•´ë¦°','haerin@gmail.com','ì…ê³  ì˜ˆì • ë¬¸ì˜ìš”','1234','2023-12-05',9,0,0,'ì •í™•í•œ ìƒí’ˆëª…ì€ ëª¨ë¥´ëŠ”ë° ì…ê³  ì˜ˆì •ì´ ìˆë‚˜ìš”?','127.0.0.1');
-insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'ì´í˜œì¸','hyein@gmail.com','ì‹ ìƒ í™”ì¥í’ˆ ì–¸ì œì¯¤','1234','2023-12-04',8,0,0,'ì‹ ìƒ í™”ì¥í’ˆ ì–¸ì œì¯¤ ë“¤ì–´ì˜¤ë‚˜ìš”','127.0.0.1');
-insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'ëª¨ì§€í˜œ','jihye@gmail.com','ë¬¶ìŒ ë°°ì†¡ í•´ì£¼ì„¸ìš”','1234','2023-12-06',7,0,0,'í•˜ë‚˜í•˜ë‚˜ ëœ¯ê¸° ê·€ì°®ì€ë° ë¬¶ìŒ ë°°ì†¡ í•´ì£¼ì‹¤ ìˆ˜ ìˆë‚˜ìš”','127.0.0.1');
+insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'±è¹ÎÁ¤','mj01@gmail.com','ÄÃ·¯ Áø´Ü ¹®ÀÇÇÕ´Ï´Ù.','1234','2023-12-06',12,0,0,'ÄÃ·¯ Áø´Ü ¹Ş°í ÃßÃµ È­ÀåÇ°À» »ò´Âµ¥ º°·Î¸é È¯ºÒ °¡´ÉÇÑ°¡¿ä?','127.0.0.1');
+insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'±è¹ÎÁö','mji@naver.com','¹®ÀÇµå¸³´Ï´Ù.','1234','2023-12-05',10,0,0,'¹«ÅëÀå ÀÔ±İ °¡´ÉÇÑ°¡¿ä?','127.0.0.1');
+insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'°­ÇØ¸°','haerin@gmail.com','ÀÔ°í ¿¹Á¤ ¹®ÀÇ¿ä','1234','2023-12-05',9,0,0,'Á¤È®ÇÑ »óÇ°¸íÀº ¸ğ¸£´Âµ¥ ÀÔ°í ¿¹Á¤ÀÌ ÀÖ³ª¿ä?','127.0.0.1');
+insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'ÀÌÇıÀÎ','hyein@gmail.com','½Å»ó È­ÀåÇ° ¾ğÁ¦Âë','1234','2023-12-04',8,0,0,'½Å»ó È­ÀåÇ° ¾ğÁ¦Âë µé¾î¿À³ª¿ä','127.0.0.1');
+insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'¸ğÁöÇı','jihye@gmail.com','¹­À½ ¹è¼Û ÇØÁÖ¼¼¿ä','1234','2023-12-06',7,0,0,'ÇÏ³ªÇÏ³ª ¶â±â ±ÍÂúÀºµ¥ ¹­À½ ¹è¼Û ÇØÁÖ½Ç ¼ö ÀÖ³ª¿ä','127.0.0.1');
 
--- insert ë‚´ìš©ì€ c_board ë ˆì½”ë“œ ë³µë¶™í•œ ê²ƒ ë‚˜ì¤‘ì— ì¶”ê°€ì˜ˆì •
-
-insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a3','a3','a3','1234','2015-1-1',7,0,0,' ê¶¡ ìŠœ3','127.0.0.1');
+-- insert ³»¿ëÀº c_board ·¹ÄÚµå º¹ºÙÇÑ °Í ³ªÁß¿¡ Ãß°¡¿¹Á¤
 
 insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a31','a31','a31','1234','2015-1-1',7,6,1,' ê¶¡ ìŠœ31','127.0.0.1');
+values(board_seq.nextval,'a3','a3','a3','1234','2015-1-1',7,0,0,' ‚´ š©3','127.0.0.1');
 
 insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a311','a311','a311','1234','2015-1-1',7,7,2,' ê¶¡ ìŠœ311','127.0.0.1');
+values(board_seq.nextval,'a31','a31','a31','1234','2015-1-1',7,6,1,' ‚´ š©31','127.0.0.1');
 
 insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a32','a32','a32','1234','2015-1-1',7,2,1,' ê¶¡ ìŠœ32','127.0.0.1');
+values(board_seq.nextval,'a311','a311','a311','1234','2015-1-1',7,7,2,' ‚´ š©311','127.0.0.1');
 
 insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a321','a321','a321','1234','2015-1-1',7,5,2,' ê¶¡ ìŠœ321','127.0.0.1');
+values(board_seq.nextval,'a32','a32','a32','1234','2015-1-1',7,2,1,' ‚´ š©32','127.0.0.1');
 
 insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a322','a322','a322','1234','2015-1-1',7,3,2,' ê¶¡ ìŠœ322','127.0.0.1');
+values(board_seq.nextval,'a321','a321','a321','1234','2015-1-1',7,5,2,' ‚´ š©321','127.0.0.1');
 
 insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a3221','a3221','a3221','1234','2015-1-1',7,4,3,' ê¶¡ ìŠœ3221','127.0.0.1');
+values(board_seq.nextval,'a322','a322','a322','1234','2015-1-1',7,3,2,' ‚´ š©322','127.0.0.1');
 
 insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
-values(board_seq.nextval,'a33','a33','a33','1234','2015-1-1',7,1,1,' ê¶¡ ìŠœ33','127.0.0.1');
+values(board_seq.nextval,'a3221','a3221','a3221','1234','2015-1-1',7,4,3,' ‚´ š©3221','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a33','a33','a33','1234','2015-1-1',7,1,1,' ‚´ š©33','127.0.0.1');
 
 commit;
 
 
 -----------------------------------------------------------------
---c_board í…Œì´ë¸” (ì˜ê²¬ ê²Œì‹œíŒ)
+--c_board Å×ÀÌºí (ÀÇ°ß °Ô½ÃÆÇ)
 -----------------------------------------------------------------
 
 drop table c_board;
@@ -446,12 +321,237 @@ minvalue 1
 maxvalue 10000
 nocache;
 
-insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'ì•ˆìœ ì§„','yoojun@gmail.com','êµí™˜ ë°©ë²• ë¬¸ì˜','1234','2023-12-03',6,0,0,'êµí™˜ ë°©ë²• ì¢€ ì•Œë ¤ì£¼ì„¸ìš”','127.0.0.1');
-insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'ê¹€ê°€ì„','autumn@gmail.com','êµ¬ë§¤ í›„ ë³€ì‹¬ìœ¼ë¡œ ì¸í•œ ë°˜í’ˆ ë¬¸ì˜','1234','2023-11-24',4,0,0,'ëœ¯ì§€ë„ ì•Šì€ ìƒˆìƒí’ˆì¸ë° ë°˜í’ˆí•˜ê³  ì‹¶ì–´ì„œìš” ê°€ëŠ¥í• ê¹Œìš”?','127.0.0.1');
-insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'ê¹€ì§€ì›','jiwon@naver.com','ì§€ì„± í”¼ë¶€ í™”ì¥í’ˆ ë¬¸ì˜ë“œë ¤ìš”...','1234','2023-11-23',3,0,0,'ì»¬ëŸ¬ ì§„ë‹¨ ë°›ê³  ì¶”ì²œ ë°›ì€ í™”ì¥í’ˆì€ ë‹¤ ê±´ì„±ìš©ì´ê¸¸ë˜ ì§€ì„± í”¼ë¶€ë„ ì“¸ ìˆ˜ ìˆëŠ” í™”ì¥í’ˆ ì¶”ì²œí•´ì£¼ì„¸ìš”','127.0.0.1');
-insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'ì´í˜„ì„œ','hs07@gmail.com','ë°°ì†¡ë¹„ëŠ” ì–¼ë§ˆì¸ê°€ìš”','1234','2023-11-23',2,0,0,'ë¬´ë£Œ ë°°ì†¡ì€ ì–¼ë§ˆë¶€í„° ê°€ëŠ¥í•œì§€...','127.0.0.1');
-insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'ì¡°ë¯¸ì—°','my@naver.com','ë°˜í’ˆí•  ë•Œ ë¹„ìš©ì´ ë“œë‚˜ìš”?','1234','2023-11-23',1,0,0,'ì •í™•í•œ ë°˜í’ˆ ë¹„ìš© ì•Œë ¤ì£¼ì„¸ì—¬','127.0.0.1');
-insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'ì¥ì›ì˜','wonyoung@naver.com','ë°˜ì†¡ ì£¼ì†ŒëŠ” íšŒì‚¬ë¡œ í•´ì•¼í•˜ë‚˜ìš”','1234','2023-12-01',5,0,0,'ë°˜ì†¡ ì£¼ì†Œ ì•Œë ¤ì£¼ì„¸ìš”','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'¾ÈÀ¯Áø','yoojun@gmail.com','±³È¯ ¹æ¹ı ¹®ÀÇ','1234','2023-12-03',6,0,0,'±³È¯ ¹æ¹ı Á» ¾Ë·ÁÁÖ¼¼¿ä','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'±è°¡À»','autumn@gmail.com','±¸¸Å ÈÄ º¯½ÉÀ¸·Î ÀÎÇÑ ¹İÇ° ¹®ÀÇ','1234','2023-11-24',4,0,0,'¶âÁöµµ ¾ÊÀº »õ»óÇ°ÀÎµ¥ ¹İÇ°ÇÏ°í ½Í¾î¼­¿ä °¡´ÉÇÒ±î¿ä?','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'±èÁö¿ø','jiwon@naver.com','Áö¼º ÇÇºÎ È­ÀåÇ° ¹®ÀÇµå·Á¿ä...','1234','2023-11-23',3,0,0,'ÄÃ·¯ Áø´Ü ¹Ş°í ÃßÃµ ¹ŞÀº È­ÀåÇ°Àº ´Ù °Ç¼º¿ëÀÌ±æ·¡ Áö¼º ÇÇºÎµµ ¾µ ¼ö ÀÖ´Â È­ÀåÇ° ÃßÃµÇØÁÖ¼¼¿ä','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'ÀÌÇö¼­','hs07@gmail.com','¹è¼Ûºñ´Â ¾ó¸¶ÀÎ°¡¿ä','1234','2023-11-23',2,0,0,'¹«·á ¹è¼ÛÀº ¾ó¸¶ºÎÅÍ °¡´ÉÇÑÁö...','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'Á¶¹Ì¿¬','my@naver.com','¹İÇ°ÇÒ ¶§ ºñ¿ëÀÌ µå³ª¿ä?','1234','2023-11-23',1,0,0,'Á¤È®ÇÑ ¹İÇ° ºñ¿ë ¾Ë·ÁÁÖ¼¼¿©','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'Àå¿ø¿µ','wonyoung@naver.com','¹İ¼Û ÁÖ¼Ò´Â È¸»ç·Î ÇØ¾ßÇÏ³ª¿ä','1234','2023-12-01',5,0,0,'¹İ¼Û ÁÖ¼Ò ¾Ë·ÁÁÖ¼¼¿ä','127.0.0.1');
+commit;
+
+
+-----------------------------------------------------------------
+--company Å×ÀÌºí (ÆÛ½º³Î ÄÃ·¯ Áø´Ü¾÷Ã¼)
+-----------------------------------------------------------------
+
+drop sequence cmpseq;
+create sequence cmpseq 
+start with 1 
+increment by 1 
+nocache ;
+
+create table company( 
+	cmp_num number primary key,
+	cmp_name varchar2(50),
+	cmp_addr varchar2(50),
+	cmp_price number,
+	cmp_station varchar2(20),
+	cmp_x varchar2(20),
+	cmp_y varchar2(20)
+);
+
+insert into company values(	cmpseq.nextval,	'¾Æ¶õ ÆÛ½º³ÎÄÃ·¯ Áø´Ü',	'¼­¿ï ¸¶Æ÷±¸ µ¿±³·Î18±æ 37 2Ãş',	290000,	'È«´ëÀÔ±¸¿ª, ÇÕÁ¤¿ª',	'126.9179178',	'37.5537583'	);
+insert into company values(	cmpseq.nextval,	'ÇÊ¸° ÆÛ½º³ÎÄÃ·¯Áø´Ü ÀÌ¹ÌÁöÄÁ¼³ÆÃ',	'¼­¿ï ¸¶Æ÷±¸ ¿ùµåÄÅ·Î10±æ 17 2Ãş',	140000,	'¸Á¿ø¿ª, ÇÕÁ¤¿ª',	'126.9126668',	'37.5548526'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯°¡»ê´Ù ÆÛ½º³ÎÄÃ·¯Áø´Ü È«´ëµ¿±³¼¾ÅÍ',	'¼­¿ï ¸¶Æ÷±¸ µ¿±³·Î 192-1 3Ãş',	100000,	'È«´ëÀÔ±¸¿ª',	'126.9227512',	'37.5572882'	);
+insert into company values(	cmpseq.nextval,	'´ã»İÆÛ½º³ÎÄÃ·¯Áø´Ü',	'¼­¿ï ¸¶Æ÷±¸ ¿Í¿ì»ê·Î29±æ 47 3Ãş',	160000,	'È«´ëÀÔ±¸¿ª',	'126.9273241',	'37.5556357'	);
+insert into company values(	cmpseq.nextval,	'¸ŞÀÌÅ©¿ÂÀüÈ÷ ÆÛ½º³ÎÄÃ·¯ Áø´Ü',	'¼­¿ï ¸¶Æ÷±¸ ¿Í¿ì»ê·Î35±æ 19 4Ãş ¸ŞÀÌÅ©¿ÂÀüÈ÷',	200000,	'È«´ëÀÔ±¸¿ª',	'126.9293858',	'37.5558635'	);
+insert into company values(	cmpseq.nextval,	'¿À¶ì¸ğ ÆÛ½º³ÎÄÃ·¯ Áø´Ü',	'¼­¿ï ¼ºµ¿±¸ ¿Õ½Ê¸®·Î16°¡±æ 10-30 6Ãş',	140000,	'¶Ò¼¶¿ª',	'127.0453339',	'37.5506313'	);
+insert into company values(	cmpseq.nextval,	'CCLÄÃ·¯ÀÌ¹ÌÁöÀ¶ÇÕ¿¬±¸¼Ò ÆÛ½º³ÎÄÃ·¯ Áø´Ü',	'¼­¿ï ¼ºµ¿±¸ ¼º¼öÀÌ·Î 66 ¼­¿ï½£ µå¸²Å¸¿ö 711È£',	150000,	'¼º¼ö¿ª',	'127.0561825',	'37.5405547'	);
+insert into company values(	cmpseq.nextval,	'ÇÑ±¹ÆĞ¼Ç½É¸®¿¬±¸¿ø ÆÛ½º³ÎÄÃ·¯Áø´Ü',	'¼­¿ï °­³²±¸ ¼±¸ª·Î 840 4Ãş ÇÑ±¹ÆĞ¼Ç½É¸®¿¬±¸¿ø',	280000,	'¾Ğ±¸Á¤·Îµ¥¿À¿ª',	'127.0406647',	'37.5268112'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯°¡»ê´Ù ÆÛ½º³ÎÄÃ·¯Áø´Ü °Ç´ë¼¾ÅÍ',	'¼­¿ï ±¤Áø±¸ ¾ÆÂ÷»ê·Î34±æ 36 3Ãş',	100000,	'°Ç´ëÀÔ±¸¿ª ',	'127.0689244',	'37.5386108'	);
+insert into company values(	cmpseq.nextval,	'Á¶ÀÌÄÃ·¯°ø¹æ ÆÛ½º³ÎÄÃ·¯Áø´Ü',	'¼­¿ï ÀºÆò±¸ ÅëÀÏ·Î 780 ¹Ì¼º¾ÆÆÄÆ®»ó°¡ 1Ãş Á¶ÀÌÄÃ·¯°ø¹æ',	180000,	'ºÒ±¤¿ª',	'126.9283096',	'37.6149286'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯¶óÀÌÁî ÆÛ½º³ÎÄÃ·¯ Áø´Ü',	'¼­¿ï ¼­ÃÊ±¸ »çÀÓ´ç·Î 173 ¼­Àüºôµù 4Ãş,9Ãş',	140000,	'°­³²¿ª ',	'127.0285544',	'37.4927943'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯°ø¹æ ÆÛ½º³ÎÄÃ·¯Áø´Ü',	'¼­¿ï ¼­ÃÊ±¸ »çÆò´ë·Î57±æ 39-1 2Ãş',	158000,	'½Å³íÇö¿ª ',	'127.0226479',	'37.5059293'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯¸ğ¾Æ ÆÛ½º³ÎÄÃ·¯Áø´Ü',	'¼­¿ï ¼­ÃÊ±¸ °­³²´ë·Î83±æ 36 ÇĞ»êºôµù 2Ãş 202È£',	156000,	'½Å³íÇö¿ª ',	'127.0216668',	'37.5057215'	);
+insert into company values(	cmpseq.nextval,	'ÇÈÄÃ·¯ºê·£µù¼¾ÅÍ ÆÛ½º³ÎÄÃ·¯ Áø´Ü ÄÃ·¯¸®½ºÆ®',	'¼­¿ï ¿µµîÆ÷±¸ ¹®·¡ºÏ·Î 116',	169000,	'¹®·¡¿ª',	'126.8980628',	'37.5194432'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯½Ã±×³Î ÆÛ½º³ÎÄÃ·¯Áø´Ü ½Ç¹öÁ¡',	'¼­¿ï °­³²±¸ ¿ª»ï·Î20±æ 12 ¼º¿ìºôµù 4Ãş ÄÃ·¯½Ã±×³Î',	138000,	'¿ª»ï¿ª ',	'127.0376275',	'37.4944506'	);
+insert into company values(	cmpseq.nextval,	'ÇÁ·ÒÄÃ·¯ ÆÛ½º³ÎÄÃ·¯ Áø´Ü',	'¼­¿ï ¿µµîÆ÷±¸ ¹®·¡·Î 180 ¼¾Æ®·² Çª¸£Áö¿À½ÃÆ¼ 415È£',	140000,	'¿µµîÆ÷¿ª,¹®·¡¿ª',	'126.9019541',	'37.5179756'	);
+insert into company values(	cmpseq.nextval,	'´õÁî ÆÛ½º³ÎÄÃ·¯ Áø´Ü',	'¼­¿ï ¸¶Æ÷±¸ ¸Á¿ø·Î 21 2Ãş',	158000,	'¸Á¿ø¿ª',	'126.899403',	'37.5563623'	);
+insert into company values(	cmpseq.nextval,	'À¯¾îÄÃ·¯Áî:ÄÃ·¯°õ ÆÛ½º³ÎÄÃ·¯Áø´Ü',	'¼­¿ï °­³²±¸ ÇĞµ¿·Î55±æ 17 4Ãş',	140000,	'°­³²±¸Ã»¿ª',	'127.0415693',	'37.518603'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯¾Ø¼¾Æ® ÆÛ½º³ÎÄÃ·¯ Áø´Ü',	'¼­¿ï ¼­ÃÊ±¸ ¹æ¹èÃµ·Î16±æ 11-9 1Ãş',	189000,	'ÃÑ½Å´ëÀÔ±¸',	'126.9835279',	'37.4825026'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯È¦¸¯ °ñ°İÇÍ ÆÛ½º³ÎÄÃ·¯Áø´Ü',	'¼­¿ï °­³²±¸ Å×Çì¶õ·Î 310 13Ãş 1301È£',	152000,	'¼±¸ª¿ª',	'127.0447848',	'37.5028251'	);
+insert into company values(	cmpseq.nextval,	'ÀÌÀ½ÄÃ·¯ ÆÛ½º³ÎÄÃ·¯ Áø´Ü',	'¼­¿ï ±¸·Î±¸ °æÀÎ·Î 661 ½Åµµ¸²1Â÷Çª¸£Áö¿À 103µ¿',	160000,	'½Åµµ¸²¿ª',	'126.8877437',	'37.5094204'	);
+insert into company values(	cmpseq.nextval,	'µğÀÚÀÎ¹Ì ÆÛ½º³ÎÄÃ·¯Áø´Ü',	'¼­¿ï °­³²±¸ Å×Çì¶õ·Î 327 413È£',	170000,	'¼±¸ª¿ª ',	'127.0470626',	'37.5045798'	);
+insert into company values(	cmpseq.nextval,	'Çª¸¥´ŞÄÃ·¯ ÆÛ½º³ÎÄÃ·¯ Áø´Ü',	'¼­¿ï ¿µµîÆ÷±¸ µµ¸²Ãµ·Î19±æ 11 4Ãş 411È£',	158000,	'±¸·ÎµğÁöÅĞ´ÜÁö¿ª',	'126.9001891',	'37.4866104'	);
+insert into company values(	cmpseq.nextval,	'ÀÌ¾ÈÄÃ·¯·¦ ÆÛ½º³ÎÄÃ·¯ Áø´Ü',	'¼­¿ï ¼­ÃÊ±¸ »çÀÓ´ç·Î 178 ÁöÇÏ 1Ãş º¹µµ ³¡ ÀÌ¾È ÄÃ·¯·¦',	138000,	'°­³²¿ª',	'127.0291018',	'37.4921331'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯ºí¶û ÆÛ½º³ÎÄÃ·¯Áø´Ü',	'¼­¿ï ¼ÛÆÄ±¸ ¿Ã¸²ÇÈ·Î12±æ 62 2Ãş 202È£',	200000,	'»ïÀü¿ª ',	'127.08292',	'37.5062097'	);
+insert into company values(	cmpseq.nextval,	'ÆÛ½º³Î¸®ºê ÆÛ½º³ÎÄÃ·¯ Áø´Ü',	'¼­¿ï °ü¾Ç±¸ ½Å¿ø·Î 35 8Ãş 15È£',	110000,	'½Å¸²¿ª',	'126.9289185',	'37.4822382'	);
+insert into company values(	cmpseq.nextval,	'ÆÛ½º³ÎÄÃ·¯ Áø´Ü ¿À¿îÀÌ¹ÌÁö·¦',	'¼­¿ï °­¼­±¸ °øÇ×´ë·Î 186 ·Îµ©Å¸¿ö 706È£',	120000,	'¸¶°î¿ª',	'126.8280371',	'37.5591043'	);
+insert into company values(	cmpseq.nextval,	'Å¾ ÄÃ·¯ ÆÛ½º³ÎÄÃ·¯ Áø´Ü',	'¼­¿ï °­¼­±¸ ¸¶°îÁß¾Ó·Î 161-8 Aµ¿ 10Ãş 1011È£',	120000,	'¸¶°î³ª·ç¿ª',	'126.8270966',	'37.5689359'	);
+insert into company values(	cmpseq.nextval,	'À§¿ÃÄÃ·¯ ÆÛ½º³ÎÄÃ·¯Áø´Ü',	'¼­¿ï °­µ¿±¸ »óÀÏ·Î12±æ 54 JÆÄÅ© 202È£',	150000,	'°­ÀÏ¿ª ',	'127.174276',	'37.5548669'	);
+insert into company values(	cmpseq.nextval,	'ÆÛ½º³ÎÄÃ·¯, °ñ°İÁø´Ü ÀÕÃ÷¸¶ÀÌÄÃ·¯',	'¼­¿ï °­³²±¸ °­³²´ë·Î128±æ 61 Çö¼º512ºôµù 401È£',	180000,	'ÇĞµ¿¿ª ',	'127.0263162',	'37.512098'	);
+insert into company values(	cmpseq.nextval,	'¿À·ÔÀÌÄÃ·¯ ÆÛ½º³ÎÄÃ·¯ °ñ°İÁø´Ü',	'¼­¿ï °ü¾Ç±¸ ³²ºÎ¼øÈ¯·Î 1911 2Ãş',	180000,	'³«¼º´ë¿ª',	'126.961871',	'37.4779955'	);
+insert into company values(	cmpseq.nextval,	'ºñºñµå°­ ÆÛ½º³ÎÄÃ·¯',	'¼­¿ï ¸¶Æ÷±¸ ¾çÈ­·Î 193',	175000,	'È«´ëÀÔ±¸¿ª ',	'126.9258946',	'37.5587739'	);
+insert into company values(	cmpseq.nextval,	'ÆÛ½º³ÎÄÃ·¯ »ö´Ù¸£´Ù',	'¼­¿ï ¸¶Æ÷±¸ ¾çÈ­·Î 175 ¸¶Á©¶õ21',	160000,	'È«´ëÀÔ±¸¿ª ',	'126.924381',	'37.5577543'	);
+insert into company values(	cmpseq.nextval,	'´À·Î¾Æ ÆÛ½º³ÎÄÃ·¯',	'¼­¿ï ¸¶Æ÷±¸ µ¿±³·Î 248-2 3Ãş 302È£',	150000,	'È«´ëÀÔ±¸¿ª',	'126.9245307',	'37.5621234'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯½î½ÎÀÌ¾îÆ¼ ÆÛ½º³ÎÄÃ·¯',	'¼­¿ï ¸¶Æ÷±¸ µ¿±³·Î 215 ÄÃ·¯½î½ÎÀÌ¾îÆ¼',	200000,	'È«´ëÀÔ±¸¿ª',	'126.9234822',	'37.5592515'	);
+insert into company values(	cmpseq.nextval,	'¿ÂµµÆÈ·¹Æ® ÆÛ½º³ÎÄÃ·¯',	'¼­¿ï ¸¶Æ÷±¸ ¾çÈ­·Î 157 ÆÄ¶ó´ÙÀÌ½ºÅÚ 10Ãş 1007È£',	140000,	'È«´ëÀÔ±¸¿ª',	'126.9229417',	'37.5566855'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯¿Àºêµ¥ÀÌ ÆÛ½º³ÎÄÃ·¯Áø´Ü',	'¼­¿ï ¼ºµ¿±¸ ¼­¿ï½£9±æ 5 4Ãş',	138000,	'¶Ò¼¶¿ª ',	'127.0435731',	'37.5483984'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯¹ÙÀÌÀ¯ ÆÛ½º³ÎÄÃ·¯',	'¼­¿ï ±¤Áø±¸ ±¤³ª·ç·Î 386 °Ç´ë ÇÏÀÌºä ¿ÀÇÇ½ºÅÚ 709È£',	158000,	'¾î¸°ÀÌ´ë°ø¿ø¿ª',	'127.0723072',	'37.547397'	);
+insert into company values(	cmpseq.nextval,	'Ã»´ãÆÛ½º³ÎÄÃ·¯¼¼ºì¿¡ÀÌ¾Ë',	'¼­¿ï °­³²±¸ ¿µµ¿´ë·Î 644 7F',	136000,	'Ã»´ã¿ª',	'127.0580297',	'37.5193096'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯Ãò',	'¼­¿ï ¼ºµ¿±¸ ¿¬¹«Àå5°¡±æ 25 516È£',	110000,	'¼º¼ö¿ª',	'127.0556438',	'37.5435802'	);
+insert into company values(	cmpseq.nextval,	'¶ó»õ¶ó»öÃ¤¿¬±¸¼Ò',	'¼­¿ï ¼ÛÆÄ±¸ ¹éÁ¦°íºĞ·Î 501 Ã»È£¿ÀÇÇ½ºÅÚ 405È£',	180000,	'ÇÑ¼º¹éÁ¦¿ª',	'127.1146774',	'37.5152322'	);
+insert into company values(	cmpseq.nextval,	'·¹Ãò',	'¼­¿ï Áß¶û±¸ ¸é¸ñ·Î43±æ 19 201',	180000,	'»ç°¡Á¤¿ª',	'127.0868158',	'37.5813337'	);
+insert into company values(	cmpseq.nextval,	'Á¦ÀÌ¾ØÀÌ¹ÌÁöÆÛ½º³ÎÀÌ¹ÌÁöºê·£µù¿¬±¸¼Ò',	'¼­¿ï °­³²±¸ »ï¼º·Î 763 ±İÅ¹ÇÁ¶óÀÚ 3Ãş, 301',	240000,	'Ã»´ã¿ª',	'127.0476713',	'37.522921'	);
+insert into company values(	cmpseq.nextval,	'´©º§ ÀÌ¸¶ÁÖ',	'¼­¿ï ¼ºµ¿±¸ ¾ÆÂ÷»ê·Î 126 ¼º¼öµ¿´õ¸®ºê ¼¼Á¾Å¸¿ö 303È£',	280000,	'¼º¼ö¿ª',	'127.0582301',	'37.5434075'	);
+insert into company values(	cmpseq.nextval,	'¸ù²ôÄÃ·¯·¦ º»Á¡',	'¼­¿ï °­³²±¸ ¾Ğ±¸Á¤·Î28±æ 22-11 2Ãş',	270000,	'¾Ğ±¸Á¤¿ª',	'127.026623',	'37.5249935'	);
+insert into company values(	cmpseq.nextval,	'¹«µåÄÃ·ºÆ® °­³²Á¡',	'¼­¿ï °­³²±¸ Å×Çì¶õ·Î6±æ 7 4Ãş',	260000,	'°­³²¿ª',	'127.030679',	'37.4981759'	);
+insert into company values(	cmpseq.nextval,	'¸¶ÀÌ¼îÆÛ ¾Ğ±¸Á¤Á¡',	'¼­¿ï °­³²±¸ ¾ğÁÖ·Î153±æ 10-6 2Ãş',	260000,	'¾Ğ±¸Á¤¿ª',	'127.0323979',	'37.5231212'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯¿¡ÀÌÄ¡',	'¼­¿ï °­³²±¸ ÇĞµ¿·Î1±æ 19 5Ãş',	200000,	'³íÇö¿ª ',	'127.021593',	'37.5126835'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯Áî¾ÆÆ®',	'¼­¿ï °­³²±¸ °­³²´ë·Î156±æ 20 Á¤¿øºôµù 2Ãş',	170000,	'½Å»ç¿ª ',	'127.0208133',	'37.5182433'	);
+insert into company values(	cmpseq.nextval,	'¸®¾¾¿¤ ÄÃ·¯ ½ºÆ©µğ¿À',	'¼­¿ï °­³²±¸ »ï¼º·Î57±æ 28 Áö¼®ºôµù 6Ãş ¸®¾¾¿¤',	170000,	'ÇÑÆ¼¿ª',	'127.0587286',	'37.4976861'	);
+insert into company values(	cmpseq.nextval,	'¹«µåÇÃ·¯½º',	'¼­¿ï °­³²±¸ °­³²´ë·Î156±æ 18 ¹ü¿øºôµù 5Ãş 502È£',	170000,	'½Å»ç¿ª',	'127.0206775',	'37.5181862'	);
+insert into company values(	cmpseq.nextval,	'´ÙÃ¤·ÎÀ± ÆÛ½º³ÎÄÃ·¯',	'¼­¿ï ¼ÛÆÄ±¸ ¹éÁ¦°íºĞ·Î39±æ 29 301È£',	130000,	'¼®ÃÌ¿ª',	'127.1035534',	'37.5067333'	);
+insert into company values(	cmpseq.nextval,	'¿ÀÄİ·Î¸£ ½Å»çÁ¡',	'¼­¿ï °­³²±¸ °­³²´ë·Î156±æ 20 Á¤¿øºôµù 2Ãş',	180000,	'½Å»ç¿ª',	'127.0208133',	'37.5182433'	);
+insert into company values(	cmpseq.nextval,	'»ï¿ùºÎÆ¼Å©',	'¼­¿ï °­³²±¸ ¾Ğ±¸Á¤·Î4±æ 20 ²ô·¹¾Æºô 203È£',	180000,	'½Å»ç¿ª',	'127.0203987',	'37.5213824'	);
+insert into company values(	cmpseq.nextval,	'¿¹¶û ºäÆ¼ ¾ÆÄ«µ¥¹Ì',	'¼­¿ï °­³²±¸ ÇĞµ¿·Î38±æ 42 2Ãş',	150000,	'ÇĞµ¿¿ª',	'127.0345859',	'37.5120685'	);
+insert into company values(	cmpseq.nextval,	'Ã­¹Ö¾ÆÆ²¸®¿¡ ÆÛ½º³ÎÄÃ·¯ ¸ŞÀÌÅ©¾÷',	'¼­¿ï °­ºÏ±¸ µµºÀ·Î 328 15Ãş 1516È£',	170000,	'¼öÀ¯¿ª',	'127.0252072',	'37.6370653'	);
+insert into company values(	cmpseq.nextval,	'¾Æ´Ï¸¶·¹',	'¼­¿ï ¼ººÏ±¸ È­¶û·Î11±æ 17-9 1Ãş 101È£',	280000,	'¿ù°î¿ª',	'127.0410667',	'37.6031718'	);
+insert into company values(	cmpseq.nextval,	'µş·ÎÆÛ½º³ÎÄÃ·¯ÄÁ¼³ÆÃ',	'¼­¿ï ¼­ÃÊ±¸ ¹æ¹èÃµ·Î2±æ 7',	160000,	'»ç´ç¿ª',	'126.9834302',	'37.4772861'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯¾Æ¸£¶¼ ÆÛ½º³ÎÄÃ·¯',	'¼­¿ï Á¾·Î±¸ ´ëÇĞ·Î11±æ 27 4Ãş',	200000,	'ÇıÈ­¿ª',	'127.0001313',	'37.5820484'	);
+insert into company values(	cmpseq.nextval,	'À¯ÄÃ·¯ ÆÛ½º³ÎÄÃ·¯',	'¼­¿ï °­¼­±¸ °õ´Ş·¡·Î20±æ 18 Ç³¿øÆÓ¸®½º B102È£',	190000,	'±îÄ¡»ê¿ª',	'126.8426811',	'37.5293934'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯Äı ÆÛ½º³ÎÄÃ·¯ Áø´Ü',	'¼­¿ï ¼ºµ¿±¸ ¼º¼öÀÏ·Î 111 1214',	300000,	'¶Ò¼¶¿ª',	'127.0515434',	'37.5502733'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯¸¶ÀÎ',	'¼­¿ï ¼ÛÆÄ±¸ ¹éÁ¦°íºĞ·Î7±æ 42-37',	130000,	'Àá½Ç»õ³»¿ª',	'127.0841686',	'37.5091894'	);
+insert into company values(	cmpseq.nextval,	'µğ¾îÀ¯¾îÄÃ·¯',	'¼­¿ï ¼ÛÆÄ±¸ Ãæ¹Î·Î 66 7Ãş T-7014È£',	120000,	'ÀåÁö¿ª',	'127.1249964',	'37.4776483'	);
+insert into company values(	cmpseq.nextval,	'·è½ºÄÃ·¯',	'¼­¿ï ¼ÛÆÄ±¸ ¼®ÃÌÈ£¼ö·Î 268 208È£',	130000,	'¼®ÃÌ¿ª',	'127.1057107',	'37.5097096'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯¹«ÀÌ ÆÛ½º³ÎÄÃ·¯',	'¼­¿ï µ¿ÀÛ±¸ µ¿ÀÛ´ë·Î9°¡±æ 21 1Ãş 102È£',	158000,	'»ç´ç¿ª',	'126.9787727',	'37.4794938'	);
+insert into company values(	cmpseq.nextval,	'ÆÛ½º³ÎÄÃ·¯ ¿Â',	'¼­¿ï °ü¾Ç±¸ ³²ºÎ¼øÈ¯·Î218±æ 27 302(ºÀÃµµ¿, °üÀü GÅ¸¿ö)',	170000,	'¼­¿ï´ëÀÔ±¸¿ª',	'126.9505017',	'37.4800384'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯ ¸¶Áö²ô',	'¼­¿ï °ü¾Ç±¸ º¸¶ó¸Å·Î2±æ 28 1Ãş 101È£',	140000,	'´ç°î¿ª ',	'126.9294689',	'37.489718'	);
+insert into company values(	cmpseq.nextval,	'¶ûµ¥ºÎÄÃ·¯',	'¼­¿ï °ü¾Ç±¸ ºÀÃµ·Î14±æ 12 206È£',	168000,	'´ç°î¿ª',	'126.9297726',	'37.4874903'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯µ¥ÀÌÁî',	'¼­¿ï °ü¾Ç±¸ ºÀÃµ·Î45±æ 8 5Ãş',	180000,	'¼­¿ï´ëÀÔ±¸¿ª',	'126.9494539',	'37.48305'	);
+insert into company values(	cmpseq.nextval,	'ÆÛ½º³ÎÄÃ·¯³ª´Ù¿ò',	'¼­¿ï °­¼­±¸ ¸¶°î¼­·Î 158 ¼¾Æ®·²Å¸¿ö2Â÷ 1109È£',	109000,	'¸¶°î³ª·ç¿ª',	'126.8254305',	'37.5681063'	);
+insert into company values(	cmpseq.nextval,	'ÆÛ½º³ÎÄÃ·¯ ÈŞ¾î',	'¼­¿ï °­¼­±¸ °øÇ×´ë·Î 213 º¸Å¸´ĞÆÄÅ©Å¸¿ö2 606È£',	115000,	'¸¶°î¿ª',	'126.8313869',	'37.5596779'	);
+insert into company values(	cmpseq.nextval,	'ÆÛ½º³ÎÄÃ·¯ ´ç½ÅÀÇ ÆÈ·¹Æ®',	'¼­¿ï °­¼­±¸ °øÇ×´ë·Î 200 706È£(¸¶°îµ¿, ¸¶°îÁöÀ£Å¸¿ö)',	130000,	'¸¶°î¿ª',	'126.8295014',	'37.5589733'	);
+insert into company values(	cmpseq.nextval,	'¸¸³ª´ÙÄÃ·¯',	'¼­¿ï °­¼­±¸ ¸¶°î¼­·Î 152 Bµ¿ 6Ãş 617È£',	110000,	'¸¶°î³ª·ç¿ª',	'126.8256375',	'37.5676575'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯ÅÚ¸µ ÆÛ½º³ÎÄÃ·¯',	'¼­¿ï ¾çÃµ±¸ ½ÅÁ¤Áß¾Ó·Î 68 4Ãş ¸¶ÀÌºñÁö´Ï½ºÆÄÆ®³Ê',	179000,	'½ÅÁ¤¿ª',	'126.8593407',	'37.5266265'	);
+insert into company values(	cmpseq.nextval,	'ÆÛ½º³ÎÄÃ·¯ ²Ã·Î·¹',	'¼­¿ï ¿µµîÆ÷±¸ ¼±À¯·Î49±æ 20-3 ±×¸°ºôµù 302È£',	100000,	'¼±À¯µµ¿ª',	'126.8954354',	'37.5367193'	);
+insert into company values(	cmpseq.nextval,	'È¦¸®¸ô¸® ÆÛ½º³ÎÄÃ·¯',	'¼­¿ï ¸¶Æ÷±¸ ¹é¹ü·Î 8 2Ãş ILTER',	99000,	'½ÅÃÌ¿ª',	'126.936773',	'37.554087'	);
+insert into company values(	cmpseq.nextval,	'¼¼ÄÁ´º ÆÛ½º³ÎÄÃ·¯',	'¼­¿ï ¸¶Æ÷±¸ ¾î¿ï¸¶´ç·Î 96 5Ãş 504È£',	110000,	'È«´ëÀÔ±¸¿ª, ÇÕÁ¤¿ª',	'126.9222777',	'37.5535274'	);
+insert into company values(	cmpseq.nextval,	'¿ÀÄİ·Î¸£ ¿©ÀÇµµÁ¡',	'¼­¿ï ¿µµîÆ÷±¸ ±¹Á¦±İÀ¶·Î6±æ 33 ¸ÇÇÏÅººôµù 1106È£',	180000,	'¿©ÀÇµµ¿ª',	'126.9269161',	'37.520782'	);
+insert into company values(	cmpseq.nextval,	'´õÁî ÆÛ½º³ÎÄÃ·¯ Áø´Ü',	'¼­¿ï ¸¶Æ÷±¸ ¸Á¿ø·Î 21 2Ãş',	158000,	'¸Á¿ø¿ª',	'126.899403',	'37.5563623'	);
+insert into company values(	cmpseq.nextval,	'ºí·¹½º¹Ì ¿©ÀÇµµÁ¡',	'¼­¿ï ¿µµîÆ÷±¸ ±¹Á¦±İÀ¶·Î6±æ 30 ¹é»óºôµù 916-917È£',	200000,	'¿©ÀÇµµ¿ª ',	'126.9265494',	'37.5217758'	);
+insert into company values(	cmpseq.nextval,	'¶ó¿¤³ª',	'¼­¿ï ¿µµîÆ÷±¸ ±¹Á¦±İÀ¶·Î6±æ 33',	119800,	'¿©ÀÇµµ¿ª',	'126.9269161',	'37.520782'	);
+insert into company values(	cmpseq.nextval,	'ÇÁ¸ñ ÆÛ½º³ÎÄÃ·¯',	'¼­¿ï ¸¶Æ÷±¸ ¸Á¿ø·Î3±æ 38 4Ãş fmoc',	180000,	'¸¶Æ÷±¸Ã»¿ª',	'126.9009076',	'37.5583183'	);
+insert into company values(	cmpseq.nextval,	'À¯Æ®·ê¸® ÆÛ½º³ÎÄÃ·¯',	'¼­¿ï ¸¶Æ÷±¸ ¾î¿ï¸¶´ç·Î 136-11 2Ãş g-studio',	180000,	'È«´ëÀÔ±¸¿ª',	'126.925538',	'37.5558634'	);
+insert into company values(	cmpseq.nextval,	'¸áÆÃÇÇ ÆÛÇ¾ ¾Ø ÆÛ½º³ÎÄÃ·¯',	'¼­¿ï ¸¶Æ÷±¸ ¿ùµåÄÅ·Î10±æ 17 2Ãş',	240000,	'¸Á¿ø¿ª',	'126.9126668',	'37.5548526'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯¿ÀºêÀ¯',	'¼­¿ï ¸¶Æ÷±¸ µ¿±³·Î 209 ¿ëÆòºôµù 3Ãş ÄÃ·¯¿ÀºêÀ¯',	150000,	'È«´ëÀÔ±¸¿ª',	'126.9233044',	'37.5587131'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯À®½º',	'¼­¿ï ¸¶Æ÷±¸ ¸¶Æ÷´ë·Î10±æ 12 Æ®·¹ÆÛºôµù ·±Ä¡½ºÆäÀÌ½º 4Ãş',	180000,	'°ø´ö¿ª',	'126.9542159',	'37.5470198'	);
+insert into company values(	cmpseq.nextval,	'¸®¾óÄÃ·¯',	'¼­¿ï ¸¶Æ÷±¸ ¾çÈ­·Î 59 È­½Â¸®¹ö½ºÅÚ 606È£',	140000,	'ÇÕÁ¤¿ª',	'126.9148716',	'37.5506416'	);
+insert into company values(	cmpseq.nextval,	'¼¼ÀÓÄÃ·¯',	'¼­¿ï ¼­´ë¹®±¸ ÀÌÈ­¿©´ë±æ 52-11 1Ãş 101È£',	130000,	'½ÅÃÌ¿ª, ÀÌ´ë¿ª',	'126.9451151',	'37.5593392'	);
+insert into company values(	cmpseq.nextval,	'¿¤¸®ÀÌ¹ÌÁö¿¬±¸¼Ò',	'¼­¿ï ¸¶Æ÷±¸ ¾çÈ­·Î 56',	140000,	'ÇÕÁ¤¿ª',	'126.9148119',	'37.5495474'	);
+insert into company values(	cmpseq.nextval,	'ÄÃ·¯Æ©µå',	'¼­¿ï ¸¶Æ÷±¸ ½ÅÃÌ·Î 246-2 3Ãş',	170000,	'¾ÆÇö¿ª',	'126.9531414',	'37.5570282'	);
+insert into company values(	cmpseq.nextval,	'À§µåÄÃ·¯¶û',	'¼­¿ï ¸¶Æ÷±¸ ¹é¹ü·Î 8 339È£',	110000,	'½ÅÃÌ¿ª',	'126.936773',	'37.554087'	);
+insert into company values(	cmpseq.nextval,	'ºäÆ¼ÆÈ·¹Æ®',	'¼­¿ï ¸¶Æ÷±¸ ¿Í¿ì»ê·Î19±æ 6-5 ÀÌÀçºôµù 4Ãş',	140000,	'»ó¼ö¿ª',	'126.9228152',	'37.5514953'	);
+insert into company values(	cmpseq.nextval,	'ºê¸®¾Ó¶ß ÄÃ·¯',	'¼­¿ï ÀºÆò±¸ ÀºÆò·Î 91 Cjµå¸²½ÃÆ¼ Bµ¿ 1008È£',	159000,	'ÀÀ¾Ï¿ª',	'126.9178219',	'37.5997076'	);
+insert into company values(	cmpseq.nextval,	'µµÇÏºäÆ¼',	'¼­¿ï ¼­ÃÊ±¸ »çÀÓ´ç·Î 178 ÁöÇÏ1Ãş µµÇÏºäÆ¼',	138000,	'°­³²¿ª',	'127.0291018',	'37.4921331'	);
+insert into company values(	cmpseq.nextval,	'¿Â¸®',	'¼­¿ï ¿ë»ê±¸ ÇÑ°­´ë·Î10±æ 13 4Ãş',	170000,	'½Å¿ë»ê¿ª',	'126.9642401',	'37.5239966'	);
+insert into company values(	cmpseq.nextval,	'¼ÖÀÌ¹ÌÁö',	'¼­¿ï °­³²±¸ ±¤Æò·Î56±æ 8-13',	176000,	'¼ö¼­¿ª',	'127.103178',	'37.4867729'	);
+insert into company values(	cmpseq.nextval,	'´õÀÌ¹ÌÁöÇÃ·¯½º',	'¼­¿ï ¼­ÃÊ±¸ °­³²´ë·Î 359 µµ¾¾¿¡ºû2 509È£',	165000,	'°­³²¿ª',	'127.0285982',	'37.4947834'	);
+insert into company values(	cmpseq.nextval,	'ÀÌ¹ÌÁöÀ¯¾îÁî',	'¼­¿ï °­³²±¸ µµ»ê´ë·Î53±æ 32 3F',	270000,	'¾Ğ±¸Á¤·Îµ¥¿À¿ª',	'127.0389638',	'37.5252804'	);
+insert into company values(	cmpseq.nextval,	'º½³¯',	'¼­¿ï Áß±¸ Åğ°è·Î20±æ 15 2Ãş',	150000,	'¸íµ¿¿ª',	'126.9858911',	'37.5594979'	);
+insert into company values(	cmpseq.nextval,	'Ä®¶óÄÚµå ÄÃ·¯¿¬±¸¼Ò',	'¼­¿ï Á¾·Î±¸ ºÏÃÌ·Î5³ª±æ 7-4',	200000,	'¾È±¹¿ª',	'126.9820289',	'37.581264'	);
+insert into company values(	cmpseq.nextval,	'PIB¿¬±¸¼Ò',	'¼­¿ï ¼­ÃÊ±¸ ¼­ÃÊ´ë·Î51±æ 29 7Ãş',	180000,	'±³´ë¿ª',	'127.0136798',	'37.4963789'	);
+insert into company values(	cmpseq.nextval,	'ÀÌÀ½¿¡µàÄ¿¹Â´ÏÄÉÀÌ¼Ç',	'¼­¿ï ±¤Áø±¸ ±ºÀÚ·Î 43 ¾Æ½ºÇÏÀÓ¿ÀÇÇ½ºÅÚ 809È£',	140000,	'¾î¸°ÀÌ´ë°ø¿ø¿ª',	'127.0700222',	'37.547115'	);
+insert into company values(	cmpseq.nextval,	'¿¹½½ ÀÌ¹ÌÁö',	'¼­¿ï ¼ºµ¿±¸ ¿Õ½Ê¸®·Î 309',	132000,	'¿Õ½Ê¸®¿ª',	'127.03461',	'37.5611981'	);
+
+
+-----------------------------------------------------------------
+--q_board
+-----------------------------------------------------------------
+
+drop table q_board;
+create table q_board( 
+	q_num number not null primary key,
+	q_writer varchar2(30) not null,
+	q_email varchar2(30),
+	q_subject varchar2(200) not null,
+	q_password varchar2(20) not null,
+	q_regdate date not null,
+	q_readcount int default 0,
+	q_ref number not null,
+	q_re_step number not null,
+	q_re_level number not null,
+	q_content varchar2(1500) not null,
+	q_ip varchar2(15) not null
+);
+
+drop sequence board_seq;
+create sequence board_seq
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'±è¹ÎÁ¤','mj01@gmail.com','ÄÃ·¯ Áø´Ü ¹®ÀÇÇÕ´Ï´Ù.','1234','2023-12-06',12,0,0,'ÄÃ·¯ Áø´Ü ¹Ş°í ÃßÃµ È­ÀåÇ°À» »ò´Âµ¥ º°·Î¸é È¯ºÒ °¡´ÉÇÑ°¡¿ä?','127.0.0.1');
+insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'±è¹ÎÁö','mji@naver.com','¹®ÀÇµå¸³´Ï´Ù.','1234','2023-12-05',10,0,0,'¹«ÅëÀå ÀÔ±İ °¡´ÉÇÑ°¡¿ä?','127.0.0.1');
+insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'°­ÇØ¸°','haerin@gmail.com','ÀÔ°í ¿¹Á¤ ¹®ÀÇ¿ä','1234','2023-12-05',9,0,0,'Á¤È®ÇÑ »óÇ°¸íÀº ¸ğ¸£´Âµ¥ ÀÔ°í ¿¹Á¤ÀÌ ÀÖ³ª¿ä?','127.0.0.1');
+insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'ÀÌÇıÀÎ','hyein@gmail.com','½Å»ó È­ÀåÇ° ¾ğÁ¦Âë','1234','2023-12-04',8,0,0,'½Å»ó È­ÀåÇ° ¾ğÁ¦Âë µé¾î¿À³ª¿ä','127.0.0.1');
+insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'¸ğÁöÇı','jihye@gmail.com','¹­À½ ¹è¼Û ÇØÁÖ¼¼¿ä','1234','2023-12-06',7,0,0,'ÇÏ³ªÇÏ³ª ¶â±â ±ÍÂúÀºµ¥ ¹­À½ ¹è¼Û ÇØÁÖ½Ç ¼ö ÀÖ³ª¿ä','127.0.0.1');
+
+-- insert ³»¿ëÀº c_board ·¹ÄÚµå º¹ºÙÇÑ °Í ³ªÁß¿¡ Ãß°¡¿¹Á¤
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a3','a3','a3','1234','2015-1-1',7,0,0,' ‚´ š©3','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a31','a31','a31','1234','2015-1-1',7,6,1,' ‚´ š©31','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a311','a311','a311','1234','2015-1-1',7,7,2,' ‚´ š©311','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a32','a32','a32','1234','2015-1-1',7,2,1,' ‚´ š©32','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a321','a321','a321','1234','2015-1-1',7,5,2,' ‚´ š©321','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a322','a322','a322','1234','2015-1-1',7,3,2,' ‚´ š©322','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a3221','a3221','a3221','1234','2015-1-1',7,4,3,' ‚´ š©3221','127.0.0.1');
+
+insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip)
+values(board_seq.nextval,'a33','a33','a33','1234','2015-1-1',7,1,1,' ‚´ š©33','127.0.0.1');
+
+commit;
+
+
+-----------------------------------------------------------------
+--c_board Å×ÀÌºí (ÀÇ°ß °Ô½ÃÆÇ)
+-----------------------------------------------------------------
+
+drop table c_board;
+create table c_board( 
+	c_num number not null primary key,
+	c_writer varchar2(30) not null,
+	c_email varchar2(30),
+	c_subject varchar2(200) not null,
+	c_password varchar2(20) not null,
+	c_regdate date not null,
+	c_readcount int default 0,
+	c_ref number not null,
+	c_re_step number not null,
+	c_re_level number not null,
+	c_content varchar2(1500) not null,
+	c_ip varchar2(15) not null
+);
+
+drop sequence board_seq;
+create sequence board_seq
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'¾ÈÀ¯Áø','yoojun@gmail.com','±³È¯ ¹æ¹ı ¹®ÀÇ','1234','2023-12-03',6,0,0,'±³È¯ ¹æ¹ı Á» ¾Ë·ÁÁÖ¼¼¿ä','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'±è°¡À»','autumn@gmail.com','±¸¸Å ÈÄ º¯½ÉÀ¸·Î ÀÎÇÑ ¹İÇ° ¹®ÀÇ','1234','2023-11-24',4,0,0,'¶âÁöµµ ¾ÊÀº »õ»óÇ°ÀÎµ¥ ¹İÇ°ÇÏ°í ½Í¾î¼­¿ä °¡´ÉÇÒ±î¿ä?','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'±èÁö¿ø','jiwon@naver.com','Áö¼º ÇÇºÎ È­ÀåÇ° ¹®ÀÇµå·Á¿ä...','1234','2023-11-23',3,0,0,'ÄÃ·¯ Áø´Ü ¹Ş°í ÃßÃµ ¹ŞÀº È­ÀåÇ°Àº ´Ù °Ç¼º¿ëÀÌ±æ·¡ Áö¼º ÇÇºÎµµ ¾µ ¼ö ÀÖ´Â È­ÀåÇ° ÃßÃµÇØÁÖ¼¼¿ä','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'ÀÌÇö¼­','hs07@gmail.com','¹è¼Ûºñ´Â ¾ó¸¶ÀÎ°¡¿ä','1234','2023-11-23',2,0,0,'¹«·á ¹è¼ÛÀº ¾ó¸¶ºÎÅÍ °¡´ÉÇÑÁö...','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'Á¶¹Ì¿¬','my@naver.com','¹İÇ°ÇÒ ¶§ ºñ¿ëÀÌ µå³ª¿ä?','1234','2023-11-23',1,0,0,'Á¤È®ÇÑ ¹İÇ° ºñ¿ë ¾Ë·ÁÁÖ¼¼¿©','127.0.0.1');
+insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'Àå¿ø¿µ','wonyoung@naver.com','¹İ¼Û ÁÖ¼Ò´Â È¸»ç·Î ÇØ¾ßÇÏ³ª¿ä','1234','2023-12-01',5,0,0,'¹İ¼Û ÁÖ¼Ò ¾Ë·ÁÁÖ¼¼¿ä','127.0.0.1');
 commit;
 
 
@@ -472,7 +572,7 @@ create table users(
 );
 
 insert into users
-values('admin', 'ê´€ë¦¬ì', '1234', '', '', '', '', 'ì˜ ëª¨ë¥´ê² ìŒ');
+values('admin', '°ü¸®ÀÚ', '1234', '', '', '', '', 'Àß ¸ğ¸£°ÚÀ½');
 
 commit;
 
@@ -499,109 +599,108 @@ create table product(
  p_contents varchar2(200)
 );
 
-insert into product values(	pro_seq.nextval,	'ë¡¬ì•¤',	'ì¥¬ì‹œ ë˜ìŠ¤íŒ… í‹´íŠ¸ #ì˜¤ë¦¬ì§€ë„ 05 í”¼ì¹˜ë¯¸',	'1peach_ttl.jpg',	'1peach_dtl.jpg',	'ë´„ ë¼ì´íŠ¸',	8400,	840,	100,	0,	'ì—¬ë¦¬ì—¬ë¦¬í•œ ë³µìˆ­ì•„ë¥¼ ë‚´ ì…ìˆ ì— ì €ì¥, ì„¤ë ˆëŠ” ë³µìˆ­ì•„ ì»¬ëŸ¬'	);
-insert into product values(	pro_seq.nextval,	'í¬ë Œì½”ì¦ˆ',	'íƒ€íˆ¬ ê¸€ë˜ìŠ¤ í‹´íŠ¸ 03 ì•„ì˜ë ˆì•„',	'1azalea_ttl.jpg',	'1azalea_dtl.jpg',	'ë´„ ë¼ì´íŠ¸',	10900,	1090,	100,	0,	'ë§ë¦° ì¥ë¯¸ì— ì½”ë„ í•‘í¬ë¹›ì„ í†¡! ì²­ìˆœí•œ ë°ì¼ë¦¬ ë¡œì¦ˆ ì½”ë„ ê°•ë ¥ ì¶”ì²œ'	);
-insert into product values(	pro_seq.nextval,	'íˆ¬ì¿¨í¬ìŠ¤ì¿¨',	'í”Œë ˆë¥´ í‹´íŠ¸ 02 íœ˜ìŠ¬ë§',	'1whistling_ttl.jpg',	'1whistling_dtl.jpg',	'ë´„ ë¼ì´íŠ¸',	10800,	1080,	100,	0,	'ì½”ë„ì— íƒ„ì‚° ë„£ì€ ë“¯ í™”ì‚¬í•¨ì´ í†¡í†¡ íŠ€ëŠ” ì½”ë„ë¹› ìëª½ì—ì´ë“œ'	);
-insert into product values(	pro_seq.nextval,	'ë² ë„¤í”¼íŠ¸',	'ì°¨ì°¨í‹´íŠ¸',	'1chacha_ttl.jpg',	'1chacha_dtl.jpg',	'ë´„ ë¼ì´íŠ¸',	27900,	2790,	100,	0,	'ì½”ë„ì˜ ì •ì„, ë§ê³  ì½”ë„ í‹´íŠ¸'	);
-insert into product values(	pro_seq.nextval,	'í˜ë¦¬í˜ë¼',	'ë§‘ê²Œ ë¬¼ë“  ì„ ìƒ¤ì¸ ì¹˜í¬ 18 ìˆ˜ì¤ê²Œì¸ì‚¬í•´',	'peripera_ttl.jpg',	'peripera_dtl.jpg',	'ë´„ ë¼ì´íŠ¸',	6400,	640,	100,	0,	'ì•ˆë…•? ë‚˜ ë´„ì´ì•¼. ìˆ˜ì¤ê²Œ ë¹„ì¹˜ëŠ” í–‡ì‚´ì„ ë‹´ì•„ë‚¸ ë½€ì˜¤ì–€ ì‚´ëª¬ ì½”ë„'	);
-insert into product values(	pro_seq.nextval,	'í¬ë¦¬ë‹ˆí¬',	'ì¹˜í¬ íŒ ë©œë¡  íŒ',	'clinique_ttl.jpg',	'1melon_dtl.jpg',	'ë´„ ë¼ì´íŠ¸',	35000,	3500,	100,	0,	'-'	);
-insert into product values(	pro_seq.nextval,	'ì–´í“¨',	'ê³¼ì¦™íŒ¡ ì›Œí„° ë¸”ëŸ¬ì…” CR01 ì¸ê°„ê³„ë³µìˆ­ì•„',	'1ingan_ttl.jpg',	'1ingan_dtl.jpg',	'ë´„ ë¼ì´íŠ¸',	5600,	560,	100,	0,	'ì†Œí”„íŠ¸ ì˜¤ë Œì§€'	);
-insert into product values(	pro_seq.nextval,	'ì—ë›°ë“œí•˜ìš°ìŠ¤',	'ë£© ì•³ ë§ˆì´ ì•„ì´ì¦ˆ ì¹´í˜ PK001 í”¼ì¹˜ë¼ë–¼',	'cafe_ttl.jpg',	'cafe_dtl.jpg',	'ë´„ ë¼ì´íŠ¸',	4000,	400,	100,	0,	'ë¯¸ì„¸í•œ ì‹¤ë²„ í„ê°ì˜ í†¤ ë³´ì •ìš© í™”ì´íŠ¸ ì½”ë„ í•‘í¬ ì»¬ëŸ¬'	);
-insert into product values(	pro_seq.nextval,	'ì—ìŠ¤ì˜ì•„',	'ë¦¬ì–¼ ì•„ì´ íŒ”ë ˆíŠ¸ 5í˜¸ ì• í”„ë¦¬ì½§ ë¯¸',	'espoir2_ttl.jpg',	'1apricot_dtl.jpg',	'ë´„ ë¼ì´íŠ¸',	32000,	3200,	100,	0,	'ë½€ì–—ê²Œ ë¬¼ë“œëŠ” ì‚´êµ¬ê²° ìƒê¸°'	);
-insert into product values(	pro_seq.nextval,	'í™€ë¦¬ì¹´í™€ë¦¬ì¹´',	'ë§ˆì´í˜ì´ë¸Œ ë°”ì´ë¸Œ ì•„ì´ íŒ”ë ˆíŠ¸ #ë¨¸ì¶”ì–´í”¼ì¹˜',	'1mature_ttl.jpg',	'1mature_dtl.jpg',	'ë´„ ë¼ì´íŠ¸',	32000,	3200,	100,	0,	'ë‹¤ì±„ë¡­ê²Œ ë¬´ë¥´ìµì€ 12ê°€ì§€ì˜ ê°ì–‘ê°ìƒ‰ì˜ í”„ë£¨ì¸  ì»¬ëŸ¬ ì¡°í•©'	);
-insert into product values(	pro_seq.nextval,	'í˜ë¦¬í˜ë¼',	'ì‰í¬ ë” ë²¨ë²³ #7 ë¹„ì£¼ì–¼ê°‘',	'peripera3_ttl.jpg',	'peripera3_dtl.jpg',	'ë´„ ë¸Œë¼ì´íŠ¸',	8000,	800,	100,	0,	'ë ˆë“œ ì¤‘ì˜ ë¹„ì£¼ì–¼ ì„¼í„° ë ˆë“œ! ì˜¤ë Œì§€ í•œ ë°©ìš¸ ë–¨ì–´íŠ¸ë¦° ë§‘ì€ ë ˆë“œ'	);
-insert into product values(	pro_seq.nextval,	'ì‚ì•„',	'ë¼ìŠ¤íŠ¸ ë²¨ë²³ í‹´íŠ¸ V02 ìƒê¸°ê°‘',	'bbia_ttl.jpg',	'2extra_dtl.jpg',	'ë´„ ë¸Œë¼ì´íŠ¸',	11000,	1100,	100,	0,	'ë¹„ë¹„ë“œí•œ ì˜¤ë Œì§€ ë ˆë“œ'	);
-insert into product values(	pro_seq.nextval,	'ë¡¬ì•¤',	'ì œë¡œ ë§¤íŠ¸ ë¦½ìŠ¤í‹± #ì˜¤ë¦¬ì§€ë„ 12 ì¸ëµ',	'2something_ttl.jpg',	'2something_dtl.jpg',	'ë´„ ë¸Œë¼ì´íŠ¸',	9600,	960,	100,	0,	'í“¨ì–´í•œ ì½”ë„ê³¼ ë ˆë“œê°€ ë§Œë‚œ í†µí†µ íŠ€ëŠ” ì½”ë„ë ˆë“œ'	);
-insert into product values(	pro_seq.nextval,	'í¬ë¦¬ë‹ˆí¬',	'ì¹˜í¬ íŒ í”¼ì¹˜ íŒ',	'clinique_ttl.jpg',	'2peach_dtl.jpg',	'ë´„ ë¸Œë¼ì´íŠ¸',	35000,	3500,	100,	0,	'-'	);
-insert into product values(	pro_seq.nextval,	'ì—ë›°ë“œí•˜ìš°ìŠ¤',	'ë£© ì•³ ë§ˆì´ ì•„ì´ì¦ˆ ì¥¬ì–¼ OR207 ìƒí¼í•˜ë‹¤ê·¤',	'2or_ttl.jpg',	'2or_dtl.jpg',	'ë´„ ë¸Œë¼ì´íŠ¸',	5500,	550,	100,	0,	'ì‹¤ë²„,ê³¨ë“œ,ì˜¤ë Œì§€ í„ë“¤ì´ ì–´ìš¸ëŸ¬ì ¸ ìƒí¼í•˜ê²Œ ë¹›ë‚˜ëŠ” ì˜¤ë Œì§€ ê¸€ë¦¬í„°'	);
-insert into product values(	pro_seq.nextval,	'ë‚˜ìŠ¤',	'ë¸”ëŸ¬ì‰¬ ì˜¤ë¥´ê°€ì¦˜',	'2orgasm_ttl.jpg',	'2orgasm_dtl.jpg',	'ë´„ ë¸Œë¼ì´íŠ¸',	40500,	4050,	100,	0,	'ë¹›ë‚˜ëŠ” ë³µìˆ­ì•„í†¤ í•‘í¬'	);
-insert into product values(	pro_seq.nextval,	'íˆ¬ì¿¨í¬ìŠ¤ì¿¨',	'í”„ë¡œíƒ€ì£¼ íœìŠ¬ 08 ì„¼í‹°ë“œ ë¶€ì¼€',	'2scented_ttl.jpg',	'2scented_dtl.jpg',	'ë´„ ë¸Œë¼ì´íŠ¸',	9900,	990,	100,	0,	'ì—¬ë¦° ì‚´êµ¬ë¹› ê°ë„ëŠ” ì›œ ì½”ë„'	);
-insert into product values(	pro_seq.nextval,	'í˜ë¦¬í˜ë¼ ',	'ì˜¬ í…Œì´í¬ ë¬´ë“œ íŒ”ë ˆíŠ¸ #08 ë‹¹ê·¼, ê·¼ë° ì´ì œ í–‡ì‚´ì„ ê³ë“¤ì¸',	'peripera2_ttl.jpg',	'peripera2_dtl.jpg',	'ë´„ ë¸Œë¼ì´íŠ¸',	16800,	1680,	100,	0,	'ë‹¨ í•˜ë‚˜ë¡œ ëë‚´ëŠ” ì˜¬í…Œì´í¬ ë¬´ë“œ íŒ”ë ˆíŠ¸'	);
-insert into product values(	pro_seq.nextval,	'ë°ì´ì§€í¬',	'ì„€ë„ìš° íŒ”ë ˆíŠ¸ 02 ë¡œì¦ˆ í˜íƒˆ',	'2rose_ttl.jpg',	'2rose_dtl.jpg',	'ë´„ ë¸Œë¼ì´íŠ¸',	27200,	2720,	100,	0,	'í™”ì‚¬í•˜ê²Œ í”¼ì–´ë‚˜ëŠ” ì¥ë¯¸ê½ƒ ì»¬ëŸ¬ë¥¼ ë‹´ì€ ë°ì´ì§€í¬ì˜ ê°ì„± ì•„ì´ íŒ”ë ˆíŠ¸'	);
-insert into product values(	pro_seq.nextval,	'í™€ë¦¬ì¹´í™€ë¦¬ì¹´',	'ì•„ì´ ìŠ¤íŒ½ ê¸€ë¦¬í„° 6í˜¸ ì‰˜ íŒŒì¸ ',	'2shell_ttl.jpg',	'2shell_dtl.jpg',	'ë´„ ë¸Œë¼ì´íŠ¸',	7900,	790,	100,	0,	'ì‚´êµ¬ë¹” ë² ì´ìŠ¤ì— í•‘í¬ í”Œë ˆì´í¬,ì˜¤ë Œì§€,ê·¸ë¦° í„ ë° ì•„ì¿ ì•„,ì˜¤ë Œì§€ ìŠ¤íŒ½ê¸€ ê¸€ë¦¬í„°ê°€ ì‹ ë¹„ë¡­ê²Œ ë°˜ì§ì´ëŠ” ì»¬ëŸ¬'	);
-insert into product values(	pro_seq.nextval,	'ì—ë›°ë“œí•˜ìš°ìŠ¤',	'ì—ì–´ ë¬´ìŠ¤ ì•„ì´ì¦ˆ PK001 ìƒ¤ë„ë¼ í©ë‚ ë¦¬ë‚˜ ë´„',	'3pk_ttl.jpg',	'3pk_dtl.jpg',	'ì—¬ë¦„ ë¼ì´íŠ¸',	6500,	650,	100,	0,	'ì´˜ì´˜í•˜ê³  ë‹¤ì±„ë¡œìš´ í„ë“¤ì´ ì°¨ë¥´ë¥´ ë¹›ë‚˜ ëˆˆ ë‘ë©ì´ì™€ ëˆˆ ì•ë¨¸ë¦¬ì— ì“°ê¸° ì¢‹ì€ ì˜¤íŒ” ê¸€ë¦¬í„°'	);
-insert into product values(	pro_seq.nextval,	'ë°ì´ì§€í¬',	'ì¥¬ì‹œ ë“€ì´ í‹´íŠ¸ 03 í•‘í¬ êµ¬ì•„ë°”',	'3guava_ttl.jpg',	'3guava_dtl.jpg',	'ì—¬ë¦„ ë¼ì´íŠ¸',	11900,	1190,	100,	0,	'í”¼ë¶€ì— ë™ë™ ëœ¨ì§€ ì•ŠëŠ” ë§‘ê³  ëŸ¬ë¸”ë¦¬í•œ ëŠë‚Œì˜ í•‘í¬ ì»¬ëŸ¬'	);
-insert into product values(	pro_seq.nextval,	'í“Œ',	'ë¯¸ë‹ˆ ì•„ì´íŒ”ë ˆíŠ¸ ê¸€ë˜ìŠ¤ 02 ì—¬ë¦„',	'3summer_ttl.jpg',	'3summer_dtl.jpg',	'ì—¬ë¦„ ë¼ì´íŠ¸',	12000,	1200,	100,	0,	'ì† ì•ˆì— ê°ê¸°ëŠ” ë¯¸ë‹ˆ ì‚¬ì´ì¦ˆë¡œ ì†ì‰½ê²Œ í‘œí˜„í•˜ëŠ” ë‚˜ë§Œì˜ ê¸€ë˜ìŠ¤ ë¬´ë“œ'	);
-insert into product values(	pro_seq.nextval,	'ë¡¬ì•¤',	'ë“€ì´í’€ ì›Œí„° í‹´íŠ¸ #ë°€í¬ê·¸ë¡œì„œë¦¬ 10 ë¨¸ë¨¸í•‘í¬',	'3murmur_ttl.jpg',	'3murmur_dtl.jpg',	'ì—¬ë¦„ ë¼ì´íŠ¸',	9900,	990,	100,	0,	'ì§„í•˜ê²Œ ìš°ë ¤ë‚¸ ë”¸ê¸°ìš°ìœ  ê°™ì€ ì¿¨ í•‘í¬'	);
-insert into product values(	pro_seq.nextval,	'í™€ë¦¬ì¹´í™€ë¦¬ì¹´',	'í”¼ìŠ¤ë§¤ì¹­ ë¸”ëŸ¬ì…” í´ë¦°ì‹œë¦¬ì¦ˆ í´ë¦°í•‘í¬',	'3clean_ttl.jpg',	'3clean_dtl.jpg',	'ì—¬ë¦„ ë¼ì´íŠ¸',	6500,	650,	100,	0,	'í°ë¼ ë‚­ë‚­ ì²­ìˆœí•œ í•‘í¬'	);
-insert into product values(	pro_seq.nextval,	'ë¼ì¹´',	'í”„ë£¨í‹° ê¸€ë¨ í‹´íŠ¸ 105 ì½œë“œ',	'3cold_ttl.jpg',	'3cold_dtl.jpg',	'ì—¬ë¦„ ë¼ì´íŠ¸',	15000,	1500,	100,	0,	'ë¬¼ê¸° ì–´ë¦° ê³¼ì¼ì²˜ëŸ¼ íˆ¬ëª…ê° ìˆê²Œ ë°˜ì§ì´ëŠ” ì»¬ëŸ¬ë“¤'	);
-insert into product values(	pro_seq.nextval,	'ë‚˜ìŠ¤',	'ë¸”ëŸ¬ì‰¬ ìŠ¤ë¦´',	'3thrill_ttl.jpg',	'3thrill_dtl.jpg',	'ì—¬ë¦„ ë¼ì´íŠ¸',	40500,	4050,	100,	0,	'ë¼ì´íŠ¸ ì¿¨ í•‘í¬'	);
-insert into product values(	pro_seq.nextval,	'í¬ë¦¬ë‹ˆí¬',	'ì¹˜í¬íŒ ë°œë ˆë¦¬ë‚˜íŒ',	'clinique_ttl.jpg',	'3ballet_dtl.jpg',	'ì—¬ë¦„ ë¼ì´íŠ¸',	35000,	3500,	100,	0,	'-'	);
-insert into product values(	pro_seq.nextval,	'í¬ë Œì½”ì¦ˆ',	'íƒ€íˆ¬ ê¸€ë˜ìŠ¤ í‹´íŠ¸ 06 í”„ë‘',	'forencos_ttl.jpg',	'forencos_dtl.jpg',	'ì—¬ë¦„ ë¼ì´íŠ¸',	10900,	1090,	100,	0,	'ê½ƒë³´ë‹¤ ë” ê½ƒ ê°™ì€ ë°ì¼ë¦¬ í•‘í¬ ë¶€ì¼€ ì°© ë¶™ëŠ” ìì—°ìŠ¤ëŸ¬ìš´ ë°ì¼ë¦¬ ì—¬ë¦° í•‘í¬!'	);
-insert into product values(	pro_seq.nextval,	'ë¦´ë¦¬ë°”ì´ë ˆë“œ',	'ë¬´ë“œí‚¤ë³´ë“œ 04 #ì¿¨ë©¤ë²„ì‰½',	'3cool_ttl.jpg',	'3cool_dtl.jpg',	'ì—¬ë¦„ ë¼ì´íŠ¸',	21900,	2190,	100,	0,	'ë§‘ì€ í‘¸ë¥¸ ê¸° í•œ ë°©ìš¸ì„ ë”í•´ ëœ¨ì§€ ì•ŠëŠ” ë¼ë²¤ë” í•‘í¬ ì¿¨í†¤ íšŒì›ì„ ìœ„í•œ ì¿¨ í•‘í¬ ë² ë¦¬ì—ì´ì…˜'	);
-insert into product values(	pro_seq.nextval,	'ì—ìŠ¤ì˜ì•„',	'ê¾¸ë›°ë¥´ ë¦½ í‹´íŠ¸ ìƒ¤ì¸ í—¤ì´ ë² ìŠ¤í‹°',	'4bestie_ttl.jpg',	'4bestie_dtl.jpg',	'ì—¬ë¦„ ë¸Œë¼ì´íŠ¸',	14000,	1400,	100,	0,	'ì† ì´ì•¼ê¸°ê¹Œì§€ ê±°ë¦¬ë‚Œ ì—†ëŠ” ì°ì¹œê³¼ì˜ ìˆ˜ë‹¤ì‹œê°„ ê¾¸ë°ˆì—†ì´ ì†”ì§í•œ ë¸Œë¼ì´íŠ¸ í•‘í¬'	);
-insert into product values(	pro_seq.nextval,	'ë¡¬ì•¤',	'ì¥¬ì‹œ ë˜ìŠ¤íŒ… í‹´íŠ¸ #ì—¬ë¼ 27 í•‘í¬ íŒì‹œí´',	'4popsicle_ttl.jpg',	'4popsicle_dtl.jpg',	'ì—¬ë¦„ ë¸Œë¼ì´íŠ¸',	8400,	840,	100,	0,	'ë§‘ì€ í•‘í¬ì— í° ê¸° í•œ ë°©ìš¸ì„ ë„£ì–´ ë¯¼ë‚¯ì—ë„ ë¶€ë‹´ìŠ¤ëŸ½ì§€ ì•Šì€ ì²­ëŸ‰í•œ ì—¬ë¼ í•‘í¬'	);
-insert into product values(	pro_seq.nextval,	'í˜ë¦¬í˜ë¼',	'ì‰í¬ ë” ì—ì–´ë¦¬ ë²¨ë²³ #20 ë¯¸ëª¨ì—´ì¼',	'4mimo_ttl.jpg',	'4mimo_dtl.jpg',	'ì—¬ë¦„ ë¸Œë¼ì´íŠ¸',	10000,	1000,	100,	0,	'ë‹¨ì¢…í…œ ë¶€í™œ! í‘¸ë¥¸ë¹› ë”í•´ í¬ì†Œì„± ìˆëŠ” í‘¸ì‹œì•„ í•‘í¬ ë¦½'	);
-insert into product values(	pro_seq.nextval,	'ë„¤ì´ë°',	'í”ŒëŸ¬í”¼ íŒŒìš°ë” ë¸”ëŸ¬ì‰¬ ì•¼ë¯¸',	'4yummy_ttl.jpg',	'4yummy_dtl.jpg',	'ì—¬ë¦„ ë¸Œë¼ì´íŠ¸',	15000,	1500,	100,	0,	'ë”¸ê¸° ìš°ìœ³ë¹› ë² ì´ë¹„ í•‘í¬'	);
-insert into product values(	pro_seq.nextval,	'ë”ìƒ˜',	'ìƒ˜ë¬¼ ì‹±ê¸€ ë¸”ëŸ¬ì…” PP05 ë¼ì´ ë² ë¦¬',	'4berry_ttl.jpg',	'saemmul_dtl.jpg',	'ì—¬ë¦„ ë¸Œë¼ì´íŠ¸',	5000,	500,	100,	0,	'ì›œí†¤ë„ ì¿¨í†¤ì²˜ëŸ¼ ë³´ì´ê²Œí•˜ëŠ” ë¦¬ì–¼ í™”ì´í‹°ì‰¬ ì—°ë³´ë¼ ì»¬ëŸ¬'	);
-insert into product values(	pro_seq.nextval,	'ë¡¬ì•¤',	'ë² ëŸ¬ ëŒ„ ì¹˜í¬ W01 ì˜¤ë””ë°€í¬',	'romand_ttl.jpg',	'romand_dtl.jpg',	'ì—¬ë¦„ ë¸Œë¼ì´íŠ¸',	9900,	990,	100,	0,	'ì°¨ê²Œ ì–¼ë¦° ì˜¤ë””ë¥¼ ìš°ìœ ì— í•œê°€ë“, ì˜¤ë”” í¬ë¦¼'	);
-insert into product values(	pro_seq.nextval,	'ì•„ë¦¬ë”°ì›€',	'ëª¨ë…¸ì•„ì´ì¦ˆ M36 ëŸ¬ë²„ë¸”ë°ì´',	'4love_ttl.jpg',	'4love_dtl.jpg',	'ì—¬ë¦„ ë¸Œë¼ì´íŠ¸',	5000,	500,	100,	0,	'í†¤ë‹¤ìš´ í•‘í¬ë¹›ìœ¼ë¡œ ì—¬ë¦¬í•œ ê°ì„±ì˜ M36 ëŸ¬ë²„ë¸”ë°ì´'	);
-insert into product values(	pro_seq.nextval,	'ì—ìŠ¤ì˜ì•„',	'ë¦¬ì–¼ ì•„ì´ í•¸ë”” íŒ”ë ˆíŠ¸ 2í˜¸ ë¼ì´íŠ¸ í”¼ì˜¤ë‹ˆ',	'4peony_ttl.jpg',	'4peony_dtl.jpg',	'ì—¬ë¦„ ë¸Œë¼ì´íŠ¸',	24000,	2400,	100,	0,	'ì‚¬ë‘ìŠ¤ëŸ¬ìš´ ë°œë ˆí•‘í¬ í”¼ì˜¤ë‹ˆ'	);
-insert into product values(	pro_seq.nextval,	'16ë¸Œëœë“œ',	'ë§ˆì´ ë§¤ê±°ì§„ ë…¸ìŠ¤í…”ì§€ì–´ ë¬´ë“œ Vol.07 ë¼ì¼ë½',	'4nos_ttl.jpg',	'4nos_dtl.jpg',	'ì—¬ë¦„ ë¸Œë¼ì´íŠ¸',	16900,	1690,	100,	0,	'ì€ì€í•˜ê²Œ ë°˜ì§ì´ëŠ” ë¼ì¼ë½ ê½ƒ ì»¬ëŸ¬!'	);
-insert into product values(	pro_seq.nextval,	'ë¡¬ì•¤',	'ë² ëŸ¬ ëŒ„ ì•„ì´ì¦ˆ #ìš°ìœ  W01 ë§ë¦° ë¼ë²¤ë”',	'4lavender_ttl.jpg',	'4lavender_dtl.jpg',	'ì—¬ë¦„ ë¸Œë¼ì´íŠ¸',	13600,	1360,	100,	0,	'ìš°ìœ ì— ë¹ ì ¸ ë”ìš± ë½€ì–˜ì§„ ë³´ë¼ë¹› ì»¬ëŸ¬'	);
-insert into product values(	pro_seq.nextval,	'ë§¥',	'íŒŒìš°ë” í‚¤ìŠ¤ ë¦½ìŠ¤í‹± ì„œíŠ¸ë¦¬ë‹ˆìŠ¤',	'5sul_ttl.jpg',	'5sul_dtl.jpg',	'ì—¬ë¦„ ë®¤íŠ¸',	39000,	3900,	100,	0,	'ë² ì´ë¹„ í•‘í¬'	);
-insert into product values(	pro_seq.nextval,	'íŒìŠ¤',	'ë¬´ë“œì¸í•¸ì„œ ë§ˆëœ¨ ë¦½ìŠ¤í‹± ì–¼ë£¨ì–´',	'5allure_ttl.jpg',	'5allure_dtl.jpg',	'ì—¬ë¦„ ë®¤íŠ¸',	15200,	1520,	100,	0,	'ì˜¬íƒ€ì„ í´ë˜ì‹ ë¡œì¦ˆ ë² ì´ì§€. ë¤ë¤í•œ ë“¯ ë°€ë„ ìˆê²Œ ë°°ì–´ë‚˜ëŠ” í•‘í¬ë¹› ëª¨ë¸Œ ë² ì´ì§€ê°€ ë‹¹ì‹ ì˜ ìš°ì•„í•¨ì„ ë“œëŸ¬ë‚˜ê²Œ í•©ë‹ˆë‹¤.'	);
-insert into product values(	pro_seq.nextval,	'ì—ìŠ¤ì˜ì•„',	'ê¾¸ë›°ë¥´ ë¦½ í‹´íŠ¸ ë¸”ëŸ¬ ë²¨ë²³ 5í˜¸ ì„¸ë ˆë‚˜ë°',	'espoir_ttl.jpg',	'espoir_dtl.jpg',	'ì—¬ë¦„ ë®¤íŠ¸',	18700,	1870,	100,	0,	'í¬ë¦¼ í•œ ìŠ¤í‘¼ ê°€ë¯¸ëœ ë¯¸ì§€ê·¼í•œ ì†Œí”„íŠ¸ í•‘í¬'	);
-insert into product values(	pro_seq.nextval,	'ë‚˜ìŠ¤',	'ë¸”ëŸ¬ì‰¬ ì„íŒ¨ì…˜ë“œ',	'5im_ttl.jpg',	'5im_dtl.jpg',	'ì—¬ë¦„ ë®¤íŠ¸',	40500,	4050,	100,	0,	'ì„íŒ¨ì…˜ë“œ í•‘í¬ ì˜¤í‚¤ë“œ'	);
-insert into product values(	pro_seq.nextval,	'ë¡¬ì•¤',	'ë² ëŸ¬ ëŒ„ ì¹˜í¬ C02 ë¸”ë£¨ë² ë¦¬ì¹©',	'romand_ttl.jpg',	'romand_dtl.jpg',	'ì—¬ë¦„ ë®¤íŠ¸',	9900,	990,	100,	0,	'ì˜ ë§ˆë¥¸ ë¸”ë£¨ë² ë¦¬ì²˜ëŸ¼ ì˜…ì€ ë®¤íŠ¸ í•‘í¬'	);
-insert into product values(	pro_seq.nextval,	'ë°”ë¹„ë¸Œë¼ìš´',	'ë¡±ì›¨ì–´ í¬ë¦¼ ì„€ë„ìš° ìŠ¤í‹± ë”ìŠ¤í‹° ëª¨ë¸Œ',	'5dusty_ttl.jpg',	'5dusty_dtl.jpg',	'ì—¬ë¦„ ë®¤íŠ¸',	52000,	5200,	100,	0,	'ì‰¬ë¨¸ë§ ë¼ë²¤ë”'	);
-insert into product values(	pro_seq.nextval,	'í¬ë¦¬ë‹ˆí¬',	'ì¹˜í¬ íŒ ë¡œì§€ íŒ',	'clinique_ttl.jpg',	'5rosie_dtl.jpg',	'ì—¬ë¦„ ë®¤íŠ¸',	35000,	3500,	100,	0,	'-'	);
-insert into product values(	pro_seq.nextval,	'í˜ë¦¬í˜ë¼',	'ì˜¬ í…Œì´í¬ ë¬´ë“œ íŒ”ë ˆíŠ¸ #04 ë®¤íŠ¸ë¡œìš´ ìš°ë¦¬ë¥¼ ë´ ë¡œì¦ˆë¡œì›Œ',	'peripera2_ttl.jpg',	'peripera2_dtl.jpg',	'ì—¬ë¦„ ë®¤íŠ¸',	16800,	1680,	100,	0,	'ë‹¨ í•˜ë‚˜ë¡œ ëë‚´ëŠ” ì˜¬í…Œì´í¬ ë¬´ë“œ íŒ”ë ˆíŠ¸'	);
-insert into product values(	pro_seq.nextval,	'í™€ë¦¬ì¹´í™€ë¦¬ì¹´',	'ë§ˆì´í˜ì´ë¸Œ ë¬´ë“œ ì•„ì´íŒ”ë ˆíŠ¸ 02 ë¬´ë‹ˆ',	'5moony_ttl.jpg',	'5moony_dtl.jpg',	'ì—¬ë¦„ ë®¤íŠ¸',	19600,	1960,	100,	0,	'ì–´ìŠ¤ë¦„í•œ ìƒˆë²½, ë§ˆìŒì´ ëª½ê¸€ ëª½ê¸€í•´ì§€ëŠ” ë©€ë² ë¦¬ ìƒ‰ê°'	);
-insert into product values(	pro_seq.nextval,	'ì•„ë¦¬ë”°ì›€',	'ë¦¬ì–¼ ì•„ì´ íŒ”ë ˆíŠ¸ 4í˜¸ ëª¨ë¸Œë¯¸',	'espoir2_ttl.jpg',	'5mauve_ttl.jpg',	'ì—¬ë¦„ ë®¤íŠ¸',	32000,	3200,	100,	0,	'ë§‘ê²Œ ë¹›ë‚˜ëŠ” ë¼ì¼ë½ ëª¨ë¸Œ'	);
-insert into product values(	pro_seq.nextval,	'í—¤ë¼',	'ì„¼ìŠˆì–¼ íŒŒìš°ë” ë§¤íŠ¸ ë¦¬í€´ë“œ 499í˜¸ ë¡œì§€ìŠ¤ì›¨ì´ë“œ',	'6suede_ttl.jpg',	'6suede_dtl.jpg',	'ê°€ì„ ë®¤íŠ¸',	36000,	3600,	100,	0,	'#ë¡œì§€ë¸Œë¼ìš´'	);
-insert into product values(	pro_seq.nextval,	'í¬ë Œì½”ì¦ˆ',	'íƒ€íˆ¬ ëŒë ˆë¥´ ë²¨ë²³ í‹´íŠ¸ 19 ëª¨ìŠ¤',	'forencos2_ttl.jpg',	'6moss_dtl.jpg',	'ê°€ì„ ë®¤íŠ¸',	10900,	1090,	100,	0,	'ë…¸ì„ì€ ë‰˜ì—¿ë‰˜ì—¿, ë“¤íŒì— í•œë“¤í•œ ì½”ë„ í•œ ì†¡ì´, ì½”ë„ ë² ì´ì§€'	);
-insert into product values(	pro_seq.nextval,	'3CE',	'ë¸”ëŸ¬ ì›Œí„° í‹´íŠ¸ #LAYDOWN',	'6lay_ttl.jpg',	'6lay_dtl.jpg',	'ê°€ì„ ë®¤íŠ¸',	11900,	1190,	100,	0,	'ì˜¤ë¬˜í•œ ë‹¤ìš´ í†¤ í•‘í¬ ë¸Œë¼ìš´ ë² ì´ìŠ¤'	);
-insert into product values(	pro_seq.nextval,	'ì—ìŠ¤ì˜ì•„',	'ê¾¸ë›°ë¥´ ë¦½ í‹´íŠ¸ ë¸”ëŸ¬ ë²¨ë²³ 2í˜¸ ë¬¸ë¦¿',	'espoir_ttl.jpg',	'espoir_dtl.jpg',	'ê°€ì„ ë®¤íŠ¸',	18700,	1870,	100,	0,	'ëˆ„ê°€ ë°œë¼ë„ ì‹¤íŒ¨ ì—†ëŠ” ë§ë¦°ì¥ë¯¸ ì—ìŠ¤ì˜ì•„ ëŒ€í‘œ MLBB'	);
-insert into product values(	pro_seq.nextval,	'ë”ìƒ˜',	'ìƒ˜ë¬¼ ì‹±ê¸€ ë¸”ëŸ¬ì…” BE02 í”Œë˜ì‹œ ë² ì´ì§€',	'6flash_ttl.jpg',	'saemmul_dtl.jpg',	'ê°€ì„ ë®¤íŠ¸',	5000,	500,	100,	0,	'ì€ì€í•œ ê¸ˆ í„ì´ í¬í•¨ë˜ì–´ ê±´ê°•í•œ ëŠë‚Œì„ ì—°ì¶œí•˜ëŠ” í†¤ ë‹¤ìš´ ë² ì´ì§€ ì»¬ëŸ¬'	);
-insert into product values(	pro_seq.nextval,	'3CE',	'í˜ì´ìŠ¤ ë¸”ëŸ¬ì‰¬ #NUDE PEACH',	'6nude_ttl.jpg',	'6nude_dtl.jpg',	'ê°€ì„ ë®¤íŠ¸',	14400,	1440,	100,	0,	'ì€ì€í•˜ê³  ë¶€ë“œëŸ¬ìš´ í´ë˜ì‹ ëˆ„ë“œ í”¼ì¹˜'	);
-insert into product values(	pro_seq.nextval,	'ë‚˜ìŠ¤',	'ë¸”ëŸ¬ì‰¬ ì§€ë‚˜',	'6gina_ttl.jpg',	'6gina_dtl.jpg',	'ê°€ì„ ë®¤íŠ¸',	40500,	4050,	100,	0,	'ë§¤íŠ¸ íƒ ì €ë¦°'	);
-insert into product values(	pro_seq.nextval,	'íˆ¬ì¿¨í¬ìŠ¤ì¿¨',	'ì•„íŠ¸í´ë˜ìŠ¤ ë°”ì´ë¡œëŒ• ì½œë ‰í„°ì¦ˆ #1 ë¸Œë¼ìš´',	'6brown_ttl.jpg',	'6brown_dtl.jpg',	'ê°€ì„ ë®¤íŠ¸',	14900,	1490,	100,	0,	'ë¸Œë¼ìš´ ë² ì´ìŠ¤ì˜ íŒ”ë ˆíŠ¸ë¡œ ê¹Šê³  ì…ì²´ì ì¸ ëˆˆë§¤ ì—°ì¶œ ë¸Œë¼ìš´ ë°ì¼ë¦¬ ìŒì˜ ë©”ì´í¬ì—…'	);
-insert into product values(	pro_seq.nextval,	'ë¡¬ì•¤',	'ë² ëŸ¬ ëŒ„ ì•„ì´ì¦ˆ #ë¹›ë°”ëœìŒì˜ N01 ë§ë¦° ë²„ë“¤ê½ƒ',	'6willow_ttl.jpg',	'6willow_dtl.jpg',	'ê°€ì„ ë®¤íŠ¸',	13600,	1360,	100,	0,	'ì§„í•˜ì§€ ì•Šì€ ë¶€ë“œëŸ¬ìš´ ë² ì´ì§€ ë¹› ìŒì˜'	);
-insert into product values(	pro_seq.nextval,	'ë°ì´ì§€í¬',	'ì„€ë„ìš° íŒ”ë ˆíŠ¸ 12 ì›œë¸”ë Œë”©',	'6warm_ttl.jpg',	'6warm_dtl.jpg',	'ê°€ì„ ë®¤íŠ¸',	27200,	2720,	100,	0,	'ì›œí†¤ì„ ìœ„í•œ ë² ì´ì§ ì»¬ëŸ¬ë¥¼ ì€ì€í•˜ê²Œ ìš°ë ¤ë‚¸ ì‹œë‚˜ëª¬í‹° ë¬´í„ íŒ”ë ˆíŠ¸'	);
-insert into product values(	pro_seq.nextval,	'ì‚ì•„',	'ë¼ìŠ¤íŠ¸ ë²¨ë²³ í‹´íŠ¸ V12 ë‹¤ì •ë³´ìŠ¤',	'bbia_ttl.jpg',	'7boss_dtl.jpg',	'ê°€ì„ ìŠ¤íŠ¸ë¡±',	8800,	880,	100,	0,	'ë¯¸ë“œ í†¤ì˜ ì˜¤ë Œì§€ ë¸Œë¼ìš´'	);
-insert into product values(	pro_seq.nextval,	'í¬ë Œì½”ì¦ˆ',	'íƒ€íˆ¬ ëŒë ˆë¥´ ë²¨ë²³ í‹´íŠ¸ 05 ë¸Œë­',	'forencos2_ttl.jpg',	'7brun_dtl.jpg',	'ê°€ì„ ìŠ¤íŠ¸ë¡±',	10900,	1090,	100,	0,	'100ì¼ ë§ë¦° ë‹¨í’ ìì„ í†¡, ë©”ì´í”Œ ë¡œì¦ˆ'	);
-insert into product values(	pro_seq.nextval,	'ë§¥',	'ë§¤íŠ¸ ë¦½ìŠ¤í‹± ì¹ ë¦¬',	'7chilly_ttl.jpg',	'7chilly_dtl.jpg',	'ê°€ì„ ìŠ¤íŠ¸ë¡±',	39000,	3900,	100,	0,	'Warm brick red'	);
-insert into product values(	pro_seq.nextval,	'í˜ë¦¬í˜ë¼',	'ì‰í¬ ë” ë²¨ë²³ #1 ë¸Œë¦­ë¶€ì‹¬',	'peripera3_ttl.jpg',	'peripera3_dtl.jpg',	'ê°€ì„ ìŠ¤íŠ¸ë¡±',	8000,	800,	100,	0,	'ì»¬ëŸ¬ í•˜ë‚˜ë¡œ ìì‹ ê° 200% ì…ìˆ  ë¶€ì‹¬ ë„˜ì¹˜ëŠ” ë¸Œë¦­ ë²„ê±´ë””'	);
-insert into product values(	pro_seq.nextval,	'ì—ë›°ë“œí•˜ìš°ìŠ¤',	'ë£© ì•³ ë§ˆì´ ì•„ì´ì¦ˆ ì¹´í˜ BR405 ê¹Œí˜ë¼ë–¼ ìš°ìœ ë§ì´',	'cafe_ttl.jpg',	'cafe_dtl.jpg',	'ê°€ì„ ìŠ¤íŠ¸ë¡±',	4000,	400,	100,	0,	'ê¹Œí˜ë¼ë–¼ì— ìš°ìœ ë¥¼ ë” ë¶€ì€ë“¯í•œ ë°€í‚¤ ë ˆë“œë¸Œë¼ìš´ ìŒì˜ ì»¬ëŸ¬'	);
-insert into product values(	pro_seq.nextval,	'í¬ë¦¬ë‹ˆí¬',	'ì¹˜í¬ íŒ ëˆ„ë“œ íŒ',	'clinique_ttl.jpg',	'7nude_dtl.jpg',	'ê°€ì„ ìŠ¤íŠ¸ë¡±',	35000,	3500,	100,	0,	'-'	);
-insert into product values(	pro_seq.nextval,	'ë‚˜ìŠ¤',	'ë¸”ëŸ¬ì‰¬ ëŸ¬ìŠ¤í„°',	'7luster_ttl.jpg',	'7luster_dtl.jpg',	'ê°€ì„ ìŠ¤íŠ¸ë¡±',	40500,	4050,	100,	0,	'ê³¨ë“  ì‰¬ì–´ ì‚´êµ¬ìƒ‰'	);
-insert into product values(	pro_seq.nextval,	'ì—ë›°ë“œí•˜ìš°ìŠ¤',	'ë£© ì•³ ë§ˆì´ ì•„ì´ì¦ˆ BR402 ì‹œëŸ½ë¹¼ê³  í…Œì´í¬ì•„ì›ƒ',	'7syrup_ttl.jpg',	'7syrup_dtl.jpg',	'ê°€ì„ ìŠ¤íŠ¸ë¡±',	4000,	400,	100,	0,	'ê³¨ë“œ í„ì´ í•¨ìœ ëœ ë¸Œë¼ìš´ ì‰¬ë¨¸ ë² ì´ìŠ¤ë¡œ ì‚¼ê°ì¡´, ë¼ì¸, ìŒì˜ ì–´ë””ë“  ì‚¬ìš© ê°€ëŠ¥í•œ ë² ìŠ¤íŠ¸ ì»¬ëŸ¬'	);
-insert into product values(	pro_seq.nextval,	'í´ë¦¬ì˜¤',	'í”„ë¡œ ì•„ì´ íŒ”ë ˆíŠ¸ 02 ë¸Œë¼ìš´ìŠˆ',	'7choux_ttl.jpg',	'7choux_dtl.jpg',	'ê°€ì„ ìŠ¤íŠ¸ë¡±',	25500,	2550,	100,	0,	'ë² ì´ì§í•˜ê³  ì‹œí¬í•œ ê³¨ë“œ ë¸Œë¼ìš´'	);
-insert into product values(	pro_seq.nextval,	'3CE',	'ë©€í‹° ì•„ì´ ì»¬ëŸ¬ íŒ”ë ˆíŠ¸ #PLOT TWIST',	'7plot_ttl.jpg',	'7plot_dtl.jpg',	'ê°€ì„ ìŠ¤íŠ¸ë¡±',	31590,	3159,	100,	0,	'ê·¸ìœ½í•˜ê³  ë˜ë ·í•œ ëˆˆë§¤ë¥¼ ì—°ì¶œí•´ì£¼ëŠ” ë¶€ë“œëŸ½ê³  ìŠ¤ìœ—í•œ í”¼ë„› ë¸Œë¼ìš´'	);
-insert into product values(	pro_seq.nextval,	'ë¡¬ì•¤',	'ì œë¡œ ë²¨ë²³ í‹´íŠ¸ #ì˜¤ë¦¬ì§€ë„ 02 ì¡°ì´í’€',	'8joyful_ttl.jpg',	'8joyful_dtl.jpg',	'ê°€ì„ ë”¥',	8900,	890,	100,	0,	'ì‚¬ëŒë“¤ ëª¨ë‘ì—ê²Œ ì¦ê±°ìš´ ê²½í—˜ì„ ì„ ì‚¬í•´ ì¤„, MLBB ë¶‰ì€ ë²½ëŒ ì»¬ëŸ¬'	);
-insert into product values(	pro_seq.nextval,	'3CE',	'ë²¨ë²³ ë¦½ í‹´íŠ¸ #TAUPE',	'8taupe_ttl.jpg',	'8taupe_dtl.jpg',	'ê°€ì„ ë”¥',	13600,	1360,	100,	0,	'ë²„ê±´ë””ë¥¼ ì² ì €íˆ ë°°ì œí•œ ì§„í•œ ë² ì´ì§€ ë¬´ë“œì˜ ë¸Œë¦­ ë ˆë“œ ì»¬ëŸ¬'	);
-insert into product values(	pro_seq.nextval,	'ë°”ë¹„ë¸Œë¼ìš´',	'ë¦½ì¹¼ë¼ ë²ˆíŠ¸ ë ˆë“œ',	'8burnt_ttl.jpg',	'8burnt_dtl.jpg',	'ê°€ì„ ë”¥',	50000,	5000,	100,	0,	'ë²½ëŒë¹›ì˜ ë¶‰ì€ ìƒ‰ìƒ'	);
-insert into product values(	pro_seq.nextval,	'ë§¥',	'íŒŒìš°ë” ë¸”ëŸ¬ì‰¬ ë©œë°”',	'8mel_ttl.jpg',	'8mel_dtl.jpg',	'ê°€ì„ ë”¥',	36000,	3600,	100,	0,	'ì½”ë„ë¹› í”¼ì¹˜'	);
-insert into product values(	pro_seq.nextval,	'í¬ë¦¬ë‹ˆí¬',	'ì¹˜í¬ íŒ í”¼ê·¸ íŒ',	'clinique_ttl.jpg',	'8fig_dtl.jpg',	'ê°€ì„ ë”¥',	35000,	3500,	100,	0,		);
-insert into product values(	pro_seq.nextval,	'í˜ë¦¬í˜ë¼',	'ë§‘ê²Œ ë¬¼ë“  ì„ ìƒ¤ì¸ ì¹˜í¬ 17 ì¸ê°„ê°€ì„í•´',	'peripera_ttl.jpg',	'peripera_dtl.jpg',	'ê°€ì„ ë”¥',	6400,	640,	100,	0,	'ë¶„ìœ„ê¸° ë­ì•¼! ì™„ì „ ì¸ê°„ê°€ì„ ê·¸ ìì²´â™¡ ê°€ì„ì˜ ë¬´ë“œë¥¼ ë‹´ì€ ë”°ìŠ¤í•œ í•‘í¬ ë¸Œë¼ìš´'	);
-insert into product values(	pro_seq.nextval,	'ë¡¬ì•¤ ',	'ë² ëŸ¬ ëŒ„ ì¹˜í¬ C04 í˜ì–´ì¹©',	'romand_ttl.jpg',	'romand_dtl.jpg',	'ê°€ì„ ë”¥',	9900,	990,	100,	0,	'ë°”ì§ ë§ë¦° ë°° ê»ì§ˆì— ìƒê¸° í•œ ë°©ìš¸, ë² ì´ì§€ ë¸Œë¼ìš´'	);
-insert into product values(	pro_seq.nextval,	'ì—ë›°ë“œí•˜ìš°ìŠ¤',	'í”Œë ˆì´ ì»¬ëŸ¬ ì•„ì´ì¦ˆ #ë² ì´í¬í•˜ìš°ìŠ¤',	'8bake_ttl.jpg',	'8bake_dtl.jpg',	'ê°€ì„ ë”¥',	28000,	2800,	100,	0,	'ë§¤ì¼ ì•„ì¹¨ ê°“ êµ¬ìš´ ë¹µë“¤ì´ ê°€ë“í•œ ë² ì´ì»¤ë¦¬ ì»¬ëŸ¬ë¥¼ ë‹´ì€ íŒ”ë ˆíŠ¸'	);
-insert into product values(	pro_seq.nextval,	'ë°ì´ì§€í¬',	'ì„€ë„ìš° íŒ”ë ˆíŠ¸ 11 ì´ˆì½œë¦¿ í¼ì§€',	'8fudge_ttl.jpg',	'8fudge_dtl.jpg',	'ê°€ì„ ë”¥',	27200,	2720,	100,	0,	'ê¹Šê³  ê·¸ìœ½í•œ ì´ˆì½œë¦¿ ë¸Œë¼ìš´ ë¬´ë“œë¥¼ ë‹´ì€ ë°ì´ì§€í¬ ì•„ì´ íŒ”ë ˆíŠ¸'	);
-insert into product values(	pro_seq.nextval,	'ë¦´ë¦¬ë°”ì´ë ˆë“œ',	'ë¬´ë“œí‚¤ë³´ë“œ 03 #ë‹¹ì‹ ì˜ ìµœì•  ì• ì‰¬ ì˜¬ë¦¼',	'8ash_ttl.jpg',	'8ash_dtl.jpg',	'ê°€ì„ ë”¥',	21900,	2190,	100,	0,	'ì¹´í‚¤ë¹› ë‰´íŠ¸ëŸ´ ì• ì‰¬ ì»¬ëŸ¬ì˜ ë‰´íŠ¸ëŸ´í†¤ ì„€ë„ìš° íŒ”ë ˆíŠ¸'	);
-insert into product values(	pro_seq.nextval,	'ì›¨ì´í¬ë©”ì´í¬',	'ì†Œí”„íŠ¸ ë¸”ëŸ¬ë§ ì•„ì´íŒ”ë ˆíŠ¸ 02 ìƒê¸°ë¸”ëŸ¬ë§',	'9blur_ttl.jpg',	'9blur_dtl.jpg',	'ê²¨ìš¸ ë¸Œë¼ì´íŠ¸',	23800,	2380,	100,	0,	'#ë¡œì¦ˆë¹›_ìƒê¸°ìŒì˜'	);
-insert into product values(	pro_seq.nextval,	'ë¡¬ì•¤',	'ë¸”ëŸ¬ í¼ì§€ í‹´íŠ¸ #ì—ë„ˆì œí‹± ë¸Œë¼ì´íŠ¸ 11 í‘¸ì‹œì•„ ë°”ì´ë¸Œ',	'9puchsia_ttl.jpg',	'9puchsia_dtl.jpg',	'ê²¨ìš¸ ë¸Œë¼ì´íŠ¸',	13000,	1300,	100,	0,	'ì„œëŠ˜í•œ í‘¸ì‹œì•„ê°€ ë‹´ê¸´ ë¦¬ì–¼ ì¿¨í†¤ í•‘í¬'	);
-insert into product values(	pro_seq.nextval,	'ë§¥',	'ë§¤íŠ¸ ë¦½ìŠ¤í‹± ë ˆë“œ ë½',	'9red_ttl.jpg',	'9red_dtl.jpg',	'ê²¨ìš¸ ë¸Œë¼ì´íŠ¸',	36000,	3600,	100,	0,	'í´ë˜ì‹ ë ˆë“œ'	);
-insert into product values(	pro_seq.nextval,	'í˜ë¦¬í˜ë¼',	'ì‰í¬ ë” ë²¨ë²³ #16 í•˜íŠ¸ë°±ë§Œê°œ',	'peripera3_ttl.jpg',	'peripera3_dtl.jpg',	'ê²¨ìš¸ ë¸Œë¼ì´íŠ¸',	8000,	800,	100,	0,	'ì¿¨ í•‘í¬ê°€ ëŒì•„ì™”ë‹¤! ë” ì´ìƒ í—¤í˜ì§€ ì•Šì•„ë„ ë˜ëŠ” ì¿¨í†¤ ì •ì°© ë ˆë“œ í‘¸ì‹œì•„ í•‘í¬'	);
-insert into product values(	pro_seq.nextval,	'ë¦´ë¦¬ë°”ì´ë ˆë“œ',	'ëŸ¬ë¸Œë¹” ì¹˜í¬ë°¤ 02 #ìˆœìˆ˜ë¹”',	'9soonsoo_ttl.jpg',	'9soonsoo_dtl.jpg',	'ê²¨ìš¸ ë¸Œë¼ì´íŠ¸',	8400,	840,	100,	0,	'ë½€ìš©í•¨ ì´ˆê³¼! ë”¸ê¸°ìš°ìœ ë¹›ìœ¼ë¡œ ë” ìˆœìˆ˜í•˜ê²Œ ë°€í‚¤ í•‘í¬'	);
-insert into product values(	pro_seq.nextval,	'ì‚ì•„',	'ë¼ìŠ¤íŠ¸ ë¸”ëŸ¬ì‰¬ 02 ë¼ë²¤ë” ë¸”ë¡œì¸',	'bbia2_ttl.jpg',	'bbia2_dtl.jpg',	'ê²¨ìš¸ ë¸Œë¼ì´íŠ¸',	6175,	618,	100,	0,	'ì¡°ëª… ON! ì²­ëŸ‰í•œ ë¼ì´íŠ¸ ë¼ë²¤ë”'	);
-insert into product values(	pro_seq.nextval,	'ì–¸ë¦¬ì‹œì•„',	'ê¸€ë¦¬í„°í”¼ë””ì•„ NO.4 ì˜¬ì˜¤ë¸Œ ë¼ë²¤ë” í¬ê·¸',	'9fog_ttl.jpg',	'9fog_dtl.jpg',	'ê²¨ìš¸ ë¸Œë¼ì´íŠ¸',	34000,	3400,	100,	0,	'ë¼ë²¤ë” ë¹› ë² ì´ìŠ¤ì— ë³´ë¼ë¹› ì‹¤ë²„ ê¸€ë¦¬í„°ë¡œ ì‹ ë¹„ë¡­ê³  íˆ¬ëª…í•˜ê²Œ ì—°ì¶œí•˜ëŠ” ê¸€ë¦¬í„°ë£©'	);
-insert into product values(	pro_seq.nextval,	'ë§¥',	'ë ˆíŠ¸ë¡œ ë§¤íŠ¸ ë¦½ìŠ¤í‹± ë¦´ë ŒíŠ¸ë¦¬ìŠ¬ë¦¬ ë ˆë“œ',	'9retro_ttl.jpg',	'9retro_dtl.jpg',	'ê²¨ìš¸ ë¸Œë¼ì´íŠ¸',	36000,	3600,	100,	0,	'ë°ì€ í•‘í¬ë¹› ì½”ë„'	);
-insert into product values(	pro_seq.nextval,	'ì—ìŠ¤ì˜ì•„',	'ë¦¬ì–¼ ì•„ì´ íŒ”ë ˆíŠ¸ 6í˜¸ í”ŒëŸ¼ì†Œë‹¤',	'espoir2_ttl.jpg',	'9plum_dtl.jpg',	'ê²¨ìš¸ ë¸Œë¼ì´íŠ¸',	32000,	3200,	100,	0,	'ì²­ëŸ‰í•¨ì´ í„°ì§€ëŠ” í”ŒëŸ¼ë¹› ì²´ë¦¬ ì—ì´ë“œ'	);
-insert into product values(	pro_seq.nextval,	'ì‚ì•„',	'ë¼ìŠ¤íŠ¸ ë¸”ëŸ¬ì‰¬ 05 ë² ë¦¬ ë¸”ë¡œì¸',	'bbia2_ttl.jpg',	'bbia2_dtl.jpg',	'ê²¨ìš¸ ë¸Œë¼ì´íŠ¸',	6175,	618,	100,	0,	'ìƒí¼ í­ë°œ, íŒí•œ ë² ë¦¬ í•‘í¬'	);
-insert into product values(	pro_seq.nextval,	'ë§¥',	'ë ˆíŠ¸ë¡œ ë§¤íŠ¸ ë¦½ìŠ¤í‹± í”Œë« ì•„ì›ƒ íŒ¨ë·¸ëŸ¬ìŠ¤',	'10fab_ttl.jpg',	'10fab_dtl.jpg',	'ê²¨ìš¸ ë”¥',	36000,	3600,	100,	0,	'ë°ì€ ìì£¼'	);
-insert into product values(	pro_seq.nextval,	'ë§¥',	'íŒŒìš°ë” í‚¤ìŠ¤ ë¦¬í€´ë“œ ë²„ë‹ ëŸ¬ë¸Œ',	'10burning_ttl.jpg',	'10burning_dtl.jpg',	'ê²¨ìš¸ ë”¥',	43000,	4300,	100,	0,	'Deep intense berry'	);
-insert into product values(	pro_seq.nextval,	'ë¦´ë¦¬ë°”ì´ë ˆë“œ',	'ì¥¬ì‹œ ë¼ì´ì–´ ì›Œí„° í‹´íŠ¸ 04 #ë¸”ë™ë² ë¦¬ ë°ë‚„ë¼ì¸ ì²™',	'10black_ttl.jpg',	'10black_dtl.jpg',	'ê²¨ìš¸ ë”¥',	9100,	910,	100,	0,	'ê¹Šì´ ìˆëŠ” ì˜¤ë¬˜í•¨, ë¸”ëŸ¬ë”” ë ˆë“œ'	);
-insert into product values(	pro_seq.nextval,	'í¬ë Œì½”ì¦ˆ',	'íƒ€íˆ¬ ëŒë ˆë¥´ ë²¨ë²³ í‹´íŠ¸ 03 ë®ˆë‹ˆ',	'forencos2_ttl.jpg',	'10minuit_dtl.jpg',	'ê²¨ìš¸ ë”¥',	10900,	1090,	100,	0,	'ì•„ì°”í•˜ê²Œ ë¬¼ë“œëŠ” íŒ í•‘í¬'	);
-insert into product values(	pro_seq.nextval,	'ë¦´ë¦¬ë°”ì´ë ˆë“œ',	'ê¸€ë¦¬í„°ì¡´ ìƒ¤ì›Œ 05 ìŠ¤ë…¸ìš°í„ ìƒ¤ì›Œ',	'10perl_ttl.jpg',	'10perl_dtl.jpg',	'ê²¨ìš¸ ë”¥',	5900,	590,	100,	0,	'ê³¨ë“œ, ê·¸ë¦°, ë¸”ë£¨, í™€ë¡œê·¸ë¨ í„ì´ ì¡°í•©ëœ í´ë¦¬ì–´ í™”ì´íŠ¸'	);
-insert into product values(	pro_seq.nextval,	'í¬ë¦¬ë‹ˆí¬',	'ì¹˜í¬ íŒ íŒ¬ì§€ íŒ',	'clinique_ttl.jpg',	'10pansy_dtl.jpg',	'ê²¨ìš¸ ë”¥',	35000,	3500,	100,	0,	'-'	);
-insert into product values(	pro_seq.nextval,	'í˜ë¦¬í˜ë¼',	'ì˜¬ í…Œì´í¬ ë¬´ë“œ íŒ”ë ˆíŠ¸ #11 í¬ë¸ŒìŠ¤ ì„ ì • ì œë²• ì  ì¿¨í•œ í•‘í¬',	'peripera2_ttl.jpg',	'peripera2_dtl.jpg',	'ê²¨ìš¸ ë”¥',	16800,	1680,	100,	0,	'ë‹¨ í•˜ë‚˜ë¡œ ëë‚´ëŠ” ì˜¬í…Œì´í¬ ë¬´ë“œ íŒ”ë ˆíŠ¸'	);
-insert into product values(	pro_seq.nextval,	'ë¡¬ì•¤',	'ë² ëŸ¬ ëŒ„ ì•„ì´ì¦ˆ #ë®¤ì§ M02 ë§ë¦° ë©”ë°€ê½ƒ',	'10memil_ttl.jpg',	'10memil_dtl.jpg',	'ê²¨ìš¸ ë”¥',	13600,	1360,	100,	0,	'ì°¨ê°€ìš´ ë©”ë°€ì²˜ëŸ¼ ì¿¨í•˜ë”” ì¿¨í•œ ë¶‰ì€ê¸° ì—†ëŠ” íšŒê°ˆìƒ‰ ì»¬ëŸ¬'	);
-insert into product values(	pro_seq.nextval,	'ë¯¸ìƒ¤',	'ë¼ìŠ¤íŠ¸ ë¸”ëŸ¬ì‰¬ 06 ë¡œì¦ˆë¸”ë¡œì¸',	'bbia2_ttl.jpg',	'bbia2_dtl.jpg',	'ê²¨ìš¸ ë”¥',	6175,	618,	100,	0,	'ê³ í˜¹ì  ë¬´ë“œì˜ ë§ë¦° ì¥ë¯¸'	);
-insert into product values(	pro_seq.nextval,	'3CE',	'ì†Œí”„íŠ¸ ë§¤íŠ¸ ë¦½ìŠ¤í‹± #AZURE PINK',	'10azure_ttl',	'10azure_dtl.jpg',	'ê²¨ìš¸ ë”¥',	14900,	1490,	100,	0,	'í‘¸ë¥¸ ë¹›ì— ë°˜ì‚¬ë˜ì–´ ë§‘ê²Œ ì°¨ì˜¤ë¥´ëŠ” ë¸Œë¼ì´íŠ¸ í•‘í¬'	);
+insert into product values(	pro_seq.nextval,	'·Ò¾Ø',	'Áê½Ã ·¡½ºÆÃ Æ¾Æ® #¿À¸®Áö³Î 05 ÇÇÄ¡¹Ì',	'1peach_ttl.jpg',	'1peach_dtl.jpg',	'º½ ¶óÀÌÆ®',	8400,	840,	100,	0,	'¿©¸®¿©¸®ÇÑ º¹¼ş¾Æ¸¦ ³» ÀÔ¼ú¿¡ ÀúÀå, ¼³·¹´Â º¹¼ş¾Æ ÄÃ·¯'	);
+insert into product values(	pro_seq.nextval,	'Æ÷·»ÄÚÁî',	'Å¸Åõ ±Û·¡½º Æ¾Æ® 03 ¾ÆÀß·¹¾Æ',	'1azalea_ttl.jpg',	'1azalea_dtl.jpg',	'º½ ¶óÀÌÆ®',	10900,	1090,	100,	0,	'¸»¸° Àå¹Ì¿¡ ÄÚ¶ö ÇÎÅ©ºûÀ» Åå! Ã»¼øÇÑ µ¥ÀÏ¸® ·ÎÁî ÄÚ¶ö °­·Â ÃßÃµ'	);
+insert into product values(	pro_seq.nextval,	'ÅõÄğÆ÷½ºÄğ',	'ÇÃ·¹¸£ Æ¾Æ® 02 ÈÖ½½¸µ',	'1whistling_ttl.jpg',	'1whistling_dtl.jpg',	'º½ ¶óÀÌÆ®',	10800,	1080,	100,	0,	'ÄÚ¶ö¿¡ Åº»ê ³ÖÀº µí È­»çÇÔÀÌ ÅåÅå Æ¢´Â ÄÚ¶öºû ÀÚ¸ù¿¡ÀÌµå'	);
+insert into product values(	pro_seq.nextval,	'º£³×ÇÇÆ®',	'Â÷Â÷Æ¾Æ®',	'1chacha_ttl.jpg',	'1chacha_dtl.jpg',	'º½ ¶óÀÌÆ®',	27900,	2790,	100,	0,	'ÄÚ¶öÀÇ Á¤¼®, ¸Á°í ÄÚ¶ö Æ¾Æ®'	);
+insert into product values(	pro_seq.nextval,	'Æä¸®Æä¶ó',	'¸¼°Ô ¹°µç ¼±»şÀÎ Ä¡Å© 18 ¼öÁİ°ÔÀÎ»çÇØ',	'peripera_ttl.jpg',	'peripera_dtl.jpg',	'º½ ¶óÀÌÆ®',	6400,	640,	100,	0,	'¾È³ç? ³ª º½ÀÌ¾ß. ¼öÁİ°Ô ºñÄ¡´Â ÇŞ»ìÀ» ´ã¾Æ³½ »Ç¿À¾á »ì¸ó ÄÚ¶ö'	);
+insert into product values(	pro_seq.nextval,	'Å©¸®´ÏÅ©',	'Ä¡Å© ÆË ¸á·Ğ ÆË',	'clinique_ttl.jpg',	'1melon_dtl.jpg',	'º½ ¶óÀÌÆ®',	35000,	3500,	100,	0,	'-'	);
+insert into product values(	pro_seq.nextval,	'¾îÇ»',	'°úÁóÆÎ ¿öÅÍ ºí·¯¼Å CR01 ÀÎ°£°èº¹¼ş¾Æ',	'1ingan_ttl.jpg',	'1ingan_dtl.jpg',	'º½ ¶óÀÌÆ®',	5600,	560,	100,	0,	'¼ÒÇÁÆ® ¿À·»Áö'	);
+insert into product values(	pro_seq.nextval,	'¿¡¶ÙµåÇÏ¿ì½º',	'·è ¾Ü ¸¶ÀÌ ¾ÆÀÌÁî Ä«Æä PK001 ÇÇÄ¡¶ó¶¼',	'cafe_ttl.jpg',	'cafe_dtl.jpg',	'º½ ¶óÀÌÆ®',	4000,	400,	100,	0,	'¹Ì¼¼ÇÑ ½Ç¹ö ÆŞ°¨ÀÇ Åæ º¸Á¤¿ë È­ÀÌÆ® ÄÚ¶ö ÇÎÅ© ÄÃ·¯'	);
+insert into product values(	pro_seq.nextval,	'¿¡½º»Ú¾Æ',	'¸®¾ó ¾ÆÀÌ ÆÈ·¹Æ® 5È£ ¾ÖÇÁ¸®Äà ¹Ì',	'espoir2_ttl.jpg',	'1apricot_dtl.jpg',	'º½ ¶óÀÌÆ®',	32000,	3200,	100,	0,	'»Ç¾é°Ô ¹°µå´Â »ì±¸°á »ı±â'	);
+insert into product values(	pro_seq.nextval,	'È¦¸®Ä«È¦¸®Ä«',	'¸¶ÀÌÆäÀÌºê ¹ÙÀÌºê ¾ÆÀÌ ÆÈ·¹Æ® #¸ÓÃß¾îÇÇÄ¡',	'1mature_ttl.jpg',	'1mature_dtl.jpg',	'º½ ¶óÀÌÆ®',	32000,	3200,	100,	0,	'´ÙÃ¤·Ó°Ô ¹«¸£ÀÍÀº 12°¡ÁöÀÇ °¢¾ç°¢»öÀÇ ÇÁ·çÃ÷ ÄÃ·¯ Á¶ÇÕ'	);
+insert into product values(	pro_seq.nextval,	'Æä¸®Æä¶ó',	'À×Å© ´õ º§ºª #7 ºñÁÖ¾ó°©',	'peripera3_ttl.jpg',	'peripera3_dtl.jpg',	'º½ ºê¶óÀÌÆ®',	8000,	800,	100,	0,	'·¹µå ÁßÀÇ ºñÁÖ¾ó ¼¾ÅÍ ·¹µå! ¿À·»Áö ÇÑ ¹æ¿ï ¶³¾îÆ®¸° ¸¼Àº ·¹µå'	);
+insert into product values(	pro_seq.nextval,	'»ß¾Æ',	'¶ó½ºÆ® º§ºª Æ¾Æ® V02 »ı±â°©',	'bbia_ttl.jpg',	'2extra_dtl.jpg',	'º½ ºê¶óÀÌÆ®',	11000,	1100,	100,	0,	'ºñºñµåÇÑ ¿À·»Áö ·¹µå'	);
+insert into product values(	pro_seq.nextval,	'·Ò¾Ø',	'Á¦·Î ¸ÅÆ® ¸³½ºÆ½ #¿À¸®Áö³Î 12 ½æ¶ò',	'2something_ttl.jpg',	'2something_dtl.jpg',	'º½ ºê¶óÀÌÆ®',	9600,	960,	100,	0,	'Ç»¾îÇÑ ÄÚ¶ö°ú ·¹µå°¡ ¸¸³­ ÅëÅë Æ¢´Â ÄÚ¶ö·¹µå'	);
+insert into product values(	pro_seq.nextval,	'Å©¸®´ÏÅ©',	'Ä¡Å© ÆË ÇÇÄ¡ ÆË',	'clinique_ttl.jpg',	'2peach_dtl.jpg',	'º½ ºê¶óÀÌÆ®',	35000,	3500,	100,	0,	'-'	);
+insert into product values(	pro_seq.nextval,	'¿¡¶ÙµåÇÏ¿ì½º',	'·è ¾Ü ¸¶ÀÌ ¾ÆÀÌÁî Áê¾ó OR207 »óÅ­ÇÏ´Ù±Ö',	'2or_ttl.jpg',	'2or_dtl.jpg',	'º½ ºê¶óÀÌÆ®',	5500,	550,	100,	0,	'½Ç¹ö,°ñµå,¿À·»Áö ÆŞµéÀÌ ¾î¿ï·¯Á® »óÅ­ÇÏ°Ô ºû³ª´Â ¿À·»Áö ±Û¸®ÅÍ'	);
+insert into product values(	pro_seq.nextval,	'³ª½º',	'ºí·¯½¬ ¿À¸£°¡Áò',	'2orgasm_ttl.jpg',	'2orgasm_dtl.jpg',	'º½ ºê¶óÀÌÆ®',	40500,	4050,	100,	0,	'ºû³ª´Â º¹¼ş¾ÆÅæ ÇÎÅ©'	);
+insert into product values(	pro_seq.nextval,	'ÅõÄğÆ÷½ºÄğ',	'ÇÁ·ÎÅ¸ÁÖ Ææ½½ 08 ¼¾Æ¼µå ºÎÄÉ',	'2scented_ttl.jpg',	'2scented_dtl.jpg',	'º½ ºê¶óÀÌÆ®',	9900,	990,	100,	0,	'¿©¸° »ì±¸ºû °¨µµ´Â ¿ú ÄÚ¶ö'	);
+insert into product values(	pro_seq.nextval,	'Æä¸®Æä¶ó ',	'¿Ã Å×ÀÌÅ© ¹«µå ÆÈ·¹Æ® #08 ´ç±Ù, ±Ùµ¥ ÀÌÁ¦ ÇŞ»ìÀ» °çµéÀÎ',	'peripera2_ttl.jpg',	'peripera2_dtl.jpg',	'º½ ºê¶óÀÌÆ®',	16800,	1680,	100,	0,	'´Ü ÇÏ³ª·Î ³¡³»´Â ¿ÃÅ×ÀÌÅ© ¹«µå ÆÈ·¹Æ®'	);
+insert into product values(	pro_seq.nextval,	'µ¥ÀÌÁöÅ©',	'¼¨µµ¿ì ÆÈ·¹Æ® 02 ·ÎÁî ÆäÅ»',	'2rose_ttl.jpg',	'2rose_dtl.jpg',	'º½ ºê¶óÀÌÆ®',	27200,	2720,	100,	0,	'È­»çÇÏ°Ô ÇÇ¾î³ª´Â Àå¹Ì²É ÄÃ·¯¸¦ ´ãÀº µ¥ÀÌÁöÅ©ÀÇ °¨¼º ¾ÆÀÌ ÆÈ·¹Æ®'	);
+insert into product values(	pro_seq.nextval,	'È¦¸®Ä«È¦¸®Ä«',	'¾ÆÀÌ ½ºÆØ ±Û¸®ÅÍ 6È£ ½© ÆÄÃ÷',	'2shell_ttl.jpg',	'2shell_dtl.jpg',	'º½ ºê¶óÀÌÆ®',	7900,	790,	100,	0,	'»ì±¸ºö º£ÀÌ½º¿¡ ÇÎÅ© ÇÃ·¹ÀÌÅ©,¿À·»Áö,±×¸° ÆŞ ¹× ¾ÆÄí¾Æ,¿À·»Áö ½ºÆØ±Û ±Û¸®ÅÍ°¡ ½Åºñ·Ó°Ô ¹İÂ¦ÀÌ´Â ÄÃ·¯'	);
+insert into product values(	pro_seq.nextval,	'¿¡¶ÙµåÇÏ¿ì½º',	'¿¡¾î ¹«½º ¾ÆÀÌÁî PK001 »ş¶ö¶ó Èğ³¯¸®³ª º½',	'3pk_ttl.jpg',	'3pk_dtl.jpg',	'¿©¸§ ¶óÀÌÆ®',	6500,	650,	100,	0,	'ÃÎÃÎÇÏ°í ´ÙÃ¤·Î¿î ÆŞµéÀÌ Â÷¸£¸£ ºû³ª ´« µÎµ¢ÀÌ¿Í ´« ¾Õ¸Ó¸®¿¡ ¾²±â ÁÁÀº ¿ÀÆÈ ±Û¸®ÅÍ'	);
+insert into product values(	pro_seq.nextval,	'µ¥ÀÌÁöÅ©',	'Áê½Ã µàÀÌ Æ¾Æ® 03 ÇÎÅ© ±¸¾Æ¹Ù',	'3guava_ttl.jpg',	'3guava_dtl.jpg',	'¿©¸§ ¶óÀÌÆ®',	11900,	1190,	100,	0,	'ÇÇºÎ¿¡ µ¿µ¿ ¶ßÁö ¾Ê´Â ¸¼°í ·¯ºí¸®ÇÑ ´À³¦ÀÇ ÇÎÅ© ÄÃ·¯'	);
+insert into product values(	pro_seq.nextval,	'Ç¶',	'¹Ì´Ï ¾ÆÀÌÆÈ·¹Æ® ±Û·¡½º 02 ¿©¸§',	'3summer_ttl.jpg',	'3summer_dtl.jpg',	'¿©¸§ ¶óÀÌÆ®',	12000,	1200,	100,	0,	'¼Õ ¾È¿¡ °¨±â´Â ¹Ì´Ï »çÀÌÁî·Î ¼Õ½±°Ô Ç¥ÇöÇÏ´Â ³ª¸¸ÀÇ ±Û·¡½º ¹«µå'	);
+insert into product values(	pro_seq.nextval,	'·Ò¾Ø',	'µàÀÌÇ® ¿öÅÍ Æ¾Æ® #¹ĞÅ©±×·Î¼­¸® 10 ¸Ó¸ÓÇÎÅ©',	'3murmur_ttl.jpg',	'3murmur_dtl.jpg',	'¿©¸§ ¶óÀÌÆ®',	9900,	990,	100,	0,	'ÁøÇÏ°Ô ¿ì·Á³½ µş±â¿ìÀ¯ °°Àº Äğ ÇÎÅ©'	);
+insert into product values(	pro_seq.nextval,	'È¦¸®Ä«È¦¸®Ä«',	'ÇÇ½º¸ÅÄª ºí·¯¼Å Å¬¸°½Ã¸®Áî Å¬¸°ÇÎÅ©',	'3clean_ttl.jpg',	'3clean_dtl.jpg',	'¿©¸§ ¶óÀÌÆ®',	6500,	650,	100,	0,	'Èò³¢ ³¶³¶ Ã»¼øÇÑ ÇÎÅ©'	);
+insert into product values(	pro_seq.nextval,	'¶óÄ«',	'ÇÁ·çÆ¼ ±Û·¥ Æ¾Æ® 105 Äİµå',	'3cold_ttl.jpg',	'3cold_dtl.jpg',	'¿©¸§ ¶óÀÌÆ®',	15000,	1500,	100,	0,	'¹°±â ¾î¸° °úÀÏÃ³·³ Åõ¸í°¨ ÀÖ°Ô ¹İÂ¦ÀÌ´Â ÄÃ·¯µé'	);
+insert into product values(	pro_seq.nextval,	'³ª½º',	'ºí·¯½¬ ½º¸±',	'3thrill_ttl.jpg',	'3thrill_dtl.jpg',	'¿©¸§ ¶óÀÌÆ®',	40500,	4050,	100,	0,	'¶óÀÌÆ® Äğ ÇÎÅ©'	);
+insert into product values(	pro_seq.nextval,	'Å©¸®´ÏÅ©',	'Ä¡Å©ÆË ¹ß·¹¸®³ªÆË',	'clinique_ttl.jpg',	'3ballet_dtl.jpg',	'¿©¸§ ¶óÀÌÆ®',	35000,	3500,	100,	0,	'-'	);
+insert into product values(	pro_seq.nextval,	'Æ÷·»ÄÚÁî',	'Å¸Åõ ±Û·¡½º Æ¾Æ® 06 ÇÁ¶û',	'forencos_ttl.jpg',	'forencos_dtl.jpg',	'¿©¸§ ¶óÀÌÆ®',	10900,	1090,	100,	0,	'²Éº¸´Ù ´õ ²É °°Àº µ¥ÀÏ¸® ÇÎÅ© ºÎÄÉ Âø ºÙ´Â ÀÚ¿¬½º·¯¿î µ¥ÀÏ¸® ¿©¸° ÇÎÅ©!'	);
+insert into product values(	pro_seq.nextval,	'¸±¸®¹ÙÀÌ·¹µå',	'¹«µåÅ°º¸µå 04 #Äğ¸â¹ö½±',	'3cool_ttl.jpg',	'3cool_dtl.jpg',	'¿©¸§ ¶óÀÌÆ®',	21900,	2190,	100,	0,	'¸¼Àº Çª¸¥ ±â ÇÑ ¹æ¿ïÀ» ´õÇØ ¶ßÁö ¾Ê´Â ¶óº¥´õ ÇÎÅ© ÄğÅæ È¸¿øÀ» À§ÇÑ Äğ ÇÎÅ© º£¸®¿¡ÀÌ¼Ç'	);
+insert into product values(	pro_seq.nextval,	'¿¡½º»Ú¾Æ',	'²Ù¶Ù¸£ ¸³ Æ¾Æ® »şÀÎ ÇìÀÌ º£½ºÆ¼',	'4bestie_ttl.jpg',	'4bestie_dtl.jpg',	'¿©¸§ ºê¶óÀÌÆ®',	14000,	1400,	100,	0,	'¼Ó ÀÌ¾ß±â±îÁö °Å¸®³¦ ¾ø´Â ÂğÄ£°úÀÇ ¼ö´Ù½Ã°£ ²Ù¹Ò¾øÀÌ ¼ÖÁ÷ÇÑ ºê¶óÀÌÆ® ÇÎÅ©'	);
+insert into product values(	pro_seq.nextval,	'·Ò¾Ø',	'Áê½Ã ·¡½ºÆÃ Æ¾Æ® #¿©¶ó 27 ÇÎÅ© ÆË½ÃÅ¬',	'4popsicle_ttl.jpg',	'4popsicle_dtl.jpg',	'¿©¸§ ºê¶óÀÌÆ®',	8400,	840,	100,	0,	'¸¼Àº ÇÎÅ©¿¡ Èò ±â ÇÑ ¹æ¿ïÀ» ³Ö¾î ¹Î³¸¿¡µµ ºÎ´ã½º·´Áö ¾ÊÀº Ã»·®ÇÑ ¿©¶ó ÇÎÅ©'	);
+insert into product values(	pro_seq.nextval,	'Æä¸®Æä¶ó',	'À×Å© ´õ ¿¡¾î¸® º§ºª #20 ¹Ì¸ğ¿­ÀÏ',	'4mimo_ttl.jpg',	'4mimo_dtl.jpg',	'¿©¸§ ºê¶óÀÌÆ®',	10000,	1000,	100,	0,	'´ÜÁ¾ÅÛ ºÎÈ°! Çª¸¥ºû ´õÇØ Èñ¼Ò¼º ÀÖ´Â Çª½Ã¾Æ ÇÎÅ© ¸³'	);
+insert into product values(	pro_seq.nextval,	'³×ÀÌ¹Ö',	'ÇÃ·¯ÇÇ ÆÄ¿ì´õ ºí·¯½¬ ¾ß¹Ì',	'4yummy_ttl.jpg',	'4yummy_dtl.jpg',	'¿©¸§ ºê¶óÀÌÆ®',	15000,	1500,	100,	0,	'µş±â ¿ìÀµºû º£ÀÌºñ ÇÎÅ©'	);
+insert into product values(	pro_seq.nextval,	'´õ»ù',	'»ù¹° ½Ì±Û ºí·¯¼Å PP05 ¶óÀÌ º£¸®',	'4berry_ttl.jpg',	'saemmul_dtl.jpg',	'¿©¸§ ºê¶óÀÌÆ®',	5000,	500,	100,	0,	'¿úÅæµµ ÄğÅæÃ³·³ º¸ÀÌ°ÔÇÏ´Â ¸®¾ó È­ÀÌÆ¼½¬ ¿¬º¸¶ó ÄÃ·¯'	);
+insert into product values(	pro_seq.nextval,	'·Ò¾Ø',	'º£·¯ ´í Ä¡Å© W01 ¿Àµğ¹ĞÅ©',	'romand_ttl.jpg',	'romand_dtl.jpg',	'¿©¸§ ºê¶óÀÌÆ®',	9900,	990,	100,	0,	'Â÷°Ô ¾ó¸° ¿Àµğ¸¦ ¿ìÀ¯¿¡ ÇÑ°¡µæ, ¿Àµğ Å©¸²'	);
+insert into product values(	pro_seq.nextval,	'¾Æ¸®µû¿ò',	'¸ğ³ë¾ÆÀÌÁî M36 ·¯¹öºíµ¥ÀÌ',	'4love_ttl.jpg',	'4love_dtl.jpg',	'¿©¸§ ºê¶óÀÌÆ®',	5000,	500,	100,	0,	'Åæ´Ù¿î ÇÎÅ©ºûÀ¸·Î ¿©¸®ÇÑ °¨¼ºÀÇ M36 ·¯¹öºíµ¥ÀÌ'	);
+insert into product values(	pro_seq.nextval,	'¿¡½º»Ú¾Æ',	'¸®¾ó ¾ÆÀÌ ÇÚµğ ÆÈ·¹Æ® 2È£ ¶óÀÌÆ® ÇÇ¿À´Ï',	'4peony_ttl.jpg',	'4peony_dtl.jpg',	'¿©¸§ ºê¶óÀÌÆ®',	24000,	2400,	100,	0,	'»ç¶û½º·¯¿î ¹ß·¹ÇÎÅ© ÇÇ¿À´Ï'	);
+insert into product values(	pro_seq.nextval,	'16ºê·£µå',	'¸¶ÀÌ ¸Å°ÅÁø ³ë½ºÅÚÁö¾î ¹«µå Vol.07 ¶óÀÏ¶ô',	'4nos_ttl.jpg',	'4nos_dtl.jpg',	'¿©¸§ ºê¶óÀÌÆ®',	16900,	1690,	100,	0,	'ÀºÀºÇÏ°Ô ¹İÂ¦ÀÌ´Â ¶óÀÏ¶ô ²É ÄÃ·¯!'	);
+insert into product values(	pro_seq.nextval,	'·Ò¾Ø',	'º£·¯ ´í ¾ÆÀÌÁî #¿ìÀ¯ W01 ¸»¸° ¶óº¥´õ',	'4lavender_ttl.jpg',	'4lavender_dtl.jpg',	'¿©¸§ ºê¶óÀÌÆ®',	13600,	1360,	100,	0,	'¿ìÀ¯¿¡ ºüÁ® ´õ¿í »Ç¾êÁø º¸¶óºû ÄÃ·¯'	);
+insert into product values(	pro_seq.nextval,	'¸Æ',	'ÆÄ¿ì´õ Å°½º ¸³½ºÆ½ ¼­Æ®¸®´Ï½º',	'5sul_ttl.jpg',	'5sul_dtl.jpg',	'¿©¸§ ¹ÂÆ®',	39000,	3900,	100,	0,	'º£ÀÌºñ ÇÎÅ©'	);
+insert into product values(	pro_seq.nextval,	'Èù½º',	'¹«µåÀÎÇÚ¼­ ¸¶¶ß ¸³½ºÆ½ ¾ó·ç¾î',	'5allure_ttl.jpg',	'5allure_dtl.jpg',	'¿©¸§ ¹ÂÆ®',	15200,	1520,	100,	0,	'¿ÃÅ¸ÀÓ Å¬·¡½Ä ·ÎÁî º£ÀÌÁö. ´ı´ıÇÑ µí ¹Ğµµ ÀÖ°Ô ¹è¾î³ª´Â ÇÎÅ©ºû ¸ğºê º£ÀÌÁö°¡ ´ç½ÅÀÇ ¿ì¾ÆÇÔÀ» µå·¯³ª°Ô ÇÕ´Ï´Ù.'	);
+insert into product values(	pro_seq.nextval,	'¿¡½º»Ú¾Æ',	'²Ù¶Ù¸£ ¸³ Æ¾Æ® ºí·¯ º§ºª 5È£ ¼¼·¹³ªµ¥',	'espoir_ttl.jpg',	'espoir_dtl.jpg',	'¿©¸§ ¹ÂÆ®',	18700,	1870,	100,	0,	'Å©¸² ÇÑ ½ºÇ¬ °¡¹ÌµÈ ¹ÌÁö±ÙÇÑ ¼ÒÇÁÆ® ÇÎÅ©'	);
+insert into product values(	pro_seq.nextval,	'³ª½º',	'ºí·¯½¬ ÀÓÆĞ¼Çµå',	'5im_ttl.jpg',	'5im_dtl.jpg',	'¿©¸§ ¹ÂÆ®',	40500,	4050,	100,	0,	'ÀÓÆĞ¼Çµå ÇÎÅ© ¿ÀÅ°µå'	);
+insert into product values(	pro_seq.nextval,	'·Ò¾Ø',	'º£·¯ ´í Ä¡Å© C02 ºí·çº£¸®Ä¨',	'romand_ttl.jpg',	'romand_dtl.jpg',	'¿©¸§ ¹ÂÆ®',	9900,	990,	100,	0,	'Àß ¸¶¸¥ ºí·çº£¸®Ã³·³ ¿¶Àº ¹ÂÆ® ÇÎÅ©'	);
+insert into product values(	pro_seq.nextval,	'¹Ùºñºê¶ó¿î',	'·Õ¿ş¾î Å©¸² ¼¨µµ¿ì ½ºÆ½ ´õ½ºÆ¼ ¸ğºê',	'5dusty_ttl.jpg',	'5dusty_dtl.jpg',	'¿©¸§ ¹ÂÆ®',	52000,	5200,	100,	0,	'½¬¸Ó¸µ ¶óº¥´õ'	);
+insert into product values(	pro_seq.nextval,	'Å©¸®´ÏÅ©',	'Ä¡Å© ÆË ·ÎÁö ÆË',	'clinique_ttl.jpg',	'5rosie_dtl.jpg',	'¿©¸§ ¹ÂÆ®',	35000,	3500,	100,	0,	'-'	);
+insert into product values(	pro_seq.nextval,	'Æä¸®Æä¶ó',	'¿Ã Å×ÀÌÅ© ¹«µå ÆÈ·¹Æ® #04 ¹ÂÆ®·Î¿î ¿ì¸®¸¦ ºÁ ·ÎÁî·Î¿ö',	'peripera2_ttl.jpg',	'peripera2_dtl.jpg',	'¿©¸§ ¹ÂÆ®',	16800,	1680,	100,	0,	'´Ü ÇÏ³ª·Î ³¡³»´Â ¿ÃÅ×ÀÌÅ© ¹«µå ÆÈ·¹Æ®'	);
+insert into product values(	pro_seq.nextval,	'È¦¸®Ä«È¦¸®Ä«',	'¸¶ÀÌÆäÀÌºê ¹«µå ¾ÆÀÌÆÈ·¹Æ® 02 ¹«´Ï',	'5moony_ttl.jpg',	'5moony_dtl.jpg',	'¿©¸§ ¹ÂÆ®',	19600,	1960,	100,	0,	'¾î½º¸§ÇÑ »õº®, ¸¶À½ÀÌ ¸ù±Û ¸ù±ÛÇØÁö´Â ¸Öº£¸® »ö°¨'	);
+insert into product values(	pro_seq.nextval,	'¾Æ¸®µû¿ò',	'¸®¾ó ¾ÆÀÌ ÆÈ·¹Æ® 4È£ ¸ğºê¹Ì',	'espoir2_ttl.jpg',	'5mauve_ttl.jpg',	'¿©¸§ ¹ÂÆ®',	32000,	3200,	100,	0,	'¸¼°Ô ºû³ª´Â ¶óÀÏ¶ô ¸ğºê'	);
+insert into product values(	pro_seq.nextval,	'Çì¶ó',	'¼¾½´¾ó ÆÄ¿ì´õ ¸ÅÆ® ¸®Äûµå 499È£ ·ÎÁö½º¿şÀÌµå',	'6suede_ttl.jpg',	'6suede_dtl.jpg',	'°¡À» ¹ÂÆ®',	36000,	3600,	100,	0,	'#·ÎÁöºê¶ó¿î'	);
+insert into product values(	pro_seq.nextval,	'Æ÷·»ÄÚÁî',	'Å¸Åõ ²ø·¹¸£ º§ºª Æ¾Æ® 19 ¸ğ½º',	'forencos2_ttl.jpg',	'6moss_dtl.jpg',	'°¡À» ¹ÂÆ®',	10900,	1090,	100,	0,	'³ëÀ»Àº ´µ¿³´µ¿³, µéÆÇ¿¡ ÇÑµéÇÑ ÄÚ¶ö ÇÑ ¼ÛÀÌ, ÄÚ¶ö º£ÀÌÁö'	);
+insert into product values(	pro_seq.nextval,	'3CE',	'ºí·¯ ¿öÅÍ Æ¾Æ® #LAYDOWN',	'6lay_ttl.jpg',	'6lay_dtl.jpg',	'°¡À» ¹ÂÆ®',	11900,	1190,	100,	0,	'¿À¹¦ÇÑ ´Ù¿î Åæ ÇÎÅ© ºê¶ó¿î º£ÀÌ½º'	);
+insert into product values(	pro_seq.nextval,	'¿¡½º»Ú¾Æ',	'²Ù¶Ù¸£ ¸³ Æ¾Æ® ºí·¯ º§ºª 2È£ ¹®¸´',	'espoir_ttl.jpg',	'espoir_dtl.jpg',	'°¡À» ¹ÂÆ®',	18700,	1870,	100,	0,	'´©°¡ ¹ß¶óµµ ½ÇÆĞ ¾ø´Â ¸»¸°Àå¹Ì ¿¡½º»Ú¾Æ ´ëÇ¥ MLBB'	);
+insert into product values(	pro_seq.nextval,	'´õ»ù',	'»ù¹° ½Ì±Û ºí·¯¼Å BE02 ÇÃ·¡½Ã º£ÀÌÁö',	'6flash_ttl.jpg',	'saemmul_dtl.jpg',	'°¡À» ¹ÂÆ®',	5000,	500,	100,	0,	'ÀºÀºÇÑ ±İ ÆŞÀÌ Æ÷ÇÔµÇ¾î °Ç°­ÇÑ ´À³¦À» ¿¬ÃâÇÏ´Â Åæ ´Ù¿î º£ÀÌÁö ÄÃ·¯'	);
+insert into product values(	pro_seq.nextval,	'3CE',	'ÆäÀÌ½º ºí·¯½¬ #NUDE PEACH',	'6nude_ttl.jpg',	'6nude_dtl.jpg',	'°¡À» ¹ÂÆ®',	14400,	1440,	100,	0,	'ÀºÀºÇÏ°í ºÎµå·¯¿î Å¬·¡½Ä ´©µå ÇÇÄ¡'	);
+insert into product values(	pro_seq.nextval,	'³ª½º',	'ºí·¯½¬ Áö³ª',	'6gina_ttl.jpg',	'6gina_dtl.jpg',	'°¡À» ¹ÂÆ®',	40500,	4050,	100,	0,	'¸ÅÆ® ÅÄÀú¸°'	);
+insert into product values(	pro_seq.nextval,	'ÅõÄğÆ÷½ºÄğ',	'¾ÆÆ®Å¬·¡½º ¹ÙÀÌ·Î´ó Äİ·ºÅÍÁî #1 ºê¶ó¿î',	'6brown_ttl.jpg',	'6brown_dtl.jpg',	'°¡À» ¹ÂÆ®',	14900,	1490,	100,	0,	'ºê¶ó¿î º£ÀÌ½ºÀÇ ÆÈ·¹Æ®·Î ±í°í ÀÔÃ¼ÀûÀÎ ´«¸Å ¿¬Ãâ ºê¶ó¿î µ¥ÀÏ¸® À½¿µ ¸ŞÀÌÅ©¾÷'	);
+insert into product values(	pro_seq.nextval,	'·Ò¾Ø',	'º£·¯ ´í ¾ÆÀÌÁî #ºû¹Ù·£À½¿µ N01 ¸»¸° ¹öµé²É',	'6willow_ttl.jpg',	'6willow_dtl.jpg',	'°¡À» ¹ÂÆ®',	13600,	1360,	100,	0,	'ÁøÇÏÁö ¾ÊÀº ºÎµå·¯¿î º£ÀÌÁö ºû À½¿µ'	);
+insert into product values(	pro_seq.nextval,	'µ¥ÀÌÁöÅ©',	'¼¨µµ¿ì ÆÈ·¹Æ® 12 ¿úºí·»µù',	'6warm_ttl.jpg',	'6warm_dtl.jpg',	'°¡À» ¹ÂÆ®',	27200,	2720,	100,	0,	'¿úÅæÀ» À§ÇÑ º£ÀÌÁ÷ ÄÃ·¯¸¦ ÀºÀºÇÏ°Ô ¿ì·Á³½ ½Ã³ª¸óÆ¼ ¹«ÆŞ ÆÈ·¹Æ®'	);
+insert into product values(	pro_seq.nextval,	'»ß¾Æ',	'¶ó½ºÆ® º§ºª Æ¾Æ® V12 ´ÙÁ¤º¸½º',	'bbia_ttl.jpg',	'7boss_dtl.jpg',	'°¡À» ½ºÆ®·Õ',	8800,	880,	100,	0,	'¹Ìµå ÅæÀÇ ¿À·»Áö ºê¶ó¿î'	);
+insert into product values(	pro_seq.nextval,	'Æ÷·»ÄÚÁî',	'Å¸Åõ ²ø·¹¸£ º§ºª Æ¾Æ® 05 ºê·©',	'forencos2_ttl.jpg',	'7brun_dtl.jpg',	'°¡À» ½ºÆ®·Õ',	10900,	1090,	100,	0,	'100ÀÏ ¸»¸° ´ÜÇ³ ÀÙÀ» Åå, ¸ŞÀÌÇÃ ·ÎÁî'	);
+insert into product values(	pro_seq.nextval,	'¸Æ',	'¸ÅÆ® ¸³½ºÆ½ Ä¥¸®',	'7chilly_ttl.jpg',	'7chilly_dtl.jpg',	'°¡À» ½ºÆ®·Õ',	39000,	3900,	100,	0,	'Warm brick red'	);
+insert into product values(	pro_seq.nextval,	'Æä¸®Æä¶ó',	'À×Å© ´õ º§ºª #1 ºê¸¯ºÎ½É',	'peripera3_ttl.jpg',	'peripera3_dtl.jpg',	'°¡À» ½ºÆ®·Õ',	8000,	800,	100,	0,	'ÄÃ·¯ ÇÏ³ª·Î ÀÚ½Å°¨ 200% ÀÔ¼ú ºÎ½É ³ÑÄ¡´Â ºê¸¯ ¹ö°Çµğ'	);
+insert into product values(	pro_seq.nextval,	'¿¡¶ÙµåÇÏ¿ì½º',	'·è ¾Ü ¸¶ÀÌ ¾ÆÀÌÁî Ä«Æä BR405 ±îÆä¶ó¶¼ ¿ìÀ¯¸¹ÀÌ',	'cafe_ttl.jpg',	'cafe_dtl.jpg',	'°¡À» ½ºÆ®·Õ',	4000,	400,	100,	0,	'±îÆä¶ó¶¼¿¡ ¿ìÀ¯¸¦ ´õ ºÎÀºµíÇÑ ¹ĞÅ° ·¹µåºê¶ó¿î À½¿µ ÄÃ·¯'	);
+insert into product values(	pro_seq.nextval,	'Å©¸®´ÏÅ©',	'Ä¡Å© ÆË ´©µå ÆË',	'clinique_ttl.jpg',	'7nude_dtl.jpg',	'°¡À» ½ºÆ®·Õ',	35000,	3500,	100,	0,	'-'	);
+insert into product values(	pro_seq.nextval,	'³ª½º',	'ºí·¯½¬ ·¯½ºÅÍ',	'7luster_ttl.jpg',	'7luster_dtl.jpg',	'°¡À» ½ºÆ®·Õ',	40500,	4050,	100,	0,	'°ñµç ½¬¾î »ì±¸»ö'	);
+insert into product values(	pro_seq.nextval,	'¿¡¶ÙµåÇÏ¿ì½º',	'·è ¾Ü ¸¶ÀÌ ¾ÆÀÌÁî BR402 ½Ã·´»©°í Å×ÀÌÅ©¾Æ¿ô',	'7syrup_ttl.jpg',	'7syrup_dtl.jpg',	'°¡À» ½ºÆ®·Õ',	4000,	400,	100,	0,	'°ñµå ÆŞÀÌ ÇÔÀ¯µÈ ºê¶ó¿î ½¬¸Ó º£ÀÌ½º·Î »ï°¢Á¸, ¶óÀÎ, À½¿µ ¾îµğµç »ç¿ë °¡´ÉÇÑ º£½ºÆ® ÄÃ·¯'	);
+insert into product values(	pro_seq.nextval,	'Å¬¸®¿À',	'ÇÁ·Î ¾ÆÀÌ ÆÈ·¹Æ® 02 ºê¶ó¿î½´',	'7choux_ttl.jpg',	'7choux_dtl.jpg',	'°¡À» ½ºÆ®·Õ',	25500,	2550,	100,	0,	'º£ÀÌÁ÷ÇÏ°í ½ÃÅ©ÇÑ °ñµå ºê¶ó¿î'	);
+insert into product values(	pro_seq.nextval,	'3CE',	'¸ÖÆ¼ ¾ÆÀÌ ÄÃ·¯ ÆÈ·¹Æ® #PLOT TWIST',	'7plot_ttl.jpg',	'7plot_dtl.jpg',	'°¡À» ½ºÆ®·Õ',	31590,	3159,	100,	0,	'±×À¹ÇÏ°í ¶Ç·ÇÇÑ ´«¸Å¸¦ ¿¬ÃâÇØÁÖ´Â ºÎµå·´°í ½ºÀ­ÇÑ ÇÇ³Ó ºê¶ó¿î'	);
+insert into product values(	pro_seq.nextval,	'·Ò¾Ø',	'Á¦·Î º§ºª Æ¾Æ® #¿À¸®Áö³Î 02 Á¶ÀÌÇ®',	'8joyful_ttl.jpg',	'8joyful_dtl.jpg',	'°¡À» µö',	8900,	890,	100,	0,	'»ç¶÷µé ¸ğµÎ¿¡°Ô Áñ°Å¿î °æÇèÀ» ¼±»çÇØ ÁÙ, MLBB ºÓÀº º®µ¹ ÄÃ·¯'	);
+insert into product values(	pro_seq.nextval,	'3CE',	'º§ºª ¸³ Æ¾Æ® #TAUPE',	'8taupe_ttl.jpg',	'8taupe_dtl.jpg',	'°¡À» µö',	13600,	1360,	100,	0,	'¹ö°Çµğ¸¦ Ã¶ÀúÈ÷ ¹èÁ¦ÇÑ ÁøÇÑ º£ÀÌÁö ¹«µåÀÇ ºê¸¯ ·¹µå ÄÃ·¯'	);
+insert into product values(	pro_seq.nextval,	'¹Ùºñºê¶ó¿î',	'¸³Ä®¶ó ¹øÆ® ·¹µå',	'8burnt_ttl.jpg',	'8burnt_dtl.jpg',	'°¡À» µö',	50000,	5000,	100,	0,	'º®µ¹ºûÀÇ ºÓÀº »ö»ó'	);
+insert into product values(	pro_seq.nextval,	'¸Æ',	'ÆÄ¿ì´õ ºí·¯½¬ ¸á¹Ù',	'8mel_ttl.jpg',	'8mel_dtl.jpg',	'°¡À» µö',	36000,	3600,	100,	0,	'ÄÚ¶öºû ÇÇÄ¡'	);
+insert into product values(	pro_seq.nextval,	'Å©¸®´ÏÅ©',	'Ä¡Å© ÆË ÇÇ±× ÆË',	'clinique_ttl.jpg',	'8fig_dtl.jpg',	'°¡À» µö',	35000,	3500,	100,	0,		);
+insert into product values(	pro_seq.nextval,	'Æä¸®Æä¶ó',	'¸¼°Ô ¹°µç ¼±»şÀÎ Ä¡Å© 17 ÀÎ°£°¡À»ÇØ',	'peripera_ttl.jpg',	'peripera_dtl.jpg',	'°¡À» µö',	6400,	640,	100,	0,	'ºĞÀ§±â ¹¹¾ß! ¿ÏÀü ÀÎ°£°¡À» ±× ÀÚÃ¼¢½ °¡À»ÀÇ ¹«µå¸¦ ´ãÀº µû½ºÇÑ ÇÎÅ© ºê¶ó¿î'	);
+insert into product values(	pro_seq.nextval,	'·Ò¾Ø ',	'º£·¯ ´í Ä¡Å© C04 Æä¾îÄ¨',	'romand_ttl.jpg',	'romand_dtl.jpg',	'°¡À» µö',	9900,	990,	100,	0,	'¹ÙÂ¦ ¸»¸° ¹è ²®Áú¿¡ »ı±â ÇÑ ¹æ¿ï, º£ÀÌÁö ºê¶ó¿î'	);
+insert into product values(	pro_seq.nextval,	'¿¡¶ÙµåÇÏ¿ì½º',	'ÇÃ·¹ÀÌ ÄÃ·¯ ¾ÆÀÌÁî #º£ÀÌÅ©ÇÏ¿ì½º',	'8bake_ttl.jpg',	'8bake_dtl.jpg',	'°¡À» µö',	28000,	2800,	100,	0,	'¸ÅÀÏ ¾ÆÄ§ °« ±¸¿î »§µéÀÌ °¡µæÇÑ º£ÀÌÄ¿¸® ÄÃ·¯¸¦ ´ãÀº ÆÈ·¹Æ®'	);
+insert into product values(	pro_seq.nextval,	'µ¥ÀÌÁöÅ©',	'¼¨µµ¿ì ÆÈ·¹Æ® 11 ÃÊÄİ¸´ ÆÛÁö',	'8fudge_ttl.jpg',	'8fudge_dtl.jpg',	'°¡À» µö',	27200,	2720,	100,	0,	'±í°í ±×À¹ÇÑ ÃÊÄİ¸´ ºê¶ó¿î ¹«µå¸¦ ´ãÀº µ¥ÀÌÁöÅ© ¾ÆÀÌ ÆÈ·¹Æ®'	);
+insert into product values(	pro_seq.nextval,	'¸±¸®¹ÙÀÌ·¹µå',	'¹«µåÅ°º¸µå 03 #´ç½ÅÀÇ ÃÖ¾Ö ¾Ö½¬ ¿Ã¸²',	'8ash_ttl.jpg',	'8ash_dtl.jpg',	'°¡À» µö',	21900,	2190,	100,	0,	'Ä«Å°ºû ´ºÆ®·² ¾Ö½¬ ÄÃ·¯ÀÇ ´ºÆ®·²Åæ ¼¨µµ¿ì ÆÈ·¹Æ®'	);
+insert into product values(	pro_seq.nextval,	'¿şÀÌÅ©¸ŞÀÌÅ©',	'¼ÒÇÁÆ® ºí·¯¸µ ¾ÆÀÌÆÈ·¹Æ® 02 »ı±âºí·¯¸µ',	'9blur_ttl.jpg',	'9blur_dtl.jpg',	'°Ü¿ï ºê¶óÀÌÆ®',	23800,	2380,	100,	0,	'#·ÎÁîºû_»ı±âÀ½¿µ'	);
+insert into product values(	pro_seq.nextval,	'·Ò¾Ø',	'ºí·¯ ÆÛÁö Æ¾Æ® #¿¡³ÊÁ¦Æ½ ºê¶óÀÌÆ® 11 Çª½Ã¾Æ ¹ÙÀÌºê',	'9puchsia_ttl.jpg',	'9puchsia_dtl.jpg',	'°Ü¿ï ºê¶óÀÌÆ®',	13000,	1300,	100,	0,	'¼­´ÃÇÑ Çª½Ã¾Æ°¡ ´ã±ä ¸®¾ó ÄğÅæ ÇÎÅ©'	);
+insert into product values(	pro_seq.nextval,	'¸Æ',	'¸ÅÆ® ¸³½ºÆ½ ·¹µå ¶ô',	'9red_ttl.jpg',	'9red_dtl.jpg',	'°Ü¿ï ºê¶óÀÌÆ®',	36000,	3600,	100,	0,	'Å¬·¡½Ä ·¹µå'	);
+insert into product values(	pro_seq.nextval,	'Æä¸®Æä¶ó',	'À×Å© ´õ º§ºª #16 ÇÏÆ®¹é¸¸°³',	'peripera3_ttl.jpg',	'peripera3_dtl.jpg',	'°Ü¿ï ºê¶óÀÌÆ®',	8000,	800,	100,	0,	'Äğ ÇÎÅ©°¡ µ¹¾Æ¿Ô´Ù! ´õ ÀÌ»ó ÇìÆäÁö ¾Ê¾Æµµ µÇ´Â ÄğÅæ Á¤Âø ·¹µå Çª½Ã¾Æ ÇÎÅ©'	);
+insert into product values(	pro_seq.nextval,	'¸±¸®¹ÙÀÌ·¹µå',	'·¯ºêºö Ä¡Å©¹ã 02 #¼ø¼öºö',	'9soonsoo_ttl.jpg',	'9soonsoo_dtl.jpg',	'°Ü¿ï ºê¶óÀÌÆ®',	8400,	840,	100,	0,	'»Ç¿ëÇÔ ÃÊ°ú! µş±â¿ìÀ¯ºûÀ¸·Î ´õ ¼ø¼öÇÏ°Ô ¹ĞÅ° ÇÎÅ©'	);
+insert into product values(	pro_seq.nextval,	'»ß¾Æ',	'¶ó½ºÆ® ºí·¯½¬ 02 ¶óº¥´õ ºí·Î½æ',	'bbia2_ttl.jpg',	'bbia2_dtl.jpg',	'°Ü¿ï ºê¶óÀÌÆ®',	6175,	618,	100,	0,	'Á¶¸í ON! Ã»·®ÇÑ ¶óÀÌÆ® ¶óº¥´õ'	);
+insert into product values(	pro_seq.nextval,	'¾ğ¸®½Ã¾Æ',	'±Û¸®ÅÍÇÇµğ¾Æ NO.4 ¿Ã¿Àºê ¶óº¥´õ Æ÷±×',	'9fog_ttl.jpg',	'9fog_dtl.jpg',	'°Ü¿ï ºê¶óÀÌÆ®',	34000,	3400,	100,	0,	'¶óº¥´õ ºû º£ÀÌ½º¿¡ º¸¶óºû ½Ç¹ö ±Û¸®ÅÍ·Î ½Åºñ·Ó°í Åõ¸íÇÏ°Ô ¿¬ÃâÇÏ´Â ±Û¸®ÅÍ·è'	);
+insert into product values(	pro_seq.nextval,	'¸Æ',	'·¹Æ®·Î ¸ÅÆ® ¸³½ºÆ½ ¸±·»Æ®¸®½½¸® ·¹µå',	'9retro_ttl.jpg',	'9retro_dtl.jpg',	'°Ü¿ï ºê¶óÀÌÆ®',	36000,	3600,	100,	0,	'¹àÀº ÇÎÅ©ºû ÄÚ¶ö'	);
+insert into product values(	pro_seq.nextval,	'¿¡½º»Ú¾Æ',	'¸®¾ó ¾ÆÀÌ ÆÈ·¹Æ® 6È£ ÇÃ·³¼Ò´Ù',	'espoir2_ttl.jpg',	'9plum_dtl.jpg',	'°Ü¿ï ºê¶óÀÌÆ®',	32000,	3200,	100,	0,	'Ã»·®ÇÔÀÌ ÅÍÁö´Â ÇÃ·³ºû Ã¼¸® ¿¡ÀÌµå'	);
+insert into product values(	pro_seq.nextval,	'»ß¾Æ',	'¶ó½ºÆ® ºí·¯½¬ 05 º£¸® ºí·Î½æ',	'bbia2_ttl.jpg',	'bbia2_dtl.jpg',	'°Ü¿ï ºê¶óÀÌÆ®',	6175,	618,	100,	0,	'»óÅ­ Æø¹ß, ÆËÇÑ º£¸® ÇÎÅ©'	);
+insert into product values(	pro_seq.nextval,	'¸Æ',	'·¹Æ®·Î ¸ÅÆ® ¸³½ºÆ½ ÇÃ·§ ¾Æ¿ô ÆĞºæ·¯½º',	'10fab_ttl.jpg',	'10fab_dtl.jpg',	'°Ü¿ï µö',	36000,	3600,	100,	0,	'¹àÀº ÀÚÁÖ'	);
+insert into product values(	pro_seq.nextval,	'¸Æ',	'ÆÄ¿ì´õ Å°½º ¸®Äûµå ¹ö´× ·¯ºê',	'10burning_ttl.jpg',	'10burning_dtl.jpg',	'°Ü¿ï µö',	43000,	4300,	100,	0,	'Deep intense berry'	);
+insert into product values(	pro_seq.nextval,	'¸±¸®¹ÙÀÌ·¹µå',	'Áê½Ã ¶óÀÌ¾î ¿öÅÍ Æ¾Æ® 04 #ºí·¢º£¸® µ¥³¥¶óÀÎ Ã´',	'10black_ttl.jpg',	'10black_dtl.jpg',	'°Ü¿ï µö',	9100,	910,	100,	0,	'±íÀÌ ÀÖ´Â ¿À¹¦ÇÔ, ºí·¯µğ ·¹µå'	);
+insert into product values(	pro_seq.nextval,	'Æ÷·»ÄÚÁî',	'Å¸Åõ ²ø·¹¸£ º§ºª Æ¾Æ® 03 ¹¿´Ï',	'forencos2_ttl.jpg',	'10minuit_dtl.jpg',	'°Ü¿ï µö',	10900,	1090,	100,	0,	'¾ÆÂñÇÏ°Ô ¹°µå´Â ÆË ÇÎÅ©'	);
+insert into product values(	pro_seq.nextval,	'¸±¸®¹ÙÀÌ·¹µå',	'±Û¸®ÅÍÁ¸ »ş¿ö 05 ½º³ë¿ìÆŞ »ş¿ö',	'10perl_ttl.jpg',	'10perl_dtl.jpg',	'°Ü¿ï µö',	5900,	590,	100,	0,	'°ñµå, ±×¸°, ºí·ç, È¦·Î±×·¥ ÆŞÀÌ Á¶ÇÕµÈ Å¬¸®¾î È­ÀÌÆ®'	);
+insert into product values(	pro_seq.nextval,	'Å©¸®´ÏÅ©',	'Ä¡Å© ÆË ÆÒÁö ÆË',	'clinique_ttl.jpg',	'10pansy_dtl.jpg',	'°Ü¿ï µö',	35000,	3500,	100,	0,	'-'	);
+insert into product values(	pro_seq.nextval,	'Æä¸®Æä¶ó',	'¿Ã Å×ÀÌÅ© ¹«µå ÆÈ·¹Æ® #11 Æ÷ºê½º ¼±Á¤ Á¦¹ı Á¨ÄğÇÑ ÇÎÅ©',	'peripera2_ttl.jpg',	'peripera2_dtl.jpg',	'°Ü¿ï µö',	16800,	1680,	100,	0,	'´Ü ÇÏ³ª·Î ³¡³»´Â ¿ÃÅ×ÀÌÅ© ¹«µå ÆÈ·¹Æ®'	);
+insert into product values(	pro_seq.nextval,	'·Ò¾Ø',	'º£·¯ ´í ¾ÆÀÌÁî #¹ÂÁ÷ M02 ¸»¸° ¸Ş¹Ğ²É',	'10memil_ttl.jpg',	'10memil_dtl.jpg',	'°Ü¿ï µö',	13600,	1360,	100,	0,	'Â÷°¡¿î ¸Ş¹ĞÃ³·³ ÄğÇÏµğ ÄğÇÑ ºÓÀº±â ¾ø´Â È¸°¥»ö ÄÃ·¯'	);
+insert into product values(	pro_seq.nextval,	'¹Ì»ş',	'¶ó½ºÆ® ºí·¯½¬ 06 ·ÎÁîºí·Î½æ',	'bbia2_ttl.jpg',	'bbia2_dtl.jpg',	'°Ü¿ï µö',	6175,	618,	100,	0,	'°íÈ¤Àû ¹«µåÀÇ ¸»¸° Àå¹Ì'	);
+insert into product values(	pro_seq.nextval,	'3CE',	'¼ÒÇÁÆ® ¸ÅÆ® ¸³½ºÆ½ #AZURE PINK',	'10azure_ttl',	'10azure_dtl.jpg',	'°Ü¿ï µö',	14900,	1490,	100,	0,	'Çª¸¥ ºû¿¡ ¹İ»çµÇ¾î ¸¼°Ô Â÷¿À¸£´Â ºê¶óÀÌÆ® ÇÎÅ©'	);
 
 commit;
 select * from product;
-
 
 
