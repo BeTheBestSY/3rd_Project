@@ -84,14 +84,14 @@
 		<div id="footer_vertical"></div>&nbsp;&nbsp;<font id="footer_title">휴무일</font><div style="width: 244px; display:inline-block;"></div>
 		<div id="footer_vertical"></div>&nbsp;&nbsp;<font id="footer_title">주소</font>
 		<br>
-		<div style="top: 8px; position: relative; color: graytext;">
+		<div style="top: 8px; position: relative; color: #8C8C8C; font-family: 'RIDIBatang'">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			평일 AM 09:00 ~ PM 06:00 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			공휴일, 주말, 지정 휴무일(추후 팝업창 안내) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			서울특별시 마포구 월드컵북로 21 풍성빌딩 4층
 		</div><br><br>
 		&nbsp;&nbsp;&nbsp;<div id="footer_vertical"></div>&nbsp;&nbsp;<font id="footer_title">정보</font>
-		<div style="top: 8px; position: relative; color: graytext;">
+		<div style="top: 8px; position: relative; color: #8C8C8C; font-family: 'RIDIBatang';">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(주)쌍용교육센터 H반 환감탈태조 FIND YOUR Hidden Beauty | 신고번호 : 제 2023-서울마포-00000호<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공동대표 4인 : 김수연, 박혜주, 황다온, 이유진 (TEL : 02-336-8546 / FAX : 02-334-5405)
 		</div>
