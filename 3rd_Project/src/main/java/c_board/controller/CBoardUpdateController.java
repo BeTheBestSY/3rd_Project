@@ -1,4 +1,4 @@
-package q_board.controller;
+package c_board.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,27 +18,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import q_board.model.QBoardBean;
-import q_board.model.QBoardDao;
+import c_board.model.CBoardBean;
+import c_board.model.CBoardDao;
+
 
 @Controller
-public class QBoardUpdateController {
+public class CBoardUpdateController {
 
 	@Autowired
-	private QBoardDao qdao;
+	private CBoardDao cdao;
 	
-	public final String command="/qUpdate.qb";
-	public final String viewPage="qBoardUpdate";
-	public final String gotoPage="redirect:/qBoardList.qb";
+	public final String command="/cUpdate.cb";
+	public final String viewPage="cBoardUpdate";
+	public final String gotoPage="redirect:/cBoardList.cb";
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public String deleteform(
 				Model model,
-				@RequestParam("q_num") int q_num,
+				@RequestParam("c_num") int c_num,
 				@RequestParam("pageNumber") int pageNumber
 			) {
 		
-		QBoardBean bb = qdao.selectContent(q_num);
+		CBoardBean bb = cdao.selectContent(c_num);
 		
 		model.addAttribute("pageNumber",pageNumber);
 		model.addAttribute("bb",bb);
@@ -51,42 +52,42 @@ public class QBoardUpdateController {
 			Model model,
 			HttpServletResponse response,
 			@RequestParam(value="pageNumber",required = false) int pageNumber,
-			@RequestParam(value="q_ref",required = false) int q_ref,
-			@RequestParam(value="q_re_step",required = false) int q_re_step,
-			@RequestParam(value="q_re_level",required = false) int q_re_level,
-			@RequestParam("q_password") String q_password,
+			@RequestParam(value="c_ref",required = false) int c_ref,
+			@RequestParam(value="c_re_step",required = false) int c_re_step,
+			@RequestParam(value="c_re_level",required = false) int c_re_level,
+			@RequestParam("c_password") String c_password,
 			HttpServletRequest request,
-			@ModelAttribute("bb") @Valid QBoardBean bb,
+			@ModelAttribute("bb") @Valid CBoardBean bb,
 			BindingResult br
 		) throws IOException {
 		
-		int q_num = bb.getQ_num();
+		int c_num = bb.getC_num();
 		
 		if(br.hasErrors()) {
 			
 			model.addAttribute("pageNumber",pageNumber);
-			model.addAttribute("q_num",q_num);
+			model.addAttribute("c_num",c_num);
 			model.addAttribute("bb", bb);
 			
 			return viewPage;
 		}
 		
 		ModelAndView mav = new ModelAndView();
-		QBoardBean bb2 = qdao.selectContent(q_num);
+		CBoardBean bb2 = cdao.selectContent(c_num);
 		
-		if(q_password.equals(bb2.getQ_password())) {
+		if(c_password.equals(bb2.getC_password())) {
 			mav.setViewName(gotoPage+"?pageNumber="+pageNumber);
 			
-			bb.setQ_ref(q_ref);
-			bb.setQ_subject(bb.getQ_subject());
-			bb.setQ_re_step(q_re_step);
-			bb.setQ_re_level(q_re_level);
-			bb.setQ_ip(request.getRemoteAddr());
-			bb.setQ_regdate(new Timestamp(System.currentTimeMillis()));
+			bb.setC_ref(c_ref);
+			bb.setC_subject(bb.getC_subject());
+			bb.setC_re_step(c_re_step);
+			bb.setC_re_level(c_re_level);
+			bb.setC_ip(request.getRemoteAddr());
+			bb.setC_regdate(new Timestamp(System.currentTimeMillis()));
 			
-			qdao.updateBoard(bb);
+			cdao.updateBoard(bb);
 			
-			return gotoPage+"?q_num="+q_num+"&pageNumber="+pageNumber;
+			return gotoPage+"?c_num="+c_num+"&pageNumber="+pageNumber;
 			
 		} else {
 			response.setContentType("text/html; charset=UTF-8");
@@ -97,8 +98,5 @@ public class QBoardUpdateController {
 			model.addAttribute("bb",bb);
 			return viewPage;
 		}
-		
-		
 	}
-	
 }
