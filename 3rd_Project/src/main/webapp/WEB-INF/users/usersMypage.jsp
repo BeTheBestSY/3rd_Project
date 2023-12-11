@@ -20,7 +20,9 @@
 		<td>${ub.u_color }</td>
 	</tr>
 </table>
-<input type="button" value="회원정보 수정하기" onClick="update.u"><br>
+<input type="button" value="회원정보 수정하기" onClick="location.href='update.u?u_id=${ub.u_id}'"><br><br>
 >작성한 글 <br>
+>주문내역 <br>
+>회원탈퇴 <br>
 </div>
 <%@ include file="../views/footer.jsp" %>
