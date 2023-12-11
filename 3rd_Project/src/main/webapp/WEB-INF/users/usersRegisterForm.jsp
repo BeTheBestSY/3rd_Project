@@ -83,13 +83,10 @@
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 아이디</th>
 				<td>
-<<<<<<< HEAD
 					<input type="text" name="u_id" placeholder="영문소문자/숫자, 4~16자" required>
 					중복체크, 정규표현식 아직
-=======
 					<!-- 중복체크, 정규표현식 아직 -->
 					<input type="text" class="form-control" name="u_id" placeholder="영문 소문자+숫자, 4~16자" required> 
->>>>>>> e6e4d9f858e978cc4e35e0cd9a8d50ef1cdf1efc
 				</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
