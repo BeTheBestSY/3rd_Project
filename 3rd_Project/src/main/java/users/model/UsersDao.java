@@ -42,7 +42,11 @@ public class UsersDao {
 		return sqlSessionTemplate.selectOne(namespace+".findPw", ub);
 	}
 
-	public void updateUsers(UsersBean ub) {
-		sqlSessionTemplate.update(namespace+".updateUsers", ub);
+	public int updateUsers(UsersBean ub) {
+		return sqlSessionTemplate.update(namespace+".updateUsers", ub);
+	}
+
+	public void deleteUsers(String u_id) {
+		sqlSessionTemplate.delete(namespace+".deleteUsers", u_id);
 	}
 }

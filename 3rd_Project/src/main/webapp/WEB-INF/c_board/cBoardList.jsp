@@ -23,18 +23,18 @@
 
 <article id="center" style="font-family: 'MaruBuri-Regular';" >
 
-	  <div class="page-title">
+	<div class="page-title">
         <div class="container">
             <br><br><br>
             <h3>컬러진단 후기 게시판</h3>
         </div>
     </div>
 	
-	  <div id="board-search">
-        <div class="container">
+	 <div id="board-search">
+		<div class="container">
             <div class="search-window">
                 <form action="">
-                    <div class="search-wrap">
+				<div class="search-wrap">
 		<form action="cBoardList.cb" method="get">
 				<select name="whatColumn" id="whatColumn">
 					<option>선택</option>

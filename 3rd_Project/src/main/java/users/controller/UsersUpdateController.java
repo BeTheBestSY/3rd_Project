@@ -1,6 +1,12 @@
 package users.controller;
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,12 +34,19 @@ public class UsersUpdateController {
 		return viewPage;
 	}
 	@RequestMapping(value = command, method = RequestMethod.POST)
-	public String doAction2(@ModelAttribute(value = "ub") UsersBean ub) {
+	public String doAction2(@ModelAttribute(value = "ub") UsersBean ub, HttpServletResponse response ) throws IOException {
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html; charset=UTF-8");
 		String u_phone = ub.getU_phone().replace(",","-"); // 010-1234-5678
 		ub.setU_phone(u_phone);
-		ud.updateUsers(ub);
-		// alert('수정되었습니다.');
-		// alert('수정 실패');
-		return viewPage2;
+		if(ud.updateUsers(ub) > 0) {
+			out.print("<script>alert('수정되었습니다.');</script>");
+			out.flush();
+			return viewPage2;
+		} else {
+			out.print("<script>alert('수정 실패');</script>");
+			out.flush();
+			return viewPage;
+		}
 	}
 }
