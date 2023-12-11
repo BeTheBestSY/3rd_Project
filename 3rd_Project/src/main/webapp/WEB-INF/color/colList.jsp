@@ -155,7 +155,7 @@
 		</div>
 		<div id="autumn">
 			<span id="seasonArea">가을</span><br><br>
-			<span id="sDetailArea">
+			<span id="sDetailArea"> 
 				차분하고 무거운 분위기의 부드러운 톤으로 이루어져 있어요.<br>
 				전반적으로 고급스럽고 강하면서도 편안 느낌을 줘요.<br>
 			</span><br><br>
