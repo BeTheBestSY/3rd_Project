@@ -32,7 +32,7 @@ public class UsersRegisterController {
 		System.out.println(ub.getU_address()); // 23104,인천 옹진군 백령면 콩돌로 170,102호
 		// 주소 입력을 안 했을 경우
 		if(ub.getU_address().equals(",,")) {
-			ub.setU_address("-"); 
+			ub.setU_address("-");
 		}
 		ud.register(ub);
 		session.setAttribute("id", ub.getU_id());
