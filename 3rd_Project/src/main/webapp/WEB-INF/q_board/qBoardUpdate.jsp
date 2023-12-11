@@ -21,7 +21,7 @@
 <div class="page-title">
     <div class="container">
         <br><br>
-        <h3 style="font-size: 25pt; font-weight: bold;">의견 수정</h3>
+        <h3 style="font-size: 25pt; font-weight: bold;">문의 수정</h3>
     </div>
 </div>
 <br><br><br><br><br>

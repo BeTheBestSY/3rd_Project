@@ -26,7 +26,7 @@
 	  <div class="page-title">
         <div class="container">
             <br><br><br>
-            <h3>컬러진단 후기 게시판</h3>
+            <h3>의견 게시판</h3>
         </div>
     </div>
 	

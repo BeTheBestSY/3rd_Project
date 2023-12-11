@@ -73,32 +73,37 @@
 						
 			 </table>
 			 <br><br>
-			 
-			 <!-- 로그인 하지 않은 상태이면 목록 버튼만 -->
-			<c:if test="${id == null && id != bb.c_writer && id !='admin'}">
-			 	<center>
-					<input type="button" value="목록으로" onClick="goList(${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">
+			 <!-- 세션이 작성자와 같거나 관리자가 아니면 수정, 삭제, 목록 버튼 보이게 -->
+			<c:if test="${id==null}">
+				 <center>
+				 	답글달기는 로그인 후 이용 가능합니다.
 				</center>
 			</c:if>
-			<!-- 세션이 작성자와 같거나 관리자가 아니면 수정, 삭제, 목록 버튼 보이게 -->
-			<c:if test="${id == bb.c_writer && id!='admin'}">
-				 <center>
+			
+			<!-- 접속한 id가 관리자가 아니고, 글 작성자랑 접속한 id랑 다른데 로그인은 되어있으면 답글달기만. -->
+			<c:if test="${id != null && id !='admin' && id !=bb.c_writer}"> 
+				<center>
+					<input type="button" value="답글달기" onClick="goReply(${ bb.c_num },${ bb.c_ref },${ bb.c_re_step },${ bb.c_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+				</center>
+			</c:if>
+			<!-- 접속한 id가 관리자가 아니고, 글 작성자랑 접속한 id랑 같을 때 수정 삭제 답글 가능 -->
+			<c:if test="${id == bb.c_writer && id !='admin'}"> 
+				<center>
 					<input type="button" value="수정하기" onClick="goUpdate(${ bb.c_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 					<input type="button" value="삭제하기" onClick="goDelete(${ bb.c_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
-					<input type="button" value="목록으로" onClick="goList(${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">
-				
+					<input type="button" value="답글달기" onClick="goReply(${ bb.c_num },${ bb.c_ref },${ bb.c_re_step },${ bb.c_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 				</center>
 			</c:if>
-			<!-- 아이디가 'admin'(관리자)면 답글달기 버튼까지 보이게 -->
+			
+			<!-- 접속한 id가 관리자일 땐 모든 게시물 수정 삭제 답글 가능 -->
 			<c:if test="${id == 'admin'}"> 
 				<center>
 					<input type="button" value="수정하기" onClick="goUpdate(${ bb.c_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 					<input type="button" value="삭제하기" onClick="goDelete(${ bb.c_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 					<input type="button" value="답글달기" onClick="goReply(${ bb.c_num },${ bb.c_ref },${ bb.c_re_step },${ bb.c_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
-					<input type="button" value="목록으로" onClick="goList(${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">
 				</center>
 			</c:if>
-			
+
 		</form:form>
 		
 </article>
