@@ -66,23 +66,9 @@
 	
 	</div>
 <br><br>
-<<<<<<< HEAD
-<hr style="border: 2px solid black; width: 80%; margin: auto;">
-<br><br>
-<c:if test="${ub.u_id ne null }">
-	<h5><b>${ub.u_name }</b> 님의 아이디는 <b>${ub.u_id }</b> 입니다.</h5><br><br>
-</c:if>
-<c:if test="${ub.u_id eq null }">
-	<h5>일치하는 정보가 없습니다.</h5><br><br>
-</c:if>
-<a href="#"><input type="button" value="로그인 화면으로 돌아가기"></a>
-<a href="#"><input type="button" value="비밀번호 찾기"></a>
-</div>
-=======
 
 <input type="button" value="로그인 하러가기" id="btn" onClick="location.href='#'"> 
 <input type="button" value="비밀번호 찾기" id="btn" onClick="location.href='#'"> 
 </div>
 
->>>>>>> e13c32c6d16459fa7ef94779974a5237630d7827
 <%@ include file="../views/footer.jsp" %>

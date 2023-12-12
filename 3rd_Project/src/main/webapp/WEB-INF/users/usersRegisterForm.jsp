@@ -83,32 +83,19 @@
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 아이디</th>
 				<td>
-					<!-- 중복체크, 정규표현식 아직 -->
-<<<<<<< HEAD
 					<input type="text" class="form-control" name="u_id" value="${ub.u_id }" placeholder="영문 소문자+숫자, 4~16자" pattern="^[A-Za-z0-9]{4,16}$" required> 
-=======
-					<input type="text" class="form-control" name="u_id" placeholder="영문 소문자+숫자, 4~16자" required> 
->>>>>>> e13c32c6d16459fa7ef94779974a5237630d7827
 				</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 비밀번호</th>
 				<td>
-<<<<<<< HEAD
 					<input type="password" class="form-control" name="u_password" value="${ub.u_password }" placeholder="영문 대소문자/숫자/특수문자 중 3가지 이상 조합, 8자~16자" required>
-=======
-					<input type="password" class="form-control" name="u_password" placeholder="영문 대소문자/숫자/특수문자 중 3가지 이상 조합, 8자~16자" required>
->>>>>>> e13c32c6d16459fa7ef94779974a5237630d7827
 				</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 비밀번호 확인</th>
 				<td>
-<<<<<<< HEAD
 					<input type="password" class="form-control" name="u_rePassword" required>
-=======
-					<input type="password" class="form-control" name="u_rePassword_" required>
->>>>>>> e13c32c6d16459fa7ef94779974a5237630d7827
 				</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
@@ -120,15 +107,12 @@
 							<option value="${first }" <c:if test="${fn:split(ub.u_phone, '-')[0] eq first }">selected</c:if>>${first }</option>
 						</c:forEach>
 					</select>
-<<<<<<< HEAD
 					&nbsp;
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[1]}" maxlength="4" required> - 
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[2]}" maxlength="4" required>
-=======
 					-
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" maxlength="4" required> - 
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" maxlength="4" required>
->>>>>>> e13c32c6d16459fa7ef94779974a5237630d7827
 				</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
