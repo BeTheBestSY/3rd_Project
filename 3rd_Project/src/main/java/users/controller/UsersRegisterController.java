@@ -53,7 +53,7 @@ public class UsersRegisterController {
 				return viewPage;
 			}
 			
-			ud.register(ub);
+			ud.register(ub); 
 			application.setAttribute("flag", true);
 		}
 		return viewPage2;
