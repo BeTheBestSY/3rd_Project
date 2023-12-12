@@ -14,7 +14,6 @@ public class UsersLogoutController {
 	@RequestMapping(command)
 	public String doAction(HttpSession session) {
 		session.invalidate();
-		System.out.println(1);
 		return gotoPage;
 	}
 }

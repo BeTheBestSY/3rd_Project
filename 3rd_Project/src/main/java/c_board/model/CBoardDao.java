@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
 
 import utility.Paging;
 
-@Component("myBoard")
+@Component("CBoard")
 public class CBoardDao {
 
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	
-	private String namespace="board.BoardBean.";
+	private String namespace="c_board.model.CBoardBean.";
 
 	public List<CBoardBean> getAllBoardList(Paging pageInfo, Map<String, String> map) {
 
@@ -32,16 +32,14 @@ public class CBoardDao {
 		return totalCount;
 	}
 
-	public CBoardBean selectContent(int num) {
-		
-		CBoardBean bb = sqlSessionTemplate.selectOne(namespace+"selectContent",num);
-		
+	public CBoardBean selectContent(int c_num) {
+		CBoardBean bb = sqlSessionTemplate.selectOne(namespace+"selectContent",c_num);
 		return bb;
 	}
 
-	public void deleteBoard(int num) {
+	public void deleteBoard(int c_num) {
 
-		sqlSessionTemplate.delete(namespace+"deleteBoard",num);
+		sqlSessionTemplate.delete(namespace+"deleteBoard",c_num);
 		
 	}
 
@@ -64,9 +62,9 @@ public class CBoardDao {
 		
 	}
 	
-	public void updateReadcount(int num) {
+	public void updateReadcount(int c_num) {
 
-		sqlSessionTemplate.update(namespace+"updateReadcount", num);
+		sqlSessionTemplate.update(namespace+"updateReadcount", c_num);
 		
 	}
 
@@ -74,8 +72,8 @@ public class CBoardDao {
 
 		sqlSessionTemplate.update(namespace+"plusStep",bb);
 		
-		bb.setRe_step(bb.getRe_step()+1);
-		bb.setRe_level(bb.getRe_level()+1);
+		bb.setC_re_step(bb.getC_re_step()+1);
+		bb.setC_re_level(bb.getC_re_level()+1);
 
 		sqlSessionTemplate.insert(namespace+"insertReply",bb);
 		

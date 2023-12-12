@@ -1,91 +1,111 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@ include file="./../views/header.jsp" %>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardList.css">
+<script src="selectbox.min.js"></script>
+<style type="text/css">
+	#noneHigtLight{
+		text-decoration: none;
+	}
+	#noneHigtLight:hover{
+		color: #7C81BB;
+	}
+</style>
+<script type="text/javascript">
 
-<center>
-
-</center>
-<article id="center" style="text-align: center; font-family: 'MaruBuri-Regular';" >
-	<script type="text/javascript">
-
-	function write() {
+	function insert() {
 		location.href="write.cb"
 	}
 
 </script>
-<body bgcolor="pink">
 
-<center>
-	<h2>게시판 목록(레코드 갯수 : ${ pageInfo.totalCount })</h2>
+
+<article id="center" style="font-family: 'RIDIBatang';" >
+
+	<div class="page-title">
+        <div class="container" style="font-family: 'MaruBuri-Regular';">
+            <br><br><br>
+            <h3>퍼스널 컬러 진단 후기 게시판</h3>
+        </div>
+    </div>
+	
+	 <div id="board-search">
+		<div class="container">
+            <div class="search-window">
+                <form action="">
+				<div class="search-wrap">
 		<form action="cBoardList.cb" method="get">
-			<select name="whatColumn">
-				<option value="all">전체검색</option>
-				<option value="writer">작성자</option>
-				<option value="email">이메일</option>
-				<option value="content">내용</option>
-			</select>
-			<input type="text" name="keyword">
-			<input type="submit" value="검색">
-		</form>
-</center>
+				<select name="whatColumn" id="whatColumn">
+					<option>선택</option>
+					<option value="all">전체검색</option>
+					<option value="c_subject">제목</option>
+					<option value="c_writer">작성자</option>
+				</select>
+			 	<input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
+			 	
+			<button type="submit" class="btn btn-dark">검색</button>
+            </div>
+		   </form>
+        </div>
+    </div>
 
-<table border=1>
+ <div id="board-list">
+        <div class="container">
+        
+<input type=button value="글쓰기" onClick="insert()" class="btn btn-white">
+<table class="board-table" style="font-size: 13pt; text-align: center;">
 
-	<tr>
-		<th align=right colspan=8 bgcolor="pink">
-			<input type=button value="글쓰기" onClick="write()">
-		</th>
-	</tr>
-	<tr bgcolor="pink">
-		<th>번호</th>
-		<th>제목</th>
-		<th>작성자</th>
-		<th>내용</th>
-		<th>작성일</th>
-		<th>이메일</th>
-		<th>조회</th>
-		<th>IP</th>
+	
+	<tr style="background: #f9f7f9;">
+		<th scope="col" class="th-num" width="10%">번호</th>
+		<th scope="col" class="th-title" width="30%">제목</th>
+		<th width="15%" class="th-writer">작성자</th>
+		<th scope="col" class="th-date" width="17%">작성일</th>
+		<th width="13%" class="th-readcount">조회수</th>
 	</tr>
 	<c:if test="${ !empty list }">
 		<c:forEach var="bb" items="${ list }">
-			<tr align=center>
-				<td>${ bb.num }</td>
-				<td align="left">
+			<tr>
+				<td>${ bb.c_num }</td>
+				<td align="left" >
 					<c:set var="wid" value="0"/>
-					<c:if test="${ bb.re_level > 0 }">
-						<c:set var="wid" value="${bb.re_level * 20}"/>
+					<c:if test="${ bb.c_re_level > 0 }">
+						<c:set var="wid" value="${bb.c_re_level * 20}"/>
 						<img src="<%= request.getContextPath() %>/resources/image/level.gif" width="${wid}">
-						<img src="<%= request.getContextPath() %>/resources/image/re.png">
+						<img src="<%= request.getContextPath() %>/resources/image/re.png" width="2%">
 					</c:if>
-						<a href="content.bd?num=${ bb.num }&pageNumber=${ pageInfo.pageNumber }">
-							${ bb.subject }</a>
-					<c:if test="${ bb.readcount >= 10 }">
-						<img src="<%= request.getContextPath() %>/resources/image/hot.png">
+						<a href="detail.cb?c_num=${ bb.c_num }&pageNumber=${ pageInfo.pageNumber }" id="noneHigtLight">
+							${ bb.c_subject }&nbsp;</a>
+					<c:if test="${ bb.c_readcount >= 10 }">
+						<img src="<%= request.getContextPath() %>/resources/image/hot.png" width="2%">
 					</c:if>
 				</td>
-				<td>${ bb.writer }</td>
-				<td>${ bb.content }</td>
+				<td>${ bb.c_writer }</td>
 				<td>
-					<fmt:formatDate value="${bb.reg_date}" pattern="yyyy-MM-dd"/>
+					<fmt:formatDate value="${bb.c_regdate}" pattern="yyyy-MM-dd"/>
 				</td>
-				<td>${ bb.email }</td>
-				<td>${ bb.readcount }</td>
-				<td>${ bb.ip }</td>
+				<td>${ bb.c_readcount }</td>
 			</tr>
 		</c:forEach>
 	</c:if>
 	<c:if test="${ empty list }" >
-		<tr align=center bgcolor="pink">
+		<tr>
 			<td colspan="8">작성된 글이 없습니다.</td>
 		</tr>
 	</c:if>
-</table>
+ </table>
+        </div>
+    </div>
+<br><br>
 <center>
+<div id="pagenation">
 	${pageInfo.pagingHtml}
+</div>
 </center> 
-</body>
-	
+
 </article>
+
 
 
 <%@ include file="./../views/footer.jsp" %>

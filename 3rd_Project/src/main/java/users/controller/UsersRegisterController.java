@@ -1,6 +1,10 @@
 package users.controller;
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import users.model.UsersBean;
 import users.model.UsersDao;
@@ -27,21 +32,28 @@ public class UsersRegisterController {
 		return viewPage;
 	}
 	@RequestMapping(value = command, method = RequestMethod.POST)
-	public String doAction2(@ModelAttribute("ub") UsersBean ub, HttpSession session) {
+	public String doAction2(@ModelAttribute("ub") UsersBean ub,
+						@RequestParam String u_rePassword,
+						HttpServletResponse response,
+						HttpSession session) throws IOException {
+		
 		String u_phone = ub.getU_phone().replace(",","-"); // 010-1234-5678
 		ub.setU_phone(u_phone);
-		//
-		String[] addrList = ub.getU_address().split(",");
-		String u_address = "";
-		u_address += addrList[1]+" "+addrList[2]+" ("+addrList[0]+")";
-		ub.setU_address(u_address);
-		System.out.println(u_address); // ¼­¿ï °­³²±¸ Å×Çì¶õ·Î 125 1234 (06133)
+		System.out.println(ub.getU_address()); // 23104,ì¸ì²œ ì˜¹ì§„êµ° ë°±ë ¹ë©´ ì½©ëŒë¡œ 170,102í˜¸
+		// ì£¼ì†Œ ì…ë ¥ì„ ì•ˆ í–ˆì„ ê²½ìš°
+		if(ub.getU_address().equals(",,")) {
+			ub.setU_address("-");
+		}
 		
-		System.out.println(ub.getU_color());
-		// Áßº¹Ã¼Å©ÇÏ±â
-		// È¸¿ø°¡ÀÔÇÏ±â
+		if(!ub.getU_password().equals(u_rePassword)) {
+			PrintWriter out = response.getWriter();
+			response.setContentType("text/html; charset=UTF-8");
+			out.print("<script>alert('ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.');</script>");
+			out.flush();
+			return viewPage;
+		}
+		
 		ud.register(ub);
-		// °¡ÀÔÇÑ È¸¿øÀÇ ¾ÆÀÌµğ ¼¼¼Ç ¼³Á¤
 		session.setAttribute("id", ub.getU_id());
 		return viewPage2;
 	}

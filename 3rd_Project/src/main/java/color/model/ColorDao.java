@@ -1,4 +1,7 @@
 package color.model;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,14 +16,11 @@ public class ColorDao {
 	
 	public ColorDao() {}
 
-	public ColorBean getSl() {
-		ColorBean cbsl = sqlSessionTemplate.selectOne(nameSpace+".getSl");
-		return cbsl;
-	}
-
-	public ColorBean getSb() {
-		ColorBean cbsb = sqlSessionTemplate.selectOne(nameSpace+".getSb");
-		return cbsb;
+	public ColorBean getColor(String color) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("color", color);
+		ColorBean cb = sqlSessionTemplate.selectOne(nameSpace+".getColor", map);
+		return cb;
 	}
 	
 }

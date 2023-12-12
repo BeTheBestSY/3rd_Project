@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 
 <style type="text/css">
 body {
@@ -160,11 +160,9 @@ body {
 </style>
 
 </head>
-<!-- <div>Teachable Machine Image Model</div>
-<button type="button" onclick="init()">Start</button> 
-<div id="webcam-container"></div>
-<div id="label-container"></div>
--->
+
+<!-- 저장용 -->
+<!-- 저장용 -->
 
 <%
 String id = (String) session.getAttribute("id");
@@ -245,12 +243,6 @@ if(id==null){
 		} else {
           labelContainer.childNodes[0].innerHTML = "이 사진으로는 측정드릴 수가 없을 것 같아요! 다른 사진을 넣어 주시겠어요? ";
         }
-
-        // <!--        for (let i = 0; i < maxPredictions; i++) {-->
-        // <!--            const classPrediction =-->
-        // <!--                prediction[i].className + ": " + prediction[i].probability.toFixed(2);-->
-        // <!--            labelContainer.childNodes[i].innerHTML = classPrediction;-->
-        // <!--        }-->
       }
 
     </script>

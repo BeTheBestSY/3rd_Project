@@ -31,7 +31,6 @@ public class QBoardListController {
 				HttpServletRequest request
 			) {
 		
-		whatColumn="all";
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
