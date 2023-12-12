@@ -3,5 +3,51 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="sqlField_product">
+	<select id="getTotalCount" resultType="int">
+		select count(*) from product
+		
+		<if test="whatColumn=='p_brand'">
+		where p_brand like #{keyword}
+		</if>
+		
+		<if test="whatColumn=='p_name'">
+		where p_name like #{keyword}
+		</if>
+		
+		<if test="whatColumn=='p_color'">
+		where p_color like #{keyword}
+		</if>
+		
+		<if test="whatColumn=='all'">
+		where p_brand like #{keyword} or p_name like #{keyword} or p_color like #{keyword}
+		</if>
+		
+	</select>
 	
+	<select id="getAllProductList" resultType="myProduct">
+		select * from product
+		
+		<if test="whatColumn=='p_brand'">
+		where p_brand like #{keyword}
+		</if>
+		
+		<if test="whatColumn=='p_name'">
+		where p_name like #{keyword}
+		</if>
+		
+		<if test="whatColumn=='p_color'">
+		where p_color like #{keyword}
+		</if>
+		
+		<if test="whatColumn=='all'">
+		where p_brand like #{keyword} or p_name like #{keyword} or p_color like #{keyword}
+		</if>
+		
+		 
+	</select>
+	
+	<select id="getSelectOne" resultType="myProduct">
+		select * from product
+		where p_num = #{p_num}
+	</select>
 </mapper>
