@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.security.SecureRandom" %>
+<%@ page import="java.math.BigInteger" %>
 <%@ include file="../views/header.jsp" %>
 
+<!-- 네아로 SDK -->
+<!-- <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script> -->
 <style>
 	table{
 		font-family: 'RIDIBatang'; 
@@ -75,8 +79,24 @@
 						<td>비밀번호</td>
 						<td><input type="password" name="u_password" class="form-control" required></td>
 					</tr>
-					<!-- api 연동 -->
-				</table>
+				</table><br>
+				<%
+				    String clientId = "7e2tSZMcps1aVtINdSJv";//애플리케이션 클라이언트 아이디값";
+				    String redirectURI = URLEncoder.encode("http://localhost:8080/ex20/.main", "UTF-8");
+				    SecureRandom random = new SecureRandom(); // 클라이언트 시크릿A98jpGEn8v
+				    String state = new BigInteger(130, random).toString();
+				    // 네이버 로그인 인증을 요청하는 apiURL
+				    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+				    apiURL += "&client_id=" + clientId;
+				    apiURL += "&redirect_uri=" + redirectURI;
+				    apiURL += "&state=" + state;
+				    session.setAttribute("state", state);
+				    
+				%>
+				<!-- 네이버 로그인 버튼 생성 위치 -->
+				<div id="naverIdLogin" align="left">
+					<a href="<%=apiURL%>"><img  height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"></a>
+				</div>
 			</td>
 			<td align="right" valign="middle">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
