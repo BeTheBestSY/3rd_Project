@@ -27,7 +27,7 @@
 		font-weight: bold;
 		font-family: 'RIDIBatang';
 	}
-	#navSL, #navSB {
+	#navBack, #navSL, #navSB {
 		width: 120px;
 		height: 45px;
 		border-radius: 50px;
@@ -36,7 +36,7 @@
 		text-align: center;
 		box-shadow: 3px 3px 3px 0px #BDBDBD;
 	}
-	#navSL:hover, #navSB:hover {
+	#navBack:hover, #navSL:hover, #navSB:hover {
 		background-color: bisque;
 		cursor: pointer;
 	}
@@ -48,6 +48,12 @@
 	#sl, #sb {
 		width: 100%;
 		padding-bottom: 50px;
+	}
+	#recommend{
+		text-align: center; 
+		font-weight: bold; 
+		font-size: 20pt; 
+		font-family: 'MaruBuri-Regular';
 	}
 </style>
 
@@ -61,6 +67,7 @@
 		</span><br>
 	</div>
 	<nav id="thisNav">
+      <button id="navBack" style="width: 60px;">&lt;&lt;</button>&nbsp;
       <button id="navSL">${cbsl.col_name}</button>&nbsp;
       <button id="navSB">${cbsb.col_name}</button>
     </nav>
@@ -69,18 +76,30 @@
     	<br><br><br>
     	<br><br>
     	<img src="resources/image/${cbsl.col_ttlImg}" width="100%"><br><br><br>
-    	<img src="resources/image/${cbsl.col_stlImg}" width="100%"><br><br><br>
-    	<img src="resources/image/${cbsl.col_colImg}" width="80%" style="margin: auto;"><br><br><br>
+    	<img src="resources/image/${cbsl.col_stlImg}" width="100%"><br><br><br><br>
+    	<div id="recommend">▶ ${cbsl.col_name} 추천 색상 ◀</div>
+    	<br><br>
+    	<img src="resources/image/${cbsl.col_colImg}" width="100%" style="margin: auto;"><br><br><br><br>
+    	<div id="recommend">▶ ${cbsl.col_name} 추천 코디 ◀</div>
+    	<br><br>
+    	<img src="resources/image/${cbsl.col_codiImg}" width="100%" style="margin: auto;"><br><br><br>
     </div>
     <div id="sb">
     	<br><br><br>
     	<br><br>
     	<img src="resources/image/${cbsb.col_ttlImg}" width="100%"><br><br><br>
-    	<img src="resources/image/${cbsb.col_stlImg}" width="100%"><br><br><br>
-    	<img src="resources/image/${cbsb.col_colImg}" width="80%" style="margin: auto;"><br><br><br>
+    	<img src="resources/image/${cbsb.col_stlImg}" width="100%"><br><br><br><br>
+    	<div id="recommend">▶ ${cbsb.col_name} 추천 색상 ◀</div>
+    	<br><br>
+    	<img src="resources/image/${cbsb.col_colImg}" width="100%" style="margin: auto;"><br><br><br><br>
+    	<div id="recommend">▶ ${cbsb.col_name} 추천 코디 ◀</div>
+    	<img src="resources/image/${cbsb.col_codiImg}" width="100%" style="margin: auto;"><br><br><br>
     </div>
     
     <script type="text/javascript">
+	    document.querySelector("#navBack").addEventListener("click", (e) => {
+	  	  history.go(-1);
+	  	});
     	document.querySelector("#navSL").addEventListener("click", (e) => {
     	  document.querySelector("#sl").scrollIntoView({ behavior: "smooth" });
     	});

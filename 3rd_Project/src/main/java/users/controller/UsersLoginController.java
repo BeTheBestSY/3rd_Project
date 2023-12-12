@@ -22,7 +22,7 @@ public class UsersLoginController {
 	private final String command = "/login.u";
 	private final String viewPage = "usersLoginForm";
 	private final String adminPage = "adminPage";
-	private final String gotoPage = "redirect:/.main";
+	private final String gotoPage = "../views/main";
 	@Autowired
 	private UsersDao ud;
 	
@@ -41,19 +41,19 @@ public class UsersLoginController {
 		}
 		
 		PrintWriter out = response.getWriter();
-		
-		if(ud.didYouJoin(ub)) { // °¡ÀÔ ÇÑ È¸¿ø È¤Àº °ü¸®ÀÚÀÌ¸é
-			// ¾ÆÀÌµğ session ¼³Á¤
-			session.setAttribute("id", ub.getU_id());
+		  
+		if(ud.didYouJoin(ub)) { // ê°€ì… í•œ íšŒì› í˜¹ì€ ê´€ë¦¬ìì´ë©´
+			// ì•„ì´ë”” session ì„¤ì •
+			session.setAttribute("id", ub.getU_id()); // ì´ìª½ë³´ë‹¨ ì•„ë˜ìª½ì´ ì–´ë–¨ì§€!
+			session.setAttribute("ub", ub);
 			if(ub.getU_id().equals("admin"))
 				return adminPage;
 			else
 				return gotoPage;
 			
-		} else { // °¡ÀÔ ¾È ÇÑ È¸¿øÀÌ¸é
+		} else { 
 			response.setContentType("text/html; charset=UTF-8");
-			// alert ¶ç¿ì±â
-			out.print("<script>alert('°¡ÀÔÇÏÁö ¾ÊÀº È¸¿øÀÔ´Ï´Ù.');</script>");
+			out.print("<script>alert('ê°€ì…ë˜ì§€ ì•Šì€ íšŒì›ì…ë‹ˆë‹¤.');</script>");
 			out.flush();
 			return viewPage;
 		}

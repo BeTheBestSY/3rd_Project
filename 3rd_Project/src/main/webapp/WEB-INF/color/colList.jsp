@@ -117,7 +117,8 @@
 	<span style="font-family: 'RIDIBatang'; font-size: 11pt; line-height: 180%; color: graytext;"> 
 		&nbsp;&nbsp;저희 Hidden Beauty에서는 톤을 크게 <u>4계절</u>로,<br>
 		&nbsp;&nbsp;자세하게는 <u>총 10가지</u>로 분류해서 진단해드리고 있어요.<br>
-		&nbsp;&nbsp;아래 버튼을 클릭하시면 계절 별 자세한 설명을 확인할 수 있습니다!
+		&nbsp;&nbsp;아래 버튼을 클릭하시면 계절 별 자세한 설명을 확인할 수 있습니다!<br>
+		&nbsp;&nbsp;컬러 별 대표 연예인이 궁금하시다면 <a href="#" style="color: graytext;">여기</a>를 클릭해주세요.
 	</span>
 </article>
 
@@ -154,14 +155,14 @@
 		</div>
 		<div id="autumn">
 			<span id="seasonArea">가을</span><br><br>
-			<span id="sDetailArea">
+			<span id="sDetailArea"> 
 				차분하고 무거운 분위기의 부드러운 톤으로 이루어져 있어요.<br>
 				전반적으로 고급스럽고 강하면서도 편안 느낌을 줘요.<br>
-			</span><br><br>
+			</span><br><br> 
 			<input type="button" value="자세히 알아보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→" id="seasonBtn" onClick="location.href='autumn.col'"><br><br><br>
 			<img src="resources/image/pccs_autumn.png" id="seasonImg">
 		</div>
-		<div id="winter">
+		<div id="winter"> 
 			<span id="seasonArea">겨울</span><br><br>
 			<span id="sDetailArea">
 				차갑고 강렬하며 이지적인 느낌의 톤으로 이루어져 있어요.<br>
