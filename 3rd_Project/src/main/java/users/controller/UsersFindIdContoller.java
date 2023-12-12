@@ -1,8 +1,11 @@
 package users.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,12 +27,13 @@ public class UsersFindIdContoller {
 		return viewPage;
 	}
 	@RequestMapping(value = command, method = RequestMethod.POST)
-	public String doAction2(@ModelAttribute("ub") UsersBean ub) {
+	public String doAction2(@ModelAttribute("ub") UsersBean ub, Model model) {
 		String u_phone = ub.getU_phone().replace(",","-"); // 010-1234-5678
 		ub.setU_phone(u_phone);
 		
-		String u_id = ud.findId(ub);
-		ub.setU_id(u_id);
+		List<UsersBean> u_lists = ud.findId(ub);
+		model.addAttribute("u_lists",u_lists);
+		System.out.println("u_lists"+u_lists.size());
 		return viewPage2;
 	}
 }

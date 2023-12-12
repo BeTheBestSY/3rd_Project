@@ -8,11 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import users.model.UsersBean;
 import users.model.UsersDao;
@@ -26,10 +24,7 @@ public class UsersUpdateController {
 	private UsersDao ud;
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
-	public String doAction(@RequestParam String u_id, Model model) {
-		
-		UsersBean ub = ud.getUserById(u_id);
-		model.addAttribute("ub",ub);
+	public String doAction() {
 		return viewPage;
 	}
 	@RequestMapping(value = command, method = RequestMethod.POST)
@@ -43,7 +38,7 @@ public class UsersUpdateController {
 			out.flush();
 			return viewPage2;
 		} else {
-			out.print("<script>alert('수정 실패');</script>");
+			out.print("<script>alert('수정 실패. 관리자에게 문의하세요.');</script>");
 			out.flush();
 			return viewPage;
 		}

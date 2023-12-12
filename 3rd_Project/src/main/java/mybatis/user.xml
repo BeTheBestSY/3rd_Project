@@ -20,7 +20,7 @@
 		set u_password=#{new_password}
 		where u_id=#{u_id}
 	</update>
-	<select id="findId" resultType="String">
+	<select id="findId" resultType="Users">
 		select u_id from users
 		where u_name=#{u_name} and u_phone=#{u_phone}
 	</select>

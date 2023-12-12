@@ -77,15 +77,15 @@
 					<a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> 
 						<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
 					</a>
-					<c:if test="${id == null}">
+					<c:if test="${loginInfo == null}">
 						<ul class="dropdown-menu text-small">
 							<li><a class="dropdown-item" href="login.u">로그인</a></li>
 							<li><a class="dropdown-item" href="register.u">회원가입</a></li>
 						</ul>
 					</c:if>
-					<c:if test="${id != null}">
+					<c:if test="${loginInfo != null}">
 						<ul class="dropdown-menu text-small">
-							<li style="text-align: center;"><small>안녕하세요, <b><%=session.getAttribute("id")%></b>님</small></li>
+							<li style="text-align: center;"><small>안녕하세요, <b>${loginInfo.u_name }</b>님</small></li>
 							<li><hr class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="mypage.u">마이페이지</a></li>
 							<li><a class="dropdown-item" href="logout.u">로그아웃</a></li>

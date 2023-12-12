@@ -1,6 +1,7 @@
 package users.model;
  
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -14,7 +15,6 @@ public class UsersDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 	private String namespace = "sqlField_user";
 
-	// didYouJoin: ������ ȸ���̸� true, ���Ծ��� ȸ���̸� false
 	public boolean didYouJoin(UsersBean ub) {
 		return sqlSessionTemplate.selectOne(namespace+".didYouJoin", ub);
 	}
@@ -34,8 +34,8 @@ public class UsersDao {
 		sqlSessionTemplate.update(namespace+".updatePassword", map);
 	}
 
-	public String findId(UsersBean ub) {
-		return sqlSessionTemplate.selectOne(namespace+".findId", ub);
+	public List<UsersBean> findId(UsersBean ub) {
+		return sqlSessionTemplate.selectList(namespace+".findId", ub);
 	}
 
 	public String findPw(UsersBean ub) {
