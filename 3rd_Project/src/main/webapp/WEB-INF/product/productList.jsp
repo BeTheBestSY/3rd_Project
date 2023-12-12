@@ -175,7 +175,7 @@ width: 500px;
         <div class="col">
           <div class="card shadow-sm">
             <a href="prodView.p?p_num=${pb.p_num}&pageNumber=${pageInfo.pageNumber}">
-         		 <img src="<%=request.getContextPath() %>/resources/uploadFolder/${pb.p_ttlimg}"  height="225">${pb.p_ttlimg}
+         		 <img src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg}"  height="225">${pb.p_ttlimg}
              </a> 
             <div class="card-body">
               <p class="card-text">${pb.p_name }</p>

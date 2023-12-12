@@ -241,7 +241,7 @@ li .menu-list {
             
             <div class="first"> <!--중반부 를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌-->
           
-                <img  src="<%=request.getContextPath() %>/resources/uploadFolder/${pb.p_ttlimg }" alt="타이틀이미지">
+                <img  src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg }" alt="타이틀이미지">
             </div>
 
             <div class="second"> <!--중반부 를 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
@@ -290,7 +290,7 @@ li .menu-list {
 <br>
 
 <button>장바구니</button>
-<button>바로구매</button>
+<button>주문하기</button>
                   
 
        </section>
@@ -298,7 +298,8 @@ li .menu-list {
     <hr>
     <br><br>
 <center>
-<img alt="상세이미지" src="<%=request.getContextPath() %>/resources/uploadFolder/${pb.p_dtlimg }">
+<img alt="상세이미지" src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg }">
+<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg }
 </center>
 </body>
 <%@ include file="../views/footer.jsp" %>
