@@ -8,9 +8,32 @@
 <meta charset="UTF-8">
 
 <style type="text/css">
-body {
-  font-family: sans-serif;
-  background-color: #eeeeee;
+.modal {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+.modal.show {
+	display: block;
+}
+.modal_body {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 700px;
+	height: 450px;
+	padding: 45px 40px 40px 40px;
+	background-color: rgb(255, 255, 255);
+	border-radius: 10px;
+	box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+	transform: translateX(-50%) translateY(-50%);
+	font-family: 'RIDIBatang';
+	font-size: 11pt;
+	line-height: 180%;
 }
 
 .file-upload {
@@ -93,7 +116,7 @@ body {
 }
 
 .file-upload-image {
-  max-width: 400px;
+  max-width: 300px;
   margin: auto;
   padding: 20px;
 }
@@ -163,16 +186,18 @@ UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
 if(ub==null){
 %>
 	<script type="text/javascript">
-	alert("로그인 하신 후 이용해주세요.")
+	alert("로그인 후 이용해주세요.")
 	 window.location.href = "login.u";
 	</script>
 <%
 };
 %>
 
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-    <script type="text/javascript">
+<script type="text/javascript">
+    
       // More API functions here:
       // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
@@ -206,44 +231,52 @@ if(ub==null){
         const prediction = await model.predict(image, false);
         
         for (let i = 0; i < maxPredictions-1; i++) {
-            const classPrediction =
+            var classPrediction =
                 prediction[i].className + " : " + prediction[i].probability.toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;
+            if(i == maxPredictions-2){
+            	labelContainer.childNodes[i].innerHTML = classPrediction+"<br><br><br>"; 
+            } else {
+            	labelContainer.childNodes[i].innerHTML = classPrediction; 
+            }
         }
         
-        //저장용
-        
-        if (prediction[0].className == "봄 라이트" && prediction[0].probability.toFixed(3) >= 0.1) {
-          labelContainer.childNodes[0].innerHTML =  "봄 라이트입니다\n";
-        } else if (prediction[1].className == "봄 브라이트" && prediction[1].probability.toFixed(3) >= 0.1) {
-          labelContainer.childNodes[0].innerHTML =  "봄 브라이트입니다\n"  ;
-        } else if (prediction[2].className == "여름 라이트" && prediction[2].probability.toFixed(3) >= 0.1) {
-          labelContainer.childNodes[0].innerHTML = "여름 라이트입니다"  ;
-        } else if (prediction[3].className == "여름 브라이트" && prediction[3].probability.toFixed(3) >= 0.1) {
-          labelContainer.childNodes[0].innerHTML = "여름 브라이트입니다"  ;
-		} else if (prediction[4].className == "여름 뮤트" && prediction[4].probability.toFixed(3) >= 0.1) {
-		  labelContainer.childNodes[0].innerHTML = "여름 뮤트입니다"  ;
-		} else if (prediction[5].className == "가을 뮤트" && prediction[5].probability.toFixed(3) >= 0.1) {
-		  labelContainer.childNodes[0].innerHTML = "가을 뮤트입니다"  ;
-		} else if (prediction[6].className == "가을 스트롱" && prediction[6].probability.toFixed(3) >= 0.1) {
-		  labelContainer.childNodes[0].innerHTML = "가을 스트롱입니다"  ;
-		} else if (prediction[7].className == "가을 딥" && prediction[7].probability.toFixed(3) >= 0.1) {
-			labelContainer.childNodes[0].innerHTML = "가을 딥입니다"  ;
-		} else if (prediction[8].className == "겨울 브라이트" && prediction[8].probability.toFixed(3) >= 0.1) {
-			labelContainer.childNodes[0].innerHTML = "겨울 브라이트입니다\n";
-		} else if (prediction[9].className == "겨울 딥" && prediction[9].probability.toFixed(3) >= 0.1) {
-			labelContainer.childNodes[0].innerHTML = "겨울 딥입니다"  ;
-		} else if (prediction[10].className == "그 외" && prediction[10].probability.toFixed(3) >= 0.1) {
-	          labelContainer.childNodes[0].innerHTML = "이 사진으로는 측정할 수 없어요!<br> 다른 사진을 넣어 주시겠어요?";
+        if (prediction[0].className == "봄 라이트" && prediction[0].probability.toFixed(3) >= 0.2) {
+          labelContainer.childNodes[0].innerHTML =  "<br><br><big><b>' 봄 라이트 '</b> 입니다</big><br><br>";
+        } else if (prediction[1].className == "봄 브라이트" && prediction[1].probability.toFixed(3) >= 0.2) {
+          labelContainer.childNodes[0].innerHTML =  "<br><br><big><b>' 봄 브라이트 '</b> 입니다</big><br><br>";
+        } else if (prediction[2].className == "여름 라이트" && prediction[2].probability.toFixed(3) >= 0.2) {
+          labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 여름 라이트 '</b> 입니다</big><br><br>";
+        } else if (prediction[3].className == "여름 브라이트" && prediction[3].probability.toFixed(3) >= 0.2) { 
+          labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 여름 브라이트 '</b> 입니다</big><br><br>";
+		} else if (prediction[4].className == "여름 뮤트" && prediction[4].probability.toFixed(3) >= 0.2) {
+		  labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 여름 뮤트 '</b> 입니다</big><br><br>";
+		} else if (prediction[5].className == "가을 뮤트" && prediction[5].probability.toFixed(3) >= 0.2) {
+		  labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 가을 뮤트 '</b> 입니다</big><br><br>";
+		} else if (prediction[6].className == "가을 스트롱" && prediction[6].probability.toFixed(3) >= 0.2) {
+		  labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 가을 스트롱 '</b> 입니다</big><br><br>";
+		} else if (prediction[7].className == "가을 딥" && prediction[7].probability.toFixed(3) >= 0.2) {
+			labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 가을 딥 '</b> 입니다</big><br><br>";
+		} else if (prediction[8].className == "겨울 브라이트" && prediction[8].probability.toFixed(3) >= 0.2) {
+			labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 겨울 브라이트 '</b> 입니다</big><br><br>";
+		} else if (prediction[9].className == "겨울 딥" && prediction[9].probability.toFixed(3) >= 0.2) {
+			labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 겨울 딥 '</b> 입니다</big><br><br>"; 
+		} else if (prediction[10].className == "그 외" && prediction[10].probability.toFixed(3) >= 0.2) {
+	          labelContainer.childNodes[0].innerHTML = "<br><br><big>이 사진으로는 측정할 수 없어요!<br> 다른 사진을 넣어 주시겠어요?</big><br><br>";
 		} else {
-          labelContainer.childNodes[0].innerHTML = "이 사진으로는 측정할 수 없어요!<br> 다른 사진을 넣어 주시겠어요?";
+          labelContainer.childNodes[0].innerHTML = "<br><br><big>이 사진으로는 측정할 수 없어요!<br> 다른 사진을 넣어 주시겠어요?</big><br><br>";
         }
       }
-
+      
+      $(function(){
+    	  $("#finish").click(function(){
+    		  $("#elseArea").show();
+    		  $("#label-container").show(); 
+    	  });
+      });
+      
     </script>
 
-
- <script>
+ <script> 
       function readURL(input) {
         if (input.files && input.files[0]) {
           var reader = new FileReader();
@@ -262,38 +295,84 @@ if(ub==null){
         }
       }
 
-      function removeUpload() {
-        $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-        $('.file-upload-content').hide();
-        $('.image-upload-wrap').show();
-      }
-      $('.image-upload-wrap').bind('dragover', function () {
-        $('.image-upload-wrap').addClass('image-dropping');
-      });
-      $('.image-upload-wrap').bind('dragleave', function () {
-        $('.image-upload-wrap').removeClass('image-dropping');
-      });
-      
-      <!-- 지우기 버튼을 클릭하면 지금 나와있는 결과의 내용도 삭제해야됨 아마 캐쉬 삭제? -->
-      
-    </script>
+		function removeUpload() {
+			//location.href="colorAi.ai";
+			$('.file-upload-input').replaceWith($('.file-upload-input').clone());
+			$('.file-upload-content').hide();
+			$("#label-container").hide();			
+			$("#elseArea").hide();
+			$('.image-upload-wrap').show();
+		}
+
+		$('.image-upload-wrap').bind('dragover', function() {
+			$('.image-upload-wrap').addClass('image-dropping');
+		});
+
+		$('.image-upload-wrap').bind('dragleave', function() {
+			$('.image-upload-wrap').removeClass('image-dropping');
+		});
+	    
+	</script>
 
 <body onload="init()">
 
 <%@ include file="header.jsp" %>
 	
+	<div class="modal">
+		<div class="modal_body">
+			<div style="font-family: 'MaruBuri-Regular'; font-size: 20pt; font-weight: bold; margin-bottom: 45px;">
+				<img src="resources/image/info.png" width="40"> 
+				AI 퍼스널 컬러 진단 관련 안내
+			</div> 
+			<span>
+				1. 진단에 사용된 사진은 따로 저장되지 않으니 안심하시고 사용하셔도 됩니다.<br><br>
+				2. 동일 인물이라도 사진의 색감과 조명에 따라 측정 결과가 달라질 수 있습니다.<br>
+				&nbsp;&nbsp;&nbsp;최대한 <u>색감이 들어가지 않은 조명 아래에서 찍은 사진</u>으로 진행 부탁 드립니다.<br><br> 
+				3. 평소 스타일링에 따라 정확한 진단이 나오지 않는 경우가 있습니다.<br>
+				&nbsp;&nbsp;&nbsp;<span style="color: #BDBDBD;">(퍼스널 컬러는 봄 브라이트이나 스모키&스트릿 스타일링을 즐겨 하신다거나 등)</span><br>
+				&nbsp;&nbsp;&nbsp;결과가 의아하시거나, 좀 더 전문적인 진단을 받고 싶으시다면<br>
+				&nbsp;&nbsp;&nbsp;결과 노출 화면에서 사용자 인근 퍼스널 컬러 업체를 소개해드리고 있으니 참고 부탁 드립니다.<br><br> 
+			</span>
+			<br> 
+			<span style="font-size: 8pt; left: 372px; top:-10px; position: relative;">창을 닫고싶으시면 안내창 바깥 아무곳이나 클릭해주세요.</span>
+		</div>
+	</div>
+	
 	<div style="text-align: center;"> 
 		<br><br><br>
-		<span style="font-family: 'MaruBuri-Regular'; font-weight: bold; font-size: 30pt;">AI 컬러진단</span>
+		<span style="font-family: 'MaruBuri-Regular'; font-weight: bold; font-size: 30pt;">AI 컬러 진단</span>
 		<br><br>
 		<span style="font-family: 'RIDIBatang'; font-size: 11pt; line-height: 180%;">
 			Hidden Beauty의 AI 인공지능으로 퍼스널 컬러를 진단 받아 보세요!<br>
 			저희 진단 서비스는 빠르고, 쉽고, 무료입니다 :)
 		</span>
 		<br><br>
-		<input type="button" id="warningBtn" value="안내사항"> 
+		<input type="button" class="btn-open-popup" value="안내사항"> 
 		<br><br>
 	</div>
+	<script>
+	    const body = document.querySelector('body');
+	    const modal = document.querySelector('.modal');
+	    const btnOpenPopup = document.querySelector('.btn-open-popup');
+	
+	    btnOpenPopup.addEventListener('click', () => {
+	      modal.classList.toggle('show');
+	
+	      if (modal.classList.contains('show')) {
+	        body.style.overflow = 'hidden';
+	      }
+	    });
+	
+	    modal.addEventListener('click', (event) => {
+	      if (event.target === modal) {
+	        modal.classList.toggle('show');
+	
+	        if (!modal.classList.contains('show')) {
+	          body.style.overflow = 'auto';
+	        }
+	      }
+	    });
+    </script>
 	
 	<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
       <div class="file-upload">
@@ -324,8 +403,6 @@ if(ub==null){
 		</div>
 	</div>
 	
-	
-
 	<%@ include file="footer.jsp" %>
 </body>
 </html>

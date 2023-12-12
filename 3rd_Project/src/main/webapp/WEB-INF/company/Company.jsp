@@ -5,12 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
-<title>Insert title here</title>
- 
-=======
 
->>>>>>> 26dcc18ac40eb98e44a9344ea91198d3836bdd9a
 <style type="text/css">
 	#content{
 		margin: 0 auto;
@@ -119,7 +114,6 @@
 	
 	<div id="staticMap" style="width:100%; height:350px; top: -30px; position: relative;"></div>
 </div>
-<<<<<<< HEAD
 <center>
 ${pageInfo.pagingHtml}
 </center>
@@ -143,8 +137,6 @@ var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지
         level: 3, // 이미지 지도의 확대 레벨
         marker: marker // 이미지 지도에 표시할 마커
     };
-=======
->>>>>>> 26dcc18ac40eb98e44a9344ea91198d3836bdd9a
 
 <script>	 
 	var marker = { // 이미지 지도에 표시할 마커입니다
