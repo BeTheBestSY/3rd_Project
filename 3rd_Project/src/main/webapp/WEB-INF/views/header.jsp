@@ -7,7 +7,7 @@
 
 <!DOCTYPE html> 
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
 <title>FIND YOUR Hidden Beauty</title>
 <link
@@ -28,7 +28,7 @@
 	    font-style: normal;
 	}
 	@font-face {
-	    font-family: 'RIDIBatang';
+	    font-family: 'RIDIBatang'; 
 	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
 	    font-weight: normal;
 	    font-style: normal;
@@ -40,14 +40,6 @@
 	    font-style: normal;
 	}
 </style>
-<script>
-	function goLogin(){
-		location.href = "login.u";
-	}
-	function goRegister(){
-		location.href = "register.u";
-	}
-</script>
 </head>
   
 <body>
@@ -56,22 +48,26 @@
 			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
 				<!-- 메뉴 선택하기 -->
-				<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="font-size: 13pt;">
+				<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 					<li>
-						<a href="<%=request.getContextPath()%>/" class="nav-link px-2 link-secondary">
+						<a href=".main" class="nav-link px-2 link-secondary">
 						<img src="resources/image/fyhbLogo.png" width="170"></a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 30px">
 						<a href="colorAi.ai" class="nav-link px-2 link-body-emphasis">AI 컬러진단</a>
 					</li>
+
 					<li style="margin-top: 10px; margin-left: 10px">
-						<a href="colMain.col" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
+ 
+
+					<a href="colMain.col" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
+ 
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
-						<a href="qBoardList.qb" class="nav-link px-2 link-body-emphasis">의견 게시판</a>
+						<a href="cBoardList.cb" class="nav-link px-2 link-body-emphasis">후기 게시판</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
-						<a href="#" class="nav-link px-2 link-body-emphasis">쇼핑하기</a>
+						<a href="productList.p" class="nav-link px-2 link-body-emphasis">쇼핑하기</a>
 					</li>
 				</ul>
 
@@ -80,18 +76,18 @@
 					<a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> 
 						<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
 					</a>
-					<c:if test="${id == null}">
+					<c:if test="${loginInfo == null}">
 						<ul class="dropdown-menu text-small">
-							<li><a class="dropdown-item" onclick="goLogin()">로그인</a></li>
-							<li><a class="dropdown-item" onclick="goRegister()">회원가입</a></li>
+							<li><a class="dropdown-item" href="login.u">로그인</a></li>
+							<li><a class="dropdown-item" href="register.u">회원가입</a></li>
 						</ul>
 					</c:if>
-					<c:if test="${id != null}">
+					<c:if test="${loginInfo != null}">
 						<ul class="dropdown-menu text-small">
-							<li style="text-align: center;"><small>안녕하세요, <b><%=session.getAttribute("id")%></b>님</small></li>
+							<li style="text-align: center;"><small>안녕하세요, <b>${loginInfo.u_name }</b>님</small></li>
 							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="#">마이페이지</a></li>
-							<li><a class="dropdown-item" href="#">로그아웃</a></li>
+							<li><a class="dropdown-item" href="mypage.u">마이페이지</a></li>
+							<li><a class="dropdown-item" href="logout.u">로그아웃</a></li>
 						</ul>
 					</c:if>
 				</div>

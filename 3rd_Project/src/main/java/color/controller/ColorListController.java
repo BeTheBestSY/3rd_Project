@@ -10,8 +10,6 @@ import color.model.ColorDao;
 @Controller
 public class ColorListController {
 	
-	@Autowired
-	private ColorDao colorDao;
 	private final String command = "/colList.col";
 	private final String viewPage = "colList";
 	

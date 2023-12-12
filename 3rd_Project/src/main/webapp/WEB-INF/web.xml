@@ -29,6 +29,21 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>main</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>main</servlet-name>
+		<url-pattern>*.main</url-pattern>
+	</servlet-mapping>
+	
+	
 	<!-- 서블릿 루트 설정 완료! -->
 	<servlet>
 		<servlet-name>celeb</servlet-name>
@@ -142,7 +157,6 @@
 		<url-pattern>*.qb</url-pattern>
 	</servlet-mapping>
 	
-	
 	<servlet>
 		<servlet-name>ai</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -157,7 +171,19 @@
 		<url-pattern>*.ai</url-pattern>
 	</servlet-mapping>
 	
-	
+	<servlet>
+		<servlet-name>admin</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/admin-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>admin</servlet-name>
+		<url-pattern>*.admin</url-pattern>
+	</servlet-mapping>
 	
 	<!-- 한글설정 완료! -->
 	<filter>

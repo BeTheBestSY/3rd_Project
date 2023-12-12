@@ -4,60 +4,110 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$(window).scroll(function() {
+			if ($(this).scrollTop() > 200) {
+				$('#thisNav').css({"top":"30px"});
+			} else {
+				$('#thisNav').css({"top":"270px"});
+			}
+		});
+	});
+</script>
 
 <style>
-nav {
-	z-index: 99;
-	color: black;
-	position: fixed;
-	left: 20%;
-	top: 20%;
-	font-size: 12pt;
-	font-weight: bold;
-}
-
-nav span {
-	width: 100px; 
-	margin-top: 10px;
-	border: 2px solid black;
-	border-radius: 50px;
-	padding: 10px;
-	border-color: beige;
-	background-color: beige;
-	text-align: center;
-}
-
-nav span:hover {
-	background-color: bisque;
-	cursor: pointer;
-}
-
-#sl, #sb {
-	width: 800px;
-	height: 1000px;
-}
+	nav {
+		z-index: 99;
+		color: black;
+		position: fixed;
+		left: 350px; 
+		top: 270px; 
+		font-size: 12pt; 
+		font-weight: bold;
+		font-family: 'RIDIBatang';
+	}
+	#navBack, #navSL, #navSB {
+		width: 120px;
+		height: 45px;
+		border-radius: 50px;
+		border: none;
+		background-color: beige;
+		text-align: center;
+		box-shadow: 3px 3px 3px 0px #BDBDBD;
+	}
+	#navBack:hover, #navSL:hover, #navSB:hover {
+		background-color: bisque;
+		cursor: pointer;
+	}
+	#title{
+		font-family: 'MaruBuri-Regular';
+		font-size: 20pt;
+		padding: 50px 0px 20px 0px;
+	}
+	#sl, #sb {
+		width: 100%;
+		padding-bottom: 50px;
+	}
+	#recommend{
+		text-align: center; 
+		font-weight: bold; 
+		font-size: 20pt; 
+		font-family: 'MaruBuri-Regular';
+	}
 </style>
 
-<%@ include file="./../views/header.jsp" %>
+<%@ include file="./../views/header.jsp" %> 
 
 <article id="center">
-	colList.jsp<br>
-	<nav>
-      <span id="navSL">봄 라이트</span>
-      <span id="navSB">봄 브라이트</span>
+	<div id="title">
+		<b>'봄'의 색상들을 소개해드릴게요!</b><br>
+		<span style="font-family: 'RIDIBatang'; font-size: 13pt; line-height: 180%;">
+			아래 버튼을 클릭하여 해당 퍼스널 컬러로 이동해주세요.
+		</span><br>
+	</div>
+	<nav id="thisNav">
+      <button id="navBack" style="width: 60px;">&lt;&lt;</button>&nbsp;
+      <button id="navSL">${cbsl.col_name}</button>&nbsp;
+      <button id="navSB">${cbsb.col_name}</button>
     </nav>
     
-    <section id="sl">봄 라이트</section>
-    <section id="sb" style="background-color: cyan;">봄 브라이트</section>
+    <div id="sl">
+    	<br><br><br>
+    	<br><br>
+    	<img src="resources/image/${cbsl.col_ttlImg}" width="100%"><br><br><br>
+    	<img src="resources/image/${cbsl.col_stlImg}" width="100%"><br><br><br><br>
+    	<div id="recommend">▶ ${cbsl.col_name} 추천 색상 ◀</div>
+    	<br><br>
+    	<img src="resources/image/${cbsl.col_colImg}" width="100%" style="margin: auto;"><br><br><br><br>
+    	<div id="recommend">▶ ${cbsl.col_name} 추천 코디 ◀</div>
+    	<br><br>
+    	<img src="resources/image/${cbsl.col_codiImg}" width="100%" style="margin: auto;"><br><br><br>
+    </div>
+    <div id="sb">
+    	<br><br><br>
+    	<br><br>
+    	<img src="resources/image/${cbsb.col_ttlImg}" width="100%"><br><br><br>
+    	<img src="resources/image/${cbsb.col_stlImg}" width="100%"><br><br><br><br>
+    	<div id="recommend">▶ ${cbsb.col_name} 추천 색상 ◀</div>
+    	<br><br>
+    	<img src="resources/image/${cbsb.col_colImg}" width="100%" style="margin: auto;"><br><br><br><br>
+    	<div id="recommend">▶ ${cbsb.col_name} 추천 코디 ◀</div>
+    	<img src="resources/image/${cbsb.col_codiImg}" width="100%" style="margin: auto;"><br><br><br>
+    </div>
     
     <script type="text/javascript">
+	    document.querySelector("#navBack").addEventListener("click", (e) => {
+	  	  history.go(-1);
+	  	});
     	document.querySelector("#navSL").addEventListener("click", (e) => {
     	  document.querySelector("#sl").scrollIntoView({ behavior: "smooth" });
     	});
     	document.querySelector("#navSB").addEventListener("click", (e) => {
     	  document.querySelector("#sb").scrollIntoView({ behavior: "smooth" });
     	});
-    </script>
+	</script>
+	   
 </article>
 
 <%@ include file="./../views/footer.jsp" %>

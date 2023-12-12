@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
     
 <%@ include file="./../views/header.jsp" %>
-
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardList.css">
+<script src="selectbox.min.js"></script>
 <style type="text/css">
 	#noneHigtLight{
 		text-decoration: none;
@@ -26,7 +26,7 @@
 	  <div class="page-title">
         <div class="container">
             <br><br><br>
-            <h3>의견 게시판</h3>
+            <h3>문의 게시판</h3>
         </div>
     </div>
 	
@@ -36,15 +36,19 @@
                 <form action="">
                     <div class="search-wrap">
 		<form action="qBoardList.qb" method="get">
-			 <input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
+				<select name="whatColumn" id="whatColumn">
+					<option>선택</option>
+					<option value="all">전체검색</option>
+					<option value="q_subject">제목</option>
+					<option value="q_writer">작성자</option>
+				</select>
+			 	<input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
+			 	
 			<button type="submit" class="btn btn-dark">검색</button>
-		</form>
-		   </form>
             </div>
+		   </form>
         </div>
     </div>
-</center>
-
 
  <div id="board-list">
         <div class="container">
@@ -53,7 +57,7 @@
 <table class="board-table" style="font-size: 13pt; text-align: center;">
 
 	
-	<tr style="background: #f9f7f9;">
+	<tr style="background: #EDE5D8;">
 		<th scope="col" class="th-num" width="10%">번호</th>
 		<th scope="col" class="th-title" width="30%">제목</th>
 		<th width="15%" class="th-writer">작성자</th>
@@ -61,9 +65,11 @@
 		<th width="13%" class="th-readcount">조회수</th>
 	</tr>
 	<c:if test="${ !empty list }">
+	<c:set var="num" value="${pageInfo.totalCount-pageInfo.beginRow+1}" />
 		<c:forEach var="bb" items="${ list }">
 			<tr>
-				<td>${ bb.q_num }</td>
+						<td>${num }
+      <c:set var="num" value="${num -1}" /></td>
 				<td align="left" >
 					<c:set var="wid" value="0"/>
 					<c:if test="${ bb.q_re_level > 0 }">
@@ -95,7 +101,9 @@
     </div>
 <br><br>
 <center>
+<div id="pagenation">
 	${pageInfo.pagingHtml}
+</div>
 </center> 
 
 </article>

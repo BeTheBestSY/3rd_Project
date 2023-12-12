@@ -1,4 +1,8 @@
 package users.model;
+ 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +15,38 @@ public class UsersDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 	private String namespace = "sqlField_user";
 
-	// didYouJoin: 가입한 회원이면 true, 가입안한 회원이면 false
 	public boolean didYouJoin(UsersBean ub) {
-		// 잘 작동하는지 아직 모름. color 테이블 완성 후 확인해봐야함.
 		return sqlSessionTemplate.selectOne(namespace+".didYouJoin", ub);
 	}
-	// 저장용
+
 	public void register(UsersBean ub) {
 		sqlSessionTemplate.insert(namespace+".register", ub);
+	}
+
+	public UsersBean getUserById(String u_id) {
+		return sqlSessionTemplate.selectOne(namespace+".getUserById", u_id);
+	}
+
+	public void updatePassword(String u_id, String new_password) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("u_id", u_id);
+		map.put("new_password", new_password);
+		sqlSessionTemplate.update(namespace+".updatePassword", map);
+	}
+
+	public List<UsersBean> findId(UsersBean ub) {
+		return sqlSessionTemplate.selectList(namespace+".findId", ub);
+	}
+
+	public String findPw(UsersBean ub) {
+		return sqlSessionTemplate.selectOne(namespace+".findPw", ub);
+	}
+
+	public int updateUsers(UsersBean ub) {
+		return sqlSessionTemplate.update(namespace+".updateUsers", ub);
+	}
+
+	public void deleteUsers(String u_id) {
+		sqlSessionTemplate.delete(namespace+".deleteUsers", u_id);
 	}
 }

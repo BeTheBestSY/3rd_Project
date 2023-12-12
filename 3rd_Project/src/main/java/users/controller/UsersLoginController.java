@@ -21,7 +21,8 @@ import users.model.UsersDao;
 public class UsersLoginController {
 	private final String command = "/login.u";
 	private final String viewPage = "usersLoginForm";
-	private final String gotoPage = "main";
+	private final String adminPage = "../admin/adminMain";
+	private final String gotoPage = "../views/main";
 	@Autowired
 	private UsersDao ud;
 	
@@ -30,30 +31,26 @@ public class UsersLoginController {
 		return viewPage;
 	}
 	@RequestMapping(value = command, method = RequestMethod.POST)
-	public String doAction2(@ModelAttribute("ub") @Valid UsersBean ub,
-						BindingResult res, 
+	public String doAction2(@ModelAttribute("ub") UsersBean ub,
 						HttpSession session,
 						HttpServletResponse response) throws IOException {
 		
-		if(res.hasErrors()) {
-			return viewPage;
-		}
 		
 		PrintWriter out = response.getWriter();
-		/* °¡ÀÔµÈ È¸¿øÀÎÁö È®ÀÎ */
-		if(ud.didYouJoin(ub)) { // 1-1. °¡ÀÔ ÇÑ È¸¿øÀÌ¸é
-			// ¾ÆÀÌµğ session ¼³Á¤
-			session.setAttribute("id", ub.getU_id());
-			return gotoPage;
-			
-		} else { // 1-2. °¡ÀÔ ¾È ÇÑ È¸¿øÀÌ¸é
+		  
+		if(ud.didYouJoin(ub)) { // ê°€ì… í•œ íšŒì› í˜¹ì€ ê´€ë¦¬ìì´ë©´
+			// ì•„ì´ë”” session ì„¤ì •
+			session.setAttribute("loginInfo", ud.getUserById(ub.getU_id()));
+			if(ub.getU_id().equals("admin"))
+				return adminPage;
+			else
+				return gotoPage;
+		} else { 
 			response.setContentType("text/html; charset=UTF-8");
-			// alert ¶ç¿ì±â
-			out.print("<script>alert('°¡ÀÔÇÏÁö ¾ÊÀº È¸¿øÀÔ´Ï´Ù.');</script>");
+			out.print("<script>alert('ê°€ì…ë˜ì§€ ì•Šì€ íšŒì›ì…ë‹ˆë‹¤.');</script>");
 			out.flush();
 			return viewPage;
 		}
-		
-		
+	
 	}
 }
