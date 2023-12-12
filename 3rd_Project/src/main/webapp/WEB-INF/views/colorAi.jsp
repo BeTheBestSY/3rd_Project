@@ -160,11 +160,9 @@ body {
 </style>
 
 </head>
-<!-- <div>Teachable Machine Image Model</div>
-<button type="button" onclick="init()">Start</button> 
-<div id="webcam-container"></div>
-<div id="label-container"></div>
--->
+
+<!-- 저장용 -->
+<!-- 저장용 -->
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
@@ -233,12 +231,6 @@ body {
 		} else {
           labelContainer.childNodes[0].innerHTML = "이 사진으로는 측정드릴 수가 없을 것 같아요! 다른 사진을 넣어 주시겠어요? ";
         }
-
-        // <!--        for (let i = 0; i < maxPredictions; i++) {-->
-        // <!--            const classPrediction =-->
-        // <!--                prediction[i].className + ": " + prediction[i].probability.toFixed(2);-->
-        // <!--            labelContainer.childNodes[i].innerHTML = classPrediction;-->
-        // <!--        }-->
       }
 
     </script>

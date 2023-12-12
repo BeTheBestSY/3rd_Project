@@ -63,11 +63,11 @@
 <div id="center" style="text-align: center;">
 	<br><br><br><br>
 	<div>
-		<span style="font-family: 'MaruBuri-Regular'; font-size: 40pt; font-weight: bold;">JOIN US</span>
+		<span style="font-family: 'MaruBuri-Regular'; font-size: 40pt; font-weight: bold;">WELCOME!</span>
 		<br><br> 
 		<span style="font-family: 'RIDIBatang'; font-size: 12pt; color: graytext; line-height: 180%;">
 			<u>FIND YOUR Hidden Beauty</u><br>
-			회원가입을 환영합니다!
+			회원가입을 환영합니다.
 		</span>
 		<br><br><br><br>
 	</div>
@@ -84,23 +84,35 @@
 				<th><font color="red">*</font> 아이디</th>
 				<td>
 					<!-- 중복체크, 정규표현식 아직 -->
+<<<<<<< HEAD
 					<input type="text" class="form-control" name="u_id" value="${ub.u_id }" placeholder="영문 소문자+숫자, 4~16자" pattern="^[A-Za-z0-9]{4,16}$" required> 
+=======
+					<input type="text" class="form-control" name="u_id" placeholder="영문 소문자+숫자, 4~16자" required> 
+>>>>>>> e13c32c6d16459fa7ef94779974a5237630d7827
 				</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 비밀번호</th>
 				<td>
+<<<<<<< HEAD
 					<input type="password" class="form-control" name="u_password" value="${ub.u_password }" placeholder="영문 대소문자/숫자/특수문자 중 3가지 이상 조합, 8자~16자" required>
+=======
+					<input type="password" class="form-control" name="u_password" placeholder="영문 대소문자/숫자/특수문자 중 3가지 이상 조합, 8자~16자" required>
+>>>>>>> e13c32c6d16459fa7ef94779974a5237630d7827
 				</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 비밀번호 확인</th>
 				<td>
+<<<<<<< HEAD
 					<input type="password" class="form-control" name="u_rePassword" required>
+=======
+					<input type="password" class="form-control" name="u_rePassword_" required>
+>>>>>>> e13c32c6d16459fa7ef94779974a5237630d7827
 				</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
-				<th><font color="red">*</font> 휴대전화번호</th>
+				<th><font color="red">*</font> 전화번호</th>
 				<td>
 					<c:set var="firstList">010, 011, 016, 017, 018, 019</c:set>
 					<select name="u_phone" class="form-select" style="width: 20%; display: inline;">
@@ -108,9 +120,15 @@
 							<option value="${first }" <c:if test="${fn:split(ub.u_phone, '-')[0] eq first }">selected</c:if>>${first }</option>
 						</c:forEach>
 					</select>
+<<<<<<< HEAD
 					&nbsp;
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[1]}" maxlength="4" required> - 
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[2]}" maxlength="4" required>
+=======
+					-
+					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" maxlength="4" required> - 
+					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" maxlength="4" required>
+>>>>>>> e13c32c6d16459fa7ef94779974a5237630d7827
 				</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">

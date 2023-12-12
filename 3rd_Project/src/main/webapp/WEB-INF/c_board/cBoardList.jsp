@@ -11,7 +11,7 @@
 	#noneHigtLight:hover{
 		color: #7C81BB;
 	}
-</style>  
+</style>
 <script type="text/javascript">
 
 	function insert() {
@@ -21,12 +21,12 @@
 </script>
 
 
-<article id="center" style="font-family: 'MaruBuri-Regular';" >
+<article id="center" style="font-family: 'RIDIBatang';" >
 
 	<div class="page-title">
-        <div class="container">
+        <div class="container" style="font-family: 'MaruBuri-Regular';">
             <br><br><br>
-            <h3>컬러진단 후기 게시판</h3>
+            <h3>퍼스널 컬러 진단 후기 게시판</h3>
         </div>
     </div>
 	
