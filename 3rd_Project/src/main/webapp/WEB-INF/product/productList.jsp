@@ -204,7 +204,7 @@ width: 500px;
   </center>
 </main>
 </div>
-<!-- 안ㄴ녕 -->
+
 </body>
 <%@ include file="../views/footer.jsp" %>
 </html>
