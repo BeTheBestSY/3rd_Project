@@ -30,46 +30,49 @@
 	}
 </style>
 <div id="center" style="text-align: center;">
+
 	<br><br><br><br>
 	<div>
 		<span style="font-family: 'MaruBuri-Regular'; font-size: 35pt; font-weight: bold;">비밀번호 찾기</span>
 		<br><br>
 		<span style="font-family: 'RIDIBatang'; font-size: 11pt; line-height: 180%;">
 			가입 시 입력하신 성함, 아이디, 전화번호를 입력해주세요.<br>
-			해당 정보를 바탕으로 아이디를 찾아드릴게요!
+			해당 정보를 바탕으로 비밀번호를 찾아드릴게요!
 		</span>
-		<!-- 저장용 -->
-		<!-- 저장용 -->
 	</div>
 	<br><br><br> 
+	
+	<hr style="width: 50%; margin: auto;">
+	<br><br>
 	<form action="findpw.u" method="post">
-		<table border="1">
+		<table>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" name="u_name" required></td>
+				<td><input type="text" class="form-control" style="width: 98%;" name="u_name" required></td>
 			</tr>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" name="u_id" required></td>
+				<td><input type="text" class="form-control" style="width: 98%;" name="u_id" required></td>
 			</tr>
 			<tr>
 				<td>전화번호</td>
 				<td>
 					<c:set var="firstList">010, 011, 016, 017, 018, 019</c:set>
-					<select name="u_phone">
+					<select name="u_phone" class="form-select" style="display: inline; width: 29%">
 						<c:forEach var="first" items="${firstList }">
 							<option value="${first }">${first }</option>
 						</c:forEach>
 					</select> - 
-					<input type="text" name="u_phone" maxlength="4" size="6" required> - 
-					<input type="text" name="u_phone" maxlength="4" size="6" required>
+					<input type="text" name="u_phone" class="form-control" style="width: 29%; display: inline;" maxlength="4" size="6" required> - 
+					<input type="text" name="u_phone" class="form-control" style="width: 29%; display: inline;" maxlength="4" size="6" required>
 				</td>
 			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="찾기"></td>
+			<tr align="center">
+				<td colspan="2"><br><input type="submit" id="btn" value="찾아보기"></td>
 			</tr>
-		
 		</table>
+		<br>
+		<hr style="width: 50%; margin: auto;">
 	</form>
 </div>
 <%@ include file="../views/footer.jsp" %>

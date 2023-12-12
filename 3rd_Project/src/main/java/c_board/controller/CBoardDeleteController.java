@@ -18,6 +18,7 @@ import c_board.model.CBoardDao;
 
 @Controller
 public class CBoardDeleteController {
+
 	@Autowired
 	private CBoardDao cdao;
 	 
