@@ -211,6 +211,8 @@ if(ub==null){
             labelContainer.childNodes[i].innerHTML = classPrediction;
         }
         
+        //저장용
+        
         if (prediction[0].className == "봄 라이트" && prediction[0].probability.toFixed(3) >= 0.1) {
           labelContainer.childNodes[0].innerHTML =  "봄 라이트입니다\n";
         } else if (prediction[1].className == "봄 브라이트" && prediction[1].probability.toFixed(3) >= 0.1) {
