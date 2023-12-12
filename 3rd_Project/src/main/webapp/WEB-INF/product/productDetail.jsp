@@ -241,6 +241,7 @@ li .menu-list {
             
             <div class="first"> <!--중반부 를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌-->
           
+<<<<<<< HEAD
                 <img  src="<%=request.getContextPath() %>/resources/uploadFolder/${pb.p_ttlimg }" alt="타이틀이미지">
             </div>
 
@@ -299,6 +300,67 @@ li .menu-list {
     <br><br>
 <center>
 <img alt="상세이미지" src="<%=request.getContextPath() %>/resources/uploadFolder/${pb.p_dtlimg }">
+=======
+                <img  src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg }" alt="타이틀이미지">
+            </div>
+
+            <div class="second"> <!--중반부 를 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
+                   
+                
+
+                    <div id="fifth">
+                        <div class="emojiright">
+                            <p class="coffeename">${pb.p_name}</p>
+                            <p class="coffeename2">${pb.p_brand}</p>
+                        </div>
+                       
+                    </div>
+
+                    <p class="seconddetail">${pb.p_contents}</p>
+
+                    <div class="productdetail">
+                        <span>판매가</span>
+                        <span><fmt:formatNumber value="${pb.p_price }" pattern="#,###" />원</span>
+                    </div>
+
+                    <div class="productdetail2"> <!--영양정보를 담아주는 div 태그-->
+                        <div class="boxone"> <!--영양 정보를 좌우로 반반 나눠주었으며, 왼쪽에 해당하는 div 태그-->
+                            <ul>
+                                <li>
+                                    <span class="l">배송비</span>
+                                    <span>3,000원</span class="r">
+                                </li>
+                               
+                                <li>
+                                    <span class="l">수량</span>
+                                    <span><input type="number" name="oqty" value="1" id="num" placeholder="단위(개)" oninput="updateTotalAmount()"></span class="r">
+                                </li>
+                            </ul>
+                        </div>
+
+                     
+
+                    </div>
+
+                    <div class="allegy"> 
+	                   
+	                   	 <fmt:formatNumber value="${pb.p_price }" pattern="#,###" />원
+	                    
+                    </div>
+<br>
+
+<button>장바구니</button>
+<button>주문하기</button>
+                  
+
+       </section>
+       <br><br>
+    <hr>
+    <br><br>
+<center>
+<img alt="상세이미지" src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg }">
+<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg }
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 </center>
 </body>
 <%@ include file="../views/footer.jsp" %>

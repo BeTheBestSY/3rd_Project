@@ -44,7 +44,8 @@ public class UsersLoginController {
 		  
 		if(ud.didYouJoin(ub)) { // 가입 한 회원 혹은 관리자이면
 			// 아이디 session 설정
-			session.setAttribute("id", ub.getU_id());
+			session.setAttribute("id", ub.getU_id()); // 이쪽보단 아래쪽이 어떨지!
+			session.setAttribute("ub", ub);
 			if(ub.getU_id().equals("admin"))
 				return adminPage;
 			else

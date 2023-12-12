@@ -8,8 +8,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>Insert title here</title>
  
+=======
+<<<<<<< HEAD
+<title>Insert title here</title>
+ 
+=======
+
+>>>>>>> 26dcc18ac40eb98e44a9344ea91198d3836bdd9a
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 <style type="text/css">
 #wrap{
 margin: 0 auto;
@@ -85,6 +94,7 @@ width: 500px;
 		</table>
 	</div>
 </div>
+<<<<<<< HEAD
 <center>
 ${pageInfo.pagingHtml}
 </center>
@@ -108,6 +118,34 @@ var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지
         level: 3, // 이미지 지도의 확대 레벨
         marker: marker // 이미지 지도에 표시할 마커
     };
+=======
+<<<<<<< HEAD
+<center>
+${pageInfo.pagingHtml}
+</center>
+<br><br><br>
+<center>   
+<div id="staticMap" style="width:1024px;height:350px;"></div>
+</center>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f8fb6e61c9516794c3e829ce49ef713c"></script>
+	<script>
+	 
+// 이미지 지도에 표시할 마커입니다
+var marker = {
+		 
+    position: new kakao.maps.LatLng(${oneY}, ${oneX}), 
+    text: '${oneName}' // text 옵션을 설정하면 마커 위에 텍스트를 함께 표시할 수 있습니다
+};
+  
+var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div
+    staticMapOption = { 
+        center: new kakao.maps.LatLng(${oneY}, ${oneX}), // 이미지 지도의 중심좌표
+        level: 3, // 이미지 지도의 확대 레벨
+        marker: marker // 이미지 지도에 표시할 마커
+    };
+=======
+>>>>>>> 26dcc18ac40eb98e44a9344ea91198d3836bdd9a
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 
 // 이미지 지도를 생성합니다
 var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
