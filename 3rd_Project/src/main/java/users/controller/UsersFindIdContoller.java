@@ -33,7 +33,6 @@ public class UsersFindIdContoller {
 		 
 		List<UsersBean> u_lists = ud.findId(ub);
 		model.addAttribute("u_lists",u_lists);
-		System.out.println("u_lists"+u_lists.size());
 		return viewPage2;
 	}
 }

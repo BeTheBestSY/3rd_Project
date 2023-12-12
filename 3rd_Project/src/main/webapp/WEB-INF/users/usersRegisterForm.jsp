@@ -88,7 +88,7 @@
 					<input type="text" class="form-control" name="u_id" value="${ub.u_id }" placeholder="영문 소문자+숫자, 4~16자" pattern="^[A-Za-z0-9]{4,16}$" required> 
 				</td>
 					<!-- 중복체크, 정규표현식 아직 -->
-					<!-- pattern="^[A-Za-z0-9]{4,16}$" -->s
+					<!-- pattern="^[A-Za-z0-9]{4,16}$" -->
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 비밀번호</th>
