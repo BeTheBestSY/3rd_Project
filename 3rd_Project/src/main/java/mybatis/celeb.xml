@@ -16,4 +16,27 @@
 		<if test="cl_color == '겨울 브라이트'">where cl_color = '겨울 브라이트'</if>
 		<if test="cl_color == '겨울 딥'">where cl_color = '겨울 딥'</if>
 	</select>
+	
+		<select id="getTotalCount" resultType="int">
+		select count(*) from celeb
+		
+		<if test="whatColumn=='cl_color'">
+		where cl_color like #{keyword}
+		</if>
+		
+	</select>
+	
+	<select id="getAllCelebList" resultType="celebDao">
+		select * from celeb
+		
+		<if test="whatColumn=='cl_color'">
+		where cl_color like #{keyword}
+		</if>
+		 
+	</select>
+	
+	<select id="getSelectOne" resultType="celebDao">
+		select * from celeb
+		where cl_num = #{cl_num}
+	</select>
 </mapper>

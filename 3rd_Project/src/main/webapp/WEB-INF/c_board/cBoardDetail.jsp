@@ -31,50 +31,49 @@
 <%
 	application.setAttribute("flag",false);
 %>
-<article id="center" style=" font-family: 'MaruBuri-Regular';" >
 
 <br>
+<article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
+
+
 <div class="page-title">
     <div class="container">
         <br><br>
-        <h3 style="font-size: 25pt; font-weight: bold;">의견 게시판</h3>
-        <input type=button value="목록" onClick="goList(${pageNumber})" class="btn btn-white"><br>
+        <h3 style="font-size: 25pt; font-weight: bold;">의견 남기기</h3>
+        <input type=button value="목록" onClick="goList()" class="btn btn-white"><br>
     </div>
 </div>
 <br><br><br><br><br>
 
-<div id="board-list">
-			
+ <div id="board-list">
+	
 		<form:form commandName="bb" action="write.cb" method="post">
 		      <table class="board-table" style="font-size: 13pt;">
-				<tr>
-					<th align="left" bgcolor="#f9f7f9" width="15%">제목</th>
-					<td align="left" colspan="3">
-						${ bb.c_subject }
+				<tr >
+					<th align="left" bgcolor="#D0D6CE" width="10%">제목</th>
+					<td align="left" colspan="3" height="68">${ bb.c_subject }
 					</td>
 				</tr>
 				<tr>
-					<th align="left" bgcolor="#f9f7f9">작성자</th>
-					<td align="left">
-						${ bb.c_writer }
+					<th align="left" bgcolor="#D0D6CE" width="10%">작성자</th>
+					<td align="left" height="68" width="38%">
+						${ bb.c_writer}					
 					</td>
-					<th align="left" bgcolor="#f9f7f9" width="15%">이메일</th>
-					<td align="left">
+					<th align="left" bgcolor="#D0D6CE" width="14%" >이메일</th>
+					<td align="left" height="68">
 						${ bb.c_email }
 					</td>
 				</tr>
 				<tr>
-					<th align="left" bgcolor="#f9f7f9">내용</th>
-					<td align="left" valign="top" colspan="3" height="300px">
-						<br>
-						${ bb.c_content }
+					<th align="left" bgcolor="#D0D6CE" width="10%" >내용</th>
+					<td align="left" colspan="3" height="200" valign="top">
+						${ bb.c_content}
 					</td>
 				</tr>
 						
 			 </table>
 			 <br><br>
-
-			 <!-- 세션이 작성자와 같거나 관리자가 아니면 수정, 삭제, 목록 버튼 보이게 -->
+			  <!-- 세션이 작성자와 같거나 관리자가 아니면 수정, 삭제, 목록 버튼 보이게 -->
 			<c:if test="${id==null}">
 				 <center>
 				 	답글달기는 로그인 후 이용 가능합니다.
@@ -111,11 +110,10 @@
 					<input type="button" value="답글달기" onClick="goReply(${ bb.c_num },${ bb.c_ref },${ bb.c_re_step },${ bb.c_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 				</center>
 			</c:if>
-
 		</form:form>
-		
 </article>
 
+</div>
 
 
 <%@ include file="./../views/footer.jsp" %>

@@ -68,7 +68,7 @@
 						<a href="cBoardList.cb" class="nav-link px-2 link-body-emphasis">의견 게시판</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
-						<a href="#" class="nav-link px-2 link-body-emphasis">쇼핑하기</a>
+						<a href="productList.p" class="nav-link px-2 link-body-emphasis">쇼핑하기</a>
 					</li>
 				</ul>
 

@@ -1,4 +1,4 @@
-package celeb.controller;
+package product.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,17 +12,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import celeb.model.CelebBean;
-import celeb.model.CelebDao;
+import product.model.ProductBean;
+import product.model.ProductDao;
 import utility.Paging;
 
 @Controller
-public class CelebListController {
-	private final String command = "/celebList.cel";
-	private final String viewPage = "celebList";
+public class ProductListController {
+	private final String command = "/productList.p";
+	private final String viewPage = "productList";
 	
 	@Autowired
-	private CelebDao cdao;
+	private ProductDao productDao;
 	
 	@RequestMapping(command)
 	public String list(Model model,
@@ -34,16 +34,15 @@ public class CelebListController {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
-		System.out.println(whatColumn+","+keyword);
-		String ps="6";
+		System.out.println(whatColumn+","+keyword+"DASDASDSA");
+		String ps="9";
 		 
-		int totalCount = cdao.getTotalCount(map);
+		int totalCount = productDao.getTotalCount(map);
 		String url = request.getContextPath()+command;
 		Paging pageInfo = new Paging(pageNumber, ps, totalCount, url, whatColumn, keyword);
 		
-		List<CelebBean> celebLists = cdao.getAllCelebList(map, pageInfo);
-		System.out.println(celebLists = celebLists);
-		model.addAttribute("celebLists",celebLists);
+		List<ProductBean> productLists = productDao.getAllProductList(map, pageInfo);
+		model.addAttribute("productLists",productLists);
 		model.addAttribute("pageInfo", pageInfo); 
 		return viewPage;
 	}

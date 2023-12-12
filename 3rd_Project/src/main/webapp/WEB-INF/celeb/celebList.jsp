@@ -1,238 +1,122 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 
-<%@ include file="./../views/header.jsp"%>
-<script type="text/javascript">
-	$(function(){
-		if($("#btn_splt").click(function(){
-			$("#decoration").css({"background-image":"url('resources/image/spring_bg.jpg')"});
-			$("#splt").show();
-			$("#spbr").hide();
-			$("#smlt").hide();
-			$("#smbr").hide();
-			$("#smmt").hide();
-			$("#atmt").hide();
-			$("#atst").hide();
-			$("#atdp").hide();
-			$("#wtbr").hide();
-			$("#wtdp").hide();
-		}));
-		
-		if($("#btn_spbr").click(function(){
-			$("#decoration").css({"background-image":"url('resources/image/summer_bg.jpg')"});
-			$("#splt").hide();
-			$("#spbr").show();
-			$("#smlt").hide();
-			$("#smbr").hide();
-			$("#smmt").hide();
-			$("#atmt").hide();
-			$("#atst").hide();
-			$("#atdp").hide();
-			$("#wtbr").hide();
-			$("#wtdp").hide();
-		}));
-		
-		if($("#btn_smlt").click(function(){
-			$("#decoration").css({"background-image":"url('resources/image/autumn_bg.jpeg')"});
-			$("#splt").hide();
-			$("#spbr").hide();
-			$("#smlt").show();
-			$("#smbr").hide();
-			$("#smmt").hide();
-			$("#atmt").hide();
-			$("#atst").hide();
-			$("#atdp").hide();
-			$("#wtbr").hide();
-			$("#wtdp").hide();
-		}));
-		
-		if($("#btn_smbr").click(function(){
-			$("#decoration").css({"background-image":"url('resources/image/winter_bg.jpg')"});
-			$("#splt").hide();
-			$("#spbr").hide();
-			$("#smlt").hide();
-			$("#smbr").show();
-			$("#smmt").hide();
-			$("#atmt").hide();
-			$("#atst").hide();
-			$("#atdp").hide();
-			$("#wtbr").hide();
-			$("#wtdp").hide();
-		}));
-		
-		if($("#btn_smmt").click(function(){
-			$("#decoration").css({"background-image":"url('resources/image/winter_bg.jpg')"});
-			$("#splt").hide();
-			$("#spbr").hide();
-			$("#smlt").hide();
-			$("#smbr").hide();
-			$("#smmt").show();
-			$("#atmt").hide();
-			$("#atst").hide();
-			$("#atdp").hide();
-			$("#wtbr").hide();
-			$("#wtdp").hide();
-		}));
-		
-		if($("#btn_atmt").click(function(){
-			$("#decoration").css({"background-image":"url('resources/image/winter_bg.jpg')"});
-			$("#splt").hide();
-			$("#spbr").hide();
-			$("#smlt").hide();
-			$("#smbr").hide();
-			$("#smmt").hide();
-			$("#atmt").show();
-			$("#atst").hide();
-			$("#atdp").hide();
-			$("#wtbr").hide();
-			$("#wtdp").hide();
-		}));
-		
-		if($("#btn_atst").click(function(){
-			$("#decoration").css({"background-image":"url('resources/image/winter_bg.jpg')"});
-			$("#splt").hide();
-			$("#spbr").hide();
-			$("#smlt").hide();
-			$("#smbr").hide();
-			$("#smmt").hide();
-			$("#atmt").hide();
-			$("#atst").show();
-			$("#atdp").hide();
-			$("#wtbr").hide();
-			$("#wtdp").hide();
-		}));
-		
-		if($("#btn_atdp").click(function(){
-			$("#decoration").css({"background-image":"url('resources/image/winter_bg.jpg')"});
-			$("#splt").hide();
-			$("#spbr").hide();
-			$("#smlt").hide();
-			$("#smbr").hide();
-			$("#smmt").hide();
-			$("#atmt").hide();
-			$("#atst").hide();
-			$("#atdp").show();
-			$("#wtbr").hide();
-			$("#wtdp").hide();
-		}));
-		
-		if($("#btn_wtbr").click(function(){
-			$("#decoration").css({"background-image":"url('resources/image/winter_bg.jpg')"});
-			$("#splt").hide();
-			$("#spbr").hide();
-			$("#smlt").hide();
-			$("#smbr").hide();
-			$("#smmt").hide();
-			$("#atmt").hide();
-			$("#atst").hide();
-			$("#atdp").hide();
-			$("#wtbr").show();
-			$("#wtdp").hide();
-		}));
-		
-		if($("#btn_wtdp").click(function(){
-			$("#decoration").css({"background-image":"url('resources/image/winter_bg.jpg')"});
-			$("#splt").hide();
-			$("#spbr").hide();
-			$("#smlt").hide();
-			$("#smbr").hide();
-			$("#smmt").hide();
-			$("#atmt").hide();
-			$("#atst").hide();
-			$("#atdp").hide();
-			$("#wtbr").hide();
-			$("#wtdp").show();
-		}));
-	});
-</script>
+<link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
-
-
-<style>
-	#mainArea{
-		text-align: center;
-		margin-right:60%;
-		margin-top:10%;
-	}
-	#btn_splt, #btn_spbr, #btn_smlt, #btn_smbr, #btn_smmt, #btn_atmt, #btn_atst, #btn_atdp, #btn_wtbr, #btn_wtdp {
-		border: 1px solid #EAEAEA;
-		background: white;
-		font-family: 'RIDIBatang';
-		font-size: 13pt;
-	}
-	#btn_splt:hover {
-		background: #EDE5D8;
-		color: white;
-	}
-	#btn_spbr:hover {
-		background: #B3B3CE;
-		color: white;
-	}
-	#btn_smlt:hover {
-		background: #C98BA4;
-		color: white;
-	}
-	#btn_smbr:hover {
-		background: #7C81BB;
-		color: white;
-	}
-	#btn_smmt:hover {
-		background: #EDE5D8;
-		color: white;
-	}
-	#btn_atmt:hover {
-		background: #B3B3CE;
-		color: white;
-	}
-	#btn_atst:hover {
-		background: #C98BA4;
-		color: white;
-	}
-	#btn_atdp:hover {
-		background: #7C81BB;
-		color: white;
-	}
-	#btn_wtbr:hover {
-		background: #EDE5D8;
-		color: white;
-	}
-	#btn_wtdp:hover {
-		background: #B3B3CE;
-		color: white;
-	}
-}
+<style type="text/css">
+#s{
+margin: 0 auto;
+width: 500px;
+} 
+	  
+	  .celebNull{
+	  	margin : 0 auto;
+	  	margin-top : 10%;
+	  	margin-bottom : 5%;
+	  }
 </style>
+</head>
+<%@ include file="../views/header.jsp" %>
+<body>
+<div id="wrap">
+	
+	<br><br>
 
+<main> 
+<section>
+<ul class="nav nav-underline justify-content-center">
+  
+ <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="celebList.cel?whatColumn=cl_color&keyword=봄" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+         봄
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="celebList.cel?whatColumn=cl_color&keyword=봄+라이트">봄 라이트</a></li>
+            <li><a class="dropdown-item" href="celebList.cel?whatColumn=cl_color&keyword=봄+브라이트">봄 브라이트</a></li>
+          </ul>
+   </li>
+  <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="celebList.cel?whatColumn=cl_color&keyword=여름" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          여름
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="celebList.cel?whatColumn=cl_color&keyword=여름+라이트">여름 라이트</a></li>
+            <li><a class="dropdown-item" href="celebList.cel?whatColumn=cl_color&keyword=여름+브라이트">여름 브라이트</a></li>
+            <li><a class="dropdown-item" href="celebList.cel?whatColumn=cl_color&keyword=여름+뮤트">여름 뮤트</a></li>
+          </ul>
+   </li>
+   <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="celebList.cel?whatColumn=cl_color&keyword=가을" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          가을
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="celebList.cel?whatColumn=cl_color&keyword=가을+뮤트">가을 뮤트</a></li>
+            <li><a class="dropdown-item" href="celebList.cel?whatColumn=cl_color&keyword=가을+스트롱">가을 스트롱</a></li>
+            <li><a class="dropdown-item" href="celebList.cel?whatColumn=cl_color&keyword=가을+딥">가을 딥</a></li>
+          </ul>
+   </li>
+  <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="celebList.cel?whatColumn=cl_color&keyword=겨울" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        겨울
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="celebList.cel?whatColumn=cl_color&keyword=겨울+브라이트">겨울 브라이트</a></li>
+            <li><a class="dropdown-item" href="celebList.cel?whatColumn=cl_color&keyword=겨울+딥">겨울 딥</a></li>
+          </ul>
+   </li>
+ 
+</ul>
+</section>
+   
 
-<article id="center">
-
-<form action="celebDetail.cel" method="post">
-<div id="mainArea">
-	<div class="btn-group" role="group" style="width: 300px; margin: auto;">
-		<input type="button" class="btn" id="btn_splt" name="cl_color" value="봄 라이트">
-		<input type="button" class="btn" id="btn_spbr" name="cl_color" value="봄 브라이트"> 
-		<input type="button" class="btn" id="btn_smlt" name="cl_color" value="여름 라이트"> 
-		<input type="button" class="btn" id="btn_smbr" name="cl_color" value="여름 브라이트">
-		<input type="button" class="btn" id="btn_smmt" name="cl_color" value="여름 뮤트"> 
-		<input type="button" class="btn" id="btn_atmt" name="cl_color" value="가을 뮤트">
-		<input type="button" class="btn" id="btn_atst" name="cl_color" value="가을 스트롱">
-		<input type="button" class="btn" id="btn_atdp" name="cl_color" value="가을 딥">
-		<input type="button" class="btn" id="btn_wtbr" name="cl_color" value="겨울 브라이트">
-		<input type="button" class="btn" id="btn_wtdp" name="cl_color" value="겨울 딥">
+  <div class="album py-5 bg-body-tertiary">
+    <div class="container">
+	
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      
+<c:if test="${fn:length(celebLists) == 0}">
+	<div class="celebNull">
+	 	<center>
+			<b>등록된 연예인이 없습니다.</b><br><br>
+	    </center>
 	</div>
+</c:if>
+<c:if test="${fn:length(celebLists) != 0}">
+<c:forEach var="cb" items="${ celebLists }">
+        <div class="col">
+          <div class="card shadow-sm">
+         		 <img src="<%=request.getContextPath() %>/resources/uploadFolder/${cb.cl_image}"  height="270">
+            <div class="card-body">
+              <p class="card-text">${cb.cl_name}</p>
+              <div class="d-flex justify-content-between align-items-center">
+              </div>
+            </div>
+          </div>
+        </div>
+ </c:forEach>
+	</c:if>
+ 
+ 
+      </div>
+    </div>
+  </div>
+  <center>
+ 	 ${pageInfo.pagingHtml}
+  </center>
+</main>
 </div>
-	</form>
-	<br><br><br><br>
-	<div id="decoration">
-	<br><br><br>
-		<div id="btn_splt">
-			<span id="seasonArea">봄 라이트</span><br><br>
-			<c:forEach var="list" items="${list}">
-				<span id="sDetailArea">	${list.cl_name} </span><br><br>
-				<img src="resources/image/${list.cl_image}" id="seasonImg">
-			</c:forEach>
-		</div>
 
-        <!-- top subjects End -->
-</article>
-<%@ include file="./../views/footer.jsp"%>
+</body>
+<%@ include file="../views/footer.jsp" %>
+</html>

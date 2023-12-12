@@ -24,7 +24,7 @@
 		<input type=hidden name="c_num" value="${ bb.c_num }">
 		
 			<table border=1>
-				<tr style="background-color: #f9f7f9;">
+				<tr style="background-color: #D0D6CE;">
 					<th style="padding:5% 5%; text-align:center;">게시글 비밀번호를 입력하세요</th>
 				</tr>
 				<tr rowspan=2>

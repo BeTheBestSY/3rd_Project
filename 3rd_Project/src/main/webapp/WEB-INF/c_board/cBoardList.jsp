@@ -57,7 +57,7 @@
 <table class="board-table" style="font-size: 13pt; text-align: center;">
 
 	
-	<tr style="background: #f9f7f9;">
+	<tr style="background: #EDE5D8   ;">
 		<th scope="col" class="th-num" width="10%">번호</th>
 		<th scope="col" class="th-title" width="30%">제목</th>
 		<th width="15%" class="th-writer">작성자</th>
@@ -65,9 +65,11 @@
 		<th width="13%" class="th-readcount">조회수</th>
 	</tr>
 	<c:if test="${ !empty list }">
+	<c:set var="num" value="${pageInfo.totalCount-pageInfo.beginRow+1}" />
 		<c:forEach var="bb" items="${ list }">
 			<tr>
-				<td>${ bb.c_num }</td>
+				<td>${num }
+      <c:set var="num" value="${num -1}" /></td>
 				<td align="left" >
 					<c:set var="wid" value="0"/>
 					<c:if test="${ bb.c_re_level > 0 }">

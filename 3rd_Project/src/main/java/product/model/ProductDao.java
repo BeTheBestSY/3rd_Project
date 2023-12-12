@@ -1,4 +1,4 @@
-package celeb.model;
+package product.model;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
 
 import utility.Paging;
 
-@Component("celebDao")
-public class CelebDao {
+@Component("myProduct")
+public class ProductDao {
 
-	private String namespace = "celeb.model.CelebBean";
+	private String namespace = "sqlField_product";
 	
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
@@ -27,19 +27,21 @@ public class CelebDao {
 		return cnt;
 	}
 
-	public List<CelebBean> getAllCelebList(Map<String, String> map, Paging pageInfo) {
+	public List<ProductBean> getAllProductList(Map<String, String> map, Paging pageInfo) {
 		
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
 		
-		List<CelebBean> lists = sqlSessionTemplate.selectList(namespace + ".getAllCelebList",map,rowBounds);
+		List<ProductBean> lists = sqlSessionTemplate.selectList(namespace + ".getAllProductList",map,rowBounds);
 		
 		return lists;
 		
 	}
 	
-	public CelebBean getSelectOne(String cl_num) {
-		CelebBean cb = sqlSessionTemplate.selectOne(namespace+".getSelectOne",cl_num);
-			return cb;
+	public ProductBean getSelectOne(String p_num) {
+			
+			ProductBean pb = sqlSessionTemplate.selectOne(namespace+".getSelectOne",p_num);
+			
+			return pb;
 		}
 
 	
