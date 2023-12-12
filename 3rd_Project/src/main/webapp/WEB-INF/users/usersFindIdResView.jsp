@@ -11,6 +11,7 @@
 <c:if test="${ub.u_id eq null }">
 	<h5>일치하는 정보가 없습니다.</h5><br><br>
 </c:if>
-<a href=".main"><input type="button" value="메인으로 돌아가기"></a>
-</div>>
+<a href="#"><input type="button" value="로그인 화면으로 돌아가기"></a>
+<a href="#"><input type="button" value="비밀번호 찾기"></a>
+</div>
 <%@ include file="../views/footer.jsp" %>
