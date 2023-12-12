@@ -43,6 +43,7 @@
 		<url-pattern>*.main</url-pattern>
 	</servlet-mapping>
 	
+	
 	<!-- 서블릿 루트 설정 완료! -->
 	<servlet>
 		<servlet-name>celeb</servlet-name>
