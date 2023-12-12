@@ -160,10 +160,6 @@ body {
 </style>
 
 </head>
-
-<!-- 저장용 -->
-<!-- 저장용 -->
-
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script type="text/javascript">

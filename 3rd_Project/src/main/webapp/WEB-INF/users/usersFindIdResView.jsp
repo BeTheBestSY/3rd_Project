@@ -43,7 +43,7 @@
 		</span>
 		<br><br><br>
 		<table style="border: 1px solid #D5D5D5; margin: auto; width: 500px; font-family: 'RIDIBatang';">
-			<tr style="background: #D0D6CE; height: 70px;">
+			<tr style="background: #EAEAEA; height: 70px;">
 				<td width="12%">
 					&nbsp;&nbsp;
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-right-dots-fill" viewBox="0 0 16 16">
@@ -57,9 +57,9 @@
 			</tr>
 			<tr height="40"><td></td><td>- 이름 : ${ub.u_name}<br></td></tr>
 			<tr height="40"><td></td><td>- 전화번호 : ${ub.u_phone}<br></td></tr>
+			<c:set var="idNum" value="1" />
 			<c:forEach var="u_lists" items="${u_lists}">
-				<tr height="40"><td></td><td>- 아이디 : <font color="red"><b>${u_lists.u_id}</b></font><br></td></tr>
-				<tr height="20"><td></td></tr>
+				<tr height="40"><td></td><td>- 아이디 <c:if test="${fn:length(u_lists)>0}">${idNum}</c:if> : <font color="red"><b>${u_lists.u_id}</b></font><br></td></tr>
 			</c:forEach>
 		</table>
 		</c:if>
