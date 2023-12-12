@@ -11,7 +11,7 @@
         </div>
     </div>
 	
-	 <div id="board-search">
+	 <div id="board-search"> 
 		<div class="container">
             <div class="search-window">
                 <form action="">

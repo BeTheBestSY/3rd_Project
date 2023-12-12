@@ -27,7 +27,7 @@
 		<span style="font-family: 'MaruBuri-Regular'; font-size: 35pt; font-weight: bold;">아이디 찾기</span>
 		<br><br>
 		
-		<c:if test="${ub.u_id eq null}">
+		<c:if test="${fn:length(u_lists) eq 0}">
 			<br><br>
 			<span style="font-family: 'RIDIBatang'; font-size: 11pt; line-height: 180%; color: graytext;">
 				입력하신 내용과 일치하는 정보를 찾을 수 없습니다.<br>
@@ -36,14 +36,14 @@
 			<br><br><br>
 		</c:if>
 		
-		<c:if test="${ub.u_id ne null}">
+		<c:if test="${fn:length(u_lists) ne 0}">
 		<span style="font-family: 'RIDIBatang'; font-size: 11pt; line-height: 180%; color: graytext;">
 			고객님의 정보 조회가 성공적으로 이루어졌습니다.<br>
 			항상 고객님의 편리함을 위해 최선을 다하는 Hidden Beauty가 되겠습니다.
 		</span>
 		<br><br><br>
 		<table style="border: 1px solid #D5D5D5; margin: auto; width: 500px; font-family: 'RIDIBatang';">
-			<tr style="background: #D0D6CE; height: 70px;">
+			<tr style="background: #EAEAEA; height: 70px;">
 				<td width="12%">
 					&nbsp;&nbsp;
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-right-dots-fill" viewBox="0 0 16 16">
@@ -57,32 +57,18 @@
 			</tr>
 			<tr height="40"><td></td><td>- 이름 : ${ub.u_name}<br></td></tr>
 			<tr height="40"><td></td><td>- 전화번호 : ${ub.u_phone}<br></td></tr>
-			<c:forEach var="u_lists" items="${u_lists}">
-				<tr height="40"><td></td><td>- 아이디 : <font color="red"><b>${u_lists.u_id}</b></font><br></td></tr>
-				<tr height="20"><td></td></tr>
+			<c:set var="idNum" value="1" />
+			<c:forEach var="ub" items="${u_lists}">
+				<tr height="40"><td></td><td>- 아이디 <c:if test="${fn:length(u_lists)>0}">${idNum}</c:if> : <font color="red"><b>${ub.u_id}</b></font><br></td></tr>
 			</c:forEach>
 		</table>
 		</c:if>
 	
 	</div>
 <br><br>
-<<<<<<< HEAD
-<hr style="border: 2px solid black; width: 80%; margin: auto;">
-<br><br>
-<c:if test="${ub.u_id ne null }">
-	<h5><b>${ub.u_name }</b> 님의 아이디는 <b>${ub.u_id }</b> 입니다.</h5><br><br>
-</c:if>
-<c:if test="${ub.u_id eq null }">
-	<h5>일치하는 정보가 없습니다.</h5><br><br>
-</c:if>
-<a href="#"><input type="button" value="로그인 화면으로 돌아가기"></a>
-<a href="#"><input type="button" value="비밀번호 찾기"></a>
-</div>
-=======
 
-<input type="button" value="로그인 하러가기" id="btn" onClick="location.href='#'"> 
-<input type="button" value="비밀번호 찾기" id="btn" onClick="location.href='#'"> 
+<input type="button" value="로그인 하러가기" id="btn" onClick="location.href='login.u'"> 
+<input type="button" value="비밀번호 찾기" id="btn" onClick="location.href='findpw.u'"> 
 </div>
 
->>>>>>> e13c32c6d16459fa7ef94779974a5237630d7827
 <%@ include file="../views/footer.jsp" %>

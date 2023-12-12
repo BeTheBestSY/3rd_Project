@@ -52,15 +52,13 @@
 				</td>
 				<td>
 					저희 사이트를 이용해주셔서 감사합니다.<br>
-					고객님의 정보로 가입된 아이디는 총 <b>${fn:length(u_lists)}</b>개 입니다.
+					고객님의 정보로 가입된 정보를 안내 드립니다.
 				</td>
 			</tr>
-			<tr height="40"><td></td><td>- 이름 : ${ub.u_name}<br></td></tr>
+			<tr height="40"><td></td><td>- 이름 : ${ub.u_name}<br></td></tr> 
 			<tr height="40"><td></td><td>- 전화번호 : ${ub.u_phone}<br></td></tr>
-			<c:forEach var="u_lists" items="${u_lists}">
-				<tr height="40"><td></td><td>- 아이디 : <font color="red"><b>${u_lists.u_id}</b></font><br></td></tr>
-				<tr height="20"><td></td></tr>
-			</c:forEach>
+			<tr height="40"><td></td><td>- 아이디 : ${ub.u_id}<br></td></tr>
+			<tr height="40"><td></td><td>- 비밀번호 : <font color="red"><b>${ub.u_password}</b></font><br></td></tr>
 		</table>
 		</c:if>
 	

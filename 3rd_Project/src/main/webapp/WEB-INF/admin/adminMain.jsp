@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,3 +11,7 @@
 
 </body>
 </html>
+=======
+
+adminMain.jsp<br><br>
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
