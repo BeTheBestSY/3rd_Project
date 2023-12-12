@@ -27,7 +27,6 @@
                         <span class="nav_name">&nbsp;고객</span>
                     </div>
                     
-                    
                     <a href="#" class="nav__link">
                     	<ion-icon name="cart-outline"></ion-icon>
 						<span class="nav_name">&nbsp;화장품</span>
@@ -38,24 +37,24 @@
 						<span class="nav_name">&nbsp;진단 회사</span>
                     </a>
                     
-                    <a href="#" class="nav__link">
+                    <a href="adminCelebList.admin" class="nav__link">
                     	<ion-icon name="camera-outline"></ion-icon>
 						<span class="nav_name">&nbsp;연예인</span>
                     </a>
                     
-					<a href="#" class="nav__link">
+					<a href="adminCboardList.admin" class="nav__link">
                         <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">&nbsp;후기 게시판</span>
                     </a>
                     
-                    <a href="qBoardList.qb" class="nav__link">
+                    <a href="adminQboardList.admin" class="nav__link">
                         <ion-icon name="help-outline"></ion-icon>
                         <span class="nav_name">&nbsp;문의 게시판</span>
                     </a>
 
                     
                 </div>
-                <a href="adminQboardList.qb" class="nav__link">
+                <a href="logout.u" class="nav__link">
                     <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
                     <span class="nav_name">&nbsp;로그아웃</span>
                 </a>

@@ -1,29 +1,33 @@
-package q_board.controller;
+package admin.contoller;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import admin.model.AdminDao;
 import q_board.model.QBoardBean;
-import q_board.model.QBoardDao;
 import utility.Paging;
 
-
 @Controller
-public class QBoardListController {
+public class AdminQBoardController {
+
 	@Autowired
-	private QBoardDao qdao;
-	  
-	public final String command="/qBoardList.qb";
-	public final String viewPage="qBoardList";
+	private AdminDao adminDao;
+
+	public final String command="/adminQboardList.admin";
+	public final String viewPage="adminQBoard";
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
-	public String goList(
+	public String goAdmin(
 				Model model,
 				@RequestParam(value="whatColumn",required = false) String whatColumn,
 				@RequestParam(value="keyword",required = false) String keyword,
@@ -35,18 +39,17 @@ public class QBoardListController {
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
 		
-		int totalCount = qdao.getTotalCount(map);
+		int totalCount = adminDao.getTotalCount(map);
 		String url = request.getContextPath()+command;
 		
 		Paging pageInfo = new Paging(pageNumber,null,totalCount,url,whatColumn,keyword);
 		
-		List<QBoardBean> list = qdao.getAllBoardList(pageInfo,map);
+		List<QBoardBean> list = adminDao.getAllBoardList(pageInfo,map);
 		
 		model.addAttribute("list",list);
 		model.addAttribute("pageInfo",pageInfo);
 		
 		return viewPage;
 	}
-	
 	
 }
