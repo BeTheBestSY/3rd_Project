@@ -21,7 +21,7 @@ import users.model.UsersDao;
 public class UsersLoginController {
 	private final String command = "/login.u";
 	private final String viewPage = "usersLoginForm";
-	private final String adminPage = "adminPage";
+	private final String adminPage = "../admin/adminPage";
 	private final String gotoPage = "../views/main";
 	@Autowired
 	private UsersDao ud;

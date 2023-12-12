@@ -26,11 +26,7 @@
 	<div class="page-title">
         <div class="container" style="font-family: 'MaruBuri-Regular';">
             <br><br><br>
-<<<<<<< HEAD
-            <h3>의견 게시판</h3>
-=======
             <h3>퍼스널 컬러 진단 후기 게시판</h3>
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
         </div>
     </div>
 	

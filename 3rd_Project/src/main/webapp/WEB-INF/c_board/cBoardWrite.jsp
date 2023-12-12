@@ -23,7 +23,7 @@
 <div class="page-title">
     <div class="container">
         <br><br>
-        <h3 style="font-size: 25pt; font-weight: bold;">의견 남기기</h3>
+        <h3 style="font-size: 25pt; font-weight: bold;">후기 남기기</h3>
         <input type=button value="목록" onClick="goList()" class="btn btn-white"><br>
     </div>
 </div>

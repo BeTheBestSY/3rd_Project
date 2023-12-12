@@ -25,6 +25,7 @@ width: 500px;
 	  	margin-top : 10%;
 	  	margin-bottom : 5%;
 	  }
+	  
 </style>
 </head>
 <%@ include file="../views/header.jsp" %>
@@ -32,7 +33,7 @@ width: 500px;
 <div id="wrap">
 	
 	<br><br>
-
+<article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
 <main> 
 <section>
 <ul class="nav nav-underline justify-content-center">
@@ -78,6 +79,7 @@ width: 500px;
  
 </ul>
 </section>
+<br><br>
    
 
   <div class="album py-5 bg-body-tertiary">
@@ -96,7 +98,7 @@ width: 500px;
 <c:forEach var="cb" items="${ celebLists }">
         <div class="col">
           <div class="card shadow-sm">
-         		 <img src="<%=request.getContextPath() %>/resources/uploadFolder/${cb.cl_image}"  height="270">
+         		 <img src="<%=request.getContextPath() %>/resources/uploadFolder/celeb/${cb.cl_image}"  height="480" >
             <div class="card-body">
               <p class="card-text">${cb.cl_name}</p>
               <div class="d-flex justify-content-between align-items-center">
@@ -105,7 +107,7 @@ width: 500px;
           </div>
         </div>
  </c:forEach>
-	</c:if>
+</c:if>
  
  
       </div>
@@ -116,7 +118,7 @@ width: 500px;
   </center>
 </main>
 </div>
-
+</article>
 </body>
 <%@ include file="../views/footer.jsp" %>
 </html>

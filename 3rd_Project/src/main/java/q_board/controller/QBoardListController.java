@@ -21,6 +21,8 @@ public class QBoardListController {
 	  
 	public final String command="/qBoardList.qb";
 	public final String viewPage="qBoardList";
+	public final String adCommand="/adminQboardList.qb";
+	public final String adViewPage="admin_Q_Board";
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public String goList(
@@ -46,5 +48,31 @@ public class QBoardListController {
 		model.addAttribute("pageInfo",pageInfo);
 		
 		return viewPage;
+	}
+	
+	@RequestMapping(value=adCommand,method=RequestMethod.GET)
+	public String goAdmin(
+				Model model,
+				@RequestParam(value="whatColumn",required = false) String whatColumn,
+				@RequestParam(value="keyword",required = false) String keyword,
+				@RequestParam(value="pageNumber",required = false) String pageNumber,
+				HttpServletRequest request
+			) {
+		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("whatColumn", whatColumn);
+		map.put("keyword", "%"+keyword+"%");
+		
+		int totalCount = qdao.getTotalCount(map);
+		String url = request.getContextPath()+command;
+		
+		Paging pageInfo = new Paging(pageNumber,null,totalCount,url,whatColumn,keyword);
+		
+		List<QBoardBean> list = qdao.getAllBoardList(pageInfo,map);
+		
+		model.addAttribute("list",list);
+		model.addAttribute("pageInfo",pageInfo);
+		
+		return adViewPage;
 	}
 }
