@@ -58,8 +58,8 @@
 			<tr height="40"><td></td><td>- 이름 : ${ub.u_name}<br></td></tr>
 			<tr height="40"><td></td><td>- 전화번호 : ${ub.u_phone}<br></td></tr>
 			<c:set var="idNum" value="1" />
-			<c:forEach var="u_lists" items="${u_lists}">
-				<tr height="40"><td></td><td>- 아이디 <c:if test="${fn:length(u_lists)>0}">${idNum}</c:if> : <font color="red"><b>${u_lists.u_id}</b></font><br></td></tr>
+			<c:forEach var="ub" items="${u_lists}">
+				<tr height="40"><td></td><td>- 아이디 <c:if test="${fn:length(u_lists)>0}">${idNum}</c:if> : <font color="red"><b>${ub.u_id}</b></font><br></td></tr>
 			</c:forEach>
 		</table>
 		</c:if>
