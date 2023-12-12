@@ -30,7 +30,7 @@ public class UsersFindIdContoller {
 	public String doAction2(@ModelAttribute("ub") UsersBean ub, Model model) {
 		String u_phone = ub.getU_phone().replace(",","-"); // 010-1234-5678
 		ub.setU_phone(u_phone);
-		
+		 
 		List<UsersBean> u_lists = ud.findId(ub);
 		model.addAttribute("u_lists",u_lists);
 		return viewPage2;
