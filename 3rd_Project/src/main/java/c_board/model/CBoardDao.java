@@ -19,9 +19,7 @@ public class CBoardDao {
 	private String namespace="c_board.model.CBoardBean.";
 
 	public List<CBoardBean> getAllBoardList(Paging pageInfo, Map<String, String> map) {
-
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
-		
 		List<CBoardBean> list = sqlSessionTemplate.selectList(namespace+"getAllBoardList",map,rowBounds);
 		
 		return list;

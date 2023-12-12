@@ -27,8 +27,6 @@ public class ProductDetailController {
 		
 		ProductBean pb = productDao.getSelectOne(p_num);
 		
-		//model.addAttribute("pageNumber", pageNumber);    >>>> 	<a href="list.mv?pageNumber=${pageNumber }">영화 리스트 화면</a>
-		//model 설정 안 하면 ${param.pageNumber }
 		model.addAttribute("pb", pb);
 		model.addAttribute("pageNumber", pageNumber);
 		

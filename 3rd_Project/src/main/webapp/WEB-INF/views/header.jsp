@@ -28,7 +28,7 @@
 	    font-style: normal;
 	}
 	@font-face {
-	    font-family: 'RIDIBatang';
+	    font-family: 'RIDIBatang'; 
 	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
 	    font-weight: normal;
 	    font-style: normal;
@@ -54,7 +54,6 @@
 						<img src="resources/image/fyhbLogo.png" width="170"></a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 30px">
-
 						<a href="colorAi.ai" class="nav-link px-2 link-body-emphasis">AI 컬러진단</a>
 					</li>
 

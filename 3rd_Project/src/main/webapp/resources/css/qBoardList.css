@@ -12,10 +12,6 @@ table {
 	font-weight: bold;
 }
 
-section.notice {
-  padding: 80px 0;
-}
-
 #pagenation{
 	
 	bgcolor:#7C81BB;
@@ -23,7 +19,6 @@ section.notice {
 }
 
 #whatColumn{
-	border: 1px solid #7C81BB;
 	-webkit-box-shadow: 0 0 3px #dedede;
 	box-shadow: 0 0 3px #dedede;
 	height:50px;
@@ -49,7 +44,7 @@ section.notice {
 
 #board-search .search-window {
   padding: 15px 0;
-  background-color: #f9f7f9;
+  background-color: #EDE5D8;
 }
 #board-search .search-window .search-wrap {
   position: relative;
@@ -166,22 +161,21 @@ section.notice {
 }
 
 .btn-dark {
-  background: #7C81BB;
-  color: #fff;
+  background: #D0D6CE ;
+  color: #fff ;
   height:50px;
   position:fixed 
 }
 
 .btn-dark:hover, .btn-dark:focus {
   background: #373737;
-  border-color: #373737;
   color: #fff;
 }
 
 .btn-white {
   background: #fff;
-  color: #7C81BB;
-  border-color: #373737;
+  color: #373737;
+  border-color: #EDE5D8 ;
   height:30px;
   width:100px;
   text-align:center;
@@ -189,12 +183,11 @@ section.notice {
   margin-top:10px;
   margin-bottom:10px;
   border-radius:3px;
-  border-color: #7C81BB;
   
 }  
 
 .btn-white:hover, .btn-dark:focus {
-  background: #7C81BB;
+  background: #D0D6CE;
   border: none;
   border-radius:3px;
   color: #fff;
@@ -213,10 +206,6 @@ section.notice {
   content: '';
   display: block;
   clear: both;
-}
-.container {
-  width: 1200px;
-  margin: 0 auto;
 }
 .blind {
   position: absolute;

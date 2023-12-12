@@ -5,15 +5,13 @@
   
 <configuration>
 	<typeAliases>
-
 		<typeAlias type="company.model.CompanyBean" alias="myCompany"/>
-
  		<typeAlias type="product.model.ProductBean" alias="myProduct"/>
-
 		<typeAlias type="c_board.model.CBoardBean" alias="CBoard"/>
-
 		<typeAlias type="q_board.model.QBoardBean" alias="QBoard"/>
 		<typeAlias type="users.model.UsersBean" alias="Users"/>
+		<typeAlias type="celeb.model.CelebBean" alias="celebDao"/>
+ 		<typeAlias type="product.model.ProductBean" alias="myProduct"/>
  
 	</typeAliases>
 	<mappers>
@@ -25,8 +23,8 @@
 		<mapper resource="mybatis/mall.xml"/>
 		<mapper resource="mybatis/c_board.xml"/>
 		<mapper resource="mybatis/q_board.xml"/>
+		<mapper resource="mybatis/admin.xml"/>
 	</mappers>
- 
 </configuration>
 
  
