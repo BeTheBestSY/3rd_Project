@@ -347,7 +347,8 @@ if(ub==null){
 			저희 진단 서비스는 빠르고, 쉽고, 무료입니다 :)
 		</span>
 		<br><br>
-		<input type="button" class="btn-open-popup" value="안내사항"> 
+		<input type="button" class="btn-open-popup" value="안내사항">
+		<!-- 저장용 -->
 		<br><br>
 	</div>
 	<script>
