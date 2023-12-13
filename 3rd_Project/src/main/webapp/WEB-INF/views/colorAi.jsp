@@ -252,15 +252,8 @@ if(ub==null){
        	maxProbabilityIndex = 0;
         maxProbability = prediction[0].probability;
         
-        let maxProbabilityIndex = 0;
-        let maxProbability = prediction[0].probability;
-        
         for (let i = 0; i < maxPredictions-1; i++) {
-<<<<<<< HEAD
-           if (prediction[i].probability > maxProbability) {
-=======
         	if (prediction[i].probability > maxProbability) {
->>>>>>> 872bf2afe2af567402446b4ff9621afc2893af2f
                 maxProbability = prediction[i].probability;
                 maxProbabilityIndex = i;
             }
@@ -272,48 +265,11 @@ if(ub==null){
             resultText += classPrediction;
         }
         
-<<<<<<< HEAD
-        labelContainer.childNodes[1].innerHTML = resultText +"</tr></table>";
-=======
         labelContainer.childNodes[1].innerHTML = resultText +"</tr></table><br><br>";
->>>>>>> 872bf2afe2af567402446b4ff9621afc2893af2f
         
         if (maxProbability >= 0.3) {
             switch (prediction[maxProbabilityIndex].className) {
             case "봄 라이트":
-<<<<<<< HEAD
-                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 봄 라이트 '</b> 입니다.</big><br><br><br>";
-                break;
-            case "봄 브라이트":
-                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 봄 브라이트 '</b> 입니다.</big><br><br><br>";
-                break;
-            case "여름 라이트":
-                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 여름 라이트 '</b> 입니다.</big><br><br><br>";
-                break;
-            case "여름 브라이트":
-                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 여름 브라이트 '</b> 입니다.</big><br><br><br>";
-                break;
-            case "여름 뮤트":
-                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 여름 뮤트 '</b> 입니다.</big><br><br><br>";
-                break;
-            case "가을 뮤트":
-                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 가을 뮤트 '</b> 입니다.</big><br><br><br>";
-                break;
-            case "가을 스트롱":
-                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 가을 스트롱 '</b> 입니다.</big><br><br><br>";
-                break;
-            case "가을 딥":
-                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 가을 딥 '</b> 입니다.</big><br><br><br>";
-                break;
-            case "겨울 브라이트":
-                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 겨울 브라이트 '</b> 입니다.</big><br><br><br>";
-                break;
-            case "겨울 딥":
-                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 겨울 딥 '</b> 입니다</big><br><br><br>";
-                break;
-            case "그 외":
-                labelContainer.childNodes[0].innerHTML = "<br><br><big>이 사진으로는 측정할 수 없어요!<br> 다른 사진을 넣어 주시겠어요?</big><br><br>";
-=======
                 labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 봄 라이트 '</b> 입니다.</big><br>";
                 break;
             case "봄 브라이트":
@@ -345,22 +301,10 @@ if(ub==null){
                 break;
             case "그 외":
                 labelContainer.childNodes[0].innerHTML = "<br><br><big>이 사진으로는 측정할 수 없어요!<br> 다른 사진을 넣어 주시겠어요?</big><br";
->>>>>>> 872bf2afe2af567402446b4ff9621afc2893af2f
                 break;
                 }
         }
         else {
-<<<<<<< HEAD
-            labelContainer.childNodes[0].innerHTML = "<br><br><big>이 사진으로는 측정할 수 없어요!<br> 다른 사진을 넣어 주시겠어요?</big><br><br>";
-        }
-    }
-      
-      $(function(){
-         $("#finish").click(function(){
-            $("#elseArea").show();
-            $("#label-container").show(); 
-         });
-=======
             labelContainer.childNodes[0].innerHTML = "<br><br><big>이 사진으로는 측정할 수 없어요!<br> 다른 사진을 넣어 주시겠어요?</big><br>";
         }
     }
@@ -396,16 +340,11 @@ if(ub==null){
     		  $("#go2").css({"color":"#D5D5D5"});
     	  });
     	  
->>>>>>> 872bf2afe2af567402446b4ff9621afc2893af2f
       });
       
     </script>
 
-<<<<<<< HEAD
- <script>
-=======
  <script> 
->>>>>>> 872bf2afe2af567402446b4ff9621afc2893af2f
       function readURL(input) {
         if (input.files && input.files[0]) {
           var reader = new FileReader();
