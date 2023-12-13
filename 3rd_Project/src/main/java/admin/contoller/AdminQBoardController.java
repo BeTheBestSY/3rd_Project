@@ -41,7 +41,7 @@ public class AdminQBoardController {
 		
 		int totalCount = adminDao.getTotalCount(map);
 		String url = request.getContextPath()+command;
-		
+		 
 		Paging pageInfo = new Paging(pageNumber,null,totalCount,url,whatColumn,keyword);
 		
 		List<QBoardBean> list = adminDao.getAllBoardList(pageInfo,map);
