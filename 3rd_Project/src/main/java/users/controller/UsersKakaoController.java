@@ -20,8 +20,6 @@ import users.model.UsersDao;
 @Controller
 public class UsersKakaoController {
 	private final String command = "/kakao.u";
-	private final String viewPage = "usersWelcomeView2";
-	private final String gotoPage = "redirect:/.main";
 	
 	@Autowired
 	private UsersDao ud;
