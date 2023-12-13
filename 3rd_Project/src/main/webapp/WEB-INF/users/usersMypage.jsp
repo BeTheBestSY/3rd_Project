@@ -47,23 +47,6 @@
 
 <table>
 	<tr>
-		<th>아이디</th>
-		<td>
-			<c:if test="${loginInfo.u_link eq 'S' }">${loginInfo.u_id }</c:if>
-			<c:if test="${loginInfo.u_link eq 'N' }">네이버 연동</c:if>
-			<c:if test="${loginInfo.u_link eq 'K' }">카카오 연동</c:if>
-		</td>
-		<th>휴대전화번호</th>
-		<td> 
-			<c:if test="${loginInfo.u_link eq 'S' }">${loginInfo.u_phone }</c:if>
-			<c:if test="${loginInfo.u_link eq 'N' || loginInfo.u_link eq 'K'}">필수 입력 사항입니다.</c:if>
-		</td>
-	</tr>
-	<tr>
-		<th>주소</th>
-		<td>${fn:split(loginInfo.u_address, ',')[1] } ${fn:split(loginInfo.u_address, ',')[2] } (${fn:split(loginInfo.u_address, ',')[0] })</td>
-		<th>퍼스널컬러</th>
-		<td>${loginInfo.u_color }</td>
 		<td>
 			<div id="nav" style="width: 200px; background: #F6F6F6; margin-left: 300px; border-radius: 20px; font-family: 'RIDIBatang'; padding: 40px 30px 40px 30px;">
 				
@@ -115,13 +98,20 @@
 							<table style="width: 90%; height: 150px;">
 								<tr style="border-top: 1px solid #D5D5D5;">
 									<th>아이디</th>
-									<td colspan="3">${loginInfo.u_id}</td>
+									<td colspan="3">
+										<c:if test="${loginInfo.u_link eq 'S' }">${loginInfo.u_id }</c:if>
+										<c:if test="${loginInfo.u_link eq 'N' }">네이버 연동</c:if>
+										<c:if test="${loginInfo.u_link eq 'K' }">카카오 연동</c:if>
+									</td>
 								</tr>
 								<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA;">
 									<th width="20%">이름</th>
 									<td width="30%">${loginInfo.u_name}</td>
 									<th width="20%">전화번호</th>
-									<td width="30%">${loginInfo.u_phone}</td>
+									<td width="30%">
+										<c:if test="${loginInfo.u_link eq 'S' }">${loginInfo.u_phone }</c:if>
+										<c:if test="${loginInfo.u_link eq 'N' || loginInfo.u_link eq 'K'}">필수 입력 사항입니다.</c:if>
+									</td>
 								</tr>
 								<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA;">
 									<th>퍼스널 컬러</th>
