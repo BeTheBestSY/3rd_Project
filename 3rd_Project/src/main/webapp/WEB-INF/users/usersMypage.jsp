@@ -26,7 +26,8 @@
 		<table style="width: 90%; height: 170px; text-align: left;" id="content">
 			<tr style="border-top: 1px solid #D5D5D5;">
 				<th>아이디</th>
-				<td colspan="3"><c:if test="${loginInfo.u_link eq 'S' }">${loginInfo.u_id }</c:if>
+				<td colspan="3">
+					<c:if test="${loginInfo.u_link eq 'S' }">${loginInfo.u_id }</c:if>
 					<c:if test="${loginInfo.u_link eq 'N' }">네이버 연동</c:if> <c:if
 						test="${loginInfo.u_link eq 'K' }">카카오 연동</c:if></td>
 			</tr>

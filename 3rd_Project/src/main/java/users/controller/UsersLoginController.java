@@ -42,7 +42,9 @@ public class UsersLoginController {
 			if(ub.getU_id().equals("admin"))
 				return adminPage;
 			else {
-				gotoPage = String.valueOf(session.getAttribute("destination"));
+				if(session.getAttribute("destination") != null) {
+					gotoPage = String.valueOf(session.getAttribute("destination"));
+				}
 				return gotoPage;
 			}
 		} else { 
