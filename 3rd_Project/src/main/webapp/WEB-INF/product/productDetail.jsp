@@ -309,7 +309,7 @@ li .menu-list {
 
         <div class="container" id="one"> <!-- 중반부 전체를 감싸는 div 태그-->
             
-            <div class="first"> <!--중반부 를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌-->
+            <div class="first"> <!--중반부 를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌 -->
           
                 <img  src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg }" alt="타이틀이미지">
             </div>
