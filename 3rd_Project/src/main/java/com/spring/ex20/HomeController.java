@@ -50,12 +50,4 @@ public class HomeController {
 		return "main";
 	}
 	
-	
-	@RequestMapping(value = ".kmain", method = RequestMethod.GET)
-	public String kakaoMain(HttpServletRequest request,
-			HttpSession session) throws UnsupportedEncodingException {
-		// ============= 카카오 =============
-		return "main";
-	}
-	
 }
