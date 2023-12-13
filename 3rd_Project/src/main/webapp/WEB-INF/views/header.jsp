@@ -54,7 +54,7 @@
 						<img src="resources/image/fyhbLogo.png" width="170"></a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 30px">
-						<a href="colorAi.ai" class="nav-link px-2 link-body-emphasis">AI 컬러진단</a>
+						<a href="colorAi.ai" class="nav-link px-2 link-body-emphasis">AI 컬러 진단</a>
 					</li>
 
 					<li style="margin-top: 10px; margin-left: 10px">
@@ -64,7 +64,7 @@
  
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
-						<a href="cBoardList.cb" class="nav-link px-2 link-body-emphasis">후기 게시판</a>
+						<a href="qBoardList.qb" class="nav-link px-2 link-body-emphasis">후기 게시판</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
 						<a href="productList.p" class="nav-link px-2 link-body-emphasis">쇼핑하기</a>

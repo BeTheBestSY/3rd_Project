@@ -5,7 +5,15 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+=======
  
+>>>>>>> 833d5c4374823ef4eff8323442cb4464a4f83635
 <style type="text/css">
 #wrap{
 margin: 0 auto;
@@ -104,6 +112,8 @@ var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지
         level: 3, // 이미지 지도의 확대 레벨
         marker: marker // 이미지 지도에 표시할 마커
     };
+<<<<<<< HEAD
+=======
 <center>
 ${pageInfo.pagingHtml}
 </center>
@@ -127,6 +137,7 @@ var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지
         level: 3, // 이미지 지도의 확대 레벨
         marker: marker // 이미지 지도에 표시할 마커
     };
+>>>>>>> 833d5c4374823ef4eff8323442cb4464a4f83635
 
 // 이미지 지도를 생성합니다
 var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
