@@ -48,6 +48,13 @@ public class CompanyListController {
 			
 		model.addAttribute("list", list);
 		model.addAttribute("pageInfo", pageInfo);
+<<<<<<< HEAD
+		
+		model.addAttribute("whatColumn", whatColumn);
+		model.addAttribute("keyword", keyword);
+		
+=======
+>>>>>>> 872bf2afe2af567402446b4ff9621afc2893af2f
 		model.addAttribute("oneY", oneY);
 		model.addAttribute("oneX", oneX);
 		model.addAttribute("oneName", oneName);
