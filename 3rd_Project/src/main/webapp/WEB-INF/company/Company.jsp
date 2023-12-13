@@ -5,7 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 872bf2afe2af567402446b4ff9621afc2893af2f
 <style type="text/css">
 	#content{
 		margin: 0 auto;
@@ -114,6 +118,7 @@
 	
 	<div id="staticMap" style="width:100%; height:350px; top: -30px; position: relative;"></div>
 </div>
+<<<<<<< HEAD
  
 <br><br><br>
 <center>   
@@ -136,6 +141,22 @@ var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지
         marker: marker // 이미지 지도에 표시할 마커
     };
  
+=======
+
+<script>	 
+	var marker = { // 이미지 지도에 표시할 마커입니다
+	    position: new kakao.maps.LatLng(${oneY}, ${oneX}), 
+	    text: '${oneName}' // text 옵션을 설정하면 마커 위에 텍스트를 함께 표시할 수 있습니다
+	};
+	  
+	var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div
+	    staticMapOption = { 
+	        center: new kakao.maps.LatLng(${oneY}, ${oneX}), // 이미지 지도의 중심좌표
+	        level: 3, // 이미지 지도의 확대 레벨
+	        marker: marker // 이미지 지도에 표시할 마커
+	    };
+	
+>>>>>>> 872bf2afe2af567402446b4ff9621afc2893af2f
 	var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption); // 이미지 지도를 생성합니다
 </script>
 </body>

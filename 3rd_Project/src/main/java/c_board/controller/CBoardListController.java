@@ -49,3 +49,4 @@ public class CBoardListController {
 		return viewPage;
 	}
 }
+ 

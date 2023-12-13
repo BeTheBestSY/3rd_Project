@@ -78,6 +78,4 @@ public class ProductBean {
 	public void setP_contents(String p_contents) {
 		this.p_contents = p_contents;
 	}
- 
-	
 }

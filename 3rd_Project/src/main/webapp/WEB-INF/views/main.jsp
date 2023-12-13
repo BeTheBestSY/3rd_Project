@@ -123,4 +123,111 @@
 
 <img src="resources/image/main2.png" width="100%" style="padding: 60px 0px 200px 0px;">
 
+<div style="width: 100%; height: 3000px; overflow: hidden;">
+	<div style="background: #F6F6F6; width: 20%; height: 3000px; left: 1520px; top: -300px; position: relative; border-radius: 300px;"></div>
+	 
+	 
+	<div style="width: 100%; height: 1000px; padding: 150px 200px 150px 200px; position: absolute; top: 3200px;">
+		<div style="left: 1315px; position: absolute; text-align: right; font-family: 'RIDIBatang'; padding-top: 8px;">
+			<div style="color: #7C81BB; padding: 0px 0px 15px 0px;">AI 퍼스널컬러 진단받기</div>
+			<div style="color: #D5D5D5; padding: 0px 0px 13px 0px;">퍼스널 컬러의 모든 것</div> 
+			<div style="color: #D5D5D5;">맞춤 쇼핑몰 둘러보기</div>
+		</div>
+		<div style="left: 1495px; position: absolute; width: 50px;">
+			<div style="border: 1px solid #7C81BB; border-radius: 50%; width: 40px; height: 40px; margin: 0px 5px 15px 5px;">
+				<div style="border-radius: 50%; width: 10px; height: 10px; background: #7C81BB; margin: 14px 10px 10px 14px;"></div> 
+			</div>
+			<div style="border-radius: 50%; width: 10px; height: 10px; background: #D5D5D5; margin: 0px 20px 25px 20px;"></div>
+			<div style="border-radius: 50%; width: 10px; height: 10px; background: #D5D5D5; margin: 0px 20px 25px 20px;"></div>
+		</div>
+		
+		<span style="font-family: 'MaruBuri-Regular'; font-size: 10pt; font-weight: bold; color: #7C81BB; line-height: 200%;"> 
+			FIND YOUR <big>Hidden Beauty</big> 이용방법 - 1
+		</span>
+		<br>
+		<span style="font-family: 'MaruBuri-Regular'; font-size: 35pt; font-weight: bold;">
+			AI 퍼스널컬러 진단받기
+		</span>
+		<br><br>
+		<span style="font-family: 'RIDIBatang'; font-size: 12pt; line-height: 180%;">
+			꾸준히 유행중인 퍼스널컬러. 아직도 자신의 퍼스널 컬러를 모르시나요?<br>
+			시간과 공간의 제약 없이 간단하게 AI를 통해 진단 받아보세요!<br>
+			<small>(※ 이용료 무료, 로그인 이후 이용가능)</small>
+		</span> 
+		<br><br><br><br>
+		<div style="border: 1px solid black; width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white;"></div>
+		&nbsp;&nbsp;&nbsp;
+		<div style="border: 1px solid black; width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white;"></div>
+	</div>
+	
+	
+	<div style="width: 100%; height: 1000px; padding: 200px; position: absolute; top: 4200px;"> 
+		<div style="left: 1315px; position: absolute; text-align: right; font-family: 'RIDIBatang'; padding-top: 8px;">
+			<div style="color: #D5D5D5; padding: 0px 0px 15px 0px;">AI 퍼스널컬러 진단받기</div>
+			<div style="color: #7C81BB; padding: 0px 0px 13px 0px;">퍼스널 컬러의 모든 것</div> 
+			<div style="color: #D5D5D5;">맞춤 쇼핑몰 둘러보기</div>
+		</div>
+		<div style="left: 1495px; position: absolute; width: 50px;">
+			<div style="border-radius: 50%; width: 10px; height: 10px; background: #D5D5D5; margin: 12px 20px 12px 20px;"></div>
+			<div style="border: 1px solid #7C81BB; border-radius: 50%; width: 40px; height: 40px; margin: 15px 5px 14px 5px;">
+				<div style="border-radius: 50%; width: 10px; height: 10px; background: #7C81BB; margin: 14px 10px 10px 14px;"></div>
+			</div>
+			<div style="border-radius: 50%; width: 10px; height: 10px; background: #D5D5D5; margin: 0px 20px 25px 20px;"></div>
+		</div>
+		<span style="font-family: 'MaruBuri-Regular'; font-size: 10pt; font-weight: bold; color: #7C81BB; line-height: 200%;">
+			FIND YOUR <big>Hidden Beauty</big> 이용방법 - 2
+		</span>
+		<br>
+		<span style="font-family: 'MaruBuri-Regular'; font-size: 35pt; font-weight: bold; ">
+			퍼스널 컬러의 모든 것
+		</span>
+		<br><br>
+		<span style="font-family: 'RIDIBatang'; font-size: 12pt; line-height: 180%;">
+			퍼스널 컬러만 진단해주면 끝인가요?<br>
+			아니요! 저희는 진단받은 컬러의 특징과 스타일링 방법, 어울리는 화장품까지 추천해드린답니다.<br>
+			퍼스널 컬러별 연예인을 둘러보시면서 스타일링에 대한 감을 잡을 수 있게 도와드려요.
+		</span> 
+		<br><br><br><br> 
+		<div style="width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white; background-image: url('resources/image/every1.png'); background-repeat: no-repeat; background-size: cover; box-shadow: 5px 5px 10px 0px #BDBDBD;"></div>
+		&nbsp;&nbsp;&nbsp;
+		<div style="border: 1px solid black; width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white;"></div>
+	</div>
+	
+	
+	<div style="width: 100%; height: 1000px; padding: 200px; position: absolute; top: 5200px;">  
+		<div style="left: 1315px; position: absolute; text-align: right; font-family: 'RIDIBatang'; padding-top: 8px;">
+			<div style="color: #D5D5D5; padding: 0px 0px 15px 0px;">AI 퍼스널컬러 진단받기</div>
+			<div style="color: #D5D5D5; padding: 0px 0px 13px 0px;">퍼스널 컬러의 모든 것</div> 
+			<div style="color: #7C81BB;">맞춤 쇼핑몰 둘러보기</div>
+		</div>
+		<div style="left: 1495px; position: absolute; width: 50px;">
+			<div style="border-radius: 50%; width: 10px; height: 10px; background: #D5D5D5; margin: 15px 20px 12px 20px;"></div>
+			<div style="border-radius: 50%; width: 10px; height: 10px; background: #D5D5D5; margin: 28px 20px 12px 20px;"></div>
+			<div style="border: 1px solid #7C81BB; border-radius: 50%; width: 40px; height: 40px; margin: 13px 5px 14px 5px;">
+				<div style="border-radius: 50%; width: 10px; height: 10px; background: #7C81BB; margin: 14px 10px 10px 14px;"></div>
+			</div>
+		</div>
+		<span style="font-family: 'MaruBuri-Regular'; font-size: 10pt; font-weight: bold; color: #7C81BB; line-height: 200%;">
+			FIND YOUR <big>Hidden Beauty</big> 이용방법 - 3
+		</span>
+		<br>
+		<span style="font-family: 'MaruBuri-Regular'; font-size: 35pt; font-weight: bold;">
+			맞춤 쇼핑몰 둘러보기
+		</span>
+		<br><br>
+		<span style="font-family: 'RIDIBatang'; font-size: 12pt; line-height: 180%;">
+			퍼스널 컬러 안내페이지를 통해 알게된 내 컬러 맞춤 화장품들.<br>
+			바로 구매해보고 싶지 않으신가요? 상단 '쇼핑하기' 메뉴를 통해 바로 구매하실 수 있어요!<br>
+			<small>(※ 총 10종류의 퍼스널 컬러 맞품 상품 제공. 로그인 이후 구매가능)</small>
+		</span> 
+		<br><br><br><br>
+		<div style="border: 1px solid black; width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white;"></div>
+		&nbsp;&nbsp;&nbsp;
+		<div style="border: 1px solid black; width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white;"></div>
+	</div>
+	
+</div>
+
+<div style="width:100%; height: 300px;"></div>
+
 <%@ include file="footer.jsp" %>
