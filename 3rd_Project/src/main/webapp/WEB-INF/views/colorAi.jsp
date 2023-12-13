@@ -1,7 +1,7 @@
 <%@page import="users.model.UsersBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -213,7 +213,7 @@ UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
 if(ub==null){
 %>
 	<script type="text/javascript">
-	alert("로그인 후 이용해주세요.")
+	alert("로그인 후 이용 가능합니다.")
 	 window.location.href = "login.u";
 	</script>
 <%
@@ -467,7 +467,7 @@ if(ub==null){
 		<div id="label-container"></div>
 		<br><br><br><br><br>
 		
-		<div id="elseArea" style="display: none; margin: auto; font-family: 'RIDIBatang'; position: relative; background: #F6F6F6;">
+		<div id="elseArea" style="display: none; margin: auto; font-family: 'RIDIBatang'; position: relative; background: #EFF0F7;">
 			<div class="row" style="width: 60%; margin: auto;">
 				<div class="col-lg-6" id="result" style="height: 500px;" onClick="go_update()">
 				<img src="resources/image/background.png" class="img" id="1st_circle" width="500">
