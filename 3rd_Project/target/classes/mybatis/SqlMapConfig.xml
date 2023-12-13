@@ -6,6 +6,14 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="company.model.CompanyBean" alias="myCompany"/>
+<<<<<<< HEAD
+		
+		<typeAlias type="mall.model.TempCart" alias="myTempCart"/>
+
+		<typeAlias type="mall.model.OrderBean" alias="myOrder"/>
+
+=======
+>>>>>>> 872bf2afe2af567402446b4ff9621afc2893af2f
  		<typeAlias type="product.model.ProductBean" alias="myProduct"/>
 		<typeAlias type="c_board.model.CBoardBean" alias="CBoard"/>
 		<typeAlias type="q_board.model.QBoardBean" alias="QBoard"/>

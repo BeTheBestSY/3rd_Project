@@ -74,14 +74,14 @@
 			 </table>
 			 <br><br>
 			  <!-- 세션이 작성자와 같거나 관리자가 아니면 수정, 삭제, 목록 버튼 보이게 -->
-			<c:if test="${id==null}">
+			<c:if test="${loginInfo.u_id ==null}">
 				 <center>
 				 	답글달기는 로그인 후 이용 가능합니다.
 				</center>
 			</c:if>
 			
 			<!-- 접속한 id가 관리자가 아니고, 글 작성자랑 접속한 id랑 다른데 로그인은 되어있으면 답글달기만. -->
-			<c:if test="${id != null && id !='admin' && id !=bb.c_writer}"> 
+			<c:if test="${id != null && loginInfo.u_id !='admin' && id !=bb.c_writer}"> 
 				<center>
 					<input type="button" value="답글달기" onClick="goReply(${ bb.c_num },${ bb.c_ref },${ bb.c_re_step },${ bb.c_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 				</center>
@@ -89,7 +89,7 @@
 
 			 
 			 <!-- 세션이 작성자와 같거나 관리자가 아니면 수정, 삭제, 목록 버튼 보이게 -->
-			<c:if test="${id == bb.c_writer && id!='admin'}">
+			<c:if test="${loginInfo.u_id  == bb.c_writer && loginInfo.u_id !='admin'}">
 				 <center>
 
 					<input type="button" value="수정하기" onClick="goUpdate(${ bb.c_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
@@ -103,7 +103,7 @@
 			</c:if>
 			
 			<!-- 접속한 id가 관리자일 땐 모든 게시물 수정 삭제 답글 가능 -->
-			<c:if test="${id == 'admin'}"> 
+			<c:if test="${loginInfo.u_id == 'admin'}"> 
 				<center>
 					<input type="button" value="수정하기" onClick="goUpdate(${ bb.c_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 					<input type="button" value="삭제하기" onClick="goDelete(${ bb.c_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;

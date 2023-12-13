@@ -28,6 +28,6 @@ public class AdminController {
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction() {
 		return viewPage;
-	}
+	} 
 	
 }

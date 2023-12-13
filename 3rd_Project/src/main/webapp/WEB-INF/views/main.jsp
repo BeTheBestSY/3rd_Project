@@ -124,7 +124,7 @@
 <img src="resources/image/main2.png" width="100%" style="padding: 60px 0px 200px 0px;">
 
 <div style="width: 100%; height: 3000px; overflow: hidden;">
-	<div style="background: #F6F6F6; width: 20%; height: 3100px; left: 1520px; top: -300px; position: relative; border-radius: 300px;"></div>
+	<div style="background: #F6F6F6; width: 20%; height: 3000px; left: 1520px; top: -300px; position: relative; border-radius: 300px;"></div>
 	 
 	 
 	<div style="width: 100%; height: 1000px; padding: 150px 200px 150px 200px; position: absolute; top: 3200px;">

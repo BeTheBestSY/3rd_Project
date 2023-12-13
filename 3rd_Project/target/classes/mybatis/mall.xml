@@ -4,4 +4,30 @@
 
 <mapper namespace="sqlField_mall">
 	
+	
+	<insert id="insertTemp" parameterType="myTempCart">
+		insert into temp_cart
+			values(#{cart_num}, #{p_num}, #{cart_qty})
+	</insert>
+	
+	<select id="selectTemp" resultType="myTempCart">
+		select p_num, cart_qty from temp_cart
+		where cart_num = #{cart_num}
+	</select>
+	
+		
+	<select id="selectProd" resultType="myProduct">
+		select p_name, p_price from product
+		where p_num = #{p_num}
+	</select>
+	
+	<select id="selectUser" resultType="Users">
+		select u_name, u_phone from users
+		where u_id = #{u_id}
+	</select>
+	
+	<delete id="deleteTemp">
+		delete from temp_cart where cart_num = #{cart_num}
+	</delete>
+	
 </mapper>
