@@ -7,6 +7,10 @@
 	<typeAliases>
 
 		<typeAlias type="company.model.CompanyBean" alias="myCompany"/>
+		
+		<typeAlias type="mall.model.TempCart" alias="myTempCart"/>
+
+		<typeAlias type="mall.model.OrderBean" alias="myOrder"/>
 
  		<typeAlias type="product.model.ProductBean" alias="myProduct"/>
 

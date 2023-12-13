@@ -235,7 +235,77 @@ li .menu-list {
         </div>
     </nav>
 <br>
-    <section> <!--중반부의 레이아웃-->
+ <%
+	String id = (String) session.getAttribute("id");
+ 	String cart_num = session.getId();
+ 	System.out.print(cart_num+"아오 좀");
+
+ %>
+  <script type="text/javascript">
+	       function goCart(pnum){
+	    	   
+	    	ovalue = document.f.oqty.value;
+	    	if(ovalue < 1 || ovalue ==""){
+	    		alert("1이상 입력하세요.");
+	    		return false;
+	    	} 
+	
+	    	/*
+	    	document.f.action=	"cartAdd.jsp?pnum=" + pnum + "&ovalue=" + ovalue;
+	    	document.f.submit(); 
+	    	*/
+	    	}
+	       
+	       
+	       function goOrder(pnum) {
+	           ovalue = document.f.oqty.value;
+	           if (ovalue < 1 || ovalue == "") {
+	               alert("1이상 입력하세요.");
+	               return false;
+	           }
+	           
+	           // 사용자가 로그인했는지
+	           if (<%=id%> == null) {
+	               alert("로그인 후 이용해주세요.");
+	               return document.f.action = "login.u";
+	           }
+	           
+	          /*  //주문 처리
+	           document.f.action=	"cartAdd.jsp?pnum=" + pnum + "&ovalue=" + ovalue;
+	           document.f.submit();  */
+	           
+	       }
+	       
+	    
+</script>
+	   	 
+<script type="text/javascript">
+    function updateOrderAmount() {
+        var quantity = document.getElementById('num').value;
+        var unitPrice = ${pb.p_price }; // 서버 측 데이터에서 단가 가져오기
+
+        // 주문 금액 계산
+        var orderAmount = quantity * unitPrice;
+
+        // 배송비 계산
+        var deliveryFee = orderAmount >= 30000 ? 0 : 3000;
+
+        // 총액 계산
+        var totalAmount = orderAmount + deliveryFee;
+
+        // 표시된 배송비 및 총액 업데이트
+        document.getElementById('deliveryFee').innerText =  new Intl.NumberFormat().format(deliveryFee) + '원';
+        document.getElementById('totalAmount').innerText = '총액: ' + new Intl.NumberFormat().format(totalAmount) + '원';
+    }
+</script>
+	   	    
+	       
+   
+<form name="f" action="order.mall">
+ <input type="hidden" name="p_num" value="${pb.p_num}">
+ <input type="hidden" name="id" value="<%=id%>">
+ <input type="hidden" name="cart_num" value="<%=cart_num%>">
+	<section> <!--중반부의 레이아웃-->
 
         <div class="container" id="one"> <!-- 중반부 전체를 감싸는 div 태그-->
             
@@ -267,13 +337,14 @@ li .menu-list {
                         <div class="boxone"> <!--영양 정보를 좌우로 반반 나눠주었으며, 왼쪽에 해당하는 div 태그-->
                             <ul>
                                 <li>
-                                    <span class="l">배송비</span>
-                                    <span>3,000원</span class="r">
+                                    <span class="l">배송비( 30,000 원 이상 무료배송 )</span>
+                                    <span id="deliveryFee" class="r">3,000원</span>
+                                    
                                 </li>
                                
                                 <li>
                                     <span class="l">수량</span>
-                                    <span><input type="number" name="oqty" value="1" id="num" placeholder="단위(개)" oninput="updateTotalAmount()"></span class="r">
+                                    <span  class="r"><input type="number" name="oqty" value="1" id="num" placeholder="단위(개)" oninput="updateOrderAmount()"></span>
                                 </li>
                             </ul>
                         </div>
@@ -283,17 +354,16 @@ li .menu-list {
                     </div>
 
                     <div class="allegy"> 
-	                   
-	                   	 <fmt:formatNumber value="${pb.p_price }" pattern="#,###" />원
+	                   <span id="totalAmount">총액: <fmt:formatNumber value="${pb.p_price }" pattern="#,###" />원</span>
 	                    
                     </div>
 <br>
 
-<button>장바구니</button>
-<button>주문하기</button>
-                  
-
-       </section>
+	  
+		<button onclick="return goCart('${pb.p_num}')">장바구니</button>
+  		<button onclick="return goOrder('${pb.p_num}')">주문하기</button>
+	</section>       
+</form>    
        <br><br>
     <hr>
     <br><br>
