@@ -35,7 +35,7 @@ public class AdminQBoardController {
 				HttpServletRequest request
 			) {
 		
-		Map<String,String> map = new HashMap<String,String>();
+		Map<String,String> map = new HashMap<String,String>(); 
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
 		
