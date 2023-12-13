@@ -44,17 +44,9 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
-		
+		 
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "main";
-	}
-	
-	
-	@RequestMapping(value = ".kmain", method = RequestMethod.GET)
-	public String kakaoMain(HttpServletRequest request,
-			HttpSession session) throws UnsupportedEncodingException {
-		// ============= 카카오 =============
 		return "main";
 	}
 	

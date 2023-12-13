@@ -21,7 +21,7 @@
 			<c:if test="${loginInfo.u_link eq 'K' }">카카오 연동</c:if>
 		</td>
 		<th>휴대전화번호</th>
-		<td>
+		<td> 
 			<c:if test="${loginInfo.u_link eq 'S' }">${loginInfo.u_phone }</c:if>
 			<c:if test="${loginInfo.u_link eq 'N' || loginInfo.u_link eq 'K'}">필수 입력 사항입니다.</c:if>
 		</td>
