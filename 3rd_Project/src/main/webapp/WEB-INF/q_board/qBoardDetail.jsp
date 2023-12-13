@@ -32,7 +32,6 @@
 	application.setAttribute("flag",false);
 %>
 <article id="center" style=" font-family: 'MaruBuri-Regular';" >
-
 <br>
 <div class="page-title">
     <div class="container">
@@ -42,9 +41,7 @@
     </div>
 </div>
 <br><br><br><br><br>
-
 <div id="board-list">
-			
 		<form:form commandName="bb" action="write.qb" method="post">
 		       <table class="board-table" style="font-size: 13pt;">
 				<tr >
@@ -68,18 +65,17 @@
 						${ bb.q_content}
 					</td>
 				</tr>
-						
 			 </table>
 			 <br><br>
 			  <!-- 세션이 작성자와 같거나 관리자가 아니면 수정, 삭제, 목록 버튼 보이게 -->
-			<c:if test="${id==null}">
+			<c:if test="${loginInfo.u_id ==null}">
 				 <center>
 				 	답글달기는 로그인 후 이용 가능합니다.
 				</center>
 			</c:if>
 			
 			<!-- 접속한 id가 관리자가 아니고, 글 작성자랑 접속한 id랑 다른데 로그인은 되어있으면 답글달기만. -->
-			<c:if test="${id != null && id !='admin' && id !=bb.q_writer}"> 
+			<c:if test="${id != null && loginInfo.u_id !='admin' && id !=bb.q_writer}"> 
 				<center>
 					<input type="button" value="답글달기" onClick="goReply(${ bb.q_num },${ bb.q_ref },${ bb.q_re_step },${ bb.q_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 				</center>
@@ -87,7 +83,7 @@
 
 			 
 			 <!-- 세션이 작성자와 같거나 관리자가 아니면 수정, 삭제, 목록 버튼 보이게 -->
-			<c:if test="${id == bb.q_writer && id!='admin'}">
+			<c:if test="${loginInfo.u_id  == bb.q_writer && loginInfo.u_id !='admin'}">
 				 <center>
 
 					<input type="button" value="수정하기" onClick="goUpdate(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
@@ -101,7 +97,7 @@
 			</c:if>
 			
 			<!-- 접속한 id가 관리자일 땐 모든 게시물 수정 삭제 답글 가능 -->
-			<c:if test="${id == 'admin'}"> 
+			<c:if test="${loginInfo.u_id == 'admin'}"> 
 				<center>
 					<input type="button" value="수정하기" onClick="goUpdate(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 					<input type="button" value="삭제하기" onClick="goDelete(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;

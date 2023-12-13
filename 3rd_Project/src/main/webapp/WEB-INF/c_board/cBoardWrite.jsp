@@ -42,7 +42,7 @@
 				<tr>
 					<th align="left" bgcolor="#D0D6CE">작성자</th>
 					<td align="left">
-						<input type="text" name="c_writer" value="${id}" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
+						<input type="text" name="c_writer" value="${loginInfo.u_id}" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
 					</td>
 					<th align="left" bgcolor="#D0D6CE">이메일</th>
 					<td align="left">
@@ -65,7 +65,7 @@
 			 </table>
 			 <br><br>
 			 	  <!-- 로그인 하지 않은 상태면 -->
-			<c:if test="${id == null}">
+			<c:if test="${loginInfo.u_id  == null}">
 			 	<center>
 				 	<% 
 				 		 response.sendRedirect("login.u");
@@ -73,7 +73,7 @@
 				</center>
 			</c:if>
 			<!-- 로그인 한 상태면 -->
-			<c:if test="${id != null}">
+			<c:if test="${loginInfo.u_id  != null}">
 			 <center>
 	 				<input type="submit" value="작성 완료" class="btn btn-dark" style="font-size: 13pt; width: 130px;">
 			</center>

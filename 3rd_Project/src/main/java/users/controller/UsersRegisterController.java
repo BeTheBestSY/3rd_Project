@@ -54,7 +54,7 @@ public class UsersRegisterController {
 			}
 			ub.setU_link("S");
 			ud.register(ub);
-			application.setAttribute("flag", true); 
+			application.setAttribute("flag", true);
 		}
 		return viewPage2;
 	}
