@@ -27,7 +27,7 @@
 <div style="margin-bottom: 50px; font-size: 10pt;">
 	<a href="mypage.u" id="none_under">마이페이지</a> > 회원정보 > <a href="update.u" id="none_under">회원정보 수정</a>
 </div>
-
+<!-- 저장용 -->
 <ul>
 	<li><big>회원정보 수정</big></li>
 	<br>
