@@ -10,44 +10,13 @@
 	
 </script>
 <article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
-<<<<<<< HEAD
-이 페이지는 adminQBoard
-
-	<div class="page-title">
-        <div class="container" style="font-family: 'MaruBuri-Regular';">
-            <br><br><br>
-            <h3>퍼스널 컬러 진단 후기 게시판</h3>
-        </div>
-    </div>
 	
-	 <div id="board-search">
-		<div class="container"> 
-            <div class="search-window">
-                <form action="">
-				<div class="search-wrap">
-		<form action="cBoardList.cb" method="get">
-				<select name="whatColumn" id="whatColumn">
-					<option>선택</option>
-					<option value="all">전체검색</option>
-					<option value="c_subject">제목</option>
-					<option value="c_writer">작성자</option>
-				</select>
-			 	<input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
-			 	
-			<button type="submit" class="btn btn-dark">검색</button>
-            </div>
-		   </form>
-        </div>
-    </div>
-
  <div id="board-list">
-=======
 <div class="section">
 	<div class="tag">
 	<h4>문의 게시판 관리</h4>
 	</div>
 	  <div id="board-search">
->>>>>>> branch 'daoni' of https://github.com/BeTheBestSY/3rd_Project.git
         <div class="container">
             <div class="search-window">
                <div class="search-wrap">
