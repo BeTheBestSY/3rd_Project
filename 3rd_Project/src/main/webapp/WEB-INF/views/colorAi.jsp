@@ -36,6 +36,20 @@
 	line-height: 180%;
 }
 
+#info{
+	border: none;
+	border-radius: 10px;
+	background: #7C81BB;
+	color: white;
+	width: 90px;
+	font-family: 'RIDIBatang';
+	font-size: 12pt;
+}
+
+#info:hover{
+	background: #B3B3CE;
+}
+
 .file-upload {
   background-color: #ffffff;
   width: 600px;
@@ -179,6 +193,19 @@
   transition: all .2s ease;
   cursor: pointer;
 }
+.img {
+	animation: rotate_image 15s linear infinite; 
+	transform-origin: 50% 50%; 
+	position: absolute;
+	left: 413px;
+	display: none;
+}
+
+@keyframes rotate_image{
+    100% {
+        transform: rotate(360deg);
+    }
+}
 </style>
 
 <%
@@ -197,24 +224,18 @@ if(ub==null){
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 <script type="text/javascript">
-    
-      // More API functions here:
-      // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
-      // the link to your model provided by Teachable Machine export panel
       const URL = "https://teachablemachine.withgoogle.com/models/L1G8-g-Oz/";
+      var prediction;
+      var maxProbability;
+      var maxProbabilityIndex;
 
       let model, webcam, labelContainer, maxPredictions;
   
-      // Load the image model and setup the webcam
       async function init() {
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
 
-        // load the model and metadata
-        // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
-        // or files from your local hard drive
-        // Note: the pose library adds "tmImage" object to your window (window.tmImage)
         model = await tmImage.load(modelURL, metadataURL);
         maxPredictions = model.getTotalClasses();
 
@@ -224,54 +245,101 @@ if(ub==null){
         }
       }
 
-      // run the webcam image through the image model
       async function predict() {
-        // predict can take in an image, video or canvas html element
         var image = document.getElementById("face-image")
-        const prediction = await model.predict(image, false);
+        prediction = await model.predict(image, false);
+        
+       	maxProbabilityIndex = 0;
+        maxProbability = prediction[0].probability;
         
         for (let i = 0; i < maxPredictions-1; i++) {
-            var classPrediction =
-                prediction[i].className + " : " + prediction[i].probability.toFixed(2);
-            if(i == maxPredictions-2){
-            	labelContainer.childNodes[i].innerHTML = classPrediction+"<br><br><br>"; 
-            } else {
-            	labelContainer.childNodes[i].innerHTML = classPrediction; 
+        	if (prediction[i].probability > maxProbability) {
+                maxProbability = prediction[i].probability;
+                maxProbabilityIndex = i;
             }
         }
         
-        if (prediction[0].className == "봄 라이트" && prediction[0].probability.toFixed(3) >= 0.2) {
-          labelContainer.childNodes[0].innerHTML =  "<br><br><big><b>' 봄 라이트 '</b> 입니다</big><br><br>";
-        } else if (prediction[1].className == "봄 브라이트" && prediction[1].probability.toFixed(3) >= 0.2) {
-          labelContainer.childNodes[0].innerHTML =  "<br><br><big><b>' 봄 브라이트 '</b> 입니다</big><br><br>";
-        } else if (prediction[2].className == "여름 라이트" && prediction[2].probability.toFixed(3) >= 0.2) {
-          labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 여름 라이트 '</b> 입니다</big><br><br>";
-        } else if (prediction[3].className == "여름 브라이트" && prediction[3].probability.toFixed(3) >= 0.2) { 
-          labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 여름 브라이트 '</b> 입니다</big><br><br>";
-		} else if (prediction[4].className == "여름 뮤트" && prediction[4].probability.toFixed(3) >= 0.2) {
-		  labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 여름 뮤트 '</b> 입니다</big><br><br>";
-		} else if (prediction[5].className == "가을 뮤트" && prediction[5].probability.toFixed(3) >= 0.2) {
-		  labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 가을 뮤트 '</b> 입니다</big><br><br>";
-		} else if (prediction[6].className == "가을 스트롱" && prediction[6].probability.toFixed(3) >= 0.2) {
-		  labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 가을 스트롱 '</b> 입니다</big><br><br>";
-		} else if (prediction[7].className == "가을 딥" && prediction[7].probability.toFixed(3) >= 0.2) {
-			labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 가을 딥 '</b> 입니다</big><br><br>";
-		} else if (prediction[8].className == "겨울 브라이트" && prediction[8].probability.toFixed(3) >= 0.2) {
-			labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 겨울 브라이트 '</b> 입니다</big><br><br>";
-		} else if (prediction[9].className == "겨울 딥" && prediction[9].probability.toFixed(3) >= 0.2) {
-			labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 겨울 딥 '</b> 입니다</big><br><br>"; 
-		} else if (prediction[10].className == "그 외" && prediction[10].probability.toFixed(3) >= 0.2) {
-	          labelContainer.childNodes[0].innerHTML = "<br><br><big>이 사진으로는 측정할 수 없어요!<br> 다른 사진을 넣어 주시겠어요?</big><br><br>";
-		} else {
-          labelContainer.childNodes[0].innerHTML = "<br><br><big>이 사진으로는 측정할 수 없어요!<br> 다른 사진을 넣어 주시겠어요?</big><br><br>";
+        let resultText = "<br><br><table style='margin-left:35%; width:40%; height:300px;'>";
+        for (let i = 0; i < maxPredictions; i++) {
+            var classPrediction = "<tr><td width='40%'>" + prediction[i].className + "</td><td width='10%'> : </td><td width='40%' align='left'>" + (prediction[i].probability ).toFixed(2)*1000/10+"%</td><tr>";
+            resultText += classPrediction;
         }
+        
+        labelContainer.childNodes[1].innerHTML = resultText +"</tr></table><br><br>";
+        
+        if (maxProbability >= 0.3) {
+            switch (prediction[maxProbabilityIndex].className) {
+            case "봄 라이트":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 봄 라이트 '</b> 입니다.</big><br>";
+                break;
+            case "봄 브라이트":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 봄 브라이트 '</b> 입니다.</big><br>";
+                break;
+            case "여름 라이트":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 여름 라이트 '</b> 입니다.</big><br>";
+                break;
+            case "여름 브라이트":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 여름 브라이트 '</b> 입니다.</big><br>";
+                break;
+            case "여름 뮤트":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 여름 뮤트 '</b> 입니다.</big><br>";
+                break;
+            case "가을 뮤트":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 가을 뮤트 '</b> 입니다.</big><br>";
+                break;
+            case "가을 스트롱":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 가을 스트롱 '</b> 입니다.</big><br>";
+                break;
+            case "가을 딥":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 가을 딥 '</b> 입니다.</big><br>";
+                break;
+            case "겨울 브라이트":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 겨울 브라이트 '</b> 입니다.</big><br>";
+                break;
+            case "겨울 딥":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 겨울 딥 '</b> 입니다</big><br>";
+                break;
+            case "그 외":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big>이 사진으로는 측정할 수 없어요!<br> 다른 사진을 넣어 주시겠어요?</big><br";
+                break;
+                }
+        }
+        else {
+            labelContainer.childNodes[0].innerHTML = "<br><br><big>이 사진으로는 측정할 수 없어요!<br> 다른 사진을 넣어 주시겠어요?</big><br>";
+        }
+    }
+      
+      function go_update(){
+    	  // alert(prediction[maxProbabilityIndex].className); 퍼스널컬러 결과값.
+    	  location.href="updateColor.u?personalColor="+prediction[maxProbabilityIndex].className;
       }
       
       $(function(){
     	  $("#finish").click(function(){
     		  $("#elseArea").show();
-    		  $("#label-container").show(); 
+    		  $("#label-container").show();
     	  });
+    	  
+    	  $("#result").mouseover(function(){
+    		  $("#1st_circle").show();
+    		  $("#go1").css({"color":"#7C81BB"});
+    	  });
+    	  
+    	  $("#result").mouseout(function(){
+    		  $("#1st_circle").hide();
+    		  $("#go1").css({"color":"#D5D5D5"});
+    	  });
+    	  
+    	  $("#company").mouseover(function(){
+    		  $("#2nd_circle").show();
+    		  $("#go2").css({"color":"#7C81BB"});
+    	  });
+    	  
+    	  $("#company").mouseout(function(){
+    		  $("#2nd_circle").hide();
+    		  $("#go2").css({"color":"#D5D5D5"});
+    	  });
+    	  
       });
       
     </script>
@@ -347,7 +415,7 @@ if(ub==null){
 			저희 진단 서비스는 빠르고, 쉽고, 무료입니다 :)
 		</span>
 		<br><br>
-		<input type="button" class="btn-open-popup" value="안내사항">
+		<input type="button" class="btn-open-popup" id="info" value="안내사항">
 		<br><br>
 	</div>
 	<script>
@@ -394,13 +462,46 @@ if(ub==null){
       </div>
       
 	<div style="width: 100%; text-align: center;">
+	
 		<button type="button" onclick="predict()" id="finish"">진단받기</button>
 		<div id="label-container"></div>
 		<br><br><br><br><br>
-		<div id="elseArea" style="display: none;">
-			<a href="company.cmp" class="nav-link px-2 link-body-emphasis">회사</a>
-			<br><br><br><br><br>
+		
+		<div id="elseArea" style="display: none; margin: auto; font-family: 'RIDIBatang'; position: relative; background: #F6F6F6;">
+			<div class="row" style="width: 60%; margin: auto;">
+				<div class="col-lg-6" id="result" style="height: 500px;" onClick="go_update()">
+				<img src="resources/image/background.png" class="img" id="1st_circle" width="500">
+					<div style="position: relative;">
+						<div style="font-size: 11pt; margin: 210px 0px 5px 0px; position: relative;">
+							내 계정에 방금 진단받은 퍼스널 컬러를 저장하고 싶다면?
+						</div>
+						<div style="font-size: 25pt; font-weight: bold; position: relative;">
+							결과 저장하기
+						</div>
+						<div id="go1" style="font-size: 18pt; font-weight: bold; color: #D5D5D5; position: relative;">
+							GO →
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6" id="company" style="height: 500px; position: relative;" onClick="location.href='company.cmp'">
+				<img src="resources/image/background.png" class="img" id="2nd_circle" width="500" style="left: 32px;">
+					<div style="position: relative;">
+						<div style="font-size: 11pt; margin: 210px 0px 5px 0px; position: relative;">
+							결과가 의아하시거나, 좀 더 전문적인 진단을 받고 싶으시다면?
+						</div>
+						<div style="font-size: 25pt; font-weight: bold; position: relative;">
+							근처 진단 업체 소개받기
+						</div>
+						<div id="go2" style="font-size: 18pt; font-weight: bold; color: #D5D5D5; position: relative;">
+							GO →
+						</div>
+					</div>
+				</div>
+			</div>
+			
 		</div>
+		<br><br><br><br><br>
+			
 	</div>
 	
 	<%@ include file="footer.jsp" %>
