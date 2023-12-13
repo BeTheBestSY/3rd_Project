@@ -348,8 +348,6 @@ if(ub==null){
 		</span>
 		<br><br>
 		<input type="button" class="btn-open-popup" value="안내사항">
-		<!-- 저장용 -->
-		<!-- 저장용 -->
 		<br><br>
 	</div>
 	<script>
