@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: hdaon
-=======
-Built-By: sist
->>>>>>> e81a666cd6d6d014c15de58f3e55ec3c484db78a
 Build-Jdk: 12.0.2
 Created-By: Maven Integration for Eclipse
 
