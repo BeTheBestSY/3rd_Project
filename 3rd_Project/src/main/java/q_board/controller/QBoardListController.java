@@ -47,4 +47,6 @@ public class QBoardListController {
 		
 		return viewPage;
 	}
+	
+	
 }
