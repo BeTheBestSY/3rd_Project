@@ -43,7 +43,7 @@
 				<tr>
 					<th align="left" bgcolor="#D0D6CE">작성자</th>
 					<td align="left">
-						<input type="text" name="c_writer" value="${id}" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
+						<input type="text" name="c_writer" value="${loginInfo.u_id}" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
 					</td>
 					<th align="left" bgcolor="#D0D6CE">이메일</th>
 					<td align="left">

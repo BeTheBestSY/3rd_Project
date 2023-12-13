@@ -203,8 +203,10 @@ width: 500px;
  	 ${pageInfo.pagingHtml}
   </center>
 </main>
+
 </div>
-<!-- 안ㄴ녕 -->
+</div>
+
 </body>
 <%@ include file="../views/footer.jsp" %>
 </html>

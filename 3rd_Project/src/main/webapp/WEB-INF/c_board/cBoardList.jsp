@@ -37,7 +37,6 @@
 				<div class="search-wrap">
 		<form action="cBoardList.cb" method="get">
 				<select name="whatColumn" id="whatColumn">
-					<option>선택</option>
 					<option value="all">전체검색</option>
 					<option value="c_subject">제목</option>
 					<option value="c_writer">작성자</option>

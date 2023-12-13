@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminMenu.css">
   <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +52,7 @@
                         <span class="nav_name">&nbsp;후기 게시판</span>
                     </a>
                     
-                    <a href="adminQboardList.admin" class="nav__link">
+                    <a href="qBoardList.admin" class="nav__link">
                         <ion-icon name="help-outline"></ion-icon>
                         <span class="nav_name">&nbsp;문의 게시판</span>
                     </a>
