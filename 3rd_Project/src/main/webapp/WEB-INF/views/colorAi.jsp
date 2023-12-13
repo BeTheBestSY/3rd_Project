@@ -169,7 +169,7 @@ String id = (String) session.getAttribute("id");
 if(id==null){
 %>
 	<script type="text/javascript">
-	alert("로그인을 후 이용해주세요.")
+	alert("로그인 후 이용해주세요.")
 	 window.location.href = "login.u";
 	</script>
 <%
@@ -178,24 +178,16 @@ if(id==null){
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-    <script type="text/javascript">
-      // More API functions here:
-      // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+<script type="text/javascript">
 
-      // the link to your model provided by Teachable Machine export panel
       const URL = "https://teachablemachine.withgoogle.com/models/L1G8-g-Oz/";
 
       let model, webcam, labelContainer, maxPredictions;
   
-      // Load the image model and setup the webcam
       async function init() {
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
 
-        // load the model and metadata
-        // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
-        // or files from your local hard drive
-        // Note: the pose library adds "tmImage" object to your window (window.tmImage)
         model = await tmImage.load(modelURL, metadataURL);
         maxPredictions = model.getTotalClasses();
 
@@ -205,48 +197,78 @@ if(id==null){
         }
       }
 
-      // run the webcam image through the image model
       async function predict() {
-        // predict can take in an image, video or canvas html element
         var image = document.getElementById("face-image")
         const prediction = await model.predict(image, false);
         
+        let maxProbabilityIndex = 0;
+        let maxProbability = prediction[0].probability;
+        
         for (let i = 0; i < maxPredictions-1; i++) {
-            const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;
+           if (prediction[i].probability > maxProbability) {
+                maxProbability = prediction[i].probability;
+                maxProbabilityIndex = i;
+            }
         }
         
-        if (prediction[0].className == "봄 라이트" && prediction[0].probability.toFixed(3) >= 0.5) {
-          labelContainer.childNodes[0].innerHTML =  "봄 라이트입니다"  ;
-        } else if (prediction[1].className == "봄 브라이트" && prediction[1].probability.toFixed(3) >= 0.5) {
-          labelContainer.childNodes[0].innerHTML =  "봄 브라이트입니다"  ;
-        } else if (prediction[2].className == "여름 라이트" && prediction[2].probability.toFixed(3) >= 0.5) {
-          labelContainer.childNodes[0].innerHTML = "여름 라이트입니다"  ;
-        } else if (prediction[3].className == "여름 브라이트" && prediction[3].probability.toFixed(3) >= 0.5) {
-          labelContainer.childNodes[0].innerHTML = "여름 브라이트입니다"  ;
-		} else if (prediction[4].className == "여름 뮤트" && prediction[4].probability.toFixed(3) >= 0.5) {
-		  labelContainer.childNodes[0].innerHTML = "여름 뮤트입니다"  ;
-		} else if (prediction[5].className == "가을 뮤트" && prediction[5].probability.toFixed(3) >= 0.5) {
-		  labelContainer.childNodes[0].innerHTML = "가을 뮤트입니다"  ;
-		} else if (prediction[6].className == "가을 스트롱" && prediction[6].probability.toFixed(3) >= 0.5) {
-		  labelContainer.childNodes[0].innerHTML = "가을 스트롱입니다"  ;
-		} else if (prediction[7].className == "가을 딥" && prediction[7].probability.toFixed(3) >= 0.5) {
-			labelContainer.childNodes[0].innerHTML = "가을 딥입니다"  ;
-		} else if (prediction[8].className == "겨울 브라이트" && prediction[8].probability.toFixed(3) >= 0.5) {
-			labelContainer.childNodes[0].innerHTML = "겨울 브라이트입니다"  ;
-		} else if (prediction[9].className == "겨울 딥" && prediction[9].probability.toFixed(3) >= 0.5) {
-			labelContainer.childNodes[0].innerHTML = "겨울 딥입니다"  ;
-		} else if (prediction[10].className == "그 외" && prediction[10].probability.toFixed(3) >= 0.5) {
-	          labelContainer.childNodes[0].innerHTML = "이 사진으로는 측정드릴 수가 없을 것 같아요! 다른 사진을 넣어 주시겠어요? "; 
-	       
-		} else {
-          labelContainer.childNodes[0].innerHTML = "이 사진으로는 측정드릴 수가 없을 것 같아요! 다른 사진을 넣어 주시겠어요? ";
+        let resultText = "<br><br><table style='margin-left:35%; width:40%; height:300px;'>";
+        for (let i = 0; i < maxPredictions; i++) {
+            var classPrediction = "<tr><td width='40%'>" + prediction[i].className + "</td><td width='10%'> : </td><td width='40%' align='left'>" + (prediction[i].probability ).toFixed(2)*1000/10+"%</td><tr>";
+            resultText += classPrediction;
         }
-      }
-
+        
+        labelContainer.childNodes[1].innerHTML = resultText +"</tr></table>";
+        
+        if (maxProbability >= 0.3) {
+            switch (prediction[maxProbabilityIndex].className) {
+            case "봄 라이트":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 봄 라이트 '</b> 입니다.</big><br><br><br>";
+                break;
+            case "봄 브라이트":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 봄 브라이트 '</b> 입니다.</big><br><br><br>";
+                break;
+            case "여름 라이트":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 여름 라이트 '</b> 입니다.</big><br><br><br>";
+                break;
+            case "여름 브라이트":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 여름 브라이트 '</b> 입니다.</big><br><br><br>";
+                break;
+            case "여름 뮤트":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 여름 뮤트 '</b> 입니다.</big><br><br><br>";
+                break;
+            case "가을 뮤트":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 가을 뮤트 '</b> 입니다.</big><br><br><br>";
+                break;
+            case "가을 스트롱":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 가을 스트롱 '</b> 입니다.</big><br><br><br>";
+                break;
+            case "가을 딥":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 가을 딥 '</b> 입니다.</big><br><br><br>";
+                break;
+            case "겨울 브라이트":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 겨울 브라이트 '</b> 입니다.</big><br><br><br>";
+                break;
+            case "겨울 딥":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big><b>' 겨울 딥 '</b> 입니다</big><br><br><br>";
+                break;
+            case "그 외":
+                labelContainer.childNodes[0].innerHTML = "<br><br><big>이 사진으로는 측정할 수 없어요!<br> 다른 사진을 넣어 주시겠어요?</big><br><br>";
+                break;
+                }
+        }
+        else {
+            labelContainer.childNodes[0].innerHTML = "<br><br><big>이 사진으로는 측정할 수 없어요!<br> 다른 사진을 넣어 주시겠어요?</big><br><br>";
+        }
+    }
+      
+      $(function(){
+         $("#finish").click(function(){
+            $("#elseArea").show();
+            $("#label-container").show(); 
+         });
+      });
+      
     </script>
-
 
  <script>
       function readURL(input) {
