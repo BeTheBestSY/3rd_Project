@@ -34,10 +34,10 @@ public class CompanyListController {
 			@RequestParam(value ="pageNumber", required = false) String pageNumber,
 			HttpServletRequest request,
 			Model model) {
-		System.out.println("asdasd");
+		
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
-		map.put("keyword", "%"+keyword+"%");		
+		map.put("keyword", "%"+keyword+"%");
 		
 		int totalCount = dao.getTotalCount(map);
 		String url = request.getContextPath()+command;
@@ -48,10 +48,11 @@ public class CompanyListController {
 			
 		model.addAttribute("list", list);
 		model.addAttribute("pageInfo", pageInfo);
-		
 		model.addAttribute("oneY", oneY);
 		model.addAttribute("oneX", oneX);
 		model.addAttribute("oneName", oneName);
+		model.addAttribute("whatColumn", whatColumn);
+		model.addAttribute("keyword", keyword);
 		
 		return viewPage;
 		
