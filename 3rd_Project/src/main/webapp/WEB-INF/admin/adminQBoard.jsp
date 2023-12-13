@@ -59,7 +59,7 @@
           <table class="colr_table2"  style="font-size: 13pt; text-align: center; ">
 			<c:set var="num" value="${pageInfo.totalCount-pageInfo.beginRow+1}" />
 				<c:forEach var="bb" items="${ list }">
-					<tr style="">
+					<tr style="border-bottom:1px solid #eee;">
 					<td width="11%">${num }
 		      		<c:set var="num" value="${num -1}" /></td>
 						<td align="left" style=" width:48%;  text-align: left;">
