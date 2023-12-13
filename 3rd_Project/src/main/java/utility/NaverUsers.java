@@ -19,6 +19,9 @@ public class NaverUsers {
 	private String refresh_token;
 	private String header;
 	private String apiURL;
+	private String naverCode;
+	private String name;
+	private String mobile;
 	
 	public NaverUsers(String access_token, String refresh_token) throws ParseException {
 		this.access_token = access_token;
@@ -34,6 +37,10 @@ public class NaverUsers {
         JSONObject jsonObj = (JSONObject)obj;
         JSONObject resObj = (JSONObject)jsonObj.get("response");
         // 여기서부터 해야함!!
+        this.naverCode = (String)resObj.get("id");
+        this.name = (String)resObj.get("name");
+        this.mobile = (String)resObj.get("mobile");
+        
         System.out.println(responseBody);
 	}
 	
@@ -45,11 +52,13 @@ public class NaverUsers {
                 con.setRequestProperty(header.getKey(), header.getValue());
             }
 
-
+            
             int responseCode = con.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출
+            	System.out.println("정상 호출2");
                 return readBody(con.getInputStream());
             } else { // 에러 발생
+            	System.out.println("에러 발생2");
                 return readBody(con.getErrorStream());
             }
         } catch (IOException e) {
@@ -89,7 +98,30 @@ public class NaverUsers {
             throw new RuntimeException("API 응답을 읽는데 실패했습니다.", e);
         }
     }
-	
+
+	public String getNaverCode() {
+		return naverCode;
+	}
+
+	public void setNaverCode(String naverCode) {
+		this.naverCode = naverCode;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
 	
 
 }

@@ -31,7 +31,11 @@
 			</tr>
 			<tr>
 				<th>* 아이디</th>
-				<td>${loginInfo.u_id }</td>
+				<td>
+					<c:if test="${loginInfo.u_link eq 'S' }">${loginInfo.u_id }</c:if>
+					<c:if test="${loginInfo.u_link eq 'N' }">네이버 연동</c:if>
+					<c:if test="${loginInfo.u_link eq 'K' }">카카오 연동</c:if>
+				</td>
 			</tr>
 			<tr>
 				<th>* 휴대전화번호</th>

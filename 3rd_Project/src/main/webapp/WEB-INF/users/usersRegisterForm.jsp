@@ -110,14 +110,9 @@
 						<c:forEach var="first" items="${firstList }">
 							<option value="${first }" <c:if test="${fn:split(ub.u_phone, '-')[0] eq first }">selected</c:if>>${first }</option>
 						</c:forEach>
-					</select>
 					</select> - 
-					&nbsp;
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[1]}" maxlength="4" required> - 
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[2]}" maxlength="4" required>
-					-
-					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" maxlength="4" required> - 
-					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" maxlength="4" required>
 				</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
