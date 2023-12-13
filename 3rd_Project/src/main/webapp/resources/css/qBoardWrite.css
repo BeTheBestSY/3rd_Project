@@ -107,14 +107,14 @@ section.notice {
 
 .btn-dark {
   background: #D0D6CE;
-  color: #373737;
+  color: #fff;
   height:50px;
   border-radius:3px;
 }
 
 .btn-dark:hover, .btn-dark:focus {
   background: #EDE5D8;
-  color: #373737;
+  color: #fff;
   border:none;
 }
 
