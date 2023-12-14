@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import q_board.model.QBoardBean;
+import users.model.UsersBean;
 import utility.Paging;
 
 
@@ -36,7 +37,7 @@ public class AdminDao {
 
 	public QBoardBean selectContent(int q_num) {
 		QBoardBean bb = sqlSessionTemplate.selectOne(nameSpace+"selectContent",q_num);
-		return bb; 
+		return bb;
 	}
 
 	public void deleteBoard(int q_num) {
@@ -45,5 +46,8 @@ public class AdminDao {
 		
 	}
 
+	public List<UsersBean> getUsers() {
+		return sqlSessionTemplate.selectList(nameSpace+"getUsers");
+	}
 	
 }

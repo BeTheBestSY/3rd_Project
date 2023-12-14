@@ -27,12 +27,12 @@
                 </div>
                 <div class="nav__list">
 
-                    <div href="#" class="nav__link collapse">
+                    <a href="adminUsersList.admin" class="nav__link collapse">
                         <ion-icon name="people-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">&nbsp;고객</span>
-                    </div>
+                    </a>
                     
-                    <a href="#" class="nav__link">
+                    <a href="adminProductList.admin" class="nav__link">
                     	<ion-icon name="cart-outline"></ion-icon>
 						<span class="nav_name">&nbsp;화장품</span>
                     </a>

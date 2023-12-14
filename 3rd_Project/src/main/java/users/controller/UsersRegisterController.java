@@ -52,7 +52,7 @@ public class UsersRegisterController {
 				out.flush();
 				return viewPage;
 			}
-			ub.setU_link("S");
+			ub.setU_jointype("S");
 			ud.register(ub);
 			application.setAttribute("flag", true);
 		}
