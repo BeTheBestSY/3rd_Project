@@ -36,7 +36,7 @@ public class AdminDao {
 
 	public QBoardBean selectContent(int q_num) {
 		QBoardBean bb = sqlSessionTemplate.selectOne(nameSpace+"selectContent",q_num);
-		return bb;
+		return bb; 
 	}
 
 	public void deleteBoard(int q_num) {

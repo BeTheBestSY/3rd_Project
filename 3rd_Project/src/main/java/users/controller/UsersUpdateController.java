@@ -29,7 +29,7 @@ public class UsersUpdateController {
 	}
 	
 	@RequestMapping(value = command, method = RequestMethod.POST)
-	public String doAction2(@ModelAttribute(value = "ub") UsersBean ub, HttpServletResponse response) throws IOException {
+	public String doAction2(@ModelAttribute(value = "ub") UsersBean ub, HttpServletResponse response, HttpSession session) throws IOException {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html; charset=UTF-8");
 		String u_phone = ub.getU_phone().replace(",","-"); // 010-1234-5678
