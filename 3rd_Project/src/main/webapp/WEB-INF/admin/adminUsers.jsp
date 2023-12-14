@@ -32,48 +32,61 @@
 			</div>
 		</div>
 	</div>
-</div>
-<div id="board-list" >
-	<div class="container" >
-		<div class="row">
-			<div class="whole1">
-				<div class="topbox1">
-					<input type="hidden" name="q_num" value="${ bb.q_num }">
-					<input type="hidden" name="pageNumber" value="${ pageInfo.pageNumber}">
-					<table class="board-table" style="font-size: 13pt; text-align: center; table-layout:fixed;">
-						<tr style="background: #f4f4f4;">
-							<th scope="col" class="th-num" width="10%">번호</th>
-							<th scope="col" class="th-id" width="24%" align="left">아이디</th>
-							<th width="10%" class="th-name">이름</th>
-							<th width="10%" class="th-phone">휴대폰번호</th>
-							<th scope="col" class="th-address" width="10%">주소</th>
-							<th width="10%" class="th-point">보유 포인트</th>
-							<th width="10%" class="th-paint">결제 수단</th>
-							<th width="10%" class="th-personalc">퍼스널컬러</th>
-							<th width="10%" class="th-jointype">가입유형</th>
-							<th width="10%" class="th-joindate">가입일</th>
-						</tr>
-						<c:if test="${empty usersLists }">존재하지 않는 회원 입니다.</c:if>
-						<c:forEach var="ub" items="${usersLists }" varStatus="status">
-							<tr>
-								<td>${status.index }</td>
-								<td>${ub.u_id }</td>
-								<td>${ub.u_name }</td>
-								<td>${ub.u_phone }</td>
-								<td>${ub.u_address }</td>
-								<td>${ub.u_point }</td>
-								<td>${ub.u_pay }</td>
-								<td>${ub.u_color }</td>
-								<td>${ub.u_jointype }</td>
-								<td>${ub.u_joindate }</td>
+	<div id="board-list" >
+		<div class="container" >
+			<div class="row">
+				<div class="whole1">
+					<div class="topbox1">
+						<%-- <input type="hidden" name="q_num" value="${ bb.q_num }">
+						<input type="hidden" name="pageNumber" value="${ pageInfo.pageNumber}"> --%>
+						<table class="board-table" style="font-size: 13pt; text-align: center; table-layout:fixed;">
+							<tr style="background: #f4f4f4;">
+								<th scope="col" class="th-num">번호</th>
+								<th scope="col" class="th-id">아이디</th>
+								<th scope="col" class="th-name">이름</th>
+								<th scope="col" class="th-phone">휴대폰번호</th>
+								<th scope="col" class="th-address">주소</th>
+								<th scope="col" class="th-point">보유 포인트</th>
+								<th scope="col" class="th-paint">결제 수단</th>
+								<th scope="col" class="th-personalc">퍼스널컬러</th>
+								<th scope="col" class="th-jointype">가입유형</th>
+								<th scope="col" class="th-joindate">가입일</th>
 							</tr>
-						</c:forEach>
-					</table>
+							<c:if test="${empty usersLists }">존재하지 않는 회원 입니다.</c:if>
+							<c:set var="u_num" value="0"/>
+							<c:forEach var="ub" items="${usersLists }" varStatus="status">
+								<tr>
+									<td>
+										${u_num }
+										<c:set var="u_num" value="${u_num+1 }"/>
+									</td>
+									<td>${ub.u_id }</td>
+									<td>${ub.u_name }</td>
+									<td>${ub.u_phone }</td>
+									<td>${ub.u_address }</td>
+									<td>${ub.u_point }</td>
+									<td>${ub.u_pay }</td>
+									<td>${ub.u_color }</td>
+									<c:if test="${ub.u_jointype eq 'S'}">
+										<td>기본 회원</td>
+									</c:if>
+									<c:if test="${ub.u_jointype eq 'N'}">
+										<td>네이버 연동 회원</td>
+									</c:if>
+									<c:if test="${ub.u_jointype eq 'K'}">
+										<td>카카오 연동 회원</td>
+									</c:if>
+									<td>${ub.u_joindate }</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 <%-- <div class="middlebox">
 	<div class="box2 scrollnone">
 		<div class="box2 scrollnone">

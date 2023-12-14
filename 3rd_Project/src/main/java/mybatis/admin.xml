@@ -39,7 +39,7 @@
 	</delete>
 	<select id="getUsers" resultType="Users">
 		select * from users
-		order by u_joindate desc
+		order by u_joindate
 	</select>
 </mapper> 
 
