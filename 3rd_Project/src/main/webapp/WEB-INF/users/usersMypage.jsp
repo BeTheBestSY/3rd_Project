@@ -7,15 +7,22 @@
 		background: #F6F6F6;
 		padding-left: 20px;
 	}
+	@font-face {
+	    font-family: 'GangwonEduSaeeum_OTFMediumA';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduSaeeum_OTFMediumA.woff') format('woff');
+	    font-weight: normal;
+    	font-style: normal;
+	}
 </style>
 
 <%@ include file="usersMypageMenuTop.jsp" %>
 
-<div style="margin-bottom: 50px; font-size: 10pt;">
+<div style="margin-bottom: 28px; font-size: 10pt;">
 	<a href="mypage.u" id="none_under">마이페이지</a> > 회원정보 > <a href="mypage.u" id="none_under">회원정보 조회</a>
 </div>
+<hr style="margin-bottom: 50px;">
 				
-<div style="font-family: 'MaruBuri-Regular'; font-size: 25pt; font-weight: bold; margin-bottom: 50px;">
+<div style="font-family: 'GangwonEduSaeeum_OTFMediumA'; font-size: 45pt; margin: 0px 0px 50px 20px;">
 	반갑습니다, ${loginInfo.u_name}님!
 </div>
 

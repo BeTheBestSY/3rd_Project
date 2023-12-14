@@ -1,22 +1,18 @@
 package users.controller;
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import users.model.UsersBean;
 import users.model.UsersDao;
   
+
 @Controller
 public class UsersRegisterController {
 	private final String command = "/register.u";
@@ -36,6 +32,7 @@ public class UsersRegisterController {
 	public String doAction2(@ModelAttribute("ub") UsersBean ub,
 						@RequestParam String u_rePassword,
 						HttpServletResponse response) throws IOException {
+		
 		if(!(Boolean) application.getAttribute("flag")) {
 			String u_phone = ub.getU_phone().replace(",","-"); // 010-1234-5678
 			ub.setU_phone(u_phone);
@@ -52,7 +49,10 @@ public class UsersRegisterController {
 				out.flush();
 				return viewPage;
 			}
+			
 			ub.setU_link("S");
+			ub.setU_point(0);
+			ub.setU_pay("-");
 			ud.register(ub);
 			application.setAttribute("flag", true);
 		}
