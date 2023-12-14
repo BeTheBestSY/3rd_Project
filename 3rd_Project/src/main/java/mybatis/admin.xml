@@ -39,7 +39,30 @@
 	</delete>
 	<select id="getUsers" resultType="Users">
 		select * from users
-		order by u_joindate
+		<if test="whatColumn == 'all'">
+			where u_id like #{keyword} or
+			u_name like #{keyword} or
+			u_phone like #{keyword} or
+			u_address like #{keyword}
+		</if>
+		<if test="whatColumn == 'u_name'">
+			where u_name like #{keyword}
+		</if>
+		<if test="whatColumn == 'u_id'">
+			where u_id like #{keyword}
+		</if>
+		<if test="whatColumn == 'u_phone'">
+			where u_phone like #{keyword}
+		</if>
+		order by u_joindate desc
+	</select>
+	<delete id="deleteUsers">
+		delete users
+		where u_id=#{u_id}
+	</delete>
+	<select id="getUserById" resultType="Users">
+		select * from users
+		where u_id=#{u_id}
 	</select>
 </mapper> 
 

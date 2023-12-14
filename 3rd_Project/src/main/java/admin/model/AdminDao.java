@@ -46,8 +46,16 @@ public class AdminDao {
 		
 	}
 
-	public List<UsersBean> getUsers() {
-		return sqlSessionTemplate.selectList(nameSpace+"getUsers");
+	public List<UsersBean> getUsers(Map<String, String> map) {
+		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map);
+	}
+
+	public void deleteUsers(String u_id) {
+		sqlSessionTemplate.delete(nameSpace+"deleteUsers", u_id);
+	}
+
+	public UsersBean getUserById(String u_id) {
+		return sqlSessionTemplate.selectOne(nameSpace+"getUserById", u_id);
 	}
 	
 }
