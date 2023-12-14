@@ -211,10 +211,11 @@
 <%
 UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
 if(ub==null){
+	session.setAttribute("destination", "redirect:/colorAi.ai");
 %>
 	<script type="text/javascript">
 	alert("로그인 후 이용 가능합니다.")
-	 window.location.href = "login.u";
+	window.location.href = "login.u";
 	</script>
 <%
 };

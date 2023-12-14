@@ -12,7 +12,7 @@
 	#content td{
 		padding-left: 25px; 
 	}
-	ul{
+	#list{
 		line-height: 180%;
 	}
 }
@@ -22,11 +22,6 @@
 
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-	/* function msg(){
-		if(confirm('탈퇴하면 포인트가 삭제됩니다. 정말로 탈퇴하시겠습니까?'))
-			location.href = 'delete.u?u_id=${loginInfo.u_id }';
-	} */
-	
 	$(document).ready(function() {
 		resizeContent();
 	});
@@ -49,12 +44,10 @@
 				<br>
 				
 				<b>회원정보</b>
-				<ul>
+				<ul id="list">
 					<li><a href="mypage.u" id="none_under">회원정보 조회</a></li>
 					<li><a href="update.u" id="none_under">회원정보 수정</a></li>
-					<!-- <input type="button" value="회원정보 수정하기" onClick="location.href='update.u'"> -->
-					<li><a href="#" id="none_under">회원탈퇴</a></li>
-					<!-- <input type="button" value="회원탈퇴" onClick="msg()"> -->
+					<li><a href="deleteForm.u" id="none_under">회원탈퇴</a></li>
 				</ul>
 				<br>
 				

@@ -7,15 +7,22 @@
 		background: #F6F6F6;
 		padding-left: 20px;
 	}
+	@font-face {
+	    font-family: 'GangwonEduSaeeum_OTFMediumA';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduSaeeum_OTFMediumA.woff') format('woff');
+	    font-weight: normal;
+    	font-style: normal;
+	}
 </style>
 
 <%@ include file="usersMypageMenuTop.jsp" %>
 
-<div style="margin-bottom: 50px; font-size: 10pt;">
+<div style="margin-bottom: 28px; font-size: 10pt;">
 	<a href="mypage.u" id="none_under">마이페이지</a> > 회원정보 > <a href="mypage.u" id="none_under">회원정보 조회</a>
 </div>
+<hr style="margin-bottom: 50px;">
 				
-<div style="font-family: 'MaruBuri-Regular'; font-size: 25pt; font-weight: bold; margin-bottom: 50px;">
+<div style="font-family: 'GangwonEduSaeeum_OTFMediumA'; font-size: 45pt; margin: 0px 0px 50px 20px;">
 	반갑습니다, ${loginInfo.u_name}님!
 </div>
 
@@ -27,16 +34,16 @@
 			<tr style="border-top: 1px solid #D5D5D5;">
 				<th>아이디</th>
 				<td colspan="3">
-					<c:if test="${loginInfo.u_link eq 'S' }">${loginInfo.u_id }</c:if>
-					<c:if test="${loginInfo.u_link eq 'N' }">네이버 연동</c:if> <c:if
-						test="${loginInfo.u_link eq 'K' }">카카오 연동</c:if></td>
+					<c:if test="${loginInfo.u_jointype eq 'S' }">${loginInfo.u_id}</c:if>
+					<c:if test="${loginInfo.u_jointype eq 'N' }">네이버 연동</c:if> <c:if
+						test="${loginInfo.u_jointype eq 'K' }">카카오 연동</c:if></td>
 			</tr>
 			<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA;">
 				<th width="15%">이름</th>
 				<td width="35%">${loginInfo.u_name}</td>
 				<th width="15%">전화번호</th>
-				<td width="35%"><c:if test="${loginInfo.u_link eq 'S' }">${loginInfo.u_phone }</c:if>
-					<c:if test="${loginInfo.u_link eq 'N' || loginInfo.u_link eq 'K'}">필수 입력 사항입니다.</c:if>
+				<td width="35%"><c:if test="${loginInfo.u_jointype eq 'S' }">${loginInfo.u_phone }</c:if>
+					<c:if test="${loginInfo.u_jointype eq 'N' || loginInfo.u_jointype eq 'K'}">필수 입력 사항입니다.</c:if>
 				</td>
 			</tr>
 			<tr

@@ -60,6 +60,7 @@
 			<c:set var="idNum" value="1" />
 			<c:forEach var="ub" items="${u_lists}">
 				<tr height="40"><td></td><td>- 아이디 <c:if test="${fn:length(u_lists)>0}">${idNum}</c:if> : <font color="red"><b>${ub.u_id}</b></font><br></td></tr>
+				<c:set var="idNum" value="${idNum+1}" />
 			</c:forEach>
 		</table>
 		</c:if>
