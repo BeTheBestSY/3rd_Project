@@ -8,7 +8,7 @@ public class UsersBean {
 	private String u_address;
 	private int u_point;
 	private String u_pay;
-	private String u_link;
+	private String u_link; 
 	private String u_color;
 	
 	public String getU_id() {
