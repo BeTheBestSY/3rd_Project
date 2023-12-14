@@ -56,5 +56,6 @@ public class UsersDao {
 		sqlSessionTemplate.delete(namespace+".deleteUsers", u_id);
 	}
 
+
 	
 }
