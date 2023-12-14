@@ -20,7 +20,7 @@
 
 	function msg(){
 	if(confirm('탈퇴 시 정보 복구가 불가능합니다. 정말 탈퇴하시겠습니까?'))
-		location.href = 'delete.u?u_id=${loginInfo.u_id }';
+		location.href = 'delete.u?u_id=${loginInfo.u_id}';
 	}
 </script>
 
