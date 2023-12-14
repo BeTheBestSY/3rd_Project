@@ -16,7 +16,7 @@
 	function checkDel(){
 		if(confirm("삭제 시 복구가 불가능합니다. 삭제 진행하시겠습니까?")){
 			return true;
-		} 
+		}
 		return false;
 	}
 	function allDel(){
