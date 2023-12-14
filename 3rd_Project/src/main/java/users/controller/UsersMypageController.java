@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,13 +35,18 @@ public class UsersMypageController {
 	private final String command_del = "/delete.u";
 	private final String command_c_board = "/c_board.u";
 	private final String command_c_boardChkDel = "/c_boardChkDel.u";
-	private final String command_c_boardAllDel = "/c_boardAllDel.u";
+	private final String command_c_boardDel = "/c_boardDel.u";
+	private final String command_c_boardDetail = "/c_boardDetail.u";
+	private final String command_c_boardUpdate = "/c_boardUpdate.u";
 	private final String command_q_board = "/q_board.u";
 	private final String viewPage = "usersMypage";
 	private final String viewPage_delForm = "usersMypageDelId";
 	private final String viewPage_del = "redirect";
 	private final String viewPage_c_board = "usersMypageCboard";
+	private final String viewPage_c_boardRedirct = "redirect:/c_board.u";
+	private final String viewPage_c_boardDetail = "usersMypageCboardDetail";
 	private final String viewPage_q_board = "usersMypageQboard";
+	
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	public String doAction(HttpSession session) {
@@ -91,7 +97,7 @@ public class UsersMypageController {
 		
 		int totalCount = cd.getTotalCountById(map);
 		String url = request.getContextPath()+command_c_board;
-		Paging pageInfo = new Paging(pageNumber, "10", totalCount, url, whatColumn, keyword);
+		Paging pageInfo = new Paging(pageNumber, "5", totalCount, url, whatColumn, keyword);
 		
 		List<CBoardBean> c_boardLists = cd.getBoardById(pageInfo,map);
 		model.addAttribute("c_boardLists", c_boardLists);
@@ -99,14 +105,25 @@ public class UsersMypageController {
 		return viewPage_c_board;
 	}
 	
-	@RequestMapping(value = command_c_boardAllDel, method = RequestMethod.GET)
-	public String c_boardAllDel(HttpSession session) {
-		return viewPage_c_board;
+	@RequestMapping(value = command_c_boardDel, method = RequestMethod.GET)
+	public String c_boardDel(HttpSession session, @RequestParam("c_num") int c_num) {
+		cd.deleteBoard(c_num);
+		return viewPage_c_boardRedirct;
 	}
 	
 	@RequestMapping(value = command_c_boardChkDel, method = RequestMethod.GET)
-	public String c_boardChkDel(HttpSession session) {
-		return viewPage_c_board;
+	public String c_boardChkDel(HttpSession session, @RequestParam("check") int[] checks) {
+		cd.deleteChkBoard(checks);
+		return viewPage_c_boardRedirct;
+	}
+	
+	@RequestMapping(value = command_c_boardDetail, method = RequestMethod.GET)
+	public String c_boardUpdate(HttpSession session, Model model, @RequestParam("c_num") int c_num, @RequestParam("c_num") String pageNumber) {
+		//cd.updateReadcount(c_num); => 마이페이지 내에서 본인이 조회할 때는 조회수가 오르지 않음.
+		CBoardBean cb = cd.selectContent(c_num);
+		model.addAttribute("pageNumber", pageNumber);
+		model.addAttribute("cb", cb);
+		return viewPage_c_boardDetail;
 	}
 	
 	@RequestMapping(value = command_q_board, method = RequestMethod.GET)

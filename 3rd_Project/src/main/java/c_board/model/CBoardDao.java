@@ -84,6 +84,13 @@ public class CBoardDao {
 		int totalCount = sqlSessionTemplate.selectOne(namespace+"getTotalCountById",map);
 		return totalCount;
 	}
+
+	public void deleteChkBoard(int[] checks) {
+		for(int i=0; i<checks.length; i++) {
+			int c_num = checks[i];
+			sqlSessionTemplate.delete(namespace+"deleteBoard",c_num);
+		}
+	}
 	
 	
 	
