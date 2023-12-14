@@ -28,7 +28,7 @@
 
 	function resizeContent() {
 		var contentHeight = $("#content").height();
-		$('#nav').css({'height':contentHeight+340+'px'});
+		$('#nav').css({'height':contentHeight+240+'px'});
 	}
 </script>
 
@@ -52,14 +52,14 @@
 				<br>
 				
 				<b>게시물 관리</b>
-				<ul>
-					<li><a href="#" id="none_under">후기 게시판</a></li>
-					<li><a href="#" id="none_under">문의 게시판</a></li>
+				<ul id="list">
+					<li><a href="c_board.u" id="none_under">후기 게시판</a></li>
+					<li><a href="q_board.u" id="none_under">문의 게시판</a></li>
 				</ul>
 				<br>
 				
 				<b>나의 쇼핑</b>
-				<ul style="line-height: 180%;">
+				<ul id="list" style="line-height: 180%;">
 					<li><a href="#" id="none_under">주문내역 조회</a></li>
 				</ul>
 				
@@ -67,5 +67,5 @@
 			</div>
 		</td>
 		<td valign="top">
-			<div id="content" style="width: 1060px; border-radius: 20px; box-shadow: 5px 5px 10px 0px #BDBDBD; padding: 40px; padding-bottom: 300px; font-family: 'RIDIBatang';">
+			<div id="content" style="width: 1060px; border-radius: 20px; box-shadow: 5px 5px 10px 0px #BDBDBD; padding: 40px; padding-bottom: 200px; font-family: 'RIDIBatang';">
 				

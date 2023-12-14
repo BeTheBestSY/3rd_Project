@@ -53,12 +53,12 @@
 								<th scope="col" class="th-joindate">가입일</th>
 							</tr>
 							<c:if test="${empty usersLists }">존재하지 않는 회원 입니다.</c:if>
-							<c:set var="u_num" value="0"/>
-							<c:forEach var="ub" items="${usersLists }" varStatus="status">
+							<c:set var="u_num" value="${fn:length(usersLists)}"/>
+							<c:forEach var="ub" items="${usersLists}" varStatus="status">
 								<tr>
 									<td>
 										${u_num }
-										<c:set var="u_num" value="${u_num+1 }"/>
+										<c:set var="u_num" value="${u_num-1}"/>
 									</td>
 									<td>${ub.u_id }</td>
 									<td>${ub.u_name }</td>
