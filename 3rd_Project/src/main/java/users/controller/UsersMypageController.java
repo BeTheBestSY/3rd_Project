@@ -27,7 +27,7 @@ public class UsersMypageController {
 		session.setAttribute("loginInfo", ub_new); 
 		// 마이페이지 들어갈 때 마다 DB에서 정보 받아와서 새로 loginInfo 설정.
 		// 이렇게 안하면 수정사항이 제대로 반영이 안되더라구.
-		
+		// 저장용
 		return viewPage;
 	}
 	

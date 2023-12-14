@@ -64,7 +64,7 @@
  
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
-						<a href="qBoardList.qb" class="nav-link px-2 link-body-emphasis">후기 게시판</a>
+						<a href="cBoardList.cb" class="nav-link px-2 link-body-emphasis">후기 게시판</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
 						<a href="productList.p" class="nav-link px-2 link-body-emphasis">쇼핑하기</a>

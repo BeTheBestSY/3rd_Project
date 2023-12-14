@@ -32,25 +32,24 @@
 	
 	 <div id="board-search">
 		<div class="container">
-            <div class="search-window">
-                <form action="">
+            <div class="search-window" style="padding: 20px 15px 10px 15px; background-color: #F7F3ED;">
 				<div class="search-wrap">
-		<form action="cBoardList.cb" method="get">
-				<select name="whatColumn" id="whatColumn">
-					<option value="all">전체검색</option>
-					<option value="c_subject">제목</option>
-					<option value="c_writer">작성자</option>
-				</select>
-			 	<input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
-			 	
-			<button type="submit" class="btn btn-dark">검색</button>
-            </div>
-		   </form>
-        </div>
+					<form action="cBoardList.cb" method="get">
+					<select name="whatColumn" id="whatColumn">
+						<option value="all">전체검색</option>
+						<option value="c_subject">제목</option>
+						<option value="c_writer">작성자</option>
+					</select>
+				 	<input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
+					<button type="submit" class="btn btn-dark">검색</button>
+				</form>
+            	</div>
+        	</div>
+    	</div>
     </div>
 
- <div id="board-list">
-        <div class="container">
+<div id="board-list">
+<div class="container">
         
 <input type=button value="글쓰기" onClick="insert()" class="btn btn-white">
 <table class="board-table" style="font-size: 13pt; text-align: center;">

@@ -9,7 +9,7 @@
 	</select>
 	<insert id="register">
 		insert into users
-		values(#{u_id}, #{u_name}, #{u_password}, #{u_phone}, #{u_address}, 0, '미정', #{u_link}, #{u_color} )
+		values(#{u_id}, #{u_name}, #{u_password}, #{u_phone}, #{u_address}, 0, '미정', #{u_link}, default, #{u_color} )
 	</insert>
 	<select id="getUserById" resultType="Users">
 		select * from users
@@ -42,4 +42,5 @@
 		delete users
 		where u_id=#{u_id}
 	</delete>
+	
 </mapper>
