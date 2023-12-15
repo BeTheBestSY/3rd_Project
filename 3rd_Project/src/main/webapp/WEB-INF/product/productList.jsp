@@ -166,7 +166,7 @@
 					</c:if>
 					
 					<c:if test="${fn:length(productLists) != 0}">
-						<c:forEach var="pb" items="${productLists}">
+						<c:forEach var="pb" items="${productLists}"> 
 							<div class="col">
 						    	<div class="card shadow-sm">
 						        	<a href="prodView.p?p_num=${pb.p_num}&pageNumber=${pageInfo.pageNumber}">
