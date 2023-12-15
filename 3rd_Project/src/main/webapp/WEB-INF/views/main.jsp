@@ -156,9 +156,9 @@
 			<small>(※ 이용료 무료, 로그인 이후 이용가능)</small>
 		</span> 
 		<br><br><br><br>
-		<div style="border: 1px solid black; width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white;"></div>
+		<div style="width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white; background-image: url('resources/image/ai1.png'); background-repeat: no-repeat; background-size: cover; box-shadow: 5px 5px 10px 0px #BDBDBD;"></div>
 		&nbsp;&nbsp;&nbsp;
-		<div style="border: 1px solid black; width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white;"></div>
+		<div style="width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white; background-image: url('resources/image/ai2.png'); background-repeat: no-repeat; background-size: cover; box-shadow: 5px 5px 10px 0px #BDBDBD;"></div>
 	</div>
 	
 	
@@ -189,7 +189,7 @@
 			퍼스널 컬러별 연예인을 둘러보시면서 스타일링에 대한 감을 잡을 수 있게 도와드려요.
 		</span> 
 		<br><br><br><br> 
-		<div style="width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white; background-image: url('resources/image/every1.png'); background-repeat: no-repeat; background-size: cover; box-shadow: 5px 5px 10px 0px #BDBDBD;"></div>
+		<div style="width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white; background-image: url('resources/image/every.png'); background-repeat: no-repeat; background-size: cover; box-shadow: 5px 5px 10px 0px #BDBDBD;"></div>
 		&nbsp;&nbsp;&nbsp;
 		<div style="border: 1px solid black; width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white;"></div>
 	</div>
