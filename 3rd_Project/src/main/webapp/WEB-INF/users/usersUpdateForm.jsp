@@ -106,6 +106,7 @@
 								<option value="${pc}"
 									<c:if test="${pc eq loginInfo.u_color }">selected</c:if>>${pc}</option>
 							</c:forEach>
+							<!-- 저장용 -->
 					</select></td>
 				</tr>
 			</table>
