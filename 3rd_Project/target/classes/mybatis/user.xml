@@ -24,7 +24,7 @@
 		where u_name=#{u_name} and u_id=#{u_id} and u_phone=#{u_phone}
 	</select>
 	<insert id="insertFeedback">
-		insert into feedback values(feedback_seq.nextval, #{u_id}, #{fb_content}, #{fb_requestApi})
+		insert into feedback values(feedback_seq.nextval, #{u_id}, #{u_jointype}, #{fb_content}, #{fb_requestApi})
 	</insert>
 	<update id="updateUsers">
 		update users

@@ -82,6 +82,7 @@ public class UsersMypageController {
 	public String delId(@RequestParam String u_id, @RequestParam String reason, @RequestParam String u_jointype, Model model, HttpSession session) {
 		FeedbackBean fb = new FeedbackBean();
 		fb.setU_id(u_id);
+		fb.setU_jointype(u_jointype);
 		fb.setFb_content(reason);
 		
 		if(u_jointype.equals("S")) {
