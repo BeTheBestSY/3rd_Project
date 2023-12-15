@@ -40,8 +40,10 @@ public class CompanyMarkerController {
 		model.addAttribute("oneX", cb.getCmp_x());
 		model.addAttribute("oneName", cb.getCmp_name());
 		model.addAttribute("pageNumber", pageNumber);
-	*/
-		System.out.println("ASDASDAS");
+<<<<<<< HEAD
+ 
+	*/ 
+ 
 		return viewPage+"?oneY="+cb.getCmp_y()+"&oneX="+cb.getCmp_x()+"&oneName="+encodedName+"&pageNumber="+pageNumber+"&whatColumn="+whatColumn+"&keyword="+encodedKeyword;
 		
 		
