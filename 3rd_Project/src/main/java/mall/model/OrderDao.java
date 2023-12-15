@@ -1,5 +1,6 @@
 package mall.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -44,6 +45,30 @@ public class OrderDao {
 
 	public void deleteTemp(String cart_num) {
 		sqlSessionTemplate.delete(namespace+".deleteTemp", cart_num);
+		
+	}
+
+	public void insertOrderInfo(OrderBean ob) {
+		sqlSessionTemplate.insert(namespace+".insertOrderInfo", ob);
+		
+	}
+
+	public void insertOrderProd(TempCart tc, int maxO_num) {
+		
+		Map<String, String> map =  new HashMap<String, String>();
+		
+		map.put("o_num", Integer.toString(maxO_num));
+		map.put("p_num", Integer.toString(tc.getP_num()));		
+		map.put("cart_qty", Integer.toString(tc.getCart_qty()));		
+		
+		sqlSessionTemplate.insert(namespace+".insertOrderProd", map);
+		
+	}
+
+	public int selectMaxO_num() {
+		 int MaxO_num = sqlSessionTemplate.selectOne(namespace+".selectMaxO_num");
+		
+		 return MaxO_num;
 		
 	}
 }

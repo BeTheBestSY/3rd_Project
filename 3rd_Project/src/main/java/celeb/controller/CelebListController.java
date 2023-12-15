@@ -1,5 +1,6 @@
 package celeb.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +22,6 @@ import utility.Paging;
 public class CelebListController {
 	private final String command = "/celebList.cel";
 	private final String viewPage = "celebList";
-	
 	@Autowired
 	private CelebDao cdao;
 	
@@ -30,8 +30,9 @@ public class CelebListController {
 					HttpServletRequest request,
 					@RequestParam(required = false) String whatColumn,
 					@RequestParam(required = false) String keyword,
-					@RequestParam(required = false) String pageNumber) {
-	
+					@RequestParam(required = false) String pageNumber) throws UnsupportedEncodingException {
+
+		 request.setCharacterEncoding("UTF-8");
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");

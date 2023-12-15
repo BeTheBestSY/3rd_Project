@@ -4,12 +4,13 @@ public class OrderBean {
 	
 	private int o_num;
 	private String u_id;
-	private String u_phone;
+	private String o_phone;
 	private String o_name;
 	private String o_addr;
 	private String o_date;
-	
-	
+	private String pay_bank;
+	private String pay_name;
+	private String way;
 	public int getO_num() {
 		return o_num;
 	}
@@ -22,11 +23,11 @@ public class OrderBean {
 	public void setU_id(String u_id) {
 		this.u_id = u_id;
 	}
-	public String getU_phone() {
-		return u_phone;
+	public String getO_phone() {
+		return o_phone;
 	}
-	public void setU_phone(String u_phone) {
-		this.u_phone = u_phone;
+	public void setO_phone(String o_phone) {
+		this.o_phone = o_phone;
 	}
 	public String getO_name() {
 		return o_name;
@@ -46,6 +47,25 @@ public class OrderBean {
 	public void setO_date(String o_date) {
 		this.o_date = o_date;
 	}
+	public String getPay_bank() {
+		return pay_bank;
+	}
+	public void setPay_bank(String pay_bank) {
+		this.pay_bank = pay_bank;
+	}
+	public String getPay_name() {
+		return pay_name;
+	}
+	public void setPay_name(String pay_name) {
+		this.pay_name = pay_name;
+	}
+	public String getWay() {
+		return way;
+	}
+	public void setWay(String way) {
+		this.way = way;
+	}
+	 
 	
 	
 	

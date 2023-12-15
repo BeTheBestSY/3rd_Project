@@ -162,8 +162,8 @@ li .menu-list {
   justify-content: space-between;
   font-weight: bold;
   margin-bottom: 5px;
-} /* productdetail2 의 ul과 ㅣi 모두 화면과 같은 레이아웃을 적용해주기 위해 
-위와 같이 Flex가 주된 css 적용*/
+} 
+/* productdetail2 의 ul과 ㅣi 모두 화면과 같은 레이아웃을 적용해주기 위해 위와 같이 Flex가 주된 css 적용*/
 
 .allegy {
 
