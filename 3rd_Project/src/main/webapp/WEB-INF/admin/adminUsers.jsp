@@ -7,15 +7,14 @@
 		var elem = document.getElementById('search');
 		elem.value = '';
 	}
-	
+	//filtering은 보류.. 너무 어렵다
 	function filtering(){
 		var filter = document.getElementById('filter');
 		var filValue = filter.options[filter.selectedIndex].value;
-		var dtl_filter = document.getElementById('dtl_filter');
+		var filter_radio = document.querySelector('.filter_radio');
 		
 		switch (filValue) {
 			case 'u_jointype':
-				//p.setAttribute('style','display: inline');
 				if(document.getElementById('a')){
 					a.remove();
 				}
@@ -27,7 +26,7 @@
 				<input type="radio" name="u_jointype" value="N">네이버
 				<input type="radio" name="u_jointype" value="K">카카오
 				`;
-				dtl_filter.appendChild(p);
+				filter_radio.appendChild(p);
 				
 				break;
 			case 'u_joindate':
@@ -41,7 +40,7 @@
 				<input type="radio" name="u_joindate" value="asc" checked>오래된 순
 				<input type="radio" name="u_joindate" value="desc">최근 가입 순
 				`;
-				dtl_filter.appendChild(p);
+				filter_radio.appendChild(p);
 				
 				break;
 			case 'u_color':
@@ -57,16 +56,19 @@
 				<input type="radio" name="u_color" value="fall">가을
 				<input type="radio" name="u_color" value="winter">겨울
 				`;
-				dtl_filter.appendChild(p);
+				filter_radio.appendChild(p);
 				break;
 			default:
 				break;
 		}
 		// 함수 호출, 여기 안 됨 ㅜㅜ
-		var button = document.querySelector('input[type="radio"]');
-		button.onClick = function (event){
-			alert(1);
-		};
+		//var button = document.querySelector('input[type="radio"]');
+		filter_radio.addEventListner('click', (e) => {
+			alert(e.currentTarget.children[0]);
+		})
+		/* parent.addEventListener('click', (e) => {
+	    	e.currentTarget.children[0].style.backgroundColor = 'green'
+	  	}) */
 	}
 </script>
 <article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
@@ -78,7 +80,7 @@
 		<div class="container">
 			<div class="search-window">
 				<div class="search-wrap">
-					<form action="adminUsersList.admin" method="post">
+					<form action="usersList.admin" method="post">
 						<select name="whatColumn" id="whatColumn" onchange="init()" >
 							<option value="all" <c:if test="${param.whatColumn eq 'all' || param.whatColumn eq ''}">selected</c:if>>전체검색</option>
 							<option value="u_name" <c:if test="${param.whatColumn eq 'u_name'}">selected</c:if>>이름</option>
@@ -94,7 +96,7 @@
 						<option value="u_color">퍼스널컬러</option>
 					</select>
 					<!-- <div id="dtl_filter" style="display: inline;"> -->
-					<div id="dtl_filter">
+					<div class="filter_radio">
 						<p id="a">
 							<input type="radio" name="u_jointype" value="S" checked>기본
 							<input type="radio" name="u_jointype" value="N">네이버
@@ -139,7 +141,7 @@
 							</c:if>
 							
 							<c:set var="u_num" value="${fn:length(usersLists) }"/>
-							<c:forEach var="ub" items="${usersLists }" varStatus="status">
+							<c:forEach var="ub" items="${usersLists }">
 								<tr>
 									<td>
 										${u_num }
@@ -180,11 +182,11 @@
 											</a>
 										</c:if>
 										<c:if test="${ub.u_jointype eq 'S'}">
-											<a href="adminUsersDelete.admin?u_id=${ub.u_id }">
+											<a href="usersDelete.admin?u_id=${ub.u_id }">
 												<input type="button" class="btn btn-white"  value="삭제하기">
 											</a>
 										</c:if>
-										<a href="adminUsersUpdate.admin?u_id=${ub.u_id }">
+										<a href="usersUpdate.admin?u_id=${ub.u_id }">
 											<input type="button" class="btn btn-white"  value="수정하기">
 										</a>
 					 				</td>

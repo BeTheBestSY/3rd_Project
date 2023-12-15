@@ -1,103 +1,107 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/admin_Q_Board.css">
 <%@ include file="adminMenu.jsp"%>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css">
 <script type="text/javascript">
-	
-	function goDelete(q_num,pageNumber){
-		location.href="qBoardDelete.admin?q_num="+q_num+"&pageNumber="+pageNumber;
+	function init(){
+		var elem = document.getElementById('search');
+		elem.value = `productFilter.admin?$`;
 	}
 	
+	window.onload = function(){
+		const radios = document.querySelectorAll("input[name='filter_btn']");
+	 
+		radios.forEach((radio) => {
+			radio.addEventListener("change", (e) => {
+				const current = e.currentTarget;
+				if(current.checked){
+					location.href='';
+				}
+			});
+		});
+	};
 </script>
 <article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
-	
- <div id="board-list">
 <div class="section">
 	<div class="tag">
-	<h4>문의 게시판 관리</h4>
+		<h4>상품 관리</h4>
 	</div>
-	  <div id="board-search">
-        <div class="container">
-            <div class="search-window">
-               <div class="search-wrap">
-				<form action="qBoardList.admin" method="get">
-						<select name="whatColumn" id="whatColumn">
-							<option value="all">전체검색</option>
-							<option value="q_subject">제목</option>
-							<option value="q_writer">작성자</option>
+	<div id="board-search">
+		<div class="container">
+			<div class="search-window">
+				<div class="search-wrap">
+					<form action="productList.admin" method="post">
+						<select name="whatColumn" id="whatColumn" onchange="init()" >
+							<option value="all" <c:if test="${param.whatColumn eq 'all' || param.whatColumn eq ''}">selected</c:if>>전체검색</option>
+							<option value="p_brand" <c:if test="${param.whatColumn eq 'p_brand'}">selected</c:if>>이름</option>
+							<option value="p_color" <c:if test="${param.whatColumn eq 'p_color'}">selected</c:if>>아이디</option>
+							<option value="p_name" <c:if test="${param.whatColumn eq 'p_name'}">selected</c:if>>휴대폰번호</option>
 						</select>
-					 	<input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
-					 	
-					<button type="submit" class="btn btn-dark">검색</button>
-		            </div>
-				   </form>
-		        </div>
-		    </div>
-    
- <div id="board-list" >
-        <div class="container" >
-        <div class="row">
-        <div class="whole1">
-            <div class="topbox1">
-        
-		<table class="board-table" style="font-size: 13pt; text-align: center; table-layout:fixed;">
-			<input type="hidden" name="q_num" value="${ bb.q_num }">
-			<input type="hidden" name="pageNumber" value="${ pageInfo.pageNumber}">
-			
-			<tr style="background: #f4f4f4;">
-				<th scope="col" class="th-num" width="10%">번호</th>
-				<th scope="col" class="th-title" width="24%" align="left">제목</th>
-				<th width="10%" class="th-writer">작성자</th>
-				<th width="10%" class="th-email">이메일</th>
-				<th scope="col" class="th-date" width="10%">작성일</th>
-				<th width="10%" class="th-readcount"></th>
-			</tr>
-			<c:if test="${ !empty list }">
-			</table>
-<div class="middlebox">
-      <div class="box2 scrollnone">
-          <table class="colr_table2"  style="font-size: 13pt; text-align: center; ">
-			<c:set var="num" value="${pageInfo.totalCount-pageInfo.beginRow+1}" />
-				<c:forEach var="bb" items="${ list }">
-					<tr style="border-bottom:1px solid #eee;">
-					<td width="11%">${num }
-		      		<c:set var="num" value="${num -1}" /></td>
-						<td align="left" style=" width:48%;  text-align: left;">
-							<c:set var="wid" value="0"/>
-							<c:if test="${ bb.q_re_level > 0 }">
-								<c:set var="wid" value="${bb.q_re_level * 20}"/>
-								<img src="<%= request.getContextPath() %>/resources/image/re.png" width="2%">
+						<input id="search" type="search" name="keyword" value="${param.keyword }" placeholder="검색어를 입력해주세요.">
+						<button type="submit" class="btn btn-dark">검색</button>
+					</form>
+					<div class="filter_radio">
+						<input type="radio" name="filter_btn" value="p_stock" checked style="width:20px;height:18px;border:1px;"> 재고임박순&nbsp;
+						<input type="radio" name="filter_btn" value="p_salevolume" style="width:20px;height:18px;border:1px;"> 누적판매량순&nbsp;
+						<input type="radio" name="filter_btn" value="p_price" style="width:20px;height:18px;border:1px;"> 고가순&nbsp;
+						<input type="radio" name="filter_btn" value="p_price" style="width:20px;height:18px;border:1px;"> 저가순&nbsp;
+						<!-- 출고일(혹은 입고일) 칼럼을 넣어야 할까.. -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="board-list" >
+		<div class="container" >
+			<div class="row">
+				<div class="whole1">
+					<div class="topbox1">
+						<table class="board-table" style="font-size: 13pt; text-align: center; table-layout:fixed;">
+							<tr style="background: #f4f4f4;">
+								<th scope="col" class="th-num">번호</th>
+								<th scope="col" class="th-id" width="8%">브랜드</th>
+								<th scope="col" class="th-name" width="25%">이름</th>
+								<th scope="col" class="th-phone">가격</th>
+								<th scope="col" class="th-point">재고수량</th>
+								<th scope="col" class="th-paint">누적판매량</th>
+								<th scope="col" class="th-personalc">퍼스널컬러</th>
+								<th scope="col" class="th-delete"></th>
+								<th scope="col" class="th-update"></th>
+							</tr>
+							<c:if test="${empty prodLists }">
+								<tr>
+									<td colspan="12">존재하지 않는 상품 입니다.</td>
+								</tr>
 							</c:if>
-								<a href="detail.qb?q_num=${ bb.q_num }&pageNumber=${ pageInfo.pageNumber }" id="noneHigtLight">
-									${ bb.q_subject }&nbsp;</a>
-							<c:if test="${ bb.q_readcount >= 10 }">
-								<img src="<%= request.getContextPath() %>/resources/image/hot.png" width="2%">
-							</c:if>
-						</td>
-						<td width="11%">${ bb.q_writer }</td>
-						<td width="11%">${ bb.q_email }</td>
-						<td width="10%">
-							<fmt:formatDate value="${bb.q_regdate}" pattern="yyyy-MM-dd"/>
-						</td>
-						<td>
-							<a href="qBoardDelete.admin?q_num=${bb.q_num}&pageNumber=${pageInfo.pageNumber}">
-								<input type="button" class="btn btn-white"  value="삭제하기">
-							</a>
-		 				</td>
-					</tr>
-				</c:forEach>
-			</c:if>
-			<c:if test="${ empty list }" >
-				<tr>
-					<td colspan="8">작성된 글이 없습니다.</td>
-				</tr>
-			</c:if>
-		 </table>
-		 </div></div></div></div>
-        </div>
-    </div>
-    <br>
-<br><br>
+							
+							<c:forEach var="pb" items="${prodLists }">
+								<tr>
+									<td>${pb.p_num }</td>
+									<td>${pb.p_brand }</td>
+									<td>${pb.p_name }</td>
+									<td>${pb.p_price }</td>
+									<td>${pb.p_stock }</td>
+									<td>${pb.p_salevolume }</td>
+									<td>${pb.p_color }</td>
+									<td>
+										<a href="productDelete.admin?p_num=${pb.p_num }">
+											<input type="button" class="btn btn-white"  value="삭제하기">
+										</a>
+										<a href="productUpdate.admin?p_num=${pb.p_num }">
+											<input type="button" class="btn btn-white"  value="수정하기">
+										</a>
+					 				</td>
+								</tr>
+							</c:forEach>
+						</table>
+						${pageInfo.pagingHtml }
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 </article>
 
 

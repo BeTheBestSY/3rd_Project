@@ -126,24 +126,20 @@
        
       </div>
       
-      
-      
-      
-      
-      
+       
       
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">주문 정보 입력</h4>
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation" action="orderCompleted.mall" novalidate>
           <div class="row g-3">
             <div class="col-sm-6">
               <label class="form-label">아이디</label>
-              <input type="text" class="form-control" id="u_id" disabled="disabled" value="${id}" > 
+              <input type="text" class="form-control" name="u_id" disabled="disabled" value="${id}" > 
             </div>
 
             <div class="col-sm-6">
               <label class="form-label">수령인 이름</label>
-              <input type="text" class="form-control" id="lastName" value="${name}" required>
+              <input type="text" class="form-control" name="o_name" id="lastName" value="${name}" required>
              
             </div>
           </div>
@@ -154,7 +150,7 @@
             <div class="row g-3">
               <label class="form-label">수령인 전화번호</label><br>
             	 <c:set var="firstList">010, 011, 016, 017, 018, 019</c:set>
-				&nbsp;&nbsp;	<select name="u_phone" class="form-select"  style="width: 130px;" required>
+				&nbsp;&nbsp;	<select name="o_phone" class="form-select"  style="width: 130px;" required>
 						<c:forEach var="first" items="${firstList }">
 							<option value="${first }" <c:if test="${fn:split(phone, '-')[0] eq first }">selected</c:if>>${first }</option>
 						</c:forEach>
@@ -170,27 +166,27 @@
 
             <div class="col-12">
               <label for="address" class="form-label">수령 주소</label><br>
-              	<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+              	<input type="button"onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
                <div class="row g-3">
 	                <div class="col-sm-6">
-	        	    	<input type="text" class="form-control" id="sample4_postcode" id="lastName" placeholder="우편번호" required>
+	        	    	<input type="text" name="addr1" class="form-control" id="sample4_postcode" id="lastName" placeholder="우편번호" required>
 	               	</div>
 	               	<div class="col-sm-6">
-               			<input type="text" class="form-control" id="sample4_roadAddress" id="lastName" placeholder="도로명주소" required>
+               			<input type="text" name="addr2" class="form-control" id="sample4_roadAddress" id="lastName" placeholder="도로명주소" required>
                		</div>
                </div>
                	<br>
                <div class="row g-3">
                		<div class="col-sm-6">
-                		<input type="text" class="form-control" id="sample4_jibunAddress" id="lastName" placeholder="지번주소" required>
+                		<input type="text"  name="addr3" class="form-control" id="sample4_jibunAddress" id="lastName" placeholder="지번주소" required>
               		</div>
               		<span id="guide" style="color:#999;display:none"></span>
               		<div class="col-sm-6">
-               			<input type="text" class="form-control" id="sample4_extraAddress" id="lastName" placeholder="참고항목" required>
+               			<input type="text"  name="addr4" class="form-control" id="sample4_extraAddress" id="lastName" placeholder="참고항목" >
                 	</div>
  				</div>
  				<br>
- 				<input type="text" class="form-control" id="sample4_detailAddress" id="lastName" placeholder="상세주소" >
+ 				<input type="text"  name="addr5" class="form-control" id="sample4_detailAddress" id="lastName" placeholder="상세주소" >
             </div>
 	<br>
            <h4 class="mb-3">지불 방법</h4>
@@ -212,6 +208,7 @@
 				  <div class="col-md-5">
 		              <label for="country" class="form-label">입금 은행</label>
 		              <select class="form-select" name="pay_bank" required>
+		                <option value=""></option>
 		                <option value="sc제일은행">sc제일은행</option>
 		                <option value="하나은행">하나은행</option>
 		                <option value="국민은행">국민은행</option>
@@ -240,18 +237,19 @@
 				    <input type="radio" id="tab2" name="way" value="카카오페이">
 				    <label for="tab2" class="tab-label">카카오페이</label>
 				    <div class="tab-content">
-				      This is second contents.
+				      카카오 페이 결제 방법을 선택하셨습니다.<br>
+				      결제 상품 확인 후 주문완료 버튼을 클릭해 주세요.
 				    </div>
 				  </div>
 				 
-				  <div class="tab-item">
+				 <!--  <div class="tab-item">
 				    <input type="radio" id="tab3" name="way">
 				    <label for="tab3" class="tab-label">Tab Menu 3</label>
 				    <div class="tab-content">
 				      This is third contents.
 				    </div>
 				  </div>
-				  
+				   -->
 				</div>
 				          
           
@@ -296,6 +294,7 @@ $(document).ready(function() {
   $('[name="way"]').change(function() {
     var payBank = $(this).val();
     var payNameInput = $('[name="pay_name"]');
+    var payBankInput = $('[name="pay_bank"]');
     var validationMessage = $('.validation-message');
 
     // 입력값을 재설정하고 유효성 메시지를 숨깁니다
@@ -305,11 +304,23 @@ $(document).ready(function() {
     // 결제 방법에 따라 입력 활성화 또는 비활성화
     if (payBank == '무통장 입금') {
       payNameInput.prop('required', true);
+      payBankInput.prop('required', true);
     } else {
       payNameInput.prop('required', false);
+      payBankInput.prop('required', false);
     }
   });
 });
+
+
+
+
+
+
+ 
+}
+
+ 
 </script>
    
 <script type="text/javascript">
@@ -332,6 +343,9 @@ $(document).ready(function() {
     }, false)
   })
 })()
+
+
+
 
 
 </script>

@@ -172,7 +172,7 @@
 						        	<a href="prodView.p?p_num=${pb.p_num}&pageNumber=${pageInfo.pageNumber}">
 						         		<img src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg}" height="225">
 						            </a>
-						            <div class="card-body">
+						            <div class="card-body"> 
 						            	<p class="card-text">${pb.p_name }</p>
 						            	<p class="text-body-secondary">${pb.p_contents }</p>
 						            	<div class="d-flex justify-content-between align-items-center">

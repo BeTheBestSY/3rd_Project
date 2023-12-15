@@ -11,11 +11,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- CSS -->
+   
+    <!-- <link rel="stylesheet" href="assets/css/styles.css">-->
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css">
-
-    <title>SideBar sub menus</title>
+    <title>FIND YOUR Hidden Beauty</title>
 </head>
 <body id="body-pd">
     <div class="l-navbar" id="navbar">
@@ -27,12 +27,12 @@
                 </div>
                 <div class="nav__list">
 
-                    <a href="adminUsersList.admin" class="nav__link collapse">
+                    <a href="usersList.admin" class="nav__link collapse">
                         <ion-icon name="people-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">&nbsp;고객</span>
                     </a>
                     
-                    <a href="adminProductList.admin" class="nav__link">
+                    <a href="productList.admin" class="nav__link">
                     	<ion-icon name="cart-outline"></ion-icon>
 						<span class="nav_name">&nbsp;화장품</span>
                     </a>

@@ -16,13 +16,12 @@ import users.model.UsersBean;
 
 @Controller
 public class AdminUsersController {
-	private final String command = "/adminUsersList.admin";
-	private final String delCommand = "/adminUsersDelete.admin";
-	private final String upCommand = "/adminUsersUpdate.admin";
+	private final String command = "/usersList.admin";
+	private final String delCommand = "/usersDelete.admin";
+	private final String upCommand = "/usersUpdate.admin";
 	
 	private final String viewPage = "adminUsers";
 	private final String viewPage2 = "adminUsersUpdateForm";
-//	private final String gotoPage = "";
 	
 	@Autowired
 	private AdminDao ad;
