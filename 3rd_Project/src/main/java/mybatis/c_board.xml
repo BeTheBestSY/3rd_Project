@@ -4,7 +4,6 @@
 
 <mapper namespace="c_board.model.CBoardBean">
 
-
 		<select id="getAllBoardList" resultType="CBoard">
 			select c_num, c_writer, c_email, c_subject, c_password, c_regdate, c_readcount, c_ref, c_re_step, c_re_level, c_content, c_ip		        
 			from (select rownum as rank, c_num, c_writer, c_email, c_subject, c_password, c_regdate, c_readcount, c_ref, c_re_step, c_re_level, c_content, c_ip
@@ -29,6 +28,10 @@
 			</if>
 			order by c_num asc
 		</select>
+		
+		<select id="getTotalCountById" resultType="int">
+			select count(*) from c_board where c_writer = #{c_writer}
+		</select>
 	
 		<select id="selectContent" resultType="CBoard">
 			select * from c_board where c_num = #{c_num}
@@ -40,6 +43,10 @@
 		
 		<select id="replyBoard" resultType="CBoard">
 			SELECT c_ref, c_re_step FROM c_board where c_ref = #{c_ref} GROUP BY c_ref, c_re_step HAVING c_re_step >= #{c_re_step}
+		</select>
+		
+		<select id="getBoardById" resultType="CBoard">
+			select * from c_board where c_writer = #{c_writer} order by c_num desc
 		</select>
 		
 		<insert id="writeBoard">

@@ -6,37 +6,92 @@
 <mapper namespace="sqlField_admin">	
 
 	<select id="getAllBoardList" resultType="QBoard">
-			select q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip		        
-			from (select rownum as rank, q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip
-			from (select q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip
-			from q_board
-			<if test="whatColumn=='q_writer'">
-				where q_writer like #{keyword}
-			</if>
-			<if test="whatColumn=='q_subject'">
-				where q_subject like #{keyword}
-			</if>
-			order by q_ref desc, q_re_step asc ))
-		</select>
-		
-		<select id="getTotalCount" resultType="int">
-			select count(*) from q_board 
-			<if test="whatColumn=='q_writer'">
-				where q_writer like #{keyword}
-			</if>
-			<if test="whatColumn=='q_subject'">
-				where q_subject like #{keyword}
-			</if>
-			order by q_num asc
-		</select>
+		select q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip		        
+		from (select rownum as rank, q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip
+		from (select q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip
+		from q_board
+		<if test="whatColumn=='q_writer'">
+			where q_writer like #{keyword}
+		</if>
+		<if test="whatColumn=='q_subject'">
+			where q_subject like #{keyword}
+		</if>
+		order by q_ref desc, q_re_step asc ))
+	</select>
 	
-		<select id="selectContent" resultType="QBoard">
-			select * from q_board where q_num = #{q_num}
-		</select>
-		
-		<delete id="deleteBoard">
-			delete from q_board where q_num = #{q_num}
-		</delete>	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from q_board 
+		<if test="whatColumn=='q_writer'">
+			where q_writer like #{keyword}
+		</if>
+		<if test="whatColumn=='q_subject'">
+			where q_subject like #{keyword}
+		</if>
+		order by q_num asc
+	</select>
+
+	<select id="selectContent" resultType="QBoard">
+		select * from q_board where q_num = #{q_num}
+	</select>
 	
+	<delete id="deleteBoard">
+		delete from q_board where q_num = #{q_num}
+	</delete>
+	<select id="getUsers" resultType="Users">
+		select * from users
+		<if test="whatColumn == 'all'">
+			where u_id like #{keyword} or
+			u_name like #{keyword} or
+			u_phone like #{keyword}
+		</if>
+		<if test="whatColumn == 'u_name'">
+			where u_name like #{keyword}
+		</if>
+		<if test="whatColumn == 'u_id'">
+			where u_id like #{keyword}
+		</if>
+		<if test="whatColumn == 'u_phone'">
+			where u_phone like #{keyword}
+		</if>
+		order by u_joindate desc
+	</select>
+	<delete id="deleteUsers">
+		delete users
+		where u_id=#{u_id}
+	</delete>
+	<select id="getUserById" resultType="Users">
+		select * from users
+		where u_id=#{u_id}
+	</select>
+	<select id="getProducts" resultType="myProduct">
+		select * from product
+		<if test="whatColumn == 'all'">
+			where p_brand like #{keyword} or
+			p_color like #{keyword} or
+			p_name like #{keyword}
+		</if>
+		<if test="whatColumn == 'p_brand'">
+			where p_brand like #{keyword}
+		</if>
+		<if test="whatColumn == 'p_color'">
+			where p_color like #{keyword}
+		</if>
+		<if test="whatColumn == 'p_name'">
+			where p_name like #{keyword}
+		</if>
+		order by p_num desc
+	</select>
+	<select id="getTotalPrdCount" resultType="int">
+		select count(*) from product
+		<if test="whatColumn == 'p_brand'">
+			where p_brand like #{keyword}
+		</if>
+		<if test="whatColumn == 'p_color'">
+			where p_color like #{keyword}
+		</if>
+		<if test="whatColumn == 'p_name'">
+			where p_name like #{keyword}
+		</if>
+	</select>
 </mapper> 
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@ include file="header.jsp" %>
 
 <style>
@@ -220,14 +221,14 @@
 			바로 구매해보고 싶지 않으신가요? 상단 '쇼핑하기' 메뉴를 통해 바로 구매하실 수 있어요!<br>
 			<small>(※ 총 10종류의 퍼스널 컬러 맞품 상품 제공. 로그인 이후 구매가능)</small>
 		</span> 
-		<br><br><br><br>
-		<div style="border: 1px solid black; width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white;"></div>
-		&nbsp;&nbsp;&nbsp;
-		<div style="border: 1px solid black; width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white;"></div>
+		<br><br><br><br><br><br>
+		<div style="width: 150px; display: inline-block;"></div><img src="resources/image/spring-mainImg.png">
+		&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/image/summer-mainImg.png">
+		&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/image/fall-mainImg.png">
+		&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/image/winter-mainImg.png">
 	</div>
-	
 </div>
 
-<div style="width:100%; height: 300px;"></div>
+<div style="width:100%; height: 200px;"></div>
 
 <%@ include file="footer.jsp" %>

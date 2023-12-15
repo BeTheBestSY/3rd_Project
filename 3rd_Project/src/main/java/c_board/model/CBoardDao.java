@@ -1,21 +1,18 @@
 package c_board.model;
-
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import utility.Paging;
+
 
 @Component("CBoard")
 public class CBoardDao {
 
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
-	
 	private String namespace="c_board.model.CBoardBean.";
 
 	public List<CBoardBean> getAllBoardList(Paging pageInfo, Map<String, String> map) {
@@ -75,6 +72,24 @@ public class CBoardDao {
 
 		sqlSessionTemplate.insert(namespace+"insertReply",bb);
 		
+	}
+
+	public List<CBoardBean> getBoardById(Paging pageInfo, Map<String, String> map) {
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		List<CBoardBean> list = sqlSessionTemplate.selectList(namespace+"getBoardById", map, rowBounds);
+		return list;
+	}
+	
+	public int getTotalCountById(Map<String, String> map) {
+		int totalCount = sqlSessionTemplate.selectOne(namespace+"getTotalCountById",map);
+		return totalCount;
+	}
+
+	public void deleteChkBoard(int[] checks) {
+		for(int i=0; i<checks.length; i++) {
+			int c_num = checks[i];
+			sqlSessionTemplate.delete(namespace+"deleteBoard",c_num);
+		}
 	}
 	
 	

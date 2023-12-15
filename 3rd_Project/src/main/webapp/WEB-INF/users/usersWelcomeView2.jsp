@@ -108,7 +108,9 @@
 
 <div id="textArea">
 <span style="font-weight: bold; font-size: 15pt;">회원가입을 진심으로 환영합니다!</span><br>
-' ${loginInfo.u_name} ' 님은 지금부터 hidden beauty의 모든 서비스를 이용하실 수 있습니다.
+' ${loginInfo.u_name} ' 님은 지금부터 hidden beauty의 모든 서비스를 이용하실 수 있습니다.<br>
+ 우선 필수 회원정보를 업데이트 해 주세요!
+
 <br><br>
-<a href=".main"><input type="button" id="btn" value="메인화면으로 돌아가기"></a>
+<a href="update.u"><input type="button" id="btn" value="업데이트 하러가기"></a>
 </div>

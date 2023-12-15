@@ -89,7 +89,7 @@ public class UsersNaverController {
 		      	ub.setU_password("");
 		      	ub.setU_phone("");
 		      	ub.setU_address(",,");
-		      	ub.setU_link("N");
+		      	ub.setU_jointype("N");
 		      	ub.setU_color("잘 모르겠음");
 		      	if(ud.didYouJoin(ub)) { // 로그인 한 네이버 계정이 users 테이블에 저장되어있으면
 		      		flag = true;
