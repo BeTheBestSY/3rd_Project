@@ -1,11 +1,11 @@
 package users.model;
- 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 
 @Component("UsersDao")
 public class UsersDao {
@@ -14,7 +14,6 @@ public class UsersDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 	private String namespace = "sqlField_user";
 
-	// didYouJoin: ������ ȸ���̸� true, ���Ծ��� ȸ���̸� false
 	public boolean didYouJoin(UsersBean ub) {
 		return sqlSessionTemplate.selectOne(namespace+".didYouJoin", ub);
 	}
@@ -34,8 +33,8 @@ public class UsersDao {
 		sqlSessionTemplate.update(namespace+".updatePassword", map);
 	}
 
-	public String findId(UsersBean ub) {
-		return sqlSessionTemplate.selectOne(namespace+".findId", ub);
+	public List<UsersBean> findId(UsersBean ub) {
+		return sqlSessionTemplate.selectList(namespace+".findId", ub);
 	}
 
 	public String findPw(UsersBean ub) {
@@ -45,8 +44,17 @@ public class UsersDao {
 	public int updateUsers(UsersBean ub) {
 		return sqlSessionTemplate.update(namespace+".updateUsers", ub);
 	}
+	
+	public int updateColor(String personalColor, String u_id) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("personalColor", personalColor);
+		map.put("u_id", u_id);
+		return sqlSessionTemplate.update(namespace+".updateColor", map);
+	}
 
 	public void deleteUsers(String u_id) {
 		sqlSessionTemplate.delete(namespace+".deleteUsers", u_id);
 	}
+
+	
 }

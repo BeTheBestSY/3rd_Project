@@ -33,7 +33,8 @@ public class UsersChangepwContoller {
 						@RequestParam String new_password_chk,
 						HttpSession session,
 						Model model) {
-		String u_id = String.valueOf(session.getAttribute("id"));
+		UsersBean loginInfo = (UsersBean)session.getAttribute("loginInfo");
+		String u_id = loginInfo.getU_id();
 		UsersBean ub = ud.getUserById(u_id);
 		
 		if(ub.getU_password().equals(old_password)) {

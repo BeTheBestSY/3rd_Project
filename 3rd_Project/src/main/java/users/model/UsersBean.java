@@ -8,6 +8,7 @@ public class UsersBean {
 	private String u_address;
 	private int u_point;
 	private String u_pay;
+	private String u_link;
 	private String u_color;
 	
 	public String getU_id() {
@@ -52,12 +53,17 @@ public class UsersBean {
 	public void setU_pay(String u_pay) {
 		this.u_pay = u_pay;
 	}
+	public String getU_link() {
+		return u_link;
+	}
+	public void setU_link(String u_link) {
+		this.u_link = u_link;
+	}
 	public String getU_color() {
 		return u_color;
 	}
 	public void setU_color(String u_color) {
 		this.u_color = u_color;
 	}
-	// ÀúÀå¿ë
 	
 }

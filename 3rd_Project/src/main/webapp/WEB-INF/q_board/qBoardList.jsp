@@ -26,7 +26,7 @@
 	  <div class="page-title">
         <div class="container">
             <br><br><br>
-            <h3>의견 게시판</h3>
+            <h3>문의 게시판</h3>
         </div>
     </div>
 	
@@ -37,7 +37,6 @@
                     <div class="search-wrap">
 		<form action="qBoardList.qb" method="get">
 				<select name="whatColumn" id="whatColumn">
-					<option>선택</option>
 					<option value="all">전체검색</option>
 					<option value="q_subject">제목</option>
 					<option value="q_writer">작성자</option>
@@ -57,7 +56,7 @@
 <table class="board-table" style="font-size: 13pt; text-align: center;">
 
 	
-	<tr style="background: #f9f7f9;">
+	<tr style="background: #EDE5D8;">
 		<th scope="col" class="th-num" width="10%">번호</th>
 		<th scope="col" class="th-title" width="30%">제목</th>
 		<th width="15%" class="th-writer">작성자</th>
@@ -65,9 +64,11 @@
 		<th width="13%" class="th-readcount">조회수</th>
 	</tr>
 	<c:if test="${ !empty list }">
+	<c:set var="num" value="${pageInfo.totalCount-pageInfo.beginRow+1}" />
 		<c:forEach var="bb" items="${ list }">
 			<tr>
-				<td>${ bb.q_num }</td>
+						<td>${num }
+      <c:set var="num" value="${num -1}" /></td>
 				<td align="left" >
 					<c:set var="wid" value="0"/>
 					<c:if test="${ bb.q_re_level > 0 }">

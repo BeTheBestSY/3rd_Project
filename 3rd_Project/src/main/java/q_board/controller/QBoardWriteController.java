@@ -33,7 +33,7 @@ public class QBoardWriteController {
 				@ModelAttribute("bb") 
 				@Valid QBoardBean bb,
 				BindingResult br
-			) {
+			) { 
 		
 		if(br.hasErrors()) {
 			return viewPage;
