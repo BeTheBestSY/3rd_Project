@@ -11,6 +11,9 @@
 	#noneHigtLight:hover{
 		color: #7C81BB;
 	}
+	body{
+		padding-top: 90px;
+	}
 </style>
 <script type="text/javascript">
 

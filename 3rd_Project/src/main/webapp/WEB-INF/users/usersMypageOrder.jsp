@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<style>
-
-</style>
-
 <%@ include file="usersMypageMenuTop.jsp" %>
 
 <div style="margin: 0px 0px 28px 5px; font-size: 10pt;">

@@ -4,12 +4,9 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardDelete.css">
 
 	<script>
-	
 		function goList(pageNumber){
 			location.href="cBoardList.cb?pageNumber="+pageNumber;
 		}
-		
-		
 	</script>
 	
 	

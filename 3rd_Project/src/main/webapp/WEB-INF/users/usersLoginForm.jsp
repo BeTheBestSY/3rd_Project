@@ -12,6 +12,9 @@
 		width: 400px;
 		height: 100px; 
 	}
+	body{
+		padding-top: 90px;
+	}
 	#loginBtn{
 		width: 100%;
 		height: 90%;
