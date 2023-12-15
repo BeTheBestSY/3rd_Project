@@ -62,11 +62,8 @@
 			default:
 				break;
 		}
-		// 함수 호출
-		go(); // 이거 안됨
-	}
-	function go(){
-		var button = document.getElementById('a');
+		// 함수 호출, 여기 안 됨 ㅜㅜ
+		var button = document.querySelector('input[type="radio"]');
 		button.onClick = function (event){
 			alert(1);
 		};
