@@ -7,13 +7,10 @@
 		select count(*) from users
 		where u_id=#{u_id}
 	</select>
-<<<<<<< HEAD
-=======
 	<insert id="register">
 		insert into users
 		values(#{u_id}, #{u_name}, #{u_password}, #{u_phone}, #{u_address}, 0, '미정', #{u_jointype}, default, #{u_color} )
 	</insert>
->>>>>>> 3f1b063dd1001cd8d14a1d38cc18fb3a043f0802
 	<select id="getUserById" resultType="Users">
 		select * from users
 		where u_id=#{u_id}
@@ -26,10 +23,6 @@
 		select u_password from users
 		where u_name=#{u_name} and u_id=#{u_id} and u_phone=#{u_phone}
 	</select>
-	<insert id="register">
-		insert into users
-		values(#{u_id}, #{u_name}, #{u_password}, #{u_phone}, #{u_address}, 0, '미정', #{u_jointype}, default, #{u_color})
-	</insert>
 	<insert id="insertFeedback">
 		insert into feedback values(feedback_seq.nextval, #{u_id}, #{fb_content}, #{fb_requestApi})
 	</insert>

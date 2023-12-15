@@ -4,7 +4,6 @@
 
 <mapper namespace="c_board.model.CBoardBean">
 
-
 		<select id="getAllBoardList" resultType="CBoard">
 			select c_num, c_writer, c_email, c_subject, c_password, c_regdate, c_readcount, c_ref, c_re_step, c_re_level, c_content, c_ip		        
 			from (select rownum as rank, c_num, c_writer, c_email, c_subject, c_password, c_regdate, c_readcount, c_ref, c_re_step, c_re_level, c_content, c_ip

@@ -60,7 +60,7 @@
 				
 				<b>나의 쇼핑</b>
 				<ul id="list" style="line-height: 180%;">
-					<li><a href="#" id="none_under">주문내역 조회</a></li>
+					<li><a href="order.u" id="none_under">주문내역 조회</a></li>
 				</ul>
 				
 				<!-- <a href="changepw.u" id="none_under">비밀번호 변경</a> -->

@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import c_board.model.CBoardBean;
 import c_board.model.CBoardDao;
+import q_board.model.QBoardBean;
+import q_board.model.QBoardDao;
 import users.model.FeedbackBean;
 import users.model.FeedbackDao;
 import users.model.UsersBean;
@@ -29,6 +32,8 @@ public class UsersMypageController {
 	private FeedbackDao fd;
 	@Autowired
 	private CBoardDao cd;
+	@Autowired
+	private QBoardDao qd;
 	
 	private final String command = "/mypage.u";
 	private final String command_delForm = "/deleteForm.u";
@@ -39,13 +44,23 @@ public class UsersMypageController {
 	private final String command_c_boardDetail = "/c_boardDetail.u";
 	private final String command_c_boardUpdate = "/c_boardUpdate.u";
 	private final String command_q_board = "/q_board.u";
+	private final String command_q_boardChkDel = "/q_boardChkDel.u";
+	private final String command_q_boardDel = "/q_boardDel.u";
+	private final String command_q_boardDetail = "/q_boardDetail.u";
+	private final String command_q_boardUpdate = "/q_boardUpdate.u";
+	private final String command_order = "/order.u";
 	private final String viewPage = "usersMypage";
 	private final String viewPage_delForm = "usersMypageDelId";
 	private final String viewPage_del = "redirect";
 	private final String viewPage_c_board = "usersMypageCboard";
 	private final String viewPage_c_boardRedirct = "redirect:/c_board.u";
 	private final String viewPage_c_boardDetail = "usersMypageCboardDetail";
+	private final String viewPage_c_boardUpdate = "usersMypageCboardUpdate";
 	private final String viewPage_q_board = "usersMypageQboard";
+	private final String viewPage_q_boardRedirct = "redirect:/q_board.u";
+	private final String viewPage_q_boardDetail = "usersMypageQboardDetail";
+	private final String viewPage_q_boardUpdate = "usersMypageQboardUpdate";
+	private final String viewPage_order = "usersMypageOrder";
 	
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
@@ -106,19 +121,21 @@ public class UsersMypageController {
 	}
 	
 	@RequestMapping(value = command_c_boardDel, method = RequestMethod.GET)
-	public String c_boardDel(HttpSession session, @RequestParam("c_num") int c_num) {
+	public String c_boardDel(Model model, @RequestParam("c_num") int c_num, @RequestParam("pageNumber") String pageNumber) {
 		cd.deleteBoard(c_num);
+		model.addAttribute("pageNumber", pageNumber);
 		return viewPage_c_boardRedirct;
 	}
 	
 	@RequestMapping(value = command_c_boardChkDel, method = RequestMethod.GET)
-	public String c_boardChkDel(HttpSession session, @RequestParam("check") int[] checks) {
+	public String c_boardChkDel(Model model, @RequestParam("check") int[] checks, @RequestParam("pageNumber") String pageNumber) {
 		cd.deleteChkBoard(checks);
+		model.addAttribute("pageNumber", pageNumber);
 		return viewPage_c_boardRedirct;
 	}
 	
 	@RequestMapping(value = command_c_boardDetail, method = RequestMethod.GET)
-	public String c_boardUpdate(HttpSession session, Model model, @RequestParam("c_num") int c_num, @RequestParam("c_num") String pageNumber) {
+	public String c_boardDetail(Model model, @RequestParam("c_num") int c_num, @RequestParam("pageNumber") String pageNumber) {
 		//cd.updateReadcount(c_num); => 마이페이지 내에서 본인이 조회할 때는 조회수가 오르지 않음.
 		CBoardBean cb = cd.selectContent(c_num);
 		model.addAttribute("pageNumber", pageNumber);
@@ -126,9 +143,83 @@ public class UsersMypageController {
 		return viewPage_c_boardDetail;
 	}
 	
+	@RequestMapping(value = command_c_boardUpdate, method = RequestMethod.GET)
+	public String c_boardUpdateForm(Model model, @RequestParam("c_num") int c_num, @RequestParam("pageNumber") int pageNumber) {
+		CBoardBean cb = cd.selectContent(c_num);
+		model.addAttribute("cb", cb);
+		model.addAttribute("pageNumber", pageNumber);
+		return viewPage_c_boardUpdate;
+	}
+	
+	@RequestMapping(value = command_c_boardUpdate, method = RequestMethod.POST)
+	public String c_boardUpdate(Model model, @ModelAttribute("cb") CBoardBean cb, @RequestParam("pageNumber") int pageNumber) {
+		
+		cd.updateBoard(cb);
+		model.addAttribute("pageNumber", pageNumber);
+		return viewPage_c_boardRedirct;
+	}
+	
 	@RequestMapping(value = command_q_board, method = RequestMethod.GET)
-	public String q_board(HttpSession session) {
+	public String q_board(HttpSession session, Model model, HttpServletRequest request,
+							@RequestParam(value="whatColumn",required = false) String whatColumn,
+							@RequestParam(value="keyword",required = false) String keyword,
+							@RequestParam(value="pageNumber",required = false) String pageNumber) {
+		
+		UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
+		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("q_writer", ub.getU_id());
+		
+		int totalCount = qd.getTotalCountById(map);
+		String url = request.getContextPath()+command_q_board;
+		Paging pageInfo = new Paging(pageNumber, "5", totalCount, url, whatColumn, keyword);
+		
+		List<CBoardBean> q_boardLists = qd.getBoardById(pageInfo,map);
+		model.addAttribute("q_boardLists", q_boardLists); 
+		model.addAttribute("pageInfo",pageInfo);
 		return viewPage_q_board;
+	}
+	
+	@RequestMapping(value = command_q_boardDel, method = RequestMethod.GET)
+	public String q_boardDel(Model model, @RequestParam("q_num") int q_num, @RequestParam("pageNumber") String pageNumber) {
+		qd.deleteBoard(q_num);
+		model.addAttribute("pageNumber", pageNumber);
+		return viewPage_q_boardRedirct;
+	}
+	
+	@RequestMapping(value = command_q_boardChkDel, method = RequestMethod.GET)
+	public String q_boardChkDel(Model model, @RequestParam("check") int[] checks, @RequestParam("pageNumber") String pageNumber) {
+		qd.deleteChkBoard(checks);
+		model.addAttribute("pageNumber", pageNumber);
+		return viewPage_q_boardRedirct;
+	}
+	
+	@RequestMapping(value = command_q_boardDetail, method = RequestMethod.GET)
+	public String q_boardDetail(Model model, @RequestParam("q_num") int q_num, @RequestParam("pageNumber") String pageNumber) {
+		QBoardBean qb = qd.selectContent(q_num);
+		model.addAttribute("pageNumber", pageNumber);
+		model.addAttribute("qb", qb);
+		return viewPage_q_boardDetail;
+	}
+	
+	@RequestMapping(value = command_q_boardUpdate, method = RequestMethod.GET)
+	public String q_boardUpdateForm(Model model, @RequestParam("q_num") int q_num, @RequestParam("pageNumber") int pageNumber) {
+		QBoardBean qb = qd.selectContent(q_num);
+		model.addAttribute("qb", qb);
+		model.addAttribute("pageNumber", pageNumber);
+		return viewPage_q_boardUpdate;
+	}
+	
+	@RequestMapping(value = command_q_boardUpdate, method = RequestMethod.POST)
+	public String q_boardUpdate(Model model, @ModelAttribute("qb") QBoardBean qb, @RequestParam("pageNumber") int pageNumber) {
+		qd.updateBoard(qb);
+		model.addAttribute("pageNumber", pageNumber);
+		return viewPage_q_boardRedirct;
+	}
+	
+	@RequestMapping(value = command_order, method = RequestMethod.GET)
+	public String order() {
+		return viewPage_order;
 	}
 	
 }

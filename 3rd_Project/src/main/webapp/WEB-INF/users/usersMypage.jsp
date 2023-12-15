@@ -43,7 +43,7 @@
 				<td width="35%">${loginInfo.u_name}</td>
 				<th width="15%">전화번호</th>
 				<td width="35%"><c:if test="${loginInfo.u_jointype eq 'S' }">${loginInfo.u_phone }</c:if>
-					<c:if test="${loginInfo.u_jointype eq 'N' || loginInfo.u_jointype eq 'K'}">필수 입력 사항입니다.</c:if>
+					<c:if test="${loginInfo.u_jointype eq 'N' || loginInfo.u_jointype eq 'K'}"><font color="red">필수 입력 사항입니다.</font></c:if>
 				</td>
 			</tr>
 			<tr

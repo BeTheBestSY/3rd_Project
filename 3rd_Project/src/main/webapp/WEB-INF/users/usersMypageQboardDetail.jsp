@@ -2,13 +2,13 @@
     pageEncoding="UTF-8"%>
     
 <style>
-	#c_boardDetail{
+	#q_boardDetail{
 		width: 95%;
 	}
-	#c_boardDetail th{
+	#q_boardDetail th{
 		text-align: center;
 	}
-	#c_boardDetail td{
+	#q_boardDetail td{
 		padding-left: 20px;
 		height: 68px;
 	}
@@ -17,7 +17,7 @@
 <%@ include file="usersMypageMenuTop.jsp" %>
 
 <div style="margin: 0px 0px 28px 5px; font-size: 10pt;">
-	<a href="mypage.u" id="none_under">마이페이지</a> > 게시물 관리 > <a href="c_board.u?pageNumber=${pageNumber}" id="none_under">후기 게시판</a> > <a href="c_boardDetail.u?c_num=${cb.c_num}&pageNumber=${pageNumber}" id="none_under">게시글 조회</a>
+	<a href="mypage.u" id="none_under">마이페이지</a> > 게시물 관리 > <a href="q_board.u?pageNumber=${pageNumber}" id="none_under">문의 게시판</a> > <a href="q_boardDetail.u?q_num=${qb.q_num}&pageNumber=${pageNumber}" id="none_under">게시글 조회</a>
 </div>
 <hr style="margin-bottom: 50px;">
 				
@@ -29,22 +29,22 @@
 	</div>
 	<div>
 		<div style="width: 95%; text-align: right; margin-bottom: 10px;">
-			<input type="button" class="btn btn-outline-secondary" style="font-size: 10pt;" value="목록으로" onClick="location.href='c_board.u?pageNumber=${pageNumber}'">
+			<input type="button" class="btn btn-outline-secondary" style="font-size: 10pt;" value="목록으로" onClick="location.href='q_board.u?pageNumber=${pageNumber}'">
 		</div>
-		<table id="c_boardDetail">
+		<table id="q_boardDetail">
 			<tr style="border-top: 1px solid #D5D5D5;">
 				<th bgcolor="#F7F3ED" width="10%">제목</th>
-				<td colspan="3">${cb.c_subject}</td>
+				<td colspan="3">${qb.q_subject}</td>
 			</tr>
 			<tr style="border-top: 1px dotted #EAEAEA;">
 				<th bgcolor="#F7F3ED" width="10%">작성자</th>
-				<td width="38%">${ cb.c_writer}</td>
+				<td width="38%">${qb.q_writer}</td>
 				<th bgcolor="#F7F3ED" width="14%">이메일</th>
-				<td>${cb.c_email}</td>
+				<td>${qb.q_email}</td>
 			</tr>
 			<tr style="border-bottom: 1px solid #D5D5D5; border-top: 1px dotted #EAEAEA;">
 				<th bgcolor="#F7F3ED" width="10%">내용</th>
-				<td colspan="3" valign="top" style="height: 200px; padding-top: 20px;">${cb.c_content}
+				<td colspan="3" valign="top" style="height: 200px; padding-top: 20px;">${qb.q_content}
 				</td>
 			</tr>
 		</table>
