@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/admin_Q_Board.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css">
 <script type="text/javascript">
 	function init(){
 		var elem = document.getElementById('search');
@@ -22,9 +22,9 @@
 				p.setAttribute('id', 'a');
 				p.innerHTML = 
 				`
-				<input type="radio" name="u_jointype" value="S" checked>기본
-				<input type="radio" name="u_jointype" value="N">네이버
-				<input type="radio" name="u_jointype" value="K">카카오
+				<input type="radio" name="u_jointype" value="S" checked style="width:20px;height:18px;border:1px;">기본
+				<input type="radio" name="u_jointype" value="N" style="width:20px;height:18px;border:1px;">네이버
+				<input type="radio" name="u_jointype" value="K" style="width:20px;height:18px;border:1px;">카카오
 				`;
 				filter_radio.appendChild(p);
 				
@@ -37,8 +37,8 @@
 				p.setAttribute('id', 'a');
 				p.innerHTML = 
 				`
-				<input type="radio" name="u_joindate" value="asc" checked>오래된 순
-				<input type="radio" name="u_joindate" value="desc">최근 가입 순
+				<input type="radio" name="u_joindate" value="asc" checked style="width:20px;height:18px;border:1px;">오래된 순
+				<input type="radio" name="u_joindate" value="desc" style="width:20px;height:18px;border:1px;">최근 가입 순
 				`;
 				filter_radio.appendChild(p);
 				
@@ -51,10 +51,10 @@
 				p.setAttribute('id', 'a');
 				p.innerHTML = 
 				`
-				<input type="radio" name="u_color" value="spring" checked>봄
-				<input type="radio" name="u_color" value="summer">여름
-				<input type="radio" name="u_color" value="fall">가을
-				<input type="radio" name="u_color" value="winter">겨울
+				<input type="radio" name="u_color" value="spring" checked style="width:20px;height:18px;border:1px;">봄
+				<input type="radio" name="u_color" value="summer" style="width:20px;height:18px;border:1px;">여름
+				<input type="radio" name="u_color" value="fall" style="width:20px;height:18px;border:1px;">가을
+				<input type="radio" name="u_color" value="winter" style="width:20px;height:18px;border:1px;">겨울
 				`;
 				filter_radio.appendChild(p);
 				break;
@@ -98,9 +98,9 @@
 					<!-- <div id="dtl_filter" style="display: inline;"> -->
 					<div class="filter_radio">
 						<p id="a">
-							<input type="radio" name="u_jointype" value="S" checked>기본
-							<input type="radio" name="u_jointype" value="N">네이버
-							<input type="radio" name="u_jointype" value="K">카카오
+							<input type="radio" name="u_jointype" value="S" checked style="width:20px;height:18px;border:1px;">기본
+							<input type="radio" name="u_jointype" value="N" style="width:20px;height:18px;border:1px;">네이버
+							<input type="radio" name="u_jointype" value="K" style="width:20px;height:18px;border:1px;">카카오
 						</p>
 					</div>
 				</div>
@@ -127,13 +127,6 @@
 								<th scope="col" class="th-delete"></th>
 								<th scope="col" class="th-update"></th>
 							</tr>
-							<c:if test="${empty usersLists }">존재하지 않는 회원 입니다.</c:if>
-							<c:set var="u_num" value="${fn:length(usersLists)}"/>
-							<c:forEach var="ub" items="${usersLists}" varStatus="status">
-								<tr>
-									<td>
-										${u_num }
-										<c:set var="u_num" value="${u_num-1}"/>
 							<c:if test="${empty usersLists }">
 								<tr>
 									<td colspan="12">존재하지 않는 회원 입니다.</td>
@@ -157,7 +150,6 @@
 										<c:if test="${ub.u_jointype eq 'S' }">
 											${ub.u_id }
 										</c:if>
->>>>>>> 3f1b063dd1001cd8d14a1d38cc18fb3a043f0802
 									</td>
 									<td>${ub.u_name }</td>
 									<td>${ub.u_phone }</td>

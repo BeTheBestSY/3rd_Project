@@ -79,7 +79,27 @@
 		<if test="whatColumn == 'p_name'">
 			where p_name like #{keyword}
 		</if>
-		order by p_num desc
+		order by 
+		<choose>
+			<when test="filter == 'standard'">
+				p_num desc
+			</when>
+			<when test="filter == 'p_stock'">
+				p_stock asc, p_num desc
+			</when>
+			<when test="filter == 'p_salevolume'">
+				p_salevolume desc, p_num desc
+			</when>
+			<when test="filter == 'p_priceDesc'">
+				p_price desc, p_num desc
+			</when>
+			<when test="filter == 'p_priceAsc'">
+				p_price asc, p_num desc
+			</when>
+			<otherwise>
+				p_num desc
+			</otherwise>
+		</choose>
 	</select>
 	<select id="getTotalPrdCount" resultType="int">
 		select count(*) from product

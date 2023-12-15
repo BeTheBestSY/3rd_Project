@@ -29,14 +29,21 @@ public class AdminProductController {
 	private AdminDao ad;
 	
 	@RequestMapping(value = command)
-	public String adUsers(@RequestParam(required = false) String whatColumn,
+	public String adProduct(@RequestParam(required = false) String whatColumn,
 						@RequestParam(required = false) String keyword,
 						@RequestParam(required = false) String pageNumber,
+						@RequestParam(required = false) String filter,
 						Model model,
 						HttpServletRequest request) {
+		System.out.println("페이지넘버:"+pageNumber);
+		System.out.println("왓칼럼:"+whatColumn);
+		if(keyword == null) keyword = "";
+		System.out.println("키워드:"+keyword);
+		System.out.println("필터:"+filter);
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%"); 
+		map.put("filter", filter);
 		
 		int totalCount = ad.getTotalPrdCount(map);
 		String url = request.getContextPath()+command;
