@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<style type="text/css">
+<style type="text/css"> 
 	#s {
 		margin: 0 auto;
 		width: 500px;
