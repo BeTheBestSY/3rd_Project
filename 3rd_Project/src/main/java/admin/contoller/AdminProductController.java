@@ -43,7 +43,7 @@ public class AdminProductController {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%"); 
-		map.put("filter", filter);
+		map.put("filter", filter); 
 		
 		int totalCount = ad.getTotalPrdCount(map);
 		String url = request.getContextPath()+command;
