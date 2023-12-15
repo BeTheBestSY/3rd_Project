@@ -34,18 +34,26 @@
 
 <%@ include file="usersMypageMenuTop.jsp" %>
 
-<div style="margin-bottom: 28px; font-size: 10pt;">
+<div style="margin: 0px 0px 28px 5px; font-size: 10pt;">
 	<a href="mypage.u" id="none_under">마이페이지</a> > 회원정보 > <a href="update.u" id="none_under">회원정보 수정</a>
 </div>
 <hr style="margin-bottom: 50px;">
 
 <ul>
-	<li><big>회원정보 수정</big></li>
-	<br>
+	<li><big><b>회원정보 수정</b></big></li>
+	<br><br>
+	<c:if test="${loginInfo.u_jointype != 'S'}">
+		<span style="font-size: 11pt; line-height: 180%;">
+		<u>네이버, 카카오, 구글 연동</u>으로 가입하신 회원님은 <font style="color: red;">필수 정보를 반드시 업데이트</font> 해 주셔야 정상적으로 이용하실 수 있습니다.<br>
+		번거로우시더라도 잠깐 시간 내시어 정보 업데이트 부탁 드립니다. :)
+		</span>
+		<br><br><br> 
+	</c:if>
+	
 	<div>
 		<form action="update.u" method="post" onSubmit="return msg()">
-			<input type="hidden" name="u_name" value="${ub.u_name }"> 
-			<input type="hidden" name="u_id" value="${ub.u_id }">
+			<input type="hidden" name="u_name" value="${loginInfo.u_name }">
+			<input type="hidden" name="u_id" value="${loginInfo.u_id }">
 			<table id="content_update">
 				<tr style="border-top: 1px solid #D5D5D5; height: 14%;">
 					<th>&nbsp;&nbsp;이름</th>
@@ -78,7 +86,7 @@
 					<th>&nbsp;&nbsp;주소</th>
 					<td>
 						<input type="text" class="form-control" name="u_address" id="zip" style="display: inline; width: 50%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[0]}" id="sample4_postcode" placeholder="우편번호" readonly> 
-						<input type="button" class="btn btn-outline-secondary" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+						<input type="button" class="btn btn-outline-secondary" style="margin-bottom: 5px; height: 38px;" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 						<input type="text" class="form-control" name="u_address" id="road" style="width: 90%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[1]}" id="sample4_roadAddress" placeholder="도로명주소" readonly> 
 						<span id="guide" style="color: #999; display: none"></span>
 						<input type="text" class="form-control" name="u_address" style="width: 90%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[2]}" id="sample4_detailAddress" placeholder="상세주소"></td>
@@ -101,9 +109,9 @@
 					</select></td>
 				</tr>
 			</table>
-			<br>
+			<br><br>
 			<input type="submit" class="btn btn-outline-secondary" style="margin-left: 37%;" value="수정하기">
-			<input type="reset" class="btn btn-outline-secondary" value="다시 입력">
+			<input type="reset" class="btn btn-outline-secondary" value="되돌리기">
 		</form>
 	</div>
 </ul>

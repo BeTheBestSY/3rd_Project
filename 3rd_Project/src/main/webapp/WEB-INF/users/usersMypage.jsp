@@ -17,7 +17,7 @@
 
 <%@ include file="usersMypageMenuTop.jsp" %>
 
-<div style="margin-bottom: 28px; font-size: 10pt;">
+<div style="margin: 0px 0px 28px 5px; font-size: 10pt;">
 	<a href="mypage.u" id="none_under">마이페이지</a> > 회원정보 > <a href="mypage.u" id="none_under">회원정보 조회</a>
 </div>
 <hr style="margin-bottom: 50px;">
@@ -28,7 +28,7 @@
 
 <ul>
 	<li><big>회원정보 조회</big></li>
-	<br>
+	<br><br>
 	<div>
 		<table style="width: 90%; height: 170px; text-align: left;" id="content">
 			<tr style="border-top: 1px solid #D5D5D5;">

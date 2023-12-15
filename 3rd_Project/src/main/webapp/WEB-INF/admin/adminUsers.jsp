@@ -125,6 +125,15 @@
 								<th scope="col" class="th-delete"></th>
 								<th scope="col" class="th-update"></th>
 							</tr>
+<<<<<<< HEAD
+							<c:if test="${empty usersLists }">존재하지 않는 회원 입니다.</c:if>
+							<c:set var="u_num" value="${fn:length(usersLists)}"/>
+							<c:forEach var="ub" items="${usersLists}" varStatus="status">
+								<tr>
+									<td>
+										${u_num }
+										<c:set var="u_num" value="${u_num-1}"/>
+=======
 							<c:if test="${empty usersLists }">
 								<tr>
 									<td colspan="12">존재하지 않는 회원 입니다.</td>
@@ -148,6 +157,7 @@
 										<c:if test="${ub.u_jointype eq 'S' }">
 											${ub.u_id }
 										</c:if>
+>>>>>>> 3f1b063dd1001cd8d14a1d38cc18fb3a043f0802
 									</td>
 									<td>${ub.u_name }</td>
 									<td>${ub.u_phone }</td>
