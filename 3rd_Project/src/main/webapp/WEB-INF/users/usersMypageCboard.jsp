@@ -34,6 +34,19 @@
 	}
 	
 	function delCheck(){
+		var flag = false;
+		
+		for(var i=0; i<checkBtns.length; i++){
+			if(checkBtns[i].checked == true){
+				flag = true;
+			}
+		}
+		
+		if(flag == false){
+			alert("반드시 한 개 이상 체크 하신 후 요청 바랍니다.");
+			return false;
+		}
+		
 		if(confirm("삭제 시 복구가 불가능합니다. 삭제 진행하시겠습니까?")){
 			return true;
 		}
@@ -63,6 +76,7 @@
 		<form action="c_boardChkDel.u" name="myForm" onSubmit="return delCheck()">
 			<div style="width:95%; margin-bottom: 10px; text-align: right;">
 				<input type="hidden" name="u_id" value="${loginInfo.u_id}">
+				<input type="hidden" name="pageNumber" value="${pageIngo.pageNumber}">
 				<input type="submit" value="체크 삭제" class="btn btn-outline-secondary" style="font-size: 10pt;">
 			</div>
 			<table class="table" id="c_board">
@@ -73,8 +87,8 @@
 					<td width="15%" style="background:#F7F3ED;">작성일</td>
 					<td width="10%" style="background:#F7F3ED;">조회수</td>
 					<td width="12%" style="background:#F7F3ED;">비밀번호</td>
-					<td width="8%" style="background:#F7F3ED;">수정</td>
-					<td width="8%" style="background:#F7F3ED;">삭제</td>
+					<td width="9%" style="background:#F7F3ED;">수정</td>
+					<td width="9%" style="background:#F7F3ED;">삭제</td>
 				</tr>
 				<c:set var="num" value="${pageInfo.totalCount - pageInfo.beginRow + 1}" />
 				
@@ -97,9 +111,9 @@
 							<td style="border-right: 1px dotted #D5D5D5;"><fmt:formatDate value="${cb.c_regdate}" pattern="yyyy-MM-dd"/></td>
 							<td style="border-right: 1px dotted #D5D5D5;">${cb.c_readcount}</td>
 							<td style="border-right: 1px dotted #D5D5D5;">${cb.c_password}</td>
-							<td style="border-right: 1px dotted #D5D5D5;"><input type="button" value="수정" class="btn btn-outline-secondary" style="font-size: 10pt; height: 30px;" onClick="location.href='#'"></td>
-							<td><input type="button" value="삭제" class="btn btn-outline-secondary" style="font-size: 10pt; height: 30px;" onClick="location.href='c_boardDel.u?c_num=${cb.c_num}'"></td>
-						</tr>	
+							<td style="border-right: 1px dotted #D5D5D5;"><input type="button" value="수정" class="btn btn-outline-secondary" style="font-size: 10pt; height: 30px;" onClick="location.href='c_boardUpdate.u?c_num=${cb.c_num}&pageNumber=${pageInfo.pageNumber}'"></td>
+							<td><input type="button" value="삭제" class="btn btn-outline-secondary" style="font-size: 10pt; height: 30px;" onClick="location.href='c_boardDel.u?c_num=${cb.c_num}&pageNumber=${pageInfo.pageNumber}'"></td>
+						</tr>
 					</c:forEach>
 				</c:if>
 				<c:if test="${fn:length(c_boardLists) == 0}">

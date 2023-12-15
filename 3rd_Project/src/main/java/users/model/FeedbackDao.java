@@ -9,7 +9,7 @@ public class FeedbackDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-	private String namespace = "sqlField_user";
+	private String namespace = "sqlField_user"; 
 
 	public int insertFeedback(FeedbackBean fb) {
 		sqlSessionTemplate.insert(namespace+".insertFeedback", fb);

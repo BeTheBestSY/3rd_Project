@@ -36,7 +36,7 @@ public class AdminProductController {
 						HttpServletRequest request) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
-		map.put("keyword", "%"+keyword+"%");
+		map.put("keyword", "%"+keyword+"%"); 
 		
 		int totalCount = ad.getTotalPrdCount(map);
 		String url = request.getContextPath()+command;

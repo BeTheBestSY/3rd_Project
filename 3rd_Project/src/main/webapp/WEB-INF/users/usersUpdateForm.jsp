@@ -15,14 +15,9 @@
 </style>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-	$(function(){
-		$("#zip").click(function(){
-			alert("우편번호 찾기 버튼을 이용해주세요.");
-		});
-		$("#road").click(function(){
-			alert("우편번호 찾기 버튼을 이용해주세요.");
-		});
-	});
+	function zipClick(){
+		document.getElementById("searchBtn").click();
+	}
 
 	function msg(){
 		if(confirm('입력하신 정보로 수정 하시겠습니까?'))
@@ -82,13 +77,13 @@
 						<input type="text" class="form-control" name="u_phone" style="width: 12%; display: inline; text-align: center;" value="${fn:split(loginInfo.u_phone, '-')[2]}" maxlength="4" required>
 						</td>
 				</tr>
-				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA; height: 44%;">
+				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA;">
 					<th>&nbsp;&nbsp;주소</th>
 					<td>
-						<input type="text" class="form-control" name="u_address" id="zip" style="display: inline; width: 50%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[0]}" id="sample4_postcode" placeholder="우편번호" readonly> 
-						<input type="button" class="btn btn-outline-secondary" style="margin-bottom: 5px; height: 38px;" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-						<input type="text" class="form-control" name="u_address" id="road" style="width: 90%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[1]}" id="sample4_roadAddress" placeholder="도로명주소" readonly> 
-						<span id="guide" style="color: #999; display: none"></span>
+						<input type="text" class="form-control" name="u_address" style="display: inline; width: 50%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[0]}" id="sample4_postcode" onClick="zipClick()" placeholder="우편번호" readonly> 
+						<input type="button" class="btn btn-outline-secondary" id="searchBtn" style="margin-bottom: 5px; height: 37px;" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+						<input type="text" class="form-control" name="u_address" style="width: 90%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[1]}" id="sample4_roadAddress" onClick="zipClick()" placeholder="도로명주소" readonly> 
+						<span id="guide" style="color: #999; display: none"></span> 
 						<input type="text" class="form-control" name="u_address" style="width: 90%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[2]}" id="sample4_detailAddress" placeholder="상세주소"></td>
 				</tr>
 				<!-- <tr>
