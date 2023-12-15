@@ -25,7 +25,7 @@ public class AdminUsersController {
 //	private final String gotoPage = "";
 	
 	@Autowired
-	private AdminDao ad; 
+	private AdminDao ad;
 	
 	@RequestMapping(value = command)
 	public String adUsers(@RequestParam(required = false) String whatColumn,
