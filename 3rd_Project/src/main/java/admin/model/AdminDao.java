@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import product.model.ProductBean;
 import q_board.model.QBoardBean;
 import users.model.UsersBean;
 import utility.Paging;
@@ -56,6 +57,15 @@ public class AdminDao {
 
 	public UsersBean getUserById(String u_id) {
 		return sqlSessionTemplate.selectOne(nameSpace+"getUserById", u_id);
+	}
+
+	public List<ProductBean> getProducts(Map<String, String> map, Paging pageInfo) {
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+		return sqlSessionTemplate.selectList(nameSpace+"getProducts", map, rowBounds);
+	}
+
+	public int getTotalPrdCount(Map<String, String> map) {
+		return sqlSessionTemplate.selectOne(nameSpace+"getTotalPrdCount", map);
 	}
 	
 }
