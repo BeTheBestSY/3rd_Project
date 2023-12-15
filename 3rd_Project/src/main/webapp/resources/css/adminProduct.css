@@ -22,7 +22,7 @@
 	  align:center;
       background-color: #aaa;
       width: 95%;
-      height: 95%;
+      height: 100%;
       line-height: 100px;
       text-align: center;
       padding: 20px;
@@ -145,6 +145,9 @@ tr:hover {
   background-color: #d7e7f7;
   box-shadow: 1px 1px 1px 1px #eee, 1px 1px 1px rgba(94, 104, 121, .288);
 }
+/* #board-search .search-window {
+	margin: 0 auto;
+} */
 #board-search .search-window .search-wrap {
   position: relative;
 /*   padding-right: 124px; */
@@ -323,8 +326,9 @@ select{
   width: 1px;
   height: 1px;
 }
-.radio-cmp {
-	width:30px;
-	height:30px;
+
+.input[name='filter_btn'] { /*여기에 써 놨는데도 왜 안 될까..*/
+	width:20px;
+	height:18px;
 	border:1px;
 }
