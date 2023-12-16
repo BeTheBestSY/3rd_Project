@@ -36,7 +36,6 @@ public class NaverUsers {
         Object obj = parsing.parse(responseBody.toString());
         JSONObject jsonObj = (JSONObject)obj;
         JSONObject resObj = (JSONObject)jsonObj.get("response");
-        // 여기서부터 해야함!!
         this.naverCode = (String)resObj.get("id");
         this.name = (String)resObj.get("name");
         this.mobile = (String)resObj.get("mobile");
