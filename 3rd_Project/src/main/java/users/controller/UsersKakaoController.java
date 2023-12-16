@@ -69,7 +69,7 @@ public class UsersKakaoController {
 	@RequestMapping(value = commandDis, method = RequestMethod.GET)
 	public String kakaoDisconnect() {
 		KakaoApi kakaoApi = new KakaoApi();
-		String u_id = kakaoApi.kakaoDisconnect(); // 여기서부터 하기
+		String u_id = kakaoApi.kakaoDisconnect(); // 여기서부터
 		return null;
 	}
 }
