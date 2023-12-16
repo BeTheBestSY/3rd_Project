@@ -15,6 +15,9 @@
 	td{
 		padding: 0px 0px 10px 10px; 
 	}
+	body{
+		padding-top: 90px;
+	}
 	#btn{
 		width: 120px;
 		height: 40px;

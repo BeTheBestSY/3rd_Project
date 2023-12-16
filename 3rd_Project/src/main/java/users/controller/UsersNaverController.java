@@ -24,6 +24,7 @@ import utility.NaverUsers;
 @Controller
 public class UsersNaverController {
 	private final String command = "/naver.u";
+	private final String commandDis = "/disnaver.u";
 	private final String viewPage = "usersWelcomeView2";
 	private final String gotoPage = "redirect:/.main";
 	
@@ -73,7 +74,6 @@ public class UsersNaverController {
 	        }
 	        br.close();
 	        if(responseCode==200) {
-	        	// 네아로 검수 승인 후 다시
 	        	System.out.println(res.toString());
 	        	JSONParser parsing = new JSONParser();
 		      	Object obj = parsing.parse(res.toString());

@@ -4,7 +4,7 @@
 <style>
 	#q_board{
 		text-align: center;
-		width: 95%;
+		width: 100%;
 		vertical-align: middle;
 		font-size: 11pt;
 	}
@@ -14,7 +14,6 @@
 	#q_board td{
 		padding-right: 20px; 
 	}
-	
 </style>
 
 <script>
@@ -72,9 +71,9 @@
 		
 	</div>
 	
-	<div>
+	<div style="left: -15px; position: relative;">
 		<form action="q_boardChkDel.u" name="myForm" onSubmit="return delCheck()">
-			<div style="width:95%; margin-bottom: 10px; text-align: right;">
+			<div style="width:100%; margin-bottom: 10px; text-align: right;">
 				<input type="hidden" name="u_id" value="${loginInfo.u_id}">
 				<input type="hidden" name="pageNumber" value="${pageInfo.pageNumber}">
 				<input type="submit" value="체크 삭제" class="btn btn-outline-secondary" style="font-size: 10pt;">
@@ -84,6 +83,7 @@
 					<td width="3%" style="background:#F7F3ED;"><input type="checkbox" name="all" onClick="allCheck()"></td>
 					<td width="9%" style="background:#F7F3ED;">번호</td>
 					<td style="background:#F7F3ED;">제목</td>
+					<td width="9%" style="background:#F7F3ED;">답변</td> 
 					<td width="15%" style="background:#F7F3ED;">작성일</td>
 					<td width="10%" style="background:#F7F3ED;">조회수</td>
 					<td width="12%" style="background:#F7F3ED;">비밀번호</td>
@@ -108,6 +108,7 @@
 									<img src="<%= request.getContextPath() %>/resources/image/hot.png" width="2%">
 								</c:if>
 							</td>
+							<td style="border-right: 1px dotted #D5D5D5;">v</td>
 							<td style="border-right: 1px dotted #D5D5D5;"><fmt:formatDate value="${qb.q_regdate}" pattern="yyyy-MM-dd"/></td>
 							<td style="border-right: 1px dotted #D5D5D5;">${qb.q_readcount}</td>
 							<td style="border-right: 1px dotted #D5D5D5;">${qb.q_password}</td>
@@ -117,10 +118,10 @@
 					</c:forEach>
 				</c:if>
 				<c:if test="${fn:length(q_boardLists) == 0}">
-					<td colspan="8">작성한 게시글이 없습니다.</td>
+					<td colspan="9">작성한 게시글이 없습니다.</td>
 				</c:if>
 			</table>
-			<div style="width: 95%; text-align: center; margin-top: 50px;">
+			<div style="width: 100%; text-align: center; margin-top: 50px;">
 				${pageInfo.pagingHtml}
 			</div>
 		</form>

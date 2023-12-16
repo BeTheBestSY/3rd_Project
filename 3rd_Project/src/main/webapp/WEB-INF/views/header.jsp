@@ -28,7 +28,7 @@
 	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
 	    font-weight: normal;
 	    font-style: normal;
-	}
+	} 
 	@font-face {
 	    font-family: 'RIDIBatang'; 
 	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
@@ -45,7 +45,7 @@
 </head>
   
 <body>
-	<header class="p-3 mb-3 border-bottom" style="font-family: 'RIDIBatang';">
+	<header class="p-3 mb-3 border-bottom" style="font-family: 'RIDIBatang'; position: fixed; z-index: 99; background: white; left: 0px; right: 0px; top: 0px;">
 		<div class="container">
 			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
