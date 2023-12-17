@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: yumay
+=======
+Built-By: hdaon
+>>>>>>> cb67517c7e3b08e01f2f8b8e11f00ba8c8e52bd6
 Build-Jdk: 12.0.2
 Created-By: Maven Integration for Eclipse
 

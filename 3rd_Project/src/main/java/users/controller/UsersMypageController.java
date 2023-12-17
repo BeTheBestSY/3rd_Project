@@ -96,7 +96,15 @@ public class UsersMypageController {
 		ud.deleteUsers(u_id);
 		session.invalidate();
 		model.addAttribute("msg", "탈퇴 처리되었습니다. 이용해주셔서 감사합니다.");
-		model.addAttribute("url", ".main");
+		if(u_jointype.equals("N")) {
+			// 네이버 연동 해제
+			model.addAttribute("url", "disnaver.u");
+		} else if(u_jointype.equals("K")) {
+			// 카카오 연동 해제
+			model.addAttribute("url", "diskakao.u");
+		} else {
+			model.addAttribute("url", ".main");
+		}
 		return viewPage_del;
  	}
 	
