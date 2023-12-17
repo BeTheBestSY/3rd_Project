@@ -77,7 +77,7 @@
 	
 	<!-- celeb -->
 	
-		<select id="getTotalCountCeleb" resultType="int">
+		<select id="getCeleb" resultType="int">
 		select count(*) from celeb
 		
 		<if test="whatColumn=='cl_color'">

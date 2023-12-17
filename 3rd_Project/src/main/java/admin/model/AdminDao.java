@@ -82,9 +82,9 @@ public class AdminDao {
 	}
 	
 	//celeb
-	public int getTotalCountCeleb(Map<String, String> map) {
+	public int getCeleb(Map<String, String> map) {
 		
-		int cnt = sqlSessionTemplate.selectOne(nameSpace + ".getTotalCountCeleb",map);
+		int cnt = sqlSessionTemplate.selectOne(nameSpace + "getCeleb",map);
 		
 		return cnt;
 	}
@@ -93,14 +93,14 @@ public class AdminDao {
 		
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
 		
-		List<CelebBean> lists = sqlSessionTemplate.selectList(nameSpace + ".getAllCelebList",map,rowBounds);
+		List<CelebBean> lists = sqlSessionTemplate.selectList(nameSpace + "getAllCelebList",map,rowBounds);
 		
 		return lists;
 		
 	}
 	
 	public CelebBean getSelectOneCeleb(String cl_num) {
-		CelebBean cb = sqlSessionTemplate.selectOne(nameSpace+".getSelectOneCeleb",cl_num);
+		CelebBean cb = sqlSessionTemplate.selectOne(nameSpace+"getSelectOneCeleb",cl_num);
 			return cb;
 		}
 
