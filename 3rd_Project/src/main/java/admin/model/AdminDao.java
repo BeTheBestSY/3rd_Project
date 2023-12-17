@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import c_board.model.CBoardBean;
+import celeb.model.CelebBean;
 import product.model.ProductBean;
 import q_board.model.QBoardBean;
 import users.model.UsersBean;
@@ -22,6 +24,8 @@ public class AdminDao {
 	
 	public AdminDao() {}
 
+	
+	//q_board
 	public List<QBoardBean> getAllBoardList(Paging pageInfo, Map<String, String> map) {
 
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
@@ -46,7 +50,63 @@ public class AdminDao {
 		sqlSessionTemplate.delete(nameSpace+"deleteBoard",q_num);
 		
 	}
+	
+	
+	//c_board
+	public List<CBoardBean> getAllBoardListC(Paging pageInfo, Map<String, String> map) {
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		List<CBoardBean> list = sqlSessionTemplate.selectList(nameSpace+"getAllBoardListC",map,rowBounds);
+		
+		return list;
+	}
+	
+	public int getTotalCountC(Map<String, String> map) {
+		int totalCount = sqlSessionTemplate.selectOne(nameSpace+"getTotalCountC",map);
+		return totalCount;
+	}
 
+	public CBoardBean selectContentC(int c_num) {
+		CBoardBean bb = sqlSessionTemplate.selectOne(nameSpace+"selectContentC",c_num);
+		return bb;
+	}
+	
+	public void deleteBoardC(int c_num) {
+		sqlSessionTemplate.delete(nameSpace+"deleteBoardC",c_num);
+	}
+	
+	public void deleteChkBoardC(int[] checks) {
+		for(int i=0; i<checks.length; i++) {
+			int c_num = checks[i];
+			sqlSessionTemplate.delete(nameSpace+"deleteChkBoardC",c_num);
+		}
+	}
+	
+	//celeb
+	public int getTotalCountCeleb(Map<String, String> map) {
+		
+		int cnt = sqlSessionTemplate.selectOne(nameSpace + ".getTotalCountCeleb",map);
+		
+		return cnt;
+	}
+
+	public List<CelebBean> getAllCelebList(Map<String, String> map, Paging pageInfo) {
+		
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		
+		List<CelebBean> lists = sqlSessionTemplate.selectList(nameSpace + ".getAllCelebList",map,rowBounds);
+		
+		return lists;
+		
+	}
+	
+	public CelebBean getSelectOneCeleb(String cl_num) {
+		CelebBean cb = sqlSessionTemplate.selectOne(nameSpace+".getSelectOneCeleb",cl_num);
+			return cb;
+		}
+
+	
+	
+	//users
 	public List<UsersBean> getUsers(Map<String, String> map) {
 		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map);
 	}
@@ -59,6 +119,8 @@ public class AdminDao {
 		return sqlSessionTemplate.selectOne(nameSpace+"getUserById", u_id);
 	}
 
+	
+	//product
 	public List<ProductBean> getProducts(Map<String, String> map, Paging pageInfo) {
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
 		return sqlSessionTemplate.selectList(nameSpace+"getProducts", map, rowBounds);
