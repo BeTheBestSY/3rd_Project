@@ -72,7 +72,7 @@ public class UsersNaverController {
 	@RequestMapping(value = commandDis)
 	public String naverDisconnect() {
 		NaverApi naverApi = new NaverApi();
-		// 연동해제 1단계. 접근 토큰 유효성 체크 
+		// 연동해제 1단계. 접근 토큰 유효성 체크
 		String message = naverApi.isTokenValid(this.accessToken);
 		// 2단계. 접근 토큰이 유효하지 않다면 재발급. 유효하다면 3단계로 가기.
 		 if(!message.equals("success")) {
