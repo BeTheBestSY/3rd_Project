@@ -26,7 +26,7 @@ public class AdminCelebController {
 	
 	@Autowired
 	private AdminDao adminDao;
-	
+	 
 	@RequestMapping(value=celebCommand)
 	public String celebList(Model model,
 					HttpServletRequest request,
