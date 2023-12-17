@@ -14,7 +14,9 @@
  <div id="board-list">
 <div class="section">
 	<div class="tag">
+	
 	<h4>문의 게시판 관리</h4>
+	
 	</div>
 	  <div id="board-search">
         <div class="container">
