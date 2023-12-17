@@ -17,12 +17,15 @@ import utility.KakaoApi;
 @Controller
 public class UsersKakaoController {
 	private final String command = "/kakao.u";
+	private final String commandOut = "/outkakao.u";
 	private final String commandDis = "/diskakao.u";
+	
 	private final String viewPage = "usersWelcomeView2";
 	private final String gotoPage = "redirect:/.main";
 	
 	@Autowired
 	private UsersDao ud;
+	private String accessToken;
 	
 	// 로그인
 	@RequestMapping(value = command, method = RequestMethod.GET)
@@ -32,17 +35,17 @@ public class UsersKakaoController {
 		// 1. 인가 코드 받기 (@RequestParam String code)
 
 	    // 2. 토큰 받기
-	    String accessToken = kakaoApi.getAccessToken(code);
+	    this.accessToken = kakaoApi.getAccessToken(code);
 
 	    // 3. 사용자 정보 받기
-	    Map<String, Object> userInfo = kakaoApi.getUserInfo(accessToken);
+	    Map<String, Object> userInfo = kakaoApi.getUserInfo(this.accessToken);
 
 	    String nickname = String.valueOf(userInfo.get("nickname"));
 	    String id = String.valueOf(userInfo.get("id"));
 
 	    System.out.println("nickname = " + nickname);
 	    System.out.println("id = " + id);
-	    System.out.println("accessToken = " + accessToken);
+	    System.out.println("accessToken = " + this.accessToken);
 
 	    UsersBean ub = new UsersBean();
       	ub.setU_id(id);
@@ -65,11 +68,21 @@ public class UsersKakaoController {
 	    	return viewPage;
 	}
 	
+	// 로그아웃
+	@RequestMapping(value = commandOut)
+	public String kakaoLogout() {
+		KakaoApi kakaoApi = new KakaoApi();
+		String id = kakaoApi.kakaoLogout(this.accessToken);
+		System.out.println("로그아웃한 카카오 회원 id:"+id);
+		return gotoPage;
+	}
+	
 	// 연동해제
-	@RequestMapping(value = commandDis, method = RequestMethod.GET)
+	@RequestMapping(value = commandDis)
 	public String kakaoDisconnect() {
 		KakaoApi kakaoApi = new KakaoApi();
-		String u_id = kakaoApi.kakaoDisconnect(); // 여기서부터
-		return null;
+		String id = kakaoApi.kakaoDisconnect(this.accessToken);
+		System.out.println("연동해제한 카카오 회원 id:"+id);
+		return gotoPage;
 	}
 }

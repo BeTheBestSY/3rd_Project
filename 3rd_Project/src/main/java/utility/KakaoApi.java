@@ -2,9 +2,11 @@ package utility;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 
@@ -13,6 +15,8 @@ import org.json.simple.parser.JSONParser;
 
 
 public class KakaoApi {
+	private String client_id = "a8d5622ce00b9080e03be1948663093a";
+	private String redirect_uri = "http%3A%2F%2Flocalhost%3A8080%2Fex20%2Fkakao.u";
 	
 	// access token 받기
 	public String getAccessToken(String code) {
@@ -35,8 +39,8 @@ public class KakaoApi {
 	        
 	        //필수 쿼리 파라미터 세팅
 	        sb.append("grant_type=authorization_code");
-	        sb.append("&client_id=").append("a8d5622ce00b9080e03be1948663093a");
-	        sb.append("&redirect_uri=").append("http%3A%2F%2Flocalhost%3A8080%2Fex20%2Fkakao.u");
+	        sb.append("&client_id=").append(client_id);
+	        sb.append("&redirect_uri=").append(redirect_uri);
 	        sb.append("&code=").append(code);
 
 	        bw.write(sb.toString());
@@ -47,7 +51,7 @@ public class KakaoApi {
 	        System.out.println("[KakaoApi.getAccessToken] responseCode = "+ responseCode);
 	        
 	        BufferedReader br;
-	        if (responseCode >= 200 && responseCode <= 300) {
+	        if (responseCode == 200) {
 	            br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 	        } else {
 	            br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
@@ -118,42 +122,70 @@ public class KakaoApi {
 	    }
 	    return userInfo;
 	}
+	// 로그아웃
+	public String kakaoLogout(String accessToken) {
+	    String reqUrl = "https://kapi.kakao.com/v1/user/logout";
+	    String id = "";
+	    try{
+	        URL url = new URL(reqUrl);
+	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	        conn.setRequestMethod("POST");
+	        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+	        int responseCode = conn.getResponseCode();
 
-	public String kakaoDisconnect() {
-		// TODO Auto-generated method stub
-		return null;
+	        BufferedReader br;
+	        if (responseCode >= 200 && responseCode <= 300) {
+	            br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        } else {
+	            br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+	        }
+
+	        String line = "";
+	        StringBuilder responseSb = new StringBuilder();
+	        while((line = br.readLine()) != null){
+	            responseSb.append(line);
+	        }
+	        JSONParser parsing = new JSONParser();
+	        Object obj = parsing.parse(responseSb.toString());
+	        JSONObject jsonObj = (JSONObject)obj;
+	        id = String.valueOf(jsonObj.get("id"));
+	    }catch (Exception e){
+	        e.printStackTrace();
+	    }
+	    return id;
+	}
+	// 연동해제
+	public String kakaoDisconnect(String accessToken) {
+		String reqUrl = "https://kapi.kakao.com/v1/user/unlink";
+		String id = "";
+		try {
+			URL url = new URL(reqUrl);
+			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Authorization", "Bearer "+accessToken);
+			int responseCode = conn.getResponseCode();
+			
+			BufferedReader br;
+	        if (responseCode >= 200 && responseCode <= 300) {
+	            br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        } else {
+	            br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+	        }
+
+	        String line = "";
+	        StringBuilder responseSb = new StringBuilder();
+	        while((line = br.readLine()) != null){
+	            responseSb.append(line);
+	        }
+	        JSONParser parsing = new JSONParser();
+	        Object obj = parsing.parse(responseSb.toString());
+	        JSONObject jsonObj = (JSONObject)obj;
+	        id = String.valueOf(jsonObj.get("id"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return id;
 	}
 	
-	// 로그아웃
-//	public void kakaoLogout(String accessToken) {
-//	    String reqUrl = "https://kapi.kakao.com/v1/user/logout";
-//
-//	    try{
-//	        URL url = new URL(reqUrl);
-//	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//	        conn.setRequestMethod("POST");
-//	        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
-//
-//	        int responseCode = conn.getResponseCode();
-//	        log.info("[KakaoApi.kakaoLogout] responseCode : {}",  responseCode);
-//
-//	        BufferedReader br;
-//	        if (responseCode >= 200 && responseCode <= 300) {
-//	            br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//	        } else {
-//	            br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-//	        }
-//
-//	        String line = "";
-//	        StringBuilder responseSb = new StringBuilder();
-//	        while((line = br.readLine()) != null){
-//	            responseSb.append(line);
-//	        }
-//	        String result = responseSb.toString();
-//	        log.info("kakao logout - responseBody = {}", result);
-//
-//	    }catch (Exception e){
-//	        e.printStackTrace();
-//	    }
-//	}
+
 }
