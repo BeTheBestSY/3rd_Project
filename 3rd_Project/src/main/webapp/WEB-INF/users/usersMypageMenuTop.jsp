@@ -15,6 +15,9 @@
 	#list{
 		line-height: 180%;
 	}
+	body{
+		padding-top: 110px; 
+	}
 }
 </style>
     
@@ -62,8 +65,6 @@
 				<ul id="list" style="line-height: 180%;">
 					<li><a href="order.u" id="none_under">주문내역 조회</a></li>
 				</ul>
-				
-				<!-- <a href="changepw.u" id="none_under">비밀번호 변경</a> -->
 			</div>
 		</td>
 		<td valign="top">

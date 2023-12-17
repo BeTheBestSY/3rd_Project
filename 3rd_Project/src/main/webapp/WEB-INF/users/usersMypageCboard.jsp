@@ -14,7 +14,6 @@
 	#c_board td{
 		padding-right: 20px; 
 	}
-	
 </style>
 
 <script>

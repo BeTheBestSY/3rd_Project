@@ -21,6 +21,9 @@
 	td{
 		padding: 15px 0px 0px 10px;
 	}
+	body{
+		padding-top: 90px;
+	}
 }
 </style>
 

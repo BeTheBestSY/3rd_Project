@@ -1,109 +1,87 @@
 package users.controller;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
+import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import users.model.UsersBean;
 import users.model.UsersDao;
-import utility.NaverUsers;
+import utility.NaverApi;
 
 
 @Controller
 public class UsersNaverController {
 	private final String command = "/naver.u";
+	private final String commandDis = "/disnaver.u";
+	
 	private final String viewPage = "usersWelcomeView2";
 	private final String gotoPage = "redirect:/.main";
 	
 	@Autowired
 	private UsersDao ud;
+	private String accessToken;
+	private String refreshToken;
 	
+	// 로그인
 	@RequestMapping(value = command, method = RequestMethod.GET)
-	public String naverMain(HttpServletRequest request,
-			HttpSession session) throws UnsupportedEncodingException {
+	public String naverLogin(@RequestParam String code, @RequestParam String state,
+							HttpSession session) {
+		NaverApi naverApi = new NaverApi();
 		boolean flag = false;
-		// ============= 네이버 =============
-		String clientId = "7e2tSZMcps1aVtINdSJv";//애플리케이션 클라이언트 아이디값";
-	    String clientSecret = "A98jpGEn8v";//애플리케이션 클라이언트 시크릿값";
-	    String code = request.getParameter("code");
-	    String state = request.getParameter("state");
-	    String redirectURI = URLEncoder.encode("http://localhost:8080/ex20/naver.u", "UTF-8");
-	    
-	    String apiURL;
-	    apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
-	    apiURL += "client_id=" + clientId;
-	    apiURL += "&client_secret=" + clientSecret;
-	    apiURL += "&redirect_uri=" + redirectURI;
-	    apiURL += "&code=" + code;
-	    apiURL += "&state=" + state;
-	    String access_token = "";
-	    String refresh_token = "";
-	    System.out.println("apiURL="+apiURL);
-	    
-	    try {
-	        URL url = new URL(apiURL);
-	        HttpURLConnection con = (HttpURLConnection)url.openConnection();
-	        con.setRequestMethod("GET");
-	        int responseCode = con.getResponseCode();
-	        BufferedReader br;
-	        System.out.println("responseCode="+responseCode);
-	        if(responseCode==200) { // 정상 호출
-	        	System.out.println("정상 호출1");
-	        	br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-	        } else {  // 에러 발생
-	        	System.out.println("에러 발생1");
-	        	br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-	        }
-	        String inputLine; // ?
-	        StringBuffer res = new StringBuffer();
-	        while ((inputLine = br.readLine()) != null) {
-	          res.append(inputLine);
-	        }
-	        br.close();
-	        if(responseCode==200) {
-	        	// 네아로 검수 승인 후 다시
-	        	System.out.println(res.toString());
-	        	JSONParser parsing = new JSONParser();
-		      	Object obj = parsing.parse(res.toString());
-		      	JSONObject jsonObj = (JSONObject)obj;
-		      		        
-		      	access_token = (String)jsonObj.get("access_token");
-		      	refresh_token = (String)jsonObj.get("refresh_token");
-		      	NaverUsers naver = new NaverUsers(access_token, refresh_token);
-		      	System.out.println("naver.getNaverCode():"+naver.getNaverCode());
-		      	UsersBean ub = new UsersBean();
-		      	ub.setU_id(naver.getNaverCode());
-		      	ub.setU_name(naver.getName());
-		      	ub.setU_password("");
-		      	ub.setU_phone("");
-		      	ub.setU_address(",,");
-		      	ub.setU_jointype("N");
-		      	ub.setU_color("잘 모르겠음");
-		      	if(ud.didYouJoin(ub)) { // 로그인 한 네이버 계정이 users 테이블에 저장되어있으면
-		      		flag = true;
-		      	} else {
-		      		ud.register(ub);
-		      	}
-		      	session.setAttribute("loginInfo", ub);
-	        }
-	      } catch (Exception e) {
-	        System.out.println(e);
-	      }
-	    if(flag)
+		// 1. 인가 코드 받기
+		// 2. 토큰 받기
+		Map<String, String> tokens = naverApi.getAccessToken(code, state);
+		this.accessToken = tokens.get("accessToken");
+		this.refreshToken = tokens.get("refreshToken");
+		
+		// 3. 사용자 정보 받기
+		Map<String, Object> userInfo = naverApi.getUserInfo(this.accessToken);
+		String name = String.valueOf(userInfo.get("name"));
+	    String id = String.valueOf(userInfo.get("id"));
+
+	    System.out.println("name = " + name);
+	    System.out.println("id = " + id);
+	    System.out.println("accessToken = " + this.accessToken);
+
+	    UsersBean ub = new UsersBean();
+      	ub.setU_id(id);
+      	ub.setU_name(name);
+      	ub.setU_password("");
+      	ub.setU_phone("");
+      	ub.setU_address(",,");
+      	ub.setU_jointype("N");
+      	ub.setU_color("잘 모르겠음");
+      	
+      	if(ud.didYouJoin(ub)) { // 로그인 한 네이버 계정이 users 테이블에 저장되어있으면
+      		flag = true;
+      	} else {
+      		ud.register(ub);
+      	}
+      	session.setAttribute("loginInfo", ub);
+      	if(flag)
 	    	return gotoPage;
 	    else 
 	    	return viewPage;
+	}
+	// 연동해제
+	@RequestMapping(value = commandDis)
+	public String naverDisconnect() {
+		NaverApi naverApi = new NaverApi();
+		// 연동해제 1단계. 접근 토큰 유효성 체크
+		String message = naverApi.isTokenValid(this.accessToken);
+		// 2단계. 접근 토큰이 유효하지 않다면 재발급. 유효하다면 3단계로 가기.
+		 if(!message.equals("success")) {
+			 this.accessToken = naverApi.getAccessTokenAgain(this.refreshToken);
+		 }
+		// 3단계. 연동해제(접근 토큰 삭제)
+		String result = naverApi.naverDisconnect(this.accessToken);
+		System.out.println(result+": 네이버 연동해제 성공");
+		// 4단계. 삭제된 접근 토큰으로 갱신 토큰이 발급되는지 확인 => 보류
+		return gotoPage;
 	}
 }
