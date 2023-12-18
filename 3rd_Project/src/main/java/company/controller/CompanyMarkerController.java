@@ -39,11 +39,6 @@ public class CompanyMarkerController {
 		model.addAttribute("oneX", cb.getCmp_x());
 		model.addAttribute("oneName", cb.getCmp_name());
 		model.addAttribute("pageNumber", pageNumber);
-<<<<<<< HEAD
-	*/
-		System.out.println("ASDASDAS");
-=======
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 		return viewPage+"?oneY="+cb.getCmp_y()+"&oneX="+cb.getCmp_x()+"&oneName="+encodedName+"&pageNumber="+pageNumber+"&whatColumn="+whatColumn+"&keyword="+encodedKeyword;
 		
 		
