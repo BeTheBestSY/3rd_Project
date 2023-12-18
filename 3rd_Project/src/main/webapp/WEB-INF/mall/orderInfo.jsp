@@ -78,15 +78,26 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
- 
+ <style>
+   body{
+      padding-top: 140px;  
+   }
+</style>
 </head>
 <%@ include file="../views/header.jsp" %>
+
+
+<%@ include file="../product/productHeader.jsp" %>
 <body>
-     
+<%
+
+	String cart_num = session.getId();
+System.out.println(cart_num+"cart_num 뭘까요");
+%>
 
      
     
-<div class="container">
+<div class="container" >
   <main>
  
 
@@ -130,13 +141,14 @@
       
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">주문 정보 입력</h4>
-        <form class="needs-validation" action="orderCompleted.mall" novalidate>
+        <form class="needs-validation" action="login.u" novalidate>
+              <input type="hidden" name="cart_num" value="<%=cart_num%>"> 
           <div class="row g-3">
             <div class="col-sm-6">
               <label class="form-label">아이디</label>
               <input type="text" class="form-control" name="u_id" disabled="disabled" value="${id}" > 
             </div>
-
+ 
             <div class="col-sm-6">
               <label class="form-label">수령인 이름</label>
               <input type="text" class="form-control" name="o_name" id="lastName" value="${name}" required>
@@ -150,15 +162,15 @@
             <div class="row g-3">
               <label class="form-label">수령인 전화번호</label><br>
             	 <c:set var="firstList">010, 011, 016, 017, 018, 019</c:set>
-				&nbsp;&nbsp;	<select name="o_phone" class="form-select"  style="width: 130px;" required>
+				&nbsp;&nbsp;	<select name="o_phone1" class="form-select"  style="width: 130px;" required>
 						<c:forEach var="first" items="${firstList }">
 							<option value="${first }" <c:if test="${fn:split(phone, '-')[0] eq first }">selected</c:if>>${first }</option>
 						</c:forEach>
 					</select>&nbsp; &nbsp;
 				
- 			  	<input type="text"  class="form-control" style="width: 150px;"  name="u_phone" value="${fn:split(phone, '-')[1]}" maxlength="4" required> &nbsp; &nbsp;
+ 			  	<input type="text"  class="form-control" style="width: 150px;"  name="o_phone2" value="${fn:split(phone, '-')[1]}" maxlength="4" required> &nbsp; &nbsp;
 					 
-             	<input type="text" class="form-control" name="u_phone" style="width: 150px;"  value="${fn:split(phone, '-')[2]}" maxlength="4" required>
+             	<input type="text" class="form-control" name="o_phone3" style="width: 150px;"  value="${fn:split(phone, '-')[2]}" maxlength="4" required>
 				 
             </div>
            
@@ -259,7 +271,7 @@
           
           <hr class="my-4">
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit">주문 완료</button>
+          <input class="w-100 btn btn-primary btn-lg" type="submit" value="주문 완료">
         </form>
       </div>
     </div>

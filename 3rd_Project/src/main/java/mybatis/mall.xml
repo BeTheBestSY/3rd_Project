@@ -42,6 +42,6 @@
 	</insert>
 	
 	<select id="selectMaxO_num" resultType="int">
-		select MAX(o_num) from orders;
+		select MAX(o_num) from orders
 	</select>
 </mapper>
