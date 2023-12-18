@@ -1,7 +1,6 @@
 package mall.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,13 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import company.model.CompanyBean;
-import company.model.CompanyDao;
 import mall.model.OrderDao;
 import mall.model.TempCart;
 import product.model.ProductBean;
 import users.model.UsersBean;
-import utility.Paging;
+
 
 @Controller
 public class OrderController {
@@ -40,7 +37,7 @@ public class OrderController {
 		 System.out.println(cart_num+"cart_num");
 		 System.out.println(p_num+"p_num");
 		 System.out.println(cart_qty+"cart_qty");
-		 
+		 System.out.println("설마");
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("cart_num", cart_num);
 		map.put("p_num", p_num);		

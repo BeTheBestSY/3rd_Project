@@ -43,13 +43,7 @@
 						<span class="nav_name">&nbsp;주문 내역</span>
                     </a>
                     
-<<<<<<< HEAD
-                    
-                    
                     <a href="companyList.admin" class="nav__link">
-=======
-                    <a href="#" class="nav__link">
->>>>>>> branch 'HJ' of https://github.com/BeTheBestSY/3rd_Project.git
                     	<ion-icon name="location-outline"></ion-icon>
 						<span class="nav_name">&nbsp;진단 회사</span>
                     </a>

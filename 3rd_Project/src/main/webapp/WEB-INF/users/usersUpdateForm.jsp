@@ -37,7 +37,7 @@
 <ul>
 	<li><big><b>회원정보 수정</b></big></li>
 	<br><br>
-	<c:if test="${loginInfo.u_jointype != 'S'}">
+	<c:if test="${loginInfo.u_jointype != 'S' && loginInfo.u_phone == null}">
 		<span style="font-size: 11pt; line-height: 180%;">
 		<u>네이버, 카카오, 구글 연동</u>으로 가입하신 회원님은 <font style="color: red;">필수 정보를 반드시 업데이트</font> 해 주셔야 정상적으로 이용하실 수 있습니다.<br>
 		번거로우시더라도 잠깐 시간 내시어 정보 업데이트 부탁 드립니다. :)
@@ -65,7 +65,12 @@
 				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA; height: 13%;">
 					<th>&nbsp;&nbsp;비밀번호</th>
 					<td>
-						<input type="button" value="비밀번호 변경" class="btn btn-outline-secondary" onClick="location.href='changepw.u'" style="font-size: 10pt;">
+						<c:if test="${loginInfo.u_jointype eq 'S'}">
+							<input type="button" value="비밀번호 변경" class="btn btn-outline-secondary" onClick="location.href='changepw.u'" style="font-size: 10pt;">
+						</c:if>
+						<c:if test="${loginInfo.u_jointype eq 'N' || loginInfo.u_jointype eq 'K'}">
+							-
+						</c:if>
 					</td>
 				</tr>
 				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA; height: 13%;">
