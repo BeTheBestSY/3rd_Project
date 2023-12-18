@@ -1,9 +1,17 @@
 package celeb.model;
 
 public class CelebBean {
+	private int cl_num;
 	private String cl_name;
 	private String cl_image;
 	private String cl_color;
+	
+	public int getCl_num() {
+		return cl_num;
+	}
+	public void setCl_num(int cl_num) {
+		this.cl_num = cl_num;
+	}
 	public String getCl_name() {
 		return cl_name;
 	}
@@ -22,8 +30,9 @@ public class CelebBean {
 	public void setCl_color(String cl_color) {
 		this.cl_color = cl_color;
 	}
-	public CelebBean(String cl_name, String cl_image, String cl_color) {
+	public CelebBean(int cl_num,String cl_name, String cl_image, String cl_color) {
 		super();
+		this.cl_num = cl_num;
 		this.cl_name = cl_name;
 		this.cl_image = cl_image;
 		this.cl_color = cl_color;
