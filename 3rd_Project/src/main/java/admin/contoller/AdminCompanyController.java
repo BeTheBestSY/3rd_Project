@@ -17,6 +17,7 @@ import admin.model.AdminDao;
 import company.model.CompanyBean;
 import company.model.CompanyDao;
 import q_board.model.QBoardBean;
+import users.model.UsersBean;
 import utility.Paging;
 
 @Controller
@@ -27,6 +28,7 @@ public class AdminCompanyController {
 	private final String deleteCommand = "/companyDelete.admin";
 	private String gotoPage = "redirect:/companyList.admin";
 	private final String updateCommand = "/companyUpdate.admin";
+	private String formPage = "adminCompanyUpdateForm";
 	
 	@Autowired
 	private AdminDao admindao;
@@ -70,23 +72,20 @@ public class AdminCompanyController {
 		
 		
 	}
-	
-	@RequestMapping(value=updateCommand,method=RequestMethod.GET)
-	public String update(
-				Model model,
-				@RequestParam("cmp_num") int cmp_num,
-				@RequestParam("pageNumber") int pageNumber
-			) {
-		
+	@RequestMapping(value=updateCommand)
+	public String updateForm(@RequestParam("cmp_num") int cmp_num, Model model) {
 		CompanyBean bb = admindao.getSelectOneCompany(cmp_num);
-		
-		model.addAttribute("pageNumber",pageNumber);
-		model.addAttribute("bb",bb);
-		
-		admindao.updateCompany(cmp_num);
-		
-		return gotoPage;
+		model.addAttribute("bb", bb);
+		return formPage;
 	}
+	
+	@RequestMapping(value=updateCommand,method=RequestMethod.POST)
+	public String update(@RequestParam("cmp_num") int cmp_num, Model model) {
+		CompanyBean bb = admindao.getSelectOneCompany(cmp_num);
+		model.addAttribute("bb", bb);
+		return formPage;
+	}
+	
 	
 	@RequestMapping(value=deleteCommand,method=RequestMethod.GET)
 	public String delete(

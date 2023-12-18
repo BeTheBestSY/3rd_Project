@@ -139,6 +139,10 @@ public class AdminDao {
 		sqlSessionTemplate.delete(nameSpace+"deleteCompany", cmp_num);
 	}
 	
+
+	public int updateCompany(int cmp_num) {
+		return sqlSessionTemplate.delete(nameSpace+"updateCompany", cmp_num);
+	}
 	
 	
 	//users
@@ -169,5 +173,6 @@ public class AdminDao {
 	public int deleteProduct(String p_num) {
 		return sqlSessionTemplate.delete(nameSpace+"deleteProduct", p_num);
 	}
-	
+
+
 }
