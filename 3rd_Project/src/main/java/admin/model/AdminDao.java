@@ -146,8 +146,9 @@ public class AdminDao {
 	
 	
 	//users
-	public List<UsersBean> getUsers(Map<String, String> map) {
-		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map);
+	public List<UsersBean> getUsers(Map<String, String> map, Paging pageInfo) {
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map, rowBounds);
 	}
 
 	public void deleteUsers(String u_id) {

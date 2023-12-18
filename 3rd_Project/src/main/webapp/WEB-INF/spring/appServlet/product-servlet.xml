@@ -12,6 +12,7 @@
 	<property name="prefix" value="/WEB-INF/product/"></property>
 	<property name="suffix" value=".jsp"></property>
 </bean>
+<context:component-scan base-package="mall" />
 <context:component-scan base-package="product" />
 
 </beans>

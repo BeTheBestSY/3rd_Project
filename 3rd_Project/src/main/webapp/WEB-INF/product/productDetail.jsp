@@ -245,6 +245,7 @@ padding-bottom: 8px;
  	}
  	
  %>
+<<<<<<< HEAD
   <script type="text/javascript">
 	       function goCart(pnum){
 	    	    
@@ -283,7 +284,26 @@ padding-bottom: 8px;
 	    
 </script>
 	   	 
+=======
+
+>>>>>>> branch 'SY' of https://github.com/BeTheBestSY/3rd_Project.git
 <script type="text/javascript">
+	function goCart(pnum){
+		ovalue = document.f.oqty.value;
+		if(ovalue < 1 || ovalue ==""){
+			alert("1이상 입력하세요.");
+			return false;
+		} 
+	}
+
+	function goOrder(pnum) {
+		ovalue = document.f.oqty.value;
+	    if (ovalue < 1 || ovalue == "") {
+	   		alert("1이상 입력하세요.");
+	        return false;
+	    }
+	}
+	       
     function updateOrderAmount() {
         var quantity = document.getElementById('num').value;
         var unitPrice = ${pb.p_price }; // 서버 측 데이터에서 단가 가져오기
@@ -314,14 +334,11 @@ padding-bottom: 8px;
         <div class="container" id="one"> <!-- 중반부 전체를 감싸는 div 태그-->
             
             <div class="first"> <!--중반부를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌 -->
-          
                 <img  src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg }" alt="타이틀이미지">
             </div>
 
             <div class="second"> <!--중반부 를 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
                    
-                
-
                     <div id="fifth">
                         <div class="emojiright">
                             <p class="coffeename">${pb.p_name}</p>
