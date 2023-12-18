@@ -77,11 +77,14 @@
 	
 	<!-- celeb -->
 	
-		<select id="getTotalCountCeleb" resultType="int">
+	<select id="getCeleb" resultType="int">
 		select count(*) from celeb
 		
 		<if test="whatColumn=='cl_color'">
 		where cl_color like #{keyword}
+		</if>
+		<if test="whatColumn=='cl_name'">
+		where cl_name like #{keyword}
 		</if>
 		
 	</select>
@@ -92,7 +95,9 @@
 		<if test="whatColumn=='cl_color'">
 		where cl_color like #{keyword}
 		</if>
-		 
+		<if test="whatColumn=='cl_name'">
+		where cl_name like #{keyword}
+		</if>
 	</select>
 	
 	<select id="getSelectOneCeleb" resultType="celebDao">
@@ -100,27 +105,149 @@
 		where cl_num = #{cl_num}
 	</select>
 	
+	<delete id="deleteCeleb">
+		delete celeb
+		where cl_num=#{cl_num}
+	</delete>
 	
+	<!-- company -->
+	<select id="getAllCompany" resultType="myCompany" >
+		select * from company
+		
+		<if test="whatColumn=='cmp_name'">
+		 where cmp_name like #{keyword} 
+		</if>
+		
+		<if test="whatColumn=='cmp_addr'">
+		 where cmp_addr like #{keyword} 
+		</if>
+		
+		<if test="whatColumn=='cmp_station'">
+		 where cmp_station like #{keyword} 
+		</if>
+		
+		<if test="whatColumn=='all'">
+		 where cmp_name like #{keyword} or cmp_station like #{keyword} or cmp_addr like #{keyword} 
+		</if>
+		 order by 
+		<choose>
+			<when test="filter == 'standard'">
+				cmp_num desc
+			</when>
+			<when test="filter == 'cmp_priceDesc'">
+				cmp_price desc, cmp_num asc
+			</when>
+			<when test="filter == 'cmp_priceAsc'">
+				cmp_price asc, cmp_num asc
+			</when>
+			<otherwise>
+				cmp_num asc
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="getTotalCountCompany" resultType="int" >
+		select count(*) from company 
+			
+			<if test="whatColumn=='cmp_name'">
+			 where cmp_name like #{keyword} 
+			</if>
+			
+			<if test="whatColumn=='cmp_station'">
+			 where cmp_station like #{keyword} 
+			</if>
+	
+			<if test="whatColumn=='cmp_addr'">
+			 where cmp_addr like #{keyword} 
+			</if>
+			
+			<if test="whatColumn=='all'">
+			 where cmp_name like #{keyword} or cmp_station like #{keyword} or cmp_addr like #{keyword} 
+			</if>
+	</select>
+	
+	<select id="getSelectOneCompany" resultType="myCompany" >
+		select * from company where cmp_num = #{cmp_num}
+	</select>
+	
+	<delete id="deleteCompany">
+		delete company
+		where cmp_num=#{cmp_num}
+	</delete>
+	
+	<update id="updateCompany">
+		update company
+		set cmp_name=#{cmp_name}, cmp_addr=#{cmp_addr}, cmp_price=#{cmp_price}, cmp_station=#{cmp_station}
+		, cmp_x=#{cmp_x}, cmp_y=#{cmp_y}
+		where cmp_num=#{cmp_num}
+	</update>
 	
 	<!-- users -->
-	
 	<select id="getUsers" resultType="Users">
 		select * from users
 		<if test="whatColumn == 'all'">
-			where u_id like #{keyword} or
+			where (u_id like #{keyword} or
 			u_name like #{keyword} or
-			u_phone like #{keyword}
+			u_phone like #{keyword})
+			<if test="filterType == null">
+				 and u_jointype = 'S'
+			</if>
+			<if test="filterType == 'u_jointype'">
+				 and u_jointype = #{filter}
+			</if>
+			<if test="filterType == 'u_color'">
+				 and u_color like #{filter}
+			</if>
+			<if test="filterType == 'u_joindate'">
+				order by u_joindate #{filter}
+			</if>
 		</if>
 		<if test="whatColumn == 'u_name'">
 			where u_name like #{keyword}
+			<if test="filterType == null">
+				 and u_jointype = 'S'
+			</if>
+			<if test="filterType == 'u_jointype'">
+				 and u_jointype = #{filter}
+			</if>
+			<if test="filterType == 'u_color'">
+				 and u_color like #{filter}
+			</if>
+			<if test="filterType == 'u_joindate'">
+				order by u_joindate #{filter}
+			</if>
 		</if>
 		<if test="whatColumn == 'u_id'">
 			where u_id like #{keyword}
+			<if test="filterType == null">
+				 and u_jointype = 'S'
+			</if>
+			<if test="filterType == 'u_jointype'">
+				 and u_jointype = #{filter}
+			</if>
+			<if test="filterType == 'u_color'">
+				 and u_color like #{filter}
+			</if>
+			<if test="filterType == 'u_joindate'">
+				order by u_joindate #{filter}
+			</if>
 		</if>
 		<if test="whatColumn == 'u_phone'">
 			where u_phone like #{keyword}
+			<if test="filterType == null">
+				 and u_jointype = 'S'
+			</if>
+			<if test="filterType == 'u_jointype'">
+				 and u_jointype = #{filter}
+			</if>
+			<if test="filterType == 'u_color'">
+				 and u_color like #{filter}
+			</if>
+			<if test="filterType == 'u_joindate'">
+				order by u_joindate #{filter}
+			</if>
 		</if>
-		order by u_joindate desc
+
 	</select>
 	<delete id="deleteUsers">
 		delete users
@@ -136,18 +263,18 @@
 	<select id="getProducts" resultType="myProduct">
 		select * from product
 		<if test="whatColumn == 'all'">
-			where p_brand like #{keyword} or
-			p_color like #{keyword} or
-			p_name like #{keyword}
+			where p_brand like '%' || UPPER(#{keyword}) || '%' or
+			p_color like '%' || UPPER(#{keyword}) || '%' or
+			p_name like '%' || UPPER(#{keyword}) || '%'
 		</if>
 		<if test="whatColumn == 'p_brand'">
-			where p_brand like #{keyword}
+			where p_brand like '%' || UPPER(#{keyword}) || '%'
 		</if>
 		<if test="whatColumn == 'p_color'">
-			where p_color like #{keyword}
+			where p_color like '%' || UPPER(#{keyword}) || '%'
 		</if>
 		<if test="whatColumn == 'p_name'">
-			where p_name like #{keyword}
+			where p_name like '%' || UPPER(#{keyword}) || '%'
 		</if>
 		order by 
 		<choose>
@@ -174,14 +301,18 @@
 	<select id="getTotalPrdCount" resultType="int">
 		select count(*) from product
 		<if test="whatColumn == 'p_brand'">
-			where p_brand like #{keyword}
+			where p_brand like '%' || UPPER(#{keyword}) || '%'
 		</if>
 		<if test="whatColumn == 'p_color'">
-			where p_color like #{keyword}
+			where p_color like '%' || UPPER(#{keyword}) || '%'
 		</if>
 		<if test="whatColumn == 'p_name'">
-			where p_name like #{keyword}
+			where p_name like '%' || UPPER(#{keyword}) || '%'
 		</if>
 	</select>
+	<delete id="deleteProduct">
+		delete product
+		where p_num=#{p_num}
+	</delete>
 </mapper> 
 

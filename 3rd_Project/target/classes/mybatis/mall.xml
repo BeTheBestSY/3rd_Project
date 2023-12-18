@@ -27,7 +27,7 @@
 	</select>
 	
 	<delete id="deleteTemp">
-		delete from temp_cart where cart_num = #{cart_num}
+		delete from temp_cart where cart_num = #{cart_num} 
 	</delete>
 	
 	<insert id="insertOrderProd">
