@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import admin.model.AdminDao;
-import product.model.ProductBean;
 import users.model.UsersBean;
 import utility.Paging;
 
