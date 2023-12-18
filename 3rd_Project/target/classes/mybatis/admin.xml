@@ -77,7 +77,7 @@
 	
 	<!-- celeb -->
 	
-		<select id="getCeleb" resultType="int">
+	<select id="getTotalCountCeleb" resultType="int">
 		select count(*) from celeb
 		
 		<if test="whatColumn=='cl_color'">
@@ -205,18 +205,18 @@
 	<select id="getProducts" resultType="myProduct">
 		select * from product
 		<if test="whatColumn == 'all'">
-			where p_brand like #{keyword} or
-			p_color like #{keyword} or
-			p_name like #{keyword}
+			where p_brand like '%' || UPPER(#{keyword}) || '%' or
+			p_color like '%' || UPPER(#{keyword}) || '%' or
+			p_name like '%' || UPPER(#{keyword}) || '%'
 		</if>
 		<if test="whatColumn == 'p_brand'">
-			where p_brand like #{keyword}
+			where p_brand like '%' || UPPER(#{keyword}) || '%'
 		</if>
 		<if test="whatColumn == 'p_color'">
-			where p_color like #{keyword}
+			where p_color like '%' || UPPER(#{keyword}) || '%'
 		</if>
 		<if test="whatColumn == 'p_name'">
-			where p_name like #{keyword}
+			where p_name like '%' || UPPER(#{keyword}) || '%'
 		</if>
 		order by 
 		<choose>
@@ -243,14 +243,18 @@
 	<select id="getTotalPrdCount" resultType="int">
 		select count(*) from product
 		<if test="whatColumn == 'p_brand'">
-			where p_brand like #{keyword}
+			where p_brand like '%' || UPPER(#{keyword}) || '%'
 		</if>
 		<if test="whatColumn == 'p_color'">
-			where p_color like #{keyword}
+			where p_color like '%' || UPPER(#{keyword}) || '%'
 		</if>
 		<if test="whatColumn == 'p_name'">
-			where p_name like #{keyword}
+			where p_name like '%' || UPPER(#{keyword}) || '%'
 		</if>
 	</select>
+	<delete id="deleteProduct">
+		delete product
+		where p_num=#{p_num}
+	</delete>
 </mapper> 
 

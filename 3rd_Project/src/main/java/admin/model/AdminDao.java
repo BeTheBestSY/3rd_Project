@@ -166,5 +166,8 @@ public class AdminDao {
 	}
 
 
-
+	public int deleteProduct(String p_num) {
+		return sqlSessionTemplate.delete(nameSpace+"deleteProduct", p_num);
+	}
+	
 }
