@@ -26,7 +26,7 @@
 		    	<img src="resources/image/ca_ex2.jpg" class="d-block w-100">
 		    </div>
 		    <div class="carousel-item">
-		    	<img src="resources/image/ca_ex3.jpg" class="d-block w-100">
+		    	<img src="resources/image/ca_ex3.jpg" class="d-block w-100"> 
 		    </div>
 		    <div class="carousel-item">
 		    	<img src="resources/image/ca_ex4.jpg" class="d-block w-100">
