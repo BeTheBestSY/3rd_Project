@@ -148,7 +148,7 @@ System.out.println(cart_num+"cart_num 뭘까요");
               <label class="form-label">아이디</label>
               <input type="text" class="form-control" name="u_id" disabled="disabled" value="${id}" > 
             </div>
-<!-- dks -->
+ 
             <div class="col-sm-6">
               <label class="form-label">수령인 이름</label>
               <input type="text" class="form-control" name="o_name" id="lastName" value="${name}" required>
