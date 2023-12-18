@@ -129,5 +129,10 @@ public class AdminDao {
 	public int getTotalPrdCount(Map<String, String> map) {
 		return sqlSessionTemplate.selectOne(nameSpace+"getTotalPrdCount", map);
 	}
+
+
+	public int deleteProduct(String p_num) {
+		return sqlSessionTemplate.delete(nameSpace+"deleteProduct", p_num);
+	}
 	
 }
