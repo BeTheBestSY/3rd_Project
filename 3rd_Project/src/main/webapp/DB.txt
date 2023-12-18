@@ -119,7 +119,7 @@ insert into celeb values(celeb_seq.nextval, '설리', 'splt10.png', '봄 라이�
 -- 봄 브라이트 --
 insert into celeb values(celeb_seq.nextval, '조이', 'spbr1.png', '봄 브라이트');
 insert into celeb values(celeb_seq.nextval, '민효린', 'spbr2.png', '봄 브라이트');
-insert into celeb values(celeb_seq.nextval, '유정', 'spbr3', 2);
+insert into celeb values(celeb_seq.nextval, '유정', 'spbr3.png', '봄 브라이트');
 insert into celeb values(celeb_seq.nextval, '아이유', 'spbr4.png', '봄 브라이트');
 insert into celeb values(celeb_seq.nextval, '제시카', 'spbr5.png', '봄 브라이트');
 insert into celeb values(celeb_seq.nextval, '나연', 'spbr6.png', '봄 브라이트');
@@ -449,96 +449,6 @@ insert into company values(   cmpseq.nextval,   '칼라코드 컬러연구소', 
 insert into company values(   cmpseq.nextval,   'PIB연구소',   '서울 서초구 서초대로51길 29 7층',   180000,   '교대역',   '127.0136798',   '37.4963789'   );
 insert into company values(   cmpseq.nextval,   '이음에듀커뮤니케이션',   '서울 광진구 군자로 43 아스하임오피스텔 809호',   140000,   '어린이대공원역',   '127.0700222',   '37.547115'   );
 insert into company values(   cmpseq.nextval,   '예슬 이미지',   '서울 성동구 왕십리로 309',   132000,   '왕십리역',   '127.03461',   '37.5611981'   );
-
-
------------------------------------------------------------------
---q_board
------------------------------------------------------------------
-
-drop table q_board;
-create table q_board( 
-   q_num number not null primary key,
-   q_writer varchar2(30) not null,
-   q_email varchar2(30),
-   q_subject varchar2(200) not null,
-   q_password varchar2(20) not null,
-   q_regdate date not null,
-   q_readcount int default 0,
-   q_ref number not null,
-   q_re_step number not null,
-   q_re_level number not null,
-   q_content varchar2(1500) not null,
-   q_ip varchar2(15) not null
-);
-
-drop sequence board_seq;
-create sequence board_seq
-increment by 1
-start with 1
-minvalue 1
-maxvalue 10000
-nocache;
-
-insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'mj01','mj01@gmail.com','배송 문의요','1234','2023-12-06',1,0,0,'좀 지연되는 것 같은데 언제 배송 가능하신가요?','127.0.0.1');
-insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'minji04','mji@naver.com','배송비가 환불할 때도 드나요?','1234','2023-12-05',2,0,0,'답변 부탁드립니다.','127.0.0.1');
-insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'haerin','haerin@gmail.com','입고 예정 문의요','1234','2023-12-05',3,0,0,'정확한 상품명은 모르는데 입고 예정이 있나요?','127.0.0.1');
-insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'hyein','hyein@gmail.com','신상 화장품 언제쯤','1234','2023-12-04',4,0,0,'신상 화장품 언제쯤 들어오나요','127.0.0.1');
-insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'jihye','jihye@gmail.com','묶음 배송 해주세요','1234','2023-12-06',5,0,0,'하나하나 뜯기 귀찮은데 묶음 배송 해주실 수 있나요','127.0.0.1');
-
-insert into 
-q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'risa','risa@gmail.com','이벤트 질문 있습니다','1234','2023-12-06',6,0,0,'이벤트 당첨은 언제 알려주시나요?','127.0.0.1');
-
-insert into 
-q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'jenny','jenny@gmail.com','배송비는 얼마인가요','1234','2023-11-23',7,0,0,'무료 배송은 얼마부터 가능한지...','127.0.0.1');
-
-insert into 
-q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'rose','rose@gmail.com','반품할 때 비용이 드나요?','1234','2023-11-23',8,0,0,'정확한 반품 비용 알려주세여','127.0.0.1');
-
-insert into 
-q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)values(board_seq.nextval,'jisu','jisu@gmail.com','반송 주소는 회사로 해야하나요','1234','2023-12-01',9,0,0,'반송 주소 알려주세요','127.0.0.1');
-
--- insert 내용은 c_board 레코드 복붙한 것 나중에 추가예정
-
-
-commit;
-
-
------------------------------------------------------------------
---c_board 테이블 (의견 게시판)
------------------------------------------------------------------
-
-drop table c_board;
-create table c_board( 
-   c_num number not null primary key,
-   c_writer varchar2(30) not null,
-   c_email varchar2(30),
-   c_subject varchar2(200) not null,
-   c_password varchar2(20) not null,
-   c_regdate date not null,
-   c_readcount int default 0,
-   c_ref number not null,
-   c_re_step number not null,
-   c_re_level number not null,
-   c_content varchar2(1500) not null,
-   c_ip varchar2(15) not null
-);
-
-drop sequence board_seq;
-create sequence board_seq
-increment by 1
-start with 1
-minvalue 1
-maxvalue 10000
-nocache;
-
-insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'mj01','mj01@gmail.com','겨쿨 나왔는데 파데 뭐 쓰시나요?','1234','2023-12-06',12,0,0,'이건 지성/건성 문제인 것 같기도 하고... 제가 복합성이라 그런지 뭘 써도 다크닝이 심해서 고민되네요 ㅠ','127.0.0.1');
-insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'minji04','mji@naver.com','봄웜인줄 알았는데 갈웜 판정...','1234','2023-12-05',10,0,0,'지금까지 살아온 인생이 부정당한 느낌!!!!!','127.0.0.1');
-insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'jiwon','jiwon@naver.com','지성 피부는 뭘 해도 무너지네','1234','2023-11-23',3,0,0,'컬러 진단 받고 추천 받은 화장품은 다 건성용이길래 지성 피부도 쓸 수 있는 화장품 추천해주라...','127.0.0.1');
-insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'hs07','hs07@gmail.com','여름뮤트들아','1234','2023-11-23',2,0,0,'다들 추천받은 거로 화장품 맞춰서 써?? 나만 원래 쓰던거 고집하는 거 아니지... ㅋㅋㅋ 화장품 값이 너무 비싸다 요즘...','127.0.0.1');
-insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'miyeon','my@naver.com','봄라이트 나왔는데 부정중','1234','2023-11-23',1,0,0,'가을뮤트가 되고 싶은 걸요','127.0.0.1');
-insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)values(board_seq.nextval,'foreveryoung','wonyoung@naver.com','임지연은 진짜 확신의 겨쿨임','1234','2023-12-01',5,0,0,'핫핑크 저렇게 잘 어울리는 사람 처음 보잖아','127.0.0.1');
-commit;
-
 
 -----------------------------------------------------------------
 --users
