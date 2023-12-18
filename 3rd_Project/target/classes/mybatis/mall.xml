@@ -36,7 +36,7 @@
 	</insert>
 	
 	<insert id="insertOrderInfo">
-		insert into orders 
+		insert into orders
 			values(#{o_num},#{u_id},#{o_phone},#{o_name},#{o_addr},
 			#{o_date},#{pay_bank},#{pay_name},#{way})
 	</insert>
