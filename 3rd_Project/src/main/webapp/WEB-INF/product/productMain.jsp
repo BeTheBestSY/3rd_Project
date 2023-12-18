@@ -44,5 +44,57 @@
 	    	<span class="visually-hidden">Next</span>
 	  	</button>
 	</div>
+	
+	<div id="center" style="text-align: center;"> 
+		<div style="font-family: 'TheJamsil5Bold'; font-size: 25pt; padding: 100px 0px 100px 0px;"><small>【</small> BEST <small>】</small></div>
+		<div class="row">
+			<c:forEach var="pb" items="${product_BLists}">
+				<div class="col-lg-3">
+					<div class="card shadow-sm" style="border: 1px solid #F6F6F6; margin-bottom: 23px;">
+						<a href="prodView.p?p_num=${pb.p_num}&pageNumber=${pageInfo.pageNumber}">
+							<div style="height: 300px; width: 100%; overflow: hidden;">
+								<img src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg}" style="height: 300px; margin: auto;">
+							</div>
+						</a>
+						<div class="card-body">
+							<p style="font-family: 'RIDIBatang'; font-size: 10pt; color: #A6A6A6; width: 100%; text-align: left; top: 15px; position: relative;">${pb.p_brand}</p> 
+							<p style="width: 100%; font-family: 'RIDIBatang'; font-size: 12pt; text-align: left; overflow: hidden; white-space: nowrap;">${pb.p_name}</p>
+							<p style="width: 100%; font-family: 'TheJamsil5Bold'; font-size: 12pt; text-align: left; padding: 0px;">
+								<fmt:formatNumber value="${pb.p_price}" pattern="#,###" />원
+							</p>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
+	
+	<a href="#">
+		<img src="resources/image/banner.jpg" width="100%">
+	</a> 
+	  
+	<div id="center" style="text-align: center;"> 
+		<div style="font-family: 'TheJamsil5Bold'; font-size: 25pt; padding: 100px 0px 100px 0px;"><small>【</small> NEW <small>】</small></div>
+		<div class="row">
+			<c:forEach var="pb" items="${product_NLists}">
+				<div class="col-lg-3">
+					<div class="card shadow-sm" style="border: 1px solid #F6F6F6; margin-bottom: 23px;">
+						<a href="prodView.p?p_num=${pb.p_num}&pageNumber=${pageInfo.pageNumber}">
+							<div style="height: 300px; width: 100%; overflow: hidden;">
+									<img src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg}" style="height: 300px; margin: auto;">
+							</div>
+						</a>
+						<div class="card-body">
+							<p style="font-family: 'RIDIBatang'; font-size: 10pt; color: #A6A6A6; width: 100%; text-align: left; top: 15px; position: relative;">${pb.p_brand}</p> 
+							<p style="width: 100%; font-family: 'RIDIBatang'; font-size: 12pt; text-align: left; overflow: hidden; white-space: nowrap;">${pb.p_name}</p>
+							<p style="width: 100%; font-family: 'TheJamsil5Bold'; font-size: 12pt; text-align: left; padding: 0px;">
+								<fmt:formatNumber value="${pb.p_price}" pattern="#,###" />원
+							</p>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
 
 <%@ include file="../views/footer.jsp" %>
