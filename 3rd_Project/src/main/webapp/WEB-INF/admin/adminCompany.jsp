@@ -84,7 +84,7 @@
 											<td style="padding-left:4%;">${cb.cmp_num}</td>
 											<td style="padding-left:5%;">${cb.cmp_name}</td>
 											<td>${cb.cmp_addr}</td>
-											<td>${cb.cmp_price}</td>
+											<td>${cb.cmp_price}원</td>
 											<td>${cb.cmp_station}</td>
 											<td >
 												<a href="companyDelete.admin?cmp_num=${cb.cmp_num }&pageNumber=${pageInfo.pageNumber}">
