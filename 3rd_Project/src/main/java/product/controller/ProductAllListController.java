@@ -17,9 +17,9 @@ import product.model.ProductDao;
 import utility.Paging;
 
 @Controller
-public class ProductListController {
-	private final String command = "/productList.p";
-	private final String viewPage = "productList";
+public class ProductAllListController {
+	private final String command = "/productAllList.p";
+	private final String viewPage = "productAllList";
 	
 	@Autowired
 	private ProductDao productDao;

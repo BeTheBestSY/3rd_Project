@@ -43,7 +43,7 @@ public class UsersChangepwContoller {
 			if(new_password.equals(new_password_chk)) {
 				ud.updatePassword(u_id, new_password);
 				model.addAttribute("msg", "비밀번호가 변경되었습니다.");
-				model.addAttribute("url", ".main");
+				model.addAttribute("url", "update.u");
 			} else {
 				model.addAttribute("msg", "변경하실 비밀번호가 일치하지 않습니다.");
 				model.addAttribute("url", command+"?old_password="+old_password+"&new_password="+new_password+"&new_password_chk="+new_password_chk);
