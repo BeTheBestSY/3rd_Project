@@ -82,7 +82,7 @@
 			</c:if>
 			
 			<!-- 접속한 id가 관리자가 아니고, 글 작성자랑 접속한 id랑 다른데 로그인은 되어있으면 답글달기만. -->
-			<c:if test="${id != null && loginInfo.u_id !='admin' && id !=bb.c_writer}"> 
+			<c:if test="${loginInfo.u_id != null && loginInfo.u_id !='admin' && loginInfo.u_id !=bb.c_writer}"> 
 				<center>
 					<input type="button" value="답글달기" onClick="goReply(${ bb.c_num },${ bb.c_ref },${ bb.c_re_step },${ bb.c_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 				</center>

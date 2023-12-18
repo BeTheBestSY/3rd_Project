@@ -21,28 +21,34 @@ import org.springframework.web.servlet.ModelAndView;
 
 import admin.model.AdminDao;
 import celeb.model.CelebBean;
+import q_board.model.QBoardBean;
 import utility.Paging;
 
 @Controller
 public class AdminCelebController {
 	private final String command = "/celebList.admin";
 	private final String viewPage = "adminCeleb";
+	private final String deleteCommand = "/celebDelete.admin";
+	private final String gotoPage = "redirect:/celebList.admin";
 	
 	@Autowired
 	private AdminDao adminDao;
 	
-	@RequestMapping(value=command,method=RequestMethod.GET)
+	@RequestMapping(value=command)
 	public String list(Model model,
 					HttpServletRequest request,
 					@RequestParam(required = false) String whatColumn,
 					@RequestParam(required = false) String keyword,
+					@RequestParam(required = false) String filter,
 					@RequestParam(required = false) String pageNumber) throws UnsupportedEncodingException {
 
 		 request.setCharacterEncoding("UTF-8");
+		if(keyword == null) keyword = "";
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
-		System.out.println(whatColumn+","+keyword);
+		map.put("filter", filter); 
+		System.out.println(whatColumn+","+keyword+","+filter);
 		String ps="1000";
 		 
 		int totalCount = adminDao.getCeleb(map);
@@ -53,5 +59,22 @@ public class AdminCelebController {
 		model.addAttribute("celebLists",celebLists);
 		model.addAttribute("pageInfo", pageInfo); 
 		return viewPage;
+	}
+	
+	@RequestMapping(value=deleteCommand,method=RequestMethod.GET)
+	public String delete(
+				Model model,
+				@RequestParam("cl_num") int cl_num,
+				@RequestParam("pageNumber") int pageNumber
+			) {
+		
+		CelebBean bb = adminDao.getSelectOneCeleb(cl_num);
+		
+		model.addAttribute("pageNumber",pageNumber);
+		model.addAttribute("bb",bb);
+		
+		adminDao.deleteCeleb(cl_num);
+		
+		return gotoPage;
 	}
 }

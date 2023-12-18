@@ -27,7 +27,6 @@
 							<option value="q_writer">작성자</option>
 						</select>
 					 	<input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
-					 	
 					<button type="submit" class="btn btn-dark">검색</button>
 		            </div>
 				   </form>

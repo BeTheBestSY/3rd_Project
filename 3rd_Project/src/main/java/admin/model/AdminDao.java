@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import c_board.model.CBoardBean;
 import celeb.model.CelebBean;
+import company.model.CompanyBean;
 import product.model.ProductBean;
 import q_board.model.QBoardBean;
 import users.model.UsersBean;
@@ -99,11 +100,45 @@ public class AdminDao {
 		
 	}
 	
-	public CelebBean getSelectOneCeleb(String cl_num) {
+	public CelebBean getSelectOneCeleb(int cl_num) {
 		CelebBean cb = sqlSessionTemplate.selectOne(nameSpace+"getSelectOneCeleb",cl_num);
 			return cb;
 		}
 
+
+	public void deleteCeleb(int cl_num) {
+		sqlSessionTemplate.delete(nameSpace+"deleteCeleb", cl_num);
+	}
+	
+	
+	
+	//company
+	public List<CompanyBean> getAllCompany(Paging pageInfo, Map<String, String> map) {
+		
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		List<CompanyBean> list = sqlSessionTemplate.selectList(nameSpace+"getAllCompany", map, rowBounds);
+		
+		return list;
+	}
+	
+	public int getTotalCountCompany(Map<String, String> map) {
+		 
+		int totalCount = sqlSessionTemplate.selectOne(nameSpace+"getTotalCountCompany", map);
+
+		return totalCount;
+	}
+
+	public CompanyBean getSelectOneCompany(int cmp_num) {
+		
+		CompanyBean cb = sqlSessionTemplate.selectOne(nameSpace+"getSelectOneCompany", cmp_num);
+		
+		return cb;
+	}
+	
+	public void deleteCompany(int cmp_num) {
+		sqlSessionTemplate.delete(nameSpace+"deleteCompany", cmp_num);
+	}
+	
 	
 	
 	//users
@@ -129,5 +164,7 @@ public class AdminDao {
 	public int getTotalPrdCount(Map<String, String> map) {
 		return sqlSessionTemplate.selectOne(nameSpace+"getTotalPrdCount", map);
 	}
-	
+
+
+
 }

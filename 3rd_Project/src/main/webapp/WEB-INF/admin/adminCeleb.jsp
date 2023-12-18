@@ -1,25 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css">
+
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminCeleb.css">
+
 <script type="text/javascript">
-	window.onload = function(){
-		const radios = document.querySelectorAll("input[name='filter_btn']");
-	 	
-		radios.forEach((radio) => {
-			radio.addEventListener("change", (e) => {
-				const current = e.currentTarget;
-				if(current.checked){
-					var whatColumn = document.getElementById('whatColumn');
-					var keyword = document.getElementById('keyword');
-					//alert(column.value+','+keyword.value);
-					location.href='productList.admin?filter='+current.value+'&whatColumn='+whatColumn.value+'&keyword='+keyword.value;
-				}
-			});
-		});
-	};
-	
-	// 기존 검색어 지우기
+
 	function init(){
 		var elem = document.getElementById('keyword');
 		elem.value = '';
@@ -35,8 +21,16 @@
 		<div class="container">
 			<div class="search-window">
 				<div class="search-wrap">
+					<form action="celebList.admin" method="post">
+						<select name="whatColumn" id="whatColumn">
+							<option value="all">전체검색</option>
+							<option value="cl_name">이름</option>
+							<option value="cl_color">퍼스널컬러</option>
+						</select>
+					 	<input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
+					<button type="submit" class="btn btn-dark">검색</button>
+				   </form>
 				</div>
-				
 			</div>
 		</div>
 	</div>
@@ -47,11 +41,11 @@
 					<div class="topbox1">
 						<table class="board-table" style="font-size: 13pt; text-align: center; table-layout:fixed;">
 							<tr style="background: #f4f4f4;">
-								<th scope="col" class="th-num">번호</th>
-								<th scope="col" class="th-name">이름</th>
-								<th scope="col" class="th-personalc">퍼스널 컬러</th>
-								<th scope="col" class="th-delete"></th>
-								<th scope="col" class="th-update"></th>
+								<th class="th-num" width="10%" style="padding-left:4%;">번호</th>
+								<th width="5%" align="left" style="padding-left:7%;">이름</th>
+								<th width="10%" align="left" style="padding-left:13%;">퍼스널 컬러</th>
+								<th width="10%" align="left" style="padding-left:24%;">이미지 파일</th>
+								<th></th>
 							</tr>
 							
 						</table>
@@ -60,20 +54,21 @@
 								<table class="colr_table2" style="font-size: 13pt; text-align: center;">
 									<c:if test="${empty celebLists }">
 										<tr>
-											<td colspan="12">존재하지 않는 상품 입니다.</td>
+											<td colspan="12">존재하지 않습니다.</td>
 										</tr>
 									</c:if>
 									
 									<c:forEach var="cb" items="${celebLists }">
-										<tr>
-											<td>${cb.cl_num}</td>
-											<td align="center">${cb.cl_name}</td>
+										<tr style="border-bottom:1px solid #eee;">
+											<td style="padding-left:4%;">${cb.cl_num}</td>
+											<td style="padding-left:6%;">${cb.cl_name}</td>
 											<td>${cb.cl_color}</td>
-											<td>
-												<a href="celebDelete.admin?cl_num=${cb.cl_num }">
+											<td>${cb.cl_image}</td>
+											<td style="padding-left:25%;">
+												<a href="celebDelete.admin?cl_num=${cb.cl_num }&pageNumber=${pageInfo.pageNumber}">
 													<input type="button" class="btn btn-white"  value="삭제하기">
 												</a>
-												<a href="celebDelete.admin?cl_num=${cb.cl_num }">
+												<a href="celebUpdate.admin?cl_num=${cb.cl_num }&pageNumber=${pageInfo.pageNumber}">
 													<input type="button" class="btn btn-white"  value="수정하기">
 												</a>
 							 				</td>

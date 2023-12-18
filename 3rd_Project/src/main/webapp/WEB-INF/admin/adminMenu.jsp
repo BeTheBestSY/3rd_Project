@@ -44,7 +44,7 @@
                     
                     
                     
-                    <a href="#" class="nav__link">
+                    <a href="companyList.admin" class="nav__link">
                     	<ion-icon name="location-outline"></ion-icon>
 						<span class="nav_name">&nbsp;진단 회사</span>
                     </a>

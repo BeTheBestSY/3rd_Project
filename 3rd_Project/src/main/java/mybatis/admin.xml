@@ -83,6 +83,9 @@
 		<if test="whatColumn=='cl_color'">
 		where cl_color like #{keyword}
 		</if>
+		<if test="whatColumn=='cl_name'">
+		where cl_name like #{keyword}
+		</if>
 		
 	</select>
 	
@@ -92,7 +95,9 @@
 		<if test="whatColumn=='cl_color'">
 		where cl_color like #{keyword}
 		</if>
-		 
+		<if test="whatColumn=='cl_name'">
+		where cl_name like #{keyword}
+		</if>
 	</select>
 	
 	<select id="getSelectOneCeleb" resultType="celebDao">
@@ -100,7 +105,71 @@
 		where cl_num = #{cl_num}
 	</select>
 	
+	<delete id="deleteCeleb">
+		delete celeb
+		where cl_num=#{cl_num}
+	</delete>
 	
+	<!-- company -->
+	<select id="getAllCompany" resultType="myCompany" >
+		select * from company
+		
+		<if test="whatColumn=='cmp_name'">
+		 where cmp_name like #{keyword} 
+		</if>
+		
+		<if test="whatColumn=='cmp_station'">
+		 where cmp_station like #{keyword} 
+		</if>
+		
+		<if test="whatColumn=='all'">
+		 where cmp_name like #{keyword} or cmp_station like #{keyword} or cmp_addr like #{keyword} 
+		</if>
+		 order by 
+		<choose>
+			<when test="filter == 'standard'">
+				cmp_num desc
+			</when>
+			<when test="filter == 'cmp_priceDesc'">
+				cmp_price desc, cmp_num asc
+			</when>
+			<when test="filter == 'cmp_priceAsc'">
+				cmp_price asc, cmp_num asc
+			</when>
+			<otherwise>
+				cmp_num asc
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="getTotalCountCompany" resultType="int" >
+		select count(*) from company 
+			
+			<if test="whatColumn=='cmp_name'">
+			 where cmp_name like #{keyword} 
+			</if>
+			
+			<if test="whatColumn=='cmp_station'">
+			 where cmp_station like #{keyword} 
+			</if>
+	
+			<if test="whatColumn=='cmp_addr'">
+			 where cmp_addr like #{keyword} 
+			</if>
+			
+			<if test="whatColumn=='all'">
+			 where cmp_name like #{keyword} or cmp_station like #{keyword} or cmp_addr like #{keyword} 
+			</if>
+	</select>
+	
+	<select id="getSelectOneCompany" resultType="myCompany" >
+		select * from company where cmp_num = #{cmp_num}
+	</select>
+	
+	<delete id="deleteCompany">
+		delete company
+		where cmp_num=#{cmp_num}
+	</delete>
 	
 	<!-- users -->
 	
