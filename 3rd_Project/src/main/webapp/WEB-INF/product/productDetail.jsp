@@ -260,7 +260,7 @@ padding-bottom: 8px;
 		ovalue = document.f.oqty.value;
 		if(ovalue < 1 || ovalue ==""){
 			alert("1이상 입력하세요.");
-			return false;
+			return false; 
 		} 
 	}
 
