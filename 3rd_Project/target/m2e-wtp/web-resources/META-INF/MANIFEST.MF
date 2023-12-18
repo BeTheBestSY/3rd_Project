@@ -1,11 +1,5 @@
 Manifest-Version: 1.0
 Built-By: yumay
-<<<<<<< HEAD
-=======
-=======
-Built-By: sist
->>>>>>> e3317306e7a4b78fe9251b593faffee973efa5e3
->>>>>>> 83c13252c33501010f33e4ce2120d88b67b3ef9a
 Build-Jdk: 12.0.2
 Created-By: Maven Integration for Eclipse
 
