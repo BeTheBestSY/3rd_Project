@@ -77,7 +77,7 @@ public class UsersNaverController {
 		// 2단계. 접근 토큰이 유효하지 않다면 재발급. 유효하다면 3단계로 가기.
 		 if(!message.equals("success")) {
 			 this.accessToken = naverApi.getAccessTokenAgain(this.refreshToken);
-		 }
+		 } 
 		// 3단계. 연동해제(접근 토큰 삭제)
 		String result = naverApi.naverDisconnect(this.accessToken);
 		System.out.println(result+": 네이버 연동해제 성공");
