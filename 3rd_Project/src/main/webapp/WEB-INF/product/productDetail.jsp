@@ -237,12 +237,13 @@ padding-bottom: 8px;
     </nav>
 <br>
  <%
- UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
-	String id = ub.getU_id();
-	String cart_num = session.getId();
-	System.out.print(cart_num+"아오 좀");
-	System.out.print(id+"id");
-
+ 	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
+ 	String cart_num = session.getId();
+ 
+ 	if(ub == null){ 
+ 		response.sendRedirect("login.u"); 
+ 	}
+ 	
  %>
   <script type="text/javascript">
 	       function goCart(pnum){
@@ -268,10 +269,10 @@ padding-bottom: 8px;
 	           }
 	           
 	           // 사용자가 로그인했는지
-	           if (<%=id%> == null) {
+	           <%-- if (<%=id%> == null) {
 	               alert("로그인 후 이용해주세요.");
 	               return document.f.action = "login.u";
-	           }
+	           } --%>
 	           
 	          /*  //주문 처리
 	           document.f.action=	"cartAdd.jsp?pnum=" + pnum + "&ovalue=" + ovalue;
@@ -303,10 +304,10 @@ padding-bottom: 8px;
 </script>
 	   	    
 	       
-   
+<c:set var="ub" value="<%=ub%>" />
 <form name="f" action="order.mall">
  <input type="hidden" name="p_num" value="${pb.p_num}">
- <input type="hidden" name="id" value="<%=id%>">
+ <input type="hidden" name="id" value="${ub.u_id}">
  <input type="hidden" name="cart_num" value="<%=cart_num%>">
 	<section> <!--중반부의 레이아웃-->
 
