@@ -17,6 +17,9 @@
 	td{
 		padding: 0px 10px 0px 10px;
 	}
+	body{
+		padding-top: 90px;
+	}
 	#searchBtn{
 		width: 120px;
 		height: 35px;
@@ -59,6 +62,11 @@
 	}
 }
 </style>
+<script>
+	function zipClick(){
+		document.getElementById("searchBtn").click();
+	}
+</script>
 
 <%@ include file="../views/header.jsp" %>
 
@@ -85,14 +93,8 @@
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 아이디</th>
 				<td>
-<<<<<<< HEAD
-					<!-- 중복체크, 정규표현식 아직 -->
-=======
->>>>>>> 872bf2afe2af567402446b4ff9621afc2893af2f
 					<input type="text" class="form-control" name="u_id" value="${ub.u_id }" placeholder="영문 소문자+숫자, 4~16자" pattern="^[A-Za-z0-9]{4,16}$" required> 
 				</td>
-					<!-- 중복체크, 정규표현식 아직 -->
-					<!-- pattern="^[A-Za-z0-9]{4,16}$" -->
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 비밀번호</th>
@@ -104,11 +106,8 @@
 				<th><font color="red">*</font> 비밀번호 확인</th>
 				<td>
 					<input type="password" class="form-control" name="u_rePassword" required>
-<<<<<<< HEAD
 					</td>
-=======
 				</td>
->>>>>>> 872bf2afe2af567402446b4ff9621afc2893af2f
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 전화번호</th>
@@ -118,25 +117,18 @@
 						<c:forEach var="first" items="${firstList }">
 							<option value="${first }" <c:if test="${fn:split(ub.u_phone, '-')[0] eq first }">selected</c:if>>${first }</option>
 						</c:forEach>
-<<<<<<< HEAD
 					</select>
 					-
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[1]}" maxlength="4" required> - 
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[2]}" maxlength="4" required>
-					</td>
-=======
-					</select> - 
-					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[1]}" maxlength="4" required> - 
-					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[2]}" maxlength="4" required>
 				</td>
->>>>>>> 872bf2afe2af567402446b4ff9621afc2893af2f
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
-				<th>&nbsp;&nbsp;주소</th> 
+				<th>&nbsp;&nbsp;주소</th>
 				<td>
-					<input type="text" class="form-control" style="width: 70%; display: inline; margin-bottom: 10px;" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[0]}" id="sample4_postcode" placeholder="먼저 우편번호 찾기 버튼을 눌러주세요." readonly>
+					<input type="text" class="form-control" style="width: 70%; display: inline; margin-bottom: 10px;" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[0]}" id="sample4_postcode" placeholder="먼저 우편번호 찾기 버튼을 눌러주세요." onClick="zipClick()" readonly>
 					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" id="searchBtn"><br>
-					<input type="text" class="form-control" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[1]}" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom: 10px;" readonly>
+					<input type="text" class="form-control" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[1]}" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom: 10px;" onClick="zipClick()" readonly>
 					<span id="guide" style="color:#999;display:none"></span>
 					<input type="text" class="form-control" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[2]}" id="sample4_detailAddress" placeholder="상세주소">
 				</td>

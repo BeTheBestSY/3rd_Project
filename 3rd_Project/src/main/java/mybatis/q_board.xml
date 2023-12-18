@@ -42,6 +42,14 @@
 			SELECT q_ref, q_re_step FROM q_board where q_ref = #{q_ref} GROUP BY q_ref, q_re_step HAVING q_re_step >= #{q_re_step}
 		</select>
 		
+		<select id="getTotalCountById" resultType="int">
+			select count(*) from q_board where q_writer = #{q_writer}
+		</select>
+		
+		<select id="getBoardById" resultType="QBoard">
+			select * from q_board where q_writer = #{q_writer} order by q_num desc
+		</select>
+		
 		<insert id="writeBoard">
 			insert into q_board
 			(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip)

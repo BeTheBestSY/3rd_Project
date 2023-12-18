@@ -52,9 +52,7 @@ section.notice {
   vertical-align: middle;
 }
 
-
-
-.board-table th, .board-table td {
+.board-table td {
   padding: 14px 0;
   padding-left:30px;
 }
@@ -64,8 +62,7 @@ section.notice {
 }
 
 .board-table tbody th {
-  padding-left: 28px;
-  padding-right: 14px;
+  text-align: center;
   border-top: 1px solid #e7e7e7;
 }
 
@@ -168,4 +165,8 @@ section.notice {
   margin: -1px;
   width: 1px;
   height: 1px;
+}
+
+body {
+	padding-top: 90px;
 }

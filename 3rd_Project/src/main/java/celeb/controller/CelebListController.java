@@ -1,5 +1,6 @@
 package celeb.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import celeb.model.CelebBean;
@@ -20,17 +22,17 @@ import utility.Paging;
 public class CelebListController {
 	private final String command = "/celebList.cel";
 	private final String viewPage = "celebList";
-	
 	@Autowired
 	private CelebDao cdao;
 	
-	@RequestMapping(command)
+	@RequestMapping(value=command)
 	public String list(Model model,
 					HttpServletRequest request,
 					@RequestParam(required = false) String whatColumn,
 					@RequestParam(required = false) String keyword,
-					@RequestParam(required = false) String pageNumber) {
-	
+					@RequestParam(required = false) String pageNumber) throws UnsupportedEncodingException {
+
+		 request.setCharacterEncoding("UTF-8");
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");

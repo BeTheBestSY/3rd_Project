@@ -55,6 +55,9 @@
 		font-size: 20pt; 
 		font-family: 'MaruBuri-Regular';
 	}
+	body{
+		padding-top: 90px;
+	}
 </style>
 
 <%@ include file="./../views/header.jsp" %> 

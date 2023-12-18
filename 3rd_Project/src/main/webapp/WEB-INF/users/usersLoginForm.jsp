@@ -12,6 +12,9 @@
 		width: 400px;
 		height: 100px; 
 	}
+	body{
+		padding-top: 90px;
+	}
 	#loginBtn{
 		width: 100%;
 		height: 90%;
@@ -93,50 +96,10 @@
 				%>
 				<div id="IdLogin" align="left">
 					<!-- 네이버 로그인 버튼 생성 위치 -->
-					<a href="<%=apiURL%>"><img  height="50" src="<%=request.getContextPath()%>/resources/image/btnW_완성형.png"></a>
+					&nbsp;&nbsp;<a href="<%=apiURL%>"><img  height="50" src="<%=request.getContextPath()%>/resources/image/btnW_완성형.png"></a>
 					<!-- 카카오 로그인 버튼 생성 위치 -->
-					<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=a8d5622ce00b9080e03be1948663093a&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fex20%2Fkakao.u"><img  height="50" src="<%=request.getContextPath()%>/resources/image/kakao_login_medium_narrow.png"></a>
+					<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=a8d5622ce00b9080e03be1948663093a&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fex20%2Fkakao.u"><img  height="48" src="<%=request.getContextPath()%>/resources/image/kakao_login_medium_narrow.png"></a>
 				</div>
-				<!-- 카카오 스크립트 -->
-				<!-- <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> -->
-				<!-- <script>
-				Kakao.init('ac7cac56ba6996bdc4e36b7227202443'); //발급받은 키 중 javascript키를 사용해준다.
-				console.log(Kakao.isInitialized());
-				//카카오로그인
-				function kakaoLogin() {
-				    Kakao.Auth.login({
-				      success: function (response) {
-				        Kakao.API.request({
-				          url: '/v2/user/me',
-				          success: function (response) {
-				        	  console.log(response)
-				          },
-				          fail: function (error) {
-				            console.log(error)
-				          },
-				        })
-				      },
-				      fail: function (error) {
-				        console.log(error)
-				      },
-				    })
-				  }
-				//카카오로그아웃  
-				function kakaoLogout() {
-				    if (Kakao.Auth.getAccessToken()) {
-				      Kakao.API.request({
-				        url: '/v1/user/unlink',
-				        success: function (response) {
-				        	console.log(response)
-				        },
-				        fail: function (error) {
-				          console.log(error)
-				        },
-				      })
-				      Kakao.Auth.setAccessToken(undefined)
-				    }
-				  }
-				</script> -->
 			</td>
 			<td align="right" valign="middle">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -5,38 +5,183 @@
 
 <mapper namespace="sqlField_admin">	
 
+	<!-- q_board -->
+
 	<select id="getAllBoardList" resultType="QBoard">
-			select q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip		        
-			from (select rownum as rank, q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip
-			from (select q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip
-			from q_board
-			<if test="whatColumn=='q_writer'">
-				where q_writer like #{keyword}
-			</if>
-			<if test="whatColumn=='q_subject'">
-				where q_subject like #{keyword}
-			</if>
-			order by q_ref desc, q_re_step asc ))
-		</select>
-		
-		<select id="getTotalCount" resultType="int">
-			select count(*) from q_board 
-			<if test="whatColumn=='q_writer'">
-				where q_writer like #{keyword}
-			</if>
-			<if test="whatColumn=='q_subject'">
-				where q_subject like #{keyword}
-			</if>
-			order by q_num asc
-		</select>
+		select q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip		        
+		from (select rownum as rank, q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip
+		from (select q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip
+		from q_board
+		<if test="whatColumn=='q_writer'">
+			where q_writer like #{keyword}
+		</if>
+		<if test="whatColumn=='q_subject'">
+			where q_subject like #{keyword}
+		</if>
+		order by q_ref desc, q_re_step asc ))
+	</select>
 	
-		<select id="selectContent" resultType="QBoard">
-			select * from q_board where q_num = #{q_num}
-		</select>
-		
-		<delete id="deleteBoard">
-			delete from q_board where q_num = #{q_num}
-		</delete>	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from q_board 
+		<if test="whatColumn=='q_writer'">
+			where q_writer like #{keyword}
+		</if>
+		<if test="whatColumn=='q_subject'">
+			where q_subject like #{keyword}
+		</if>
+		order by q_num asc
+	</select>
+
+	<select id="selectContent" resultType="QBoard">
+		select * from q_board where q_num = #{q_num}
+	</select>
 	
+	<delete id="deleteBoard">
+		delete from q_board where q_num = #{q_num}
+	</delete>
+	
+	<!-- c_board -->
+	
+	<select id="getAllBoardListC" resultType="CBoard">
+		select c_num, c_writer, c_email, c_subject, c_password, c_regdate, c_readcount, c_ref, c_re_step, c_re_level, c_content, c_ip		        
+		from (select rownum as rank, c_num, c_writer, c_email, c_subject, c_password, c_regdate, c_readcount, c_ref, c_re_step, c_re_level, c_content, c_ip
+		from (select c_num, c_writer, c_email, c_subject, c_password, c_regdate, c_readcount, c_ref, c_re_step, c_re_level, c_content, c_ip
+		from c_board
+		<if test="whatColumn=='c_writer'">
+			where c_writer like #{keyword}
+		</if>
+		<if test="whatColumn=='c_subject'">
+			where c_subject like #{keyword}
+		</if>
+		order by c_ref desc, c_re_step asc ))
+	</select>
+	
+	<select id="getTotalCountC" resultType="int">
+		select count(*) from c_board 
+		<if test="whatColumn=='c_writer'">
+			where c_writer like #{keyword}
+		</if>
+		<if test="whatColumn=='c_subject'">
+			where c_subject like #{keyword}
+		</if>
+		order by c_num asc
+	</select>
+
+	<select id="selectContentC" resultType="CBoard">
+		select * from c_board where c_num = #{c_num}
+	</select>
+	
+	<delete id="deleteBoardC">
+		delete from c_board where c_num = #{c_num}
+	</delete>
+	
+	<!-- celeb -->
+	
+		<select id="getTotalCountCeleb" resultType="int">
+		select count(*) from celeb
+		
+		<if test="whatColumn=='cl_color'">
+		where cl_color like #{keyword}
+		</if>
+		
+	</select>
+	
+	<select id="getAllCelebList" resultType="celebDao">
+		select * from celeb
+		
+		<if test="whatColumn=='cl_color'">
+		where cl_color like #{keyword}
+		</if>
+		 
+	</select>
+	
+	<select id="getSelectOneCeleb" resultType="celebDao">
+		select * from celeb
+		where cl_num = #{cl_num}
+	</select>
+	
+	
+	
+	<!-- users -->
+	
+	<select id="getUsers" resultType="Users">
+		select * from users
+		<if test="whatColumn == 'all'">
+			where u_id like #{keyword} or
+			u_name like #{keyword} or
+			u_phone like #{keyword}
+		</if>
+		<if test="whatColumn == 'u_name'">
+			where u_name like #{keyword}
+		</if>
+		<if test="whatColumn == 'u_id'">
+			where u_id like #{keyword}
+		</if>
+		<if test="whatColumn == 'u_phone'">
+			where u_phone like #{keyword}
+		</if>
+		order by u_joindate desc
+	</select>
+	<delete id="deleteUsers">
+		delete users
+		where u_id=#{u_id}
+	</delete>
+	<select id="getUserById" resultType="Users">
+		select * from users
+		where u_id=#{u_id}
+	</select>
+	
+	<!-- product -->
+	
+	<select id="getProducts" resultType="myProduct">
+		select * from product
+		<if test="whatColumn == 'all'">
+			where p_brand like #{keyword} or
+			p_color like #{keyword} or
+			p_name like #{keyword}
+		</if>
+		<if test="whatColumn == 'p_brand'">
+			where p_brand like #{keyword}
+		</if>
+		<if test="whatColumn == 'p_color'">
+			where p_color like #{keyword}
+		</if>
+		<if test="whatColumn == 'p_name'">
+			where p_name like #{keyword}
+		</if>
+		order by 
+		<choose>
+			<when test="filter == 'standard'">
+				p_num desc
+			</when>
+			<when test="filter == 'p_stock'">
+				p_stock asc, p_num desc
+			</when>
+			<when test="filter == 'p_salevolume'">
+				p_salevolume desc, p_num desc
+			</when>
+			<when test="filter == 'p_priceDesc'">
+				p_price desc, p_num desc
+			</when>
+			<when test="filter == 'p_priceAsc'">
+				p_price asc, p_num desc
+			</when>
+			<otherwise>
+				p_num desc
+			</otherwise>
+		</choose>
+	</select>
+	<select id="getTotalPrdCount" resultType="int">
+		select count(*) from product
+		<if test="whatColumn == 'p_brand'">
+			where p_brand like #{keyword}
+		</if>
+		<if test="whatColumn == 'p_color'">
+			where p_color like #{keyword}
+		</if>
+		<if test="whatColumn == 'p_name'">
+			where p_name like #{keyword}
+		</if>
+	</select>
 </mapper> 
 

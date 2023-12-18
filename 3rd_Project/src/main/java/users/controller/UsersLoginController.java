@@ -1,26 +1,23 @@
 package users.controller;
-
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import users.model.UsersBean;
 import users.model.UsersDao;
+
 
 @Controller
 public class UsersLoginController {
 	private final String command = "/login.u";
 	private final String viewPage = "usersLoginForm";
 	private final String adminPage = "../admin/adminMain";
-	private final String gotoPage = "../views/main";
+	private String gotoPage = "../views/main";
 	@Autowired
 	private UsersDao ud;
 	
@@ -41,8 +38,12 @@ public class UsersLoginController {
 			session.setAttribute("loginInfo", ud.getUserById(ub.getU_id()));
 			if(ub.getU_id().equals("admin"))
 				return adminPage;
-			else
+			else {
+				if(session.getAttribute("destination") != null) {
+					gotoPage = String.valueOf(session.getAttribute("destination"));
+				}
 				return gotoPage;
+			}
 		} else { 
 			response.setContentType("text/html; charset=UTF-8");
 			out.print("<script>alert('가입되지 않은 회원입니다.');</script>");
