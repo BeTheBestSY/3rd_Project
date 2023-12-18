@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import c_board.model.CBoardBean;
 import utility.Paging;
 
 @Component("QBoard")
@@ -79,6 +80,22 @@ public class QBoardDao {
 		
 	}
 	
+	public List<CBoardBean> getBoardById(Paging pageInfo, Map<String, String> map) {
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		List<CBoardBean> list = sqlSessionTemplate.selectList(namespace+"getBoardById", map, rowBounds);
+		return list;
+	}
 	
+	public int getTotalCountById(Map<String, String> map) {
+		int totalCount = sqlSessionTemplate.selectOne(namespace+"getTotalCountById",map);
+		return totalCount;
+	}
+
+	public void deleteChkBoard(int[] checks) {
+		for(int i=0; i<checks.length; i++) {
+			int q_num = checks[i];
+			sqlSessionTemplate.delete(namespace+"deleteBoard",q_num);
+		}
+	}
 	
 }

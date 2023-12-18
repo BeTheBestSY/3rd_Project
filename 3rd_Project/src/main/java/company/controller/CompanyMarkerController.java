@@ -35,13 +35,15 @@ public class CompanyMarkerController {
 		CompanyBean cb = dao.getSelectOne(Integer.parseInt(cmp_num));
 		String encodedName = URLEncoder.encode(cb.getCmp_name(), "UTF-8");
 		String encodedKeyword = URLEncoder.encode(keyword, "UTF-8");
-	/*
 		model.addAttribute("oneY", cb.getCmp_y());
 		model.addAttribute("oneX", cb.getCmp_x());
 		model.addAttribute("oneName", cb.getCmp_name());
 		model.addAttribute("pageNumber", pageNumber);
+<<<<<<< HEAD
 	*/
 		System.out.println("ASDASDAS");
+=======
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 		return viewPage+"?oneY="+cb.getCmp_y()+"&oneX="+cb.getCmp_x()+"&oneName="+encodedName+"&pageNumber="+pageNumber+"&whatColumn="+whatColumn+"&keyword="+encodedKeyword;
 		
 		

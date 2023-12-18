@@ -44,6 +44,16 @@ public class ProductDao {
 			return pb;
 		}
 
+	public List<ProductBean> getBestProduct() {
+		List<ProductBean> product_BLists = sqlSessionTemplate.selectList(namespace+".getBestProduct");
+		return product_BLists;
+	}
+
+	public List<ProductBean> getNewProduct() {
+		List<ProductBean> product_NLists = sqlSessionTemplate.selectList(namespace+".getNewProduct");
+		return product_NLists;
+	}
+
 	
 }
 

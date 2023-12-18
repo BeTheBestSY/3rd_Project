@@ -15,17 +15,19 @@
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style type="text/css">
-#s{
-margin: 0 auto;
-width: 500px;
-} 
-	  
-	  .celebNull{
-	  	margin : 0 auto;
-	  	margin-top : 10%;
-	  	margin-bottom : 5%;
-	  }
-	  
+#s {
+	margin: 0 auto;
+	width: 500px;
+}
+
+.celebNull {
+	margin: 0 auto;
+	margin-top: 10%;
+	margin-bottom: 5%;
+}
+body {
+	padding-top: 90px;
+}
 </style>
 </head>
 <%@ include file="../views/header.jsp" %>

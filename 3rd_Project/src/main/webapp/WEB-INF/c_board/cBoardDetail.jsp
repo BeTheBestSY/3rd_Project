@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@ include file="./../views/header.jsp" %>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardWrite.css">
 <style type="text/css">
@@ -33,7 +34,7 @@
 %>
 
 <br>
-<article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
+<article id="center" style=" text-align:center; font-family: 'RIDIBatang';">
 
 
 <div class="page-title">
@@ -50,22 +51,22 @@
 		<form:form commandName="bb" action="write.cb" method="post">
 		      <table class="board-table" style="font-size: 13pt;">
 				<tr >
-					<th align="left" bgcolor="#D0D6CE" width="10%">제목</th>
+					<th align="left" bgcolor="#EDE5D8" width="10%">제목</th>
 					<td align="left" colspan="3" height="68">${ bb.c_subject }
 					</td>
 				</tr>
 				<tr>
-					<th align="left" bgcolor="#D0D6CE" width="10%">작성자</th>
+					<th align="left" bgcolor="#EDE5D8" width="10%">작성자</th>
 					<td align="left" height="68" width="38%">
 						${ bb.c_writer}					
 					</td>
-					<th align="left" bgcolor="#D0D6CE" width="14%" >이메일</th>
+					<th align="left" bgcolor="#EDE5D8" width="14%" >이메일</th>
 					<td align="left" height="68">
 						${ bb.c_email }
 					</td>
 				</tr>
 				<tr>
-					<th align="left" bgcolor="#D0D6CE" width="10%" >내용</th>
+					<th align="left" bgcolor="#EDE5D8" width="10%" >내용</th>
 					<td align="left" colspan="3" height="200" valign="top">
 						${ bb.c_content}
 					</td>

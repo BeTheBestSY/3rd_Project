@@ -11,11 +11,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- CSS -->
+   
+    <!-- <link rel="stylesheet" href="assets/css/styles.css">-->
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css">
-
-    <title>SideBar sub menus</title>
+    <title>FIND YOUR Hidden Beauty</title>
 </head>
 <body id="body-pd">
     <div class="l-navbar" id="navbar">
@@ -27,27 +27,34 @@
                 </div>
                 <div class="nav__list">
 
-                    <div href="#" class="nav__link collapse">
+                    <a href="usersList.admin" class="nav__link collapse">
                         <ion-icon name="people-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">&nbsp;고객</span>
-                    </div>
+                    </a>
                     
-                    <a href="#" class="nav__link">
+                    <a href="productList.admin" class="nav__link">
                     	<ion-icon name="cart-outline"></ion-icon>
 						<span class="nav_name">&nbsp;화장품</span>
                     </a>
+                    
+                    <a href="productList.admin" class="nav__link">
+                    	<ion-icon name="receipt-outline"></ion-icon>
+						<span class="nav_name">&nbsp;주문 내역</span>
+                    </a>
+                    
+                    
                     
                     <a href="#" class="nav__link">
                     	<ion-icon name="location-outline"></ion-icon>
 						<span class="nav_name">&nbsp;진단 회사</span>
                     </a>
                     
-                    <a href="adminCelebList.admin" class="nav__link">
+                    <a href="celebList.admin" class="nav__link">
                     	<ion-icon name="camera-outline"></ion-icon>
 						<span class="nav_name">&nbsp;연예인</span>
                     </a>
                     
-					<a href="adminCboardList.admin" class="nav__link">
+					<a href="cBoardList.admin" class="nav__link">
                         <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">&nbsp;후기 게시판</span>
                     </a>

@@ -48,10 +48,16 @@ public class CompanyListController {
 			
 		model.addAttribute("list", list);
 		model.addAttribute("pageInfo", pageInfo);
+<<<<<<< HEAD
 		
+=======
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 		model.addAttribute("whatColumn", whatColumn);
 		model.addAttribute("keyword", keyword);
+<<<<<<< HEAD
 		
+=======
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 		model.addAttribute("oneY", oneY);
 		model.addAttribute("oneX", oneX);
 		model.addAttribute("oneName", oneName);

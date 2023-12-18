@@ -1,3 +1,4 @@
+<%@page import="users.model.UsersBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -10,6 +11,7 @@
 <head> 
 <meta charset="UTF-8">
 <title>FIND YOUR Hidden Beauty</title>
+<link rel="icon" href="resources/image/fyhbLogo_mini.png"/>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -26,7 +28,7 @@
 	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
 	    font-weight: normal;
 	    font-style: normal;
-	}
+	} 
 	@font-face {
 	    font-family: 'RIDIBatang'; 
 	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
@@ -43,7 +45,7 @@
 </head>
   
 <body>
-	<header class="p-3 mb-3 border-bottom" style="font-family: 'RIDIBatang';">
+	<header class="p-3 mb-3 border-bottom" style="font-family: 'RIDIBatang'; position: fixed; z-index: 99; background: white; left: 0px; right: 0px; top: 0px;">
 		<div class="container">
 			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
@@ -64,10 +66,10 @@
  
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
-						<a href="qBoardList.qb" class="nav-link px-2 link-body-emphasis">후기 게시판</a>
+						<a href="cBoardList.cb" class="nav-link px-2 link-body-emphasis">후기 게시판</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
-						<a href="productList.p" class="nav-link px-2 link-body-emphasis">쇼핑하기</a>
+						<a href="productMain.p" class="nav-link px-2 link-body-emphasis">쇼핑하기</a>
 					</li>
 				</ul>
 

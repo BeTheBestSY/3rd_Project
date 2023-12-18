@@ -30,4 +30,18 @@
 		delete from temp_cart where cart_num = #{cart_num}
 	</delete>
 	
+	<insert id="insertOrderProd">
+		insert into ordersProduct
+			values(#{o_num}, #{p_num}, #{cart_qty})
+	</insert>
+	
+	<insert id="insertOrderInfo">
+		insert into orders 
+			values(#{o_num},#{u_id},#{o_phone},#{o_name},#{o_addr},
+			#{o_date},#{pay_bank},#{pay_name},#{way})
+	</insert>
+	
+	<select id="selectMaxO_num" resultType="int">
+		select MAX(o_num) from orders
+	</select>
 </mapper>

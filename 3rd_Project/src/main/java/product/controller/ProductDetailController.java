@@ -24,7 +24,7 @@ public class ProductDetailController {
 			@RequestParam(value = "p_num") String p_num,
 			@RequestParam(value = "pageNumber") String pageNumber,
 			Model model) {
-		
+		 
 		ProductBean pb = productDao.getSelectOne(p_num);
 		
 		model.addAttribute("pb", pb);
