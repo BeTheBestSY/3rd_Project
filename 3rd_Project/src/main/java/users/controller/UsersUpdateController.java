@@ -43,7 +43,7 @@ public class UsersUpdateController {
 			out.flush();
 			return viewPage;
 		}
-	}
+	} 
 	
 	@RequestMapping(value=command_color, method=RequestMethod.GET)
 	public String updateColor(HttpServletResponse response, HttpSession session,
