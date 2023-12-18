@@ -77,6 +77,9 @@
 	.bd-mode-toggle {
 		z-index: 1500;
 	}
+	body{
+		padding-top: 90px;
+	}
 </style>
 
 </head>

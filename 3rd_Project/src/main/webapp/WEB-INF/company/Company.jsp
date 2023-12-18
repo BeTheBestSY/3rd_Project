@@ -21,6 +21,9 @@
 		position: relative;
 		
 	}
+	body{
+		padding-top: 90px;
+	}
 </style>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f8fb6e61c9516794c3e829ce49ef713c"></script>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>

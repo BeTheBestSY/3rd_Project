@@ -1,10 +1,13 @@
 package admin.contoller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,15 +24,14 @@ public class AdminProductController {
 	private final String command = "/productList.admin";
 	private final String delCommand = "/productDelete.admin";
 	private final String upCommand = "/productUpdate.admin";
-	private final String filCommand = "/productFilter.admin";
 	
 	private final String viewPage = "adminProduct";
-	
+	private final String redirect = "redirect";
 	@Autowired
 	private AdminDao ad;
 	
 	@RequestMapping(value = command)
-	public String adProduct(@RequestParam(required = false) String whatColumn,
+	public String adminProduct(@RequestParam(required = false) String whatColumn,
 						@RequestParam(required = false) String keyword,
 						@RequestParam(required = false) String pageNumber,
 						@RequestParam(required = false) String filter,
@@ -53,5 +55,18 @@ public class AdminProductController {
 		model.addAttribute("pageInfo", pageInfo);
 		
 		return viewPage;
+	}
+	
+	@RequestMapping(value = delCommand)
+	public String adminProdDel(@RequestParam String p_num,
+							Model model) throws IOException {
+		int res = ad.deleteProduct(p_num);
+		if(res == 1) {
+			model.addAttribute("msg", "상품이 삭제되었습니다.");
+		} else {
+			model.addAttribute("msg", "삭제 실패. DB 확인 요망.");
+		}
+		model.addAttribute("url", "productList.admin");
+		return redirect;
 	}
 }

@@ -107,6 +107,9 @@
 	#seasonBtn:hover{
 		background: #EAEAEA;
 	}
+	body{
+		padding-top: 90px;
+	}
 }
 </style>
 
@@ -125,7 +128,7 @@
 <hr style="width: 61%; margin: auto; top: 80px; position: relative; z-index: 0; border: dashed 1px gray;">
 
 <div id="mainArea">
-	<div class="btn-group" role="group" style="width: 300px; margin: auto; z-index: 99">
+	<div class="btn-group" role="group" style="width: 300px; margin: auto; z-index: 98">
 		<input type="button" class="btn" id="btnSpring" value="&nbsp;봄&nbsp;">
 		<input type="button" class="btn" id="btnSummer" value="여름"> 
 		<input type="button" class="btn" id="btnAutumn" value="가을"> 

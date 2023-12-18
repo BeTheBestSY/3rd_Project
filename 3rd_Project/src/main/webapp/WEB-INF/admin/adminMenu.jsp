@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminMenu.css">
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminMenu.css">
+
   <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,9 +43,7 @@
 						<span class="nav_name">&nbsp;주문 내역</span>
                     </a>
                     
-                    
-                    
-                    <a href="#" class="nav__link">
+                    <a href="companyList.admin" class="nav__link">
                     	<ion-icon name="location-outline"></ion-icon>
 						<span class="nav_name">&nbsp;진단 회사</span>
                     </a>

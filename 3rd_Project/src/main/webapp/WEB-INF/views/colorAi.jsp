@@ -206,6 +206,10 @@
         transform: rotate(360deg);
     }
 }
+
+body{
+	padding-top: 90px;
+}
 </style>
 
 <%

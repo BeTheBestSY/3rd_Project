@@ -75,7 +75,7 @@
 			</c:if>
 			
 			<!-- 접속한 id가 관리자가 아니고, 글 작성자랑 접속한 id랑 다른데 로그인은 되어있으면 답글달기만. -->
-			<c:if test="${id != null && loginInfo.u_id !='admin' && id !=bb.q_writer}"> 
+			<c:if test="${loginInfo.u_id != null && loginInfo.u_id !='admin' && loginInfo.u_id !=bb.q_writer}"> 
 				<center>
 					<input type="button" value="답글달기" onClick="goReply(${ bb.q_num },${ bb.q_ref },${ bb.q_re_step },${ bb.q_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 				</center>
@@ -90,8 +90,6 @@
 					<input type="button" value="삭제하기" onClick="goDelete(${ bb.q_num },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 
 					<input type="button" value="답글달기" onClick="goReply(${ bb.q_num },${ bb.q_ref },${ bb.q_re_step },${ bb.q_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
-
-				
 
 				</center>
 			</c:if>

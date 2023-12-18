@@ -17,6 +17,9 @@
 		background: #97A892;
 		color: white;
 	}
+	body{
+		padding-top: 90px;
+	}
 </style>
 
 <%@ include file="../views/header.jsp" %>

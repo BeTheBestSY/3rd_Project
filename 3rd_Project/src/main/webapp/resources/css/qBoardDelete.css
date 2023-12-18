@@ -138,3 +138,7 @@ section.notice {
 input:focus {
 	outline: none;
 }
+
+body {
+	padding-top: 90px;
+}

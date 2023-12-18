@@ -89,6 +89,9 @@
 		background: #C98BA4;
 		color: white;
 	}
+	body{
+		padding-top: 90px;
+	}
 }
 </style>
 

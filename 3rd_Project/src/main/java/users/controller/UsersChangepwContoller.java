@@ -27,12 +27,14 @@ public class UsersChangepwContoller {
 					@RequestParam(required = false) String new_password_chk) {
 		return viewPage;
 	}
+	
 	@RequestMapping(value = command, method = RequestMethod.POST)
 	public String doAction2(@RequestParam String old_password,
 						@RequestParam String new_password,
 						@RequestParam String new_password_chk,
 						HttpSession session,
 						Model model) {
+		
 		UsersBean loginInfo = (UsersBean)session.getAttribute("loginInfo");
 		String u_id = loginInfo.getU_id();
 		UsersBean ub = ud.getUserById(u_id);
