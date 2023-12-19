@@ -1,20 +1,23 @@
 package admin.contoller;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import admin.model.AdminDao;
 import product.model.ProductBean;
@@ -34,7 +37,8 @@ public class AdminProductController {
 	private final String redirect = "redirect";
 	@Autowired
 	private AdminDao ad;
-	
+	@Autowired
+	ServletContext servletContext;
 	@RequestMapping(value = command)
 	public String adminProduct(@RequestParam(required = false) String whatColumn,
 						@RequestParam(required = false) String keyword,
@@ -68,9 +72,28 @@ public class AdminProductController {
 	}
 	
 	@RequestMapping(value = inCommand, method = RequestMethod.POST)
-	public String adminProdIn2() throws IOException {
-		// 여기서부터 하기!!
-		return inPage;
+	public String adminProdIn2(@ModelAttribute(value = "pb") ProductBean pb,
+							HttpServletRequest request) throws UnsupportedEncodingException {
+		request.setCharacterEncoding("UTF-8");
+		System.out.println("insert하려는 상품의 브랜드:"+pb.getP_brand());
+		System.out.println("insert하려는 상품의 타이틀이미지:"+pb.getP_ttlimg());
+		System.out.println("insert하려는 상품의 디테일이미지:"+pb.getP_dtlimg());
+		
+//		ad.insertProduct(pb);
+//		String uploadPath = servletContext.getRealPath("/resources/uploadFolder/product/");
+//		System.out.println("uploadPath:"+uploadPath);
+//		File destTitle = new File(uploadPath+File.separator+pb.getP_ttlimg());
+//		File destDetail = new File(uploadPath+File.separator+pb.getP_dtlimg());
+//		
+//		MultipartFile ttl_img = pb.getUpload_ttl();
+//		MultipartFile dtl_img = pb.getUpload_dtl();
+//		try {
+//			ttl_img.transferTo(destTitle); //destination에 ttl_img 올려라.
+//			dtl_img.transferTo(destDetail); //destination에 dtl_img 올려라.
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		return viewPage;
 	}
 	
 	@RequestMapping(value = delCommand)
