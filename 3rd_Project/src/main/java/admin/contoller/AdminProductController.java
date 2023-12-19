@@ -34,7 +34,7 @@ public class AdminProductController {
 	private final String redirect = "redirect";
 	@Autowired
 	private AdminDao ad;
-	
+	 
 	@RequestMapping(value = command)
 	public String adminProduct(@RequestParam(required = false) String whatColumn,
 						@RequestParam(required = false) String keyword,
