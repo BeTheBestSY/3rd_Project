@@ -34,7 +34,7 @@ public class AdminCBoardController {
 	private final String commandChkDel = "/cBoardChkDel.admin";
 	private final String commandDetail = "/cBoardDetail.admin";
 	private final String viewPageDetail = "adminCBoardDetail";
-	
+	 
 	@RequestMapping(value=listCommand,method=RequestMethod.GET)
 	public String goAdmin(
 				Model model,

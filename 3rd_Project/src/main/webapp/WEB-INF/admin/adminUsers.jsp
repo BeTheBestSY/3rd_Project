@@ -4,43 +4,13 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css">
 <script type="text/javascript">
 	window.onload = function(){
-		const filterType = document.getElementById("filterType");
-		const radios = document.querySelectorAll(".filter_btn");
-		var selectedFilterType = 'u_jointype';
-		
-		const filter_jointype = document.querySelector('.filter_jointype');
-		const filter_joindate = document.querySelector('.filter_joindate');
-		const filter_color = document.querySelector('.filter_color');
-	 	
-		// filterType select가 변하면
-		filterType.addEventListener("change", (e) => {
-	 		var current = e.currentTarget;
-	 		selectedFilterType = current.value;
-	 		alert('선택된 필터 타입:'+selectedFilterType);
-	 		
-	 		if(selectedFilterType == 'u_jointype'){ // 가입유형
-	 			filter_joindate.style.cssText = 'display: none;';
- 				filter_color.style.cssText = 'display: none;'
-	 			filter_jointype.style.cssText = 'display: inline-block;';
-	 			
-	 		} else if(selectedFilterType == 'u_joindate'){ // 가입일
-	 			filter_jointype.style.cssText = 'display: none;';
- 				filter_color.style.cssText = 'display: none;';
-	 			filter_joindate.style.cssText = 'display: inline-block;';
-	 			
-	 		} else{ // 퍼스널컬러
-	 			filter_jointype.style.cssText = 'display: none;';
- 				filter_joindate.style.cssText = 'display: none;';
-	 			filter_color.style.cssText = 'display: inline-block;';
-	 			
-	 		}
-	 	});
+		const radios = document.querySelectorAll("input[name='filter_btn']");
 		radios.forEach((radio) => {
 			radio.addEventListener("change", (e) => {
 				var current = e.currentTarget;
 				var whatColumn = document.getElementById('whatColumn');
 				var keyword = document.getElementById('keyword');
-				location.href='usersList.admin?filterType='+selectedFilterType+'&filter='+current.value+'&whatColumn='+whatColumn.value+'&keyword='+keyword.value;
+				location.href='usersList.admin?filter='+current.value+'&whatColumn='+whatColumn.value+'&keyword='+keyword.value;
 				
 			});
 		});
@@ -71,33 +41,11 @@
 						<button type="submit" class="btn btn-dark">검색</button>
 					</form>
 				</div>
-				<div style="margin: auto; width: 80%; height: 6%;">
-					<div class="filter_select" style="display: inline-block;">
-						<select id="filterType">
-							<option value="u_jointype" <c:if test="${param.filterType eq 'u_jointype' || param.filterType eq null}">checked</c:if>>가입유형</option>
-							<option value="u_joindate" <c:if test="${param.filterType eq 'u_joindate'}">checked</c:if>>가입일</option>
-							<option value="u_color" <c:if test="${param.filterType eq 'u_color'}">checked</c:if>>퍼스널컬러</option>
-						</select>
-					</div>
-					 <!-- height: 6%; -->
-					<div class="filter_jointype" style="display: inline-block;">
-						<input type="radio" class="filter_btn" name="u_jointype" value="S" 
-							<c:if test="${param.filter eq 'S' or param.filter eq null}">checked</c:if>>기본
-						<input type="radio" class="filter_btn" name="u_jointype" value="N" 
-							<c:if test="${param.filter eq 'N'}">checked</c:if>>네이버
-						<input type="radio" class="filter_btn" name="u_jointype" value="K" 
-							<c:if test="${param.filter eq 'K'}">checked</c:if>>카카오
-					</div>
-					<div class="filter_joindate" style="display: none;">
-						<input type="radio" class="filter_btn" name="u_joindate" value="asc" <c:if test="${param.filter eq 'asc' || param.filter eq null}">checked</c:if>>오래된 순
-						<input type="radio" class="filter_btn" name="u_joindate" value="desc" <c:if test="${param.filter eq 'desc'}">checked</c:if>>최근 가입 순
-					</div>
-					<div class="filter_color" style="display: none;">
-						<input type="radio" class="filter_btn" name="u_color" value="spring" <c:if test="${param.filter eq 'spring' || param.filter eq null}">checked</c:if>>봄
-						<input type="radio" class="filter_btn" name="u_color" value="summer" <c:if test="${param.filter eq 'summer'}">checked</c:if>>여름
-						<input type="radio" class="filter_btn" name="u_color" value="fall" <c:if test="${param.filter eq 'fall'}">checked</c:if>>가을
-						<input type="radio" class="filter_btn" name="u_color" value="winter" <c:if test="${param.filter eq 'winter'}">checked</c:if>>겨울
-					</div>
+				<div class="filter_radio" style="margin: auto; width: 80%; height: 6%;">
+					<input type="radio" name="filter_btn" value="A" <c:if test="${param.filter eq 'A' or param.filter eq null}">checked</c:if>>전체 회원
+					<input type="radio" name="filter_btn" value="S" <c:if test="${param.filter eq 'S'}">checked</c:if>>기본
+					<input type="radio" name="filter_btn" value="N" <c:if test="${param.filter eq 'N'}">checked</c:if>>네이버
+					<input type="radio" name="filter_btn" value="K" <c:if test="${param.filter eq 'K'}">checked</c:if>>카카오
 				</div>
 			</div>
 		</div>
