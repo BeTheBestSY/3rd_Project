@@ -323,7 +323,7 @@
 <div style="width: 60%; margin: auto; border-bottom: 1px solid #D5D5D5;"> 
 	<div style="width: 250px; height: 45px; background: #C7C7DB; color: white; text-align: center; display: table-cell; vertical-align: middle; font-family: 'RIDIBatang'; font-size: 15pt;">
 		상세정보
-	</div>
+	</div> 
 </div>
 <div style="height: 150px;"></div>
 
