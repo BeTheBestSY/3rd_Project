@@ -69,7 +69,7 @@ public class AdminProductController {
 	
 	@RequestMapping(value = inCommand, method = RequestMethod.POST)
 	public String adminProdIn2() throws IOException {
-		// 여기서부터 하기!! 
+		// 여기서부터 하기!!
 		return inPage;
 	}
 	
