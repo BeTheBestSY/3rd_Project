@@ -11,7 +11,7 @@
 	}
 </style>
 
-<%@ include file="productHeader.jsp" %>  
+<%@ include file="productHeader.jsp" %>
 	 
 	<!-- 캐러샐 이미지 부분 -->
 	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"> 
