@@ -4,7 +4,6 @@
 
 <mapper namespace="sqlField_mall">
 	
-	
 	<insert id="insertTemp" parameterType="myTempCart" >
 		insert into temp_cart
 			values(#{cart_num}, #{p_num}, #{cart_qty})
@@ -43,8 +42,6 @@
 	<select id="selectMaxO_num" resultType="int">
 		select MAX(o_num) from orders
 	</select>
-	
-	<!-- =============		cartss	============= -->
 	
 	<select id="selectCart" resultType="int">
 		select count(*) from cart

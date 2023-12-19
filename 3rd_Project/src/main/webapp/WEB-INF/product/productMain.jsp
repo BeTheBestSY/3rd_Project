@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%
+	application.setAttribute("flag", false);
+%> 
+
 <style>
 	body{
 		padding-top: 140px;  
@@ -51,7 +55,7 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			BEST
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<hr style="display: inline-block; width: 40%; top: 5px; position: relative; color: #A6A6A6;">   
+			<hr style="display: inline-block; width: 40%; top: 5px; position: relative; color: #A6A6A6;">
 		</div>
 		<div class="row">
 			<c:forEach var="pb" items="${product_BLists}">
@@ -69,7 +73,7 @@
 								<fmt:formatNumber value="${pb.p_price}" pattern="#,###" />원 
 							</p>
 							<p style="position: absolute; left: 235px; top: 405px;">
-								<a href="#">
+								<a href="cart.mall?p_num=${pb.p_num}&cart_num=<%=session.getId()%>&oqty=1">
 									<img src="resources/image/cartAdd.svg" width="25">
 								</a>
 							</p>
@@ -108,7 +112,7 @@
 								<fmt:formatNumber value="${pb.p_price}" pattern="#,###" />원
 							</p>
 							<p style="position: absolute; left: 235px; top: 405px;">
-								<a href="#">
+								<a href="cart.mall?p_num=${pb.p_num}&cart_num=<%=session.getId()%>&oqty=1">
 									<img src="resources/image/cartAdd.svg" width="25">
 								</a>
 							</p>

@@ -5,11 +5,11 @@
 <html>
 <head> 
 <meta charset="UTF-8">
-
 <style type="text/css">
 .container {
   max-width: 960px;
 }
+
   
 .tab-wrapper {
   position: relative;
@@ -69,29 +69,19 @@
   border-top: 1px solid #caccdb;
   overflow: auto;
 }
-
-body{
-	padding-top: 140px;
-}
 </style>
-
 <script src="../assets/js/color-modes.js"></script>
 <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
  
- 
 </head>
-<<<<<<< HEAD
- 
-
-
-<%@ include file="../product/productHeader.jsp" %>
-=======
 <%@ include file="../views/header.jsp" %>
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 <body>
      
+
+     
+    
 <div class="container">
   <main>
  

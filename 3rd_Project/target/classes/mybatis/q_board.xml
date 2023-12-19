@@ -4,7 +4,6 @@
 
 <mapper namespace="q_board.model.QBoardBean">
 
-
 		<select id="getAllBoardList" resultType="QBoard">
 			select q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip		        
 			from (select rownum as rank, q_num, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip
@@ -77,5 +76,4 @@
 			delete from q_board where q_num = #{q_num}
 		</delete>
   	
-	
 </mapper> 

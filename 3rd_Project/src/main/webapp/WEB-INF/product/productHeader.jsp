@@ -18,14 +18,14 @@
 		<a href="productBestList.p"" id="none_under">베스트</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="productNewList.p" id="none_under">신상품</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="productAllList.p" id="none_under">모아보기</a>
-		&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+		&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="#" id="none_under"> 문의 게시판</a> 
-		<div style="display: inline; left: 846px; position: relative;">
+		<div style="display: inline; left: 800px; position: relative;">
 			<input type="text" id="searchBar" placeholder="Search" style="border: none; border-bottom: 1px solid black; position: absolute; left: -185px; top: -2px; display: none; background: white; border-radius: 5px 5px 0px 0px; font-family: 'RIDIBatang';">&nbsp;&nbsp;
 			<a href="javascript:display()" style="text-decoration: none;">
 				<img src="resources/image/search.png" width="23">&nbsp;&nbsp; 
 			</a>
-			<a href="#"><img src="resources/image/cart.png" width="23"></a>
+			<a href="cartList.mall"><img src="resources/image/cart.png" width="23"></a>
 		</div>
 		<script>
 			var searchDisplay = true;
