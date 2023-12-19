@@ -67,7 +67,7 @@ public String list(
 	 System.out.println(cart_num+"cart_num 제발");
 	
 	int MaxO_num = dao.selectMaxO_num();
-	ob.setO_num(MaxO_num);
+	ob.setO_num(MaxO_num+1);
 	
 	if(ob.getWay().equals("무통장 입금")) {
 		TempCart tc =dao.selectTemp(cart_num); 
