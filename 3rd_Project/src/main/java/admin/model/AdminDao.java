@@ -135,6 +135,12 @@ public class AdminDao {
 		return cb;
 	}
 	
+	public void insertCompany(CompanyBean bb) {
+
+		sqlSessionTemplate.insert(nameSpace+"insertCompany",bb);
+		
+	}
+	
 	public void deleteCompany(int cmp_num) {
 		sqlSessionTemplate.delete(nameSpace+"deleteCompany", cmp_num);
 	}

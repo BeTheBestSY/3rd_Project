@@ -239,7 +239,6 @@ padding-bottom: 8px;
         </div>
     </nav>
 <br>
-<<<<<<< HEAD
  <%
  	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
  	String cart_num = session.getId();
@@ -291,9 +290,6 @@ padding-bottom: 8px;
 	       
 	    
 </script>
-	   	 
-=======
-
 <%
 	String cart_num = session.getId();
 	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
@@ -311,7 +307,6 @@ padding-bottom: 8px;
 	};
 %>
 
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 <script type="text/javascript">
 	function goCart(pnum){
 		ovalue = document.f.oqty.value;
@@ -350,38 +345,24 @@ padding-bottom: 8px;
 	   	    
 	       
 <c:set var="ub" value="<%=ub%>" />
-<<<<<<< HEAD
-
-=======
 <form name="f" action="order.mall">
  <input type="hidden" name="p_num" value="${pb.p_num}">
  <input type="hidden" name="id" value="${ub.u_id}">
  <input type="hidden" name="cart_num" value="<%=cart_num%>">
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 	<section> <!--중반부의 레이아웃-->
 
         <div class="container" id="one"> <!-- 중반부 전체를 감싸는 div 태그-->
             
-<<<<<<< HEAD
             <div class="first"> <!--중반부를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 asd나눠줌 -->
-          
-=======
             <div class="first"> <!--중반부를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌 -->
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
                 <img  src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg }" alt="타이틀이미지">
             </div>
 
             <div class="second"> <!--중반부 를 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
-<<<<<<< HEAD
 <form name="f">
  <input type="hidden" name="p_num" value="${pb.p_num}">
  <input type="hidden" name="id" value="${ub.u_id}">
  <input type="hidden" name="cart_num" value="<%=cart_num%>">                   
-                
-
-=======
-                   
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
                     <div id="fifth">
                         <div class="emojiright">
                             <p class="coffeename">${pb.p_name}</p>

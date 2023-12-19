@@ -75,20 +75,20 @@
 			<tr style="border-top: 2px solid graytext;">
 				<th width="20%"><font color="red">*</font> 이름</th>
 				<td width="80%">
-					<input type="text" class="form-control" name="u_name" value="${ub.u_name }" >
+					<input type="text" class="form-control" name="u_name" value="${ub.u_name }" readonly>
 				</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 아이디</th>
 				<td>
 					<c:if test="${ub.u_jointype eq 'N' }">
-						<input type="text" class="form-control" name="u_id" value="네이버 연동 회원" > 
+						<input type="text" class="form-control" name="u_id" value="네이버 연동 회원" readonly> 
 					</c:if>
 					<c:if test="${ub.u_jointype eq 'K' }">
-						<input type="text" class="form-control" name="u_id" value="카카오 연동 회원" > 
+						<input type="text" class="form-control" name="u_id" value="카카오 연동 회원" readonly> 
 					</c:if>
 					<c:if test="${ub.u_jointype eq 'S' }">
-						<input type="text" class="form-control" name="u_id" value="${ub.u_id }" > 
+						<input type="text" class="form-control" name="u_id" value="${ub.u_id }" readonly> 
 					</c:if>
 				</td>
 			</tr>
@@ -102,18 +102,18 @@
 						</c:forEach>
 					</select>
 					-
-					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[1]}" maxlength="4" > - 
-					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[2]}" maxlength="4" >
+					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[1]}" maxlength="4" readonly> - 
+					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[2]}" maxlength="4" readonly>
 				</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th>&nbsp;&nbsp;주소</th>
 				<td>
-					<input type="text" class="form-control" style="width: 70%; display: inline; margin-bottom: 10px;" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[0]}" id="sample4_postcode" placeholder="먼저 우편번호 찾기 버튼을 눌러주세요." onClick="zipClick()" >
+					<input type="text" class="form-control" style="width: 70%; display: inline; margin-bottom: 10px;" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[0]}" id="sample4_postcode" placeholder="먼저 우편번호 찾기 버튼을 눌러주세요." onClick="zipClick()" readonly>
 					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" id="searchBtn"><br>
-					<input type="text" class="form-control" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[1]}" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom: 10px;" onClick="zipClick()" >
+					<input type="text" class="form-control" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[1]}" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom: 10px;" onClick="zipClick()" readonly>
 					<span id="guide" style="color:#999;display:none"></span>
-					<input type="text" class="form-control" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[2]}" id="sample4_detailAddress" placeholder="상세주소" >
+					<input type="text" class="form-control" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[2]}" id="sample4_detailAddress" placeholder="상세주소" readonly>
 				</td>
 			</tr>
 			<!-- <tr>
