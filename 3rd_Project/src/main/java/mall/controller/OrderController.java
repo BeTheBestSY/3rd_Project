@@ -37,7 +37,7 @@ public class OrderController {
 		 System.out.println(cart_num+"cart_num");
 		 System.out.println(p_num+"p_num");
 		 System.out.println(cart_qty+"cart_qty");
-		 System.out.println("설마");
+	 
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("cart_num", cart_num);
 		map.put("p_num", p_num);		

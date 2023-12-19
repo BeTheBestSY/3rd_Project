@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
- 
+<%
+	application.setAttribute("flag", false);
+%>
 
 <!doctype html>
 <html>
@@ -237,12 +239,13 @@ padding-bottom: 8px;
     </nav>
 <br>
  <%
- UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
-	String id = ub.getU_id();
-	String cart_num = session.getId();
-	System.out.print(cart_num+"아오 좀");
-	System.out.print(id+"id");
-
+ 	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
+ 	String cart_num = session.getId();
+ 
+ 	if(ub == null){ 
+ 		response.sendRedirect("login.u"); 
+ 	}
+ 	
  %>
   <script type="text/javascript">
 	       function goCart(pnum){
@@ -256,7 +259,11 @@ padding-bottom: 8px;
 	    	/*
 	    	document.f.action=	"cartAdd.jsp?pnum=" + pnum + "&ovalue=" + ovalue;
 	    	document.f.submit(); 
+	    	window.location.href = "cart.mall";
 	    	*/
+	    
+	    	document.f.action="cart.mall";
+	    	document.f.submit();   
 	    	}
 	       
 	       
@@ -268,15 +275,16 @@ padding-bottom: 8px;
 	           }
 	           
 	           // 사용자가 로그인했는지
-	           if (<%=id%> == null) {
+	           <%-- if (<%=id%> == null) {
 	               alert("로그인 후 이용해주세요.");
 	               return document.f.action = "login.u";
-	           }
+	           } --%>
 	           
-	          /*  //주문 처리
-	           document.f.action=	"cartAdd.jsp?pnum=" + pnum + "&ovalue=" + ovalue;
-	           document.f.submit();  */
+	            //주문 처리
+	           document.f.action="order.mall";
+	           document.f.submit();   
 	           
+	        
 	       }
 	       
 	    
@@ -303,11 +311,8 @@ padding-bottom: 8px;
 </script>
 	   	    
 	       
-   
-<form name="f" action="order.mall">
- <input type="hidden" name="p_num" value="${pb.p_num}">
- <input type="hidden" name="id" value="<%=id%>">
- <input type="hidden" name="cart_num" value="<%=cart_num%>">
+<c:set var="ub" value="<%=ub%>" />
+
 	<section> <!--중반부의 레이아웃-->
 
         <div class="container" id="one"> <!-- 중반부 전체를 감싸는 div 태그-->
@@ -318,7 +323,10 @@ padding-bottom: 8px;
             </div>
 
             <div class="second"> <!--중반부 를 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
-                   
+<form name="f">
+ <input type="hidden" name="p_num" value="${pb.p_num}">
+ <input type="hidden" name="id" value="${ub.u_id}">
+ <input type="hidden" name="cart_num" value="<%=cart_num%>">                   
                 
 
                     <div id="fifth">
@@ -361,12 +369,14 @@ padding-bottom: 8px;
 	                    
                     </div>
 <br>
-
+</form>  
 	  
 		<button onclick="return goCart('${pb.p_num}')">장바구니</button>
   		<button onclick="return goOrder('${pb.p_num}')">주문하기</button>
+  		</div>
+  		</div>
 	</section>       
-</form>    
+  
        <br><br>
     <hr>
     <br><br>

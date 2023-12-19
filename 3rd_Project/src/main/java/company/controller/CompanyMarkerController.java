@@ -29,16 +29,20 @@ public class CompanyMarkerController {
 			@RequestParam(value = "cmp_num", required = false) String cmp_num,
 			@RequestParam(value ="pageNumber", required = false) String pageNumber,
 			@RequestParam(value = "whatColumn", required = false) String whatColumn,
-			@RequestParam(value = "keyword", required = false) String keyword,
-			Model model) throws UnsupportedEncodingException {
-		
+			@RequestParam(value = "keyword", required = false) String keyword
+			
+			/* Model model */
+			) throws UnsupportedEncodingException {
+ 
 		CompanyBean cb = dao.getSelectOne(Integer.parseInt(cmp_num));
 		String encodedName = URLEncoder.encode(cb.getCmp_name(), "UTF-8");
 		String encodedKeyword = URLEncoder.encode(keyword, "UTF-8");
-		model.addAttribute("oneY", cb.getCmp_y());
-		model.addAttribute("oneX", cb.getCmp_x());
-		model.addAttribute("oneName", cb.getCmp_name());
-		model.addAttribute("pageNumber", pageNumber);
+		/*
+		  model.addAttribute("oneY", cb.getCmp_y()); 
+		  model.addAttribute("oneX",cb.getCmp_x()); 
+		  model.addAttribute("oneName", cb.getCmp_name());
+		  model.addAttribute("pageNumber", pageNumber);
+		 */
 		return viewPage+"?oneY="+cb.getCmp_y()+"&oneX="+cb.getCmp_x()+"&oneName="+encodedName+"&pageNumber="+pageNumber+"&whatColumn="+whatColumn+"&keyword="+encodedKeyword;
 		
 		

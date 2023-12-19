@@ -84,7 +84,7 @@
    }
 </style>
 </head>
-<%@ include file="../views/header.jsp" %>
+ 
 
 
 <%@ include file="../product/productHeader.jsp" %>
