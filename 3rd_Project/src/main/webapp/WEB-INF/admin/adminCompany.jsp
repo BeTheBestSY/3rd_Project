@@ -5,26 +5,30 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminCompany.css">
 
 <script type="text/javascript">
+
 	window.onload = function(){
 		const radios = document.querySelectorAll("input[name='filter_btn']");
-	 	
 		radios.forEach((radio) => {
 			radio.addEventListener("change", (e) => {
-				const current = e.currentTarget;
-				if(current.checked){
-					var whatColumn = document.getElementById('whatColumn');
-					var keyword = document.getElementById('keyword');
-					alert(column.value+','+keyword.value);
-					location.href='companyList.admin?filter='+current.value+'&whatColumn='+whatColumn.value+'&keyword='+keyword.value;
-				}
+				var current = e.currentTarget;
+				var whatColumn = document.getElementById('whatColumn');
+				var keyword = document.getElementById('keyword');
+				location.href='companyList.admin?filter='+current.value+'&whatColumn='+whatColumn.value+'&keyword='+keyword.value;
+				
 			});
 		});
 	};
+
 	function init(){
 		var elem = document.getElementById('keyword');
 		elem.value = '';
 	}
 	
+	function del(cmp_num,pageNumber){
+		if(confirm('정말로 삭제하시겠습니까?')){
+			location.href='companyDelete.admin?cmp_num='+cmp_num+'&pageNumber='+pageNumber;
+		}
+	}
 </script>
 <article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
 <div class="section">
@@ -36,20 +40,21 @@
 			<div class="search-window">
 				<div class="search-wrap">
 					<form action="companyList.admin" method="post">
-						<select name="whatColumn" id="whatColumn">
+						<select name="whatColumn" id="whatColumn" onchange="init()">
 							<option value="all">전체검색</option>
 							<option value="cmp_name">회사명</option>
 							<option value="cmp_addr">주소</option>
 							<option value="cmp_station">지하철 역</option>
 						</select>
-					 	<input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
+					 	<input type="search" id="keyword" name="keyword" value="${param.keyword }" placeholder="검색어를 입력해주세요.">
 					<button type="submit" class="btn btn-dark">검색</button>
 				   </form>
 				</div>
-				<div class="filter_radio" style="margin: auto; width: 80%; height: 40px;">
-					<span style="position:relative;right:300px; bottom: 20px;"><input type="radio" name="filter_btn" value="standard" <c:if test="${param.filter eq 'standard' || param.filter eq null}">checked</c:if> style="width:20px;height:18px;"> 기본&nbsp;</span>
-					<span style="position:relative;right:300px; bottom: 20px;"><input type="radio" name="filter_btn" value="cmp_priceDesc" <c:if test="${param.filter eq 'cmp_priceDesc'}">checked</c:if> style="width:20px;height:18px;"> 고가순&nbsp;</span>
-					<span style="position:relative;right:300px; bottom: 20px;"><input type="radio" name="filter_btn" value="cmp_priceAsc" <c:if test="${param.filter eq 'cmp_priceAsc'}">checked</c:if> style="width:20px;height:18px;"> 저가순&nbsp;</span>
+				<div class="filter_radio" style="margin: auto; width: 90%; height: 40px;">
+					<span style="position:relative;right:270px; bottom: 20px;"><input type="radio" name="filter_btn" value="standard" <c:if test="${param.filter eq 'standard' || param.filter eq null}">checked</c:if> style="width:20px;height:18px;"> 기본&nbsp;</span>
+					<span style="position:relative;right:270px; bottom: 20px;"><input type="radio" name="filter_btn" value="cmp_priceDesc" <c:if test="${param.filter eq 'cmp_priceDesc'}">checked</c:if> style="width:20px;height:18px;"> 고가순&nbsp;</span>
+					<span style="position:relative;right:270px; bottom: 20px;"><input type="radio" name="filter_btn" value="cmp_priceAsc" <c:if test="${param.filter eq 'cmp_priceAsc'}">checked</c:if> style="width:20px;height:18px;"> 저가순&nbsp;</span>
+					<span style="position:relative;bottom: 45%;left: 340px; "><input type="button" class="btn btn-white" value="＋추가하기" onClick="location.href='companyInsert.admin'"></span>
 				</div>
 			</div>
 		</div>
@@ -84,14 +89,12 @@
 											<td style="padding-left:4%;">${cb.cmp_num}</td>
 											<td style="padding-left:5%;">${cb.cmp_name}</td>
 											<td>${cb.cmp_addr}</td>
-											<td>${cb.cmp_price}</td>
+											<td>${cb.cmp_price}원</td>
 											<td>${cb.cmp_station}</td>
-											<td >
-												<a href="companyDelete.admin?cmp_num=${cb.cmp_num }&pageNumber=${pageInfo.pageNumber}">
-													<input type="button" class="btn btn-white"  value="삭제하기">
-												</a>
+											<td>
+												<input type="button" class="btn btn-white"  value="삭제하기" onClick="del(${cb.cmp_num},${pageInfo.pageNumber})">
 												<a href="companyUpdate.admin?cmp_num=${cb.cmp_num }&pageNumber=${pageInfo.pageNumber}">
-													<input type="button" class="btn btn-white"  value="수정하기">
+													<input type="button" class="btn btn-white"  value="수정하기" >
 												</a>
 							 				</td>
 										</tr>

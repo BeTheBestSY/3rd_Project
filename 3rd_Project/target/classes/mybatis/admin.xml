@@ -98,6 +98,7 @@
 		<if test="whatColumn=='cl_name'">
 		where cl_name like #{keyword}
 		</if>
+	    order by cl_num desc
 	</select>
 	
 	<select id="getSelectOneCeleb" resultType="celebDao">
@@ -135,13 +136,13 @@
 				cmp_num desc
 			</when>
 			<when test="filter == 'cmp_priceDesc'">
-				cmp_price desc, cmp_num asc
+				cmp_price desc, cmp_num desc
 			</when>
 			<when test="filter == 'cmp_priceAsc'">
-				cmp_price asc, cmp_num asc
+				cmp_price asc, cmp_num desc
 			</when>
 			<otherwise>
-				cmp_num asc
+				cmp_num desc
 			</otherwise>
 		</choose>
 	</select>
@@ -170,6 +171,10 @@
 		select * from company where cmp_num = #{cmp_num}
 	</select>
 	
+	<insert id="insertCompany">
+		insert into company values(cmpseq.nextval, #{cmp_name}, #{cmp_addr}, #{cmp_price}, #{cmp_station}, #{cmp_x}, #{cmp_y})
+	</insert>
+	
 	<delete id="deleteCompany">
 		delete company
 		where cmp_num=#{cmp_num}
@@ -189,29 +194,65 @@
 			where (u_id like #{keyword} or
 			u_name like #{keyword} or
 			u_phone like #{keyword})
-			<if test='filter == "S" or filter == "N" or filter == "K"'>
-				and u_jointype = #{filter}
+			<if test="filterType == null">
+				 and u_jointype = 'S'
+			</if>
+			<if test="filterType == 'u_jointype'">
+				 and u_jointype = #{filter}
+			</if>
+			<if test="filterType == 'u_color'">
+				 and u_color like #{filter}
+			</if>
+			<if test="filterType == 'u_joindate'">
+				order by u_joindate #{filter}
 			</if>
 		</if>
 		<if test="whatColumn == 'u_name'">
 			where u_name like #{keyword}
-			<if test='filter == "S" or filter == "N" or filter == "K"'>
-				and u_jointype = #{filter}
+			<if test="filterType == null">
+				 and u_jointype = 'S'
+			</if>
+			<if test="filterType == 'u_jointype'">
+				 and u_jointype = #{filter}
+			</if>
+			<if test="filterType == 'u_color'">
+				 and u_color like #{filter}
+			</if>
+			<if test="filterType == 'u_joindate'">
+				order by u_joindate #{filter}
 			</if>
 		</if>
 		<if test="whatColumn == 'u_id'">
 			where u_id like #{keyword}
-			<if test='filter == "S" or filter == "N" or filter == "K"'>
-				and u_jointype = #{filter}
+			<if test="filterType == null">
+				 and u_jointype = 'S'
+			</if>
+			<if test="filterType == 'u_jointype'">
+				 and u_jointype = #{filter}
+			</if>
+			<if test="filterType == 'u_color'">
+				 and u_color like #{filter}
+			</if>
+			<if test="filterType == 'u_joindate'">
+				order by u_joindate #{filter}
 			</if>
 		</if>
 		<if test="whatColumn == 'u_phone'">
 			where u_phone like #{keyword}
-			<if test='filter == "S" or filter == "N" or filter == "K"'>
-				and u_jointype = #{filter}
+			<if test="filterType == null">
+				 and u_jointype = 'S'
+			</if>
+			<if test="filterType == 'u_jointype'">
+				 and u_jointype = #{filter}
+			</if>
+			<if test="filterType == 'u_color'">
+				 and u_color like #{filter}
+			</if>
+			<if test="filterType == 'u_joindate'">
+				order by u_joindate #{filter}
 			</if>
 		</if>
-		order by u_joindate desc
+
 	</select>
 	<delete id="deleteUsers">
 		delete users
@@ -283,4 +324,3 @@
 		where p_num=#{p_num}
 	</select>
 </mapper> 
-

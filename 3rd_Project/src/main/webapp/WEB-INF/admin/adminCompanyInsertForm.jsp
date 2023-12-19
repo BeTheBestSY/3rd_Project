@@ -35,44 +35,31 @@ margin-top:20px;
 		document.getElementById("searchBtn").click();
 	}
 
-
-		function init(){
-			var elem = document.getElementById('keyword');
-			elem.value = '';
-		}
-		
-		function up(cmp_num,pageNumber){
-			if(confirm('수정하시겠습니까?')){
-				location.href='companyUpdate.admin?cmp_num='+cmp_num+'&pageNumber='+pageNumber;
-			}
-		}
-	
 </script>
 
 <article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
 	<div class="section">
 		<div id="tag" style="margin-right:83%; font-size: 2em;">
-			<h4>진단 회사 정보 수정</h4>
+			<h4>진단 회사 추가</h4>
 		</div>
 		
 	<div id="center" style="text-align: center;">
-			<form action="companyUpdate.admin" method="post">
+			<form action="companyInsert.admin" method="post">
 			<table class="board-table">
 				<tr style="border-top: 2px solid graytext; padding:10px;">
 					<th width="20%"><font color="red">*</font> 회사명</th>
 					<td width="80%">
-						<input type="hidden" class="form-control"  style="width:70%;" name="cmp_num" value="${bb.cmp_num }" >
-						<input type="text" class="form-control"  style="width:70%;" name="cmp_name" value="${bb.cmp_name }" required>
+						<input type="text" class="form-control"  style="width:70%;" name="cmp_name" required>
 					</td>
 				</tr>
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
 					<th><font color="red">*</font> 주소</th>
 					<td> 
-						<input type="text" class="form-control" style="width: 70%; display: inline; margin-bottom: 10px;" name="cmp_addr" value="${bb.cmp_addr eq '-' ? '': fn:split(bb.cmp_addr, ',')[0]}" id="sample4_postcode" placeholder="먼저 우편번호 찾기 버튼을 눌러주세요." onClick="zipClick()" readonly>
+						<input type="text" class="form-control" style="width: 70%; display: inline; margin-bottom: 10px;" name="cmp_addr"  value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[0]}" id="sample4_postcode" placeholder="먼저 우편번호 찾기 버튼을 눌러주세요." onClick="zipClick()" readonly>
 						<input type="button" class="btn btn-white" onclick="sample4_execDaumPostcode()" style="margin-bottom:11px; height: 39px; width:140px;"  value="우편번호 찾기" id="searchBtn"><br>
-						<input type="text" class="form-control" name="cmp_addr" value="${bb.cmp_addr eq '-' ? '': fn:split(bb.cmp_addr, ',')[1]}" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom: 10px;" onClick="zipClick()">
+						<input type="text" class="form-control" name="cmp_addr"  value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[1]}" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom: 10px;" onClick="zipClick()" required>
 						<span id="guide" style="color:#999; display:none"></span>
-						<input type="text" class="form-control" name="cmp_addr" value="${bb.cmp_addr eq '-' ? '': fn:split(bb.cmp_addr, ',')[2]}" id="sample4_detailAddress" placeholder="상세주소" >
+						<input type="text" class="form-control" name="cmp_addr"  value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[2]}" id="sample4_detailAddress" placeholder="상세주소" required>
 					</td>
 				</tr>
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
@@ -102,7 +89,7 @@ margin-top:20px;
 				<tr>
 					<td colspan="2" align="center">
 						<br>
-						<input type="submit" value="수정하기" class="btn btn-white" onClick="up(${bb.cmp_num},${pageInfo.pageNumber})" style="margin-bottom:11px; height: 39px; width:150px;" id="subBtn">
+						<input type="submit" value="수정하기" class="btn btn-white" style="margin-bottom:11px; height: 39px; width:150px;" id="subBtn">
 					</td>
 				</tr>
 			</table>
