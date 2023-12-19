@@ -49,12 +49,13 @@
 					</form>
 				</div>
 				<div class="filter_radio" style="margin: auto; width: 80%; height: 6%;">
-					<span style="position:relative;right:350px; bottom: 40%;"><input type="radio" name="filter_btn" value="standard" <c:if test="${param.filter eq 'standard' || param.filter eq null}">checked</c:if> style="width:20px;height:18px;"> 기본&nbsp;</span>
-					<span style="position:relative;right:300px; bottom: 40%;"><input type="radio" name="filter_btn" value="p_stock" <c:if test="${param.filter eq 'p_stock'}">checked</c:if> style="width:20px;height:18px;"> 재고임박순&nbsp;</span>
-					<span style="position:relative;right:250px; bottom: 40%;"><input type="radio" name="filter_btn" value="p_salevolume" <c:if test="${param.filter eq 'p_salevolume'}">checked</c:if> style="width:20px;height:18px;"> 누적판매량순&nbsp;</span>
-					<span style="position:relative;right:200px; bottom: 40%;"><input type="radio" name="filter_btn" value="p_priceDesc" <c:if test="${param.filter eq 'p_priceDesc'}">checked</c:if> style="width:20px;height:18px;"> 고가순&nbsp;</span>
-					<span style="position:relative;right:150px; bottom: 40%;"><input type="radio" name="filter_btn" value="p_priceAsc" <c:if test="${param.filter eq 'p_priceAsc'}">checked</c:if> style="width:20px;height:18px;"> 저가순&nbsp;</span>
+					<span style="position:relative;right:18%;bottom:40%;"><input type="radio" name="filter_btn" value="standard" <c:if test="${param.filter eq 'standard' || param.filter eq null}">checked</c:if> style="width:20px;height:18px;"> 기본&nbsp;</span>
+					<span style="position:relative;right:14.5%;bottom:40%;"><input type="radio" name="filter_btn" value="p_stock" <c:if test="${param.filter eq 'p_stock'}">checked</c:if> style="width:20px;height:18px;"> 재고임박순&nbsp;</span>
+					<span style="position:relative;right:12%;bottom:40%;"><input type="radio" name="filter_btn" value="p_salevolume" <c:if test="${param.filter eq 'p_salevolume'}">checked</c:if> style="width:20px;height:18px;"> 누적판매량순&nbsp;</span>
+					<span style="position:relative;right:10.5%;bottom:40%;"><input type="radio" name="filter_btn" value="p_priceDesc" <c:if test="${param.filter eq 'p_priceDesc'}">checked</c:if> style="width:20px;height:18px;"> 고가순&nbsp;</span>
+					<span style="position:relative;right:8%;bottom:40%;"><input type="radio" name="filter_btn" value="p_priceAsc" <c:if test="${param.filter eq 'p_priceAsc'}">checked</c:if> style="width:20px;height:18px;"> 저가순&nbsp;</span>
 					<!-- 출고일(혹은 입고일) 칼럼을 넣어야 할까.. -->
+					<span style="position:relative;bottom: 40%;left: 18%; "><input type="button" class="btn btn-white" value="추가하기" onClick="location.href='productInsert.admin'"></span>
 				</div>
 			</div>
 		</div>

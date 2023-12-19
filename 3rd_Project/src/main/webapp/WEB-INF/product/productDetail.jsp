@@ -2,7 +2,9 @@
 <%@page import="product.model.ProductBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
- 
+<%
+	application.setAttribute("flag", false);
+%>
 
 <!doctype html>
 <html>
@@ -262,6 +264,69 @@ function goCart(pnum){
 <%@ include file="productHeader.jsp" %>
 
 <body>
+<<<<<<< HEAD
+=======
+    <nav> <!--최상단의 배너-->
+        <div class="menu">
+            <p class="logo">${pb.p_color}</p>
+        </div>
+    </nav>
+<br>
+<<<<<<< HEAD
+ <%
+ 	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
+ 	String cart_num = session.getId();
+ 
+ 	if(ub == null){ 
+ 		response.sendRedirect("login.u"); 
+ 	}
+ 	
+ %>
+  <script type="text/javascript">
+	       function goCart(pnum){
+	    	   
+	    	ovalue = document.f.oqty.value;
+	    	if(ovalue < 1 || ovalue ==""){
+	    		alert("1이상 입력하세요.");
+	    		return false;
+	    	} 
+	
+	    	/*
+	    	document.f.action=	"cartAdd.jsp?pnum=" + pnum + "&ovalue=" + ovalue;
+	    	document.f.submit(); 
+	    	window.location.href = "cart.mall";
+	    	*/
+	    
+	    	document.f.action="cart.mall";
+	    	document.f.submit();   
+	    	}
+	       
+	       
+	       function goOrder(pnum) {
+	           ovalue = document.f.oqty.value;
+	           if (ovalue < 1 || ovalue == "") {
+	               alert("1이상 입력하세요.");
+	               return false;
+	           }
+	           
+	           // 사용자가 로그인했는지
+	           <%-- if (<%=id%> == null) {
+	               alert("로그인 후 이용해주세요.");
+	               return document.f.action = "login.u";
+	           } --%>
+	           
+	            //주문 처리
+	           document.f.action="order.mall";
+	           document.f.submit();   
+	           
+	        
+	       }
+	       
+	    
+</script>
+	   	 
+=======
+>>>>>>> 293c5d314dc421913e852911702e7bacce7b24ab
 
 <%
 	String cart_num = session.getId();
@@ -279,6 +344,7 @@ function goCart(pnum){
 	<%
 	};
 %>
+<<<<<<< HEAD
 	       
 <c:set var="ub" value="<%=ub%>" />
 
@@ -317,6 +383,87 @@ function goCart(pnum){
 					<span>적립 포인트</span>
 					<span><fmt:formatNumber value="${pb.p_point}" pattern="#,###" />원</span>
 				</div>
+=======
+
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+<script type="text/javascript">
+	function goCart(pnum){
+		ovalue = document.f.oqty.value;
+		if(ovalue < 1 || ovalue ==""){
+			alert("1이상 입력하세요.");
+			return false; 
+		} 
+	}
+
+	function goOrder(pnum) {
+		ovalue = document.f.oqty.value;
+	    if (ovalue < 1 || ovalue == "") {
+	   		alert("1이상 입력하세요.");
+	        return false;
+	    }
+	}
+	       
+    function updateOrderAmount() {
+        var quantity = document.getElementById('num').value;
+        var unitPrice = ${pb.p_price }; // 서버 측 데이터에서 단가 가져오기
+
+        // 주문 금액 계산
+        var orderAmount = quantity * unitPrice;
+
+        // 배송비 계산
+        var deliveryFee = orderAmount >= 30000 ? 0 : 3000;
+
+        // 총액 계산
+        var totalAmount = orderAmount + deliveryFee;
+
+        // 표시된 배송비 및 총액 업데이트
+        document.getElementById('deliveryFee').innerText =  new Intl.NumberFormat().format(deliveryFee) + '원';
+        document.getElementById('totalAmount').innerText = '총액: ' + new Intl.NumberFormat().format(totalAmount) + '원';
+    }
+</script>
+	   	    
+	       
+<c:set var="ub" value="<%=ub%>" />
+<<<<<<< HEAD
+
+=======
+<form name="f" action="order.mall">
+ <input type="hidden" name="p_num" value="${pb.p_num}">
+ <input type="hidden" name="id" value="${ub.u_id}">
+ <input type="hidden" name="cart_num" value="<%=cart_num%>">
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+	<section> <!--중반부의 레이아웃-->
+
+        <div class="container" id="one"> <!-- 중반부 전체를 감싸는 div 태그-->
+            
+<<<<<<< HEAD
+            <div class="first"> <!--중반부를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 asd나눠줌 -->
+          
+=======
+            <div class="first"> <!--중반부를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌 -->
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+                <img  src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg }" alt="타이틀이미지">
+            </div>
+
+            <div class="second"> <!--중반부 를 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
+<<<<<<< HEAD
+<form name="f">
+ <input type="hidden" name="p_num" value="${pb.p_num}">
+ <input type="hidden" name="id" value="${ub.u_id}">
+ <input type="hidden" name="cart_num" value="<%=cart_num%>">                   
+                
+
+=======
+                   
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
+                    <div id="fifth">
+                        <div class="emojiright">
+                            <p class="coffeename">${pb.p_name}</p>
+                            <p class="coffeename2">${pb.p_brand}</p>
+                        </div>
+                       
+                    </div>
+>>>>>>> 293c5d314dc421913e852911702e7bacce7b24ab
 
 				<div class="productdetail2">
 					<!--영양정보를 담아주는 div 태그-->
@@ -360,9 +507,36 @@ function goCart(pnum){
 </div>
 <div style="height: 150px;"></div>
 
+<<<<<<< HEAD
 <div style="width: 100%; text-align: center; padding-bottom: 150px;">
 	<img alt="상세 이미지" src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg}">
 </div>
+=======
+                     
+
+                    </div>
+
+                    <div class="allegy"> 
+	                   <span id="totalAmount">총액: <fmt:formatNumber value="${pb.p_price }" pattern="#,###" />원</span>
+	                    
+                    </div>
+<br>
+</form>  
+	  
+		<button onclick="return goCart('${pb.p_num}')">장바구니</button>
+  		<button onclick="return goOrder('${pb.p_num}')">주문하기</button>
+  		</div>
+  		</div>
+	</section>       
+  
+       <br><br>
+    <hr>
+    <br><br>
+<center> 
+<img alt="상세이미지" src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg }">
+<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg }
+</center>
+>>>>>>> 293c5d314dc421913e852911702e7bacce7b24ab
 </body>
 
 <%@ include file="../views/footer.jsp" %>
