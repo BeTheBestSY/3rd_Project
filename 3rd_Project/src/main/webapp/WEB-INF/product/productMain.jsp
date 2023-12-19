@@ -3,11 +3,12 @@
 
 <%
 	application.setAttribute("flag", false);
+	session.setAttribute("destination", "redirect:/productMain.p");
 %> 
 
 <style>
 	body{
-		padding-top: 140px;  
+		padding-top: 140px;
 	}
 </style>
 
