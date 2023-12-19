@@ -189,65 +189,29 @@
 			where (u_id like #{keyword} or
 			u_name like #{keyword} or
 			u_phone like #{keyword})
-			<if test="filterType == null">
-				 and u_jointype = 'S'
-			</if>
-			<if test="filterType == 'u_jointype'">
-				 and u_jointype = #{filter}
-			</if>
-			<if test="filterType == 'u_color'">
-				 and u_color like #{filter}
-			</if>
-			<if test="filterType == 'u_joindate'">
-				order by u_joindate #{filter}
+			<if test='filter == "S" or filter == "N" or filter == "K"'>
+				and u_jointype = #{filter}
 			</if>
 		</if>
 		<if test="whatColumn == 'u_name'">
 			where u_name like #{keyword}
-			<if test="filterType == null">
-				 and u_jointype = 'S'
-			</if>
-			<if test="filterType == 'u_jointype'">
-				 and u_jointype = #{filter}
-			</if>
-			<if test="filterType == 'u_color'">
-				 and u_color like #{filter}
-			</if>
-			<if test="filterType == 'u_joindate'">
-				order by u_joindate #{filter}
+			<if test='filter == "S" or filter == "N" or filter == "K"'>
+				and u_jointype = #{filter}
 			</if>
 		</if>
 		<if test="whatColumn == 'u_id'">
 			where u_id like #{keyword}
-			<if test="filterType == null">
-				 and u_jointype = 'S'
-			</if>
-			<if test="filterType == 'u_jointype'">
-				 and u_jointype = #{filter}
-			</if>
-			<if test="filterType == 'u_color'">
-				 and u_color like #{filter}
-			</if>
-			<if test="filterType == 'u_joindate'">
-				order by u_joindate #{filter}
+			<if test='filter == "S" or filter == "N" or filter == "K"'>
+				and u_jointype = #{filter}
 			</if>
 		</if>
 		<if test="whatColumn == 'u_phone'">
 			where u_phone like #{keyword}
-			<if test="filterType == null">
-				 and u_jointype = 'S'
-			</if>
-			<if test="filterType == 'u_jointype'">
-				 and u_jointype = #{filter}
-			</if>
-			<if test="filterType == 'u_color'">
-				 and u_color like #{filter}
-			</if>
-			<if test="filterType == 'u_joindate'">
-				order by u_joindate #{filter}
+			<if test='filter == "S" or filter == "N" or filter == "K"'>
+				and u_jointype = #{filter}
 			</if>
 		</if>
-
+		order by u_joindate desc
 	</select>
 	<delete id="deleteUsers">
 		delete users
@@ -314,5 +278,9 @@
 		delete product
 		where p_num=#{p_num}
 	</delete>
+	<select id="getProductByNum" resultType="myProduct">
+		select * from product
+		where p_num=#{p_num}
+	</select>
 </mapper> 
 

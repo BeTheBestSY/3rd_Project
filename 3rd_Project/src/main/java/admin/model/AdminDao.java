@@ -176,4 +176,9 @@ public class AdminDao {
 	}
 
 
+	public ProductBean getProductByNum(String p_num) {
+		return sqlSessionTemplate.selectOne(nameSpace+"getProductByNum",p_num);
+	}
+
+
 }
