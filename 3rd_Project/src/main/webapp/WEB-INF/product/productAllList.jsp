@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -78,58 +74,16 @@
 		z-index: 1500;
 	}
 	body{
-		padding-top: 90px;
+		padding-top: 140px;
 	}
 </style>
 
 </head>
 
 
-<%@ include file="../views/header.jsp" %>
+<%@ include file="productHeader.jsp" %>
 
 <body>
-	
-	<!-- 상단 이미지바 -->
-	<div style="width: 67%; margin: auto; font-family: 'RIDIBatang'; font-size: 13pt; padding: 0px 0px 20px 0px;">
-		<a>베스트</a>&nbsp;&nbsp;<a>신제품</a>&nbsp;&nbsp;<a>전체보기</a>
-	</div>
-	
-	<!-- 캐러샐 이미지 부분 -->
-	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-		<div class="carousel-indicators">
-			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-		</div>
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img src="resources/image/ca_ex1.jpg" class="d-block w-100">
-			</div>
-		    <div class="carousel-item">
-		    	<img src="resources/image/ca_ex2.jpg" class="d-block w-100">
-		    </div>
-		    <div class="carousel-item">
-		    	<img src="resources/image/ca_ex3.jpg" class="d-block w-100">
-		    </div>
-		    <div class="carousel-item">
-		    	<img src="resources/image/ca_ex4.jpg" class="d-block w-100">
-		    </div>
-		    <div class="carousel-item">
-		    	<img src="resources/image/ca_ex5.jpg" class="d-block w-100">
-		    </div>
-		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-	    	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	    	<span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-	    	<span class="carousel-control-next-icon" aria-hidden="true"></span>
-	    	<span class="visually-hidden">Next</span>
-	  	</button>
-	</div>
-
 	<div id="wrap">
 		<form action="productList.p" method="get">
 			<div class="input-group mb-3" id="s">

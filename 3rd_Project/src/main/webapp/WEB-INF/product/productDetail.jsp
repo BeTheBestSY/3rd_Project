@@ -1,3 +1,5 @@
+<%@page import="utility.Paging"%>
+<%@page import="product.model.ProductBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
  
@@ -11,7 +13,7 @@
 
 <style type="text/css">
 body {
-margin: 0;
+margin-top: 140px;
 }
 
 * {
@@ -232,67 +234,33 @@ padding-bottom: 8px;
     <nav> <!--최상단의 배너-->
         <div class="menu">
             <p class="logo">${pb.p_color}</p>
-            
         </div>
     </nav>
 <br>
- <%
- 	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
- 	String cart_num = session.getId();
- 
- 	if(ub == null){ 
- 		response.sendRedirect("login.u"); 
- 	}
- 	
- %>
-<<<<<<< HEAD
-  <script type="text/javascript">
-	       function goCart(pnum){
-	    	    
-	    	ovalue = document.f.oqty.value;
-	    	if(ovalue < 1 || ovalue ==""){
-	    		alert("1이상 입력하세요.");
-	    		return false;
-	    	} 
-	
-	    	/*
-	    	document.f.action=	"cartAdd.jsp?pnum=" + pnum + "&ovalue=" + ovalue;
-	    	document.f.submit(); 
-	    	*/
-	    	}
-	       
-	       
-	       function goOrder(pnum) {
-	           ovalue = document.f.oqty.value;
-	           if (ovalue < 1 || ovalue == "") {
-	               alert("1이상 입력하세요.");
-	               return false;
-	           }
-	           
-	           // 사용자가 로그인했는지
-	           <%-- if (<%=id%> == null) {
-	               alert("로그인 후 이용해주세요.");
-	               return document.f.action = "login.u";
-	           } --%>
-	           
-	          /*  //주문 처리
-	           document.f.action=	"cartAdd.jsp?pnum=" + pnum + "&ovalue=" + ovalue;
-	           document.f.submit();  */
-	           
-	       }
-	       
-	    
-</script>
-	   	 
-=======
 
->>>>>>> branch 'SY' of https://github.com/BeTheBestSY/3rd_Project.git
+<%
+	String cart_num = session.getId();
+	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
+	String p_num = request.getParameter("p_num");
+	String pageNumber = request.getParameter("pb");
+			
+	if(ub==null){
+		session.setAttribute("destination", "redirect:/prodView.p?p_num="+p_num+"&pageNumber="+pageNumber);
+	%>
+		<script type="text/javascript">
+			alert("로그인 후 이용 가능합니다.")
+			window.location.href = "login.u";
+		</script>
+	<%
+	};
+%>
+
 <script type="text/javascript">
 	function goCart(pnum){
 		ovalue = document.f.oqty.value;
 		if(ovalue < 1 || ovalue ==""){
 			alert("1이상 입력하세요.");
-			return false;
+			return false; 
 		} 
 	}
 
@@ -388,7 +356,7 @@ padding-bottom: 8px;
        <br><br>
     <hr>
     <br><br>
-<center>
+<center> 
 <img alt="상세이미지" src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg }">
 <%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg }
 </center>
