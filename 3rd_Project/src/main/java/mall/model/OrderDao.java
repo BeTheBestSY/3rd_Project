@@ -18,7 +18,7 @@ public class OrderDao {
 	private String namespace = "sqlField_mall";
 	
 	public void insertTemp(Map<String, String> map) {
-		sqlSessionTemplate.insert(namespace+".insertTemp", map);
+		sqlSessionTemplate.insert(namespace+".insertTemp", map); 
 	}
 
 	public TempCart selectTemp(String cart_num) {
