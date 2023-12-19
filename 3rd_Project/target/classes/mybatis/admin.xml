@@ -18,7 +18,7 @@
 		<if test="whatColumn=='q_subject'">
 			where q_subject like #{keyword}
 		</if>
-		order by q_ref desc, q_re_step asc ))
+		order by q_ref desc, q_re_step asc))
 	</select>
 	
 	<select id="getTotalCount" resultType="int">

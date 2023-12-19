@@ -54,6 +54,11 @@ public class ProductDao {
 		return product_NLists;
 	}
 
+	public List<ProductBean> getBestProductList() {
+		List<ProductBean> product_BLists = sqlSessionTemplate.selectList(namespace+".getBestProductList");
+		return product_BLists;
+	}
+
 	
 }
 
