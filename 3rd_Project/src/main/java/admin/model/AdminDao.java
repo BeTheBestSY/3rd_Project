@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import c_board.model.CBoardBean;
 import celeb.model.CelebBean;
+import company.model.CompanyBean;
 import product.model.ProductBean;
 import q_board.model.QBoardBean;
 import users.model.UsersBean;
@@ -82,9 +83,9 @@ public class AdminDao {
 	}
 	
 	//celeb
-	public int getTotalCountCeleb(Map<String, String> map) {
+	public int getCeleb(Map<String, String> map) {
 		
-		int cnt = sqlSessionTemplate.selectOne(nameSpace + ".getTotalCountCeleb",map);
+		int cnt = sqlSessionTemplate.selectOne(nameSpace + "getCeleb",map);
 		
 		return cnt;
 	}
@@ -93,22 +94,61 @@ public class AdminDao {
 		
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
 		
-		List<CelebBean> lists = sqlSessionTemplate.selectList(nameSpace + ".getAllCelebList",map,rowBounds);
+		List<CelebBean> lists = sqlSessionTemplate.selectList(nameSpace + "getAllCelebList",map,rowBounds);
 		
 		return lists;
 		
 	}
 	
-	public CelebBean getSelectOneCeleb(String cl_num) {
-		CelebBean cb = sqlSessionTemplate.selectOne(nameSpace+".getSelectOneCeleb",cl_num);
+	public CelebBean getSelectOneCeleb(int cl_num) {
+		CelebBean cb = sqlSessionTemplate.selectOne(nameSpace+"getSelectOneCeleb",cl_num);
 			return cb;
 		}
 
+
+	public void deleteCeleb(int cl_num) {
+		sqlSessionTemplate.delete(nameSpace+"deleteCeleb", cl_num);
+	}
+	
+	
+	
+	//company
+	public List<CompanyBean> getAllCompany(Paging pageInfo, Map<String, String> map) {
+		
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		List<CompanyBean> list = sqlSessionTemplate.selectList(nameSpace+"getAllCompany", map, rowBounds);
+		
+		return list;
+	}
+	
+	public int getTotalCountCompany(Map<String, String> map) {
+		 
+		int totalCount = sqlSessionTemplate.selectOne(nameSpace+"getTotalCountCompany", map);
+
+		return totalCount;
+	}
+
+	public CompanyBean getSelectOneCompany(int cmp_num) {
+		
+		CompanyBean cb = sqlSessionTemplate.selectOne(nameSpace+"getSelectOneCompany", cmp_num);
+		
+		return cb;
+	}
+	
+	public void deleteCompany(int cmp_num) {
+		sqlSessionTemplate.delete(nameSpace+"deleteCompany", cmp_num);
+	}
+	
+
+	public int updateCompany(int cmp_num) {
+		return sqlSessionTemplate.delete(nameSpace+"updateCompany", cmp_num);
+	}
 	
 	
 	//users
-	public List<UsersBean> getUsers(Map<String, String> map) {
-		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map);
+	public List<UsersBean> getUsers(Map<String, String> map, Paging pageInfo) {
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map, rowBounds);
 	}
 
 	public void deleteUsers(String u_id) {
@@ -129,5 +169,16 @@ public class AdminDao {
 	public int getTotalPrdCount(Map<String, String> map) {
 		return sqlSessionTemplate.selectOne(nameSpace+"getTotalPrdCount", map);
 	}
-	
+
+
+	public int deleteProduct(String p_num) {
+		return sqlSessionTemplate.delete(nameSpace+"deleteProduct", p_num);
+	}
+
+
+	public ProductBean getProductByNum(String p_num) {
+		return sqlSessionTemplate.selectOne(nameSpace+"getProductByNum",p_num);
+	}
+
+
 }

@@ -18,14 +18,12 @@ public class OrderDao {
 	private String namespace = "sqlField_mall";
 	
 	public void insertTemp(Map<String, String> map) {
-		
-		sqlSessionTemplate.insert(namespace+".insertTemp", map);
-		
-	}
+		sqlSessionTemplate.insert(namespace+".insertTemp", map); 
+	} 
 
 	public TempCart selectTemp(String cart_num) {
+		System.out.println("cart_num : " + cart_num);
 		TempCart tc = sqlSessionTemplate.selectOne(namespace+".selectTemp", cart_num);
-		
 		return tc;
 	}
 
@@ -44,8 +42,9 @@ public class OrderDao {
 	}
 
 	public void deleteTemp(String cart_num) {
-		sqlSessionTemplate.delete(namespace+".deleteTemp", cart_num);
-		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("cart_num", cart_num);
+		sqlSessionTemplate.delete(namespace+".deleteTemp", map);
 	}
 
 	public void insertOrderInfo(OrderBean ob) {
@@ -66,9 +65,13 @@ public class OrderDao {
 	}
 
 	public int selectMaxO_num() {
-		 int MaxO_num = sqlSessionTemplate.selectOne(namespace+".selectMaxO_num");
-		
-		 return MaxO_num;
+		int MaxO_num = 0;
+		try {
+			MaxO_num = sqlSessionTemplate.selectOne(namespace+".selectMaxO_num");
+		} catch(NullPointerException e) {
+			
+		}
+		return MaxO_num;
 		
 	}
 }

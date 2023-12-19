@@ -1,3 +1,5 @@
+<%@page import="utility.Paging"%>
+<%@page import="product.model.ProductBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
 <%
@@ -13,7 +15,7 @@
 
 <style type="text/css">
 body {
-margin: 0;
+margin-top: 140px;
 }
 
 * {
@@ -234,10 +236,10 @@ padding-bottom: 8px;
     <nav> <!--최상단의 배너-->
         <div class="menu">
             <p class="logo">${pb.p_color}</p>
-            
         </div>
     </nav>
 <br>
+<<<<<<< HEAD
  <%
  	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
  	String cart_num = session.getId();
@@ -290,7 +292,43 @@ padding-bottom: 8px;
 	    
 </script>
 	   	 
+=======
+
+<%
+	String cart_num = session.getId();
+	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
+	String p_num = request.getParameter("p_num");
+	String pageNumber = request.getParameter("pb");
+			
+	if(ub==null){
+		session.setAttribute("destination", "redirect:/prodView.p?p_num="+p_num+"&pageNumber="+pageNumber);
+	%>
+		<script type="text/javascript">
+			alert("로그인 후 이용 가능합니다.")
+			window.location.href = "login.u";
+		</script>
+	<%
+	};
+%>
+
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 <script type="text/javascript">
+	function goCart(pnum){
+		ovalue = document.f.oqty.value;
+		if(ovalue < 1 || ovalue ==""){
+			alert("1이상 입력하세요.");
+			return false; 
+		} 
+	}
+
+	function goOrder(pnum) {
+		ovalue = document.f.oqty.value;
+	    if (ovalue < 1 || ovalue == "") {
+	   		alert("1이상 입력하세요.");
+	        return false;
+	    }
+	}
+	       
     function updateOrderAmount() {
         var quantity = document.getElementById('num').value;
         var unitPrice = ${pb.p_price }; // 서버 측 데이터에서 단가 가져오기
@@ -312,23 +350,38 @@ padding-bottom: 8px;
 	   	    
 	       
 <c:set var="ub" value="<%=ub%>" />
+<<<<<<< HEAD
 
+=======
+<form name="f" action="order.mall">
+ <input type="hidden" name="p_num" value="${pb.p_num}">
+ <input type="hidden" name="id" value="${ub.u_id}">
+ <input type="hidden" name="cart_num" value="<%=cart_num%>">
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 	<section> <!--중반부의 레이아웃-->
 
         <div class="container" id="one"> <!-- 중반부 전체를 감싸는 div 태그-->
             
+<<<<<<< HEAD
             <div class="first"> <!--중반부를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 asd나눠줌 -->
           
+=======
+            <div class="first"> <!--중반부를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌 -->
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
                 <img  src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg }" alt="타이틀이미지">
             </div>
 
             <div class="second"> <!--중반부 를 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
+<<<<<<< HEAD
 <form name="f">
  <input type="hidden" name="p_num" value="${pb.p_num}">
  <input type="hidden" name="id" value="${ub.u_id}">
  <input type="hidden" name="cart_num" value="<%=cart_num%>">                   
                 
 
+=======
+                   
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
                     <div id="fifth">
                         <div class="emojiright">
                             <p class="coffeename">${pb.p_name}</p>
@@ -380,7 +433,7 @@ padding-bottom: 8px;
        <br><br>
     <hr>
     <br><br>
-<center>
+<center> 
 <img alt="상세이미지" src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg }">
 <%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg }
 </center>

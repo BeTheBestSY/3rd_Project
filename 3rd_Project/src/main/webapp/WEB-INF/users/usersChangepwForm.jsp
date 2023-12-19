@@ -10,7 +10,7 @@
 	#updatePw{
 		width: 50%; 
 		height: 140px;
-		text-align: left; 
+		text-align: left;
 	}
 </style>
 <script>

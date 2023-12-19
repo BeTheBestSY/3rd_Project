@@ -4,15 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import admin.model.AdminDao;
 import users.model.UsersBean;
+import utility.Paging;
 
 @Controller
 public class AdminUsersController {
@@ -27,15 +29,30 @@ public class AdminUsersController {
 	private AdminDao ad;
 	
 	@RequestMapping(value = command)
-	public String adUsers(@RequestParam(required = false) String whatColumn,
+	public String adUsers(@RequestParam(required = false) String filter,
+						@RequestParam(required = false) String whatColumn,
 						@RequestParam(required = false) String keyword,
-						Model model) {
+						@RequestParam(required = false) String pageNumber,
+						Model model,
+						HttpServletRequest request) {
+		System.out.println("필터:"+filter);
+		System.out.println("페이지넘버:"+pageNumber);
+		System.out.println("왓칼럼:"+whatColumn);
+		if(keyword == null) keyword = "";
+		System.out.println("키워드:"+keyword);
+		
 		Map<String, String> map = new HashMap<String, String>();
+		
+		map.put("filter", filter);
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
 		
-		List<UsersBean> usersLists = ad.getUsers(map);
+		int totalCount = ad.getTotalPrdCount(map);
+		String url = request.getContextPath()+command;
+		Paging pageInfo = new Paging(pageNumber, "10", totalCount, url, whatColumn, keyword);
+		List<UsersBean> usersLists = ad.getUsers(map, pageInfo);
 		model.addAttribute("usersLists", usersLists);
+		model.addAttribute("pageInfo", pageInfo);
 		
 		return viewPage;
 	}

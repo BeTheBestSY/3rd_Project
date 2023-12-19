@@ -1,20 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
- 
+
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <style type="text/css">
 .container {
   max-width: 960px;
 }
 
- 
+  
 .tab-wrapper {
   position: relative;
   height: 300px;
@@ -78,26 +74,22 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
- <style>
-   body{
-      padding-top: 140px;  
-   }
-</style>
+ 
 </head>
+<<<<<<< HEAD
  
 
 
 <%@ include file="../product/productHeader.jsp" %>
+=======
+<%@ include file="../views/header.jsp" %>
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 <body>
-<%
-
-	String cart_num = session.getId();
-System.out.println(cart_num+"cart_num 뭘까요");
-%>
+     
 
      
     
-<div class="container" >
+<div class="container">
   <main>
  
 
@@ -141,14 +133,14 @@ System.out.println(cart_num+"cart_num 뭘까요");
       
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">주문 정보 입력</h4>
-        <form class="needs-validation" action="login.u" novalidate>
-              <input type="hidden" name="cart_num" value="<%=cart_num%>"> 
+        <form class="needs-validation" action="orderCompleted.mall" novalidate>
+        <input type="hidden" name="cart_num" value="<%=session.getId()%>">
           <div class="row g-3">
             <div class="col-sm-6">
               <label class="form-label">아이디</label>
-              <input type="text" class="form-control" name="u_id" disabled="disabled" value="${id}" > 
+              <input type="text" class="form-control" name="u_id" value="${id}" readonly> 
             </div>
- 
+
             <div class="col-sm-6">
               <label class="form-label">수령인 이름</label>
               <input type="text" class="form-control" name="o_name" id="lastName" value="${name}" required>
@@ -162,9 +154,10 @@ System.out.println(cart_num+"cart_num 뭘까요");
             <div class="row g-3">
               <label class="form-label">수령인 전화번호</label><br>
             	 <c:set var="firstList">010, 011, 016, 017, 018, 019</c:set>
-				&nbsp;&nbsp;	<select name="o_phone1" class="form-select"  style="width: 130px;" required>
+				&nbsp;&nbsp;	
+				<select name="o_phone1" class="form-select"  style="width: 130px;" required>
 						<c:forEach var="first" items="${firstList }">
-							<option value="${first }" <c:if test="${fn:split(phone, '-')[0] eq first }">selected</c:if>>${first }</option>
+							<option value="${first}" <c:if test="${fn:split(phone, '-')[0] eq first }">selected</c:if>>${first }</option>
 						</c:forEach>
 					</select>&nbsp; &nbsp;
 				
@@ -271,7 +264,7 @@ System.out.println(cart_num+"cart_num 뭘까요");
           
           <hr class="my-4">
 
-          <input class="w-100 btn btn-primary btn-lg" type="submit" value="주문 완료">
+          <button class="w-100 btn btn-primary btn-lg" type="submit">주문 완료</button>
         </form>
       </div>
     </div>

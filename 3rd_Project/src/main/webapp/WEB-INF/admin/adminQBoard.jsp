@@ -14,7 +14,9 @@
  <div id="board-list">
 <div class="section">
 	<div class="tag">
+	
 	<h4>문의 게시판 관리</h4>
+	
 	</div>
 	  <div id="board-search">
         <div class="container">
@@ -27,7 +29,6 @@
 							<option value="q_writer">작성자</option>
 						</select>
 					 	<input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
-					 	
 					<button type="submit" class="btn btn-dark">검색</button>
 		            </div>
 				   </form>

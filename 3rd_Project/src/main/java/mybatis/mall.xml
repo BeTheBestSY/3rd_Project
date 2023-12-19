@@ -15,19 +15,18 @@
 		where cart_num = #{cart_num}
 	</select>
 	
-		
 	<select id="selectProd" resultType="myProduct">
 		select p_name, p_price from product
 		where p_num = #{p_num}
 	</select>
 	
-	<select id="selectUser" resultType="Users">
+	<select id="selectUser" resultType="Users"> 
 		select u_name, u_phone from users
 		where u_id = #{u_id}
 	</select>
 	
 	<delete id="deleteTemp">
-		delete from temp_cart where cart_num = #{cart_num}
+		delete from temp_cart where cart_num = #{cart_num} 
 	</delete>
 	
 	<insert id="insertOrderProd">
@@ -36,7 +35,7 @@
 	</insert>
 	
 	<insert id="insertOrderInfo">
-		insert into orders 
+		insert into orders
 			values(#{o_num},#{u_id},#{o_phone},#{o_name},#{o_addr},
 			#{o_date},#{pay_bank},#{pay_name},#{way})
 	</insert>
@@ -45,7 +44,7 @@
 		select MAX(o_num) from orders
 	</select>
 	
-	<!-- =============		cart	============= -->
+	<!-- =============		cartss	============= -->
 	
 	<select id="selectCart" resultType="int">
 		select count(*) from cart
