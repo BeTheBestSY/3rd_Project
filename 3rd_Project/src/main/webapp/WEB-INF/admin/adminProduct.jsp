@@ -8,12 +8,11 @@
 	 	
 		radios.forEach((radio) => {
 			radio.addEventListener("change", (e) => {
-					var current = e.currentTarget;
-					var whatColumn = document.getElementById('whatColumn');
-					var keyword = document.getElementById('keyword');
-					location.href='productList.admin?filter='+current.value+'&whatColumn='+whatColumn.value+'&keyword='+keyword.value;
-				}
-			);
+				var current = e.currentTarget;
+				var whatColumn = document.getElementById('whatColumn');
+				var keyword = document.getElementById('keyword');
+				location.href='productList.admin?filter='+current.value+'&whatColumn='+whatColumn.value+'&keyword='+keyword.value;
+			});
 		});
 	};
 	
