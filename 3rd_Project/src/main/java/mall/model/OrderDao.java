@@ -19,7 +19,7 @@ public class OrderDao {
 	
 	public void insertTemp(Map<String, String> map) {
 		sqlSessionTemplate.insert(namespace+".insertTemp", map); 
-	}
+	} 
 
 	public TempCart selectTemp(String cart_num) {
 		System.out.println("cart_num : " + cart_num);
