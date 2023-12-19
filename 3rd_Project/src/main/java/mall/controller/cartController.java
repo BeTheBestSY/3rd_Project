@@ -22,7 +22,7 @@ public class cartController {
 	private final String command = "/cart.mall";
 	private String viewPage = "cartList";
 	
-	@Autowired
+	@Autowired 
 	private CartDao dao;
 	@Autowired
 	private ServletContext application;
@@ -33,9 +33,11 @@ public class cartController {
 			@RequestParam(value = "cart_num", required = false) String cart_num,
 			@RequestParam(value = "oqty", required = false) String oqty,
 			Model model) {
+		
 		 System.out.println(cart_num+"cart_num2");
 		 System.out.println(p_num+"p_num2");
 		 System.out.println(oqty+"oqty2");
+		 
 		if(!(Boolean) application.getAttribute("flag")) {
 			CartBean cb = new CartBean();
 			cb.setCart_num(cart_num);

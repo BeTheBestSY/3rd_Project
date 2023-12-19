@@ -76,14 +76,7 @@
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
  
 </head>
-<<<<<<< HEAD
- 
-
-
-<%@ include file="../product/productHeader.jsp" %>
-=======
 <%@ include file="../views/header.jsp" %>
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 <body>
      
 
