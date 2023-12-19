@@ -98,6 +98,7 @@
 		<if test="whatColumn=='cl_name'">
 		where cl_name like #{keyword}
 		</if>
+	    order by cl_num desc
 	</select>
 	
 	<select id="getSelectOneCeleb" resultType="celebDao">
@@ -135,13 +136,13 @@
 				cmp_num desc
 			</when>
 			<when test="filter == 'cmp_priceDesc'">
-				cmp_price desc, cmp_num asc
+				cmp_price desc, cmp_num desc
 			</when>
 			<when test="filter == 'cmp_priceAsc'">
-				cmp_price asc, cmp_num asc
+				cmp_price asc, cmp_num desc
 			</when>
 			<otherwise>
-				cmp_num asc
+				cmp_num desc
 			</otherwise>
 		</choose>
 	</select>
@@ -169,6 +170,10 @@
 	<select id="getSelectOneCompany" resultType="myCompany" >
 		select * from company where cmp_num = #{cmp_num}
 	</select>
+	
+	<insert id="insertCompany">
+		insert into company values(cmpseq.nextval, #{cmp_name}, #{cmp_addr}, #{cmp_price}, #{cmp_station}, #{cmp_x}, #{cmp_y})
+	</insert>
 	
 	<delete id="deleteCompany">
 		delete company
@@ -314,5 +319,8 @@
 		delete product
 		where p_num=#{p_num}
 	</delete>
+	<select id="getProductByNum" resultType="myProduct">
+		select * from product
+		where p_num=#{p_num}
+	</select>
 </mapper> 
-

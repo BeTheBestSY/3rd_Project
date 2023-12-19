@@ -5,6 +5,12 @@
 	body{
 		padding-top: 140px;  
 	}
+	@font-face {
+	    font-family: 'OG_Renaissance_Secret-Rg';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/OG_Renaissance_Secret-Rg.woff2') format('woff2');
+	    font-weight: normal;
+	    font-style: normal;
+	}
 </style>
 
 <%@ include file="productHeader.jsp" %>  
@@ -46,7 +52,13 @@
 	</div>
 	
 	<div id="center" style="text-align: center;"> 
-		<div style="font-family: 'TheJamsil5Bold'; font-size: 25pt; padding: 100px 0px 100px 0px;"><small>【</small> BEST <small>】</small></div>
+		<div style="font-family: 'TheJamsil5Bold'; font-size: 25pt; padding: 100px 0px 100px 0px;">
+			<hr style="display: inline-block; width: 40%; top: 5px; position: relative; color: #A6A6A6;">
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			BEST
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<hr style="display: inline-block; width: 40%; top: 5px; position: relative; color: #A6A6A6;">   
+		</div>
 		<div class="row">
 			<c:forEach var="pb" items="${product_BLists}">
 				<div class="col-lg-3">
@@ -60,7 +72,12 @@
 							<p style="font-family: 'RIDIBatang'; font-size: 10pt; color: #A6A6A6; width: 100%; text-align: left; top: 15px; position: relative;">${pb.p_brand}</p> 
 							<p style="width: 100%; font-family: 'RIDIBatang'; font-size: 12pt; text-align: left; overflow: hidden; white-space: nowrap;">${pb.p_name}</p>
 							<p style="width: 100%; font-family: 'TheJamsil5Bold'; font-size: 12pt; text-align: left; padding: 0px;">
-								<fmt:formatNumber value="${pb.p_price}" pattern="#,###" />원
+								<fmt:formatNumber value="${pb.p_price}" pattern="#,###" />원 
+							</p>
+							<p style="position: absolute; left: 235px; top: 405px;">
+								<a href="#">
+									<img src="resources/image/cartAdd.svg" width="25">
+								</a>
 							</p>
 						</div>
 					</div>
@@ -73,8 +90,14 @@
 		<img src="resources/image/banner.jpg" width="100%">
 	</a> 
 	  
-	<div id="center" style="text-align: center;"> 
-		<div style="font-family: 'TheJamsil5Bold'; font-size: 25pt; padding: 100px 0px 100px 0px;"><small>【</small> NEW <small>】</small></div>
+	<div id="center" style="text-align: center; padding-bottom: 120px;"> 
+		<div style="font-family: 'TheJamsil5Bold'; font-size: 25pt; padding: 100px 0px 100px 0px;">
+			<hr style="display: inline-block; width: 40%; top: 5px; position: relative; color: #A6A6A6;">
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			NEW
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<hr style="display: inline-block; width: 40%; top: 5px; position: relative; color: #A6A6A6;">   
+		</div>
 		<div class="row">
 			<c:forEach var="pb" items="${product_NLists}">
 				<div class="col-lg-3">
@@ -89,6 +112,11 @@
 							<p style="width: 100%; font-family: 'RIDIBatang'; font-size: 12pt; text-align: left; overflow: hidden; white-space: nowrap;">${pb.p_name}</p>
 							<p style="width: 100%; font-family: 'TheJamsil5Bold'; font-size: 12pt; text-align: left; padding: 0px;">
 								<fmt:formatNumber value="${pb.p_price}" pattern="#,###" />원
+							</p>
+							<p style="position: absolute; left: 235px; top: 405px;">
+								<a href="#">
+									<img src="resources/image/cartAdd.svg" width="25">
+								</a>
 							</p>
 						</div>
 					</div>

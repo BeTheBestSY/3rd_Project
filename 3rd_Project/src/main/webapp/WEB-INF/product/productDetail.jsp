@@ -1,6 +1,10 @@
+<%@page import="utility.Paging"%>
+<%@page import="product.model.ProductBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
- 
+<%
+	application.setAttribute("flag", false);
+%>
 
 <!doctype html>
 <html>
@@ -11,7 +15,7 @@
 
 <style type="text/css">
 body {
-margin: 0;
+margin-top: 140px;
 }
 
 * {
@@ -232,7 +236,6 @@ padding-bottom: 8px;
     <nav> <!--최상단의 배너-->
         <div class="menu">
             <p class="logo">${pb.p_color}</p>
-            
         </div>
     </nav>
 <br>
@@ -245,10 +248,9 @@ padding-bottom: 8px;
  	}
  	
  %>
-<<<<<<< HEAD
   <script type="text/javascript">
 	       function goCart(pnum){
-	    	    
+	    	   
 	    	ovalue = document.f.oqty.value;
 	    	if(ovalue < 1 || ovalue ==""){
 	    		alert("1이상 입력하세요.");
@@ -258,7 +260,11 @@ padding-bottom: 8px;
 	    	/*
 	    	document.f.action=	"cartAdd.jsp?pnum=" + pnum + "&ovalue=" + ovalue;
 	    	document.f.submit(); 
+	    	window.location.href = "cart.mall";
 	    	*/
+	    
+	    	document.f.action="cart.mall";
+	    	document.f.submit();   
 	    	}
 	       
 	       
@@ -275,24 +281,38 @@ padding-bottom: 8px;
 	               return document.f.action = "login.u";
 	           } --%>
 	           
-	          /*  //주문 처리
-	           document.f.action=	"cartAdd.jsp?pnum=" + pnum + "&ovalue=" + ovalue;
-	           document.f.submit();  */
+	            //주문 처리
+	           document.f.action="order.mall";
+	           document.f.submit();   
 	           
+	        
 	       }
 	       
 	    
 </script>
-	   	 
-=======
+<%
+	String cart_num = session.getId();
+	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
+	String p_num = request.getParameter("p_num");
+	String pageNumber = request.getParameter("pb");
+			
+	if(ub==null){
+		session.setAttribute("destination", "redirect:/prodView.p?p_num="+p_num+"&pageNumber="+pageNumber);
+	%>
+		<script type="text/javascript">
+			alert("로그인 후 이용 가능합니다.")
+			window.location.href = "login.u";
+		</script>
+	<%
+	};
+%>
 
->>>>>>> branch 'SY' of https://github.com/BeTheBestSY/3rd_Project.git
 <script type="text/javascript">
 	function goCart(pnum){
 		ovalue = document.f.oqty.value;
 		if(ovalue < 1 || ovalue ==""){
 			alert("1이상 입력하세요.");
-			return false;
+			return false; 
 		} 
 	}
 
@@ -333,12 +353,16 @@ padding-bottom: 8px;
 
         <div class="container" id="one"> <!-- 중반부 전체를 감싸는 div 태그-->
             
+            <div class="first"> <!--중반부를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 asd나눠줌 -->
             <div class="first"> <!--중반부를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌 -->
                 <img  src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg }" alt="타이틀이미지">
             </div>
 
             <div class="second"> <!--중반부 를 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
-                   
+<form name="f">
+ <input type="hidden" name="p_num" value="${pb.p_num}">
+ <input type="hidden" name="id" value="${ub.u_id}">
+ <input type="hidden" name="cart_num" value="<%=cart_num%>">                   
                     <div id="fifth">
                         <div class="emojiright">
                             <p class="coffeename">${pb.p_name}</p>
@@ -379,16 +403,18 @@ padding-bottom: 8px;
 	                    
                     </div>
 <br>
-
+</form>  
 	  
 		<button onclick="return goCart('${pb.p_num}')">장바구니</button>
   		<button onclick="return goOrder('${pb.p_num}')">주문하기</button>
+  		</div>
+  		</div>
 	</section>       
-</form>    
+  
        <br><br>
     <hr>
     <br><br>
-<center>
+<center> 
 <img alt="상세이미지" src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg }">
 <%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg }
 </center>

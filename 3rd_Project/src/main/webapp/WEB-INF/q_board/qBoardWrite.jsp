@@ -17,7 +17,7 @@
 %>
 
 <br>
-<article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
+<article id="center" style=" text-align:center; font-family: 'RIDIBatang';" >
 
 
 <div class="page-title">
@@ -34,29 +34,29 @@
 		<form:form commandName="bb" action="write.qb" method="post">
 		      <table class="board-table" style="font-size: 13pt;">
 				<tr>
-					<th align="left" bgcolor="#f9f7f9">제목</th>
+					<th align="left" bgcolor="#EDE5D8">제목</th>
 					<td align="left" colspan="3">
 						<input type="text" name="q_subject" value="${ bb.q_subject }" class="form-control" style="width: 94%;" maxlength="20" placeholder="20자 이내로 입력해주세요." required>
 					</td>
 				</tr>
 				<tr>
-					<th align="left" bgcolor="#f9f7f9">작성자</th>
+					<th align="left" bgcolor="#EDE5D8">작성자</th>
 					<td align="left">
 						<input type="text" name="q_writer" value="${loginInfo.u_id}" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
 					</td>
-					<th align="left" bgcolor="#f9f7f9">이메일</th>
+					<th align="left" bgcolor="#EDE5D8">이메일</th>
 					<td align="left">
 						<input type="email" name="q_email" value="${ bb.q_email }" class="form-control" style="width: 85%;""  placeholder="ex) color@gmail.com" required>
 					</td>
 				</tr>
 				<tr>
-					<th align="left" bgcolor="#f9f7f9">내용</th>
+					<th align="left" bgcolor="#EDE5D8">내용</th>
 					<td align="left" colspan="3">
 						<textarea rows="10" cols="100" name="q_content" class="form-control" style="width: 94%; resize: none;" required>${ bb.q_content }</textarea>
 					</td>
 				</tr>
 				<tr>
-					<th align="left" bgcolor="#f9f7f9">비밀번호</th>
+					<th align="left" bgcolor="#EDE5D8">비밀번호</th>
 					<td align="left" colspan="3">
 						<input type="password" name="q_password" class="form-control" style="width: 35%; resize: none;" placeholder="4자 이내로 입력해주세요." maxlength="4" required>
 					</td>
@@ -76,7 +76,7 @@
 			<!-- 로그인 한 상태면 -->
 			<c:if test="${loginInfo.u_id  != null}">
 			 <center>
-	 				<input type="submit" value="작성 완료" class="btn btn-dark" style="font-size: 13pt; width: 130px;">
+	 				<input type="submit" value="작성 완료" class="btn btn-dark" id="btn">
 			</center>
 			</c:if>
 		</form:form>
