@@ -18,7 +18,7 @@
 		<a href="#" id="none_under">신상품</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="productAllList.p" id="none_under">모아보기</a>
 		&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
-		<a href="#" id="none_under"> 문의 게시판</a> 
+		<a href="qBoardList.qb" id="none_under"> 문의 게시판</a> 
 		<div style="display: inline; left: 846px; position: relative;">
 			<input type="text" id="searchBar" placeholder="Search" style="border: none; border-bottom: 1px solid black; position: absolute; left: -185px; top: -2px; display: none; background: white; border-radius: 5px 5px 0px 0px; font-family: 'RIDIBatang';">&nbsp;&nbsp;
 			<a href="javascript:display()" style="text-decoration: none;">

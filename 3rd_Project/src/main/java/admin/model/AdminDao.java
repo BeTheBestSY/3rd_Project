@@ -140,8 +140,8 @@ public class AdminDao {
 	}
 	
 
-	public int updateCompany(int cmp_num) {
-		return sqlSessionTemplate.delete(nameSpace+"updateCompany", cmp_num);
+	public int updateCompany(CompanyBean cb) {
+		return sqlSessionTemplate.update(nameSpace+"updateCompany", cb);
 	}
 	
 	

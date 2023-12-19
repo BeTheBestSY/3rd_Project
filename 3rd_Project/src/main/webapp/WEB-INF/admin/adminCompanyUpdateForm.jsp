@@ -1,4 +1,4 @@
-s<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
 <link
@@ -19,7 +19,7 @@ s<%@ page language="java" contentType="text/html; charset=UTF-8"
 		<br>
 		
 	<div id="center" style="text-align: center;">
-			<form action="adminCompanyUpdate.admin" method="post">
+			<form action="companyUpdate.admin" method="post">
 			<table class="board-table">
 				<tr style="border-top: 2px solid graytext; padding:10px;">
 					<th width="20%"><font color="red">*</font> 회사명</th>
@@ -30,9 +30,9 @@ s<%@ page language="java" contentType="text/html; charset=UTF-8"
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
 					<th><font color="red">*</font> 주소</th>
 					<td> 
-						<input type="text" class="form-control" style="width: 70%; display: inline; margin-bottom: 10px;" name="cmp_addr" value="${cb.cmp_addr eq '-' ? '': fn:split(cb.cmp_addr, ',')[0]}" id="sample4_postcode" placeholder="먼저 우편번호 찾기 버튼을 눌러주세요." onClick="zipClick()" >
+						<input type="text" class="form-control" style="width: 70%; display: inline; margin-bottom: 10px;" name="cmp_addr" value="${cb.cmp_addr eq '-' ? '': fn:split(cb.cmp_addr, ',')[0]}" id="sample4_postcode" placeholder="먼저 우편번호 찾기 버튼을 눌러주세요." onClick="zipClick()" readonly>
 						<input type="button" class="btn btn-white" onclick="sample4_execDaumPostcode()" style="margin-bottom:11px; height: 39px; width:150px;"  value="우편번호 찾기" id="searchBtn"><br>
-						<input type="text" class="form-control" name="cmp_addr" value="${bb.cmp_addr eq '-' ? '': fn:split(cb.cmp_addr, ',')[1]}" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom: 10px;" onClick="zipClick()" >
+						<input type="text" class="form-control" name="cmp_addr" value="${bb.cmp_addr eq '-' ? '': fn:split(cb.cmp_addr, ',')[1]}" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom: 10px;" onClick="zipClick()" readonly>
 						<span id="guide" style="color:#999;display:none"></span>
 						<input type="text" class="form-control" name="cmp_addr" value="${bb.cmp_addr eq '-' ? '': fn:split(cb.cmp_addr, ',')[2]}" id="sample4_detailAddress" placeholder="상세주소" >
 					</td>

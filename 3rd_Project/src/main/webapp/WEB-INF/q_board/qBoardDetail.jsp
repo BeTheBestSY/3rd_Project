@@ -26,41 +26,44 @@
 		location.href="qReply.qb?q_ref="+q_ref+"&q_re_step="+q_re_step+"&q_re_level="+q_re_level+"&pageNumber="+pageNumber+"&q_num="+q_num;
 	}
 	 
+	</script>
+	<%
+		application.setAttribute("flag",false);
+	%>
+
+	<br>
+	<article id="center" style=" text-align:center; font-family: 'RIDIBatang';">
+
+
+	<div class="page-title">
+	    <div class="container">
+	        <br><br>
+	        <h3 style="font-size: 25pt; font-weight: bold;">문의 게시판</h3>
+	        <input type=button value="목록" onClick="goList(${pageNumber})" class="btn btn-white"><br>
+	    </div>
+	</div>
+	<br><br><br><br><br>
 	
-</script>
-<%
-	application.setAttribute("flag",false);
-%>
-<article id="center" style=" font-family: 'MaruBuri-Regular';" >
-<br>
-<div class="page-title">
-    <div class="container">
-        <br><br>
-        <h3 style="font-size: 25pt; font-weight: bold;">문의 게시판</h3>
-        <input type=button value="목록" onClick="goList(${pageNumber})" class="btn btn-white"><br>
-    </div>
-</div>
-<br><br><br><br><br>
 <div id="board-list">
 		<form:form commandName="bb" action="write.qb" method="post">
 		       <table class="board-table" style="font-size: 13pt;">
 				<tr >
-					<th align="left" bgcolor="#D0D6CE" width="10%">제목</th>
+					<th align="left" bgcolor="#EDE5D8" width="10%">제목</th>
 					<td align="left" colspan="3" height="68">${ bb.q_subject }
 					</td>
 				</tr>
 				<tr>
-					<th align="left" bgcolor="#D0D6CE" width="10%">작성자</th>
+					<th align="left" bgcolor="#EDE5D8" width="10%">작성자</th>
 					<td align="left" height="68" width="38%">
 						${ bb.q_writer}					
 					</td>
-					<th align="left" bgcolor="#D0D6CE" width="14%" >이메일</th>
+					<th align="left" bgcolor="#EDE5D8" width="14%" >이메일</th>
 					<td align="left" height="68">
 						${ bb.q_email }
 					</td>
 				</tr>
 				<tr>
-					<th align="left" bgcolor="#D0D6CE" width="10%" >내용</th>
+					<th align="left" bgcolor="#EDE5D8" width="10%" >내용</th>
 					<td align="left" colspan="3" height="200" valign="top">
 						${ bb.q_content}
 					</td>

@@ -80,10 +80,20 @@ public class AdminCompanyController {
 	}
 	
 	@RequestMapping(value=updateCommand,method=RequestMethod.POST)
-	public String update(@RequestParam("cmp_num") int cmp_num, Model model) {
+	public String update(
+				Model model,
+				@RequestParam("cmp_num") int cmp_num,
+				@RequestParam("pageNumber") int pageNumber
+			) {
+		
 		CompanyBean bb = admindao.getSelectOneCompany(cmp_num);
-		model.addAttribute("bb", bb);
-		return formPage;
+		
+		model.addAttribute("pageNumber",pageNumber);
+		model.addAttribute("bb",bb);
+		
+		admindao.updateCompany(bb);
+		
+		return gotoPage;
 	}
 	
 	

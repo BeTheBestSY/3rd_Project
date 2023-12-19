@@ -177,8 +177,8 @@
 	
 	<update id="updateCompany">
 		update company
-		set cmp_name=#{cmp_name}, cmp_addr=#{cmp_addr}, cmp_price=#{cmp_price}, cmp_station=#{cmp_station}
-		, cmp_x=#{cmp_x}, cmp_y=#{cmp_y}
+		set cmp_name=#{cmp_name}, cmp_price=#{cmp_price}, cmp_station=#{cmp_station}
+		
 		where cmp_num=#{cmp_num}
 	</update>
 	
