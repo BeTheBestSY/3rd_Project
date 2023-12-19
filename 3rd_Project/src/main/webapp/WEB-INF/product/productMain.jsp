@@ -5,12 +5,6 @@
 	body{
 		padding-top: 140px;  
 	}
-	@font-face {
-	    font-family: 'OG_Renaissance_Secret-Rg';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/OG_Renaissance_Secret-Rg.woff2') format('woff2');
-	    font-weight: normal;
-	    font-style: normal;
-	}
 </style>
 
 <%@ include file="productHeader.jsp" %>  

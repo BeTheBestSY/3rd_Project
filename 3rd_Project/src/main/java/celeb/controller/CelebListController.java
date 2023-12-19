@@ -1,22 +1,18 @@
 package celeb.controller;
-
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import celeb.model.CelebBean;
 import celeb.model.CelebDao;
 import utility.Paging;
+
 
 @Controller
 public class CelebListController {
@@ -45,6 +41,7 @@ public class CelebListController {
 		
 		List<CelebBean> celebLists = cdao.getAllCelebList(map, pageInfo);
 		System.out.println(celebLists = celebLists);
+		model.addAttribute("keyword", keyword);
 		model.addAttribute("celebLists",celebLists);
 		model.addAttribute("pageInfo", pageInfo); 
 		return viewPage;

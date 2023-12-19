@@ -8,7 +8,7 @@
 	$(function() {
 		$(window).scroll(function() {
 			if ($(this).scrollTop() > 200) {
-				$('#thisNav').css({"top":"30px"});
+				$('#thisNav').css({"top":"100px"});
 			} else {
 				$('#thisNav').css({"top":"270px"});
 			}

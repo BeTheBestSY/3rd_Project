@@ -34,7 +34,6 @@ public class ProductAllListController {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
-		System.out.println(whatColumn+","+keyword+"DASDASDSA");
 		String ps="9";
 		 
 		int totalCount = productDao.getTotalCount(map);
