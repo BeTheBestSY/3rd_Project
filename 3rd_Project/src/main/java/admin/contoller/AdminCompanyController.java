@@ -1,14 +1,19 @@
 package admin.contoller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import admin.model.AdminDao;
 import company.model.CompanyBean;
 import company.model.CompanyDao;
-import q_board.model.QBoardBean;
 import users.model.UsersBean;
 import utility.Paging;
 
@@ -68,10 +72,9 @@ public class AdminCompanyController {
 		model.addAttribute("whatColumn", whatColumn);
 		model.addAttribute("keyword", keyword);
 		
-		return viewPage;
-		
-		
+		return viewPage;	
 	}
+	
 	@RequestMapping(value=updateCommand)
 	public String updateForm(@RequestParam("cmp_num") int cmp_num, Model model) {
 		CompanyBean bb = admindao.getSelectOneCompany(cmp_num);
@@ -79,22 +82,16 @@ public class AdminCompanyController {
 		return formPage;
 	}
 	
-	@RequestMapping(value=updateCommand,method=RequestMethod.POST)
-	public String update(
-				Model model,
-				@RequestParam("cmp_num") int cmp_num,
-				@RequestParam("pageNumber") int pageNumber
-			) {
-		
-		CompanyBean bb = admindao.getSelectOneCompany(cmp_num);
-		
-		model.addAttribute("pageNumber",pageNumber);
-		model.addAttribute("bb",bb);
-		
+	@RequestMapping(value = updateCommand, method = RequestMethod.POST)
+	public String doAction2(@ModelAttribute(value = "bb") CompanyBean bb, 
+							HttpServletResponse response, 
+							HttpSession session, 
+							Model model) throws IOException {
 		admindao.updateCompany(bb);
-		
+		System.out.println("변경 후 회사명 :"+ bb.getCmp_name());
+		model.addAttribute("bb", bb);
 		return gotoPage;
-	}
+	} 
 	
 	
 	@RequestMapping(value=deleteCommand,method=RequestMethod.GET)

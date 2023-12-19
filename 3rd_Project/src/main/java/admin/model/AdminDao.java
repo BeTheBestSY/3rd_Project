@@ -140,8 +140,8 @@ public class AdminDao {
 	}
 	
 
-	public int updateCompany(CompanyBean cb) {
-		return sqlSessionTemplate.update(nameSpace+"updateCompany", cb);
+	public int updateCompany(CompanyBean bb) {
+		return sqlSessionTemplate.update(nameSpace+"updateCompany", bb);
 	}
 	
 	
