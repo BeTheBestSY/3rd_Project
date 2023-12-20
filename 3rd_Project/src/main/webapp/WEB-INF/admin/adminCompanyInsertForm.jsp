@@ -70,7 +70,7 @@ margin-top:20px;
 				</tr> 
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
 					<th width="20%"><font color="red">*</font> 지하철 역</th>
-					<td width="80%">
+					<td width="80%"> 
 						<input type="text" class="form-control" name="cmp_station"  class="form-control"  value="${bb.cmp_station }" required>
 					</td>
 				</tr> 
