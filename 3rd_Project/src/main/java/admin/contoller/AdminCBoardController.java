@@ -54,7 +54,7 @@ public class AdminCBoardController {
 		String ps="1000";
 		
 		Paging pageInfo = new Paging(pageNumber,ps,totalCount,url,whatColumn,keyword);
-		 
+		
 		List<CBoardBean> list = adminDao.getAllBoardListC(pageInfo,map);
 		
 		model.addAttribute("list",list);
