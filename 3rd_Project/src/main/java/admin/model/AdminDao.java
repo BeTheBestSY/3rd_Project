@@ -187,4 +187,9 @@ public class AdminDao {
 	}
 
 
+	public void insertProduct(ProductBean pb) {
+		sqlSessionTemplate.insert(nameSpace+"insertProduct",pb);
+	}
+
+
 }
