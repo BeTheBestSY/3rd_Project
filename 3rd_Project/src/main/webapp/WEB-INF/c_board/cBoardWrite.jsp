@@ -16,6 +16,9 @@
 		background: #D0D6CE;
 		color: white;
 	}
+	body{
+		padding-top: 90px;
+	}
 </style>
 
 <%

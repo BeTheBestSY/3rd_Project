@@ -71,6 +71,7 @@ public class AdminDao {
 		return bb;
 	}
 	
+	
 	public void deleteBoardC(int c_num) {
 		sqlSessionTemplate.delete(nameSpace+"deleteBoardC",c_num);
 	}

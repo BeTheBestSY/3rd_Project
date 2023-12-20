@@ -30,7 +30,7 @@ public class AdminProductController {
 	private final String inCommand = "/productInsert.admin";
 	private final String delCommand = "/productDelete.admin";
 	private final String upCommand = "/productUpdate.admin";
-	
+	 
 	private final String viewPage = "adminProduct";
 	private final String inPage = "adminProductInsertForm";
 	private final String upPage = "adminProductUpdateForm";

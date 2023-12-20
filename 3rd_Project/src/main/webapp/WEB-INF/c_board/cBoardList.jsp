@@ -35,11 +35,11 @@
 				<div class="search-wrap">
 					<form action="cBoardList.cb" method="get">
 					<select name="whatColumn" id="whatColumn">
-						<option value="all" <c:if test="${whatColumn == 'all'}">selected</c:if>>전체검색</option>
+						<option value="all" <c:if test="${whatColumn == 'all'}">selected</c:if>>:: 선택 ::</option>
 						<option value="c_subject" <c:if test="${whatColumn == 'c_subject'}">selected</c:if>>제목</option>
 						<option value="c_writer" <c:if test="${whatColumn == 'c_writer'}">selected</c:if>>작성자</option>
 					</select>
-				 	<input id="search" type="search" name="keyword" value="${keyword}" placeholder="검색어를 입력해주세요.">
+				 	<input id="search" type="search" name="keyword" value="<c:if test="${keyword != 'null'}">${keyword}</c:if>" placeholder="검색어를 입력해주세요.">
 					<button type="submit" class="btn btn-dark">검색</button>
 				</form>
             	</div>

@@ -85,7 +85,7 @@
 		</div>
 	</div>
 	
-	<a href="#">
+	<a href="productNewList.p">
 		<img src="resources/image/banner.jpg" width="100%">
 	</a> 
 	  
