@@ -235,13 +235,13 @@
 	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
 	String p_num = request.getParameter("p_num");
 	String pageNumber = request.getParameter("pb");
+	session.setAttribute("destination", "redirect:/prodView.p?p_num="+p_num+"&pageNumber="+pageNumber);
 			
 	if(ub==null){
-		session.setAttribute("destination", "redirect:/prodView.p?p_num="+p_num+"&pageNumber="+pageNumber);
 	%>
 		<script type="text/javascript">
 			alert("로그인 후 이용 가능합니다.")
-			window.location.href = "login.u";
+			window.location.href = "login.u"; 
 		</script>
 	<%
 	};
@@ -250,7 +250,7 @@
 <c:set var="ub" value="<%=ub%>" />
 
 <form id="f">
-	<input type="hidden" name="p_num" value="${pb.p_num}"> 
+	<input type="hidden" name="p_num" value="${pb.p_num}">
 	<input type="hidden" name="id" value="${ub.u_id}">
 	<input type="hidden" name="cart_num" value="<%=cart_num%>">
 	

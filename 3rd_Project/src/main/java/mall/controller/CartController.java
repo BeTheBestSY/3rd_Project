@@ -20,7 +20,7 @@ import product.model.ProductBean;
 @Controller
 public class CartController {
 	private final String command = "/cart.mall";
-	private String viewPage = "cartList";
+	private String viewPage = "confirm";
 	
 	@Autowired 
 	private CartDao dao;
