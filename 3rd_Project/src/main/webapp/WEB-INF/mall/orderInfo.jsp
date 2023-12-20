@@ -160,7 +160,7 @@ body{
 								<label class="form-label">전달 사항</label> 
 								<c:set var="msgs">전달사항 없음,문 앞에 놓아주세요,경비실에 맡겨주세요,선물 포장해주세요 (+2000원)</c:set>
 								<select class="form-select" name="o_message">
-									<c:forEach var="msg" items="${msgs}">
+									<c:forEach var="msg" items="${msgs}"> 
 										<option value="${msg}">${msg}
 									</c:forEach>
 								</select>
