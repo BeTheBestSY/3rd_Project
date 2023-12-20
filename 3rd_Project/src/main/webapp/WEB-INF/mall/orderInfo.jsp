@@ -237,6 +237,11 @@
 				    <div class="tab-content">
 				      카카오 페이 결제 방법을 선택하셨습니다.<br>
 				      결제 상품 확인 후 주문완료 버튼을 클릭해 주세요.
+					<button id="kaobtn" style="background: #fee500; color:#000; border-radius: 12px; padding: 10px 20px;">
+                        카카오페이
+                    </button>
+
+ 
 				    </div>
 				  </div>
 				 
@@ -267,6 +272,7 @@
 </div>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+  
 $(document).ready(function() {
   // 초기에는 유효성 메시지를 숨깁니다
   $('.validation-message').hide();
