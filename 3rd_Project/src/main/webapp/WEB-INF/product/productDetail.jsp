@@ -250,7 +250,7 @@
 <c:set var="ub" value="<%=ub%>" />
 
 <form id="f">
-	<input type="hidden" name="p_num" value="${pb.p_num}"> 
+	<input type="hidden" name="p_num" value="${pb.p_num}">
 	<input type="hidden" name="id" value="${ub.u_id}">
 	<input type="hidden" name="cart_num" value="<%=cart_num%>">
 	
