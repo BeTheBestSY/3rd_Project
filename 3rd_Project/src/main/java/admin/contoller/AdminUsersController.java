@@ -41,7 +41,7 @@ public class AdminUsersController {
 		System.out.println("왓칼럼:"+whatColumn);
 		if(keyword == null) keyword = "";
 		System.out.println("키워드:"+keyword);
-		 
+		
 		Map<String, String> map = new HashMap<String, String>();
 		
 		map.put("filter", filter);
