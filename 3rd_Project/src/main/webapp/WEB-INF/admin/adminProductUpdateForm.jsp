@@ -62,17 +62,18 @@
 	<br><br><br><br>
 	<div>
 		<form action="productUpdate.admin" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="p_num" value="${pb.p_num }">
 		<table>
 			<tr>
 				<th width="20%">브랜드</th>
 				<td width="80%">
-					<input type="text" class="form-control" name="p_brand" value="${pb.p_brand }" readonly>
+					<input type="text" class="form-control" name="p_brand" value="${pb.p_brand }" required>
 				</td>
 			</tr>
 			<tr>
 				<th>이름</th>
 				<td>
-					<input type="text" class="form-control" name="p_name" value="${pb.p_name }" readonly style="width: 55%;">
+					<input type="text" class="form-control" name="p_name" value="${pb.p_name }" required>
 				</td>
 			</tr>
 			<tr>
@@ -106,19 +107,25 @@
 				</td>
 			</tr>
 			<tr>
+				<th>제품설명</th>
+				<td>
+					<textarea class="form-control" name="p_contents" placeholder="제품설명 입력" required>${pb.p_contents }</textarea>
+				</td>
+			</tr>
+			<tr>
 				<th>제품사진</th>
 				<td>
-					<!-- 새로 올릴 타이틀이미지 -->
-					타이틀이미지: <input type="file" name="p_ttlimg" accept="image/jpeg" required><br><br>
 					<!-- 기존 타이틀이미지 -->
-					<input type="hidden" name="p_ttlimg" value="${pb.p_ttlimg }" accept="image/jpeg" required><br><br>
+					<input type="hidden" name="exist_ttl" value="${pb.p_ttlimg }">
 					<img src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg  }" style="width: 10%; height: 10%;"/>
+					<!-- 새로 올릴 타이틀이미지 -->
+					타이틀이미지: <input type="file" name="upload_ttl" accept="image/*" required><br><br>
 					
-					<!-- 새로 올릴 디테일이미지 -->
-					디테일이미지: <input type="file" name="p_dtlimg" accept="image/jpeg" required> 
 					<!-- 기존 디테일이미지 -->
-					<input type="hidden" name="p_dtlimg" value="${pb.p_dtlimg }" accept="image/jpeg" required><br><br>
+					<input type="hidden" name="exist_dtl" value="${pb.p_dtlimg }">
 					<img src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg  }" style="width: 10%; height: 15%;"/>
+					<!-- 새로 올릴 디테일이미지 -->
+					디테일이미지: <input type="file" name="upload_dtl" accept="image/*" required> 
 				</td>
 			</tr>
 			<tr>
