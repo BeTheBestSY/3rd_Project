@@ -29,7 +29,7 @@ import q_board.model.QBoardBean;
 import utility.Paging;
 
 @Controller
-public class AdminCelebController {
+public class AdminCelebController { 
 	private final String command = "/celebList.admin";
 	private final String viewPage = "adminCeleb";
 	private final String deleteCommand = "/celebDelete.admin";
