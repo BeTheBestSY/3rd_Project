@@ -162,7 +162,7 @@ body{
 								<select class="form-select" name="o_message">
 									<c:forEach var="msg" items="${msgs}"> 
 										<option value="${msg}">${msg}
-									</c:forEach>
+									</c:forEach> 
 								</select>
 							</div>
 						</div>
