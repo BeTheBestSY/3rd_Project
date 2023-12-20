@@ -218,11 +218,6 @@ body{
 								</div>
 								<span id="guide" style="color: #999; display: none"></span>
 							</div>
-<<<<<<< HEAD
-							<br> <input type="text" name="addr5" class="form-control"
-								id="sample4_detailAddress" id="lastName" placeholder="상세주소"> 
-=======
->>>>>>> branch 'SY' of https://github.com/BeTheBestSY/3rd_Project.git
 						</div>
 						<br><br><br>
 						
