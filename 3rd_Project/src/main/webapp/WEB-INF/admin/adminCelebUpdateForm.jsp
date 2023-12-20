@@ -52,22 +52,25 @@ margin-top:20px;
 <article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
 	<div class="section">
 		<div id="tag" style="margin-right:83%; font-size: 2em;">
-			<h4>진단 회사 정보 수정</h4>
+			<h4>연예인 수정</h4>
 		</div>
 		
 	<div id="center" style="text-align: center;">
 			<form action="celebUpdate.admin" method="post">
+			
 			<table class="board-table">
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
 					<th width="20%"><font color="red">*</font> 이름</th>
 					<td width="80%">
 						<input type="text" class="form-control" name="cl_name" style="width:20%;" value="${bb.cl_name }" required> 원
+						<input type="hidden" class="form-control" name="cl_num" style="width:20%;" value="${bb.cl_num }" required>
 					</td>
 				</tr>
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
 					<th width="20%"><font color="red">*</font> 이미지</th>
 					<td width="80%">
-						<input type="text" class="form-control" name="cl_image"  class="form-control"  value="${bb.cl_image }" required>
+						현재 이미지 : ${bb.cl_image }<br>
+						변경할 이미지 : <input type="file" class="form-control" name="cl_image"  class="form-control"  value="${bb.cl_image }" required>
 					</td>
 				</tr>
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">

@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import admin.model.AdminDao;
 import celeb.model.CelebBean;
 import company.model.CompanyBean;
+import product.model.ProductBean;
 import q_board.model.QBoardBean;
 import utility.Paging;
 
@@ -91,14 +92,11 @@ public class AdminCelebController {
 	}
 	
 	@RequestMapping(value = updateCommand, method = RequestMethod.POST)
-	public String update(@RequestParam("cl_num") int cl_num,
-							@ModelAttribute(value = "bb") CelebBean bb, 
-							HttpServletResponse response, 
-							HttpSession session, 
-							Model model) throws IOException {
+	public String update(@ModelAttribute(value = "bb") CelebBean bb,
+						HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+		request.setCharacterEncoding("UTF-8");
 		
 		adminDao.updateCeleb(bb);
-	
 		model.addAttribute("bb", bb);
 		return gotoPage;
 	} 
