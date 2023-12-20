@@ -57,7 +57,41 @@
 	}
 }
 </style>
+<script type="text/javascript">
+	window.onload = function(){
+		const realUpload_ttl = document.querySelector('input[name="upload_ttl"]');
+		const realUpload_dtl = document.querySelector('input[name="upload_dtl"]');
+		const upload_ttl = document.querySelector('.upload_ttl');
+		const upload_dtl = document.querySelector('.upload_dtl');
 
+		upload_ttl.addEventListener('click', () => realUpload_ttl.click());
+		upload_dtl.addEventListener('click', () => realUpload_dtl.click());
+		
+		/* input에 파일이 업로드되면 change event 가 발생 */
+		realUpload_ttl.addEventListener('change', getTitleImage); // getTitleImage 함수 등록
+		realUpload_dtl.addEventListener('change', getDetailImage); // getDetailImage 함수 등록
+		
+		function getTitleImage(e) {
+	     	const file = e.currentTarget.files[0];
+	      	const reader = new FileReader(); // file을 담을 변수
+	      	reader.readAsDataURL(file);
+	      	reader.onload = (e) => {
+	      		// 파일이 로드되면 이미지를 해당 파일로 고치기
+	      		upload_ttl.setAttribute('src', e.target.result);
+	        };
+	    }
+		
+		function getDetailImage(e) {
+	     	const file = e.currentTarget.files[0];
+	      	const reader = new FileReader(); // file을 담을 변수
+	      	reader.readAsDataURL(file);
+	      	reader.onload = (e) => {
+	      		// 파일이 로드되면 이미지를 해당 파일로 고치기
+	      		upload_dtl.setAttribute('src', e.target.result);
+	        };
+	    }
+	};
+</script>
 <div id="center" style="text-align: center;">
 	<br><br><br><br>
 	<div>
@@ -107,12 +141,20 @@
 				</td>
 			</tr>
 			<tr>
-				<th>제품사진</th>
+				<th>제품설명</th>
 				<td>
-					타이틀이미지: <input type="file" name="upload_ttl" accept="image/jpeg" required><br><br>
-					디테일이미지: <input type="file" name="upload_dtl" accept="image/jpeg" required>
-					<!-- 타이틀이미지: <input type="file" name="p_ttlimg" accept="image/jpeg" required><br><br>
-					디테일이미지: <input type="file" name="p_dtlimg" accept="image/jpeg" required>  -->
+					<textarea class="form-control" name="p_contents" placeholder="제품설명 입력" required></textarea>
+				</td>
+			</tr>
+			<tr>
+				<th>제품사진</th>
+				<td height="50%">
+					<input type="file" name="upload_ttl" accept="image/*" required style="display: none">
+					<input type="file" name="upload_dtl" accept="image/*" required style="display: none">
+					* 타이틀이미지 업로드<br>
+					<img class="upload_ttl" alt="타이틀이미지" src="<%=request.getContextPath()%>/resources/image/no-image.jpg" style="border:1px solid black; width:15%; height: 35%; cursor:pointer;"><br><br>
+					* 디테일이미지 업로드<br>
+					<img class="upload_dtl" alt="디테일이미지" src="<%=request.getContextPath()%>/resources/image/no-image.jpg" style="border:1px solid black; width:15%; height: 35%; cursor:pointer;"><br><br>
 				</td>
 			</tr>
 			<tr>

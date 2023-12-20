@@ -337,4 +337,11 @@
 		insert into product
 		values(pro_seq.nextval, #{p_brand}, #{p_name}, #{p_ttlimg}, #{p_dtlimg}, #{p_color}, #{p_price}, #{p_point}, #{p_stock}, #{p_salevolume}, #{p_contents})
 	</insert>
+	<update id="updateProduct">
+		update product
+		set p_brand=#{p_brand}, p_name=#{p_name}, p_ttlimg=#{p_ttlimg}, p_dtlimg=#{p_dtlimg}, 
+		p_color=#{p_color}, p_price=#{p_price}, p_point=#{p_point}, 
+		p_stock=#{p_stock}, p_salevolume=#{p_salevolume}, p_contents=#{p_contents} 
+		where p_num=#{p_num}
+	</update>
 </mapper> 
