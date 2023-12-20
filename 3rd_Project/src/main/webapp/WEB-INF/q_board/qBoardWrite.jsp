@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ include file="./../product/productHeader.jsp" %>
+<%@ include file="./../views/header.jsp" %>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardWrite.css">
 <style>
 	#btn{
@@ -17,7 +17,7 @@
 		color: white;
 	}
 	body{
-		padding-top: 140px;
+		padding-top: 90px;
 	}
 </style>
 
@@ -27,7 +27,6 @@
 
 <br>
 <article id="center" style=" text-align:center; font-family: 'RIDIBatang';" >
-
 
 <div class="page-title">
     <div class="container">
@@ -39,8 +38,7 @@
 <br><br><br><br><br>
 
  <div id="board-list">
-	
-		<form action="write.qb" method="post">
+		<form:form commandName="bb" action="write.qb" method="post">
 		      <table class="board-table" style="font-size: 13pt;">
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">제목</th>
@@ -89,7 +87,6 @@
 						
 			 </table>
 			 <br><br>
-			 
 			 	  <!-- 로그인 하지 않은 상태면 -->
 			<c:if test="${loginInfo.u_id  == null}">
 				<script type="text/javascript">
@@ -100,17 +97,14 @@
 					session.setAttribute("destination", "redirect:/write.qb");
 				%>
 			</c:if>
-			
 			<!-- 로그인 한 상태면 -->
 			<c:if test="${loginInfo.u_id  != null}">
-			<center>
-	 			<input type="submit" value="작성 완료" class="btn btn-dark" id="btn">
+			 <center>
+	 				<input type="submit" value="작성 완료" class="btn btn-dark" id="btn">
 			</center>
 			</c:if>
-		</form>
-	</div>
+		</form:form>
+</div>
 </article>
-
-
 
 <%@ include file="./../views/footer.jsp" %>

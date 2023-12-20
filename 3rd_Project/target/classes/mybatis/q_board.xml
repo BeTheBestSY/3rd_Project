@@ -53,7 +53,7 @@
 			insert into q_board
 			(q_num,q_type,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip,q_secret)
 			values
-			(qboard_seq.nextval,#{q_type},#{q_writer},#{q_email},#{q_subject},#{q_password},#{q_regdate},board_seq.currval,0,0,#{q_content},#{q_ip},#{q_secret})
+			(qboard_seq.nextval,#{q_type},#{q_writer},#{q_email},#{q_subject},#{q_password},#{q_regdate},qboard_seq.currval,0,0,#{q_content},#{q_ip},#{q_secret})
 		</insert>
 		
 		<update id="updateBoard">
