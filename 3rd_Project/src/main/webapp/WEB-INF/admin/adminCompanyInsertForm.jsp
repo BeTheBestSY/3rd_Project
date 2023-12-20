@@ -89,7 +89,7 @@ margin-top:20px;
 				<tr>
 					<td colspan="2" align="center">
 						<br>
-						<input type="submit" value="수정하기" class="btn btn-white" style="margin-bottom:11px; height: 39px; width:150px;" id="subBtn">
+						<input type="submit" value="추가하기" class="btn btn-white" style="margin-bottom:11px; height: 39px; width:150px;" id="subBtn">
 					</td>
 				</tr>
 			</table>
