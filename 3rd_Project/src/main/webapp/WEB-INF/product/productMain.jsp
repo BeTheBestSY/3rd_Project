@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%
+	application.setAttribute("flag", false);
+	session.setAttribute("destination", "redirect:/productMain.p");
+%> 
+
 <style>
 	body{
-		padding-top: 140px;  
-	}
-	@font-face {
-	    font-family: 'OG_Renaissance_Secret-Rg';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/OG_Renaissance_Secret-Rg.woff2') format('woff2');
-	    font-weight: normal;
-	    font-style: normal;
+		padding-top: 140px;
 	}
 </style>
 
-<%@ include file="productHeader.jsp" %>  
+<%@ include file="productHeader.jsp" %>
 	 
 	<!-- 캐러샐 이미지 부분 -->
 	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"> 
@@ -57,7 +56,7 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			BEST
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<hr style="display: inline-block; width: 40%; top: 5px; position: relative; color: #A6A6A6;">   
+			<hr style="display: inline-block; width: 40%; top: 5px; position: relative; color: #A6A6A6;">
 		</div>
 		<div class="row">
 			<c:forEach var="pb" items="${product_BLists}">
@@ -75,7 +74,7 @@
 								<fmt:formatNumber value="${pb.p_price}" pattern="#,###" />원 
 							</p>
 							<p style="position: absolute; left: 235px; top: 405px;">
-								<a href="#">
+								<a href="cart.mall?p_num=${pb.p_num}&cart_num=<%=session.getId()%>&oqty=1">
 									<img src="resources/image/cartAdd.svg" width="25">
 								</a>
 							</p>
@@ -114,7 +113,7 @@
 								<fmt:formatNumber value="${pb.p_price}" pattern="#,###" />원
 							</p>
 							<p style="position: absolute; left: 235px; top: 405px;">
-								<a href="#">
+								<a href="cart.mall?p_num=${pb.p_num}&cart_num=<%=session.getId()%>&oqty=1">
 									<img src="resources/image/cartAdd.svg" width="25">
 								</a>
 							</p>

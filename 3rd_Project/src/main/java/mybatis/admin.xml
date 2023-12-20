@@ -18,7 +18,7 @@
 		<if test="whatColumn=='q_subject'">
 			where q_subject like #{keyword}
 		</if>
-		order by q_ref desc, q_re_step asc ))
+		order by q_ref desc, q_re_step asc))
 	</select>
 	
 	<select id="getTotalCount" resultType="int">
@@ -323,7 +323,6 @@
 		select * from product
 		where p_num=#{p_num}
 	</select>
-</mapper> 
 	<insert id="insertProduct">
 		insert into product
 		values(pro_seq.nextval, #{p_brand}, #{p_name}, #{p_ttlimg}, #{p_dtlimg}, #{p_color}, #{p_price}, #{p_point}, #{p_stock}, #{p_salevolume}, #{p_contents})

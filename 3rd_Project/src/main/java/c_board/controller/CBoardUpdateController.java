@@ -33,16 +33,20 @@ public class CBoardUpdateController {
 	public final String gotoPage="redirect:/cBoardList.cb";
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
-	public String deleteform(
+	public String Form(
 				Model model,
 				@RequestParam("c_num") int c_num,
-				@RequestParam("pageNumber") int pageNumber
+				@RequestParam("pageNumber") int pageNumber,
+				@RequestParam(value="whatColumn", required=false) String whatColumn,
+				@RequestParam(value="keyword", required=false) String keyword
 			) {
 		
 		CBoardBean bb = cdao.selectContent(c_num);
 		
 		model.addAttribute("pageNumber",pageNumber);
 		model.addAttribute("bb",bb);
+		model.addAttribute("whatColumn",whatColumn);
+		model.addAttribute("keyword",keyword);
 		
 		return viewPage;
 	}
@@ -56,6 +60,8 @@ public class CBoardUpdateController {
 			@RequestParam(value="c_re_step",required = false) int c_re_step,
 			@RequestParam(value="c_re_level",required = false) int c_re_level,
 			@RequestParam("c_password") String c_password,
+			@RequestParam("whatColumn") String whatColumn,
+			@RequestParam("keyword") String keyword,
 			HttpServletRequest request,
 			@ModelAttribute("bb") @Valid CBoardBean bb,
 			BindingResult br
@@ -68,6 +74,8 @@ public class CBoardUpdateController {
 			model.addAttribute("pageNumber",pageNumber);
 			model.addAttribute("c_num",c_num);
 			model.addAttribute("bb", bb);
+			model.addAttribute("whatColumn",whatColumn);
+			model.addAttribute("keyword",keyword);
 			
 			return viewPage;
 		}
@@ -96,6 +104,8 @@ public class CBoardUpdateController {
 		    out.flush();
 		    model.addAttribute("pageNumber",pageNumber);
 			model.addAttribute("bb",bb);
+			model.addAttribute("whatColumn",whatColumn);
+			model.addAttribute("keyword",keyword);
 			return viewPage;
 		}
 	}

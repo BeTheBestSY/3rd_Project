@@ -69,7 +69,7 @@
 						<a href="cBoardList.cb" class="nav-link px-2 link-body-emphasis">후기 게시판</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
-						<a href="productMain.p" class="nav-link px-2 link-body-emphasis">쇼핑하기</a>
+						<a href="productMain.p" class="nav-link px-2 link-body-emphasis">The Shop HB</a>
 					</li>
 				</ul>
 
@@ -89,7 +89,6 @@
 							<li style="text-align: center;"><small>안녕하세요, <b>${loginInfo.u_name }</b>님</small></li>
 							<li><hr class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="mypage.u">마이페이지</a></li>
-							<li><a class="dropdown-item" href="cartList.mall">장바구니</a></li>
 							<li><a class="dropdown-item" href="logout.u">로그아웃</a></li>
 						</ul>
 					</c:if>
