@@ -21,7 +21,7 @@ import admin.model.AdminDao;
 import c_board.model.CBoardBean;
 import utility.Paging;
 
-@Controller
+@Controller 
 public class AdminCBoardController {
 
 	@Autowired
