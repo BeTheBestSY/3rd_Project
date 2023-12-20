@@ -67,4 +67,10 @@
 		select p_num, p_brand, p_name, p_ttlimg, p_price, p_point, p_salevolume from product order by p_salevolume desc))
 		where rank between 0 and 20
 	</select>
+	<select id="getNewProductList" resultType="myProduct">
+		select rank, p_num, p_brand, p_name, p_ttlimg, p_price, p_point, p_salevolume from(
+		select rownum as rank, p_num, p_brand, p_name, p_ttlimg, p_price, p_point, p_salevolume from (
+		select p_num, p_brand, p_name, p_ttlimg, p_price, p_point, p_salevolume from product order by p_num desc))
+		where rank between 0 and 20
+	</select>
 </mapper>

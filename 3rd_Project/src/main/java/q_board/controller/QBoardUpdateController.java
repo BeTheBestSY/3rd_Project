@@ -1,13 +1,10 @@
 package q_board.controller;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import q_board.model.QBoardBean;
 import q_board.model.QBoardDao;
 
+
 @Controller
 public class QBoardUpdateController {
 
@@ -32,16 +30,20 @@ public class QBoardUpdateController {
 	public final String gotoPage="redirect:/qBoardList.qb";
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
-	public String deleteform(
+	public String Form(
 				Model model,
 				@RequestParam("q_num") int q_num,
-				@RequestParam("pageNumber") int pageNumber
+				@RequestParam("pageNumber") int pageNumber,
+				@RequestParam(value="whatColumn", required=false) String whatColumn,
+				@RequestParam(value="keyword", required=false) String keyword
 			) {
 		
 		QBoardBean bb = qdao.selectContent(q_num);
 		
 		model.addAttribute("pageNumber",pageNumber);
 		model.addAttribute("bb",bb);
+		model.addAttribute("whatColumn",whatColumn);
+		model.addAttribute("keyword",keyword);
 		
 		return viewPage;
 	}
@@ -55,6 +57,8 @@ public class QBoardUpdateController {
 			@RequestParam(value="q_re_step",required = false) int q_re_step,
 			@RequestParam(value="q_re_level",required = false) int q_re_level,
 			@RequestParam("q_password") String q_password,
+			@RequestParam("whatColumn") String whatColumn,
+			@RequestParam("keyword") String keyword,
 			HttpServletRequest request,
 			@ModelAttribute("bb") @Valid QBoardBean bb,
 			BindingResult br
@@ -67,6 +71,8 @@ public class QBoardUpdateController {
 			model.addAttribute("pageNumber",pageNumber);
 			model.addAttribute("q_num",q_num);
 			model.addAttribute("bb", bb);
+			model.addAttribute("whatColumn",whatColumn);
+			model.addAttribute("keyword",keyword);
 			
 			return viewPage;
 		}
@@ -91,14 +97,13 @@ public class QBoardUpdateController {
 		} else {
 			response.setContentType("text/html; charset=UTF-8");
 		    PrintWriter out = response.getWriter();
-		    out.print("<script>alert('잘못된 비밀번호입니다.');</script>");
+		    out.print("<script>alert('비밀번호가 일치하지 않습니다.');</script>");
 		    out.flush();
 		    model.addAttribute("pageNumber",pageNumber);
 			model.addAttribute("bb",bb);
+			model.addAttribute("whatColumn",whatColumn);
+			model.addAttribute("keyword",keyword);
 			return viewPage;
 		}
-		
-		
 	}
-	
 }
