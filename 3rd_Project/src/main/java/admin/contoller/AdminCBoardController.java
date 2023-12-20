@@ -24,7 +24,7 @@ import utility.Paging;
 @Controller
 public class AdminCBoardController {
 
-	@Autowired
+	@Autowired 
 	private AdminDao adminDao; 
 
 	public final String listCommand="/cBoardList.admin";

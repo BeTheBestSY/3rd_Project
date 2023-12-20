@@ -256,7 +256,7 @@
 	
 	<section>
 	<!--중반부의 레이아웃-->
-	
+	 
 		<div class="container" id="one">
 		<!-- 중반부 전체를 감싸는 div 태그-->
 		
