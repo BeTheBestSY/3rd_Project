@@ -231,6 +231,8 @@
 <body>
 
 <%
+	String cart_num = session.getId();
+	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
 	String p_num = request.getParameter("p_num");
 	String pageNumber = request.getParameter("pb");
 			
