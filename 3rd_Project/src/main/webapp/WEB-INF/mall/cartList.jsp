@@ -63,6 +63,8 @@
 						  </td>
 					      <td>
 						  	<fmt:formatNumber value="${pb.p_price*list[loop.index].cart_qty}" pattern="#,###" />원
+						   <c:set var="totalAmount" value="${totalAmount + (pb.p_price * list[loop.index].cart_qty)}" />
+   
 						  </td>
 					      <td>
 					      	<a href="cartDelete.mall?p_num=${pb.p_num}" class="nav-link px-2 link-secondary">
@@ -71,8 +73,33 @@
 					      </td>
 					    </tr>  
 			  	 	</c:forEach>
-			  	  
-			</c:if>
+				</c:if>
+					<tr>
+						<td colspan="4"></td>
+						<td>배송비:</td>
+						<td>
+							<c:if test="${totalAmount<30000}">
+								 3,000원
+							</c:if>
+							<c:if test="${totalAmount>=30000}">
+								 0원
+							</c:if>
+						</td> 
+					</tr>
+					<tr>
+						<td colspan="3"></td>
+						<td>전체 총액:</td>
+						<td>
+							<c:if test="${totalAmount<30000}">
+								<fmt:formatNumber value="${totalAmount+3000}" pattern="#,###" />원
+							</c:if>
+							<c:if test="${totalAmount>=30000}">
+								<fmt:formatNumber value="${totalAmount}" pattern="#,###" />원
+							</c:if>
+							</td> 
+						<td><a href="cartOrder.mall">주문하기</a></td>
+					</tr>
+				
 		</tbody>
 	</table>
 	</div>

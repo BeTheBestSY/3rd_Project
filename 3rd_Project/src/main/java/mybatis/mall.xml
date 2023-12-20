@@ -20,7 +20,7 @@
 	</select>
 	
 	<select id="selectUser" resultType="Users"> 
-		select u_name, u_phone from users
+		select u_name, u_phone, u_id from users
 		where u_id = #{u_id}
 	</select>
 	
@@ -71,4 +71,18 @@
 	<delete id="deleteCart">
 		delete from cart where p_num = #{p_num}
 	</delete>
+	
+	<delete id="deleteAllCart">
+		delete from cart where cart_num = #{cart_num} 
+	</delete>
+	
+	<update id="downStockPord">
+		update product set p_stock = p_stock-#{cart_qty} 
+			where p_num = #{p_num}
+	</update>
+	
+	<update id="upSalevolumePord">
+		update product set p_salevolume = p_salevolume + #{cart_qty} 
+			where p_num = #{p_num}
+	</update>
 </mapper>
