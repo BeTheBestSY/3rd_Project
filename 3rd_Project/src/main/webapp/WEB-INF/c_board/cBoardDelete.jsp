@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="./../views/header.jsp" %>
+    
+<%@ include file="./../product/productHeader.jsp" %>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardDelete.css">
 
 <style>
@@ -16,12 +17,20 @@
 		background: #D0D6CE;
 		color: white;
 	}
+	body{
+		padding-top: 90px;
+	}
 </style>
-	
-<br>
+
+<div style="width: 100%; text-align: center;">
+	<div class="container" style="font-family: 'MaruBuri-Regular'; font-size: 25pt; font-weight: bold;">
+		<br><br>
+		문의글 삭제
+	</div>
+</div>
 
 <article id="center" style=" text-align:center; font-family: 'RIDIBatang';" >
-<br><br><br><br><br>
+<br><br><br>
 
 	<div id="board-list">	
 		<form name="deleteForm" action="cDelete.cb" method="post">

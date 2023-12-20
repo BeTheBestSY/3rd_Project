@@ -30,7 +30,7 @@ public class AdminProductController {
 	private final String inCommand = "/productInsert.admin";
 	private final String delCommand = "/productDelete.admin";
 	private final String upCommand = "/productUpdate.admin";
-	
+	 
 	private final String viewPage = "adminProduct";
 	private final String inPage = "adminProductInsertForm";
 	private final String upPage = "adminProductUpdateForm";
@@ -73,6 +73,11 @@ public class AdminProductController {
 	}
 	
 	@RequestMapping(value = inCommand, method = RequestMethod.POST)
+	public String adminProdIn2() throws IOException {
+		// 여기서부터 하기!!
+		return inPage; 
+	} 
+	 
 	public String adminProdIn2(@ModelAttribute(value = "pb") ProductBean pb,
 							Model model,
 							HttpServletRequest request) throws UnsupportedEncodingException {

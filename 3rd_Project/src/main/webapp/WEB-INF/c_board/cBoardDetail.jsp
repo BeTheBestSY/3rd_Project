@@ -16,6 +16,9 @@
 		background: #D0D6CE;
 		color: white;
 	}
+	body{
+		padding-top: 90px;
+	}
 </style>  
 <script type="text/javascript">
 	function goReply(c_num, c_ref, c_re_step, c_re_level, pageNumber, whatColumn, keyword){
@@ -77,7 +80,7 @@
 			<!-- 접속한 id가 관리자가 아니고, 글 작성자랑 접속한 id랑 다른데 로그인은 되어있으면 답글달기만. -->
 			<c:if test="${loginInfo.u_id != null && loginInfo.u_id !='admin' && loginInfo.u_id !=bb.c_writer}"> 
 				<center>
-					<input type="button" id="btn" value="답글달기" onClick="goReply(${ bb.c_num },${ bb.c_ref },${ bb.c_re_step },${ bb.c_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+					<input type="button" id="btn" value="답글달기" id="btn" onClick="goReply(${ bb.c_num },${ bb.c_ref },${ bb.c_re_step },${ bb.c_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 				</center>
 			</c:if>
 
@@ -94,9 +97,9 @@
 			<!-- 접속한 id가 관리자일 땐 모든 게시물 수정 삭제 답글 가능 -->
 			<c:if test="${loginInfo.u_id == 'admin'}"> 
 				<center>
-					<input type="button" value="수정하기" onClick="location.href='cUpdate.cb?c_num=${bb.c_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
-					<input type="button" value="삭제하기" onClick="location.href='cDelete.cb?c_num=${bb.c_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
-					<input type="button" value="답글달기" onClick="goReply(${ bb.c_num },${ bb.c_ref },${ bb.c_re_step },${ bb.c_re_level },${pageNumber}, '${whatColumn}', '${keyword}')" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+					<input type="button" value="수정하기" id="btn" onClick="location.href='cUpdate.cb?c_num=${bb.c_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+					<input type="button" value="삭제하기" id="btn" onClick="location.href='cDelete.cb?c_num=${bb.c_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+					<input type="button" value="답글달기" id="btn" onClick="goReply(${ bb.c_num },${ bb.c_ref },${ bb.c_re_step },${ bb.c_re_level },${pageNumber}, '${whatColumn}', '${keyword}')" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 				</center>
 			</c:if>
 		</form:form>
