@@ -73,7 +73,7 @@ margin-top:20px;
 					<td width="80%">
 						<input type="text" class="form-control" name="cmp_station"  class="form-control"  value="${bb.cmp_station }" required>
 					</td>
-				</tr>
+				</tr> 
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
 					<th width="20%"><font color="red">*</font>경도</th>
 					<td width="80%">
