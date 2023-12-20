@@ -86,7 +86,7 @@
 							<li><a class="dropdown-item" href="register.u">회원가입</a></li>
 						</ul>
 					</c:if>
-					<c:if test="${loginInfo != null}">
+					<c:if test="${loginInfo != null}"> 
 						<ul class="dropdown-menu text-small">
 							<li style="text-align: center;"><small>안녕하세요, <b>${loginInfo.u_name }</b>님</small></li>
 							<li><hr class="dropdown-divider"></li>
