@@ -187,8 +187,13 @@ public class AdminDao {
 	}
 
 
-	public void insertProduct(ProductBean pb) {
-		sqlSessionTemplate.insert(nameSpace+"insertProduct",pb);
+	public int insertProduct(ProductBean pb) {
+		return sqlSessionTemplate.insert(nameSpace+"insertProduct",pb);
+	}
+
+
+	public int updateProduct(ProductBean pb) {
+		return sqlSessionTemplate.update(nameSpace+"updateProduct", pb);
 	}
 
 
