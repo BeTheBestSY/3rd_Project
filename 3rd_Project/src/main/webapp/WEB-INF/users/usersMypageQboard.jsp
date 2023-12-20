@@ -42,7 +42,7 @@
 		}
 		
 		if(flag == false){
-			alert("반드시 한 개 이상 체크 하신 후 요청 바랍니다.");
+			alert("1개 이상 체크 하신 후 요청 바랍니다.");
 			return false;
 		}
 		
@@ -81,7 +81,6 @@
 			<table class="table" id="q_board">
 				<tr id="title">
 					<td width="3%" style="background:#F7F3ED;"><input type="checkbox" name="all" onClick="allCheck()"></td>
-					<td width="9%" style="background:#F7F3ED;">번호</td>
 					<td style="background:#F7F3ED;">제목</td>
 					<td width="9%" style="background:#F7F3ED;">답변</td> 
 					<td width="15%" style="background:#F7F3ED;">작성일</td>
@@ -90,16 +89,11 @@
 					<td width="9%" style="background:#F7F3ED;">수정</td>
 					<td width="9%" style="background:#F7F3ED;">삭제</td> 
 				</tr>
-				<c:set var="num" value="${pageInfo.totalCount - pageInfo.beginRow + 1}" />
 				
 				<c:if test="${fn:length(q_boardLists) > 0}">
 					<c:forEach var="qb" items="${q_boardLists}">
 						<tr>
 							<td style="border-right: 1px dotted #D5D5D5;"><input type="checkbox" name="check" value="${qb.q_num}"></td>
-							<td style="border-right: 1px dotted #D5D5D5;">
-								${num}
-								<c:set var="num" value="${num -1}" />
-							</td>
 							<td style="border-right: 1px dotted #D5D5D5;">
 								<a href="q_boardDetail.u?q_num=${qb.q_num}&pageNumber=${pageInfo.pageNumber}" id="none_under">
 									${qb.q_subject}&nbsp;
@@ -118,7 +112,7 @@
 					</c:forEach>
 				</c:if>
 				<c:if test="${fn:length(q_boardLists) == 0}">
-					<td colspan="9">작성한 게시글이 없습니다.</td>
+					<td colspan="8">작성한 게시글이 없습니다.</td>
 				</c:if>
 			</table>
 			<div style="width: 100%; text-align: center; margin-top: 50px;">

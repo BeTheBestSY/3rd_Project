@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%
+	session.setAttribute("destination", "redirect:/productAllList.p");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>

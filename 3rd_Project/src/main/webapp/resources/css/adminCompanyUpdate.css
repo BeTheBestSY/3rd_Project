@@ -71,7 +71,7 @@ table {
 }
 
 .board-table th{
-	background:#F7F3ED;
+	background:#f8e8da;
 }
 
 .board-table th, .board-table td {
@@ -144,14 +144,14 @@ table {
   text-align:center;
   margin-top:10px;
   margin-bottom:10px;
-  border-radius:3px;
+  border-radius:5px;
 }  
 
 
 .btn-white:hover, .btn-dark:focus {
   background: #c0c0c0;
   border: none;
-  border-radius:3px;
+  border-radius:5px;
   color: #fff;
 }
 

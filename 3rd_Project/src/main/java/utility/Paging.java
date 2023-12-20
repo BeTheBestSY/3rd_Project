@@ -182,7 +182,7 @@ public class Paging {
 			System.out.println("_pageNumber:"+_pageNumber); // null
 			_pageNumber = "1" ;
 		}
-		this.pageNumber = Integer.parseInt( _pageNumber ); 
+		this.pageNumber = Integer.parseInt( _pageNumber ) ; 
 
 		if( _pageSize == null || _pageSize.equals("null") || _pageSize.equals("") ){
 			_pageSize = "5" ; 
@@ -278,4 +278,3 @@ public class Paging {
 	}	
 	
 }
-

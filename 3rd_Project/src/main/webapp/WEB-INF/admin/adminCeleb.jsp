@@ -11,6 +11,12 @@
 		elem.value = '';
 	}
 	
+	function del(cl_num,pageNumber){
+		if(confirm('정말로 삭제하시겠습니까?')){
+			location.href='celebDelete.admin?cl_num='+cl_num+'&pageNumber='+pageNumber;
+		}
+	}
+	
 </script>
 <article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
 <div class="section">
@@ -65,9 +71,7 @@
 											<td>${cb.cl_color}</td>
 											<td>${cb.cl_image}</td>
 											<td style="padding-left:25%;">
-												<a href="celebDelete.admin?cl_num=${cb.cl_num }&pageNumber=${pageInfo.pageNumber}">
-													<input type="button" class="btn btn-white"  value="삭제하기">
-												</a>
+												<input type="button" class="btn btn-white"  value="삭제하기" onClick="del(${cb.cl_num},${pageInfo.pageNumber})">
 												<a href="celebUpdate.admin?cl_num=${cb.cl_num }&pageNumber=${pageInfo.pageNumber}">
 													<input type="button" class="btn btn-white"  value="수정하기">
 												</a>

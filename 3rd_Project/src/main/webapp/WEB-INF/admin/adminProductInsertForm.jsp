@@ -111,7 +111,7 @@
 				<td>
 					타이틀이미지: <input type="file" name="upload_ttl" accept="image/jpeg" required><br><br>
 					디테일이미지: <input type="file" name="upload_dtl" accept="image/jpeg" required>
-					<!-- 타이틀이미지:  <input type="file" name="p_ttlimg" accept="image/jpeg" required><br><br>
+					<!-- 타이틀이미지: <input type="file" name="p_ttlimg" accept="image/jpeg" required><br><br>
 					디테일이미지: <input type="file" name="p_dtlimg" accept="image/jpeg" required>  -->
 				</td>
 			</tr>
