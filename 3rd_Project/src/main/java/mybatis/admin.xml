@@ -323,4 +323,13 @@
 		select * from product
 		where p_num=#{p_num}
 	</select>
+<<<<<<< HEAD
 </mapper> 
+=======
+	<insert id="insertProduct">
+		insert into product
+		values(pro_seq.nextval, #{p_brand}, #{p_name}, #{p_ttlimg}, #{p_dtlimg}, #{p_color}, #{p_price}, #{p_point}, #{p_stock}, #{p_salevolume}, #{p_contents})
+	</insert>
+</mapper> 
+
+>>>>>>> branch 'HJ' of https://github.com/BeTheBestSY/3rd_Project.git
