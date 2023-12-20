@@ -45,7 +45,7 @@
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">제목</th>
 					<td align="left" colspan="3">
-						<input type="text" name="q_subject" value="${ bb.q_subject }" class="form-control" style="width: 94%;" maxlength="20" placeholder="20자 이내로 입력해주세요." required>
+						<input type="text" name="q_subject" class="form-control" style="width: 94%;" maxlength="20" placeholder="20자 이내로 입력해주세요." required>
 					</td>
 				</tr>
 				<tr>
@@ -55,7 +55,7 @@
 					</td>
 					<th align="left" bgcolor="#EDE5D8" width="14%">이메일</th>
 					<td align="left">
-						<input type="email" name="q_email" value="${bb.q_email}" class="form-control" style="width: 85%;"  placeholder="ex) color@gmail.com" required>
+						<input type="email" name="q_email" class="form-control" style="width: 85%;"  placeholder="ex) color@gmail.com" required>
 					</td>
 				</tr>
 				<tr>
@@ -77,7 +77,7 @@
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">내용</th>
 					<td align="left" colspan="3">
-						<textarea rows="10" cols="100" name="q_content" class="form-control" style="width: 94%; resize: none;" required>${ bb.q_content }</textarea>
+						<textarea rows="10" cols="100" name="q_content" class="form-control" style="width: 94%; resize: none;" required></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -90,23 +90,18 @@
 			 </table>
 			 <br><br>
 			 
-			 	  <!-- 로그인 하지 않은 상태면 -->
+	 	  	<!-- 로그인 하지 않은 상태면 -->
 			<c:if test="${loginInfo.u_id  == null}">
+				<%
+					session.setAttribute("destination", "redirect:/write.qb");
+				%>
 				<script type="text/javascript">
 					alert("로그인 후 이용 가능합니다.");
 					location.href="login.u";
 				</script>
-				<%
-					session.setAttribute("destination", "redirect:/write.qb");
-				%>
 			</c:if>
 			
-			<!-- 로그인 한 상태면 -->
-			<c:if test="${loginInfo.u_id  != null}">
-			<center>
-	 			<input type="submit" value="작성 완료" class="btn btn-dark" id="btn">
-			</center>
-			</c:if>
+ 			<input type="submit" value="작성 완료" class="btn btn-dark" id="btn">
 		</form>
 	</div>
 </article>

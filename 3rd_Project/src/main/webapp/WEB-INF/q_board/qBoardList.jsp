@@ -7,7 +7,7 @@
     
 <%@ include file="./../product/productHeader.jsp" %>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardList.css">
-<script src="selectbox.min.js"></script>
+<!-- <script src="selectbox.min.js"></script> -->
 <style type="text/css">
 	#noneHigtLight{
 		text-decoration: none;

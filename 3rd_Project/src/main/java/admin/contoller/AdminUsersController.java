@@ -47,7 +47,7 @@ public class AdminUsersController {
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
 		
-		int totalCount = ad.getTotalPrdCount(map);
+		int totalCount = ad.getTotalUserCount(map);
 		String url = request.getContextPath()+command;
 		Paging pageInfo = new Paging(pageNumber, "10", totalCount, url, whatColumn, keyword);
 		List<UsersBean> usersLists = ad.getUsers(map, pageInfo);

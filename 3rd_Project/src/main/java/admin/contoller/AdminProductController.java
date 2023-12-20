@@ -73,11 +73,6 @@ public class AdminProductController {
 	}
 	
 	@RequestMapping(value = inCommand, method = RequestMethod.POST)
-	public String adminProdIn2() throws IOException {
-		// 여기서부터 하기!!
-		return inPage; 
-	} 
-	 
 	public String adminProdIn2(@ModelAttribute(value = "pb") ProductBean pb,
 							Model model,
 							HttpServletRequest request) throws UnsupportedEncodingException {
