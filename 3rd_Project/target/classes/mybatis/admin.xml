@@ -254,6 +254,9 @@
 		</if>
 
 	</select>
+	<select id="getTotalUserCount" resultType="int">
+		select count(*) from users
+	</select>
 	<delete id="deleteUsers">
 		delete users
 		where u_id=#{u_id}

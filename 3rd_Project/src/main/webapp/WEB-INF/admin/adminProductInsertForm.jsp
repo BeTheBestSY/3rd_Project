@@ -58,45 +58,80 @@
 }
 </style>
 <script type="text/javascript">
+	var title, detail, ttlImg, dtlImg, ttlSpan, dtlSpan;
 	window.onload = function(){
-		const realUpload_ttl = document.querySelector('input[name="upload_ttl"]');
-		const realUpload_dtl = document.querySelector('input[name="upload_dtl"]');
-		const upload_ttl = document.querySelector('.upload_ttl');
-		const upload_dtl = document.querySelector('.upload_dtl');
-
-		upload_ttl.addEventListener('click', () => realUpload_ttl.click());
-		upload_dtl.addEventListener('click', () => realUpload_dtl.click());
+		/* var ttlName = null;
+		var dtlName = null; */
+		title = document.getElementById('title');
+		ttlImg = document.getElementById('ttl_img');
+		ttlSpan = document.getElementById('ttl_name');
+		
+		detail = document.getElementById('detail');
+		dtlImg = document.getElementById('dtl_img');
+		dtlSpan = document.getElementById('dtl_name');
+		
+		ttlImg.addEventListener('click', () => title.click());
+		dtlImg.addEventListener('click', () => detail.click());
 		
 		/* input에 파일이 업로드되면 change event 가 발생 */
-		realUpload_ttl.addEventListener('change', getTitleImage); // getTitleImage 함수 등록
-		realUpload_dtl.addEventListener('change', getDetailImage); // getDetailImage 함수 등록
+		title.addEventListener('change', getTitleImage); // getTitleImage 함수 등록
+		detail.addEventListener('change', getDetailImage); // getDetailImage 함수 등록
 		
 		function getTitleImage(e) {
+			var ttlPathSplit = title.value.split('\\'); // 타이틀 이미지의 경로를 구분자 '\\'로 나누기
+			var ttlName = ttlPathSplit[ttlPathSplit.length-1];
+			alert("들어온 타이틀이미지의 이름: "+ttlName);
+			
 	     	const file = e.currentTarget.files[0];
 	      	const reader = new FileReader(); // file을 담을 변수
 	      	reader.readAsDataURL(file);
 	      	reader.onload = (e) => {
 	      		// 파일이 로드되면 이미지를 해당 파일로 고치기
-	      		upload_ttl.setAttribute('src', e.target.result);
+	      		ttlImg.setAttribute('src', e.target.result);
+	      		ttlSpan.innerHTML='<a href="javascript:deleteTtlImg();"><font color="red">x</font></a> '+ttlName;
 	        };
 	    }
 		
 		function getDetailImage(e) {
+			var dtlPathSplit = detail.value.split('\\'); // 디테일 이미지의 경로를 구분자 '\\'로 나누기
+			var dtlName = dtlPathSplit[dtlPathSplit.length-1];
+			alert("들어온 디테일이미지의 이름: "+dtlName);
+			
 	     	const file = e.currentTarget.files[0];
 	      	const reader = new FileReader(); // file을 담을 변수
 	      	reader.readAsDataURL(file);
 	      	reader.onload = (e) => {
 	      		// 파일이 로드되면 이미지를 해당 파일로 고치기
-	      		upload_dtl.setAttribute('src', e.target.result);
+	      		dtlImg.setAttribute('src', e.target.result);
+	      		dtlSpan.innerHTML='<a href="javascript:deleteDtlImg();"><font color="red">x</font></a> '+dtlName;
 	        };
 	    }
 	};
+	function deleteTtlImg(){
+		ttlImg.setAttribute('src', '<%=request.getContextPath()%>/resources/image/no-image.jpg');
+		ttlSpan.innerHTML='';
+	}
+	function deleteDtlImg(){
+		dtlImg.setAttribute('src', '<%=request.getContextPath()%>/resources/image/no-image.jpg');
+		dtlSpan.innerHTML='';
+	}
+	function checkImg(){
+		if(ttlSpan.innerHTML == ''){
+			alert('타이틀 이미지를 넣어주세요.');
+			return false;
+		} else if(dtlSpan.innerHTML == ''){
+			alert('디테일 이미지를 넣어주세요.');
+			return false;
+		} else{
+			return true;
+		}
+	}
+	
 </script>
 <div id="center" style="text-align: center;">
 	<br><br><br><br>
 	<div>
-		<!--  enctype="multipart/form-data" -->
-		<form action="productInsert.admin" method="post" enctype="multipart/form-data">
+		<form action="productInsert.admin" method="post" enctype="multipart/form-data" onSubmit="return checkImg()">
 		<table>
 			<tr>
 				<th>브랜드</th>
@@ -149,18 +184,23 @@
 			<tr>
 				<th>제품사진</th>
 				<td height="50%">
-					<input type="file" name="upload_ttl" accept="image/*" required style="display: none">
-					<input type="file" name="upload_dtl" accept="image/*" required style="display: none">
+					<input id="title" type="file" name="upload_ttl" accept="image/*" style="display: none">
+					<input id="detail" type="file" name="upload_dtl" accept="image/*" style="display: none">
+					<br>
 					* 타이틀이미지 업로드<br>
-					<img class="upload_ttl" alt="타이틀이미지" src="<%=request.getContextPath()%>/resources/image/no-image.jpg" style="border:1px solid black; width:15%; height: 35%; cursor:pointer;"><br><br>
+					<img id="ttl_img" alt="타이틀이미지" src="<%=request.getContextPath()%>/resources/image/no-image.jpg" style="border:1px solid black; width:15%; height: 35%; cursor:pointer;"><br>
+					<span id="ttl_name"></span>
+					<br><br>
 					* 디테일이미지 업로드<br>
-					<img class="upload_dtl" alt="디테일이미지" src="<%=request.getContextPath()%>/resources/image/no-image.jpg" style="border:1px solid black; width:15%; height: 35%; cursor:pointer;"><br><br>
+					<img id="dtl_img" alt="디테일이미지" src="<%=request.getContextPath()%>/resources/image/no-image.jpg" style="border:1px solid black; width:15%; height: 35%; cursor:pointer;"><br>
+					<span id="dtl_name"></span>
+					<br><br>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
 					<br><br>
-					<input type="submit" value="추가하기" id="subBtn">
+					<input type="submit" value="추가하기" id="subBtn" style="cursor:pointer;">
 				</td>
 			</tr>
 		</table>

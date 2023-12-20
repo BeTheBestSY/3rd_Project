@@ -198,7 +198,7 @@ body{
 								</div>
 							</div>
 							<br> <input type="text" name="addr5" class="form-control"
-								id="sample4_detailAddress" id="lastName" placeholder="상세주소">
+								id="sample4_detailAddress" id="lastName" placeholder="상세주소"> 
 						</div>
 						<br>
 						<h4 class="mb-3">지불 방법</h4>

@@ -156,7 +156,11 @@ public class AdminDao {
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
 		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map, rowBounds);
 	}
-
+	
+	public int getTotalUserCount(Map<String, String> map) {
+		return sqlSessionTemplate.selectOne(nameSpace+"getTotalUserCount", map);
+	}
+	
 	public void deleteUsers(String u_id) {
 		sqlSessionTemplate.delete(nameSpace+"deleteUsers", u_id);
 	}
@@ -176,25 +180,24 @@ public class AdminDao {
 		return sqlSessionTemplate.selectOne(nameSpace+"getTotalPrdCount", map);
 	}
 
-
 	public int deleteProduct(String p_num) {
 		return sqlSessionTemplate.delete(nameSpace+"deleteProduct", p_num);
 	}
-
 
 	public ProductBean getProductByNum(String p_num) {
 		return sqlSessionTemplate.selectOne(nameSpace+"getProductByNum",p_num);
 	}
 
-
 	public int insertProduct(ProductBean pb) {
 		return sqlSessionTemplate.insert(nameSpace+"insertProduct",pb);
 	}
 
-
 	public int updateProduct(ProductBean pb) {
 		return sqlSessionTemplate.update(nameSpace+"updateProduct", pb);
 	}
+
+
+	
 
 
 }
