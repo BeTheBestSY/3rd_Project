@@ -235,9 +235,9 @@
 	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
 	String p_num = request.getParameter("p_num");
 	String pageNumber = request.getParameter("pb");
+	session.setAttribute("destination", "redirect:/prodView.p?p_num="+p_num+"&pageNumber="+pageNumber);
 			
 	if(ub==null){
-		session.setAttribute("destination", "redirect:/prodView.p?p_num="+p_num+"&pageNumber="+pageNumber);
 	%>
 		<script type="text/javascript">
 			alert("로그인 후 이용 가능합니다.")
