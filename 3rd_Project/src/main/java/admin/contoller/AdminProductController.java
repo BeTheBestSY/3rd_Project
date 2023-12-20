@@ -95,7 +95,7 @@ public class AdminProductController {
 //		}
 		return viewPage;
 	}
-	
+	 
 	@RequestMapping(value = delCommand)
 	public String adminProdDel(@RequestParam String p_num,
 							Model model) throws IOException {
