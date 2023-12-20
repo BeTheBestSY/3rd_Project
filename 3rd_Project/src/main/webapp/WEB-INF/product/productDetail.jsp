@@ -235,13 +235,13 @@
 	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
 	String p_num = request.getParameter("p_num");
 	String pageNumber = request.getParameter("pb");
+	session.setAttribute("destination", "redirect:/prodView.p?p_num="+p_num+"&pageNumber="+pageNumber);
 			
 	if(ub==null){
-		session.setAttribute("destination", "redirect:/prodView.p?p_num="+p_num+"&pageNumber="+pageNumber);
 	%>
 		<script type="text/javascript">
 			alert("로그인 후 이용 가능합니다.")
-			window.location.href = "login.u";
+			window.location.href = "login.u"; 
 		</script>
 	<%
 	};
@@ -250,17 +250,17 @@
 <c:set var="ub" value="<%=ub%>" />
 
 <form id="f">
-	<input type="hidden" name="p_num" value="${pb.p_num}"> 
+	<input type="hidden" name="p_num" value="${pb.p_num}">
 	<input type="hidden" name="id" value="${ub.u_id}">
 	<input type="hidden" name="cart_num" value="<%=cart_num%>">
 	
 	<section>
 	<!--중반부의 레이아웃-->
-	
+	 
 		<div class="container" id="one">
 		<!-- 중반부 전체를 감싸는 div 태그-->
 		
-			<div class="first">
+			<div class="first"> 
 			<!--중반부를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌 -->
 				<div style="width: 480px; height: 720px; overflow: hidden; margin: auto;">
 					<img src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg}" alt="타이틀 이미지" style="width: 100%; ">

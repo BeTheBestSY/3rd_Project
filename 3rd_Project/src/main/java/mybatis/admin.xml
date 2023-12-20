@@ -323,13 +323,8 @@
 		select * from product
 		where p_num=#{p_num}
 	</select>
-<<<<<<< HEAD
 	<insert id="insertProduct">
 		insert into product
 		values(pro_seq.nextval, #{p_brand}, #{p_name}, #{p_ttlimg}, #{p_dtlimg}, #{p_color}, #{p_price}, #{p_point}, #{p_stock}, #{p_salevolume}, #{p_contents})
 	</insert>
 </mapper> 
-
-=======
-</mapper> 
->>>>>>> 40797b2e23e86f81f690da65f87b46d5f176b23e
