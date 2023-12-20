@@ -88,7 +88,14 @@
 					<fmt:formatDate value="${bb.q_regdate}" pattern="yyyy-MM-dd"/>
 				</td>
 				<td>${ bb.q_readcount }</td>
-				<td>${bb.q_secret}</td>
+				<td>
+					<c:if test="${bb.q_secret == 'Y'}">
+						<img src="resources/image/secret.png" width="20">
+					</c:if>
+					<c:if test="${bb.q_secret == 'N'}">
+						-
+					</c:if>
+				</td>
 			</tr>
 		</c:forEach>
 	</c:if>
