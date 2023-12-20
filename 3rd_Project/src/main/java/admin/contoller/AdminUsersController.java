@@ -46,7 +46,7 @@ public class AdminUsersController {
 		map.put("filter", filter);
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
-		
+		 
 		int totalCount = ad.getTotalUserCount(map);
 		String url = request.getContextPath()+command;
 		Paging pageInfo = new Paging(pageNumber, "10", totalCount, url, whatColumn, keyword);
