@@ -47,7 +47,7 @@ public class AdminCBoardController {
 		Map<String,String> map = new HashMap<String,String>(); 
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
-		
+		 
 		int totalCount = adminDao.getTotalCountC(map);
 		String url = request.getContextPath()+listCommand;
 		
