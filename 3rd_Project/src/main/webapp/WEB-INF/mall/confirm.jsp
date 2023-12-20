@@ -15,7 +15,6 @@
 	if(confirm("장바구니에 추가되었습니다. 이동하시겠습니까?")){
 		location.href = 'cartList.mall';
 	} else {
-		alert();
 		window.location.href = "<%=destination%>";
 	}
 </script>
