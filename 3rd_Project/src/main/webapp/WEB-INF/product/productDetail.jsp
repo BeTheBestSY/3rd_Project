@@ -200,67 +200,6 @@
 		background: #F6F6F6;
 	}
 </style>
-<<<<<<< HEAD
-</head>
-<%@ include file="../views/header.jsp" %>
-<body>
-    <nav> <!--최상단의 배너-->
-        <div class="menu">
-            <p class="logo">${pb.p_color}</p>
-        </div>
-    </nav>
-<br>
- <%
- 	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
- 	String cart_num = session.getId();
- 
- 	if(ub == null){ 
- 		response.sendRedirect("login.u"); 
- 	}
- 	
- %>
-  <script type="text/javascript">
-	       function goCart(pnum){
-	    	   
-	    	ovalue = document.f.oqty.value;
-	    	if(ovalue < 1 || ovalue ==""){
-	    		alert("1이상 입력하세요.");
-	    		return false;
-	    	} 
-	
-	    	/*
-	    	document.f.action=	"cartAdd.jsp?pnum=" + pnum + "&ovalue=" + ovalue;
-	    	document.f.submit(); 
-	    	window.location.href = "cart.mall";
-	    	*/
-	    
-	    	document.f.action="cart.mall";
-	    	document.f.submit();   
-	    	}
-	       
-	       
-	       function goOrder(pnum) {
-	           ovalue = document.f.oqty.value;
-	           if (ovalue < 1 || ovalue == "") {
-	               alert("1이상 입력하세요.");
-	               return false;
-	           }
-	           
-	           // 사용자가 로그인했는지
-	           <%-- if (<%=id%> == null) {
-	               alert("로그인 후 이용해주세요.");
-	               return document.f.action = "login.u";
-	           } --%>
-	           
-	            //주문 처리
-	           document.f.action="order.mall";
-	           document.f.submit();   
-	           
-	        
-	       }
-	       
-	    
-=======
 
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
@@ -284,85 +223,34 @@
        document.getElementById('totalAmount').innerText = '총 상품 금액 : ' + new Intl.NumberFormat().format(totalAmount) + '원';
        document.getElementById('totalPoint').innerText = '(적립 예정 포인트 : ' + new Intl.NumberFormat().format(totalPoint) + '원)';
    }
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 </script>
-<<<<<<< HEAD
-=======
 </head>
 
 <%@ include file="productHeader.jsp" %>
 
 <body>
 
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 <%
 	String cart_num = session.getId();
 	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
 	String p_num = request.getParameter("p_num");
 	String pageNumber = request.getParameter("pb");
+	session.setAttribute("destination", "redirect:/prodView.p?p_num="+p_num+"&pageNumber="+pageNumber);
 			
 	if(ub==null){
-		session.setAttribute("destination", "redirect:/prodView.p?p_num="+p_num+"&pageNumber="+pageNumber);
 	%>
 		<script type="text/javascript">
 			alert("로그인 후 이용 가능합니다.")
-			window.location.href = "login.u";
+			window.location.href = "login.u"; 
 		</script>
 	<%
 	};
 %>
-<<<<<<< HEAD
-
-<script type="text/javascript">
-	function goCart(pnum){
-		ovalue = document.f.oqty.value;
-		if(ovalue < 1 || ovalue ==""){
-			alert("1이상 입력하세요.");
-			return false; 
-		} 
-	}
-
-	function goOrder(pnum) {
-		ovalue = document.f.oqty.value;
-	    if (ovalue < 1 || ovalue == "") {
-	   		alert("1이상 입력하세요.");
-	        return false;
-	    }
-	}
-	       
-    function updateOrderAmount() {
-        var quantity = document.getElementById('num').value;
-        var unitPrice = ${pb.p_price }; // 서버 측 데이터에서 단가 가져오기
-
-        // 주문 금액 계산
-        var orderAmount = quantity * unitPrice;
-
-        // 배송비 계산
-        var deliveryFee = orderAmount >= 30000 ? 0 : 3000;
-
-        // 총액 계산
-        var totalAmount = orderAmount + deliveryFee;
-
-        // 표시된 배송비 및 총액 업데이트
-        document.getElementById('deliveryFee').innerText =  new Intl.NumberFormat().format(deliveryFee) + '원';
-        document.getElementById('totalAmount').innerText = '총액: ' + new Intl.NumberFormat().format(totalAmount) + '원';
-    }
-</script>
-	   	    
-=======
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 	       
 <c:set var="ub" value="<%=ub%>" />
-<<<<<<< HEAD
-<form name="f" action="order.mall">
- <input type="hidden" name="p_num" value="${pb.p_num}">
- <input type="hidden" name="id" value="${ub.u_id}">
- <input type="hidden" name="cart_num" value="<%=cart_num%>">
-	<section> <!--중반부의 레이아웃-->
-=======
 
 <form id="f">
-	<input type="hidden" name="p_num" value="${pb.p_num}"> 
+	<input type="hidden" name="p_num" value="${pb.p_num}">
 	<input type="hidden" name="id" value="${ub.u_id}">
 	<input type="hidden" name="cart_num" value="<%=cart_num%>">
 	
@@ -378,16 +266,7 @@
 					<img src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg}" alt="타이틀 이미지" style="width: 100%; ">
 				</div>
 			</div>
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 
-<<<<<<< HEAD
-        <div class="container" id="one"> <!-- 중반부 전체를 감싸는 div 태그-->
-            
-            <div class="first"> <!--중반부를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 asd나눠줌 -->
-            <div class="first"> <!--중반부를 두개의 div태그로 나누어 왼쪽 절반의 구역으로 나눠줌 -->
-                <img  src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg }" alt="타이틀이미지">
-            </div>
-=======
 			<div class="second">
 			<!--중반부 를 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
 				<div id="fifth">
@@ -405,22 +284,7 @@
 					<span>적립 포인트</span>
 					<span><fmt:formatNumber value="${pb.p_point}" pattern="#,###" />원</span>
 				</div>
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 
-<<<<<<< HEAD
-            <div class="second"> <!--중반부 를 두개의 div태그로 나누어 오른쪾 절반의 구역으로 나눠줌-->
-<form name="f">
- <input type="hidden" name="p_num" value="${pb.p_num}">
- <input type="hidden" name="id" value="${ub.u_id}">
- <input type="hidden" name="cart_num" value="<%=cart_num%>">                   
-                    <div id="fifth">
-                        <div class="emojiright">
-                            <p class="coffeename">${pb.p_name}</p>
-                            <p class="coffeename2">${pb.p_brand}</p>
-                        </div>
-                       
-                    </div>
-=======
 				<div class="productdetail2">
 					<!--영양정보를 담아주는 div 태그-->
 					<div class="boxone">
@@ -442,7 +306,7 @@
 
 				<div class="allegy">
 					<span id="totalAmount">총 상품 금액 : 
-						<fmt:formatNumber value="${pb.p_price}" pattern="#,###" />원
+						<fmt:formatNumber value="${pb.p_price+3000}" pattern="#,###" />원
 					</span>
 					&nbsp;
 					<span id="totalPoint" style="font-size: 10pt; padding-top: 3px;">
@@ -455,7 +319,6 @@
 		</div>
 	</section>
 </form>
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 
 <div style="width: 60%; margin: auto; border-bottom: 1px solid #D5D5D5;"> 
 	<div style="width: 250px; height: 45px; background: #C7C7DB; color: white; text-align: center; display: table-cell; vertical-align: middle; font-family: 'RIDIBatang'; font-size: 15pt;">

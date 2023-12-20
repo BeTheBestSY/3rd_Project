@@ -30,7 +30,7 @@
 			</a>
 			<a href="cartList.mall"><img src="resources/image/cart.png" width="23"></a>
 		</div>
-		<script>
+		<script> 
 			var searchDisplay = true;
 			
 			function display(){

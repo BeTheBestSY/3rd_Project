@@ -18,16 +18,16 @@ import mall.model.CartDao;
 import product.model.ProductBean;
 
 @Controller
-public class cartController {
+public class CartController {
 	private final String command = "/cart.mall";
-	private String viewPage = "cartList";
+	private String viewPage = "confirm";
 	
 	@Autowired 
 	private CartDao dao;
 	@Autowired
 	private ServletContext application;
 	
-	@RequestMapping(value = command )
+	@RequestMapping(value = command)
 	public String cart(
 			@RequestParam(value = "p_num", required = false) String p_num,
 			@RequestParam(value = "cart_num", required = false) String cart_num,

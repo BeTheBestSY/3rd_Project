@@ -44,6 +44,9 @@ public class QBoardListController {
 		
 		model.addAttribute("list",list);
 		model.addAttribute("pageInfo",pageInfo);
+		model.addAttribute("pageNumber",pageNumber);
+		model.addAttribute("whatColumn",whatColumn);
+		model.addAttribute("keyword",keyword);
 		
 		return viewPage;
 	}

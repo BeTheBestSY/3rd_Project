@@ -61,6 +61,7 @@
 <div id="center" style="text-align: center;">
 	<br><br><br><br>
 	<div>
+		<!--  enctype="multipart/form-data" -->
 		<form action="productInsert.admin" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
@@ -88,12 +89,6 @@
 				</td>
 			</tr>
 			<tr>
-				<th>가격</th>
-				<td>
-					<input type="text" class="form-control" name="p_price" required>
-				</td>
-			</tr>
-			<tr>
 				<th>재고수량</th>
 				<td>
 					<input type="text" class="form-control" name="p_stock" required>
@@ -114,15 +109,16 @@
 			<tr>
 				<th>제품사진</th>
 				<td>
-					타이틀이미지: <input type="file" name="p_ttlimg" accept="image/jpeg" required><br><br>
-					
-					디테일이미지: <input type="file" name="p_dtlimg" accept="image/jpeg" required> 
+					타이틀이미지: <input type="file" name="upload_ttl" accept="image/jpeg" required><br><br>
+					디테일이미지: <input type="file" name="upload_dtl" accept="image/jpeg" required>
+					<!-- 타이틀이미지: <input type="file" name="p_ttlimg" accept="image/jpeg" required><br><br>
+					디테일이미지: <input type="file" name="p_dtlimg" accept="image/jpeg" required>  -->
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
 					<br><br>
-					<input type="submit" value="수정하기" id="subBtn">
+					<input type="submit" value="추가하기" id="subBtn">
 				</td>
 			</tr>
 		</table>
