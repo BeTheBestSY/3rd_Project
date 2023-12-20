@@ -70,8 +70,8 @@ public class AdminProductController {
 	@RequestMapping(value = inCommand, method = RequestMethod.POST)
 	public String adminProdIn2() throws IOException {
 		// 여기서부터 하기!!
-		return inPage;
-	}
+		return inPage; 
+	} 
 	
 	@RequestMapping(value = delCommand)
 	public String adminProdDel(@RequestParam String p_num,
