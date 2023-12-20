@@ -79,7 +79,7 @@ public class AdminProductController {
 		System.out.println("insert하려는 상품의 타이틀이미지:"+pb.getP_ttlimg());
 		System.out.println("insert하려는 상품의 디테일이미지:"+pb.getP_dtlimg());
 		
-//		ad.insertProduct(pb);
+//		ad.insertProduct(pb); 
 //		String uploadPath = servletContext.getRealPath("/resources/uploadFolder/product/");
 //		System.out.println("uploadPath:"+uploadPath);
 //		File destTitle = new File(uploadPath+File.separator+pb.getP_ttlimg());
