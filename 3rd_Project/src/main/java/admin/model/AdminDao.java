@@ -153,11 +153,13 @@ public class AdminDao {
 	
 	//users
 	public List<UsersBean> getUsers(Map<String, String> map, Paging pageInfo) {
+		System.out.println("getUsers 호출중..");
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
 		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map, rowBounds);
 	}
 	
 	public int getTotalUserCount(Map<String, String> map) {
+		System.out.println("getTotalUserCount 호출중..");
 		return sqlSessionTemplate.selectOne(nameSpace+"getTotalUserCount", map);
 	}
 	
