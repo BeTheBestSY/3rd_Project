@@ -106,10 +106,20 @@
 		where cl_num = #{cl_num}
 	</select>
 	
+	<insert id="insertCeleb">
+		insert into celeb values(celeb_seq.nextval, #{cl_name}, #{cl_image}, #{cl_color})
+	</insert>
+	
 	<delete id="deleteCeleb">
 		delete celeb
 		where cl_num=#{cl_num}
 	</delete>
+	
+	<update id="updateCeleb">
+		update celeb
+		set cl_name=#{cl_name}, cl_image=#{cl_image}, cl_color=#{cl_color}
+		where cl_num=#{cl_num}
+	</update>
 	
 	<!-- company -->
 	<select id="getAllCompany" resultType="myCompany" >
