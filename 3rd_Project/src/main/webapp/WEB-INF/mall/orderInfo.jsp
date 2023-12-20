@@ -244,7 +244,7 @@
 				    <input type="radio" id="tab3" name="way">
 				    <label for="tab3" class="tab-label">Tab Menu 3</label>
 				    <div class="tab-content">
-				      This is third contents.
+				      This is third contents.  a
 				    </div>
 				  </div>
 				   -->
