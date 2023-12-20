@@ -72,7 +72,7 @@ public class AdminProductController {
 		// 여기서부터 하기!!
 		return inPage; 
 	} 
-	
+	 
 	@RequestMapping(value = delCommand)
 	public String adminProdDel(@RequestParam String p_num,
 							Model model) throws IOException {
