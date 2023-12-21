@@ -68,7 +68,7 @@
 						  </td>
 					      <td>
 					      	<a href="cartDelete.mall?p_num=${pb.p_num}" class="nav-link px-2 link-secondary">
-								X
+								X 
 							</a>
 					      </td>
 					    </tr>  
