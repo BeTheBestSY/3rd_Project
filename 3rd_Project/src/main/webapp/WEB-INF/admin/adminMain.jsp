@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminMain.css">
 <%@ include file="adminMenu.jsp"%>
-<<<<<<< HEAD
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
 
@@ -98,22 +97,15 @@
 		<br>
 	</div>
 </article>
-=======
 
 <div>
   <canvas id="myChart"></canvas>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
->>>>>>> bba52e3cb8ce3d960a6cbda2f4af6c1a3f004cf4
 
 <script>
 	const ctx = document.getElementById('myChart');
-
-<<<<<<< HEAD
-
-
-<script>
 	var config = new Chart(document.getElementById("orderChart").getContext('2d'),{
 		type: 'line',   // 차트의 종류를 선언한다.
 		data: {
@@ -199,11 +191,7 @@
 	});
 	
 	
-</script>
-
-</body>
  
-=======
 	new Chart(ctx, {
 		type: 'bar',
 		data: {
@@ -224,4 +212,3 @@
 	});
 </script>
  
->>>>>>> bba52e3cb8ce3d960a6cbda2f4af6c1a3f004cf4
