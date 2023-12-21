@@ -12,7 +12,7 @@ import admin.model.AdminDao;
 public class AdminController {
 
 	@Autowired
-	private AdminDao adminDao;
+	private AdminDao adminDao; 
 	private final String command = "/.admin";
 	private final String viewPage = "adminMain";
 	 
