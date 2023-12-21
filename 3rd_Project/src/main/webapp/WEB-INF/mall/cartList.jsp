@@ -99,7 +99,7 @@
 							</td> 
 						<td><a href="cartOrder.mall">주문하기</a></td>
 					</tr>
-				<!-- sd -->
+				 
 		</tbody>
 	</table>
 	</div>
