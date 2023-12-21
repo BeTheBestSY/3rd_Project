@@ -15,7 +15,7 @@ public class AdminController {
 	private AdminDao adminDao;
 	private final String command = "/.admin";
 	private final String viewPage = "adminMain";
-	
+	 
 	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String doAction() {
 		return viewPage;
