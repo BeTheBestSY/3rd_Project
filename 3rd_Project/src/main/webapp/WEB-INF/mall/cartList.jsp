@@ -88,7 +88,7 @@
 					</tr>
 					<tr>
 						<td colspan="3"></td>
-						<td>전체 총액:</td>
+						<td>전체 금액:</td>
 						<td>
 							<c:if test="${totalAmount<30000}">
 								<fmt:formatNumber value="${totalAmount+3000}" pattern="#,###" />원

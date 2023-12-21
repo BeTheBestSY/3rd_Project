@@ -331,4 +331,64 @@
 		p_stock=#{p_stock}, p_salevolume=#{p_salevolume}, p_contents=#{p_contents} 
 		where p_num=#{p_num}
 	</update>
+	
+	<!-- order -->
+		<select id="getTotalCountOrder" resultType="int">
+			select count(*) from orders 
+			<if test="whatColumn=='u_id'">
+				where u_id like #{keyword}
+			</if>
+			<if test="whatColumn=='o_date'">
+				where o_date like #{keyword}
+			</if>
+			<if test="whatColumn=='all'">
+				where o_date like #{keyword} or u_id like #{keyword}
+			</if>
+			order by o_num asc
+		</select>
+		
+		<select id="getAllOrder" resultType="mall.model.OrderBean">
+			select * from orders 
+			<if test="whatColumn=='u_id'">
+				where u_id like #{keyword}
+			</if>
+			<if test="whatColumn=='o_date'">
+				where o_date like #{keyword}
+			</if>
+			<if test="whatColumn=='all'">
+				where o_date like #{keyword} or u_id like #{keyword}
+			</if>
+			order by o_num asc
+		</select>
+		
+		<select id="selectOrderStatus" resultType="String">
+			select o_status from orders
+				where o_num = #{o_num}
+		</select>
+		
+		<update id="updateOrderStatus">
+			update orders
+				set o_status='배송완료' where o_num = #{o_num}
+		</update>
+		
+		<select id="getAllOrdersProduct" resultType="mall.model.OrdersProductBean">
+			select * from ordersProduct
+				where o_num = #{o_num}
+		</select>
+		
+		<select id="selectPord" resultType="myProduct">
+			select p_name, p_price, p_num, p_point from product
+				where p_num = #{p_num} 
+		</select>
+		
+		<select id="getOneOrder" resultType="mall.model.OrderBean">
+			select * from orders
+				where o_num = #{o_num}
+		</select>
+		
+		<update id="updateUsersPoint">
+			update users
+				set u_point = u_point+#{p_point} where u_id = #{u_id}
+		</update>
+	
 </mapper> 
