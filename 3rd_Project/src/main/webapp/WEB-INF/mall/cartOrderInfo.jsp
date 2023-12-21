@@ -69,15 +69,22 @@
   border-top: 1px solid #caccdb;
   overflow: auto;
 }
+
 </style>
 <script src="../assets/js/color-modes.js"></script>
 <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
- 
+ <style>
+   body{
+      padding-top: 140px;  
+   }
+</style>
 </head>
+
+   
 <%@ include file="../views/header.jsp" %>
-<body>
+<body>  
      
 
      
@@ -93,28 +100,48 @@
         
         </h4>  
         <ul class="list-group mb-3">
+        <c:forEach var="pb" items="${ productList }"  varStatus="loop">
+        	<c:set var="totalAmount" value="${totalAmount + (pb.p_price * list[loop.index].cart_qty)}" />
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div style="margin: 0 !important;">    
               <span>${pb.p_name }</span><br> 
-              <small class="text-body-secondary">수량 : ${tc.cart_qty}개</small>
+              <small class="text-body-secondary">수량 : ${list[loop.index].cart_qty}개</small>
             </div>
             <span class="text-body-secondary"> <strong> </strong></span>
           </li>
-       
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <span>상품 금액</span>
-            <strong>${tc.cart_qty * pb.p_price}원</strong> 
+            <strong>	
+	            <fmt:formatNumber value="${pb.p_price*list[loop.index].cart_qty}" pattern="#,###" />원
+
+	   		</strong> 
           </li>
+       </c:forEach>
+          
            <li class="list-group-item d-flex justify-content-between lh-sm">
            
            <span>배송비</span>
-            <strong>${deli}원</strong> 
+            <strong>
+            	<c:if test="${totalAmount<30000}">
+					3,000원
+				</c:if>
+				<c:if test="${totalAmount>=30000}">
+					0원
+				</c:if>
+			</strong> 
           
           </li>
            <li class="list-group-item d-flex justify-content-between lh-sm">
            
             <span>총 결제 금액</span>
-            <strong>${total}원</strong>
+            <strong>
+				<c:if test="${totalAmount<30000}">
+					<fmt:formatNumber value="${totalAmount+3000}" pattern="#,###" />원
+				</c:if>
+				<c:if test="${totalAmount>=30000}">
+					<fmt:formatNumber value="${totalAmount}" pattern="#,###" />원
+				</c:if>
+			</strong>
             
           </li>   
         </ul>
@@ -126,7 +153,7 @@
       
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">주문 정보 입력</h4>
-        <form class="needs-validation" action="orderCompleted.mall" novalidate>
+        <form class="needs-validation" action="cartOrderCompleted.mall" novalidate>
         <input type="hidden" name="cart_num" value="<%=session.getId()%>">
           <div class="row g-3">
             <div class="col-sm-6">
@@ -237,11 +264,6 @@
 				    <div class="tab-content">
 				      카카오 페이 결제 방법을 선택하셨습니다.<br>
 				      결제 상품 확인 후 주문완료 버튼을 클릭해 주세요.
-					<button id="kaobtn" style="background: #fee500; color:#000; border-radius: 12px; padding: 10px 20px;">
-                        카카오페이
-                    </button>
-
- 
 				    </div>
 				  </div>
 				 
@@ -249,9 +271,9 @@
 				    <input type="radio" id="tab3" name="way">
 				    <label for="tab3" class="tab-label">Tab Menu 3</label>
 				    <div class="tab-content">
-				      This is third contents.  a
+				      This is third contents.
 				    </div>
-				  </div>sa 
+				  </div>
 				   -->
 				</div>
 				          
@@ -272,7 +294,6 @@
 </div>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  
 $(document).ready(function() {
   // 초기에는 유효성 메시지를 숨깁니다
   $('.validation-message').hide();
