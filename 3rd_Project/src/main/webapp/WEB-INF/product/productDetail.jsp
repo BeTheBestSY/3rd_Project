@@ -241,7 +241,7 @@
 	%>
 		<script type="text/javascript">
 			alert("로그인 후 이용 가능합니다.")
-			window.location.href = "login.u"; 
+			window.location.href = "login.u";
 		</script>
 	<%
 	};
@@ -292,7 +292,10 @@
 						<ul>
 							<li>
 								<span class="l">배송비(30,000원 이상 무료배송)</span> 
-								<span id="deliveryFee" class="r">3,000원</span>
+								<span id="deliveryFee" class="r">
+									<c:if test="${pb.p_price > 30000}">0원</c:if>
+									<c:if test="${pb.p_price < 30000}">3,000원</c:if>
+								</span>
 							</li>
 							<li>
 								<span class="l">수량</span> 

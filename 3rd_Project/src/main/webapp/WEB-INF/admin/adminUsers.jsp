@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css?ver=220610">
 <script type="text/javascript">
 	window.onload = function(){
 		const radios = document.querySelectorAll("input[name='filter_btn']");
@@ -10,6 +10,7 @@
 				var current = e.currentTarget;
 				var whatColumn = document.getElementById('whatColumn');
 				var keyword = document.getElementById('keyword');
+
 				location.href='usersList.admin?filter='+current.value+'&whatColumn='+whatColumn.value+'&keyword='+keyword.value;
 				
 			});
@@ -32,20 +33,20 @@
 				<div class="search-wrap">
 					<form action="usersList.admin" method="post">
 						<select name="whatColumn" id="whatColumn" onchange="init()" >
-							<option value="all" <c:if test="${param.whatColumn eq 'all' || param.whatColumn eq ''}">selected</c:if>>전체검색</option>
+							<option value="all" <c:if test="${param.whatColumn eq 'all' || param.whatColumn eq null}">selected</c:if>>전체검색</option>
 							<option value="u_name" <c:if test="${param.whatColumn eq 'u_name'}">selected</c:if>>이름</option>
 							<option value="u_id" <c:if test="${param.whatColumn eq 'u_id'}">selected</c:if>>아이디</option>
 							<option value="u_phone" <c:if test="${param.whatColumn eq 'u_phone'}">selected</c:if>>휴대폰번호</option>
 						</select>
-						<input type="search" id="keyword" name="keyword" value="${param.keyword }" placeholder="검색어를 입력해주세요.">
+						<input type="search" id="keyword" name="keyword" <c:if test="${param.keyword ne null }">value="${param.keyword }"</c:if> placeholder="검색어를 입력해주세요.">
 						<button type="submit" class="btn btn-dark">검색</button>
 					</form>
 				</div>
-				<div class="filter_radio" style="margin: auto; width: 80%; height: 6%;">
-					<input type="radio" name="filter_btn" value="A" <c:if test="${param.filter eq 'A' or param.filter eq null}">checked</c:if>>전체 회원
-					<input type="radio" name="filter_btn" value="S" <c:if test="${param.filter eq 'S'}">checked</c:if>>기본
-					<input type="radio" name="filter_btn" value="N" <c:if test="${param.filter eq 'N'}">checked</c:if>>네이버
-					<input type="radio" name="filter_btn" value="K" <c:if test="${param.filter eq 'K'}">checked</c:if>>카카오
+				<div class="filter_radio">
+					<span style="position:relative;right:26%;bottom:40%;"><input type="radio" name="filter_btn" value="A" <c:if test="${param.filter eq 'A' || param.filter eq null || param.filter eq ''}">checked</c:if> style="width:20px;height:18px;"> 전체 회원</span>
+					<span style="position:relative;right:21%;bottom:40%;"><input type="radio" name="filter_btn" value="S" <c:if test="${param.filter eq 'S'}">checked</c:if> style="width:20px;height:18px;"> 기본</span>
+					<span style="position:relative;right:15%;bottom:40%;"><input type="radio" name="filter_btn" value="N" <c:if test="${param.filter eq 'N'}">checked</c:if> style="width:20px;height:18px;"> 네이버</span>
+					<span style="position:relative;right:10%;bottom:40%;"><input type="radio" name="filter_btn" value="K" <c:if test="${param.filter eq 'K'}">checked</c:if> style="width:20px;height:18px;"> 카카오</span>
 				</div>
 			</div>
 		</div>

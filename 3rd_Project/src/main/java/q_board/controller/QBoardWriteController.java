@@ -35,13 +35,19 @@ public class QBoardWriteController {
 	} 
 	
 	@RequestMapping(value=command, method=RequestMethod.POST)
-	public String gowrite(HttpServletRequest request, Model model) {
+	public String gowrite(HttpServletRequest request, Model model, @ModelAttribute("qb") QBoardBean qb) {
 		
-		QBoardBean qb = new QBoardBean();
-		qb.setQ_type(request.getParameter("q_type"));
-		System.out.println("qb.getQ_type()" + qb.getQ_type());
-		
+		/*
 		System.out.println("post 도착함");
+		System.out.println("qb.getQ_type() :" + qb.getQ_type());
+		System.out.println("qb.getQ_writer() : "+ qb.getQ_writer());
+		System.out.println("qb.getQ_email() : "+ qb.getQ_email());
+		System.out.println("qb.getQ_subject() : "+ qb.getQ_subject());
+		System.out.println("qb.getQ_password : "+ qb.getQ_password());
+		System.out.println("qb.getQ_content : "+ qb.getQ_content());
+		System.out.println("qb.getQ_secret : "+ qb.getQ_secret());
+		*/
+		
 		qb.setQ_ip(request.getRemoteAddr());
 		qb.setQ_regdate(new Timestamp(System.currentTimeMillis()));
 		qdao.writeBoard(qb);

@@ -122,7 +122,7 @@
 												<fmt:formatNumber value="${pb.p_price}" pattern="#,###" />원 
 											</p>
 											<p style="position: absolute; left: 255px; top: 405px;">
-												<a href="#">
+												<a href="cart.mall?p_num=${pb.p_num}&cart_num=<%=session.getId()%>&oqty=1">
 													<img src="resources/image/cartAdd.svg" width="25">
 												</a>
 											</p>

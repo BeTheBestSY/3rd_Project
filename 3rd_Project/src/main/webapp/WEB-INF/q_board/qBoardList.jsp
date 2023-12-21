@@ -7,7 +7,7 @@
     
 <%@ include file="./../product/productHeader.jsp" %>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardList.css">
-<script src="selectbox.min.js"></script>
+<!-- <script src="selectbox.min.js"></script> -->
 <style type="text/css">
 	#noneHigtLight{
 		text-decoration: none;
@@ -15,7 +15,7 @@
 	#noneHigtLight:hover{
 		color: #7C81BB;
 	}
-	body{
+	body{ 
 		padding-top: 140px;
 	}
 </style>
@@ -88,7 +88,14 @@
 					<fmt:formatDate value="${bb.q_regdate}" pattern="yyyy-MM-dd"/>
 				</td>
 				<td>${ bb.q_readcount }</td>
-				<td>${bb.q_secret}</td>
+				<td>
+					<c:if test="${bb.q_secret == 'Y'}">
+						<img src="resources/image/secret.png" width="20">
+					</c:if>
+					<c:if test="${bb.q_secret == 'N'}">
+						-
+					</c:if>
+				</td>
 			</tr>
 		</c:forEach>
 	</c:if>

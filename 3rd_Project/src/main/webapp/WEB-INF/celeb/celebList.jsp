@@ -117,8 +117,8 @@ body {
 				</div>
 				<div style="padding-top: 50px;">${pageInfo.pagingHtml}</div>
 			</main>
-	</div>
 	</article>
+	</div>
 </body>
 
 <%@ include file="../views/footer.jsp" %>

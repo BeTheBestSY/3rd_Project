@@ -25,13 +25,31 @@
 		location.href="qReply.qb?q_ref="+q_ref+"&q_re_step="+q_re_step+"&q_re_level="+q_re_level+"&pageNumber="+pageNumber+"&q_num="+q_num+"&whatColumn="+whatColumn+"&keyword="+keyword;
 	}
 </script>
+
 <%
-	application.setAttribute("flag",false);
+	application.setAttribute("flag", false);
+	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
+	String id = "null";
+	
+	if(ub != null){
+		id = ub.getU_id();
+	}
 %>
+
+<c:if test="${bb.q_secret == 'Y'}">
+	<c:set var="userId" value="<%=id%>" />
+	<c:if test="${bb.q_writer != userId}">
+		<c:if test="${userId != 'admin'}">
+			<script type="text/javascript">
+				alert("비밀글은 작성자와 관리자만 확인 가능합니다.");
+				history.go(-1);
+			</script>
+		</c:if>
+	</c:if>
+</c:if>
 
 <br>
 <article id="center" style=" text-align:center; font-family: 'RIDIBatang';">
-
 
 <div class="page-title">
     <div class="container">
@@ -82,15 +100,15 @@
 			<!-- 접속한 id가 관리자일 땐 모든 게시물 수정 삭제 답글 가능 -->
 			<c:if test="${loginInfo.u_id == 'admin'}"> 
 				<center>
-					<input type="button" value="수정하기" id="btn" onClick="location.href='cUpdate.qb?q_num=${bb.q_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
-					<input type="button" value="삭제하기" id="btn" onClick="location.href='cDelete.qb?q_num=${bb.q_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+					<input type="button" value="수정하기" id="btn" onClick="location.href='qUpdate.qb?q_num=${bb.q_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+					<input type="button" value="삭제하기" id="btn" onClick="location.href='qDelete.qb?q_num=${bb.q_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 					<input type="button" value="답글달기" id="btn" onClick="goReply(${ bb.q_num },${ bb.q_ref },${ bb.q_re_step },${ bb.q_re_level },${pageNumber}, '${whatColumn}', '${keyword}')" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 				</center> 
 			</c:if>
 		</form:form>
-</article>
 
 </div>
+</article>
 
 
 <%@ include file="./../views/footer.jsp" %>

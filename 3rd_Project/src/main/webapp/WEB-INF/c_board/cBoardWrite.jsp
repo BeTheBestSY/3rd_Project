@@ -90,9 +90,8 @@
 			</center>
 			</c:if>
 		</form:form>
+	</div>
 </article>
-
-</div>
 
 
 <%@ include file="./../views/footer.jsp" %>

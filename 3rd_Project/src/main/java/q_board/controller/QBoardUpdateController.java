@@ -27,6 +27,7 @@ public class QBoardUpdateController {
 	
 	public final String command="/qUpdate.qb";
 	public final String viewPage="qBoardUpdate";
+	public final String viewPage2="alert";
 	public final String gotoPage="redirect:/qBoardList.qb";
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
@@ -60,22 +61,10 @@ public class QBoardUpdateController {
 			@RequestParam("whatColumn") String whatColumn,
 			@RequestParam("keyword") String keyword,
 			HttpServletRequest request,
-			@ModelAttribute("bb") @Valid QBoardBean bb,
-			BindingResult br
+			@ModelAttribute("bb") QBoardBean bb
 		) throws IOException {
 		
 		int q_num = bb.getQ_num();
-		
-		if(br.hasErrors()) {
-			
-			model.addAttribute("pageNumber",pageNumber);
-			model.addAttribute("q_num",q_num);
-			model.addAttribute("bb", bb);
-			model.addAttribute("whatColumn",whatColumn);
-			model.addAttribute("keyword",keyword);
-			
-			return viewPage;
-		}
 		
 		ModelAndView mav = new ModelAndView();
 		QBoardBean bb2 = qdao.selectContent(q_num);
@@ -92,18 +81,13 @@ public class QBoardUpdateController {
 			
 			qdao.updateBoard(bb);
 			
-			return gotoPage+"?q_num="+q_num+"&pageNumber="+pageNumber;
+			return gotoPage+"?q_num="+q_num+"&pageNumber="+pageNumber+"&whatColumn="+whatColumn+"&keyword="+keyword;
 			
 		} else {
-			response.setContentType("text/html; charset=UTF-8");
-		    PrintWriter out = response.getWriter();
-		    out.print("<script>alert('비밀번호가 일치하지 않습니다.');</script>");
-		    out.flush();
-		    model.addAttribute("pageNumber",pageNumber);
+		    model.addAttribute("msg", "비밀번호가 일치하지 않습니다.");
+			model.addAttribute("url", "qUpdate.qb?q_num="+q_num+"&pageNumber="+pageNumber+"&whatColumn="+whatColumn+"&keyword="+keyword);
 			model.addAttribute("bb",bb);
-			model.addAttribute("whatColumn",whatColumn);
-			model.addAttribute("keyword",keyword);
-			return viewPage;
+			return viewPage2;
 		}
 	}
 }
