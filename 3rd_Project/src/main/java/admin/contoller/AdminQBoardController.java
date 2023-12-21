@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import admin.model.AdminDao;
+import c_board.model.CBoardBean;
 import q_board.model.QBoardBean;
 import utility.Paging;
 
@@ -31,6 +32,8 @@ public class AdminQBoardController {
 	public final String viewPage="adminQBoard";
 	public final String deleteCommand="/qBoardDelete.admin";
 	public final String gotoPage="redirect:/qBoardList.admin";
+	private final String commandDetail = "/qBoardDetail.admin";
+	private final String viewPageDetail = "adminQBoardDetail";
 	
 	@RequestMapping(value=listCommand,method=RequestMethod.GET)
 	public String goAdmin(
@@ -75,6 +78,23 @@ public class AdminQBoardController {
 		adminDao.deleteBoard(q_num);
 		
 		return gotoPage;
+	}
+	
+	@RequestMapping(value=commandDetail,method=RequestMethod.GET)
+	public String toDetailList(
+			Model model,
+			@RequestParam("q_num") int q_num,
+			@RequestParam("pageNumber") int pageNumber
+			) throws Exception {
+		
+		QBoardBean bb = adminDao.selectContent(q_num);
+		
+		model.addAttribute("pageNumber",pageNumber);
+		model.addAttribute("bb",bb);
+		
+		return viewPageDetail;
+		
+		
 	}
 	
 	

@@ -71,6 +71,7 @@ public class AdminDao {
 		return bb;
 	}
 	
+	
 	public void deleteBoardC(int c_num) {
 		sqlSessionTemplate.delete(nameSpace+"deleteBoardC",c_num);
 	}
@@ -105,12 +106,18 @@ public class AdminDao {
 			return cb;
 		}
 
+	public void insertCeleb(CelebBean bb) {
 
+		sqlSessionTemplate.insert(nameSpace+"insertCeleb",bb);
+		
+	}
 	public void deleteCeleb(int cl_num) {
 		sqlSessionTemplate.delete(nameSpace+"deleteCeleb", cl_num);
 	}
 	
-	
+	public int updateCeleb(CelebBean bb) {
+		return sqlSessionTemplate.update(nameSpace+"updateCeleb", bb);
+	}
 	
 	//company
 	public List<CompanyBean> getAllCompany(Paging pageInfo, Map<String, String> map) {

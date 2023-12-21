@@ -69,7 +69,7 @@
 								<c:set var="wid" value="${bb.q_re_level * 20}"/>
 								<img src="<%= request.getContextPath() %>/resources/image/re.png" width="2%">
 							</c:if>
-								<a href="detail.qb?q_num=${ bb.q_num }&pageNumber=${ pageInfo.pageNumber }" id="noneHigtLight">
+								<a href="qBoardDetail.admin?q_num=${ bb.q_num }&pageNumber=${ pageInfo.pageNumber }" id="noneHigtLight">
 									${ bb.q_subject }&nbsp;</a>
 							<c:if test="${ bb.q_readcount >= 10 }">
 								<img src="<%= request.getContextPath() %>/resources/image/hot.png" width="2%">

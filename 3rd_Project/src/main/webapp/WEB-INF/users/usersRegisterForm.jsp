@@ -93,6 +93,19 @@
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 아이디</th>
 				<td>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+					<!-- 중복체크, 정규표현식 아직 -->
+=======
+>>>>>>> branch 'HJ' of https://github.com/BeTheBestSY/3rd_Project.git
+=======
+=======
+					<!-- 중복체크, 정규표현식 아직 -->
+>>>>>>> 40797b2e23e86f81f690da65f87b46d5f176b23e
+>>>>>>> b5d609e9a21a409f075ce3e39aa31cd1f6348f85
+=======
+>>>>>>> branch 'HJ' of https://github.com/BeTheBestSY/3rd_Project.git
 					<input type="text" class="form-control" name="u_id" value="${ub.u_id }" placeholder="영문 소문자+숫자, 4~16자" pattern="^[A-Za-z0-9]{4,16}$" required> 
 				</td>
 			</tr>
@@ -106,7 +119,20 @@
 				<th><font color="red">*</font> 비밀번호 확인</th>
 				<td>
 					<input type="password" class="form-control" name="u_rePassword" required>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+					</td>
+=======
+>>>>>>> branch 'HJ' of https://github.com/BeTheBestSY/3rd_Project.git
+=======
+=======
+					</td>
+>>>>>>> 40797b2e23e86f81f690da65f87b46d5f176b23e
+>>>>>>> b5d609e9a21a409f075ce3e39aa31cd1f6348f85
+=======
 				</td>
+>>>>>>> branch 'HJ' of https://github.com/BeTheBestSY/3rd_Project.git
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 전화번호</th>
@@ -119,7 +145,30 @@
 					</select>
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[1]}" maxlength="4" required> - 
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[2]}" maxlength="4" required>
+<<<<<<< HEAD
+<<<<<<< HEAD
+					</td>
+
+					</select> - 
+					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[1]}" maxlength="4" required> - 
+					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[2]}" maxlength="4" required>
+=======
+>>>>>>> branch 'HJ' of https://github.com/BeTheBestSY/3rd_Project.git
 				</td>
+<<<<<<< HEAD
+
+=======
+>>>>>>> branch 'HJ' of https://github.com/BeTheBestSY/3rd_Project.git
+=======
+				</td>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 40797b2e23e86f81f690da65f87b46d5f176b23e
+>>>>>>> b5d609e9a21a409f075ce3e39aa31cd1f6348f85
+=======
+>>>>>>> branch 'HJ' of https://github.com/BeTheBestSY/3rd_Project.git
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th>&nbsp;&nbsp;주소</th>

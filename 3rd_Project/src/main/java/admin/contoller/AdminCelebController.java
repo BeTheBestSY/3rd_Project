@@ -10,10 +10,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,15 +23,21 @@ import org.springframework.web.servlet.ModelAndView;
 
 import admin.model.AdminDao;
 import celeb.model.CelebBean;
+import company.model.CompanyBean;
+import product.model.ProductBean;
 import q_board.model.QBoardBean;
 import utility.Paging;
 
 @Controller
-public class AdminCelebController {
+public class AdminCelebController { 
 	private final String command = "/celebList.admin";
 	private final String viewPage = "adminCeleb";
 	private final String deleteCommand = "/celebDelete.admin";
 	private final String gotoPage = "redirect:/celebList.admin";
+	private final String insertCommand = "/celebInsert.admin";
+	private String insertFormPage = "adminCelebInsertForm";
+	private final String updateCommand = "/celebUpdate.admin";
+	private String updateformPage = "adminCelebUpdateForm";
 	
 	@Autowired
 	private AdminDao adminDao;
@@ -60,6 +68,38 @@ public class AdminCelebController {
 		model.addAttribute("pageInfo", pageInfo); 
 		return viewPage;
 	}
+	
+	@RequestMapping(value = insertCommand, method = RequestMethod.GET)
+	public String insertForm() {
+		return insertFormPage;
+	}
+	
+	@RequestMapping(value = insertCommand, method = RequestMethod.POST)
+	public String in(@ModelAttribute("bb") CelebBean bb,
+						HttpServletResponse response) throws IOException {
+		adminDao.insertCeleb(bb);
+		return gotoPage;
+		
+	}
+	
+	
+	
+	@RequestMapping(value=updateCommand)
+	public String updateForm(@RequestParam("cl_num") int cl_num, Model model) {
+		CelebBean bb = adminDao.getSelectOneCeleb(cl_num);
+		model.addAttribute("bb", bb);
+		return updateformPage;
+	}
+	
+	@RequestMapping(value = updateCommand, method = RequestMethod.POST)
+	public String update(@ModelAttribute(value = "bb") CelebBean bb,
+						HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+		request.setCharacterEncoding("UTF-8");
+		
+		adminDao.updateCeleb(bb);
+		model.addAttribute("bb", bb);
+		return gotoPage;
+	} 
 	
 	@RequestMapping(value=deleteCommand,method=RequestMethod.GET)
 	public String delete(
