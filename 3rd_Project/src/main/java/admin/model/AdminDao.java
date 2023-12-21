@@ -153,13 +153,16 @@ public class AdminDao {
 	
 	//users
 	public List<UsersBean> getUsers(Map<String, String> map, Paging pageInfo) {
-		System.out.println("getUsers 호출중..");
+		System.out.println("getUsers로 넘어온 키워드:"+map.get("keyword"));
+//		if(map.get("keyword").equals("%null%")) {
+//			map.put("keyword", null);
+//		}
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
 		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map, rowBounds);
 	}
 	
 	public int getTotalUserCount(Map<String, String> map) {
-		System.out.println("getTotalUserCount 호출중..");
+		System.out.println("getTotalUserCount로 넘어온 키워드:"+map.get("keyword"));
 		return sqlSessionTemplate.selectOne(nameSpace+"getTotalUserCount", map);
 	}
 	
@@ -174,11 +177,13 @@ public class AdminDao {
 	
 	//product
 	public List<ProductBean> getProducts(Map<String, String> map, Paging pageInfo) {
+		System.out.println("getProducts로 넘어온 키워드:"+map.get("keyword"));
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
 		return sqlSessionTemplate.selectList(nameSpace+"getProducts", map, rowBounds);
 	}
 
 	public int getTotalPrdCount(Map<String, String> map) {
+		System.out.println("getTotalPrdCount로 넘어온 키워드:"+map.get("keyword"));
 		return sqlSessionTemplate.selectOne(nameSpace+"getTotalPrdCount", map);
 	}
 
