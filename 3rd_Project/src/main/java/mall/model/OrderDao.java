@@ -1,6 +1,7 @@
 package mall.model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -49,7 +50,6 @@ public class OrderDao {
 
 	public void insertOrderInfo(OrderBean ob) {
 		sqlSessionTemplate.insert(namespace+".insertOrderInfo", ob);
-		
 	}
 
 	public void insertOrderProd(TempCart tc, int maxO_num) {
@@ -74,4 +74,52 @@ public class OrderDao {
 		return MaxO_num;
 		
 	}
+
+	 
+
+	public void insertCartOrderPord(CartBean cartBean, int maxO_num) {
+		Map<String, String> map =  new HashMap<String, String>();
+		
+		map.put("o_num", Integer.toString(maxO_num));
+		map.put("p_num",  cartBean.getP_num());		
+		map.put("cart_qty", Integer.toString(cartBean.getCart_qty()));		
+		
+		sqlSessionTemplate.insert(namespace+".insertOrderProd",map);
+		
+	}
+
+	public void deleteAllCart(String cart_num) {
+		 
+		sqlSessionTemplate.delete(namespace+".deleteAllCart",cart_num);
+	}
+
+	public void downStockPord(CartBean cartBean) {
+		 
+		sqlSessionTemplate.update(namespace+".downStockPord",cartBean);
+	}
+
+	public void upSalevolumePord(CartBean cartBean) {
+		sqlSessionTemplate.update(namespace+".upSalevolumePord",cartBean);
+	}
+
+	public void downStockPord(TempCart tc) {
+		sqlSessionTemplate.update(namespace+".downStockPord",tc);
+		
+	}
+
+	public void upSalevolumePord(TempCart tc) {
+		sqlSessionTemplate.update(namespace+".upSalevolumePord",tc);
+		
+	}
+
+	public List<OrdersProduct> getCartInfo(int o_num) {
+		List<OrdersProduct> oLists = sqlSessionTemplate.selectList(namespace+".getCartInfo", o_num);
+		return oLists;
+	}
+
+	public int getPriceByPnum(int p_num) {
+		int price = sqlSessionTemplate.selectOne(namespace+".getPriceByPnum", p_num);
+		return price;
+	}
+	 
 }

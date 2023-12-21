@@ -1,8 +1,12 @@
 package admin.contoller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -35,21 +39,55 @@ public class AdminUsersController {
 						@RequestParam(required = false) String pageNumber,
 						Model model,
 						HttpServletRequest request) {
+		System.out.println("=======usersList.admin 요청=======");
+		if(filter == null) {
+			filter = "";
+		}
 		System.out.println("필터:"+filter);
 		System.out.println("페이지넘버:"+pageNumber);
 		System.out.println("왓칼럼:"+whatColumn);
-		if(keyword == null) keyword = "";
 		System.out.println("키워드:"+keyword);
-		
 		Map<String, String> map = new HashMap<String, String>();
 		
 		map.put("filter", filter);
 		map.put("whatColumn", whatColumn);
-		map.put("keyword", "%"+keyword+"%");
+		if(keyword == null || keyword.equals("")) {
+			keyword = "";
+			map.put("keyword", keyword);
+		} else{
+			map.put("keyword", "%"+keyword+"%");
+		}
 		
-		int totalCount = ad.getTotalPrdCount(map);
+		int totalCount = ad.getTotalUserCount(map);
+		System.out.println("토탈카운트:"+totalCount);
 		String url = request.getContextPath()+command;
 		Paging pageInfo = new Paging(pageNumber, "10", totalCount, url, whatColumn, keyword);
+		
+		// --------------- pagingHtml에 filter 쿼리스트링 추가하기 ---------------
+		String pagingHtml = pageInfo.getPagingHtml();
+		System.out.println("\n원래 pagingHtml:"+pagingHtml);
+		ArrayList<Integer> indexes = new ArrayList<Integer>(); // 찾은 인덱스들을 저장할 ArrayList
+		StringBuffer pagingSB = new StringBuffer(pagingHtml); // pagingHtml 중간에 문자열을 삽입하기 위한 StringBuffer
+		
+		Matcher matcher = Pattern.compile("' style").matcher(pagingHtml);
+		while (matcher.find()) {
+			System.out.println("원래 인덱스:"+matcher.start());
+			indexes.add(matcher.start());
+		}
+		
+		String queryParam = "&filter="+filter;
+		System.out.println("\nfilter쿼리스트링의 길이:"+queryParam.length());
+		for(int i=0; i<indexes.size(); ++i) {//Integer idx:indexes
+			int idx = indexes.get(i);
+			idx += queryParam.length()*i;
+			System.out.println("쿼리스트링의 길이가 반영된 인덱스:"+idx);
+			indexes.set(i, idx);
+			pagingSB.insert(idx, queryParam);
+		}
+		System.out.println("filter파라미터가 추가된 pagingHtml:"+pagingSB.toString());
+		pageInfo.setPagingHtml(pagingSB.toString());
+		// -----------------------------------------------------------------
+		
 		List<UsersBean> usersLists = ad.getUsers(map, pageInfo);
 		model.addAttribute("usersLists", usersLists);
 		model.addAttribute("pageInfo", pageInfo);

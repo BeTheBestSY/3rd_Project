@@ -36,7 +36,7 @@
 <br><br><br><br><br>
 
 <div id="board-list">		
-	<form:form commandName="bb" action="cUpdate.qb" method="post">
+	<form:form commandName="bb" action="qUpdate.qb" method="post">
 		<input type="hidden" name="q_num" value="${ bb.q_num }">
 		<input type="hidden" name="pageNumber" value="${pageNumber}">
 		<input type="hidden" name="whatColumn" value="${whatColumn}">

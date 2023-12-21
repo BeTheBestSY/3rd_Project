@@ -15,13 +15,21 @@
 	</select>
 	
 	<select id="selectProd" resultType="myProduct">
-		select p_name, p_price from product
+		select p_name, p_price, p_point from product
 		where p_num = #{p_num}
 	</select>
 	
+	<select id="getPriceByPnum" resultType="int">
+		select p_price from product where p_num = #{p_num}
+	</select>
+	
 	<select id="selectUser" resultType="Users"> 
-		select u_name, u_phone from users
+		select u_name, u_phone, u_id, u_address from users
 		where u_id = #{u_id}
+	</select>
+	
+	<select id="getCartInfo" resultType="mall.model.OrdersProduct">
+		select * from ordersProduct where o_num = #{o_num}
 	</select>
 	
 	<delete id="deleteTemp">
@@ -35,8 +43,8 @@
 	
 	<insert id="insertOrderInfo">
 		insert into orders
-			values(#{o_num},#{u_id},#{o_phone},#{o_name},#{o_addr},
-			#{o_date},#{pay_bank},#{pay_name},#{way})
+			values(#{o_num},#{u_id},#{o_phone},#{o_name},#{o_message},#{o_addr},
+			#{o_date},#{o_status},#{pay_bank},#{pay_name},#{way})
 	</insert>
 	
 	<select id="selectMaxO_num" resultType="int">
@@ -71,4 +79,18 @@
 	<delete id="deleteCart">
 		delete from cart where p_num = #{p_num}
 	</delete>
+	
+	<delete id="deleteAllCart">
+		delete from cart where cart_num = #{cart_num} 
+	</delete>
+	
+	<update id="downStockPord">
+		update product set p_stock = p_stock-#{cart_qty} 
+			where p_num = #{p_num}
+	</update>
+	
+	<update id="upSalevolumePord">
+		update product set p_salevolume = p_salevolume + #{cart_qty} 
+			where p_num = #{p_num}
+	</update>
 </mapper>

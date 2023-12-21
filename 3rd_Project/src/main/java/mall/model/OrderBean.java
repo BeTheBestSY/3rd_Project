@@ -6,9 +6,23 @@ public class OrderBean {
 	private String u_id;
 	private String o_phone;
 	private String o_name;
+	private String o_message;
 	private String o_addr;
 	private String o_date;
+	private String o_status;
 	private String pay_bank;
+	public String getO_message() {
+		return o_message;
+	}
+	public void setO_message(String o_message) {
+		this.o_message = o_message;
+	}
+	public String getO_status() {
+		return o_status;
+	}
+	public void setO_status(String o_status) {
+		this.o_status = o_status;
+	}
 	private String pay_name;
 	private String way;
 	public int getO_num() {

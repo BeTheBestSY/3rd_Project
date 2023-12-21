@@ -45,7 +45,6 @@ public class QBoardDao {
 	}
 
 	public void writeBoard(QBoardBean bb) {
-
 		sqlSessionTemplate.insert(namespace+"writeBoard",bb);
 		
 	}

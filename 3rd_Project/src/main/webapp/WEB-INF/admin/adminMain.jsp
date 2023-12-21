@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminMain.css">
 <%@ include file="adminMenu.jsp"%>
+<<<<<<< HEAD
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
 
@@ -97,8 +98,19 @@
 		<br>
 	</div>
 </article>
+=======
 
+<div>
+  <canvas id="myChart"></canvas>
+</div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+>>>>>>> bba52e3cb8ce3d960a6cbda2f4af6c1a3f004cf4
+
+<script>
+	const ctx = document.getElementById('myChart');
+
+<<<<<<< HEAD
 
 
 <script>
@@ -191,3 +203,25 @@
 
 </body>
  
+=======
+	new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+			datasets: [{
+				label: '# of Votes',
+				data: [12, 19, 3, 5, 2, 3],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				y: {
+				  beginAtZero: true
+				}
+			}
+		}
+	});
+</script>
+ 
+>>>>>>> bba52e3cb8ce3d960a6cbda2f4af6c1a3f004cf4
