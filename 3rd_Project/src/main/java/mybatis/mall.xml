@@ -19,9 +19,17 @@
 		where p_num = #{p_num}
 	</select>
 	
+	<select id="getPriceByPnum" resultType="int">
+		select p_price from product where p_num = #{p_num}
+	</select>
+	
 	<select id="selectUser" resultType="Users"> 
-		select u_name, u_phone, u_id from users
+		select u_name, u_phone, u_id, u_address from users
 		where u_id = #{u_id}
+	</select>
+	
+	<select id="getCartInfo" resultType="mall.model.OrdersProduct">
+		select * from ordersProduct where o_num = #{o_num}
 	</select>
 	
 	<delete id="deleteTemp">
