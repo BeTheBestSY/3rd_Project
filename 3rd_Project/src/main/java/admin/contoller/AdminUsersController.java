@@ -3,6 +3,7 @@ package admin.contoller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -46,10 +47,28 @@ public class AdminUsersController {
 		map.put("filter", filter);
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
-		
-		int totalCount = ad.getTotalPrdCount(map);
+		 
+		int totalCount = ad.getTotalUserCount(map);
+		System.out.println("totalCount:"+totalCount);
 		String url = request.getContextPath()+command;
 		Paging pageInfo = new Paging(pageNumber, "10", totalCount, url, whatColumn, keyword);
+		
+		String[] a = pageInfo.getPagingHtml().split("&nbsp;");
+		Vector<Integer> indexVector = new Vector<Integer>();
+		System.out.println();
+		for(int i=0; i<a.length; ++i) {
+			System.out.println(i+"번째 pagingHtml:"+a[i]);
+			int index = a[i].indexOf("' style");
+			while (index >= 0) {
+				System.out.println("문자열 \"' style\"의 위치: " + index);
+			    index = a[i].indexOf("' style", index + 1);
+			    indexVector.add(index);
+			}
+		}
+//		if(pageInfo.getBeginPage() != 1) {
+//			// 여러개의 <a>태그로 이루어진 pagingHtml을 우선 쪼갠다.
+//			// style이라는 문자열을 찾아서(indexOf). 그 앞에다가 filter를 쿼리스트링으로 삽입
+//		}
 		List<UsersBean> usersLists = ad.getUsers(map, pageInfo);
 		model.addAttribute("usersLists", usersLists);
 		model.addAttribute("pageInfo", pageInfo);

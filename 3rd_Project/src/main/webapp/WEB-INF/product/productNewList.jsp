@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%
-	session.setAttribute("destination", "redirect:/productBestList.p");
+	session.setAttribute("destination", "redirect:/productNewList.p");
 %>
 
 <!DOCTYPE html>
@@ -87,16 +87,16 @@
 <body>
 
 	<div style="font-family: 'RIDIBatang'; font-size: 13pt; margin: 70px 0px 70px 305px;"> 
-		<div style="font-size: 30pt; font-family: 'MaruBuri-Regular'; font-weight: bold; margin-bottom: 10px;">BEST</div>
-		&nbsp;&nbsp;Hidden Beauty 누적 판매량 베스트 상품 20가지를 소개해드릴게요.<br>
-		&nbsp;&nbsp;<span style="font-size: 11pt; color: #BDBDBD;">판매량은 실시간으로 집계되고 있으며, 현재는 총 누적 판매량 순으로만 조회 가능합니다.</span>
+		<div style="font-size: 30pt; font-family: 'MaruBuri-Regular'; font-weight: bold; margin-bottom: 10px;">NEW</div>
+		&nbsp;&nbsp;Hidden Beauty에 새롭게 입점된 상품 20가지를 소개해드릴게요.<br>
+		&nbsp;&nbsp;<span style="font-size: 11pt; color: #BDBDBD;">실시간으로 업데이트 되며, 최근에 판매를 시작한 순서로 정렬되어 있습니다. :)</span>
 	</div>
 
 	<div id="wrap">
 		<main> 
 			<div>
 			    <div class="container" style="margin-bottom: 150px;"> 
-					<c:if test="${fn:length(product_BLists) == 0}">
+					<c:if test="${fn:length(product_NLists) == 0}">
 						<div class="col">
 						    <div class="card shadow-sm">
 						        <br><br>
@@ -105,9 +105,9 @@
 						   </div>
 					</c:if>
 						
-					<c:if test="${fn:length(product_BLists) != 0}">
+					<c:if test="${fn:length(product_NLists) != 0}">
 						<div class="row">
-							<c:forEach var="pb" items="${product_BLists}">
+							<c:forEach var="pb" items="${product_NLists}">
 								<div class="col-lg-3">
 									<div class="card shadow-sm" style="border: 1px solid #F6F6F6; margin-bottom: 23px;">
 										<a href="prodView.p?p_num=${pb.p_num}&pageNumber=${pageInfo.pageNumber}">

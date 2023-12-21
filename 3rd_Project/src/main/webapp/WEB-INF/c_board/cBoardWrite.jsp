@@ -16,6 +16,9 @@
 		background: #D0D6CE;
 		color: white;
 	}
+	body{
+		padding-top: 90px;
+	}
 </style>
 
 <%
@@ -87,9 +90,8 @@
 			</center>
 			</c:if>
 		</form:form>
+	</div>
 </article>
-
-</div>
 
 
 <%@ include file="./../views/footer.jsp" %>

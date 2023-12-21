@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import q_board.model.QBoardBean;
 import q_board.model.QBoardDao;
 
@@ -34,7 +35,9 @@ public class QBoardReplyController {
 				@RequestParam("pageNumber") int pageNumber,
 				@RequestParam("q_ref") int q_ref,
 				@RequestParam("q_re_step") int q_re_step,
-				@RequestParam("q_re_level") int q_re_level
+				@RequestParam("q_re_level") int q_re_level,
+				@RequestParam(value="whatColumn", required=false) String whatColumn,
+				@RequestParam(value="keyword", required=false) String keyword
 			) {
 		
 		QBoardBean bb = qdao.selectContent(q_num);
@@ -44,6 +47,8 @@ public class QBoardReplyController {
 		model.addAttribute("q_re_step",q_re_step);
 		model.addAttribute("q_re_level",q_re_level);
 		model.addAttribute("bb",bb);
+		model.addAttribute("whatColumn",whatColumn);
+		model.addAttribute("keyword",keyword);
 		
 		return viewPage;
 	}
@@ -56,6 +61,8 @@ public class QBoardReplyController {
 			@RequestParam(value="q_ref",required = false) int q_ref,
 			@RequestParam(value="q_re_step",required = false) int q_re_step,
 			@RequestParam(value="q_re_level",required = false) int q_re_level,
+			@RequestParam(value="whatColumn", required=false) String whatColumn,
+			@RequestParam(value="keyword", required=false) String keyword,
 			HttpServletRequest request,
 			@ModelAttribute("bb") @Valid QBoardBean bb,
 			BindingResult br
@@ -68,6 +75,8 @@ public class QBoardReplyController {
 			model.addAttribute("pageNumber",pageNumber);
 			model.addAttribute("q_num",q_num);
 			model.addAttribute("bb", bb);
+			model.addAttribute("whatColumn",whatColumn);
+			model.addAttribute("keyword",keyword);
 			
 			return viewPage;
 		}
@@ -81,8 +90,7 @@ public class QBoardReplyController {
 		
 		qdao.replyProc(bb);
 		
-		return gotoPage+"?q_num="+q_num+"&pageNumber="+pageNumber;
+		return gotoPage+"?pageNumber="+pageNumber+"&whatColumn="+whatColumn+"&keyword="+keyword;
 	}
-	
 	
 }

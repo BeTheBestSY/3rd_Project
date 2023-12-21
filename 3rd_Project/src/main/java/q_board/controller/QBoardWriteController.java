@@ -1,16 +1,13 @@
 package q_board.controller;
 import java.sql.Timestamp;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import q_board.model.QBoardBean;
 import q_board.model.QBoardDao;
 
@@ -19,13 +16,13 @@ import q_board.model.QBoardDao;
 public class QBoardWriteController {
 
 	@Autowired
-	private QBoardDao bdao;
+	private QBoardDao qdao;
 	
 	public final String command="/write.qb"; 
 	public final String viewPage="qBoardWrite";
 	public final String gotoPage="redirect:/qBoardList.qb";
 	
-	@RequestMapping(value=command,method=RequestMethod.GET)
+	@RequestMapping(value=command, method=RequestMethod.GET)
 	public String writeform(@RequestParam(value="pageNumber", required=false) String pageNumber,
 							@RequestParam(value="whatColumn", required=false) String whatColumn,
 							@RequestParam(value="keyword", required=false) String keyword,
@@ -37,21 +34,24 @@ public class QBoardWriteController {
 		return viewPage;
 	} 
 	
-	@RequestMapping(value=command,method=RequestMethod.POST)
-	public String gowrite(
-				HttpServletRequest request,
-				@ModelAttribute("bb") 
-				@Valid QBoardBean bb,
-				BindingResult br
-			) { 
+	@RequestMapping(value=command, method=RequestMethod.POST)
+	public String gowrite(HttpServletRequest request, Model model, @ModelAttribute("qb") QBoardBean qb) {
 		
-		if(br.hasErrors()) {
-			return viewPage;
-		}
+		/*
+		System.out.println("post 도착함");
+		System.out.println("qb.getQ_type() :" + qb.getQ_type());
+		System.out.println("qb.getQ_writer() : "+ qb.getQ_writer());
+		System.out.println("qb.getQ_email() : "+ qb.getQ_email());
+		System.out.println("qb.getQ_subject() : "+ qb.getQ_subject());
+		System.out.println("qb.getQ_password : "+ qb.getQ_password());
+		System.out.println("qb.getQ_content : "+ qb.getQ_content());
+		System.out.println("qb.getQ_secret : "+ qb.getQ_secret());
+		*/
 		
-		bb.setQ_ip(request.getRemoteAddr());
-		bb.setQ_regdate(new Timestamp(System.currentTimeMillis()));
-		bdao.writeBoard(bb);
+		qb.setQ_ip(request.getRemoteAddr());
+		qb.setQ_regdate(new Timestamp(System.currentTimeMillis()));
+		qdao.writeBoard(qb);
+		model.addAttribute("bb", qb);
 		return gotoPage;
 		
 	}

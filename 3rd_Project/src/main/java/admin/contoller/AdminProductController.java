@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import admin.model.AdminDao;
@@ -29,7 +30,7 @@ public class AdminProductController {
 	private final String inCommand = "/productInsert.admin";
 	private final String delCommand = "/productDelete.admin";
 	private final String upCommand = "/productUpdate.admin";
-	
+	 
 	private final String viewPage = "adminProduct";
 	private final String inPage = "adminProductInsertForm";
 	private final String upPage = "adminProductUpdateForm";
@@ -72,43 +73,59 @@ public class AdminProductController {
 	}
 	
 	@RequestMapping(value = inCommand, method = RequestMethod.POST)
-	public String adminProdIn2() throws IOException {
-		// 여기서부터 하기!!
-		return inPage; 
-	} 
-	 
 	public String adminProdIn2(@ModelAttribute(value = "pb") ProductBean pb,
+							Model model,
 							HttpServletRequest request) throws UnsupportedEncodingException {
-		request.setCharacterEncoding("UTF-8");
-		System.out.println("insert하려는 상품의 브랜드:"+pb.getP_brand());
 		System.out.println("insert하려는 상품의 타이틀이미지:"+pb.getP_ttlimg());
 		System.out.println("insert하려는 상품의 디테일이미지:"+pb.getP_dtlimg());
 		
-//		ad.insertProduct(pb); 
-//		String uploadPath = servletContext.getRealPath("/resources/uploadFolder/product/");
-//		System.out.println("uploadPath:"+uploadPath);
-//		File destTitle = new File(uploadPath+File.separator+pb.getP_ttlimg());
-//		File destDetail = new File(uploadPath+File.separator+pb.getP_dtlimg());
-//		
-//		MultipartFile ttl_img = pb.getUpload_ttl();
-//		MultipartFile dtl_img = pb.getUpload_dtl();
-//		try {
-//			ttl_img.transferTo(destTitle); //destination에 ttl_img 올려라.
-//			dtl_img.transferTo(destDetail); //destination에 dtl_img 올려라.
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-		return viewPage;
+		int res = ad.insertProduct(pb);
+		if(res == 1) {
+			model.addAttribute("msg", "상품이 성공적으로 추가되었습니다.");
+			model.addAttribute("url", "productList.admin");
+			String uploadPath = servletContext.getRealPath("/resources/uploadFolder/product/");
+			System.out.println("uploadPath:"+uploadPath);
+			File destTitle = new File(uploadPath+File.separator+pb.getP_ttlimg());
+			File destDetail = new File(uploadPath+File.separator+pb.getP_dtlimg());
+			
+			MultipartFile ttl_img = pb.getUpload_ttl();
+			MultipartFile dtl_img = pb.getUpload_dtl();
+			
+			try {
+				ttl_img.transferTo(destTitle); //destTitle에 ttl_img 올려라.
+				dtl_img.transferTo(destDetail); //destDetail에 dtl_img 올려라.
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			model.addAttribute("msg", "상품 추가 실패. DB 확인 요망.");
+			model.addAttribute("url", "productInsert.admin");
+		}
+		return redirect;
 	}
 	
 	@RequestMapping(value = delCommand)
 	public String adminProdDel(@RequestParam String p_num,
 							Model model) throws IOException {
+		// 삭제한 타이틀이미지, 디테일이미지를 업로드 폴더에서 내리는 작업
+		ProductBean pb = ad.getProductByNum(p_num);
+		String uploadPath = servletContext.getRealPath("/resources/uploadFolder/product/");
+		System.out.println("uploadPath:"+uploadPath);
+		File destTitle = new File(uploadPath+File.separator+pb.getP_ttlimg());
+		File destDetail = new File(uploadPath+File.separator+pb.getP_dtlimg());
+		
+		try {
+			destTitle.delete();
+			destDetail.delete();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		int res = ad.deleteProduct(p_num);
 		if(res == 1) {
-			model.addAttribute("msg", "상품이 삭제되었습니다.");
+			model.addAttribute("msg", "상품이 성공적으로 삭제되었습니다.");
 		} else {
-			model.addAttribute("msg", "삭제 실패. DB 확인 요망.");
+			model.addAttribute("msg", "상품 삭제 실패. DB 확인 요망.");
 		}
 		model.addAttribute("url", "productList.admin");
 		return redirect;
@@ -117,8 +134,53 @@ public class AdminProductController {
 	@RequestMapping(value = upCommand, method = RequestMethod.GET)
 	public String adminProdUp(@RequestParam String p_num, Model model) throws IOException {
 		ProductBean pb = ad.getProductByNum(p_num);
-		System.out.println(pb.getP_ttlimg()+"/"+ pb.getP_dtlimg());
 		model.addAttribute("pb", pb);
 		return upPage;
+	}
+	
+	@RequestMapping(value = upCommand, method = RequestMethod.POST)
+	public String adminProdUp2(@ModelAttribute(value = "pb") ProductBean pb, 
+							@RequestParam String exist_ttl,
+							@RequestParam String exist_dtl,
+							Model model) throws IOException {
+		System.out.println("기존 타이틀이미지:"+exist_ttl);
+		System.out.println("기존 디테일이미지:"+exist_dtl);
+		System.out.println("새로운 타이틀이미지:"+pb.getP_ttlimg());
+		System.out.println("새로운 디테일이미지:"+pb.getP_dtlimg());
+		// 기존 타이틀이미지, 디테일이미지를 업로드 폴더에서 내리는 작업
+		String uploadPath = servletContext.getRealPath("/resources/uploadFolder/product/");
+		File destTitle = new File(uploadPath+File.separator+exist_ttl);
+		File destDetail = new File(uploadPath+File.separator+exist_dtl);
+		
+		try {
+			destTitle.delete();
+			destDetail.delete();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// 새로운 타이틀이미지, 디테일이미지 포함 나머지들을 업데이트하는 작업
+		int res = ad.updateProduct(pb);
+		if(res == 1) {
+			model.addAttribute("msg", "상품이 성공적으로 수정되었습니다.");
+			model.addAttribute("url", "productList.admin");
+			destTitle = new File(uploadPath+File.separator+pb.getP_ttlimg());
+			destDetail = new File(uploadPath+File.separator+pb.getP_dtlimg());
+			
+			MultipartFile ttl_img = pb.getUpload_ttl();
+			MultipartFile dtl_img = pb.getUpload_dtl();
+			
+			try {
+				ttl_img.transferTo(destTitle); //destTitle에 ttl_img 올려라.
+				dtl_img.transferTo(destDetail); //destDetail에 dtl_img 올려라.
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else {
+			System.out.println("update res:"+res);
+			model.addAttribute("msg", "상품 수정 실패. DB 확인 요망.");
+			model.addAttribute("url", "productUpdate.admin");
+		}
+		return redirect;
 	}
 }
