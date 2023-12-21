@@ -5,7 +5,6 @@
 <script type="text/javascript">
 	window.onload = function(){
 		const radios = document.querySelectorAll("input[name='filter_btn']");
-	 	
 		radios.forEach((radio) => {
 			radio.addEventListener("change", (e) => {
 				var current = e.currentTarget;
@@ -39,17 +38,17 @@
 				<div class="search-wrap">
 					<form action="productList.admin" method="post">
 						<select name="whatColumn" id="whatColumn" onchange="init()" >
-							<option value="all" <c:if test="${param.whatColumn eq 'all' || param.whatColumn eq ''}">selected</c:if>>전체검색</option>
+							<option value="all" <c:if test="${param.whatColumn eq 'all' || param.whatColumn eq null}">selected</c:if>>전체검색</option>
 							<option value="p_brand" <c:if test="${param.whatColumn eq 'p_brand'}">selected</c:if>>브랜드</option>
-							<option value="p_color" <c:if test="${param.whatColumn eq 'p_color'}">selected</c:if>>퍼스널컬러</option>
 							<option value="p_name" <c:if test="${param.whatColumn eq 'p_name'}">selected</c:if>>상품명</option>
+							<option value="p_color" <c:if test="${param.whatColumn eq 'p_color'}">selected</c:if>>퍼스널컬러</option>
 						</select>
-						<input type="search" id="keyword" name="keyword" value="${param.keyword }" placeholder="검색어를 입력해주세요.">
+						<input type="search" id="keyword" name="keyword" <c:if test="${param.keyword eq null }">value=""</c:if> <c:if test="${param.keyword ne null }">value="${param.keyword }"</c:if> placeholder="검색어를 입력해주세요.">
 						<button type="submit" class="btn btn-dark">검색</button>
 					</form>
 				</div>
 				<div class="filter_radio" style="margin: auto; width: 80%; height: 6%;">
-					<span style="position:relative;right:18%;bottom:40%;"><input type="radio" name="filter_btn" value="standard" <c:if test="${param.filter eq 'standard' || param.filter eq null}">checked</c:if> style="width:20px;height:18px;"> 기본&nbsp;</span>
+					<span style="position:relative;right:18%;bottom:40%;"><input type="radio" name="filter_btn" value="standard" <c:if test="${param.filter eq 'standard' || param.filter eq null || param.filter eq ''}">checked</c:if> style="width:20px;height:18px;"> 기본&nbsp;</span>
 					<span style="position:relative;right:14.5%;bottom:40%;"><input type="radio" name="filter_btn" value="p_stock" <c:if test="${param.filter eq 'p_stock'}">checked</c:if> style="width:20px;height:18px;"> 재고임박순&nbsp;</span>
 					<span style="position:relative;right:12%;bottom:40%;"><input type="radio" name="filter_btn" value="p_salevolume" <c:if test="${param.filter eq 'p_salevolume'}">checked</c:if> style="width:20px;height:18px;"> 누적판매량순&nbsp;</span>
 					<span style="position:relative;right:10.5%;bottom:40%;"><input type="radio" name="filter_btn" value="p_priceDesc" <c:if test="${param.filter eq 'p_priceDesc'}">checked</c:if> style="width:20px;height:18px;"> 고가순&nbsp;</span>
