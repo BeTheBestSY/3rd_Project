@@ -93,7 +93,6 @@
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 아이디</th>
 				<td>
-					<!-- 중복체크, 정규표현식 아직 -->
 					<input type="text" class="form-control" name="u_id" value="${ub.u_id }" placeholder="영문 소문자+숫자, 4~16자" pattern="^[A-Za-z0-9]{4,16}$" required> 
 				</td>
 			</tr>
@@ -107,7 +106,6 @@
 				<th><font color="red">*</font> 비밀번호 확인</th>
 				<td>
 					<input type="password" class="form-control" name="u_rePassword" required>
-					</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th><font color="red">*</font> 전화번호</th>
@@ -118,15 +116,10 @@
 							<option value="${first }" <c:if test="${fn:split(ub.u_phone, '-')[0] eq first }">selected</c:if>>${first }</option>
 						</c:forEach>
 					</select>
-					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[1]}" maxlength="4" required> - 
-					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[2]}" maxlength="4" required>
-					</td>
-
-					</select> - 
+					-
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[1]}" maxlength="4" required> - 
 					<input type="text" class="form-control" style="width: 20%; display: inline;" name="u_phone" value="${fn:split(ub.u_phone, '-')[2]}" maxlength="4" required>
 				</td>
-
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th>&nbsp;&nbsp;주소</th>

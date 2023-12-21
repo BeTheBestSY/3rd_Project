@@ -167,24 +167,29 @@ public class AdminDao {
 
 	
 	//product
-	public List<ProductBean> getProducts(Map<String, String> map, Paging pageInfo) {
-		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
-		return sqlSessionTemplate.selectList(nameSpace+"getProducts", map, rowBounds);
-	}
+		public List<ProductBean> getProducts(Map<String, String> map, Paging pageInfo) {
+			RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+			return sqlSessionTemplate.selectList(nameSpace+"getProducts", map, rowBounds);
+		}
 
-	public int getTotalPrdCount(Map<String, String> map) {
-		return sqlSessionTemplate.selectOne(nameSpace+"getTotalPrdCount", map);
-	}
-
-
-	public int deleteProduct(String p_num) {
-		return sqlSessionTemplate.delete(nameSpace+"deleteProduct", p_num);
-	}
+		public int getTotalPrdCount(Map<String, String> map) {
+			return sqlSessionTemplate.selectOne(nameSpace+"getTotalPrdCount", map);
+		}
 
 
-	public ProductBean getProductByNum(String p_num) {
-		return sqlSessionTemplate.selectOne(nameSpace+"getProductByNum",p_num);
-	}
+		public int deleteProduct(String p_num) {
+			return sqlSessionTemplate.delete(nameSpace+"deleteProduct", p_num);
+		}
+
+
+		public ProductBean getProductByNum(String p_num) {
+			return sqlSessionTemplate.selectOne(nameSpace+"getProductByNum",p_num);
+		}
+
+
+		public void insertProduct(ProductBean pb) {
+			sqlSessionTemplate.insert(nameSpace+"insertProduct",pb);
+		}
 
 
 }
