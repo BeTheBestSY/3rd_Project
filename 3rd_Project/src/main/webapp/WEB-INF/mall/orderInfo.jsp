@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%
+	application.setAttribute("flag", false);
+%>
+
 <%@ include file="../product/productHeader.jsp" %>
 
 <!DOCTYPE html>
@@ -23,11 +27,21 @@
 	height: 37px;
 	display: inline-block;
 	font-size: 11pt;
-	font-weight: bold;
 }
 #btn:hover{
 	background: #D5D5D5;
-	border: 1px solid #EAEAEA;
+	border: 1px solid #EAEAEA; 
+}
+#pullAdressBtn, #newAdressBtn{ 
+	background: #EAEAEA;
+	border: 1px solid #D5D5D5;
+	border-radius: 5px;
+	height: 25px;
+	font-size: 9pt;
+}
+#pullAdressBtn:hover, #newAdressBtn:hover{ 
+	background: #D5D5D5;
+	border: 1px solid #EAEAEA; 
 }
 .tab-wrapper {
   position: relative;
@@ -98,189 +112,51 @@ body{
 		var btn = document.getElementById("btn");
 		btn.click();
 	}
+	function pullAddress(){
+		var pulledAddr = document.getElementById("pull");
+		var newAddr = document.getElementById("new");
+		var addr1 = document.getElementById("sample4_postcode");
+		var addr2 = document.getElementById("sample4_roadAddress");
+		var addr3 = document.getElementById("sample4_jibunAddress");
+		var addr4 = document.getElementById("sample4_extraAddress");
+		var addr5 = document.getElementById("sample4_detailAddress");
+		var pullAddr1 = document.getElementById("postcode");
+		var pullAddr2 = document.getElementById("roadAddress");
+		var pullAddr5 = document.getElementById("detailAddress");
+		
+		addr1.value = "";
+		addr2.value = "";
+		addr3.value = "";
+		addr4.value = "";
+		addr5.value = "";
+		pullAddr1.value = "${fn:split(u_address, ',')[0]}";
+		pullAddr2.value = "${fn:split(u_address, ',')[1]}";
+		pullAddr5.value = "${fn:split(u_address, ',')[2]}";
+		
+		pulledAddr.style.display = "block";
+		newAddr.style.display = "none";
+	}
+	function newAddress(){
+		var pulledAddr = document.getElementById("pull");  
+		var newAddr = document.getElementById("new");
+		var addr1 = document.getElementById("postcode");
+		var addr2 = document.getElementById("roadAddress");
+		var addr5 = document.getElementById("detailAddress");
+		
+		addr1.value = "";
+		addr2.value = "";
+		addr5.value = "";
+		
+		pulledAddr.style.display = "none";
+		newAddr.style.display = "flex";
+	}
 </script>
 <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
 
-<<<<<<< HEAD
-     
-    
-<div class="container">
-  <main>
- 
-
-      <div class="row g-5">
-      <div class="col-md-5 col-lg-4 order-md-last">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-primary" >주문 상품</span>
-        
-        </h4>  
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div style="margin: 0 !important;">    
-              <span>${pb.p_name }</span><br> 
-              <small class="text-body-secondary">수량 : ${tc.cart_qty}개</small>
-            </div>
-            <span class="text-body-secondary"> <strong> </strong></span>
-          </li>
-       
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <span>상품 금액</span>
-            <strong>${tc.cart_qty * pb.p_price}원</strong> 
-          </li>
-           <li class="list-group-item d-flex justify-content-between lh-sm">
-           
-           <span>배송비</span>
-            <strong>${deli}원</strong> 
-          
-          </li>
-           <li class="list-group-item d-flex justify-content-between lh-sm">
-           
-            <span>총 결제 금액</span>
-            <strong>${total}원</strong>
-            
-          </li>   
-        </ul>
-
-       
-      </div>
-      
-       
-      
-      <div class="col-md-7 col-lg-8">
-        <h4 class="mb-3">주문 정보 입력</h4>
-        <form class="needs-validation" action="orderCompleted.mall" novalidate>
-        <input type="hidden" name="cart_num" value="<%=session.getId()%>">
-          <div class="row g-3">
-            <div class="col-sm-6">
-              <label class="form-label">아이디</label>
-              <input type="text" class="form-control" name="u_id" value="${id}" readonly> 
-            </div>
-
-            <div class="col-sm-6">
-              <label class="form-label">수령인 이름</label>
-              <input type="text" class="form-control" name="o_name" id="lastName" value="${name}" required>
-             
-            </div>
-          </div>
-
-           <br>
-           
-           
-            <div class="row g-3">
-              <label class="form-label">수령인 전화번호</label><br>
-            	 <c:set var="firstList">010, 011, 016, 017, 018, 019</c:set>
-				&nbsp;&nbsp;	
-				<select name="o_phone1" class="form-select"  style="width: 130px;" required>
-						<c:forEach var="first" items="${firstList }">
-							<option value="${first}" <c:if test="${fn:split(phone, '-')[0] eq first }">selected</c:if>>${first }</option>
-						</c:forEach>
-					</select>&nbsp; &nbsp;
-				
- 			  	<input type="text"  class="form-control" style="width: 150px;"  name="o_phone2" value="${fn:split(phone, '-')[1]}" maxlength="4" required> &nbsp; &nbsp;
-					 
-             	<input type="text" class="form-control" name="o_phone3" style="width: 150px;"  value="${fn:split(phone, '-')[2]}" maxlength="4" required>
-				 
-            </div>
-           
-           <br>
-
-            <div class="col-12">
-              <label for="address" class="form-label">수령 주소</label><br>
-              	<input type="button"onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-               <div class="row g-3">
-	                <div class="col-sm-6">
-	        	    	<input type="text" name="addr1" class="form-control" id="sample4_postcode" id="lastName" placeholder="우편번호" required>
-	               	</div>
-	               	<div class="col-sm-6">
-               			<input type="text" name="addr2" class="form-control" id="sample4_roadAddress" id="lastName" placeholder="도로명주소" required>
-               		</div>
-               </div>
-               	<br>
-               <div class="row g-3">
-               		<div class="col-sm-6">
-                		<input type="text"  name="addr3" class="form-control" id="sample4_jibunAddress" id="lastName" placeholder="지번주소" required>
-              		</div>
-              		<span id="guide" style="color:#999;display:none"></span>
-              		<div class="col-sm-6">
-               			<input type="text"  name="addr4" class="form-control" id="sample4_extraAddress" id="lastName" placeholder="참고항목" >
-                	</div>
- 				</div>
- 				<br>
- 				<input type="text"  name="addr5" class="form-control" id="sample4_detailAddress" id="lastName" placeholder="상세주소" >
-            </div>
-	<br>
-           <h4 class="mb-3">지불 방법</h4>
-
-          
-				<div class="tab-wrapper">
-				  
-				  <div class="tab-item">
-				    <input type="radio" id="tab1" value="무통장 입금" name="way" checked="checked">
-				    <label for="tab1" class="tab-label">무통장 입금</label>
-				    
-			<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-
-				    
-				    
-		<div class="tab-content">
-				    <br>
-				  <div class="col-md-5">
-		              <label for="country" class="form-label">입금 은행</label>
-		              <select class="form-select" name="pay_bank" required>
-		                <option value=""></option>
-		                <option value="sc제일은행">sc제일은행</option>
-		                <option value="하나은행">하나은행</option>
-		                <option value="국민은행">국민은행</option>
-		                
-		              </select>
-	              
-	   			 </div>
-	    <br><br>
-          <div class="row gy-3">
-            
-             <div class="col-12">
-              <label for="address" class="form-label">입금자명</label>
-              <input type="text" class="form-control" name="pay_name" required>
- 			
-            </div>
-
-          </div>
-          
-	   </div>
-				  </div>
-				  
-				  
-				  
-				  
-				  <div class="tab-item">
-				    <input type="radio" id="tab2" name="way" value="카카오페이">
-				    <label for="tab2" class="tab-label">카카오페이</label>
-				    <div class="tab-content">
-				      카카오 페이 결제 방법을 선택하셨습니다.<br>
-				      결제 상품 확인 후 주문완료 버튼을 클릭해 주세요.
-					<button id="kaobtn" style="background: #fee500; color:#000; border-radius: 12px; padding: 10px 20px;">
-                        카카오페이
-                    </button>
-
- 
-				    </div>
-				  </div>
-				 
-				 <!--  <div class="tab-item">
-				    <input type="radio" id="tab3" name="way">   
-				    <label for="tab3" class="tab-label">Tab Menu 3</label>
-				    <div class="tab-content">
-				      This is third contents.  a
-				    </div>
-				  </div>sa 
-				   -->
-=======
 	<div id="container">
 		<main>
 			<div class="row g-5">
@@ -306,7 +182,7 @@ body{
 						<li class="list-group-item d-flex justify-content-between lh-sm">
 							<span>적립 예정 포인트</span>
 							<strong>
-								<fmt:formatNumber value="${pb.p_point}" pattern="#,###"/>원
+								<fmt:formatNumber value="${(total-deli)*0.01}" pattern="#,###"/>원
 							</strong>
 						</li>
 						<li class="list-group-item d-flex justify-content-between lh-sm">
@@ -322,13 +198,15 @@ body{
 							</strong>
 						</li>
 					</ul>
->>>>>>> f5d921ba785014f1acdd2b2e4cc6d6f8274fe203
 				</div>
 
 				<div class="col-md-7 col-lg-8">
 					<h3 class="mb-3"><b>주문 정보 입력</b></h3>
 					<br>
 					<form class="needs-validation" action="orderCompleted.mall" novalidate>
+						<input type="hidden" name="totalPrice" value="${total}">
+						<input type="hidden" name="totalPoint" value="${(total-deli)*0.01}">
+						<input type="hidden" name="deli" value="${deli}">
 						<input type="hidden" name="cart_num" value="<%=session.getId()%>">
 						
 						<div class="row g-3">
@@ -371,17 +249,37 @@ body{
 						<br><br>
 
 						<div class="col-12">
-							<label for="address" class="form-label">수령 주소</label>
-							<br>
-							<div class="row g-3">
+							<label for="address" class="form-label">수령 주소</label><br>
+							<input type="button" id="pullAdressBtn" value="주문자 정보와 동일" onClick="pullAddress()">
+							<input type="button" id="newAdressBtn" value="새로 입력하기" onClick="newAddress()">
+							<span style="font-size: 8pt;">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								※ 미 입력시 회원정보 내 주소가 자동 입력됩니다. 수령자가 상이할 경우 반드시 입력 부탁 드립니다. 
+							</span>
+							<br><br> 
+							 
+							<div class="row g-3" id="pull" style="display: none;">
+								<div class="col-sm-12">
+									<input type="text" name="addr1" class="form-control" id="postcode" value="${fn:split(u_address, ',')[0]}" placeholder="우편번호" onClick="btnClick()" required readonly>
+								</div>
+								<div class="col-sm-12">
+									<input type="text" name="addr2" class="form-control" id="roadAddress" value="${fn:split(u_address, ',')[1]}" placeholder="도로명 주소 (신주소)" onClick="btnClick()" required readonly>
+								</div>
+								<div class="col-sm-12">
+									<input type="text" name="addr5" class="form-control" id="detailAddress" value="${fn:split(u_address, ',')[2]}" placeholder="상세주소 입력">
+								</div>
+								<span id="guide" style="color: #999; display: none"></span>
+							</div>
+							
+							<div class="row g-3" id="new">
 								<div class="col-sm-6">
-									<input type="text" name="addr3" class="form-control" id="sample4_jibunAddress" placeholder="지번 주소 (구주소)" style="color: #C6C6C6;" onClick="btnClick()" required readonly>
+									<input type="text" name="addr3" class="form-control" id="sample4_jibunAddress" placeholder="지번 주소 (구주소)" style="color: #C6C6C6; flex: auto;" onClick="btnClick()" readonly>
 								</div>
 								<div class="col-sm-2">
-									<input type="text" name="addr4" class="form-control" id="sample4_extraAddress" id="lastName" placeholder="참고항목" onClick="btnClick()" readonly> 
+									<input type="text" name="addr4" class="form-control" id="sample4_extraAddress" placeholder="참고항목" style="flex: auto;" onClick="btnClick()" readonly> 
 								</div>
 								<div class="col-sm-2">
-									<input type="text" name="addr1" class="form-control" id="sample4_postcode" placeholder="우편번호" onClick="btnClick()" required readonly>
+									<input type="text" name="addr1" class="form-control" id="sample4_postcode" placeholder="우편번호" style="flex: auto;" onClick="btnClick()" required readonly>
 								</div>
 								<div class="col-sm-2">
 									<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" id="btn">
@@ -395,7 +293,7 @@ body{
 								<span id="guide" style="color: #999; display: none"></span>
 							</div>
 						</div>
-						<br><br><br>
+						<br><br><br> 
 						
 						<h3 class="mb-3"><b>지불 방법</b></h3>
 						<br>
@@ -409,19 +307,21 @@ body{
 								<div class="tab-content">
 									<br>
 									<div class="col-md-5">
-										<label for="country" class="form-label">입금 은행</label> 
-										<select class="form-select" name="pay_bank" required>
-											<option value="">은행을 선택하세요.</option>
+										<label for="country" class="form-label">입금 은행</label>
+										<select class="form-select" name="pay_bank" id="bank" required>
+											<option value="">은행을 선택하세요</option>
 											<option value="sc제일은행">sc제일은행</option>
 											<option value="하나은행">하나은행</option>
 											<option value="국민은행">국민은행</option>
+											<option value="국민은행">우리은행</option>
+											<option value="국민은행">신한은행</option>
 										</select>
 									</div>
 									<br><br>
 									
 									<div class="row gy-3">
 										<div class="col-12">
-											<label for="address" class="form-label">입금자명</label> 
+											<label for="address" class="form-label" id="bankName">입금자명</label> 
 											<input type="text" class="form-control" name="pay_name" style="width: 290px;" required>
 										</div>
 									</div>
@@ -431,12 +331,14 @@ body{
 
 							<div class="tab-item">
 								<input type="radio" id="tab2" name="way" value="카카오 페이">
-								<label for="tab2" class="tab-label">카카오페이</label>
-								<div class="tab-content" style="padding-top: 30px; line-height: 180%;">
-									카카오 페이 결제 방법을 선택하셨습니다.<br> 결제 상품 확인 후 주문완료 버튼을 클릭해 주세요.
+								<label for="tab2" class="tab-label">카카오 페이</label>
+								<div class="tab-content" style="padding-top: 30px; line-height: 180%; font-size: 11pt;">
+									카카오페이 결제 오픈 준비중입니다.<br>
+									QR 결제 팝업 창이 바로 노출되지 않으니 참고하시길 바라며,<br>
+									결제 상품 확인 후 주문해주시면 담당자가 확인 후 추후 안내 도와드리겠습니다.<br>
 								</div>
 							</div>
-
+							
 						</div>
 
 						<hr class="my-4">
@@ -446,9 +348,9 @@ body{
 			</div>
 		</main>
 	</div>
-	<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+	
+s<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-  
 $(document).ready(function() {
   // 초기에는 유효성 메시지를 숨깁니다
   $('.validation-message').hide();
@@ -492,15 +394,6 @@ $(document).ready(function() {
   });
 });
 
-
-
-
-
-
- 
-}
-
- 
 </script>
    
 <script type="text/javascript">
@@ -532,6 +425,7 @@ $(document).ready(function() {
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
+    	
         new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -589,4 +483,5 @@ $(document).ready(function() {
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </body>
 <%@ include file="../views/footer.jsp" %>
+
 </html>
