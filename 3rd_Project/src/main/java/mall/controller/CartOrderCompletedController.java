@@ -1,6 +1,9 @@
 package mall.controller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,19 +11,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import mall.model.CartBean;
+import mall.model.CartDao;
 import mall.model.OrderBean;
 import mall.model.OrderDao;
 import mall.model.TempCart;
+import product.model.ProductBean;
 
 
 @Controller
-public class OrderCompletedController {
+public class CartOrderCompletedController {
 
-	private final String command = "/orderCompleted.mall";
+	private final String command = "/cartOrderCompleted.mall";
 	private String viewPage = "orderCompleted";
 	
 	@Autowired
 	private OrderDao dao; 
+	
+	@Autowired
+	private CartDao cartDao; 
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	public String list(
@@ -45,7 +55,7 @@ public class OrderCompletedController {
 			HttpServletRequest request,
 			Model model) {
 		 
-		System.out.println("orderCompleted.mall 찾아옴");
+		 
 		OrderBean ob = new OrderBean();
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -65,26 +75,31 @@ public class OrderCompletedController {
 		ob.setO_date(currentDate);
 		ob.setO_phone(o_phone1+"-"+o_phone2+"-"+o_phone3);
 		ob.setO_addr(addr1+addr2+addr3+addr4+addr5);
-		 System.out.println(cart_num+"cart_num 제발");
 		 int MaxO_num = 0;
 		 MaxO_num = dao.selectMaxO_num();
 		 
 		 MaxO_num = MaxO_num+1;
 		 
 		ob.setO_num(MaxO_num);
-		
+  
 		if(ob.getWay().equals("무통장 입금")) {
-			TempCart tc =dao.selectTemp(cart_num); 
 			
-			dao.insertOrderProd(tc,MaxO_num);
+			List<CartBean> list = cartDao.selectCart2(cart_num);
 			
+			for(int i = 0; i<list.size(); i++) {
+
+				dao.downStockPord(list.get(i));
+				dao.upSalevolumePord(list.get(i));
+				
+				dao.insertCartOrderPord(list.get(i),MaxO_num);
+ 
+			}
+			 
 			dao.insertOrderInfo(ob);
 		
-			dao.downStockPord(tc);
-			dao.upSalevolumePord(tc);
 		}
-		
-		dao.deleteTemp(cart_num);
+System.out.println(cart_num+"cart_num뭔데");
+		dao.deleteAllCart(cart_num);
 		
 		return viewPage;
 	}
