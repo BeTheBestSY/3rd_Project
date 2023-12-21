@@ -47,7 +47,7 @@ public class AdminUsersController {
 		map.put("filter", filter);
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
-		 
+		
 		int totalCount = ad.getTotalUserCount(map);
 		System.out.println("totalCount:"+totalCount);
 		String url = request.getContextPath()+command;
