@@ -36,23 +36,16 @@ public class OrderController {
 			@RequestParam(value ="oqty", required = false) String cart_qty,
 			HttpServletRequest request,
 			Model model) {
-		
-		 System.out.println(cart_num+"cart_num");
-		 System.out.println(p_num+"p_num");
-		 System.out.println(cart_qty+"cart_qty");
 	 
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("cart_num", cart_num);
 		map.put("p_num", p_num);
-		map.put("cart_qty", cart_qty);		
-		
+		map.put("cart_qty", cart_qty);
 		
 		dao.deleteTemp(cart_num);
-		
 		dao.insertTemp(map);
 		
 		TempCart tc = dao.selectTemp(cart_num); 
-		
 		ProductBean pb = dao.selectProd(p_num);
 		
 		int deli = 3000;
@@ -63,21 +56,17 @@ public class OrderController {
 		total += deli;
 		
 		UsersBean ub = dao.selectUser(id);
- 
 		
 		model.addAttribute("pb", pb);//p_name, p_price
-		//model.addAttribute("oqty", oqty);
-		
 		model.addAttribute("tc", tc);//oqty
 		model.addAttribute("deli", deli);
 		model.addAttribute("total", total);
-		
+		model.addAttribute("u_address", ub.getU_address());
 		model.addAttribute("name", ub.getU_name());
 		model.addAttribute("id", id);
 		model.addAttribute("phone", ub.getU_phone());
 		
 		return viewPage;
-		
 		
 	}
 	

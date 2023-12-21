@@ -50,7 +50,6 @@ public class OrderDao {
 
 	public void insertOrderInfo(OrderBean ob) {
 		sqlSessionTemplate.insert(namespace+".insertOrderInfo", ob);
-		
 	}
 
 	public void insertOrderProd(TempCart tc, int maxO_num) {
@@ -100,7 +99,6 @@ public class OrderDao {
 	}
 
 	public void upSalevolumePord(CartBean cartBean) {
-		
 		sqlSessionTemplate.update(namespace+".upSalevolumePord",cartBean);
 	}
 
@@ -114,5 +112,14 @@ public class OrderDao {
 		
 	}
 
+	public List<OrdersProduct> getCartInfo(int o_num) {
+		List<OrdersProduct> oLists = sqlSessionTemplate.selectList(namespace+".getCartInfo", o_num);
+		return oLists;
+	}
+
+	public int getPriceByPnum(int p_num) {
+		int price = sqlSessionTemplate.selectOne(namespace+".getPriceByPnum", p_num);
+		return price;
+	}
 	 
 }
