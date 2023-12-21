@@ -41,6 +41,12 @@
 	    font-weight: 700;
 	    font-style: normal;
 	}
+	@font-face {
+	    font-family: 'Somi';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_10@1.0/Somi.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
 </style>
 </head>
   
@@ -58,18 +64,14 @@
 					<li style="margin-top: 10px; margin-left: 30px">
 						<a href="colorAi.ai" class="nav-link px-2 link-body-emphasis">AI 컬러 진단</a>
 					</li>
-
 					<li style="margin-top: 10px; margin-left: 10px">
- 
-
-					<a href="colMain.col" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
- 
+						<a href="colMain.col" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
 						<a href="cBoardList.cb" class="nav-link px-2 link-body-emphasis">후기 게시판</a>
 					</li>
-					<li style="margin-top: 10px; margin-left: 10px">
-						<a href="productMain.p" class="nav-link px-2 link-body-emphasis">쇼핑하기</a>
+					<li style="margin-top: 10px; margin-left: 10px; font-family: 'Somi'; font-size: 13pt;">
+						<a href="productMain.p" class="nav-link px-2 link-body-emphasis">The Shop HB</a>
 					</li>
 				</ul>
 
@@ -84,7 +86,7 @@
 							<li><a class="dropdown-item" href="register.u">회원가입</a></li>
 						</ul>
 					</c:if>
-					<c:if test="${loginInfo != null}">
+					<c:if test="${loginInfo != null}"> 
 						<ul class="dropdown-menu text-small">
 							<li style="text-align: center;"><small>안녕하세요, <b>${loginInfo.u_name }</b>님</small></li>
 							<li><hr class="dropdown-divider"></li>

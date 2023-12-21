@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%
+	session.setAttribute("destination", "redirect:/productAllList.p");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +13,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<style type="text/css"> 
-	#s {
-		margin: 0 auto;
+<style type="text/css">
+	#search{
 		width: 500px;
+		margin: auto;
 	}
 	.bd-placeholder-img {
 		font-size: 1.125rem;
@@ -85,108 +89,130 @@
 
 <body>
 	<div id="wrap">
-		<form action="productList.p" method="get">
-			<div class="input-group mb-3" id="s">
-				<select name ="whatColumn" class="btn btn-outline-secondary dropdown-toggle" style="text-align: left;">
-					<option value="all">전체
-					<option value="p_brand">브랜드
-					<option value="p_name">이름
-				</select>
-				<input type="text"  name="keyword" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
-				<input class="btn btn-outline-secondary" type="submit" id="button-addon2"  value="검색"> 
-			</div>
-		</form>
-		<br><br>
 	
-		<main> 
-			<section>
-				<ul class="nav nav-underline justify-content-center">
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="productList.p?whatColumn=p_color&keyword=봄" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					    	봄
-					    </a>
-					    <ul class="dropdown-menu">
-					    	<li><a class="dropdown-item" href="productList.p?whatColumn=p_color&keyword=봄+라이트">봄 라이트</a></li>
-					        <li><a class="dropdown-item" href="productList.p?whatColumn=p_color&keyword=봄+브라이트">봄 브라이트</a></li>
-						</ul>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="productList.p?whatColumn=p_color&keyword=여름" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					    	여름
-					    </a>
-					    <ul class="dropdown-menu">
-					    	<li><a class="dropdown-item" href="productList.p?whatColumn=p_color&keyword=여름+라이트">여름 라이트</a></li>
-					        <li><a class="dropdown-item" href="productList.p?whatColumn=p_color&keyword=여름+브라이트">여름 브라이트</a></li>
-					        <li><a class="dropdown-item" href="productList.p?whatColumn=p_color&keyword=여름+뮤트">여름 뮤트</a></li>
-					   	</ul>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="productList.p?whatColumn=p_color&keyword=가을" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					        가을
-					    </a>
-					    <ul class="dropdown-menu">
-					    	<li><a class="dropdown-item" href="productList.p?whatColumn=p_color&keyword=가을+뮤트">가을 뮤트</a></li>
-					        <li><a class="dropdown-item" href="productList.p?whatColumn=p_color&keyword=가을+스트롱">가을 스트롱</a></li>
-					        <li><a class="dropdown-item" href="productList.p?whatColumn=p_color&keyword=가을+딥">가을 딥</a></li>
-					    </ul>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="productList.p?whatColumn=p_color&keyword=겨울" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					        겨울
-					   	</a>
-					    <ul class="dropdown-menu">
-					    	<li><a class="dropdown-item" href="productList.p?whatColumn=p_color&keyword=겨울+브라이트">겨울 브라이트</a></li>
-					        <li><a class="dropdown-item" href="productList.p?whatColumn=p_color&keyword=겨울+딥">겨울 딥</a></li>
-						</ul>
-					</li>
-				</ul>
-			</section>
-		   
-			<div class="album py-5 bg-body-tertiary">
-			    <div class="container">
-					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-					
-						<c:if test="${fn:length(productLists) == 0}">
-							<div class="col">
-						    	<div class="card shadow-sm">
-						        	<br><br>
-									<b>등록된 상품이 없습니다.</b><br><br>
-								</div>
-						    </div>
-						</c:if>
-						
-						<c:if test="${fn:length(productLists) != 0}">
-							<c:forEach var="pb" items="${productLists}"> 
-								<div class="col">
-							    	<div class="card shadow-sm">
-							        	<a href="prodView.p?p_num=${pb.p_num}&pageNumber=${pageInfo.pageNumber}">
-							         		<img src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg}" height="225">
-							            </a>
-							            <div class="card-body"> 
-							            	<p class="card-text">${pb.p_name }</p>
-							            	<p class="text-body-secondary">${pb.p_contents }</p>
-							            	<div class="d-flex justify-content-between align-items-center">
-							                	<div class="btn-group">
-							                  		<a href="prodView.p?p_num=${pb.p_num}&pageNumber=${pageInfo.pageNumber}">
-								                  		<button type="button" class="btn btn-sm btn-outline-secondary" >상세보기 ▶▶
-								                  		</button>
-							                 		</a>
-							                	</div>   
-							                	<small class="text-body-secondary"> <fmt:formatNumber value="${pb.p_price }" pattern="#,###" />원</small>
-							              	</div>
-							            </div>
-							        </div>
-							 	</div>
-							</c:forEach>
-						</c:if>
-						
-		      		</div>
-		    	</div>
+		<div class="row" style="width: 30%; margin: auto; font-family: 'RIDIBatang'; left: 0px; padding: 70px 0px 30px 0px;">
+			
+			<div class="col-lg-12" style="margin-bottom: 10px;">
+				<section id="drop">
+					<ul class="nav nav-underline justify-content-center">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="productAllList.p?whatColumn=p_color&keyword=봄" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #2457BD;">
+						    	봄
+						    </a>
+						    <ul class="dropdown-menu">
+						    	<li><a class="dropdown-item" href="productAllList.p?whatColumn=p_color&keyword=봄+라이트">봄 라이트</a></li>
+						        <li><a class="dropdown-item" href="productAllList.p?whatColumn=p_color&keyword=봄+브라이트">봄 브라이트</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="productAllList.p?whatColumn=p_color&keyword=여름" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #2457BD;">
+						    	여름
+						    </a>
+						    <ul class="dropdown-menu">
+						    	<li><a class="dropdown-item" href="productAllList.p?whatColumn=p_color&keyword=여름+라이트">여름 라이트</a></li>
+						        <li><a class="dropdown-item" href="productAllList.p?whatColumn=p_color&keyword=여름+브라이트">여름 브라이트</a></li>
+						        <li><a class="dropdown-item" href="productAllList.p?whatColumn=p_color&keyword=여름+뮤트">여름 뮤트</a></li>
+						   	</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="productAllList.p?whatColumn=p_color&keyword=가을" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #2457BD;">
+						        가을
+						    </a>
+						    <ul class="dropdown-menu">
+						    	<li><a class="dropdown-item" href="productAllList.p?whatColumn=p_color&keyword=가을+뮤트">가을 뮤트</a></li>
+						        <li><a class="dropdown-item" href="productAllList.p?whatColumn=p_color&keyword=가을+스트롱">가을 스트롱</a></li>
+						        <li><a class="dropdown-item" href="productAllList.p?whatColumn=p_color&keyword=가을+딥">가을 딥</a></li>
+						    </ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="productAllList.p?whatColumn=p_color&keyword=겨울" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #2457BD;">
+						        겨울
+						   	</a>
+						    <ul class="dropdown-menu">
+						    	<li><a class="dropdown-item" href="productAllList.p?whatColumn=p_color&keyword=겨울+브라이트">겨울 브라이트</a></li>
+						        <li><a class="dropdown-item" href="productAllList.p?whatColumn=p_color&keyword=겨울+딥">겨울 딥</a></li>
+							</ul>
+						</li>
+					</ul>
+				</section>
 			</div>
 			
-			<center>
+			<div class="col-lg-12">
+				<form action="productAllList.p" method="get">
+					<div class="input-group mb-3" id="search">
+						<select name ="whatColumn" class="btn btn-outline-secondary dropdown-toggle" style="text-align: left;">
+							<option value="all">:: 검색 ::
+							<option value="p_brand">브랜드
+							<option value="p_name">이름
+						</select>
+						<input type="text"  name="keyword" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+						<input class="btn btn-outline-secondary" type="submit" id="button-addon2"  value="검색"> 
+					</div>
+				</form>
+			</div>
+			
+		</div>
+		<br><br>
+		
+		<main> 
+			<div>
+			    <div class="container">
+			    	<div style="padding-bottom: 100px; font-size: 20pt; font-family: 'MaruBuri-Regular'; font-weight: bold; text-align: center;">
+						<hr style="width: 30%; display: inline-block; top: 8px; position: relative; border: 1px dotted #BDBDBD;">
+						&nbsp;&nbsp;&nbsp;&nbsp; 
+						${keyword}
+						<c:if test="${keyword==''}"> 
+							전체 조회
+						</c:if>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<hr style="width: 30%; display: inline-block; top: 8px; position: relative; border: 1px dotted #BDBDBD;">
+					</div>
+						
+					<div class="container" style="margin-bottom: 150px;">
+					
+					<c:if test="${fn:length(productLists) == 0}">
+						<div class="col">
+						    <div class="card shadow-sm">
+						        <br><br>
+								<b>등록된 상품이 없습니다.</b><br><br>
+							</div>
+						   </div>
+					</c:if>
+						
+					<c:if test="${fn:length(productLists) != 0}">
+						<div class="row">
+							<c:forEach var="pb" items="${productLists}">
+								<div class="col-lg-3">
+									<div class="card shadow-sm" style="border: 1px solid #F6F6F6; margin-bottom: 23px;">
+										<a href="prodView.p?p_num=${pb.p_num}&pageNumber=${pageInfo.pageNumber}">
+											<div style="height: 300px; width: 100%; overflow: hidden; text-align: center;">
+												<img src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg}" style="height: 300px; margin: auto;">
+											</div>
+										</a>
+										<div class="card-body">
+											<p style="font-family: 'RIDIBatang'; font-size: 10pt; color: #A6A6A6; width: 100%; text-align: left; top: 15px; position: relative;">${pb.p_brand}</p> 
+											<p style="width: 100%; font-family: 'RIDIBatang'; font-size: 12pt; text-align: left; overflow: hidden; white-space: nowrap;">${pb.p_name}</p>
+											<p style="width: 100%; font-family: 'TheJamsil5Bold'; font-size: 12pt; text-align: left; padding: 0px;">
+												<fmt:formatNumber value="${pb.p_price}" pattern="#,###" />원 
+											</p>
+											<p style="position: absolute; left: 255px; top: 405px;">
+												<a href="cart.mall?p_num=${pb.p_num}&cart_num=<%=session.getId()%>&oqty=1">
+													<img src="resources/image/cartAdd.svg" width="25">
+												</a>
+											</p>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+					</c:if>
+						
+		    	</div>
+		    	</div>
+			</div>
+			<div style="width: 100%; text-align: center; font-family: 'RIDIBatang'; top: -100px; position: relative;">
 				${pageInfo.pagingHtml}
-			</center>
+			</div>
 		</main>
 	</div>
 

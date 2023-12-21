@@ -3,11 +3,12 @@
 
 <%
 	application.setAttribute("flag", false);
+	session.setAttribute("destination", "redirect:/productMain.p");
 %> 
 
 <style>
 	body{
-		padding-top: 140px;  
+		padding-top: 140px;
 	}
 </style>
 
@@ -84,7 +85,7 @@
 		</div>
 	</div>
 	
-	<a href="#">
+	<a href="productNewList.p">
 		<img src="resources/image/banner.jpg" width="100%">
 	</a> 
 	  

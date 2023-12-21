@@ -24,13 +24,17 @@ public class CBoardDetailController {
 	public String toDetailList(
 			Model model,
 			@RequestParam("c_num") int c_num,
-			@RequestParam("pageNumber") int pageNumber
+			@RequestParam("pageNumber") int pageNumber,
+			@RequestParam("whatColumn") String whatColumn,
+			@RequestParam("keyword") String keyword
 			) throws Exception {
 		
 		cdao.updateReadcount(c_num);
 		CBoardBean bb = cdao.selectContent(c_num);
 		
 		model.addAttribute("pageNumber",pageNumber);
+		model.addAttribute("whatColumn",whatColumn);
+		model.addAttribute("keyword",keyword);
 		model.addAttribute("bb",bb);
 		
 		return viewPage;

@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%
+	session.setAttribute("destination", "redirect:/celebList.cel");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,8 +117,8 @@ body {
 				</div>
 				<div style="padding-top: 50px;">${pageInfo.pagingHtml}</div>
 			</main>
-	</div>
 	</article>
+	</div>
 </body>
 
 <%@ include file="../views/footer.jsp" %>

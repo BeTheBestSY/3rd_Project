@@ -9,19 +9,18 @@
 		width: 130px; 
 		color: black; 
 		background: white; 
-		border: 1px solid #EAEAEA;
+		border: 1px solid #D5D5D5;
+		border-radius: 5px;
 	}
 	#btn:hover {
 		background: #D0D6CE;
 		color: white;
 	}
+	body{
+		padding-top: 90px;
+	}
 </style>
 
-<script type="text/javascript">
-	function goList() {
-		location.href="cBoardList.cb"
-	}
-</script>
 <%
 	application.setAttribute("flag",false);
 %>
@@ -34,7 +33,7 @@
     <div class="container">
         <br><br>
         <h3 style="font-size: 25pt; font-weight: bold;">후기 남기기</h3>
-        <input type=button value="목록" onClick="goList()" class="btn btn-white"><br>
+        <input type=button value="목록" onClick="location.href='cBoardList.cb?pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-white"><br>
     </div>
 </div>
 <br><br><br><br><br>
@@ -44,23 +43,23 @@
 		<form:form commandName="bb" action="write.cb" method="post">
 		      <table class="board-table" style="font-size: 13pt;">
 				<tr>
-					<th align="left" bgcolor="#EDE5D8">제목</th>
+					<th align="left" bgcolor="#EDE5D8" width="10%">제목</th>
 					<td align="left" colspan="3">
 						<input type="text" name="c_subject" value="${ bb.c_subject }" class="form-control" style="width: 94%;" maxlength="20" placeholder="20자 이내로 입력해주세요." required>
 					</td>
 				</tr>
 				<tr>
-					<th align="left" bgcolor="#EDE5D8">작성자</th>
+					<th align="left" bgcolor="#EDE5D8" width="10%">작성자</th>
 					<td align="left">
 						<input type="text" name="c_writer" value="${loginInfo.u_id}" class="form-control" style="width: 85%;" maxlength="5" readonly>
 					</td>
-					<th align="left" bgcolor="#EDE5D8">이메일</th>
+					<th align="left" bgcolor="#EDE5D8" width="14%">이메일</th>
 					<td align="left">
 						<input type="email" name="c_email" value="${ bb.c_email }" class="form-control" style="width: 85%;""  placeholder="ex) color@gmail.com" required>
 					</td>
 				</tr>
 				<tr>
-					<th align="left" bgcolor="#EDE5D8">내용</th>
+					<th align="left" bgcolor="#EDE5D8" width="10%">내용</th>
 					<td align="left" colspan="3">
 						<textarea rows="10" cols="100" name="c_content" class="form-control" style="width: 94%; resize: none;" required>${ bb.c_content }</textarea>
 					</td>
@@ -91,9 +90,8 @@
 			</center>
 			</c:if>
 		</form:form>
+	</div>
 </article>
-
-</div>
 
 
 <%@ include file="./../views/footer.jsp" %>

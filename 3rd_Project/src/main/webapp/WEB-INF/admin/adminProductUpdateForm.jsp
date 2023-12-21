@@ -57,22 +57,92 @@
 	}
 }
 </style>
-
+<script type="text/javascript">
+	var title, detail, ttlImg, dtlImg, ttlSpan, dtlSpan;
+	window.onload = function(){
+		/* var ttlName = null;
+		var dtlName = null; */
+		title = document.getElementById('title');
+		ttlImg = document.getElementById('ttl_img');
+		ttlSpan = document.getElementById('ttl_name');
+		
+		detail = document.getElementById('detail');
+		dtlImg = document.getElementById('dtl_img');
+		dtlSpan = document.getElementById('dtl_name');
+		
+		ttlImg.addEventListener('click', () => title.click());
+		dtlImg.addEventListener('click', () => detail.click());
+		
+		/* input에 파일이 업로드되면 change event 가 발생 */
+		title.addEventListener('change', getTitleImage); // getTitleImage 함수 등록
+		detail.addEventListener('change', getDetailImage); // getDetailImage 함수 등록
+		
+		function getTitleImage(e) {
+			var ttlPathSplit = title.value.split('\\'); // 타이틀 이미지의 경로를 구분자 '\\'로 나누기
+			var ttlName = ttlPathSplit[ttlPathSplit.length-1];
+			alert("들어온 타이틀이미지의 이름: "+ttlName);
+			
+	     	const file = e.currentTarget.files[0];
+	      	const reader = new FileReader(); // file을 담을 변수
+	      	reader.readAsDataURL(file);
+	      	reader.onload = (e) => {
+	      		// 파일이 로드되면 이미지를 해당 파일로 고치기
+	      		ttlImg.setAttribute('src', e.target.result);
+	      		ttlSpan.innerHTML='<a href="javascript:deleteTtlImg();"><font color="red">x</font></a> '+ttlName;
+	        };
+	    }
+		
+		function getDetailImage(e) {
+			var dtlPathSplit = detail.value.split('\\'); // 디테일 이미지의 경로를 구분자 '\\'로 나누기
+			var dtlName = dtlPathSplit[dtlPathSplit.length-1];
+			alert("들어온 디테일이미지의 이름: "+dtlName);
+			
+	     	const file = e.currentTarget.files[0];
+	      	const reader = new FileReader(); // file을 담을 변수
+	      	reader.readAsDataURL(file);
+	      	reader.onload = (e) => {
+	      		// 파일이 로드되면 이미지를 해당 파일로 고치기
+	      		dtlImg.setAttribute('src', e.target.result);
+	      		dtlSpan.innerHTML='<a href="javascript:deleteDtlImg();"><font color="red">x</font></a> '+dtlName;
+	        };
+	    }
+	};
+	function deleteTtlImg(){
+		ttlImg.setAttribute('src', '<%=request.getContextPath()%>/resources/image/no-image.jpg');
+		ttlSpan.innerHTML='';
+	}
+	function deleteDtlImg(){
+		dtlImg.setAttribute('src', '<%=request.getContextPath()%>/resources/image/no-image.jpg');
+		dtlSpan.innerHTML='';
+	}
+	function checkImg(){
+		if(ttlSpan.innerHTML == ''){
+			alert('타이틀 이미지를 넣어주세요.');
+			return false;
+		} else if(dtlSpan.innerHTML == ''){
+			alert('디테일 이미지를 넣어주세요.');
+			return false;
+		} else{
+			return true;
+		}
+	}
+</script>
 <div id="center" style="text-align: center;">
 	<br><br><br><br>
 	<div>
-		<form action="productUpdate.admin" method="post" enctype="multipart/form-data">
+		<form action="productUpdate.admin" method="post" enctype="multipart/form-data" onSubmit="return checkImg()">
+		<input type="hidden" name="p_num" value="${pb.p_num }">
 		<table>
 			<tr>
 				<th width="20%">브랜드</th>
 				<td width="80%">
-					<input type="text" class="form-control" name="p_brand" value="${pb.p_brand }" readonly>
+					<input type="text" class="form-control" name="p_brand" value="${pb.p_brand }" required>
 				</td>
 			</tr>
 			<tr>
 				<th>이름</th>
 				<td>
-					<input type="text" class="form-control" name="p_name" value="${pb.p_name }" readonly style="width: 55%;">
+					<input type="text" class="form-control" name="p_name" value="${pb.p_name }" required>
 				</td>
 			</tr>
 			<tr>
@@ -106,19 +176,28 @@
 				</td>
 			</tr>
 			<tr>
+				<th>제품설명</th>
+				<td>
+					<textarea class="form-control" name="p_contents" placeholder="제품설명 입력" required>${pb.p_contents }</textarea>
+				</td>
+			</tr>
+			<tr>
 				<th>제품사진</th>
 				<td>
-					<!-- 새로 올릴 타이틀이미지 -->
-					타이틀이미지: <input type="file" name="p_ttlimg" accept="image/jpeg" required><br><br>
-					<!-- 기존 타이틀이미지 -->
-					<input type="hidden" name="p_ttlimg" value="${pb.p_ttlimg }" accept="image/jpeg" required><br><br>
-					<img src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_ttlimg  }" style="width: 10%; height: 10%;"/>
+					<input type="hidden" name="exist_ttl" value="${pb.p_ttlimg }">
+					<input type="hidden" name="exist_dtl" value="${pb.p_dtlimg }">
+					<input id="title" type="file" name="upload_ttl" accept="image/*" style="display: none">
+					<input id="detail" type="file" name="upload_dtl" accept="image/*" style="display: none"> 
+					<br>
+					* 타이틀이미지 업로드<br> <!-- 기존 타이틀 이미지가 올라가있다. -->
+					<img id="ttl_img" alt="타이틀이미지" src="<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_ttlimg  }" style="border:1px solid black; width:15%; height: 35%; cursor:pointer;"><br>
+					<span id="ttl_name"><a href="javascript:deleteTtlImg();"><font color="red">x</font></a> ${pb.p_ttlimg }</span>
+					<br><br>
+					* 디테일이미지 업로드<br> <!-- 기존 디테일 이미지가 올라가있다. -->
+					<img id="dtl_img" alt="디테일이미지" src="<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_dtlimg  }" style="border:1px solid black; width:15%; height: 35%; cursor:pointer;"><br>
+					<span id="dtl_name"><a href="javascript:deleteDtlImg();"><font color="red">x</font></a> ${pb.p_dtlimg }</span>
+					<br><br>
 					
-					<!-- 새로 올릴 디테일이미지 -->
-					디테일이미지: <input type="file" name="p_dtlimg" accept="image/jpeg" required> 
-					<!-- 기존 디테일이미지 -->
-					<input type="hidden" name="p_dtlimg" value="${pb.p_dtlimg }" accept="image/jpeg" required><br><br>
-					<img src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg  }" style="width: 10%; height: 15%;"/>
 				</td>
 			</tr>
 			<tr>
