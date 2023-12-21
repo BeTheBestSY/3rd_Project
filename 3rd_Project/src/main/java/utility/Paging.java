@@ -139,7 +139,7 @@ public class Paging {
 
 
 	public String getPagingHtml() {
-		System.out.println("pagingHtml:"+pagingHtml);
+		//System.out.println("pagingHtml:"+pagingHtml);
 		
 		return pagingHtml;
 
@@ -232,7 +232,7 @@ public class Paging {
 	}//생성자
 	
 	private String getPagingHtml( String url ){ //페이징 문자열을 만든다.
-		System.out.println("getPagingHtml url:"+url); 
+//		System.out.println("getPagingHtml url:"+url); 
 		
 		String result = "" ;
 		String added_param = "&whatColumn=" + whatColumn + "&keyword=" + keyword ;
@@ -259,8 +259,8 @@ public class Paging {
 			}
 		}
 		
-		System.out.println("result:"+result); 
-		System.out.println(); 
+//		System.out.println("result:"+result); 
+//		System.out.println(); 
 		//다음, 맨 끝
 		if ( this.endPage != this.totalPage) { 
 			
@@ -272,8 +272,7 @@ public class Paging {
 					+ "?pageNumber=" + (this.totalPage ) + "&pageSize=" + this.pageSize 
 					+ added_param + "' style='text-decoration: none; color: black;'>[맨 끝으로]</a>&nbsp;" ;
 		}		
-		System.out.println("result2:"+result);
-		
+//		System.out.println("result2:"+result);
 		return result ;
 	}	
 	
