@@ -15,7 +15,7 @@
 	#noneHigtLight:hover{
 		color: #7C81BB;
 	}
-	body{
+	body{ 
 		padding-top: 140px;
 	}
 </style>

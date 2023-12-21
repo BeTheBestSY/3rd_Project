@@ -15,7 +15,7 @@
 	</select>
 	
 	<select id="selectProd" resultType="myProduct">
-		select p_name, p_price from product
+		select p_name, p_price, p_point from product
 		where p_num = #{p_num}
 	</select>
 	
