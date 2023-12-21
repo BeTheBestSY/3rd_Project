@@ -25,13 +25,8 @@ import utility.Paging;
 
 @Controller 
 public class AdminCBoardController {
-<<<<<<< HEAD
-
-	@Autowired 
-=======
 	
 	@Autowired
->>>>>>> branch 'daoni' of https://github.com/BeTheBestSY/3rd_Project.git
 	private AdminDao adminDao; 
 
 	public final String listCommand="/cBoardList.admin";
