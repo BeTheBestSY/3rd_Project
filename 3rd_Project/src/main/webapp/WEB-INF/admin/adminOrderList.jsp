@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminCompany.css">
 
 <article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
 <div class="section">

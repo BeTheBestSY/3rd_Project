@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css?ver=220610">
 <script type="text/javascript">
 	window.onload = function(){
 		const radios = document.querySelectorAll("input[name='filter_btn']");
+		const titleImg = document.querySelector(".prd-img");
+		
 		radios.forEach((radio) => {
 			radio.addEventListener("change", (e) => {
 				var current = e.currentTarget;
@@ -12,6 +14,12 @@
 				var keyword = document.getElementById('keyword');
 				location.href='productList.admin?filter='+current.value+'&whatColumn='+whatColumn.value+'&keyword='+keyword.value;
 			});
+		});
+		titleImg.addEventListener("mouseover", (e) => {
+			alert('('+e.clientX+','+e.clientY+')');
+			var divTop = e.clientY + 'px';
+			var divLeft = e.clientX + 'px';
+			
 		});
 	};
 	
@@ -47,7 +55,7 @@
 						<button type="submit" class="btn btn-dark">검색</button>
 					</form>
 				</div>
-				<div class="filter_radio" style="margin: auto; width: 80%; height: 6%;">
+				<div class="filter_radio">
 					<span style="position:relative;right:18%;bottom:40%;"><input type="radio" name="filter_btn" value="standard" <c:if test="${param.filter eq 'standard' || param.filter eq null || param.filter eq ''}">checked</c:if> style="width:20px;height:18px;"> 기본&nbsp;</span>
 					<span style="position:relative;right:14.5%;bottom:40%;"><input type="radio" name="filter_btn" value="p_stock" <c:if test="${param.filter eq 'p_stock'}">checked</c:if> style="width:20px;height:18px;"> 재고임박순&nbsp;</span>
 					<span style="position:relative;right:12%;bottom:40%;"><input type="radio" name="filter_btn" value="p_salevolume" <c:if test="${param.filter eq 'p_salevolume'}">checked</c:if> style="width:20px;height:18px;"> 누적판매량순&nbsp;</span>
@@ -66,13 +74,20 @@
 					<div class="topbox1">
 						<table class="board-table" style="font-size: 13pt; text-align: center; table-layout:fixed;">
 							<tr style="background: #f4f4f4;">
-								<th scope="col" class="th-num" style="padding-left: 2.7%;">번호</th>
+								<!-- <th scope="col" class="th-num" style="padding-left: 2.7%;">번호</th>
 								<th scope="col" class="th-brand" style="padding-left: 3%;">브랜드</th>
 								<th scope="col" class="th-name" style="padding-left: 12%;">이름</th>
 								<th scope="col" class="th-price" style="padding-left: 16.3%;">가격</th>
 								<th scope="col" class="th-stock" style="padding-left: 11.5%;">재고수량</th>
 								<th scope="col" class="th-salevolume" style="padding-left: 7%;">누적판매량</th>
-								<th scope="col" class="th-personalc" style="padding-right: 0.1%;">퍼스널컬러</th>
+								<th scope="col" class="th-personalc" style="padding-right: 0.1%;">퍼스널컬러</th> -->
+								<th scope="col" class="th-num" style="">번호</th>
+								<th scope="col" class="th-brand" style="">브랜드</th>
+								<th scope="col" class="th-name" style="">이름</th>
+								<th scope="col" class="th-price" style="">가격</th>
+								<th scope="col" class="th-stock" style="">재고수량</th>
+								<th scope="col" class="th-salevolume" style="">누적판매량</th>
+								<th scope="col" class="th-personalc" style="">퍼스널컬러</th>
 								<th scope="col" class="th-delete"></th>
 								<th scope="col" class="th-update"></th>
 							</tr>
@@ -89,20 +104,24 @@
 									
 									<c:forEach var="pb" items="${prodLists }">
 										<tr>
-											<td width="8%">${pb.p_num }</td>
-											<td width="10%">${pb.p_brand }</td>
-											<td width="15%">${pb.p_name }</td>
-											<td width="8%">${pb.p_price }</td>
-											<td width="8%">${pb.p_stock }</td>
-											<td width="8%">${pb.p_salevolume }</td>
-											<td width="10%">${pb.p_color }</td>
-							 				<td>
+											<td width="30px">${pb.p_num }</td>
+											<td width="70px">${pb.p_brand }</td>
+											<td width="90px">${pb.p_name }&nbsp;&nbsp;
+												<span class="prd-img" title="타이틀이미지">
+													<font color="#C98BA4">
+														<ion-icon name="image-outline"></ion-icon>
+													</font>
+												</span>
+											</td>
+											<td width="50px">${pb.p_price }</td>
+											<td width="50px">${pb.p_stock }</td>
+											<td width="50px">${pb.p_salevolume }</td>
+											<td width="13%">${pb.p_color }</td>
+							 				<td width="15%">
+												<input type="button" class="btn btn-white" value="삭제하기" onClick="delBtn('${pb.p_num }')">
 							 					<a href="productUpdate.admin?p_num=${pb.p_num }">
 													<input type="button" class="btn btn-white" value="수정하기">
 												</a>
-							 				</td>
-											<td>
-												<input type="button" class="btn btn-white" value="삭제하기" onClick="delBtn('${pb.p_num }')">
 							 				</td>
 										</tr>
 									</c:forEach>
