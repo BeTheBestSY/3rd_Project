@@ -160,7 +160,7 @@ public class Paging {
 	}
 
 
-	public String getKeyword() { 
+	public String getKeyword() {
 		return keyword;
 	}
 
