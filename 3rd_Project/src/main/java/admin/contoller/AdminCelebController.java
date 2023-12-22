@@ -81,10 +81,31 @@ public class AdminCelebController {
 	
 	@RequestMapping(value = insertCommand, method = RequestMethod.POST)
 	public String in(@ModelAttribute("bb") CelebBean bb,
-						HttpServletResponse response) throws IOException {
-		adminDao.insertCeleb(bb);
-		return gotoPage;
+							Model model,
+							HttpServletRequest request) throws UnsupportedEncodingException {
+		System.out.println("insert하려는 연예인 이미지:"+bb.getCl_image());
 		
+		int res = adminDao.insertCeleb(bb);
+		if(res == 1) {
+			model.addAttribute("msg", "상품이 성공적으로 추가되었습니다.");
+			model.addAttribute("url", "celebList.admin");
+			String uploadPath = servletContext.getRealPath("/resources/uploadFolder/celeb/");
+			System.out.println("uploadPath:"+uploadPath);
+			File destTitle = new File(uploadPath+File.separator+bb.getCl_image());
+			
+			MultipartFile cl_img = bb.getUpload_cl();
+			
+			try {
+				cl_img.transferTo(destTitle); //destTitle에 ttl_img 올려라.
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			model.addAttribute("msg", "연예인 추가 실패. DB 확인 요망.");
+			model.addAttribute("url", "celebInsert.admin");
+		}
+		
+		return redirect;
 	}
 	
 	

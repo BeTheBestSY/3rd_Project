@@ -106,9 +106,9 @@ public class AdminDao {
 			return cb;
 		}
 
-	public void insertCeleb(CelebBean bb) {
+	public int insertCeleb(CelebBean bb) {
 
-		sqlSessionTemplate.insert(nameSpace+"insertCeleb",bb);
+		return sqlSessionTemplate.insert(nameSpace+"insertCeleb",bb);
 		
 	}
 	public void deleteCeleb(int cl_num) {

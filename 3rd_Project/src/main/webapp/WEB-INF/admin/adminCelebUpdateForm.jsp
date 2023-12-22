@@ -109,7 +109,7 @@ table{
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
 					<th width="20%"><font color="red">*</font> 이름</th>
 					<td width="80%">
-						<input type="text" class="form-control" name="cl_name" style="width:20%;" value="${bb.cl_name }" required> 원
+						<input type="text" class="form-control" name="cl_name" style="width:20%;" value="${bb.cl_name }" required>
 						<input type="hidden" class="form-control" name="cl_num" style="width:20%;" value="${bb.cl_num }" required>
 					</td>
 				</tr>
