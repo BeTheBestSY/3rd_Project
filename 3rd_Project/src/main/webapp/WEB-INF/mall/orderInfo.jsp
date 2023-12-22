@@ -211,8 +211,17 @@ body{
 						
 						<div class="row g-3">
 							<div class="col-sm-6">
-								<label class="form-label">아이디</label> 
-								<input type="text" class="form-control" name="u_id" value="${id}" readonly>
+								<label class="form-label">아이디</label>
+								<c:if test="${loginInfo.u_jointype == 'N'}">
+									<input type="text" class="form-control" value="네이버 연동" readonly>
+								</c:if>
+								<c:if test="${loginInfo.u_jointype == 'K'}">
+									<input type="text" class="form-control" value="네이버 연동" readonly>
+								</c:if>
+								<c:if test="${loginInfo.u_jointype == 'S'}">
+									<input type="text" class="form-control" value="${id}" readonly>
+								</c:if>
+								<input type="hidden" class="form-control" name="u_id" value="${id}" readonly>
 							</div>
 							<div class="col-sm-6">
 								<label class="form-label">수령인 이름</label> 

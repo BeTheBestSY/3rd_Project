@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import c_board.model.CBoardBean;
+import users.model.UsersBean;
 import utility.Paging;
 
 @Component("QBoard")
@@ -95,6 +96,11 @@ public class QBoardDao {
 			int q_num = checks[i];
 			sqlSessionTemplate.delete(namespace+"deleteBoard",q_num);
 		}
+	}
+
+	public UsersBean getUserByQWriter(String q_writer) {
+		UsersBean ub = sqlSessionTemplate.selectOne(namespace+"getUserByQWriter", q_writer);
+		return ub;
 	}
 	
 }

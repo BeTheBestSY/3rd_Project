@@ -49,6 +49,10 @@
 			select * from c_board where c_writer = #{c_writer} order by c_num desc
 		</select>
 		
+		<select id="getUserByCWriter" resultType="Users">
+			select * from users where u_id = #{c_writer}
+		</select>
+		
 		<insert id="writeBoard">
 			insert into c_board
 			(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip)

@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import c_board.model.CBoardBean;
 import c_board.model.CBoardDao;
+import users.model.UsersBean;
 
 
 @Controller
@@ -38,15 +40,23 @@ public class CBoardUpdateController {
 				@RequestParam("c_num") int c_num,
 				@RequestParam("pageNumber") int pageNumber,
 				@RequestParam(value="whatColumn", required=false) String whatColumn,
-				@RequestParam(value="keyword", required=false) String keyword
+				@RequestParam(value="keyword", required=false) String keyword,
+				HttpSession session
 			) {
 		
 		CBoardBean bb = cdao.selectContent(c_num);
+		UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
 		
+		String joinType = "탈퇴함";
+		try {
+			joinType = ub.getU_jointype();
+		} catch(NullPointerException e) {}
+
 		model.addAttribute("pageNumber",pageNumber);
 		model.addAttribute("bb",bb);
 		model.addAttribute("whatColumn",whatColumn);
 		model.addAttribute("keyword",keyword);
+		model.addAttribute("joinType",joinType);
 		
 		return viewPage;
 	}
@@ -64,10 +74,16 @@ public class CBoardUpdateController {
 			@RequestParam("keyword") String keyword,
 			HttpServletRequest request,
 			@ModelAttribute("bb") @Valid CBoardBean bb,
-			BindingResult br
+			BindingResult br, HttpSession session
 		) throws IOException {
 		
 		int c_num = bb.getC_num();
+		UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
+		
+		String joinType = "탈퇴함";
+		try {
+			joinType = ub.getU_jointype();
+		} catch(NullPointerException e) {}
 		
 		if(br.hasErrors()) {
 			
@@ -76,6 +92,7 @@ public class CBoardUpdateController {
 			model.addAttribute("bb", bb);
 			model.addAttribute("whatColumn",whatColumn);
 			model.addAttribute("keyword",keyword);
+			model.addAttribute("joinType",joinType);
 			
 			return viewPage;
 		}
@@ -106,6 +123,7 @@ public class CBoardUpdateController {
 			model.addAttribute("bb",bb);
 			model.addAttribute("whatColumn",whatColumn);
 			model.addAttribute("keyword",keyword);
+			model.addAttribute("joinType",joinType);
 			return viewPage;
 		}
 	}

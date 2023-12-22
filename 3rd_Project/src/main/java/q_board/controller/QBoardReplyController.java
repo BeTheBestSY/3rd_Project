@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import q_board.model.QBoardBean;
 import q_board.model.QBoardDao;
+import users.model.UsersBean;
 
 
 @Controller
@@ -37,10 +39,17 @@ public class QBoardReplyController {
 				@RequestParam("q_re_step") int q_re_step,
 				@RequestParam("q_re_level") int q_re_level,
 				@RequestParam(value="whatColumn", required=false) String whatColumn,
-				@RequestParam(value="keyword", required=false) String keyword
+				@RequestParam(value="keyword", required=false) String keyword,
+				HttpSession session
 			) {
 		
 		QBoardBean bb = qdao.selectContent(q_num);
+		UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
+		
+		String joinType = "탈퇴함";
+		try {
+			joinType = ub.getU_jointype();
+		} catch(NullPointerException e) {}
 		
 		model.addAttribute("pageNumber",pageNumber);
 		model.addAttribute("q_ref",q_ref);
@@ -49,6 +58,7 @@ public class QBoardReplyController {
 		model.addAttribute("bb",bb);
 		model.addAttribute("whatColumn",whatColumn);
 		model.addAttribute("keyword",keyword);
+		model.addAttribute("joinType",joinType);
 		
 		return viewPage;
 	}
@@ -65,10 +75,16 @@ public class QBoardReplyController {
 			@RequestParam(value="keyword", required=false) String keyword,
 			HttpServletRequest request,
 			@ModelAttribute("bb") @Valid QBoardBean bb,
-			BindingResult br
+			BindingResult br, HttpSession session
 		) throws IOException {
 		
 		int q_num = bb.getQ_num();
+		UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
+		
+		String joinType = "탈퇴함";
+		try {
+			joinType = ub.getU_jointype();
+		} catch(NullPointerException e) {}
 		
 		if(br.hasErrors()) {
 			
@@ -77,6 +93,7 @@ public class QBoardReplyController {
 			model.addAttribute("bb", bb);
 			model.addAttribute("whatColumn",whatColumn);
 			model.addAttribute("keyword",keyword);
+			model.addAttribute("joinType",joinType);
 			
 			return viewPage;
 		}
