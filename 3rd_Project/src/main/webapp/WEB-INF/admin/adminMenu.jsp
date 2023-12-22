@@ -28,6 +28,11 @@
                 </div>
                 <div class="nav__list">
 
+                    <a href=".admin" class="nav__link collapse">
+                        <ion-icon name="home" class="nav__icon"></ion-icon>
+                        <span class="nav_name">&nbsp;메인</span>
+                    </a>
+                    
                     <a href="usersList.admin" class="nav__link collapse">
                         <ion-icon name="people-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">&nbsp;고객</span>

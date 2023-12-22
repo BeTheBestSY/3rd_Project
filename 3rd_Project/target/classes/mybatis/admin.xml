@@ -190,64 +190,77 @@
 	<!-- users -->
 	<select id="getUsers" resultType="Users">
 		select * from users
-		<if test="whatColumn == 'all'">
-			where (u_id like #{keyword} or
-			u_name like #{keyword} or
-			u_phone like #{keyword} or
-			u_address like #{keyword} or 
-			u_color like #{keyword})
-			<if test='filter == "S" or filter == "N" or filter == "K"'>
-				and u_jointype = #{filter}
+		<if test='keyword != ""'>
+			<if test="whatColumn == 'all'">
+				where (u_id like #{keyword} or
+				u_name like #{keyword} or
+				u_phone like #{keyword} or
+				u_address like #{keyword} or 
+				u_color like #{keyword})
+				<if test='filter == "S" or filter == "N" or filter == "K"'>
+					and u_jointype = #{filter}
+				</if>
+			</if>
+			<if test="whatColumn == 'u_name'">
+				where u_name like #{keyword}
+				<if test='filter == "S" or filter == "N" or filter == "K"'>
+					and u_jointype = #{filter}
+				</if>
+			</if>
+			<if test="whatColumn == 'u_id'">
+				where u_id like #{keyword}
+				<if test='filter == "S" or filter == "N" or filter == "K"'>
+					and u_jointype = #{filter}
+				</if>
+			</if>
+			<if test="whatColumn == 'u_phone'">
+				where u_phone like #{keyword}
+				<if test='filter == "S" or filter == "N" or filter == "K"'>
+					and u_jointype = #{filter}
+				</if>
 			</if>
 		</if>
-		<if test="whatColumn == 'u_name'">
-			where u_name like #{keyword}
+		<if test='keyword == ""'>
 			<if test='filter == "S" or filter == "N" or filter == "K"'>
-				and u_jointype = #{filter}
+				where u_jointype = #{filter}
 			</if>
 		</if>
-		<if test="whatColumn == 'u_id'">
-			where u_id like #{keyword}
-			<if test='filter == "S" or filter == "N" or filter == "K"'>
-				and u_jointype = #{filter}
-			</if>
-		</if>
-		<if test="whatColumn == 'u_phone'">
-			where u_phone like #{keyword}
-			<if test='filter == "S" or filter == "N" or filter == "K"'>
-				and u_jointype = #{filter}
-			</if>
-		</if>
-
 	</select>
 	<select id="getTotalUserCount" resultType="int">
 		select count(*) from users
-		<if test="whatColumn == 'all'">
-			where (u_id like #{keyword} or 
-			u_name like #{keyword} or 
-			u_phone like #{keyword} or 
-			u_address like #{keyword} or 
-			u_color like #{keyword})
-			<if test='filter == "S" or filter == "N" or filter == "K"'>
-				and u_jointype = #{filter}
+		<if test='keyword != ""'>
+			<if test="whatColumn == 'all'">
+				where (u_id like #{keyword} or 
+				u_name like #{keyword} or 
+				u_phone like #{keyword} or 
+				u_address like #{keyword} or 
+				u_color like #{keyword})
+				<if test='filter == "S" or filter == "N" or filter == "K"'>
+					and u_jointype = #{filter}
+				</if>
+			</if>
+			<if test="whatColumn == 'u_name'">
+				where u_name like #{keyword}
+				<if test='filter == "S" or filter == "N" or filter == "K"'>
+					and u_jointype = #{filter}
+				</if>
+			</if>
+			<if test="whatColumn == 'u_id'">
+				where u_id like #{keyword}
+				<if test='filter == "S" or filter == "N" or filter == "K"'>
+					and u_jointype = #{filter}
+				</if>
+			</if>
+			<if test="whatColumn == 'u_phone'">
+				where u_phone like #{keyword}
+				<if test='filter == "S" or filter == "N" or filter == "K"'>
+					and u_jointype = #{filter}
+				</if>
 			</if>
 		</if>
-		<if test="whatColumn == 'u_name'">
-			where u_name like #{keyword}
+		<if test='keyword == ""'>
 			<if test='filter == "S" or filter == "N" or filter == "K"'>
-				and u_jointype = #{filter}
-			</if>
-		</if>
-		<if test="whatColumn == 'u_id'">
-			where u_id like #{keyword}
-			<if test='filter == "S" or filter == "N" or filter == "K"'>
-				and u_jointype = #{filter}
-			</if>
-		</if>
-		<if test="whatColumn == 'u_phone'">
-			where u_phone like #{keyword}
-			<if test='filter == "S" or filter == "N" or filter == "K"'>
-				and u_jointype = #{filter}
+				where u_jointype = #{filter}
 			</if>
 		</if>
 	</select>
@@ -264,19 +277,21 @@
 	
 	<select id="getProducts" resultType="myProduct">
 		select * from product
-		<if test="whatColumn == 'all'">
-			where p_brand like '%' || UPPER(#{keyword}) || '%' or
-			p_color like '%' || UPPER(#{keyword}) || '%' or
-			p_name like '%' || UPPER(#{keyword}) || '%'
-		</if>
-		<if test="whatColumn == 'p_brand'">
-			where p_brand like '%' || UPPER(#{keyword}) || '%'
-		</if>
-		<if test="whatColumn == 'p_color'">
-			where p_color like '%' || UPPER(#{keyword}) || '%'
-		</if>
-		<if test="whatColumn == 'p_name'">
-			where p_name like '%' || UPPER(#{keyword}) || '%'
+		<if test='keyword != null'>
+			<if test="whatColumn == 'all'">
+				where p_brand like '%' || UPPER(#{keyword}) || '%' or
+				p_color like '%' || UPPER(#{keyword}) || '%' or
+				p_name like '%' || UPPER(#{keyword}) || '%'
+			</if>
+			<if test="whatColumn == 'p_brand'">
+				where p_brand like '%' || UPPER(#{keyword}) || '%'
+			</if>
+			<if test="whatColumn == 'p_color'">
+				where p_color like '%' || UPPER(#{keyword}) || '%'
+			</if>
+			<if test="whatColumn == 'p_name'">
+				where p_name like '%' || UPPER(#{keyword}) || '%'
+			</if>
 		</if>
 		order by 
 		<choose>
@@ -302,14 +317,21 @@
 	</select>
 	<select id="getTotalPrdCount" resultType="int">
 		select count(*) from product
-		<if test="whatColumn == 'p_brand'">
-			where p_brand like '%' || UPPER(#{keyword}) || '%'
-		</if>
-		<if test="whatColumn == 'p_color'">
-			where p_color like '%' || UPPER(#{keyword}) || '%'
-		</if>
-		<if test="whatColumn == 'p_name'">
-			where p_name like '%' || UPPER(#{keyword}) || '%'
+		<if test='keyword != null'>
+			<if test="whatColumn == 'all'">
+				where (p_brand like '%' || UPPER(#{keyword}) || '%' or 
+				p_name like '%' || UPPER(#{keyword}) || '%' or 
+				p_color like #{keyword})
+			</if>
+			<if test="whatColumn == 'p_brand'">
+				where p_brand like '%' || UPPER(#{keyword}) || '%'
+			</if>
+			<if test="whatColumn == 'p_name'">
+				where p_name like '%' || UPPER(#{keyword}) || '%'
+			</if>
+			<if test="whatColumn == 'p_color'">
+				where p_color like #{keyword}
+			</if>
 		</if>
 	</select>
 	<delete id="deleteProduct">
@@ -344,7 +366,7 @@
 			<if test="whatColumn=='all'">
 				where o_date like #{keyword} or u_id like #{keyword}
 			</if>
-			order by o_num asc
+			order by o_num desc
 		</select>
 		
 		<select id="getAllOrder" resultType="mall.model.OrderBean">
@@ -358,7 +380,7 @@
 			<if test="whatColumn=='all'">
 				where o_date like #{keyword} or u_id like #{keyword}
 			</if>
-			order by o_num asc
+			order by o_num desc
 		</select>
 		
 		<select id="selectOrderStatus" resultType="String">
