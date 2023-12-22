@@ -28,6 +28,12 @@ table th{
 .board-table{
 margin-top:20px;
 }
+table{
+		margin: auto; 
+		width: 800px;
+		height: 650px;
+		font-family: 'RIDIBatang';
+}
 </style>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>

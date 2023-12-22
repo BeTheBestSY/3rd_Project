@@ -1,6 +1,7 @@
 
 package admin.contoller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -8,9 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 import admin.model.AdminDao;
 import celeb.model.CelebBean;
@@ -38,9 +40,12 @@ public class AdminCelebController {
 	private String insertFormPage = "adminCelebInsertForm";
 	private final String updateCommand = "/celebUpdate.admin";
 	private String updateformPage = "adminCelebUpdateForm";
+	private final String redirect = "redirect";
 	
 	@Autowired
 	private AdminDao adminDao;
+	@Autowired
+	ServletContext servletContext;
 	
 	@RequestMapping(value=command)
 	public String list(Model model,
@@ -93,13 +98,40 @@ public class AdminCelebController {
 	
 	@RequestMapping(value = updateCommand, method = RequestMethod.POST)
 	public String update(@ModelAttribute(value = "bb") CelebBean bb,
-						HttpServletRequest request, Model model) throws UnsupportedEncodingException {
-		request.setCharacterEncoding("UTF-8");
-		
-		adminDao.updateCeleb(bb);
-		model.addAttribute("bb", bb);
-		return gotoPage;
-	} 
+							@RequestParam String exist_climg,
+							Model model) throws IOException {
+		System.out.println("기존 타이틀이미지:"+exist_climg);
+		System.out.println("새로운 디테일이미지:"+bb.getCl_image());
+		// 기존 타이틀이미지, 디테일이미지를 업로드 폴더에서 내리는 작업
+		String uploadPath = servletContext.getRealPath("/resources/uploadFolder/celeb/");
+		File destTitle = new File(uploadPath+File.separator+exist_climg);
+		try {
+			destTitle.delete();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// 새로운 타이틀이미지, 디테일이미지 포함 나머지들을 업데이트하는 작업
+		int res = adminDao.updateCeleb(bb);
+		if(res == 1) {
+			model.addAttribute("msg", "이미지가 성공적으로 수정되었습니다.");
+			model.addAttribute("url", "celebList.admin");
+			destTitle = new File(uploadPath+File.separator+bb.getCl_image());
+			
+			MultipartFile cl_image = bb.getUpload_cl();
+			
+			try {
+				cl_image.transferTo(destTitle); //destTitle에 ttl_img 올려라.
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else {
+			System.out.println("update res:"+res);
+			model.addAttribute("msg", "상품 수정 실패. DB 확인 요망.");
+			model.addAttribute("url", "celebUpdate.admin");
+		}
+		return redirect;
+	}
 	
 	@RequestMapping(value=deleteCommand,method=RequestMethod.GET)
 	public String delete(

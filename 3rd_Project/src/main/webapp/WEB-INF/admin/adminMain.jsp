@@ -2,6 +2,12 @@
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminMain.css">
 <%@ include file="adminMenu.jsp"%>
+
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
 
@@ -106,6 +112,30 @@
 
 <script>
 	const ctx = document.getElementById('myChart');
+
+	new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+			datasets: [{
+				label: '# of Votes',
+				data: [12, 19, 3, 5, 2, 3],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				y: {
+				  beginAtZero: true
+				}
+			}
+		}
+	});
+</script>
+ 
+
+
+<script>
 	var config = new Chart(document.getElementById("orderChart").getContext('2d'),{
 		type: 'line',   // 차트의 종류를 선언한다.
 		data: {
@@ -211,4 +241,6 @@
 		}
 	});
 </script>
+
+</body>
  

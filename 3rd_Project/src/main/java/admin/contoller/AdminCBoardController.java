@@ -25,7 +25,7 @@ import utility.Paging;
 
 @Controller 
 public class AdminCBoardController {
-	
+	 
 	@Autowired
 	private AdminDao adminDao; 
  
