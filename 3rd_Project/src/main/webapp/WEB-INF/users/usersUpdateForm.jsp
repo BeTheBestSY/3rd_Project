@@ -37,7 +37,7 @@
 <ul>
 	<li><big><b>회원정보 수정</b></big></li>
 	<br><br>
-	<c:if test="${loginInfo.u_jointype != 'S' && loginInfo.u_phone == null}">
+	<c:if test="${loginInfo.u_jointype != 'S' && loginInfo.u_phone == ''}">
 		<span style="font-size: 11pt; line-height: 180%;">
 		<u>네이버, 카카오, 구글 연동</u>으로 가입하신 회원님은 <font style="color: red;">필수 정보를 반드시 업데이트</font> 해 주셔야 정상적으로 이용하실 수 있습니다.<br>
 		번거로우시더라도 잠깐 시간 내시어 정보 업데이트 부탁 드립니다. :)
@@ -89,13 +89,13 @@
 						</td>
 				</tr>
 				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA;">
-					<th>&nbsp;&nbsp;주소</th>
+					<th><font color="red">*</font> 주소</th>
 					<td>
 						<input type="text" class="form-control" name="u_address" style="display: inline; width: 50%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[0]}" id="sample4_postcode" onClick="zipClick()" placeholder="우편번호" readonly> 
 						<input type="button" class="btn btn-outline-secondary" id="searchBtn" style="margin-bottom: 5px; height: 37px;" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 						<input type="text" class="form-control" name="u_address" style="width: 90%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[1]}" id="sample4_roadAddress" onClick="zipClick()" placeholder="도로명주소" readonly> 
 						<span id="guide" style="color: #999; display: none"></span> 
-						<input type="text" class="form-control" name="u_address" style="width: 90%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[2]}" id="sample4_detailAddress" placeholder="상세주소"></td>
+						<input type="text" class="form-control" name="u_address" style="width: 90%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[2]}" id="sample4_detailAddress" placeholder="상세주소" required></td>
 				</tr>
 				<!-- <tr>
 						<th>* 결제수단</th>
@@ -103,7 +103,7 @@
 							<input type="text" name="u_pay" value="" placeholder="" required>
 						</td>
 				</tr> -->
-				<tr style="border-bottom: 1px solid #D5D5D5; height: 13%;">
+				<tr style="border-bottom: 1px solid #D5D5D5; height: 13%;"> 
 					<th><font color="red">*</font> 퍼스널 컬러</th>
 					<td>
 						<c:set var="pcList">잘 모르겠음,봄 라이트,봄 브라이트,여름 라이트,여름 브라이트,여름 뮤트,가을 뮤트,가을 스트롱,가을 딥,겨울 브라이트,겨울 딥</c:set>

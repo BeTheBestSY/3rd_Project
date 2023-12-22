@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,14 +20,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import admin.model.AdminDao;
 import c_board.model.CBoardBean;
+import celeb.model.CelebBean;
 import utility.Paging;
 
-@Controller
+@Controller 
 public class AdminCBoardController {
-
-	@Autowired 
+	 
+	@Autowired
 	private AdminDao adminDao; 
-
+ 
 	public final String listCommand="/cBoardList.admin";
 	public final String viewPage="adminCBoard";
 	public final String deleteCommand="/cBoardDelete.admin";
@@ -80,20 +82,22 @@ public class AdminCBoardController {
 		return gotoPage;
 	}
 	
-	@RequestMapping(value = commandChkDel, method = RequestMethod.GET)
-	public String c_boardChkDel(Model model, @RequestParam("check") int[] checks, @RequestParam("pageNumber") String pageNumber) {
-		adminDao.deleteChkBoardC(checks);
-		model.addAttribute("pageNumber", pageNumber);
-		return gotoPage;
-	}
 	
-	@RequestMapping(value = commandDetail, method = RequestMethod.GET)
-	public String c_boardDetail(Model model, @RequestParam("c_num") int c_num, @RequestParam("pageNumber") String pageNumber) {
-		//cd.updateReadcount(c_num); => 마이페이지 내에서 본인이 조회할 때는 조회수가 오르지 않음.
-		CBoardBean cb = adminDao.selectContentC(c_num);
-		model.addAttribute("pageNumber", pageNumber);
-		model.addAttribute("cb", cb);
+	@RequestMapping(value=commandDetail,method=RequestMethod.GET)
+	public String toDetailList(
+			Model model,
+			@RequestParam("c_num") int c_num,
+			@RequestParam("pageNumber") int pageNumber
+			) throws Exception {
+		
+		CBoardBean bb = adminDao.selectContentC(c_num);
+		
+		model.addAttribute("pageNumber",pageNumber);
+		model.addAttribute("bb",bb);
+		
 		return viewPageDetail;
+		
+		
 	}
 	
 	

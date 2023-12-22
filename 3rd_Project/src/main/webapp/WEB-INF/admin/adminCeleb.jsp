@@ -37,6 +37,9 @@
 					<button type="submit" class="btn btn-dark">검색</button>
 				   </form>
 				</div>
+				<div class="filter_radio" style="margin: auto; width: 90%; height: 40px;">
+					<span style="position:relative; left: 437px; "><input type="button" class="btn btn-white" value="＋추가하기" onClick="location.href='celebInsert.admin'"></span>
+				</div>
 			</div>
 		</div>
 	</div>
