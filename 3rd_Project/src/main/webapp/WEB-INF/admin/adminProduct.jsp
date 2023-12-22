@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css?ver=220610">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css?ver=22023465">
 <script type="text/javascript">
 	window.onload = function(){
 		const radios = document.querySelectorAll("input[name='filter_btn']");
-		const titleImg = document.querySelector(".prd-img");
 		
 		radios.forEach((radio) => {
 			radio.addEventListener("change", (e) => {
@@ -14,12 +13,6 @@
 				var keyword = document.getElementById('keyword');
 				location.href='productList.admin?filter='+current.value+'&whatColumn='+whatColumn.value+'&keyword='+keyword.value;
 			});
-		});
-		titleImg.addEventListener("mouseover", (e) => {
-			alert('('+e.clientX+','+e.clientY+')');
-			var divTop = e.clientY + 'px';
-			var divLeft = e.clientX + 'px';
-			
 		});
 	};
 	
@@ -32,6 +25,22 @@
 	function delBtn(p_num){
 		if(confirm('정말로 삭제하시겠습니까?')){
 			location.href='productDelete.admin?p_num='+p_num;
+		}
+	}
+	
+	function imgPopup(url){
+		var img = new Image();
+		img.src = url;
+		img.onload = function(){
+			var imgWidth = img.width;
+			var imgHeight = img.height;
+			var winWidth = imgWidth+25;
+			var popupImg = window.open('', '_blank', 
+					'width='+imgWidth+
+					', height='+imgHeight+
+					', menubars=no, scrollbars=auto'
+					);
+			popupImg.document.write('<img src="'+url+'" width="'+winWidth+'">');
 		}
 	}
 </script>
@@ -74,20 +83,13 @@
 					<div class="topbox1">
 						<table class="board-table" style="font-size: 13pt; text-align: center; table-layout:fixed;">
 							<tr style="background: #f4f4f4;">
-								<!-- <th scope="col" class="th-num" style="padding-left: 2.7%;">번호</th>
+								<th scope="col" class="th-num" style="padding-left: 2.7%;">번호</th>
 								<th scope="col" class="th-brand" style="padding-left: 3%;">브랜드</th>
 								<th scope="col" class="th-name" style="padding-left: 12%;">이름</th>
 								<th scope="col" class="th-price" style="padding-left: 16.3%;">가격</th>
 								<th scope="col" class="th-stock" style="padding-left: 11.5%;">재고수량</th>
 								<th scope="col" class="th-salevolume" style="padding-left: 7%;">누적판매량</th>
-								<th scope="col" class="th-personalc" style="padding-right: 0.1%;">퍼스널컬러</th> -->
-								<th scope="col" class="th-num" style="">번호</th>
-								<th scope="col" class="th-brand" style="">브랜드</th>
-								<th scope="col" class="th-name" style="">이름</th>
-								<th scope="col" class="th-price" style="">가격</th>
-								<th scope="col" class="th-stock" style="">재고수량</th>
-								<th scope="col" class="th-salevolume" style="">누적판매량</th>
-								<th scope="col" class="th-personalc" style="">퍼스널컬러</th>
+								<th scope="col" class="th-personalc" style="padding-right: 0.1%;">퍼스널컬러</th>
 								<th scope="col" class="th-delete"></th>
 								<th scope="col" class="th-update"></th>
 							</tr>
@@ -103,12 +105,18 @@
 									</c:if>
 									
 									<c:forEach var="pb" items="${prodLists }">
+										<input id="title" type="hidden" value="${pb.p_ttlimg }">
 										<tr>
 											<td width="30px">${pb.p_num }</td>
 											<td width="70px">${pb.p_brand }</td>
 											<td width="90px">${pb.p_name }&nbsp;&nbsp;
-												<span class="prd-img" title="타이틀이미지">
+												<span class="ttl-img" title="타이틀이미지" onClick="imgPopup('<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_ttlimg }')">
 													<font color="#C98BA4">
+														<ion-icon name="image-outline"></ion-icon>
+													</font>
+												</span>
+												<span class="dtl-img" title="디테일이미지" onClick="imgPopup('<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_dtlimg }')">
+													<font color="#E7B3CE">
 														<ion-icon name="image-outline"></ion-icon>
 													</font>
 												</span>
