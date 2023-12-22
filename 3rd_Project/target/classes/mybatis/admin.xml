@@ -40,6 +40,19 @@
 		delete from q_board where q_num = #{q_num}
 	</delete>
 	
+	<update id="plusStep">
+		update q_board set q_re_step=q_re_step+1 where q_ref=#{q_ref} and q_re_step>#{q_re_step}
+	</update>
+	
+	<update id="updateReadcount">
+		update q_board set q_readcount=q_readcount+1 where q_num=#{q_num}
+	</update>
+	
+	<insert id="insertReply">
+		insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip) values(qboard_seq.nextval,#{q_writer},#{q_email},#{q_subject},#{q_password},#{q_regdate},#{q_ref},#{q_re_step},#{q_re_level},#{q_content},#{q_ip})
+	</insert>
+		
+	
 	<!-- c_board -->
 	
 	<select id="getAllBoardListC" resultType="CBoard">
