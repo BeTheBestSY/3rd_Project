@@ -39,7 +39,7 @@ public class UsersNaverController {
 		this.accessToken = tokens.get("accessToken");
 		this.refreshToken = tokens.get("refreshToken");
 		
-		// 3. 사용자 정보 받기
+		// 3. 사용자 정보 받기 
 		Map<String, Object> userInfo = naverApi.getUserInfo(this.accessToken);
 		String name = String.valueOf(userInfo.get("name"));
 	    String id = String.valueOf(userInfo.get("id"));
