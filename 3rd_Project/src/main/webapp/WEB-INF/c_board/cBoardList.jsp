@@ -95,7 +95,7 @@
 			</tr>
 		</c:forEach>
 	</c:if>
-	<c:if test="${ empty list }" >
+	<c:if test="${ empty list }" > 
 		<tr>
 			<td colspan="8">작성된 글이 없습니다.</td> 
 		</tr>

@@ -14,6 +14,7 @@
 <%
 	};
 %>
+</script>
 
 <!DOCTYPE html>
 <html>
@@ -21,16 +22,24 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	<style>
+<style>
 body {
 	padding-top: 140px;
 }
 </style>
 
+<<<<<<< HEAD
+
+	<%@ include file="../product/productHeader.jsp"%>
+	<div style="font-family: 'MaruBuri-Regular'; font-size: 25pt; font-weight: bold; margin: 50px 0px 30px 360px;">
+		장바구니
+
+=======
 <%@ include file="../product/productHeader.jsp"%>
 
 	<div style="font-family: 'MaruBuri-Regular'; font-size: 25pt; font-weight: bold; margin: 50px 0px 30px 360px;">
 		장바구니
+>>>>>>> 218a99bc02e2ea2fc7535b7fa42b95718fff8621
 	</div>
 
 	<div style="width: 1200px; margin: auto; padding: 0px 25px 20px 12px;">

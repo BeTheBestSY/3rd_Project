@@ -71,6 +71,7 @@ public class AdminDao {
 		return bb;
 	}
 	
+	
 	public void deleteBoardC(int c_num) {
 		sqlSessionTemplate.delete(nameSpace+"deleteBoardC",c_num);
 	}
@@ -105,12 +106,18 @@ public class AdminDao {
 			return cb;
 		}
 
+	public int insertCeleb(CelebBean bb) {
 
+		return sqlSessionTemplate.insert(nameSpace+"insertCeleb",bb);
+		
+	}
 	public void deleteCeleb(int cl_num) {
 		sqlSessionTemplate.delete(nameSpace+"deleteCeleb", cl_num);
 	}
 	
-	
+	public int updateCeleb(CelebBean bb) {
+		return sqlSessionTemplate.update(nameSpace+"updateCeleb", bb);
+	}
 	
 	//company
 	public List<CompanyBean> getAllCompany(Paging pageInfo, Map<String, String> map) {
@@ -201,6 +208,18 @@ public class AdminDao {
 
 	public int updateProduct(ProductBean pb) {
 		return sqlSessionTemplate.update(nameSpace+"updateProduct", pb);
+	}
+
+
+	public void replyProc(QBoardBean bb) {
+
+		sqlSessionTemplate.update(nameSpace+"plusStep",bb);
+		
+		bb.setQ_re_step(bb.getQ_re_step()+1);
+		bb.setQ_re_level(bb.getQ_re_level()+1);
+
+		sqlSessionTemplate.insert(nameSpace+"insertReply",bb);
+		
 	}
 
 

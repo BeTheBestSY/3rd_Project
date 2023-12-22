@@ -40,6 +40,19 @@
 		delete from q_board where q_num = #{q_num}
 	</delete>
 	
+	<update id="plusStep">
+		update q_board set q_re_step=q_re_step+1 where q_ref=#{q_ref} and q_re_step>#{q_re_step}
+	</update>
+	
+	<update id="updateReadcount">
+		update q_board set q_readcount=q_readcount+1 where q_num=#{q_num}
+	</update>
+	
+	<insert id="insertReply">
+		insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip) values(qboard_seq.nextval,#{q_writer},#{q_email},#{q_subject},#{q_password},#{q_regdate},#{q_ref},#{q_re_step},#{q_re_level},#{q_content},#{q_ip})
+	</insert>
+		
+	
 	<!-- c_board -->
 	
 	<select id="getAllBoardListC" resultType="CBoard">
@@ -68,6 +81,10 @@
 	</select>
 
 	<select id="selectContentC" resultType="CBoard">
+		select * from c_board where c_num = #{c_num}
+	</select>
+	
+	<select id="getSelectOneC" resultType="CBoard" >
 		select * from c_board where c_num = #{c_num}
 	</select>
 	
@@ -106,10 +123,20 @@
 		where cl_num = #{cl_num}
 	</select>
 	
+	<insert id="insertCeleb">
+		insert into celeb values(celeb_seq.nextval, #{cl_name}, #{cl_image}, #{cl_color})
+	</insert>
+	
 	<delete id="deleteCeleb">
 		delete celeb
 		where cl_num=#{cl_num}
 	</delete>
+	
+	<update id="updateCeleb">
+		update celeb
+		set cl_name=#{cl_name}, cl_image=#{cl_image}, cl_color=#{cl_color}
+		where cl_num=#{cl_num}
+	</update>
 	
 	<!-- company -->
 	<select id="getAllCompany" resultType="myCompany" >
@@ -366,7 +393,7 @@
 			<if test="whatColumn=='all'">
 				where o_date like #{keyword} or u_id like #{keyword}
 			</if>
-			order by o_num asc
+			order by o_num desc
 		</select>
 		
 		<select id="getAllOrder" resultType="mall.model.OrderBean">
@@ -380,7 +407,7 @@
 			<if test="whatColumn=='all'">
 				where o_date like #{keyword} or u_id like #{keyword}
 			</if>
-			order by o_num asc
+			order by o_num desc
 		</select>
 		
 		<select id="selectOrderStatus" resultType="String">

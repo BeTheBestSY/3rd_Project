@@ -143,7 +143,7 @@ public class AdminProductController {
 		}
 		return redirect;
 	}
-	
+	 
 	@RequestMapping(value = delCommand)
 	public String adminProdDel(@RequestParam String p_num,
 							Model model) throws IOException {
