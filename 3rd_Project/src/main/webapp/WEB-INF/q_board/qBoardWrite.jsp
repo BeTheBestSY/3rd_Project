@@ -87,12 +87,8 @@
 						
 			 </table>
 			 <br><br>
-<<<<<<< HEAD
 			 
 	 	  	<!-- 로그인 하지 않은 상태면 -->
-=======
-			 	  <!-- 로그인 하지 않은 상태면 -->
->>>>>>> d88c76c04046073760bab0acd41ee25b1e17d588
 			<c:if test="${loginInfo.u_id  == null}">
 				<%
 					session.setAttribute("destination", "redirect:/write.qb");
@@ -102,21 +98,17 @@
 					location.href="login.u";
 				</script>
 			</c:if>
-<<<<<<< HEAD
 			
- 			<input type="submit" value="작성 완료" class="btn btn-dark" id="btn">
-		</form>
-	</div>
-=======
-			<!-- 로그인 한 상태면 -->
+ 		<!-- 로그인 한 상태면 -->
 			<c:if test="${loginInfo.u_id  != null}">
 			 <center>
 	 				<input type="submit" value="작성 완료" class="btn btn-dark" id="btn">
 			</center>
 			</c:if>
 		</form:form>
+	</div>
+			
 </div>
->>>>>>> d88c76c04046073760bab0acd41ee25b1e17d588
 </article>
 
 <%@ include file="./../views/footer.jsp" %>

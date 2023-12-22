@@ -28,6 +28,13 @@ table th{
 .board-table{
 margin-top:20px;
 }
+table{
+		margin: auto; 
+		width: 800px;
+		height: 650px;
+		font-family: 'RIDIBatang';
+	}
+
 </style>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
@@ -49,13 +56,13 @@ margin-top:20px;
 	
 </script>
 
-<article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
+<article style=" text-align:center; font-family: 'MaruBuri-Regular';" >
 	<div class="section">
 		<div id="tag" style="margin-right:83%; font-size: 2em;">
 			<h4>진단 회사 정보 수정</h4>
 		</div>
 		
-	<div id="center" style="text-align: center;">
+	<div id="table-form" style="text-align: center;" align="center">
 			<form action="companyUpdate.admin" method="post">
 			<table class="board-table">
 				<tr style="border-top: 2px solid graytext; padding:10px;">

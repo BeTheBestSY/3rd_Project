@@ -28,6 +28,12 @@ table th{
 .board-table{
 margin-top:20px;
 }
+table{
+		margin: auto; 
+		width: 800px;
+		height: 650px;
+		font-family: 'RIDIBatang';
+	}
 </style>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
@@ -67,13 +73,13 @@ margin-top:20px;
 					<td width="80%">
 						<input type="text" class="form-control" name="cmp_price" style="width:20%;" value="${bb.cmp_price }" required> 원
 					</td>
-				</tr>
+				</tr> 
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
 					<th width="20%"><font color="red">*</font> 지하철 역</th>
-					<td width="80%">
+					<td width="80%"> 
 						<input type="text" class="form-control" name="cmp_station"  class="form-control"  value="${bb.cmp_station }" required>
 					</td>
-				</tr>
+				</tr> 
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
 					<th width="20%"><font color="red">*</font>경도</th>
 					<td width="80%">
@@ -89,7 +95,7 @@ margin-top:20px;
 				<tr>
 					<td colspan="2" align="center">
 						<br>
-						<input type="submit" value="수정하기" class="btn btn-white" style="margin-bottom:11px; height: 39px; width:150px;" id="subBtn">
+						<input type="submit" value="추가하기" class="btn btn-white" style="margin-bottom:11px; height: 39px; width:150px;" id="subBtn">
 					</td>
 				</tr>
 			</table>

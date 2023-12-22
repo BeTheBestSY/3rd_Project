@@ -38,7 +38,6 @@ public class AdminCompanyController {
 	private String insertFormPage = "adminCompanyInsertForm";
 	
 	private final String deleteCommand = "/companyDelete.admin";
-	
 	private final String updateCommand = "/companyUpdate.admin";
 	private String updateformPage = "adminCompanyUpdateForm";
 	
