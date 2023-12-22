@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css?ver=220610">
 <script type="text/javascript">
 	window.onload = function(){
 		const radios = document.querySelectorAll("input[name='filter_btn']");
@@ -42,11 +42,11 @@
 						<button type="submit" class="btn btn-dark">검색</button>
 					</form>
 				</div>
-				<div class="filter_radio" style="margin: auto; width: 80%; height: 6%;">
-					<span style="position:relative;right:22%;bottom:40%;"><input type="radio" name="filter_btn" value="A" <c:if test="${param.filter eq 'A' || param.filter eq null || param.filter eq ''}">checked</c:if> style="width:20px;height:18px;"> 전체 회원</span>
-					<span style="position:relative;right:20%;bottom:40%;"><input type="radio" name="filter_btn" value="S" <c:if test="${param.filter eq 'S'}">checked</c:if> style="width:20px;height:18px;"> 기본</span>
-					<span style="position:relative;right:18%;bottom:40%;"><input type="radio" name="filter_btn" value="N" <c:if test="${param.filter eq 'N'}">checked</c:if> style="width:20px;height:18px;"> 네이버</span>
-					<span style="position:relative;right:16%;bottom:40%;"><input type="radio" name="filter_btn" value="K" <c:if test="${param.filter eq 'K'}">checked</c:if> style="width:20px;height:18px;"> 카카오</span>
+				<div class="filter_radio">
+					<span style="position:relative;right:26%;bottom:40%;"><input type="radio" name="filter_btn" value="A" <c:if test="${param.filter eq 'A' || param.filter eq null || param.filter eq ''}">checked</c:if> style="width:20px;height:18px;"> 전체 회원</span>
+					<span style="position:relative;right:21%;bottom:40%;"><input type="radio" name="filter_btn" value="S" <c:if test="${param.filter eq 'S'}">checked</c:if> style="width:20px;height:18px;"> 기본</span>
+					<span style="position:relative;right:15%;bottom:40%;"><input type="radio" name="filter_btn" value="N" <c:if test="${param.filter eq 'N'}">checked</c:if> style="width:20px;height:18px;"> 네이버</span>
+					<span style="position:relative;right:10%;bottom:40%;"><input type="radio" name="filter_btn" value="K" <c:if test="${param.filter eq 'K'}">checked</c:if> style="width:20px;height:18px;"> 카카오</span>
 				</div>
 			</div>
 		</div>

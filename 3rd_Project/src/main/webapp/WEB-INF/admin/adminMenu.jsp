@@ -29,7 +29,7 @@
                 <div class="nav__list">
 
                     <a href=".admin" class="nav__link collapse">
-                        <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                        <ion-icon name="home" class="nav__icon"></ion-icon>
                         <span class="nav_name">&nbsp;메인</span>
                     </a>
                     
@@ -43,7 +43,7 @@
 						<span class="nav_name">&nbsp;화장품</span>
                     </a>
                     
-                    <a href="productList.admin" class="nav__link">
+                     <a href="orderList.admin" class="nav__link">
                     	<ion-icon name="receipt-outline"></ion-icon>
 						<span class="nav_name">&nbsp;주문 내역</span>
                     </a>

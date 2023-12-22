@@ -105,7 +105,7 @@ body {
 					총 주문 금액<br>
 					<c:if test=""></c:if>
 					${totalAmount}
-				</td>
+				</td> 
 				<td>
 					배송비<br>
 					<c:if test="${totalAmount < 30000}">
