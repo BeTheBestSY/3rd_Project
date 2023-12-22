@@ -338,10 +338,7 @@ ion-icon {
     pointer-events: none;
 }
 
-.prd-img{
+.ttl-img, .dtl-img{
 	cursor:pointer
 }
 
-.prd-img:hover{
-	color: #E7B3CE;
-}
