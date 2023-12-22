@@ -103,7 +103,7 @@
 							<input type="text" name="u_pay" value="" placeholder="" required>
 						</td>
 				</tr> -->
-				<tr style="border-bottom: 1px solid #D5D5D5; height: 13%;">
+				<tr style="border-bottom: 1px solid #D5D5D5; height: 13%;"> 
 					<th><font color="red">*</font> 퍼스널 컬러</th>
 					<td>
 						<c:set var="pcList">잘 모르겠음,봄 라이트,봄 브라이트,여름 라이트,여름 브라이트,여름 뮤트,가을 뮤트,가을 스트롱,가을 딥,겨울 브라이트,겨울 딥</c:set>
