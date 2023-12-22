@@ -106,9 +106,9 @@ public class AdminDao {
 			return cb;
 		}
 
-	public void insertCeleb(CelebBean bb) {
+	public int insertCeleb(CelebBean bb) {
 
-		sqlSessionTemplate.insert(nameSpace+"insertCeleb",bb);
+		return sqlSessionTemplate.insert(nameSpace+"insertCeleb",bb);
 		
 	}
 	public void deleteCeleb(int cl_num) {
@@ -208,6 +208,18 @@ public class AdminDao {
 
 	public int updateProduct(ProductBean pb) {
 		return sqlSessionTemplate.update(nameSpace+"updateProduct", pb);
+	}
+
+
+	public void replyProc(QBoardBean bb) {
+
+		sqlSessionTemplate.update(nameSpace+"plusStep",bb);
+		
+		bb.setQ_re_step(bb.getQ_re_step()+1);
+		bb.setQ_re_level(bb.getQ_re_level()+1);
+
+		sqlSessionTemplate.insert(nameSpace+"insertReply",bb);
+		
 	}
 
 

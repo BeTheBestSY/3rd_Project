@@ -25,10 +25,10 @@ import utility.Paging;
 
 @Controller 
 public class AdminCBoardController {
-	
+	 
 	@Autowired
 	private AdminDao adminDao; 
-
+ 
 	public final String listCommand="/cBoardList.admin";
 	public final String viewPage="adminCBoard";
 	public final String deleteCommand="/cBoardDelete.admin";
