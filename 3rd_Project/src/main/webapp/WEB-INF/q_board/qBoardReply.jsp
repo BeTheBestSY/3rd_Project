@@ -88,7 +88,7 @@
 					</td> 
 				</tr>
 				<tr>
-					<th align="left" bgcolor="#EDE5D8" width="10%">내용</th>
+					<th align="left" bgcolor="#EDE5D8" width="10%">내용</th> 
 					<td align="left" colspan="3">
 						<textarea rows="10" cols="100" name="q_content" id="content" class="form-control" style="width: 94%; resize: none;" onkeyup="textCount()" required>${ bb.q_content }</textarea>
 						<span id="count" style="float: right; margin: 5px 65px 0px 0px; color: graytext; font-size: 11pt;">(0/500)</span>
