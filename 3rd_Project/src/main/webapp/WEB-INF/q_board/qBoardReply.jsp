@@ -61,7 +61,7 @@
 						<c:if test="${joinType == 'K'}">
 							외부 회원 (카카오)
 						</c:if>
-						<c:if test="${joinType == 'S'}">
+						<c:if test="${joinType == 'S'}"> 
 							&nbsp;${loginInfo.u_id}
 						</c:if>
 						<input type="hidden" name="q_writer" value="${loginInfo.u_id}" class="form-control" style="width: 86%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
