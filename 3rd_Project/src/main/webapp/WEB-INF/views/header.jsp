@@ -92,7 +92,7 @@
 								<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
 							</c:if> 
 							<c:if test="${loginInfo.u_profileimg != null }">
-								<img src="${loginInfo.u_profileimg }" width="32" height="32" class="rounded-circle">
+								<img src="${loginInfo.u_profileimg}" width="32" height="32" class="rounded-circle">
 							</c:if> 
 						</a>
 						<ul class="dropdown-menu text-small">
