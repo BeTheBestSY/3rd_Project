@@ -44,6 +44,7 @@ public class UsersRegisterController {
 			}
 			*/
 			
+			/* 이 부분 제이쿼리로 띄우는게 나을거 같아서 수정했어요.
 			if(!ub.getU_password().equals(u_rePassword)) {
 				PrintWriter out = response.getWriter();
 				response.setContentType("text/html; charset=UTF-8");
@@ -51,7 +52,14 @@ public class UsersRegisterController {
 				out.flush();
 				return viewPage;
 			}
+			*/
 			ub.setU_jointype("S");
+			
+			String email = ub.getU_email().replace(",", "@");
+			ub.setU_email(email);
+			
+			ub.setU_profileimg("");
+			ub.setU_intro("");
 			ud.register(ub);
 			application.setAttribute("flag", true);
 		}
