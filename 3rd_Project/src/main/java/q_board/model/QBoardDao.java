@@ -1,16 +1,14 @@
 package q_board.model;
-
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import c_board.model.CBoardBean;
 import users.model.UsersBean;
 import utility.Paging;
+
 
 @Component("QBoard")
 public class QBoardDao {

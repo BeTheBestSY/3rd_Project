@@ -141,7 +141,7 @@
 			$("#titleMessage").hide();
 		});
 		
-		$('input[name="u_rePassword"]').keydown(function() {
+		$('#u_rePassword').keyup(function() {
 			var u_password = $('#u_password').val();
 			var u_rePassword = $('#u_rePassword').val();
 			$('#pwMessage').css({"display":"block"});
