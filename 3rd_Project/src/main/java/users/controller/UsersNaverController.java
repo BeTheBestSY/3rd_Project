@@ -43,10 +43,13 @@ public class UsersNaverController {
 		Map<String, Object> userInfo = naverApi.getUserInfo(this.accessToken);
 		String name = String.valueOf(userInfo.get("name"));
 	    String id = String.valueOf(userInfo.get("id"));
-	    // 사용자 이메일과 프로필사진을 추가로 받아와야함.
+	    String email = String.valueOf(userInfo.get("email"));
+	    String profileImg = String.valueOf(userInfo.get("profile_image"));
 	    
 	    System.out.println("name = " + name);
 	    System.out.println("id = " + id);
+	    System.out.println("email = " + email);
+	    System.out.println("profileImg = " + profileImg);
 	    System.out.println("accessToken = " + this.accessToken);
 
 	    UsersBean ub = new UsersBean();
@@ -57,6 +60,9 @@ public class UsersNaverController {
       	ub.setU_address(",,");
       	ub.setU_jointype("N");
       	ub.setU_color("잘 모르겠음");
+      	ub.setU_email(email);
+      	ub.setU_profileimg(profileImg);
+      	ub.setU_intro("안녕하세요~!");
       	
       	if(ud.didYouJoin(ub)) { // 로그인 한 네이버 계정이 users 테이블에 저장되어있으면
       		flag = true;
@@ -64,10 +70,15 @@ public class UsersNaverController {
       		ud.register(ub);
       	}
       	session.setAttribute("loginInfo", ub);
-      	if(flag)
-	    	return gotoPage;
-	    else 
-	    	return viewPage;
+      	if(flag) {
+      		if(session.getAttribute("destination") != null) {
+      			return String.valueOf(session.getAttribute("destination"));
+      		} else {
+      			return gotoPage; // 메인화면
+      		}
+      	} else {
+      		return viewPage; // 웰컴화면
+      	}
 	}
 	// 연동해제
 	@RequestMapping(value = commandDis)

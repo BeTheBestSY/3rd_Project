@@ -108,10 +108,20 @@ public class KakaoApi {
 	        JSONObject jsonObj = (JSONObject)obj;
 	        Long id = (Long)jsonObj.get("id");
 	        JSONObject kakaoAccount = (JSONObject)jsonObj.get("kakao_account");
+	        String email = String.valueOf(kakaoAccount.get("email"));
 	        JSONObject profile = (JSONObject)(kakaoAccount.get("profile"));
 	        String nickname = String.valueOf(profile.get("nickname"));
-	        userInfo.put("nickname", nickname);
+	        // 더 작은 썸네일 이미지? 아니면 프로필이미지를 사용?
+	        String thumbnail_image_url = String.valueOf(profile.get("thumbnail_image_url"));
+	        String profile_image_url = String.valueOf(profile.get("profile_image_url"));
+	        Boolean is_default_image = (Boolean)profile.get("is_default_image");
+	        
 	        userInfo.put("id", id);
+	        userInfo.put("nickname", nickname);
+	        userInfo.put("email", email);
+	        userInfo.put("thumbnail_image_url", thumbnail_image_url);
+	        userInfo.put("profile_image_url", profile_image_url);
+	        userInfo.put("is_default_image", is_default_image);
 
 	        br.close();
 

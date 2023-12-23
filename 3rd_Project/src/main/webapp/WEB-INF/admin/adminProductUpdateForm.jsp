@@ -1,67 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminCompanyUpdate.css?ver=220613">
 <style>
-	table{
-		margin: auto; 
-		width: 800px;
-		height: 650px;
-		font-family: 'RIDIBatang';
+	input[type="text"], select, textarea, ttl_img {
+	  font-size: 15px;
+	  width: 300px;
+	  height:35px;
+	  border: none;
+	  border-bottom: solid #aaaaaa 1px;
+	  padding-bottom: 3px;
+	  padding-left: 10px;
+	  position: relative;
+	  background: #f8f9f7;
+	  z-index: 5;
+	  border-radius:5px;
 	}
-	th{
-		background: #EAEAEA; 
-		padding-left: 10px;
+	
+	table th{
+		text-align:left;
 	}
-	td{
-		padding: 0px 10px 0px 10px;
+	
+	.board-table{
+	margin-top:20px;
 	}
-	#searchBtn{
-		width: 120px;
-		height: 35px;
-		margin-left: 5px;
-		background: #EAEAEA;
-		border: none;
-		border-radius: 3px;
-		font-size: 11pt;
-	}
-	#searchBtn:hover{
-		background: #BDBDBD;
-		color: white;
-	}
-	#subBtn{
-		width: 120px;
-		height: 40px;
-		margin-left: 5px;
-		color: white;
-		background: #8C8C8C;
-		border: none;
-		border-radius: 3px;
-		font-size: 11pt;
-	}
-	#subBtn:hover{
-		background: #EAEAEA;
-		color: black;
-	}
-	#resetBtn{
-		width: 120px;
-		height: 40px;
-		margin-left: 5px;
-		background: #EAEAEA;
-		border: none;
-		border-radius: 3px;
-		font-size: 11pt;
-	}
-	#resetBtn:hover {
-		background: #BDBDBD;
-		color: white;
-	}
+	
 }
 </style>
 <script type="text/javascript">
 	var title, detail, ttlImg, dtlImg, ttlSpan, dtlSpan;
 	window.onload = function(){
-		/* var ttlName = null;
-		var dtlName = null; */
 		title = document.getElementById('title');
 		ttlImg = document.getElementById('ttl_img');
 		ttlSpan = document.getElementById('ttl_name');
@@ -127,86 +95,94 @@
 		}
 	}
 </script>
-<div id="center" style="text-align: center;">
-	<br><br><br><br>
-	<div>
-		<form action="productUpdate.admin" method="post" enctype="multipart/form-data" onSubmit="return checkImg()">
-		<input type="hidden" name="p_num" value="${pb.p_num }">
-		<table>
-			<tr>
-				<th width="20%">브랜드</th>
-				<td width="80%">
-					<input type="text" class="form-control" name="p_brand" value="${pb.p_brand }" required>
-				</td>
-			</tr>
-			<tr>
-				<th>이름</th>
-				<td>
-					<input type="text" class="form-control" name="p_name" value="${pb.p_name }" required>
-				</td>
-			</tr>
-			<tr>
-				<th>가격</th>
-				<td>
-					<input type="text" class="form-control" name="p_price" value="${pb.p_price }" required>
-				</td>
-			</tr>
-			<tr>
-				<th>지급포인트</th>
-				<td>
-					<input type="text" class="form-control" name="p_point" value="${pb.p_point }" required>
-				</td>
-			</tr>
-			<tr>
-				<th>재고수량</th>
-				<td>
-					<input type="text" class="form-control" name="p_stock" value="${pb.p_stock }" required>
-				</td>
-			</tr>
-			<tr>
-				<th>누적판매량</th>
-				<td>
-					<input type="text" class="form-control" name="p_salevolume" value="${pb.p_salevolume }" required>
-				</td>
-			</tr>
-			<tr>
-				<th>퍼스널컬러</th>
-				<td>
-					<input type="text" class="form-control" name="p_color" value="${pb.p_color }" required>
-				</td>
-			</tr>
-			<tr>
-				<th>제품설명</th>
-				<td>
-					<textarea class="form-control" name="p_contents" placeholder="제품설명 입력" required>${pb.p_contents }</textarea>
-				</td>
-			</tr>
-			<tr>
-				<th>제품사진</th>
-				<td>
-					<input type="hidden" name="exist_ttl" value="${pb.p_ttlimg }">
-					<input type="hidden" name="exist_dtl" value="${pb.p_dtlimg }">
-					<input id="title" type="file" name="upload_ttl" accept="image/*" style="display: none">
-					<input id="detail" type="file" name="upload_dtl" accept="image/*" style="display: none"> 
-					<br>
-					* 타이틀이미지 업로드<br> <!-- 기존 타이틀 이미지가 올라가있다. -->
-					<img id="ttl_img" alt="타이틀이미지" src="<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_ttlimg  }" style="border:1px solid black; width:15%; height: 35%; cursor:pointer;"><br>
-					<span id="ttl_name"><a href="javascript:deleteTtlImg();"><font color="red">x</font></a> ${pb.p_ttlimg }</span>
-					<br><br>
-					* 디테일이미지 업로드<br> <!-- 기존 디테일 이미지가 올라가있다. -->
-					<img id="dtl_img" alt="디테일이미지" src="<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_dtlimg  }" style="border:1px solid black; width:15%; height: 35%; cursor:pointer;"><br>
-					<span id="dtl_name"><a href="javascript:deleteDtlImg();"><font color="red">x</font></a> ${pb.p_dtlimg }</span>
-					<br><br>
-					
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<br><br>
-					<input type="submit" value="수정하기" id="subBtn">
-				</td>
-			</tr>
-		</table>
-	</form>
+
+<article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
+	<div class="section">
+		<div id="tag" style="margin-right:83%; font-size: 2em;">
+			<h4>상품 정보 수정</h4>
+		</div>
+		<div id="center" style="text-align: center;">
+			<br><br><br><br>
+			<div>
+				<form action="productUpdate.admin" method="post" enctype="multipart/form-data" onSubmit="return checkImg()">
+				<input type="hidden" name="p_num" value="${pb.p_num }">
+				<table class="board-table">
+					<tr>
+						<th width="20%">브랜드</th>
+						<td width="80%">
+							<input type="text" class="form-control" name="p_brand" value="${pb.p_brand }" required>
+						</td>
+					</tr>
+					<tr>
+						<th>이름</th>
+						<td>
+							<input type="text" class="form-control" name="p_name" value="${pb.p_name }" required>
+						</td>
+					</tr>
+					<tr>
+						<th>가격</th>
+						<td>
+							<input type="text" class="form-control" name="p_price" value="${pb.p_price }" required>
+						</td>
+					</tr>
+					<tr>
+						<th>지급포인트</th>
+						<td>
+							<input type="text" class="form-control" name="p_point" value="${pb.p_point }" required>
+						</td>
+					</tr>
+					<tr>
+						<th>재고수량</th>
+						<td>
+							<input type="text" class="form-control" name="p_stock" value="${pb.p_stock }" required>
+						</td>
+					</tr>
+					<tr>
+						<th>누적판매량</th>
+						<td>
+							<input type="text" class="form-control" name="p_salevolume" value="${pb.p_salevolume }" required>
+						</td>
+					</tr>
+					<tr>
+						<th>퍼스널컬러</th>
+						<td>
+							<input type="text" class="form-control" name="p_color" value="${pb.p_color }" required>
+						</td>
+					</tr>
+					<tr>
+						<th>제품설명</th>
+						<td>
+							<textarea class="form-control" name="p_contents" placeholder="제품설명 입력" required>${pb.p_contents }</textarea>
+						</td>
+					</tr>
+					<tr>
+						<th>제품사진</th>
+						<td>
+							<input type="hidden" name="exist_ttl" value="${pb.p_ttlimg }">
+							<input type="hidden" name="exist_dtl" value="${pb.p_dtlimg }">
+							<input id="title" type="file" name="upload_ttl" accept="image/*" style="display: none">
+							<input id="detail" type="file" name="upload_dtl" accept="image/*" style="display: none"> 
+							<br>
+							* 타이틀이미지 업로드<br> <!-- 기존 타이틀 이미지가 올라가있다. -->
+							<img id="ttl_img" alt="타이틀이미지" src="<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_ttlimg  }" style="width:15%; height: 35%; cursor:pointer;"><br>
+							<span id="ttl_name"><a href="javascript:deleteTtlImg();"><font color="red">x</font></a> ${pb.p_ttlimg }</span>
+							<br><br>
+							* 디테일이미지 업로드<br> <!-- 기존 디테일 이미지가 올라가있다. -->
+							<img id="dtl_img" alt="디테일이미지" src="<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_dtlimg  }" style="width:15%; height: 35%; cursor:pointer;"><br>
+							<span id="dtl_name"><a href="javascript:deleteDtlImg();"><font color="red">x</font></a> ${pb.p_dtlimg }</span>
+							<br><br>
+							
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<br><br>
+							<input type="submit" value="수정하기" id="subBtn">
+						</td>
+					</tr>
+				</table>
+				</form>
+			</div>
+		</div>
 	</div>
-</div>
+</article>

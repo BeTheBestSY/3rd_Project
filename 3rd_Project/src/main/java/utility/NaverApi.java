@@ -119,9 +119,13 @@ public class NaverApi {
 	        JSONObject response = (JSONObject)jsonObj.get("response");
 	        String id = String.valueOf(response.get("id"));
 	        String name = String.valueOf(response.get("name"));
-	        // 사용자 이메일과 프로필사진을 추가로 받아와야함.
+	        String email = String.valueOf(response.get("email"));
+	        String profile_image = String.valueOf(response.get("profile_image"));
+
 	        userInfo.put("id", id);
 	        userInfo.put("name", name);
+	        userInfo.put("email", email);
+	        userInfo.put("profile_image", profile_image);
 
 	        br.close();
 
