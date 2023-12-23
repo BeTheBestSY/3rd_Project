@@ -36,11 +36,13 @@ public class UsersRegisterController {
 		if(!(Boolean) application.getAttribute("flag")) {
 			String u_phone = ub.getU_phone().replace(",","-"); // 010-1234-5678
 			ub.setU_phone(u_phone);
-			System.out.println(ub.getU_address()); // 23104,인천 옹진군 백령면 콩돌로 170,102호
-			// 주소 입력을 안 했을 경우
+			
+			// 주소 입력을 안 했을 경우 => 이제 required 라서 입력 안했을 경우는 없을거야!
+			/*
 			if(ub.getU_address().equals(",,")) {
 				ub.setU_address("-");
 			}
+			*/
 			
 			if(!ub.getU_password().equals(u_rePassword)) {
 				PrintWriter out = response.getWriter();

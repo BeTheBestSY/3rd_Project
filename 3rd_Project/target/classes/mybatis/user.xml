@@ -9,7 +9,7 @@
 	</select>
 	<insert id="register">
 		insert into users
-		values(#{u_id}, #{u_name}, #{u_password}, #{u_phone}, #{u_address}, 0, '미정', #{u_jointype}, default, #{u_color} )
+		values(#{u_id}, #{u_name}, #{u_password}, #{u_phone}, #{u_address}, 0, '미정', #{u_jointype}, default, #{u_color}, #{u_email}, '', '')
 	</insert>
 	<select id="getUserById" resultType="Users">
 		select * from users
