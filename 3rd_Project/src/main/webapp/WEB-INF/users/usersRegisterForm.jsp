@@ -167,7 +167,7 @@
 			if (pwSame == false) {
 				alert("비밀번호 확인란을 동일하게 입력해주세요.");
 				return false;
-			}
+			} 
 		});
 		
 	});
