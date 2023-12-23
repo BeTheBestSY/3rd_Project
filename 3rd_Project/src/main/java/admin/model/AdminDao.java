@@ -211,6 +211,18 @@ public class AdminDao {
 	}
 
 
+	public void replyProc(QBoardBean bb) {
+
+		sqlSessionTemplate.update(nameSpace+"plusStep",bb);
+		
+		bb.setQ_re_step(bb.getQ_re_step()+1);
+		bb.setQ_re_level(bb.getQ_re_level()+1);
+
+		sqlSessionTemplate.insert(nameSpace+"insertReply",bb);
+		
+	}
+
+
 	
 
 

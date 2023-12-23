@@ -1,6 +1,7 @@
 package c_board.controller;
 import java.sql.Timestamp;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import c_board.model.CBoardBean;
 import c_board.model.CBoardDao;
+import users.model.UsersBean;
 
 
 @Controller
@@ -29,11 +31,19 @@ public class CBoardWriteController {
 	public String writeform(@RequestParam(value="pageNumber", required=false) String pageNumber,
 							@RequestParam(value="whatColumn", required=false) String whatColumn,
 							@RequestParam(value="keyword", required=false) String keyword,
-							Model model) {
+							Model model, HttpSession session) {
+		
+		UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
+		
+		String joinType = "탈퇴함";
+		try {
+			joinType = ub.getU_jointype();
+		} catch(NullPointerException e) {}
 		
 		model.addAttribute("pageNumber", pageNumber);
 		model.addAttribute("whatColumn", whatColumn);
 		model.addAttribute("keyword", keyword);
+		model.addAttribute("joinType", joinType);
 		return viewPage;
 	} 
 	

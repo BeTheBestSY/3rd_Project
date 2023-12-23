@@ -83,7 +83,14 @@
 						<img src="<%= request.getContextPath() %>/resources/image/hot.png" width="2%">
 					</c:if>
 				</td>
-				<td>${ bb.q_writer }</td>
+				<td>
+					<c:if test="${fn:length(bb.q_writer) > 16}">
+						외부 회원
+					</c:if>
+					<c:if test="${fn:length(bb.q_writer) < 16}">
+						${ bb.q_writer }
+					</c:if>
+				</td>
 				<td>
 					<fmt:formatDate value="${bb.q_regdate}" pattern="yyyy-MM-dd"/>
 				</td>

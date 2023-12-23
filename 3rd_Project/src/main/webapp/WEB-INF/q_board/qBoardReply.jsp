@@ -54,8 +54,17 @@
 				</tr>
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">작성자</th>
-					<td align="left">
-						<input type="text" name="q_writer" value="${loginInfo.u_id}" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
+					<td align="left" width="35%">
+						<c:if test="${joinType == 'N'}">
+							외부 회원 (네이버)
+						</c:if>
+						<c:if test="${joinType == 'K'}">
+							외부 회원 (카카오)
+						</c:if>
+						<c:if test="${joinType == 'S'}">
+							&nbsp;${loginInfo.u_id}
+						</c:if>
+						<input type="hidden" name="q_writer" value="${loginInfo.u_id}" class="form-control" style="width: 86%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
 					</td>
 					<th align="left" bgcolor="#EDE5D8" width="14%">이메일</th>
 					<td align="left">

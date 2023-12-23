@@ -72,7 +72,14 @@
 											<td style="padding-left:4%;">${cb.cl_num}</td>
 											<td style="padding-left:6%;">${cb.cl_name}</td>
 											<td>${cb.cl_color}</td>
-											<td>${cb.cl_image}</td>
+											<td>${cb.cl_image}&nbsp;&nbsp;
+												<span class="prd-img" title="연예인 이미지">
+													<font color="#C98BA4">
+														<ion-icon name="image-outline"></ion-icon>
+													</font>
+												</span>
+											</td>
+											
 											<td style="padding-left:25%;">
 												<input type="button" class="btn btn-white"  value="삭제하기" onClick="del(${cb.cl_num},${pageInfo.pageNumber})">
 												<a href="celebUpdate.admin?cl_num=${cb.cl_num }&pageNumber=${pageInfo.pageNumber}">

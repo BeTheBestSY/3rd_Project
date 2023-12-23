@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import q_board.model.QBoardBean;
 import q_board.model.QBoardDao;
+import users.model.UsersBean;
 import utility.Paging;
 
 

@@ -4,19 +4,19 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminCompanyUpdate.css">
 
 <style>
-input[type="text"] {
-  font-size: 15px;
-  width: 300px;
-  height:35px;
-  border: none;
-  border-bottom: solid #aaaaaa 1px;
-  padding-bottom: 3px;
-  padding-left: 10px;
-  position: relative;
-  background: #f8f9f7;
-  z-index: 5;
-  border-radius:5px;
-}
+input[type="text"], select {
+	  font-size: 15px;
+	  width: 300px;
+	  height:35px;
+	  border: none;
+	  border-bottom: solid #aaaaaa 1px;
+	  padding-bottom: 3px;
+	  padding-left: 10px;
+	  position: relative;
+	  background: #f8f9f7;
+	  z-index: 5;
+	  border-radius:5px;
+	}
 
 #searchBtn{
 margin-top:13px;
@@ -128,7 +128,12 @@ table{
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
 					<th width="20%"><font color="red">*</font> 퍼스널 컬러</th>
 					<td width="80%">
-						<input type="text" class="form-control" name="cl_color"  class="form-control"  value="${bb.cl_color}" required>
+						<c:set var="pcList">봄 라이트,봄 브라이트,여름 라이트,여름 브라이트,여름 뮤트,가을 뮤트,가을 스트롱,가을 딥,겨울 브라이트,겨울 딥</c:set>
+						<select name="cl_color" class="form-select">
+							<c:forEach var="pc" items="${pcList }">
+								<option value="${pc }" <c:if test="${pc eq bb.cl_color }">selected</c:if>>${pc }</option>
+							</c:forEach>
+						</select>
 					</td>
 				</tr>
 					<td colspan="2" align="center">

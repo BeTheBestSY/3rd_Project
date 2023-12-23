@@ -210,6 +210,16 @@
 body{
 	padding-top: 90px;
 }
+
+
+#loading-overlay {
+    
+    
+    display: none;
+    
+    font-family: 'RIDIBatang';
+    font-size: 16pt;
+  }
 </style>
 
 <%
@@ -229,7 +239,13 @@ if(ub==null){
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 <script type="text/javascript">
-
+function showLoading() {
+	 
+    $("#loading-overlay").show();
+  }
+function hideLoading() {
+    $("#loading-overlay").hide();
+  }
       const URL = "https://teachablemachine.withgoogle.com/models/L1G8-g-Oz/";
       var prediction;
       var maxProbability;
@@ -251,6 +267,7 @@ if(ub==null){
       }
 
       async function predict() {
+    	  showLoading();
         var image = document.getElementById("face-image")
         prediction = await model.predict(image, false);
         
@@ -263,7 +280,7 @@ if(ub==null){
                 maxProbabilityIndex = i;
             }
         }
-        
+        hideLoading();
         let resultText = "<br><br><table style='margin-left:35%; width:40%; height:300px;'>";
         for (let i = 0; i < maxPredictions; i++) {
             var classPrediction = "<tr><td width='40%'>" + prediction[i].className + "</td><td width='10%'> : </td><td width='40%' align='left'>" + (prediction[i].probability ).toFixed(2)*1000/10+"%</td><tr>";
@@ -350,6 +367,7 @@ if(ub==null){
     </script>
 
  <script> 
+
       function readURL(input) {
         if (input.files && input.files[0]) {
           var reader = new FileReader();
@@ -461,6 +479,12 @@ if(ub==null){
           <img class="file-upload-image" id="face-image" src="#" alt="your image" />
           <div class="image-title-wrap">
             <button type="button" onclick="removeUpload()" class="remove-image">다시 선택하기</button>
+	            
+	            
+	            <div id="loading-overlay">
+				  <div>로딩 중...</div>
+				</div>
+		            
           </div>
         </div>
 
@@ -472,6 +496,12 @@ if(ub==null){
 		<div id="label-container"></div>
 		<br><br><br><br><br>
 		
+		
+		
+		
+
+
+
 		<div id="elseArea" style="display: none; margin: auto; font-family: 'RIDIBatang'; position: relative; background: #EFF0F7;">
 			<div class="row" style="width: 60%; margin: auto;">
 				<div class="col-lg-6" id="result" style="height: 500px;" onClick="go_update()">
