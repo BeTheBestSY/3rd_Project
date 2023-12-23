@@ -51,25 +51,7 @@ public class QBoardDetailController {
 		model.addAttribute("bb",bb);
 
 	
-		PrintWriter out = response.getWriter();
-		  
-		if(qdao.didYouJoin(ub)) { // 가입 한 회원 혹은 관리자이면
-			// 아이디 session 설정
-			session.setAttribute("loginInfo", qdao.getUserById(ub.getU_id()));
-			if(ub.getU_id().equals("admin")) {
 				qdao.updateReadcount(q_num);
-				return viewPage;
-			}
-			else {
-				if(session.getAttribute("destination") != null) {
-					viewPage = String.valueOf(session.getAttribute("destination"));
-				}
-				return viewPage;
-			}
-		} else { 
-			response.setContentType("text/html; charset=UTF-8");
-			out.print("<script>alert('가입되지 않은 회원입니다.');</script>");
-			out.flush();
 			return viewPage;
 		}
 	
