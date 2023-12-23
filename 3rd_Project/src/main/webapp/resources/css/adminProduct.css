@@ -334,9 +334,6 @@ select{
 	height: 6%;
 }
 
-ion-icon {
-    pointer-events: none;
-}
 
 .ttl-img, .dtl-img{
 	cursor:pointer
