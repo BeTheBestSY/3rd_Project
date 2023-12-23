@@ -145,15 +145,10 @@ tr:hover {
   background-color: #d7e7f7;
   box-shadow: 1px 1px 1px 1px #eee, 1px 1px 1px rgba(94, 104, 121, .288);
 }
-/* #board-search .search-window {
-	margin: 0 auto;
-} */
 #board-search .search-window .search-wrap {
   position: relative;
-/*   padding-right: 124px; */
   margin: 0 auto;
-  width: 80%;
-  max-width: 564px;
+  max-width: 40%;
 }
 #board-search .search-window .search-wrap input {
   height: 41px;
@@ -327,8 +322,20 @@ select{
   height: 1px;
 }
 
-.input[name='filter_btn'] { /*여기에 써 놨는데도 왜 안 될까..*/
+.input[name='filter_btn']{
 	width:20px;
 	height:18px;
 	border:1px;
 }
+
+.filter_radio{
+	margin: auto;
+	width: 80%;
+	height: 6%;
+}
+
+
+.ttl-img, .dtl-img{
+	cursor:pointer
+}
+

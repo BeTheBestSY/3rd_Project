@@ -1,5 +1,7 @@
 package product.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProductBean {
 	private int p_num;
 	private String p_brand;
@@ -12,6 +14,9 @@ public class ProductBean {
 	private int p_stock;
 	private int p_salevolume;
 	private String p_contents;
+	private MultipartFile upload_ttl;
+	private MultipartFile upload_dtl;
+	
 	public int getP_num() {
 		return p_num;
 	}
@@ -78,4 +83,26 @@ public class ProductBean {
 	public void setP_contents(String p_contents) {
 		this.p_contents = p_contents;
 	}
+	
+	public MultipartFile getUpload_ttl() {
+		return upload_ttl;
+	}
+	public void setUpload_ttl(MultipartFile upload_ttl) {
+		this.upload_ttl = upload_ttl;
+		if(this.upload_ttl != null) { // 파일을 선택했다면
+			System.out.println("업로드 할 타이틀이미지:"+upload_ttl.getOriginalFilename());
+			this.p_ttlimg = upload_ttl.getOriginalFilename();
+		}
+	}
+	public MultipartFile getUpload_dtl() {
+		return upload_dtl;
+	}
+	public void setUpload_dtl(MultipartFile upload_dtl) {
+		this.upload_dtl = upload_dtl;
+		if(this.upload_dtl != null) { // 파일을 선택했다면
+			System.out.println("업로드 할 디테일이미지:"+upload_dtl.getOriginalFilename());
+			this.p_dtlimg = upload_dtl.getOriginalFilename();
+		}
+	}
+	
 }

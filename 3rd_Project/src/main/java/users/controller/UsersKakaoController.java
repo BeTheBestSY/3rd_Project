@@ -17,12 +17,15 @@ import utility.KakaoApi;
 @Controller
 public class UsersKakaoController {
 	private final String command = "/kakao.u";
+	private final String commandOut = "/outkakao.u";
 	private final String commandDis = "/diskakao.u";
+	
 	private final String viewPage = "usersWelcomeView2";
 	private final String gotoPage = "redirect:/.main";
 	
 	@Autowired
 	private UsersDao ud;
+	private String accessToken;
 	
 	// 로그인
 	@RequestMapping(value = command, method = RequestMethod.GET)
@@ -32,17 +35,30 @@ public class UsersKakaoController {
 		// 1. 인가 코드 받기 (@RequestParam String code)
 
 	    // 2. 토큰 받기
-	    String accessToken = kakaoApi.getAccessToken(code);
+	    this.accessToken = kakaoApi.getAccessToken(code);
 
 	    // 3. 사용자 정보 받기
-	    Map<String, Object> userInfo = kakaoApi.getUserInfo(accessToken);
+	    Map<String, Object> userInfo = kakaoApi.getUserInfo(this.accessToken);
 
 	    String nickname = String.valueOf(userInfo.get("nickname"));
 	    String id = String.valueOf(userInfo.get("id"));
+	    String email = String.valueOf(userInfo.get("email"));
+	    Boolean isDefaultImg = (Boolean)userInfo.get("is_default_image");
+	    String thumbnailImg = String.valueOf(userInfo.get("thumbnail_image_url"));
+	    String profileImg = String.valueOf(userInfo.get("profile_image_url"));
 
 	    System.out.println("nickname = " + nickname);
 	    System.out.println("id = " + id);
-	    System.out.println("accessToken = " + accessToken);
+	    System.out.println("email = " + email);
+	    System.out.println("isDefaultImg = " + isDefaultImg);
+	    if(isDefaultImg) {
+	    	System.out.println("기본 프로필 이미지입니다.");
+	    } else {
+	    	System.out.println("기본 프로필 이미지가 아닙니다.");
+	    }
+	    System.out.println("thumbnailImg = " + thumbnailImg);
+	    System.out.println("profileImg = " + profileImg);
+	    System.out.println("accessToken = " + this.accessToken);
 
 	    UsersBean ub = new UsersBean();
       	ub.setU_id(id);
@@ -52,6 +68,9 @@ public class UsersKakaoController {
       	ub.setU_address(",,");
       	ub.setU_jointype("K");
       	ub.setU_color("잘 모르겠음");
+      	ub.setU_email(email);
+      	ub.setU_profileimg(profileImg);
+      	ub.setU_intro("안녕하세요~!");
       	
       	if(ud.didYouJoin(ub)) { // 로그인 한 카카오 계정이 users 테이블에 저장되어있으면
       		flag = true;
@@ -60,16 +79,32 @@ public class UsersKakaoController {
       	}
       	session.setAttribute("loginInfo", ub);
       	if(flag)
-	    	return gotoPage;
+      		if(session.getAttribute("destination") != null) {
+      			System.out.println("목적지 있음");
+      			return String.valueOf(session.getAttribute("destination"));
+      		} else {
+      			System.out.println("목적지 없음");
+      			return gotoPage; // 메인화면
+      		}
 	    else 
 	    	return viewPage;
 	}
 	
+	// 로그아웃
+	@RequestMapping(value = commandOut)
+	public String kakaoLogout() {
+		KakaoApi kakaoApi = new KakaoApi();
+		String id = kakaoApi.kakaoLogout(this.accessToken);
+		System.out.println("로그아웃한 카카오 회원 id:"+id);
+		return gotoPage;
+	}
+	
 	// 연동해제
-	@RequestMapping(value = commandDis, method = RequestMethod.GET)
+	@RequestMapping(value = commandDis)
 	public String kakaoDisconnect() {
 		KakaoApi kakaoApi = new KakaoApi();
-		String u_id = kakaoApi.kakaoDisconnect(); // 여기서부터
-		return null;
+		String id = kakaoApi.kakaoDisconnect(this.accessToken);
+		System.out.println("연동해제한 카카오 회원 id:"+id);
+		return gotoPage;
 	}
 }

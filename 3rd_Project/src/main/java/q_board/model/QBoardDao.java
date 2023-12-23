@@ -1,15 +1,14 @@
 package q_board.model;
-
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import c_board.model.CBoardBean;
+import users.model.UsersBean;
 import utility.Paging;
+
 
 @Component("QBoard")
 public class QBoardDao {
@@ -45,7 +44,6 @@ public class QBoardDao {
 	}
 
 	public void writeBoard(QBoardBean bb) {
-
 		sqlSessionTemplate.insert(namespace+"writeBoard",bb);
 		
 	}
@@ -96,6 +94,19 @@ public class QBoardDao {
 			int q_num = checks[i];
 			sqlSessionTemplate.delete(namespace+"deleteBoard",q_num);
 		}
+	}
+
+	public UsersBean getUserByQWriter(String q_writer) {
+		UsersBean ub = sqlSessionTemplate.selectOne(namespace+"getUserByQWriter", q_writer);
+		return ub;
+	}
+	
+	public boolean didYouJoin(UsersBean ub) {
+		return sqlSessionTemplate.selectOne(namespace+".didYouJoin", ub);
+	}
+
+	public UsersBean getUserById(String u_id) {
+		return sqlSessionTemplate.selectOne(namespace+".getUserById", u_id);
 	}
 	
 }

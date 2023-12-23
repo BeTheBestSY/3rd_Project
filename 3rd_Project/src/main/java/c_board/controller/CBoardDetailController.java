@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import c_board.model.CBoardBean;
 import c_board.model.CBoardDao;
+import users.model.UsersBean;
+import users.model.UsersDao;
 
 @Controller
 public class CBoardDetailController {
+	
 	@Autowired
 	private CBoardDao cdao;
-	
+	private UsersDao udao = new UsersDao();
 	 
 	public final String command="/detail.cb";
 	public final String viewPage="cBoardDetail";
@@ -24,14 +27,27 @@ public class CBoardDetailController {
 	public String toDetailList(
 			Model model,
 			@RequestParam("c_num") int c_num,
-			@RequestParam("pageNumber") int pageNumber
+			@RequestParam("pageNumber") int pageNumber,
+			@RequestParam("whatColumn") String whatColumn,
+			@RequestParam("keyword") String keyword
 			) throws Exception {
 		
 		cdao.updateReadcount(c_num);
 		CBoardBean bb = cdao.selectContent(c_num);
+		UsersBean ub = cdao.getUserByCWriter(bb.getC_writer());
+		String joinType = "탈퇴함";
+		
+		try {
+			joinType = ub.getU_jointype(); // 테이블에 유저 정보가 없으면? => 탈퇴한 회원입니다 노출되게
+		} catch(NullPointerException e){
+			
+		}
 		
 		model.addAttribute("pageNumber",pageNumber);
+		model.addAttribute("whatColumn",whatColumn);
+		model.addAttribute("keyword",keyword);
 		model.addAttribute("bb",bb);
+		model.addAttribute("joinType", joinType);
 		
 		return viewPage;
 		

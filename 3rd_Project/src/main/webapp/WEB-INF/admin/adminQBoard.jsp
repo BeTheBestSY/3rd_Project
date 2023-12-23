@@ -7,14 +7,37 @@
 	function goDelete(q_num,pageNumber){
 		location.href="qBoardDelete.admin?q_num="+q_num+"&pageNumber="+pageNumber;
 	}
-	
+	function openWindow (q_num,pageNumber) {
+		  const options = 'width=700, height=400, top=200, left=570, scrollbars=no'
+			  window.open("<c:url value='qReply.qb?q_num="+q_num+"&pageNumber="+pageNumber'/>", width="100", height="100")
+		}
+	function goReply(q_num, q_ref, q_re_step, q_re_level, pageNumber, whatColumn, keyword){
+		location.href="qReply.qb?q_ref="+q_ref+"&q_re_step="+q_re_step+"&q_re_level="+q_re_level+"&pageNumber="+pageNumber+"&q_num="+q_num+"&whatColumn="+whatColumn+"&keyword="+keyword;
+	}
 </script>
+<style>
+#adminReply{
+	border: none;
+	border-radius: 10px;
+	background: #7C81BB;
+	color: white;
+	width: 90px;
+	font-family: 'RIDIBatang';
+	font-size: 12pt;
+}
+
+#adminReply:hover{
+	background: #B3B3CE;
+}
+</style>
 <article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
 	
  <div id="board-list">
 <div class="section">
 	<div class="tag">
+	
 	<h4>문의 게시판 관리</h4>
+	
 	</div>
 	  <div id="board-search">
         <div class="container">
@@ -27,7 +50,6 @@
 							<option value="q_writer">작성자</option>
 						</select>
 					 	<input id="search" type="search" name="keyword" placeholder="검색어를 입력해주세요." value="">
-					 	
 					<button type="submit" class="btn btn-dark">검색</button>
 		            </div>
 				   </form>
@@ -68,7 +90,7 @@
 								<c:set var="wid" value="${bb.q_re_level * 20}"/>
 								<img src="<%= request.getContextPath() %>/resources/image/re.png" width="2%">
 							</c:if>
-								<a href="detail.qb?q_num=${ bb.q_num }&pageNumber=${ pageInfo.pageNumber }" id="noneHigtLight">
+								<a href="qBoardDetail.admin?q_num=${ bb.q_num }&pageNumber=${ pageInfo.pageNumber }" id="noneHigtLight">
 									${ bb.q_subject }&nbsp;</a>
 							<c:if test="${ bb.q_readcount >= 10 }">
 								<img src="<%= request.getContextPath() %>/resources/image/hot.png" width="2%">
@@ -83,6 +105,7 @@
 							<a href="qBoardDelete.admin?q_num=${bb.q_num}&pageNumber=${pageInfo.pageNumber}">
 								<input type="button" class="btn btn-white"  value="삭제하기">
 							</a>
+							<input type=button value="답글달기" onClick="location.href='qReply.qb?q_ref=${q_ref}&q_re_step=${q_re_step}&q_re_level=${q_re_level}&pageNumber=${pageNumber}&q_num=${q_num}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-white">
 		 				</td>
 					</tr>
 				</c:forEach>

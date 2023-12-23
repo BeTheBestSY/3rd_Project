@@ -56,6 +56,15 @@ public class UsersDao {
 		sqlSessionTemplate.delete(namespace+".deleteUsers", u_id);
 	}
 
+	public boolean findU_id(String u_id) {
+		boolean found = false;
+		int count = sqlSessionTemplate.selectOne(namespace+".findU_id", u_id);
+		if(count > 0) {
+			found = true;
+		}
+		return found;
+	}
+
 
 	
 }

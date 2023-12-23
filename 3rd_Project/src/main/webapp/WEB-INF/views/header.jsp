@@ -41,6 +41,12 @@
 	    font-weight: 700;
 	    font-style: normal;
 	}
+	@font-face {
+	    font-family: 'Somi';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_10@1.0/Somi.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
 </style>
 </head>
   
@@ -58,33 +64,37 @@
 					<li style="margin-top: 10px; margin-left: 30px">
 						<a href="colorAi.ai" class="nav-link px-2 link-body-emphasis">AI 컬러 진단</a>
 					</li>
-
 					<li style="margin-top: 10px; margin-left: 10px">
- 
-
-					<a href="colMain.col" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
- 
+						<a href="colMain.col" class="nav-link px-2 link-body-emphasis">퍼스널 컬러란?</a>
 					</li>
 					<li style="margin-top: 10px; margin-left: 10px">
 						<a href="cBoardList.cb" class="nav-link px-2 link-body-emphasis">후기 게시판</a>
 					</li>
-					<li style="margin-top: 10px; margin-left: 10px">
-						<a href="productMain.p" class="nav-link px-2 link-body-emphasis">쇼핑하기</a>
+					<li style="margin-top: 10px; margin-left: 10px; font-family: 'Somi'; font-size: 13pt;">
+						<a href="productMain.p" class="nav-link px-2 link-body-emphasis">The Shop HB</a>
 					</li>
 				</ul>
 
 				<!-- 로그인아이콘 & 드롭다운 메뉴 -->
 				<div class="dropdown text-end" style="margin-right: 50px">
-					<a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> 
-						<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
-					</a>
 					<c:if test="${loginInfo == null}">
+						<a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> 
+							<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
+						</a>
 						<ul class="dropdown-menu text-small">
 							<li><a class="dropdown-item" href="login.u">로그인</a></li>
 							<li><a class="dropdown-item" href="register.u">회원가입</a></li>
 						</ul>
 					</c:if>
 					<c:if test="${loginInfo != null}">
+						<a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+							<c:if test="${loginInfo.u_profileimg == null }">
+								<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
+							</c:if> 
+							<c:if test="${loginInfo.u_profileimg != null }">
+								<img src="${loginInfo.u_profileimg}" width="32" height="32" class="rounded-circle">
+							</c:if> 
+						</a>
 						<ul class="dropdown-menu text-small">
 							<li style="text-align: center;"><small>안녕하세요, <b>${loginInfo.u_name }</b>님</small></li>
 							<li><hr class="dropdown-divider"></li>

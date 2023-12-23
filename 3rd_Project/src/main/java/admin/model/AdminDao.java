@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import c_board.model.CBoardBean;
 import celeb.model.CelebBean;
+import company.model.CompanyBean;
 import product.model.ProductBean;
 import q_board.model.QBoardBean;
 import users.model.UsersBean;
@@ -70,6 +71,7 @@ public class AdminDao {
 		return bb;
 	}
 	
+	
 	public void deleteBoardC(int c_num) {
 		sqlSessionTemplate.delete(nameSpace+"deleteBoardC",c_num);
 	}
@@ -82,9 +84,9 @@ public class AdminDao {
 	}
 	
 	//celeb
-	public int getTotalCountCeleb(Map<String, String> map) {
+	public int getCeleb(Map<String, String> map) {
 		
-		int cnt = sqlSessionTemplate.selectOne(nameSpace + ".getTotalCountCeleb",map);
+		int cnt = sqlSessionTemplate.selectOne(nameSpace + "getCeleb",map);
 		
 		return cnt;
 	}
@@ -93,24 +95,84 @@ public class AdminDao {
 		
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
 		
-		List<CelebBean> lists = sqlSessionTemplate.selectList(nameSpace + ".getAllCelebList",map,rowBounds);
+		List<CelebBean> lists = sqlSessionTemplate.selectList(nameSpace + "getAllCelebList",map,rowBounds);
 		
 		return lists;
 		
 	}
 	
-	public CelebBean getSelectOneCeleb(String cl_num) {
-		CelebBean cb = sqlSessionTemplate.selectOne(nameSpace+".getSelectOneCeleb",cl_num);
+	public CelebBean getSelectOneCeleb(int cl_num) {
+		CelebBean cb = sqlSessionTemplate.selectOne(nameSpace+"getSelectOneCeleb",cl_num);
 			return cb;
 		}
 
+	public int insertCeleb(CelebBean bb) {
+
+		return sqlSessionTemplate.insert(nameSpace+"insertCeleb",bb);
+		
+	}
+	public void deleteCeleb(int cl_num) {
+		sqlSessionTemplate.delete(nameSpace+"deleteCeleb", cl_num);
+	}
+	
+	public int updateCeleb(CelebBean bb) {
+		return sqlSessionTemplate.update(nameSpace+"updateCeleb", bb);
+	}
+	
+	//company
+	public List<CompanyBean> getAllCompany(Paging pageInfo, Map<String, String> map) {
+		
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		List<CompanyBean> list = sqlSessionTemplate.selectList(nameSpace+"getAllCompany", map, rowBounds);
+		
+		return list;
+	}
+	
+	public int getTotalCountCompany(Map<String, String> map) {
+		 
+		int totalCount = sqlSessionTemplate.selectOne(nameSpace+"getTotalCountCompany", map);
+
+		return totalCount;
+	}
+
+	public CompanyBean getSelectOneCompany(int cmp_num) {
+		
+		CompanyBean cb = sqlSessionTemplate.selectOne(nameSpace+"getSelectOneCompany", cmp_num);
+		
+		return cb;
+	}
+	
+	public void insertCompany(CompanyBean bb) {
+
+		sqlSessionTemplate.insert(nameSpace+"insertCompany",bb);
+		
+	}
+	
+	public void deleteCompany(int cmp_num) {
+		sqlSessionTemplate.delete(nameSpace+"deleteCompany", cmp_num);
+	}
+	
+
+	public int updateCompany(CompanyBean bb) {
+		return sqlSessionTemplate.update(nameSpace+"updateCompany", bb);
+	}
 	
 	
 	//users
-	public List<UsersBean> getUsers(Map<String, String> map) {
-		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map);
+	public List<UsersBean> getUsers(Map<String, String> map, Paging pageInfo) {
+		System.out.println("getUsers로 넘어온 키워드:"+map.get("keyword"));
+//		if(map.get("keyword").equals("%null%")) {
+//			map.put("keyword", null);
+//		}
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map, rowBounds);
 	}
-
+	
+	public int getTotalUserCount(Map<String, String> map) {
+		System.out.println("getTotalUserCount로 넘어온 키워드:"+map.get("keyword"));
+		return sqlSessionTemplate.selectOne(nameSpace+"getTotalUserCount", map);
+	}
+	
 	public void deleteUsers(String u_id) {
 		sqlSessionTemplate.delete(nameSpace+"deleteUsers", u_id);
 	}
@@ -122,12 +184,46 @@ public class AdminDao {
 	
 	//product
 	public List<ProductBean> getProducts(Map<String, String> map, Paging pageInfo) {
+		System.out.println("getProducts로 넘어온 키워드:"+map.get("keyword"));
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
 		return sqlSessionTemplate.selectList(nameSpace+"getProducts", map, rowBounds);
 	}
 
 	public int getTotalPrdCount(Map<String, String> map) {
+		System.out.println("getTotalPrdCount로 넘어온 키워드:"+map.get("keyword"));
 		return sqlSessionTemplate.selectOne(nameSpace+"getTotalPrdCount", map);
 	}
+
+	public int deleteProduct(String p_num) {
+		return sqlSessionTemplate.delete(nameSpace+"deleteProduct", p_num);
+	}
+
+	public ProductBean getProductByNum(String p_num) {
+		return sqlSessionTemplate.selectOne(nameSpace+"getProductByNum",p_num);
+	}
+
+	public int insertProduct(ProductBean pb) {
+		return sqlSessionTemplate.insert(nameSpace+"insertProduct",pb);
+	}
+
+	public int updateProduct(ProductBean pb) {
+		return sqlSessionTemplate.update(nameSpace+"updateProduct", pb);
+	}
+
+
+	public void replyProc(QBoardBean bb) {
+
+		sqlSessionTemplate.update(nameSpace+"plusStep",bb);
+		
+		bb.setQ_re_step(bb.getQ_re_step()+1);
+		bb.setQ_re_level(bb.getQ_re_level()+1);
+
+		sqlSessionTemplate.insert(nameSpace+"insertReply",bb);
+		
+	}
+
+
 	
+
+
 }

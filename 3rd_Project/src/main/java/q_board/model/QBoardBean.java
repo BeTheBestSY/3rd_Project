@@ -7,34 +7,23 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class QBoardBean {
 
 	private int q_num;
-	
-	@NotEmpty(message="작성자가 누락되었습니다.")
+	private String q_type;
 	private String q_writer;
-	
-	@NotEmpty(message="이메일이 누락되었습니다.")
 	private String q_email;
-	
-	@NotEmpty(message="제목이 누락되었습니다.")
 	private String q_subject;
-	
-	@NotEmpty(message="게시글 비밀번호가 누락되었습니다.")
 	private String q_password;
-	
 	private Timestamp q_regdate;
 	private int q_readcount;
 	private int q_ref;
 	private int q_re_step;
 	private int q_re_level;
-	
-	@NotEmpty(message="내용이 누락되었습니다.")
 	private String q_content;
 	private String q_ip;
+	private String q_secret;
 
 	public QBoardBean() {
 
 	}
-
-	
 	
 	public QBoardBean(int q_num, String q_writer, String q_email, String q_subject, String q_password,
 			Timestamp q_regdate, int q_readcount, int q_ref, int q_re_step, int q_re_level, String q_content,
@@ -62,6 +51,13 @@ public class QBoardBean {
 
 	public void setQ_num(int q_num) {
 		this.q_num = q_num;
+	}
+	public String getQ_type() {
+		return q_type;
+	}
+
+	public void setQ_type(String q_type) {
+		this.q_type = q_type;
 	}
 
 	public String getQ_writer() {
@@ -152,5 +148,12 @@ public class QBoardBean {
 		this.q_ip = q_ip;
 	}
 
+	public String getQ_secret() {
+		return q_secret;
+	}
+
+	public void setQ_secret(String q_secret) {
+		this.q_secret = q_secret;
+	}
 
 }
