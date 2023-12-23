@@ -38,6 +38,7 @@
 <div id="board-list">		
 	<form:form commandName="bb" action="qUpdate.qb" method="post">
 		<input type="hidden" name="q_num" value="${ bb.q_num }">
+		<input type="hidden" name="q_type" value="${ bb.q_type }">
 		<input type="hidden" name="pageNumber" value="${pageNumber}">
 		<input type="hidden" name="whatColumn" value="${whatColumn}">
 		<input type="hidden" name="keyword" value="${keyword}">
@@ -61,7 +62,7 @@
 							&nbsp;외부 회원 (카카오)
 						</c:if>
 						<c:if test="${joinType == 'S'}">
-							<input type="text" value="${ bb.q_writer }" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
+							<input type="text" value="${ bb.q_writer }" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." readonly>
 						</c:if>
 						<input type="hidden" name="q_writer" value="${ bb.q_writer }" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
 					</td>

@@ -200,7 +200,7 @@ select{
 
 
 .board-table .th-num {
-  width: 80px;
+  width: 100px;
   text-align: center;
 }
 
@@ -208,7 +208,7 @@ select{
   width: 100px;
 }
 .board-table .th-title {
-  width: 400px;
+  width: 450px;
 }
 .board-table .th-readcount {
   width: 100px;

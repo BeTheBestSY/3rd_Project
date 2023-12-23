@@ -33,27 +33,23 @@ public class QBoardDetailController {
 			@RequestParam("keyword") String keyword
 			) throws Exception {
 		
-		qdao.updateReadcount(q_num);
 		QBoardBean bb = qdao.selectContent(q_num);
 		UsersBean ub = qdao.getUserByQWriter(bb.getQ_writer());
+		UsersBean uid = qdao.getUserById(bb.getQ_writer());
 		
 		String joinType = "탈퇴함";
 		try {
 			joinType = ub.getU_jointype();
 		} catch(NullPointerException e) {}
 		
+		
+		
 		model.addAttribute("pageNumber",pageNumber);
 		model.addAttribute("whatColumn",whatColumn);
 		model.addAttribute("keyword",keyword);
 		model.addAttribute("bb",bb);
-
-	
-				qdao.updateReadcount(q_num);
-			return viewPage;
-		}
-	
 		model.addAttribute("joinType", joinType);
-		
+			qdao.updateReadcount(q_num);
 		return viewPage;
 		
 		

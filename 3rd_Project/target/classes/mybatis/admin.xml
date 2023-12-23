@@ -48,9 +48,10 @@
 		update q_board set q_readcount=q_readcount+1 where q_num=#{q_num}
 	</update>
 	
-	<insert id="insertReply">
-		insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip) values(qboard_seq.nextval,#{q_writer},#{q_email},#{q_subject},#{q_password},#{q_regdate},#{q_ref},#{q_re_step},#{q_re_level},#{q_content},#{q_ip})
-	</insert>
+	
+		<insert id="insertReply">
+			insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip,q_type,q_secret) values(qboard_seq.nextval,#{q_writer},#{q_email},#{q_subject},#{q_password},#{q_regdate},#{q_ref},#{q_re_step},#{q_re_level},#{q_content},#{q_ip},#{q_type},#{q_secret})
+		</insert>
 		
 	
 	<!-- c_board -->

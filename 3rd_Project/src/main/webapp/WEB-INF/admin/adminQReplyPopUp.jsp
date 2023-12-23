@@ -1,43 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ include file="./../product/productHeader.jsp" %>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardWrite.css">
-<style type="text/css">
-	#btn{
-		font-size: 13pt; 
-		width: 130px; 
-		color: black; 
-		background: white; 
-		border: 1px solid #D5D5D5;
-		border-radius: 5px;
-	}
-	#btn:hover {
-		background: #D0D6CE;
-		color: white;
-	}
-	body{
-		padding-top: 140px;
-	}
-</style>  
+<%@ include file="adminMenu.jsp"%>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminCompanyUpdate.css">
 
-<%
-	application.setAttribute("flag",false);
-%>
+<style>
+input[type="text"], select, email, textarea {
+  font-size: 15px;
+  width: 300px;
+  height:35px;
+  border: none;
+  border-bottom: solid #aaaaaa 1px;
+  padding-bottom: 3px;
+  padding-left: 10px;
+  position: relative;
+  background: #f8f9f7;
+  z-index: 5;
+  border-radius:5px;
+}
 
-<br>
-<article id="center" style=" text-align: center; font-family: 'RIDIBatang';" > 
+#searchBtn{
+margin-top:13px;
+}
+
+table th{
+	text-align:left;
+}
+.board-table{
+margin-top:20px;
+}
+table{
+		margin: auto; 
+		width: 800px;
+		height: 650px;
+		font-family: 'RIDIBatang';
+	}
+</style>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+	function zipClick(){
+		document.getElementById("searchBtn").click();
+	}
+
+
+		function init(){
+			var elem = document.getElementById('keyword');
+			elem.value = '';
+		}
+	
+</script>
+
+<article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
 <div class="page-title">
-    <div class="container">
-        <br><br>
-        <h3 style="font-size: 25pt; font-weight: bold;">답글 달기</h3>
-        <input type=button value="목록" onClick="location.href='qBoardList.qb?pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-white"><br>
-    </div>
+    <div id="tag" style="margin-right:83%; font-size: 2em;">
+			<h4>답글 달기</h4>
+		</div>
 </div>
-<br><br><br><br><br>
-
+<br>
 <div id="board-list">		
-	<form:form commandName="bb" action="cReply.qb" method="post">
+	<form:form commandName="bb" action="qReply.admin" method="post">
 		<input type="hidden" name="q_num" value="${ bb.q_num }">
 		<input type="hidden" name="pageNumber" value="${pageNumber}">
 		<input type = "hidden" name = "q_ref" value=${bb.q_ref }>
@@ -49,40 +69,44 @@
 					<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">제목</th>
 					<td align="left" colspan="3">
-						<input type="text" name="q_subject" class="form-control" style="width: 94%;" maxlength="20" placeholder="자동으로 [답글] 표시가 생성되니 따로 입력하지 마시고, 20자 이내로 입력해주세요." required>
+						<input type="text" name="q_subject" class="form-control" style="width: 94%;" maxlength="20" placeholder="20자 이내로 입력해주세요." required>
 					</td>
 				</tr>
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">작성자</th>
-					<td align="left">
-						<input type="text" name="q_writer" value="${loginInfo.u_id}" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
+					<td align="left" width="35%">
+						<c:if test="${joinType == 'N'}">
+							외부 회원 (네이버)
+						</c:if>
+						<c:if test="${joinType == 'K'}">
+							외부 회원 (카카오)
+						</c:if>
+						<c:if test="${joinType == 'S'}">
+							&nbsp;${loginInfo.u_id}
+						</c:if>
+						<input type="hidden" name="q_writer" value="admin" class="form-control" style="width: 86%;" maxlength="5" readonly>admin
 					</td>
 					<th align="left" bgcolor="#EDE5D8" width="14%">이메일</th>
 					<td align="left">
-						<input type="email" name="q_email" class="form-control" style="width: 85%;""  placeholder="ex) color@gmail.com" required>
+						<input type="hidden" name="q_email" class="color@gmail.com" style="width: 85%;"  placeholder="ex) color@gmail.com" readonly>color@gmail.com
 					</td>
 				</tr>
 				<tr>
-					<th align="left" bgcolor="#EDE5D8" width="10%">내용</th>
+					<th align="left" bgcolor="#EDE5D8" >내용</th>
 					<td align="left" colspan="3">
-						<textarea rows="10" cols="100" name="q_content" class="form-control" style="width: 94%; resize: none;" required></textarea>
+						<textarea rows="10" cols="100" name="q_content" class="form-control" style="width: 94%; height:50%; resize: none;" required></textarea>
 					</td>
 				</tr>
-				<tr>
-					<th align="left" bgcolor="#EDE5D8">비밀번호</th>
-					<td align="left" colspan="3">
-						<input type="password" name="q_password" class="form-control" style="width: 35%; resize: none;" placeholder="4자 이내로 입력해주세요." maxlength="4" required>
-					</td>
-				</tr>
+						<input type="hidden" name="q_password" value="1234" class="form-control" style="width: 35%; resize: none;" placeholder="4자 이내로 입력해주세요." maxlength="4" required>
+						<input type="hidden" name="q_type" value="${bb.q_type}" class="form-control" style="width: 35%; resize: none;" placeholder="4자 이내로 입력해주세요." maxlength="4" required>
+						<input type="hidden" name="q_secret" value="${bb.q_secret}" class="form-control" style="width: 35%; resize: none;" placeholder="4자 이내로 입력해주세요." maxlength="4" required>
+					
 						
 					</table>
 				 <br><br>
 				 <center>
-						<input type="submit" id="btn" value="답글 작성" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+						<input type="submit" id="btn" value="답글 작성" class="btn btn-white" style="font-size: 13pt; height:60px; width: 130px;">&nbsp;
 		 </center>
 	</form:form>
 </div>
 </article>
-
-
-<%@ include file="./../views/footer.jsp" %>
