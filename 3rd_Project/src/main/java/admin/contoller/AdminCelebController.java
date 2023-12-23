@@ -83,11 +83,11 @@ public class AdminCelebController {
 	public String in(@ModelAttribute("bb") CelebBean bb,
 							Model model,
 							HttpServletRequest request) throws UnsupportedEncodingException {
-		System.out.println("insert하려는 연예인 이미지:"+bb.getCl_image());
+		System.out.println("추가하려는 연예인 이미지:"+bb.getCl_image());
 		
 		int res = adminDao.insertCeleb(bb);
 		if(res == 1) {
-			model.addAttribute("msg", "상품이 성공적으로 추가되었습니다.");
+			model.addAttribute("msg", "연예인이 성공적으로 추가되었습니다.");
 			model.addAttribute("url", "celebList.admin");
 			String uploadPath = servletContext.getRealPath("/resources/uploadFolder/celeb/");
 			System.out.println("uploadPath:"+uploadPath);
@@ -148,7 +148,7 @@ public class AdminCelebController {
 
 		} else {
 			System.out.println("update res:"+res);
-			model.addAttribute("msg", "상품 수정 실패. DB 확인 요망.");
+			model.addAttribute("msg", "이미지 수정 실패. DB 확인 요망.");
 			model.addAttribute("url", "celebUpdate.admin");
 		}
 		return redirect;

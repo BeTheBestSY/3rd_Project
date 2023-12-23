@@ -32,7 +32,6 @@
 <br>
 <article id="center" style=" text-align:center; font-family: 'RIDIBatang';">
 
-
 <div class="page-title">
     <div class="container">
         <br><br>
@@ -54,7 +53,20 @@
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">작성자</th>
 					<td align="left" height="68" width="38%">
-						${ bb.c_writer}					
+						<c:if test="${joinType == '탈퇴함'}"> 
+							<font color="red"><b>탈퇴한 회원 입니다.</b></font>
+						</c:if>
+						<c:if test="${joinType != '탈퇴함'}">
+							<c:if test="${joinType == 'N'}">
+								외부 회원 (네이버)
+							</c:if>
+							<c:if test="${joinType == 'K'}">
+								외부 회원 (카카오)
+							</c:if>
+							<c:if test="${joinType == 'S'}">
+								${ bb.c_writer }
+							</c:if>
+						</c:if>
 					</td>
 					<th align="left" bgcolor="#EDE5D8" width="14%" >이메일</th>
 					<td align="left" height="68">
@@ -103,9 +115,9 @@
 				</center>
 			</c:if>
 		</form:form>
+</div>
 </article>
 
-</div>
 
 
 <%@ include file="./../views/footer.jsp" %>

@@ -49,6 +49,10 @@
 			select * from q_board where q_writer = #{q_writer} order by q_num desc
 		</select>
 		
+		<select id="getUserByQWriter" resultType="Users">
+			select * from users where u_id = #{q_writer}
+		</select>
+		
 		<insert id="writeBoard">
 			insert into q_board
 			(q_num,q_type,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip,q_secret)

@@ -211,8 +211,17 @@ body{
 						
 						<div class="row g-3">
 							<div class="col-sm-6">
-								<label class="form-label">아이디</label> 
-								<input type="text" class="form-control" name="u_id" value="${id}" readonly>
+								<label class="form-label">아이디</label>
+								<c:if test="${loginInfo.u_jointype == 'N'}">
+									<input type="text" class="form-control" value="네이버 연동" readonly>
+								</c:if>
+								<c:if test="${loginInfo.u_jointype == 'K'}">
+									<input type="text" class="form-control" value="네이버 연동" readonly>
+								</c:if>
+								<c:if test="${loginInfo.u_jointype == 'S'}">
+									<input type="text" class="form-control" value="${id}" readonly>
+								</c:if>
+								<input type="hidden" class="form-control" name="u_id" value="${id}" readonly>
 							</div>
 							<div class="col-sm-6">
 								<label class="form-label">수령인 이름</label> 
@@ -336,6 +345,32 @@ body{
 									카카오페이 결제 오픈 준비중입니다.<br>
 									QR 결제 팝업 창이 바로 노출되지 않으니 참고하시길 바라며,<br>
 									결제 상품 확인 후 주문해주시면 담당자가 확인 후 추후 안내 도와드리겠습니다.<br>
+									daas
+									<button id="apibtn">버튼</button>
+ <a href="kakaopay33.mall">asd</a>
+					<script type="text/javascript" src="<%= request.getContextPath() %>/resources/js/jquery.js"></script>
+					<script type="text/javascript">
+					$(function(){
+						 $('#apibtn').click(function() {
+							 
+							$.ajax({
+								url:'kakaopay33.mall',
+								dataType:'json',
+								success:function(data){
+									alert(data.tid)
+									var box = data.next_redirect_pc_url;
+									window.open(box);
+								},
+								error:function(error){
+									alert(error);
+								}
+							});
+						});
+					});
+						 
+					
+				 
+					</script>
 								</div>
 							</div>
 							
@@ -344,6 +379,7 @@ body{
 						<hr class="my-4">
 						<button class="w-100 btn btn-primary btn-lg" style="margin-bottom: 100px;" type="submit">주문 완료</button>
 					</form>
+					 
 				</div>
 			</div>
 		</main>

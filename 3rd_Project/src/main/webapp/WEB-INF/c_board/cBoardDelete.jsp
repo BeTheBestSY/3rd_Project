@@ -45,7 +45,7 @@
 				</tr>
 				<tr rowspan=2>
 					<td align=center style="border-top: 1px solid #e7e7e7; border-bottom: 1px solid #e7e7e7; padding:5% 5%;">
-						<input type="password" name="c_password" class="form-control" maxlength="12" size="12" style="text-align: center;">
+						<input type="password" name="c_password" class="form-control" maxlength="4" size="12" style="text-align: center;">
 					</td>
 				</tr>
 				

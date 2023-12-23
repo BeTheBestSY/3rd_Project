@@ -66,7 +66,7 @@
 		<c:forEach var="bb" items="${ list }">
 			<tr>
 				<td>${num }
-      <c:set var="num" value="${num -1}" /></td>
+     			<c:set var="num" value="${num -1}" /></td>
 				<td align="left" >
 					<c:set var="wid" value="0"/>
 					<c:if test="${ bb.c_re_level > 0 }">
@@ -80,7 +80,14 @@
 						<img src="<%= request.getContextPath() %>/resources/image/hot.png" width="2%">
 					</c:if>
 				</td>
-				<td>${ bb.c_writer }</td>
+				<td>
+					<c:if test="${fn:length(bb.c_writer) > 16}">
+						외부 회원
+					</c:if>
+					<c:if test="${fn:length(bb.c_writer) < 16}">
+						${ bb.c_writer }
+					</c:if>
+				</td>
 				<td>
 					<fmt:formatDate value="${bb.c_regdate}" pattern="yyyy-MM-dd"/>
 				</td>
@@ -88,9 +95,9 @@
 			</tr>
 		</c:forEach>
 	</c:if>
-	<c:if test="${ empty list }" >
+	<c:if test="${ empty list }" > 
 		<tr>
-			<td colspan="8">작성된 글이 없습니다.</td>
+			<td colspan="8">작성된 글이 없습니다.</td> 
 		</tr>
 	</c:if>
  </table>
