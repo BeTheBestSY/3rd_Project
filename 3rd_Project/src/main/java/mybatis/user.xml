@@ -9,7 +9,13 @@
 	</select>
 	<insert id="register">
 		insert into users
+<<<<<<< HEAD
 		values(#{u_id}, #{u_name}, #{u_password}, #{u_phone}, #{u_address}, 0, '미정', #{u_jointype}, default, #{u_color}, #{u_email}, '', '')
+=======
+		values(#{u_id}, #{u_name}, #{u_password}, #{u_phone}, #{u_address}, 
+		0, '미정', #{u_jointype}, default, 
+		#{u_color}, #{u_email}, #{u_profileimg}, #{u_intro} )
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 	</insert>
 	<select id="getUserById" resultType="Users">
 		select * from users
