@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/admin_Q_Board.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/admin_C_Board.css">
 <%@ include file="adminMenu.jsp"%>
 <script type="text/javascript">
 	

@@ -108,7 +108,7 @@
 						
 			 </table>
 			 <br><br>
-			
+
 			<!-- 로그인 하지 않은 상태면 -->
 			<c:if test="${loginInfo.u_id  == null}">
 				<%
@@ -119,7 +119,7 @@
 					location.href="login.u";
 				</script>
 			</c:if>
-			
+
 			<!-- 로그인 한 상태면 -->
 			<c:if test="${loginInfo.u_id  != null}">
 			 <center>

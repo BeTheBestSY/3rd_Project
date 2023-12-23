@@ -43,7 +43,7 @@
 		<input type = "hidden" name = "c_re_step" value=${ bb.c_re_step }>
 		<input type = "hidden" name = "c_re_level" value=${ bb.c_re_level }>
 		<input type = "hidden" name = "whatColumn" value=${ whatColumn }>
-		<input type = "hidden" name =  "keyword" "value=${ keyword }>
+		<input type = "hidden" name =  "keyword" value=${ keyword }>
 			      <table class="board-table" style="font-size: 13pt;">
 					<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">제목</th>

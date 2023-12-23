@@ -68,7 +68,7 @@
 					</td>
 					<th align="left" bgcolor="#EDE5D8" width="14%">이메일</th>
 					<td align="left">
-						<input type="email" name="c_email" value="${ loginInfo.u_email }" class="form-control" style="width: 86%;""  placeholder="ex) color@gmail.com" required>
+						<input type="email" name="c_email" value="${ loginInfo.u_email }" class="form-control" style="width: 86%;"  placeholder="ex) color@gmail.com" required>
 					</td>
 				</tr>
 				<tr>
