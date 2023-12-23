@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import admin.model.AdminDao;
 import c_board.model.CBoardBean;
-import celeb.model.CelebBean;
 import utility.Paging;
 
 @Controller 
