@@ -69,7 +69,7 @@ window.onload = function(){
 };
 function deleteCelebImg(){
 	celebImg.setAttribute('src', '<%=request.getContextPath()%>/resources/image/no-image.jpg');
-	celebSpan.innerHTML='';
+	celebSpan.innerHTML=''; 
 }
 function checkImg(){
 	if(celebSpan.innerHTML == ''){

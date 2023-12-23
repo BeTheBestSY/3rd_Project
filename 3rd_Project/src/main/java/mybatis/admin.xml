@@ -393,7 +393,7 @@
 			<if test="whatColumn=='all'">
 				where o_date like #{keyword} or u_id like #{keyword}
 			</if>
-			order by o_num asc
+			order by o_num desc
 		</select>
 		
 		<select id="getAllOrder" resultType="mall.model.OrderBean">
@@ -407,7 +407,7 @@
 			<if test="whatColumn=='all'">
 				where o_date like #{keyword} or u_id like #{keyword}
 			</if>
-			order by o_num asc
+			order by o_num desc
 		</select>
 		
 		<select id="selectOrderStatus" resultType="String">

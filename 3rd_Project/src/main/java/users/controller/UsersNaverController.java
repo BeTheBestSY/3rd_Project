@@ -43,7 +43,8 @@ public class UsersNaverController {
 		Map<String, Object> userInfo = naverApi.getUserInfo(this.accessToken);
 		String name = String.valueOf(userInfo.get("name"));
 	    String id = String.valueOf(userInfo.get("id"));
-
+	    // 사용자 이메일과 프로필사진을 추가로 받아와야함.
+	    
 	    System.out.println("name = " + name);
 	    System.out.println("id = " + id);
 	    System.out.println("accessToken = " + this.accessToken);

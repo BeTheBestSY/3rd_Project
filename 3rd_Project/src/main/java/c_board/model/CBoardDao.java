@@ -1,10 +1,13 @@
 package c_board.model;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import users.model.UsersBean;
 import utility.Paging;
 
 
@@ -91,7 +94,12 @@ public class CBoardDao {
 			sqlSessionTemplate.delete(namespace+"deleteBoard",c_num);
 		}
 	}
-	
+
+	public UsersBean getUserByCWriter(String c_writer) {
+		UsersBean ub = sqlSessionTemplate.selectOne(namespace+"getUserByCWriter", c_writer);
+		return ub;
+	}
+
 	
 	
 }

@@ -98,6 +98,11 @@ public class QBoardDao {
 		}
 	}
 
+	public UsersBean getUserByQWriter(String q_writer) {
+		UsersBean ub = sqlSessionTemplate.selectOne(namespace+"getUserByQWriter", q_writer);
+		return ub;
+	}
+	
 	public boolean didYouJoin(UsersBean ub) {
 		return sqlSessionTemplate.selectOne(namespace+".didYouJoin", ub);
 	}
