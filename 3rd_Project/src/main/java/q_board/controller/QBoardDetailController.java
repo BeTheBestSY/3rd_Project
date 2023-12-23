@@ -35,7 +35,6 @@ public class QBoardDetailController {
 		
 		QBoardBean bb = qdao.selectContent(q_num);
 		UsersBean ub = qdao.getUserByQWriter(bb.getQ_writer());
-		UsersBean uid = qdao.getUserById(bb.getQ_writer());
 		
 		String joinType = "탈퇴함";
 		try {
