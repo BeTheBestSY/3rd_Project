@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css?ver=22023465">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css?ver=22023464">
 <script type="text/javascript">
 	window.onload = function(){
 		const radios = document.querySelectorAll("input[name='filter_btn']");
@@ -71,7 +71,7 @@
 					<span style="position:relative;right:10.5%;bottom:40%;"><input type="radio" name="filter_btn" value="p_priceDesc" <c:if test="${param.filter eq 'p_priceDesc'}">checked</c:if> style="width:20px;height:18px;"> 고가순&nbsp;</span>
 					<span style="position:relative;right:8%;bottom:40%;"><input type="radio" name="filter_btn" value="p_priceAsc" <c:if test="${param.filter eq 'p_priceAsc'}">checked</c:if> style="width:20px;height:18px;"> 저가순&nbsp;</span>
 					<!-- 출고일(혹은 입고일) 칼럼을 넣어야 할까.. -->
-					<span style="position:relative;bottom: 40%;left: 18%; "><input type="button" class="btn btn-white" value="추가하기" onClick="location.href='productInsert.admin'"></span>
+					<span style="position:relative;bottom: 40%;left: 18%; "><input type="button" class="btn btn-white" value="+ 추가하기" onClick="location.href='productInsert.admin'"></span>
 				</div>
 			</div>
 		</div>
@@ -105,18 +105,17 @@
 									</c:if>
 									
 									<c:forEach var="pb" items="${prodLists }">
-										<input id="title" type="hidden" value="${pb.p_ttlimg }">
 										<tr>
 											<td width="30px">${pb.p_num }</td>
 											<td width="70px">${pb.p_brand }</td>
 											<td width="90px">${pb.p_name }&nbsp;&nbsp;
-												<span class="ttl-img" title="타이틀이미지" onClick="imgPopup('<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_ttlimg }')">
-													<font color="#C98BA4">
+												<span class="ttl-img" onClick="imgPopup('<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_ttlimg }')">
+													<font color="#C98BA4" title="${pb.p_ttlimg }">
 														<ion-icon name="image-outline"></ion-icon>
 													</font>
 												</span>
-												<span class="dtl-img" title="디테일이미지" onClick="imgPopup('<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_dtlimg }')">
-													<font color="#E7B3CE">
+												<span class="dtl-img" onClick="imgPopup('<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_dtlimg }')">
+													<font color="#E7B3CE" title="${pb.p_dtlimg }">
 														<ion-icon name="image-outline"></ion-icon>
 													</font>
 												</span>

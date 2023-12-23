@@ -42,9 +42,22 @@ public class UsersKakaoController {
 
 	    String nickname = String.valueOf(userInfo.get("nickname"));
 	    String id = String.valueOf(userInfo.get("id"));
+	    String email = String.valueOf(userInfo.get("email"));
+	    Boolean isDefaultImg = (Boolean)userInfo.get("is_default_image");
+	    String thumbnailImg = String.valueOf(userInfo.get("thumbnail_image_url"));
+	    String profileImg = String.valueOf(userInfo.get("profile_image_url"));
 
 	    System.out.println("nickname = " + nickname);
 	    System.out.println("id = " + id);
+	    System.out.println("email = " + email);
+	    System.out.println("isDefaultImg = " + isDefaultImg);
+	    if(isDefaultImg) {
+	    	System.out.println("기본 프로필 이미지입니다.");
+	    } else {
+	    	System.out.println("기본 프로필 이미지가 아닙니다.");
+	    }
+	    System.out.println("thumbnailImg = " + thumbnailImg);
+	    System.out.println("profileImg = " + profileImg);
 	    System.out.println("accessToken = " + this.accessToken);
 
 	    UsersBean ub = new UsersBean();
@@ -55,6 +68,9 @@ public class UsersKakaoController {
       	ub.setU_address(",,");
       	ub.setU_jointype("K");
       	ub.setU_color("잘 모르겠음");
+      	ub.setU_email(email);
+      	ub.setU_profileimg(profileImg);
+      	ub.setU_intro("안녕하세요~!");
       	
       	if(ud.didYouJoin(ub)) { // 로그인 한 카카오 계정이 users 테이블에 저장되어있으면
       		flag = true;
@@ -63,7 +79,13 @@ public class UsersKakaoController {
       	}
       	session.setAttribute("loginInfo", ub);
       	if(flag)
-	    	return gotoPage;
+      		if(session.getAttribute("destination") != null) {
+      			System.out.println("목적지 있음");
+      			return String.valueOf(session.getAttribute("destination"));
+      		} else {
+      			System.out.println("목적지 없음");
+      			return gotoPage; // 메인화면
+      		}
 	    else 
 	    	return viewPage;
 	}

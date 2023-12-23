@@ -3,58 +3,30 @@
 <%@ include file="adminMenu.jsp"%>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminCompanyUpdate.css?ver=220610">
 <style>
-	table{
-		margin: auto; 
-		width: 800px;
-		height: 650px;
-		font-family: 'RIDIBatang';
+	input[type="text"], select, textarea {
+	  font-size: 15px;
+	  width: 300px;
+	  height:35px;
+	  border: none;
+	  border-bottom: solid #aaaaaa 1px;
+	  padding-bottom: 3px;
+	  padding-left: 10px;
+	  position: relative;
+	  background: #f8f9f7;
+	  z-index: 5;
+	  border-radius:5px;
 	}
-	th{
-		background: #EAEAEA; 
-		padding-left: 10px;
-	}
-	td{
-		padding: 0px 10px 0px 10px;
-	}
+	
 	#searchBtn{
-		width: 120px;
-		height: 35px;
-		margin-left: 5px;
-		background: #EAEAEA;
-		border: none;
-		border-radius: 3px;
-		font-size: 11pt;
+	margin-top:13px;
 	}
-	#searchBtn:hover{
-		background: #BDBDBD;
-		color: white;
+	
+	table th{
+		text-align:left;
 	}
-	#subBtn{
-		width: 120px;
-		height: 40px;
-		margin-left: 5px;
-		color: white;
-		background: #8C8C8C;
-		border: none;
-		border-radius: 3px;
-		font-size: 11pt;
-	}
-	#subBtn:hover{
-		background: #EAEAEA;
-		color: black;
-	}
-	#resetBtn{
-		width: 120px;
-		height: 40px;
-		margin-left: 5px;
-		background: #EAEAEA;
-		border: none;
-		border-radius: 3px;
-		font-size: 11pt;
-	}
-	#resetBtn:hover {
-		background: #BDBDBD;
-		color: white;
+	
+	.board-table{
+	margin-top:20px;
 	}
 }
 </style>
@@ -127,82 +99,89 @@
 	}
 	
 </script>
-<div id="center" style="text-align: center;">
-	<br><br><br><br>
-	<div>
-		<form action="productInsert.admin" method="post" enctype="multipart/form-data" onSubmit="return checkImg()">
-		<table>
-			<tr>
-				<th>브랜드</th>
-				<td>
-					<input type="text" class="form-control" name="p_brand" required>
-				</td>
-			</tr>
-			<tr>
-				<th>이름</th>
-				<td>
-					<input type="text" class="form-control" name="p_name" style="width: 55%;" required>
-				</td>
-			</tr>
-			<tr>
-				<th>가격</th>
-				<td>
-					<input type="text" class="form-control" name="p_price" required>
-				</td>
-			</tr>
-			<tr>
-				<th>지급포인트</th>
-				<td>
-					<input type="text" class="form-control" name="p_point" required>
-				</td>
-			</tr>
-			<tr>
-				<th>재고수량</th>
-				<td>
-					<input type="text" class="form-control" name="p_stock" required>
-				</td>
-			</tr>
-			<tr>
-				<th>누적판매량</th>
-				<td>
-					<input type="text" class="form-control" name="p_salevolume" required>
-				</td>
-			</tr>
-			<tr>
-				<th>퍼스널컬러</th>
-				<td>
-					<input type="text" class="form-control" name="p_color" required>
-				</td>
-			</tr>
-			<tr>
-				<th>제품설명</th>
-				<td>
-					<textarea class="form-control" name="p_contents" placeholder="제품설명 입력" required></textarea>
-				</td>
-			</tr>
-			<tr>
-				<th>제품사진</th>
-				<td height="50%">
-					<input id="title" type="file" name="upload_ttl" accept="image/*" style="display: none">
-					<input id="detail" type="file" name="upload_dtl" accept="image/*" style="display: none">
-					<br>
-					* 타이틀이미지 업로드<br>
-					<img id="ttl_img" alt="타이틀이미지" src="<%=request.getContextPath()%>/resources/image/no-image.jpg" style="border:1px solid black; width:15%; height: 35%; cursor:pointer;"><br>
-					<span id="ttl_name"></span>
-					<br><br>
-					* 디테일이미지 업로드<br>
-					<img id="dtl_img" alt="디테일이미지" src="<%=request.getContextPath()%>/resources/image/no-image.jpg" style="border:1px solid black; width:15%; height: 35%; cursor:pointer;"><br>
-					<span id="dtl_name"></span>
-					<br><br>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<br><br>
-					<input type="submit" value="추가하기" id="subBtn" style="cursor:pointer;">
-				</td>
-			</tr>
-		</table>
-	</form>
+<article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
+	<div class="section">
+		<div id="tag" style="margin-right:83%; font-size: 2em;">
+			<h4>상품 추가</h4>
+		</div>
+		<div id="center" style="text-align: center;">
+			<br><br><br><br>
+			<div>
+				<form action="productInsert.admin" method="post" enctype="multipart/form-data" onSubmit="return checkImg()">
+				<table class="board-table">
+					<tr>
+						<th>브랜드</th>
+						<td>
+							<input type="text" class="form-control" name="p_brand" required>
+						</td>
+					</tr>
+					<tr>
+						<th>이름</th>
+						<td>
+							<input type="text" class="form-control" name="p_name" style="width: 55%;" required>
+						</td>
+					</tr>
+					<tr>
+						<th>가격</th>
+						<td>
+							<input type="text" class="form-control" name="p_price" required>
+						</td>
+					</tr>
+					<tr>
+						<th>지급포인트</th>
+						<td>
+							<input type="text" class="form-control" name="p_point" required>
+						</td>
+					</tr>
+					<tr>
+						<th>재고수량</th>
+						<td>
+							<input type="text" class="form-control" name="p_stock" required>
+						</td>
+					</tr>
+					<tr>
+						<th>누적판매량</th>
+						<td>
+							<input type="text" class="form-control" name="p_salevolume" required>
+						</td>
+					</tr>
+					<tr>
+						<th>퍼스널컬러</th>
+						<td>
+							<input type="text" class="form-control" name="p_color" required>
+						</td>
+					</tr>
+					<tr>
+						<th>제품설명</th>
+						<td>
+							<textarea class="form-control" name="p_contents" placeholder="제품설명 입력" required></textarea>
+						</td>
+					</tr>
+					<tr>
+						<th>제품사진</th>
+						<td height="50%">
+							<input id="title" type="file" name="upload_ttl" accept="image/*" style="display: none">
+							<input id="detail" type="file" name="upload_dtl" accept="image/*" style="display: none">
+							<br>
+							* 타이틀이미지 업로드<br>
+							<img id="ttl_img" alt="타이틀이미지" src="<%=request.getContextPath()%>/resources/image/no-image.jpg" style="width:15%; height: 35%; cursor:pointer;"><br>
+							<span id="ttl_name"></span>
+							<br><br>
+							* 디테일이미지 업로드<br>
+							<img id="dtl_img" alt="디테일이미지" src="<%=request.getContextPath()%>/resources/image/no-image.jpg" style="width:15%; height: 35%; cursor:pointer;"><br>
+							<span id="dtl_name"></span>
+							<br><br>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<br><br>
+							<input type="submit" value="추가하기" id="subBtn" style="cursor:pointer;">
+						</td>
+					</tr>
+				</table>
+			</form>
+			</div>
+		</div>
 	</div>
-</div>
+</article>

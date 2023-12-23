@@ -15,7 +15,7 @@
 		padding-left: 10px;
 	}
 	td{
-		padding: 0px 10px 0px 10px;
+		padding: 0px 10px 0px 10px; 
 	}
 	body{
 		padding-top: 90px;
