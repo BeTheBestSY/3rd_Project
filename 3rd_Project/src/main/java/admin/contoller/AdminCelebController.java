@@ -25,24 +25,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import admin.model.AdminDao;
 import celeb.model.CelebBean;
-<<<<<<< HEAD
-import celeb.model.CelebDao;
-=======
 import company.model.CompanyBean;
 import product.model.ProductBean;
 import q_board.model.QBoardBean;
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 import utility.Paging;
 
 @Controller
-<<<<<<< HEAD
-public class AdminCelebController {
-	
-	private final String celebCommand = "/celebList.admin";
-=======
 public class AdminCelebController { 
 	private final String command = "/celebList.admin";
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 	private final String viewPage = "adminCeleb";
 	private final String deleteCommand = "/celebDelete.admin";
 	private final String gotoPage = "redirect:/celebList.admin";
@@ -54,17 +44,11 @@ public class AdminCelebController {
 	
 	@Autowired
 	private AdminDao adminDao;
-<<<<<<< HEAD
-	 
-	@RequestMapping(value=celebCommand)
-	public String celebList(Model model,
-=======
 	@Autowired
 	ServletContext servletContext;
 	
 	@RequestMapping(value=command)
 	public String list(Model model,
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 					HttpServletRequest request,
 					@RequestParam(required = false) String whatColumn,
 					@RequestParam(required = false) String keyword,
@@ -76,21 +60,12 @@ public class AdminCelebController {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
-<<<<<<< HEAD
-		System.out.println(whatColumn+","+keyword);
-=======
 		map.put("filter", filter); 
 		System.out.println(whatColumn+","+keyword+","+filter);
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 		String ps="1000";
 		 
-<<<<<<< HEAD
-		int totalCount = adminDao.getTotalCountCeleb(map);
-		String url = request.getContextPath()+celebCommand;
-=======
 		int totalCount = adminDao.getCeleb(map);
 		String url = request.getContextPath()+command;
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 		Paging pageInfo = new Paging(pageNumber, ps, totalCount, url, whatColumn, keyword);
 		
 		List<CelebBean> celebLists = adminDao.getAllCelebList(map, pageInfo);
@@ -99,8 +74,6 @@ public class AdminCelebController {
 		return viewPage;
 	}
 	
-<<<<<<< HEAD
-=======
 	@RequestMapping(value = insertCommand, method = RequestMethod.GET)
 	public String insertForm() {
 		return insertFormPage;
@@ -197,5 +170,4 @@ public class AdminCelebController {
 		
 		return gotoPage;
 	}
->>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 }

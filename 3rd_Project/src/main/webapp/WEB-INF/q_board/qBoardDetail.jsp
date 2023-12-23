@@ -93,6 +93,21 @@
 					</td>
 				</tr>
 				<tr>
+					<th align="left" bgcolor="#EDE5D8" width="10%">문의 유형</th>
+					<td align="left" height="68" width="38%">
+						${bb.q_type}		
+					</td>
+					<th align="left" bgcolor="#EDE5D8" width="14%" >공개 여부</th>
+					<td align="left" height="68">
+						<c:if test="${bb.q_secret == 'N'}">
+							비밀글
+						</c:if>
+						<c:if test="${bb.q_secret == 'Y'}">
+							공개글
+						</c:if>
+					</td>
+				</tr>
+				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%" >내용</th>
 					<td align="left" colspan="3" height="200" valign="top" style="padding-top: 25px;">
 						${ bb.q_content}
