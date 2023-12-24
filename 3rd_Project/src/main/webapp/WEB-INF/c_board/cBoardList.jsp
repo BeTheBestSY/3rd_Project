@@ -89,12 +89,23 @@
 					</c:if>
 				</td>
 				<td>
-					<c:if test="${fn:length(bb.c_writer) > 16}">
-						외부 회원
+					<a href="#">
+					<c:if test="${bb.c_profileimg eq null }">
+						<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
+						<c:if test="${fn:length(bb.c_writer) < 16}">
+							${ bb.c_writer }
+						</c:if>
 					</c:if>
-					<c:if test="${fn:length(bb.c_writer) < 16}">
-						${ bb.c_writer }
+					<c:if test="${bb.c_profileimg ne null }">
+						<img src="${bb.c_profileimg }" width="32" height="32" class="rounded-circle">
+						<c:if test="${fn:length(bb.c_writer) > 16}">
+							외부 회원
+						</c:if>
+						<c:if test="${fn:length(bb.c_writer) < 16}">
+							${ bb.c_writer }
+						</c:if>
 					</c:if>
+					</a>
 				</td>
 				<td>
 					<fmt:formatDate value="${bb.c_regdate}" pattern="yyyy-MM-dd"/>

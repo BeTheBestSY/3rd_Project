@@ -8,6 +8,7 @@ public class CBoardBean {
 
 	private int c_num;
 	private String c_writer;
+	private String c_profileimg;
 	private String c_email;
 	private String c_subject;
 	private String c_password;
@@ -23,12 +24,13 @@ public class CBoardBean {
 
 	}
 
-	public CBoardBean(int c_num, String c_writer, String c_email, String c_subject, String c_password,
-			Timestamp c_regdate, int c_readcount, int c_ref, int c_re_step, int c_re_level, String c_content,
-			String c_ip) {
+	public CBoardBean(int c_num, String c_writer, String c_profileimg, String c_email, String c_subject,
+			String c_password, Timestamp c_regdate, int c_readcount, int c_ref, int c_re_step, int c_re_level,
+			String c_content, String c_ip) {
 		super();
 		this.c_num = c_num;
 		this.c_writer = c_writer;
+		this.c_profileimg = c_profileimg;
 		this.c_email = c_email;
 		this.c_subject = c_subject;
 		this.c_password = c_password;
@@ -55,6 +57,14 @@ public class CBoardBean {
 
 	public void setC_writer(String c_writer) {
 		this.c_writer = c_writer;
+	}
+	
+	public String getC_profileimg() {
+		return c_profileimg;
+	}
+	
+	public void setC_profileimg(String c_profileimg) {
+		this.c_profileimg = c_profileimg;
 	}
 
 	public String getC_email() {
