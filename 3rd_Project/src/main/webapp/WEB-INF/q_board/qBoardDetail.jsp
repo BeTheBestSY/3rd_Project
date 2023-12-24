@@ -110,7 +110,7 @@
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%" >내용</th>
 					<td align="left" colspan="3" height="200" valign="top" style="padding-top: 25px;">
-						${ bb.q_content}
+						<pre style="font-family: 'RIDIBatang'; line-height: 170%;">${bb.q_content}</pre>
 					</td>
 				</tr>
 						

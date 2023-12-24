@@ -1,13 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%
-	session.setAttribute("destination", "redirect:/cBoardList.cb");
-%>
-    
 <%@ include file="./../views/header.jsp" %>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardList.css">
-<script src="selectbox.min.js"></script>
+
 <style type="text/css">
 	#noneHigtLight{
 		text-decoration: none;
@@ -19,6 +15,21 @@
 		padding-top: 90px;
 	}
 </style>
+
+<script type="text/javascript">
+	function selectReset(){
+		var keyword = document.getElementById("search");
+		keyword.value = "";
+	}
+	function popup(u_id, loginInfo){
+		if(loginInfo == ''){
+			alert("로그인 후 이용 가능합니다.");
+		} else {
+			alert("작성자:"+u_id);
+			window.open("profile.u?u_id="+u_id, '_blank', 'menubars=no, scrollbars=auto');
+		}
+	}
+</script>
 
 <article id="center" style="font-family: 'RIDIBatang';" >
 
@@ -34,12 +45,13 @@
             <div class="search-window" style="padding: 20px 15px 10px 15px; background-color: #F7F3ED;">
 				<div class="search-wrap">
 					<form action="cBoardList.cb" method="get">
-					<select name="whatColumn" id="whatColumn">
-						<option value="all" <c:if test="${whatColumn == 'all'}">selected</c:if>>:: 선택 ::</option>
+					<select name="whatColumn" id="whatColumn" onChange="selectReset()">
+						<option value="all" <c:if test="${whatColumn == 'all'}">selected</c:if>>전체</option>
 						<option value="c_subject" <c:if test="${whatColumn == 'c_subject'}">selected</c:if>>제목</option>
 						<option value="c_writer" <c:if test="${whatColumn == 'c_writer'}">selected</c:if>>작성자</option>
+						<option value="c_content" <c:if test="${whatColumn == 'c_content'}">selected</c:if>>내용</option>
 					</select>
-				 	<input id="search" type="search" name="keyword" value="<c:if test="${keyword != 'null'}">${keyword}</c:if>" placeholder="검색어를 입력해주세요.">
+				 	<input id="search" type="text" name="keyword" value="<c:if test="${keyword != 'null'}">${keyword}</c:if>" placeholder="검색어를 입력해주세요.">
 					<button type="submit" class="btn btn-dark">검색</button>
 				</form>
             	</div>
@@ -81,12 +93,23 @@
 					</c:if>
 				</td>
 				<td>
-					<c:if test="${fn:length(bb.c_writer) > 16}">
-						외부 회원
+					<a href="javascript:popup('${bb.c_writer }', '${loginInfo }')" style="text-decoration-line: none;">
+					<c:if test="${bb.c_profileimg eq null }">
+						<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
+						<c:if test="${fn:length(bb.c_writer) < 16}">
+							${ bb.c_writer }
+						</c:if>
 					</c:if>
-					<c:if test="${fn:length(bb.c_writer) < 16}">
-						${ bb.c_writer }
+					<c:if test="${bb.c_profileimg ne null }">
+						<img src="${bb.c_profileimg }" width="32" height="32" class="rounded-circle">
+						<c:if test="${fn:length(bb.c_writer) > 16}">
+							외부 회원
+						</c:if>
+						<c:if test="${fn:length(bb.c_writer) < 16}">
+							${ bb.c_writer }
+						</c:if>
 					</c:if>
+					</a>
 				</td>
 				<td>
 					<fmt:formatDate value="${bb.c_regdate}" pattern="yyyy-MM-dd"/>

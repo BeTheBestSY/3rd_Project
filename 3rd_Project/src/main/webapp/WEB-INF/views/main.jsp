@@ -130,14 +130,13 @@
 <div style="width: 100%; height: 3000px; overflow: hidden;">
 	<div style="background: #F6F6F6; width: 20%; height: 3000px; left: 1520px; top: -300px; position: relative; border-radius: 300px;"></div>
 	 
-	 
-	<div style="width: 100%; height: 1000px; padding: 150px 200px 150px 200px; position: absolute; top: 3200px;">
+	<div style="width: 100%; height: 1000px; padding: 150px 200px 150px 200px; position: absolute; top: 3200px;" id="ai">
 		<div style="left: 1315px; position: absolute; text-align: right; font-family: 'RIDIBatang'; padding-top: 8px;">
-			<div style="color: #7C81BB; padding: 0px 0px 15px 0px;">AI 퍼스널컬러 진단받기</div>
-			<div style="color: #D5D5D5; padding: 0px 0px 13px 0px;">퍼스널 컬러의 모든 것</div> 
-			<div style="color: #D5D5D5;">맞춤 쇼핑몰 둘러보기</div>
+			<div style="color: #7C81BB; padding: 0px 0px 15px 0px; cursor : pointer;" onClick="ai()">AI 퍼스널컬러 진단받기</div>
+			<div style="color: #D5D5D5; padding: 0px 0px 13px 0px; cursor : pointer;" onClick="allAbout()">퍼스널 컬러의 모든 것</div>
+			<div style="color: #D5D5D5; cursor : pointer;" onClick="shop()">맞춤 쇼핑몰 둘러보기</div>
 		</div>
-		<div style="left: 1495px; position: absolute; width: 50px;">
+		<div style="left: 1495px; position: absolute; width: 50px;"> 
 			<div style="border: 1px solid #7C81BB; border-radius: 50%; width: 40px; height: 40px; margin: 0px 5px 15px 5px;">
 				<div style="border-radius: 50%; width: 10px; height: 10px; background: #7C81BB; margin: 14px 10px 10px 14px;"></div> 
 			</div>
@@ -149,7 +148,7 @@
 			FIND YOUR <big>Hidden Beauty</big> 이용방법 - 1
 		</span>
 		<br>
-		<span style="font-family: 'MaruBuri-Regular'; font-size: 35pt; font-weight: bold;">
+		<span style="font-family: 'MaruBuri-Regular'; font-size: 35pt; font-weight: bold; cursor : pointer;" onclick="location.href='colorAi.ai'">
 			AI 퍼스널컬러 진단받기
 		</span>
 		<br><br>
@@ -164,12 +163,11 @@
 		<div style="width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white; background-image: url('resources/image/ai2.png'); background-repeat: no-repeat; background-size: cover; box-shadow: 5px 5px 10px 0px #BDBDBD;"></div>
 	</div>
 	
-	
-	<div style="width: 100%; height: 1000px; padding: 200px; position: absolute; top: 4200px;"> 
+	<div style="width: 100%; height: 1000px; padding: 200px; position: absolute; top: 4200px;" id="allAbout">
 		<div style="left: 1315px; position: absolute; text-align: right; font-family: 'RIDIBatang'; padding-top: 8px;">
-			<div style="color: #D5D5D5; padding: 0px 0px 15px 0px;">AI 퍼스널컬러 진단받기</div>
-			<div style="color: #7C81BB; padding: 0px 0px 13px 0px;">퍼스널 컬러의 모든 것</div> 
-			<div style="color: #D5D5D5;">맞춤 쇼핑몰 둘러보기</div>
+			<div style="color: #D5D5D5; padding: 0px 0px 15px 0px; cursor : pointer;" onClick="ai()">AI 퍼스널컬러 진단받기</div>
+			<div style="color: #7C81BB; padding: 0px 0px 13px 0px; cursor : pointer;" onClick="allAbout()">퍼스널 컬러의 모든 것</div> 
+			<div style="color: #D5D5D5; cursor : pointer;" onClick="shop()">맞춤 쇼핑몰 둘러보기</div>
 		</div>
 		<div style="left: 1495px; position: absolute; width: 50px;">
 			<div style="border-radius: 50%; width: 10px; height: 10px; background: #D5D5D5; margin: 12px 20px 12px 20px;"></div>
@@ -182,7 +180,7 @@
 			FIND YOUR <big>Hidden Beauty</big> 이용방법 - 2
 		</span>
 		<br>
-		<span style="font-family: 'MaruBuri-Regular'; font-size: 35pt; font-weight: bold; ">
+		<span style="font-family: 'MaruBuri-Regular'; font-size: 35pt; font-weight: bold; cursor : pointer;" onclick="location.href='colMain.col'">
 			퍼스널 컬러의 모든 것
 		</span>
 		<br><br>
@@ -194,15 +192,14 @@
 		<br><br><br><br> 
 		<div style="width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white; background-image: url('resources/image/every.png'); background-repeat: no-repeat; background-size: cover; box-shadow: 5px 5px 10px 0px #BDBDBD;"></div>
 		&nbsp;&nbsp;&nbsp;
-		<div style="border: 1px solid black; width: 700px; height: 400px; display: inline-block; border-radius: 30px; background: white;"></div>
+		<div style="border: 1px solid black; width: 700px; height: 400px; display: inline-block; border: none; border-radius: 30px; background: white; background-image: url('resources/image/celeb_ex.png'); background-repeat: no-repeat; background-size: cover; box-shadow: 5px 5px 10px 0px #BDBDBD;""></div>
 	</div>
 	
-	
-	<div style="width: 100%; height: 1000px; padding: 200px; position: absolute; top: 5200px;">  
+	<div style="width: 100%; height: 1000px; padding: 200px; position: absolute; top: 5200px;" id="shop">  
 		<div style="left: 1315px; position: absolute; text-align: right; font-family: 'RIDIBatang'; padding-top: 8px;">
-			<div style="color: #D5D5D5; padding: 0px 0px 15px 0px;">AI 퍼스널컬러 진단받기</div>
-			<div style="color: #D5D5D5; padding: 0px 0px 13px 0px;">퍼스널 컬러의 모든 것</div> 
-			<div style="color: #7C81BB;">맞춤 쇼핑몰 둘러보기</div>
+			<div style="color: #D5D5D5; padding: 0px 0px 15px 0px; cursor : pointer;" onClick="ai()">AI 퍼스널컬러 진단받기</div>
+			<div style="color: #D5D5D5; padding: 0px 0px 13px 0px; cursor : pointer;" onClick="allAbout()">퍼스널 컬러의 모든 것</div> 
+			<div style="color: #7C81BB; cursor : pointer;" onClick="shop()">맞춤 쇼핑몰 둘러보기</div>
 		</div>
 		<div style="left: 1495px; position: absolute; width: 50px;">
 			<div style="border-radius: 50%; width: 10px; height: 10px; background: #D5D5D5; margin: 15px 20px 12px 20px;"></div>
@@ -215,7 +212,7 @@
 			FIND YOUR <big>Hidden Beauty</big> 이용방법 - 3
 		</span>
 		<br>
-		<span style="font-family: 'MaruBuri-Regular'; font-size: 35pt; font-weight: bold;">
+		<span style="font-family: 'MaruBuri-Regular'; font-size: 35pt; font-weight: bold; cursor : pointer;" onclick="location.href='productMain.p'">
 			맞춤 쇼핑몰 둘러보기
 		</span>
 		<br><br>
@@ -230,6 +227,20 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/image/fall-mainImg.png">
 		&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/image/winter-mainImg.png">
 	</div>
+	
+	<script type="text/javascript">
+		function ai(){
+			document.querySelector("#ai").scrollIntoView({ behavior: "smooth" });
+		}
+		function allAbout(){
+			document.querySelector("#allAbout").scrollIntoView({ behavior: "smooth" });
+		}
+		function shop(){
+			document.querySelector("#shop").scrollIntoView({ behavior: "smooth" });
+		}
+	</script>
+	
+	
 </div>
 
 <div style="width:100%; height: 200px;"></div>
