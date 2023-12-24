@@ -33,15 +33,10 @@ public class UsersLoginController {
 	public String doAction2(@RequestParam String u_id,
 						@RequestParam String u_password,
 						HttpSession session,
-						HttpServletResponse response, Model model) throws IOException {
+						Model model) {
 		
-		
-		PrintWriter out = response.getWriter();
-		System.out.println("로그인한 아이디:"+u_id);
-		System.out.println("로그인한 비밀번호:"+u_password);
 		UsersBean ub = ud.getUserById(u_id);
-		
-		if(ub != null) { // 가입한 회원이라면
+		if(ud.getUserById(u_id) != null) { // 가입한 회원이라면
 			if(!ub.getU_password().equals(u_password)) { // 비밀번호가 틀렸다면
 				model.addAttribute("msg","비밀번호가 틀렸습니다.");
 				model.addAttribute("url",command+"?u_id="+u_id);

@@ -14,10 +14,6 @@ public class UsersDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 	private String namespace = "sqlField_user";
 
-//	public boolean didYouJoin(UsersBean ub) {
-//		return sqlSessionTemplate.selectOne(namespace+".didYouJoin", ub);
-//	}
-
 	public void register(UsersBean ub) {
 		sqlSessionTemplate.insert(namespace+".register", ub);
 	}

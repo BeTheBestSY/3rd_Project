@@ -21,6 +21,14 @@
 		var keyword = document.getElementById("search");
 		keyword.value = "";
 	}
+	function popup(u_id, loginInfo){
+		if(loginInfo == ''){
+			alert("로그인 후 이용 가능합니다.");
+		} else {
+			alert("작성자:"+u_id);
+			window.open("profile.u?u_id="+u_id, '_blank', 'menubars=no, scrollbars=auto');
+		}
+	}
 </script>
 
 <article id="center" style="font-family: 'RIDIBatang';" >
@@ -85,7 +93,7 @@
 					</c:if>
 				</td>
 				<td>
-					<a href="#" style="text-decoration-line: none;">
+					<a href="javascript:popup('${bb.c_writer }', '${loginInfo }')" style="text-decoration-line: none;">
 					<c:if test="${bb.c_profileimg eq null }">
 						<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
 						<c:if test="${fn:length(bb.c_writer) < 16}">
