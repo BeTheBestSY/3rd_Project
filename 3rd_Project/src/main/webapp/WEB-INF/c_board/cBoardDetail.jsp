@@ -29,6 +29,13 @@
 	application.setAttribute("flag",false);
 %>
 
+<c:if test="${bb.c_report >= 3}">
+	<script>
+		alert("3회 이상 신고된 글은 열람하실 수 없습니다.");
+		history.go(-1);
+	</script>
+</c:if>
+
 <br>
 <article id="center" style=" text-align:center; font-family: 'RIDIBatang';">
 
@@ -89,13 +96,13 @@
 				</center>
 			</c:if>
 			
-			<!-- 접속한 id가 관리자가 아니고, 글 작성자랑 접속한 id랑 다른데 로그인은 되어있으면 답글달기만. -->
+			<!-- 접속한 id가 관리자가 아니고, 글 작성자랑 접속한 id랑 다른데 로그인은 되어있으면 답글과 신고만. -->
 			<c:if test="${loginInfo.u_id != null && loginInfo.u_id !='admin' && loginInfo.u_id !=bb.c_writer}"> 
 				<center>
 					<input type="button" id="btn" value="답글달기" id="btn" onClick="goReply(${ bb.c_num },${ bb.c_ref },${ bb.c_re_step },${ bb.c_re_level },${pageNumber})" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+					<input type="button" value="신고하기" id="btn" onClick="javascript: if(confirm('정말 신고하시겠습니까?')){location.href='report.u?u_id=${bb.c_writer}&url=cBoardList.cb&c_num=${bb.c_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'}" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 				</center>
 			</c:if>
-
 			 
 			 <!-- 세션이 작성자와 같거나 관리자가 아니면 수정, 삭제, 목록 버튼 보이게 -->
 			<c:if test="${loginInfo.u_id  == bb.c_writer && loginInfo.u_id !='admin'}">
@@ -106,12 +113,13 @@
 				</center>
 			</c:if>
 			
-			<!-- 접속한 id가 관리자일 땐 모든 게시물 수정 삭제 답글 가능 -->
-			<c:if test="${loginInfo.u_id == 'admin'}"> 
+			<!-- 접속한 id가 관리자일 땐 모든 게시물 수정 삭제 답글 신고 가능 -->
+			<c:if test="${loginInfo.u_id == 'admin'}">
 				<center>
 					<input type="button" value="수정하기" id="btn" onClick="location.href='cUpdate.cb?c_num=${bb.c_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 					<input type="button" value="삭제하기" id="btn" onClick="location.href='cDelete.cb?c_num=${bb.c_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 					<input type="button" value="답글달기" id="btn" onClick="goReply(${ bb.c_num },${ bb.c_ref },${ bb.c_re_step },${ bb.c_re_level },${pageNumber}, '${whatColumn}', '${keyword}')" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+					<input type="button" value="신고하기" id="btn" onClick="javascript: if(confirm('정말 신고하시겠습니까?')){location.href='report.u?u_id=${bb.c_writer}&url=cBoardList.cb&c_num=${bb.c_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'}" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 				</center>
 			</c:if>
 		</form:form>

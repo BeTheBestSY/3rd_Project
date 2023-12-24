@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="./../views/header.jsp" %>
+<%
+	session.setAttribute("destination", "redirect:/cBoardList.cb");
+%>
+
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardList.css">
 
 <style type="text/css">
@@ -24,6 +28,7 @@
 	function popup(u_id, loginInfo){
 		if(loginInfo == ''){
 			alert("로그인 후 이용 가능합니다.");
+			location.href="login.u";
 		} else {
 			alert("작성자:"+u_id);
 			window.open("profile.u?u_id="+u_id, '_blank', 'menubars=no, scrollbars=auto');
@@ -95,7 +100,7 @@
 				<td>
 					<a href="javascript:popup('${bb.c_writer }', '${loginInfo }')" style="text-decoration-line: none;">
 					<c:if test="${bb.c_profileimg eq null }">
-						<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
+						<img src="resources/image/person.svg" width="20" class="rounded-circle">
 						<c:if test="${fn:length(bb.c_writer) < 16}">
 							${ bb.c_writer }
 						</c:if>

@@ -14,6 +14,7 @@ public class UsersBean {
 	private String u_email;
 	private String u_profileimg;
 	private String u_intro;
+	private int u_report;
 	
 	public String getU_id() {
 		return u_id;
@@ -92,6 +93,12 @@ public class UsersBean {
 	}
 	public void setU_intro(String u_intro) {
 		this.u_intro = u_intro;
+	}
+	public int getU_report() {
+		return u_report;
+	}
+	public void setU_report(int u_report) {
+		this.u_report = u_report;
 	}
 	
 }

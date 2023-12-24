@@ -11,6 +11,7 @@ public class CBoardBean {
 	private String c_profileimg;
 	private String c_email;
 	private String c_subject;
+	private String c_subject_rb;
 	private String c_password;
 	private Timestamp c_regdate;
 	private int c_readcount;
@@ -19,30 +20,12 @@ public class CBoardBean {
 	private int c_re_level;
 	private String c_content;
 	private String c_ip;
+	private int c_report;
 
 	public CBoardBean() {
 
 	}
-
-	public CBoardBean(int c_num, String c_writer, String c_profileimg, String c_email, String c_subject,
-			String c_password, Timestamp c_regdate, int c_readcount, int c_ref, int c_re_step, int c_re_level,
-			String c_content, String c_ip) {
-		super();
-		this.c_num = c_num;
-		this.c_writer = c_writer;
-		this.c_profileimg = c_profileimg;
-		this.c_email = c_email;
-		this.c_subject = c_subject;
-		this.c_password = c_password;
-		this.c_regdate = c_regdate;
-		this.c_readcount = c_readcount;
-		this.c_ref = c_ref;
-		this.c_re_step = c_re_step;
-		this.c_re_level = c_re_level;
-		this.c_content = c_content;
-		this.c_ip = c_ip;
-	}
-
+	
 	public int getC_num() {
 		return c_num;
 	}
@@ -147,6 +130,20 @@ public class CBoardBean {
 		this.c_ip = c_ip;
 	}
 
-	
+	public String getC_subject_rb() {
+		return c_subject_rb;
+	}
 
+	public void setC_subject_rb(String c_subject_rb) {
+		this.c_subject_rb = c_subject_rb;
+	}
+
+	public int getC_report() {
+		return c_report;
+	}
+
+	public void setC_report(int c_report) {
+		this.c_report = c_report;
+	}
+	
 }

@@ -83,6 +83,10 @@
 		<update id="updateReadcount">
 			update c_board set c_readcount=c_readcount+1 where c_num=#{c_num}
 		</update>
+		 
+		<update id="updateReport">
+			update c_board set c_report=c_report+1 where c_num=#{c_num}
+		</update>
 		
 		<insert id="insertReply">
 			insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip) values(cboard_seq.nextval,#{c_writer},#{c_email},#{c_subject},#{c_password},#{c_regdate},#{c_ref},#{c_re_step},#{c_re_level},#{c_content},#{c_ip})

@@ -25,6 +25,15 @@
 		var keyword = document.getElementById("search");
 		keyword.value = "";
 	}
+	function popup(u_id, loginInfo){
+		if(loginInfo == ''){
+			alert("로그인 후 이용 가능합니다.");
+			location.href="login.u";
+		} else {
+			alert("작성자:"+u_id);
+			window.open("profile.u?u_id="+u_id, '_blank', 'menubars=no, scrollbars=auto');
+		}
+	}
 </script>
 
 <article id="center" style="font-family: 'RIDIBatang';" >
@@ -92,12 +101,23 @@
 					</c:if>
 				</td>
 				<td>
-					<c:if test="${fn:length(bb.q_writer) > 16}">
-						외부 회원
+					<a href="javascript:popup('${bb.q_writer }', '${loginInfo }')" style="text-decoration-line: none;">
+					<c:if test="${bb.q_profileimg eq null }">
+						<img src="resources/image/person.svg" width="20" class="rounded-circle">
+						<c:if test="${fn:length(bb.q_writer) < 16}">
+							${ bb.q_writer }
+						</c:if>
 					</c:if>
-					<c:if test="${fn:length(bb.q_writer) < 16}">
-						${ bb.q_writer }
+					<c:if test="${bb.q_profileimg ne null }">
+						<img src="${bb.q_profileimg }" width="32" height="32" class="rounded-circle">
+						<c:if test="${fn:length(bb.q_writer) > 16}">
+							외부 회원
+						</c:if>
+						<c:if test="${fn:length(bb.q_writer) < 16}">
+							${ bb.q_writer }
+						</c:if>
 					</c:if>
+					</a>
 				</td>
 				<td>
 					<fmt:formatDate value="${bb.q_regdate}" pattern="yyyy-MM-dd"/>

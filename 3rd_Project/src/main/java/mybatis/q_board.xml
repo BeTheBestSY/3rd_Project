@@ -5,9 +5,9 @@
 <mapper namespace="q_board.model.QBoardBean">
 
 		<select id="getAllBoardList" resultType="QBoard">
-			select q_num, q_type, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip, q_secret	        
-			from (select rownum as rank, q_num, q_type, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip, q_secret
-			from (select q_num, q_type, q_writer, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip, q_secret
+			select q_num, q_type, q_writer, q_profileimg, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip, q_secret	        
+			from (select rownum as rank, q_num, q_type, q_writer, q_profileimg, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip, q_secret
+			from (select q_num, q_type, q_writer, q_profileimg, q_email, q_subject, q_password, q_regdate, q_readcount, q_ref, q_re_step, q_re_level, q_content, q_ip, q_secret
 			from q_board
 			<if test="whatColumn=='all'">
 				where q_writer like #{keyword} or q_subject like #{keyword} or q_content like #{keyword}
@@ -67,9 +67,9 @@
 		
 		<insert id="writeBoard">
 			insert into q_board
-			(q_num,q_type,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip,q_secret)
+			(q_num,q_type,q_writer,q_profileimg,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip,q_secret)
 			values
-			(qboard_seq.nextval,#{q_type},#{q_writer},#{q_email},#{q_subject},#{q_password},#{q_regdate},qboard_seq.currval,0,0,#{q_content},#{q_ip},#{q_secret})
+			(qboard_seq.nextval,#{q_type},#{q_writer},#{q_profileimg},#{q_email},#{q_subject},#{q_password},#{q_regdate},qboard_seq.currval,0,0,#{q_content},#{q_ip},#{q_secret})
 		</insert>
 		
 		<update id="updateBoard">
@@ -85,7 +85,7 @@
 		</update>
 		
 		<insert id="insertReply">
-			insert into q_board(q_num,q_writer,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip,q_type,q_secret) values(qboard_seq.nextval,#{q_writer},#{q_email},#{q_subject},#{q_password},#{q_regdate},#{q_ref},#{q_re_step},#{q_re_level},#{q_content},#{q_ip},#{q_type},#{q_secret})
+			insert into q_board(q_num,q_writer,q_profileimg,q_email,q_subject,q_password,q_regdate,q_ref,q_re_step,q_re_level,q_content,q_ip,q_type,q_secret) values(qboard_seq.nextval,#{q_writer},#{q_email},#{q_subject},#{q_password},#{q_regdate},#{q_ref},#{q_re_step},#{q_re_level},#{q_content},#{q_ip},#{q_type},#{q_secret})
 		</insert>
 		
 		<delete id="deleteBoard">

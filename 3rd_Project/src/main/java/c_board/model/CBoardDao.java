@@ -100,6 +100,11 @@ public class CBoardDao {
 		return ub;
 	}
 
+	public void updateReport(int c_num) {
+		System.out.println("dao c_num : " + c_num);
+		sqlSessionTemplate.update(namespace+"updateReport", c_num);
+	}
+
 	
 	
 }

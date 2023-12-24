@@ -61,6 +61,10 @@ public class UsersDao {
 		return found;
 	}
 
+	public int updateReport(String u_id) {
+		return sqlSessionTemplate.update(namespace+".updateReport", u_id);
+	}
+
 
 	
 }

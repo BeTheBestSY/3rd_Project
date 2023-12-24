@@ -131,6 +131,7 @@
 					<input type="button" value="수정하기" id="btn" onClick="location.href='qUpdate.qb?q_num=${bb.q_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 					<input type="button" value="삭제하기" id="btn" onClick="location.href='qDelete.qb?q_num=${bb.q_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 					<input type="button" value="답글달기" id="btn" onClick="goReply(${ bb.q_num },${ bb.q_ref },${ bb.q_re_step },${ bb.q_re_level },${pageNumber}, '${whatColumn}', '${keyword}')" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+					<input type="button" value="신고하기" id="btn" onClick="#" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 				</center> 
 			</c:if>
 		</form:form>
