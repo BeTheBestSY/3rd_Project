@@ -44,10 +44,7 @@ public class CBoardListController {
 		Paging pageInfo = new Paging(pageNumber,null,totalCount,url,whatColumn,keyword);
 		
 		List<CBoardBean> list = cdao.getAllBoardList(pageInfo,map);
-		for(CBoardBean cb:list) {
-			System.out.println("작성자:"+cb.getC_writer());
-			System.out.println("프로필 사진:"+cb.getC_profileimg());
-		}
+		
 		model.addAttribute("list",list);
 		model.addAttribute("pageInfo",pageInfo);
 		model.addAttribute("whatColumn",whatColumn);

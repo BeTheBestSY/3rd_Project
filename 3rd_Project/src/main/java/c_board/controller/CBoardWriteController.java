@@ -62,8 +62,6 @@ public class CBoardWriteController {
 		bb.setC_ip(request.getRemoteAddr());
 		bb.setC_regdate(new Timestamp(System.currentTimeMillis()));
 		cdao.writeBoard(bb);
-		System.out.println("write작성자:"+bb.getC_writer());
-		System.out.println("write프로필 사진:"+bb.getC_profileimg());
 		return gotoPage;
 		
 	}

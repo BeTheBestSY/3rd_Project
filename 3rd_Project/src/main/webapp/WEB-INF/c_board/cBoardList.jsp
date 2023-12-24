@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%
-	session.setAttribute("destination", "redirect:/cBoardList.cb");
-%>
-    
 <%@ include file="./../views/header.jsp" %>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardList.css">
 
@@ -89,7 +85,7 @@
 					</c:if>
 				</td>
 				<td>
-					<a href="#">
+					<a href="#" style="text-decoration-line: none;">
 					<c:if test="${bb.c_profileimg eq null }">
 						<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
 						<c:if test="${fn:length(bb.c_writer) < 16}">
