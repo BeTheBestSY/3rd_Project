@@ -45,6 +45,7 @@
  <div id="board-list">
 	
 		<form:form commandName="bb" action="write.cb" method="post">
+			<input type="hidden" name="c_profileimg" value="${loginInfo.u_profileimg }">
 		      <table class="board-table" style="font-size: 13pt;">
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">제목</th>
