@@ -19,7 +19,7 @@
 	}
 </style>
 <h1>프로필뷰</h1>
-<!-- border-dark-subtle: 테두리 색상 -->
+<!-- border-dark-subtle: 테두리 색상 --> 
 <div class="profile-box" style="border: 1px solid blue;">
 	<div class="img-box" style="border: 1px solid red">
 		<c:if test="${ub.u_profileimg eq null }">
