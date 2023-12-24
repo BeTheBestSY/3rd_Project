@@ -26,7 +26,7 @@
 	}
 </script>
 <%
-	application.setAttribute("flag",false);
+	application.setAttribute("flag",false); 
 %>
 
 <c:if test="${bb.c_report >= 3}">
