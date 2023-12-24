@@ -47,7 +47,7 @@
 	
 	<div>
 		<form action="update.u" method="post" onSubmit="return msg()">
-			<input type="hidden" name="u_name" value="${loginInfo.u_name }">
+			<input type="hidden" name="u_name" value="${loginInfo.u_name }"> 
 			<input type="hidden" name="u_id" value="${loginInfo.u_id }">
 			<table id="content_update">
 				<tr style="border-top: 1px solid #D5D5D5; height: 12%;">
