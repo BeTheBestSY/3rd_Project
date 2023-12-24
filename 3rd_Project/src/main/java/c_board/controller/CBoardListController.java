@@ -1,4 +1,5 @@
 package c_board.controller;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import c_board.model.CBoardBean;
 import c_board.model.CBoardDao;
+import users.model.UsersBean;
 import utility.Paging;
 
 

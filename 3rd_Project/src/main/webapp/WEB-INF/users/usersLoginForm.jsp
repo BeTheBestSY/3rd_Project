@@ -73,7 +73,7 @@
 				<table>
 					<tr>
 						<td width="20%">아이디</td> 
-						<td width="60%"><input type="text" name="u_id" class="form-control" required></td>
+						<td width="60%"><input type="text" name="u_id" value="${param.u_id }" class="form-control" required></td>
 						<td width="20%" rowspan="2"><input type="submit" value="로그인" id="loginBtn"></td>
 					</tr>
 					<tr>

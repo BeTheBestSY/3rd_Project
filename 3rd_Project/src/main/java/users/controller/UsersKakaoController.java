@@ -72,7 +72,7 @@ public class UsersKakaoController {
       	ub.setU_profileimg(profileImg);
       	ub.setU_intro("안녕하세요~!");
       	
-      	if(ud.didYouJoin(ub)) { // 로그인 한 카카오 계정이 users 테이블에 저장되어있으면
+      	if(ud.getUserById(id) != null) { // 로그인 한 카카오 계정이 users 테이블에 저장되어있으면
       		flag = true;
       	} else {
       		ud.register(ub);

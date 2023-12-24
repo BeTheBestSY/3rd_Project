@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%
-	session.setAttribute("destination", "redirect:/cBoardList.cb");
-%>
-    
 <%@ include file="./../views/header.jsp" %>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardList.css">
 
@@ -24,6 +20,14 @@
 	function selectReset(){
 		var keyword = document.getElementById("search");
 		keyword.value = "";
+	}
+	function popup(u_id, loginInfo){
+		if(loginInfo == ''){
+			alert("로그인 후 이용 가능합니다.");
+		} else {
+			alert("작성자:"+u_id);
+			window.open("profile.u?u_id="+u_id, '_blank', 'menubars=no, scrollbars=auto');
+		}
 	}
 </script>
 
@@ -89,12 +93,23 @@
 					</c:if>
 				</td>
 				<td>
-					<c:if test="${fn:length(bb.c_writer) > 16}">
-						외부 회원
+					<a href="javascript:popup('${bb.c_writer }', '${loginInfo }')" style="text-decoration-line: none;">
+					<c:if test="${bb.c_profileimg eq null }">
+						<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
+						<c:if test="${fn:length(bb.c_writer) < 16}">
+							${ bb.c_writer }
+						</c:if>
 					</c:if>
-					<c:if test="${fn:length(bb.c_writer) < 16}">
-						${ bb.c_writer }
+					<c:if test="${bb.c_profileimg ne null }">
+						<img src="${bb.c_profileimg }" width="32" height="32" class="rounded-circle">
+						<c:if test="${fn:length(bb.c_writer) > 16}">
+							외부 회원
+						</c:if>
+						<c:if test="${fn:length(bb.c_writer) < 16}">
+							${ bb.c_writer }
+						</c:if>
 					</c:if>
+					</a>
 				</td>
 				<td>
 					<fmt:formatDate value="${bb.c_regdate}" pattern="yyyy-MM-dd"/>
