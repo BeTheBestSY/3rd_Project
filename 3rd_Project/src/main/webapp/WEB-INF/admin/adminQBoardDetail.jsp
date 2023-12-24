@@ -46,12 +46,6 @@ table{
 			var elem = document.getElementById('keyword');
 			elem.value = '';
 		}
-		
-		function del(c_num,pageNumber){
-				location.href='cBoardList.admin';
-			
-			
-		}
 	
 </script>
 
@@ -64,33 +58,47 @@ table{
 	<div id="center" style="text-align: center;">
 			<form action="qBoardDelete.admin" method="post">
 			
-			<table class="board-table" height="500px">
-				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
-					<th width="20%"><font color="red">*</font> 제목</th>
-					<td width="80%">
-						${bb.q_subject }
-						<input type="hidden" class="form-control" name="c_num" style="width:20%;" value="${bb.q_num }" readonly>
+			<table class="board-table" style="font-size: 13pt;">
+					<tr>
+					<th align="left" bgcolor="#EDE5D8" width="10%">제목</th>
+					<td align="left" colspan="3" height="30">
+						${bb.q_subject}		
 					</td>
 				</tr>
-				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
-					<th width="20%"><font color="red">*</font> 작성자</th>
-					<td width="80%">
-						${bb.q_writer }
+				<tr>
+					<th align="left" bgcolor="#EDE5D8" width="10%">작성자</th>
+					<td align="left" width="35%">
+						${bb.q_writer}							
+					</td>
+					<th align="left" bgcolor="#EDE5D8" width="14%">이메일</th>
+					<td align="left" height="50">
+						${bb.q_email}						
 					</td>
 				</tr>
-				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
-					<th width="20%"><font color="red">*</font> 이메일</th>
-					<td width="80%">
-						${bb.q_email}
+				<tr>
+					<c:set var="types">배송문의,결제문의,교환문의,환불문의,기타</c:set>
+					<th align="left" bgcolor="#EDE5D8" width="10%">문의유형</th>
+					<td align="left" height="50" width="38%">
+						${bb.q_type}		
+					</td>
+					<th align="left" bgcolor="#EDE5D8" width="14%" >공개 여부</th>
+					<td align="left" height="50">
+						<c:if test="${bb.q_secret == 'N'}">
+							비밀글
+						</c:if>
+						<c:if test="${bb.q_secret == 'Y'}">
+							공개글
+						</c:if>
 					</td>
 				</tr>
-				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
-					<th width="20%"><font color="red">*</font> 내용</th>
-					<td width="80%">
-						${bb.q_content}
+				<tr>
+					<th align="left" bgcolor="#EDE5D8" width="10%" >내용</th>
+					<td align="left" colspan="3" height="150" valign="top" style="padding-top: 25px;">
+						${ bb.q_content}
 					</td>
 				</tr>
-			</table>
+						
+					</table>
 			</form>
 		</div>
 	</div>

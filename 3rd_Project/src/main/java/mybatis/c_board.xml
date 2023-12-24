@@ -9,22 +9,34 @@
 			from (select rownum as rank, c_num, c_writer, c_email, c_subject, c_password, c_regdate, c_readcount, c_ref, c_re_step, c_re_level, c_content, c_ip
 			from (select c_num, c_writer, c_email, c_subject, c_password, c_regdate, c_readcount, c_ref, c_re_step, c_re_level, c_content, c_ip
 			from c_board
+			<if test="whatColumn=='all'">
+				where c_writer like #{keyword} or c_subject like #{keyword} or c_content like #{keyword}
+			</if>
 			<if test="whatColumn=='c_writer'">
 				where c_writer like #{keyword}
 			</if>
 			<if test="whatColumn=='c_subject'">
 				where c_subject like #{keyword}
+			</if>
+			<if test="whatColumn=='c_content'">
+				where c_content like #{keyword}
 			</if>
 			order by c_ref desc, c_re_step asc ))
 		</select>
 		
 		<select id="getTotalCount" resultType="int">
 			select count(*) from c_board 
+			<if test="whatColumn=='all'">
+				where c_writer like #{keyword} or c_subject like #{keyword} or c_content like #{keyword}
+			</if>
 			<if test="whatColumn=='c_writer'">
 				where c_writer like #{keyword}
 			</if>
 			<if test="whatColumn=='c_subject'">
 				where c_subject like #{keyword}
+			</if>
+			<if test="whatColumn=='c_content'">
+				where c_content like #{keyword}
 			</if>
 			order by c_num asc
 		</select>

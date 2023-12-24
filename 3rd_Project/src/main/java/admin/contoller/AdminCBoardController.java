@@ -19,7 +19,7 @@ import utility.Paging;
 
 @Controller 
 public class AdminCBoardController {
-	 
+ 
 	@Autowired
 	private AdminDao adminDao; 
  
@@ -75,7 +75,7 @@ public class AdminCBoardController {
 		
 		return gotoPage;
 	}
-	
+	 
 	
 	@RequestMapping(value=commandDetail,method=RequestMethod.GET)
 	public String toDetailList(

@@ -64,33 +64,31 @@ table{
 	<div id="center" style="text-align: center;">
 			<form action="cBoardDelete.admin" method="post">
 			
-			<table class="board-table" height="500px">
-				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
-					<th width="20%"><font color="red">*</font> 제목</th>
-					<td width="80%">
-						${bb.c_subject }
-						<input type="hidden" class="form-control" name="c_num" style="width:20%;" value="${bb.c_num }" readonly>
+			<table class="board-table" style="font-size: 13pt;">
+					<tr>
+					<th align="left" bgcolor="#EDE5D8" width="10%">제목</th>
+					<td align="left" colspan="3" height="30">
+						${bb.c_subject}		
 					</td>
 				</tr>
-				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
-					<th width="20%"><font color="red">*</font> 작성자</th>
-					<td width="80%">
-						${bb.c_writer }
+				<tr>
+					<th align="left" bgcolor="#EDE5D8" width="10%">작성자</th>
+					<td align="left" width="35%">
+						${bb.c_writer}							
+					</td>
+					<th align="left" bgcolor="#EDE5D8" width="14%">이메일</th>
+					<td align="left" height="50">
+						${bb.c_email}						
 					</td>
 				</tr>
-				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
-					<th width="20%"><font color="red">*</font> 이메일</th>
-					<td width="80%">
-						${bb.c_email}
+				<tr>
+					<th align="left" bgcolor="#EDE5D8" width="10%" >내용</th>
+					<td align="left" colspan="3" height="100" valign="top" style="padding-top: 25px;">
+						${ bb.c_content}
 					</td>
 				</tr>
-				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
-					<th width="20%"><font color="red">*</font> 내용</th>
-					<td width="80%">
-						${bb.c_content}
-					</td>
-				</tr>
-			</table>
+						
+					</table>
 			</form>
 		</div>
 	</div>

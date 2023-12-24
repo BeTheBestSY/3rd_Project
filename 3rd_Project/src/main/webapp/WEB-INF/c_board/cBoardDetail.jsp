@@ -76,13 +76,13 @@
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%" >내용</th>
 					<td align="left" colspan="3" height="200" valign="top" style="padding-top: 25px;">
-						${ bb.c_content}
+						<pre style="font-family: 'RIDIBatang'; line-height: 170%;">${bb.c_content}</pre>
 					</td>
 				</tr>
-						
 			 </table>
 			 <br><br>
-			  <!-- 세션이 작성자와 같거나 관리자가 아니면 수정, 삭제, 목록 버튼 보이게 -->
+			 
+			<!-- 세션이 작성자와 같거나 관리자가 아니면 수정, 삭제, 목록 버튼 보이게 -->
 			<c:if test="${loginInfo.u_id ==null}">
 				 <center>
 				 	답글달기는 로그인 후 이용 가능합니다.

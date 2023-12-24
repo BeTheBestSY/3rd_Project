@@ -38,8 +38,8 @@ public class AdminQBoardController {
 	public final String gotoPage="redirect:/qBoardList.admin";
 	private final String commandDetail = "/qBoardDetail.admin";
 	private final String viewPageDetail = "adminQBoardDetail";
-	public final String replyCommand="/qReply.qb";
-	public final String viewPageR="qBoardReply";
+	public final String replyCommand="/qReply.admin";
+	public final String viewPageR="adminQReplyPopUp";
 	
 	@RequestMapping(value=listCommand,method=RequestMethod.GET)
 	public String goAdmin(

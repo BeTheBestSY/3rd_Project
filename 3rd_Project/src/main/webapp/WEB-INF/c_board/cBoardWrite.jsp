@@ -21,6 +21,10 @@
 	}
 </style>
 
+<script>
+
+</script>
+
 <%
 	application.setAttribute("flag",false);
 %>
@@ -64,13 +68,24 @@
 					</td>
 					<th align="left" bgcolor="#EDE5D8" width="14%">이메일</th>
 					<td align="left">
-						<input type="email" name="c_email" value="${ loginInfo.u_email }" class="form-control" style="width: 86%;""  placeholder="ex) color@gmail.com" required>
+						<input type="email" name="c_email" value="${ loginInfo.u_email }" class="form-control" style="width: 86%;" maxlength="30" placeholder="ex) color@gmail.com" required>
 					</td>
 				</tr>
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">내용</th>
 					<td align="left" colspan="3">
-						<textarea rows="10" cols="100" name="c_content" class="form-control" style="width: 94%; resize: none;" required>${ bb.c_content }</textarea>
+						<textarea rows="10" cols="100" name="c_content" id="content" class="form-control" style="width: 94%; resize: none;" onkeyup="textCount()" required>${ bb.c_content }</textarea>
+						<span id="count" style="float: right; margin: 5px 65px 0px 0px; color: graytext; font-size: 11pt;">(0/500)</span>
+						<script>
+							function textCount(){
+								var content = document.getElementById("content").value;
+								if (content.length > 500) {
+					                content = content.substring(0,500);
+					                document.getElementById('content').value = content;
+					            }
+								document.getElementById("count").innerHTML = "("+content.length+"/500)";
+							}
+						</script>
 					</td>
 				</tr>
 				<tr>
