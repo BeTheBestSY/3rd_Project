@@ -116,16 +116,16 @@
 											</c:if>
 											<td width="17%">${ub.u_joindate }</td>
 											<td>
-												<c:if test="${ub.u_jointype eq 'N' || ub.u_jointype eq 'K'}">
-													<a href="#">
-														<input type="button" class="btn btn-white"  value="연동해제">
-													</a>
-												</c:if>
-												<c:if test="${ub.u_jointype eq 'S'}">
-													<a href="usersDelete.admin?u_id=${ub.u_id }">
-														<input type="button" class="btn btn-white"  value="삭제하기">
-													</a>
-												</c:if>
+												<a href="usersDelete.admin?u_id=${ub.u_id }&u_jointype=${ub.u_jointype}">
+													<input type="button" class="btn btn-white" 
+														<c:if test="${ub.u_jointype eq 'N' || ub.u_jointype eq 'K'}">
+															value="연동해제"
+														</c:if>
+														<c:if test="${ub.u_jointype eq 'S'}">
+															value="삭제하기"
+														</c:if>
+													>
+												</a>
 												<a href="usersUpdate.admin?u_id=${ub.u_id }">
 													<input type="button" class="btn btn-white"  value="수정하기">
 												</a>

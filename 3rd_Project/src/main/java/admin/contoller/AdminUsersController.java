@@ -28,7 +28,7 @@ public class AdminUsersController {
 	
 	private final String viewPage = "adminUsers";
 	private final String viewPage2 = "adminUsersUpdateForm";
-	
+	private final String redirect = "redirect";
 	@Autowired
 	private AdminDao ad;
 	
@@ -39,7 +39,7 @@ public class AdminUsersController {
 						@RequestParam(required = false) String pageNumber,
 						Model model,
 						HttpServletRequest request) {
-		System.out.println("=======usersList.admin 요청=======");
+		System.out.println("\n=======usersList.admin 요청=======");
 		if(filter == null) {
 			filter = "";
 		}
@@ -95,9 +95,23 @@ public class AdminUsersController {
 		return viewPage;
 	}
 	@RequestMapping(value = delCommand)
-	public String delete(@RequestParam String u_id) {
+	public String delete(@RequestParam String u_id,
+						@RequestParam String u_jointype,
+						Model model) {
 		ad.deleteUsers(u_id);
-		return "redirect:"+command;
+		if(u_jointype.equals("N")) {
+			// 네이버 연동 해제
+			model.addAttribute("msg", u_id.substring(0, 11)+"...(네이버)님이 탈퇴되었습니다.");
+			model.addAttribute("url", "disnaver.u?admin=yes");
+		} else if(u_jointype.equals("K")) {
+			// 카카오 연동 해제
+			model.addAttribute("msg", u_id+"(카카오)님이 탈퇴되었습니다.");
+			model.addAttribute("url", "diskakao.u?admin=yes");
+		} else {
+			model.addAttribute("msg", u_id+"님이 탈퇴되었습니다.");
+			model.addAttribute("url", ".admin");
+		}
+		return redirect;
 	}
 	@RequestMapping(value = upCommand)
 	public String update(@RequestParam String u_id, Model model) {

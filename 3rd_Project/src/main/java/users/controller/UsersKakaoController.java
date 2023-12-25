@@ -17,15 +17,16 @@ import utility.KakaoApi;
 @Controller
 public class UsersKakaoController {
 	private final String command = "/kakao.u";
-	private final String commandOut = "/outkakao.u";
+//	private final String commandOut = "/outkakao.u";
 	private final String commandDis = "/diskakao.u";
 	
 	private final String viewPage = "usersWelcomeView2";
-	private final String gotoPage = "redirect:/.main";
+	private final String gotoPage = "redirect:/";
 	
 	@Autowired
 	private UsersDao ud;
 	private String accessToken;
+	private String refreshToken;
 	
 	// 로그인
 	@RequestMapping(value = command, method = RequestMethod.GET)
@@ -35,28 +36,21 @@ public class UsersKakaoController {
 		// 1. 인가 코드 받기 (@RequestParam String code)
 
 	    // 2. 토큰 받기
-	    this.accessToken = kakaoApi.getAccessToken(code);
-
+		Map<String, String> tokens = kakaoApi.getAccessToken(code);
+		this.accessToken = tokens.get("accessToken");
+		this.refreshToken = tokens.get("refreshToken");
+		
 	    // 3. 사용자 정보 받기
 	    Map<String, Object> userInfo = kakaoApi.getUserInfo(this.accessToken);
 
 	    String nickname = String.valueOf(userInfo.get("nickname"));
 	    String id = String.valueOf(userInfo.get("id"));
 	    String email = String.valueOf(userInfo.get("email"));
-	    Boolean isDefaultImg = (Boolean)userInfo.get("is_default_image");
-	    String thumbnailImg = String.valueOf(userInfo.get("thumbnail_image_url"));
 	    String profileImg = String.valueOf(userInfo.get("profile_image_url"));
 
 	    System.out.println("nickname = " + nickname);
 	    System.out.println("id = " + id);
 	    System.out.println("email = " + email);
-	    System.out.println("isDefaultImg = " + isDefaultImg);
-	    if(isDefaultImg) {
-	    	System.out.println("기본 프로필 이미지입니다.");
-	    } else {
-	    	System.out.println("기본 프로필 이미지가 아닙니다.");
-	    }
-	    System.out.println("thumbnailImg = " + thumbnailImg);
 	    System.out.println("profileImg = " + profileImg);
 	    System.out.println("accessToken = " + this.accessToken);
 
@@ -89,22 +83,33 @@ public class UsersKakaoController {
 	    else 
 	    	return viewPage;
 	}
-	
-	// 로그아웃
-	@RequestMapping(value = commandOut)
-	public String kakaoLogout() {
-		KakaoApi kakaoApi = new KakaoApi();
-		String id = kakaoApi.kakaoLogout(this.accessToken);
-		System.out.println("로그아웃한 카카오 회원 id:"+id);
-		return gotoPage;
-	}
+//	
+//	// 로그아웃
+//	@RequestMapping(value = commandOut)
+//	public String kakaoLogout() {
+//		KakaoApi kakaoApi = new KakaoApi();
+//		String id = kakaoApi.kakaoLogout(this.accessToken);
+//		System.out.println("로그아웃한 카카오 회원 id:"+id);
+//		return gotoPage;
+//	}
 	
 	// 연동해제
 	@RequestMapping(value = commandDis)
-	public String kakaoDisconnect() {
+	public String kakaoDisconnect(@RequestParam(required = false) String admin) {
 		KakaoApi kakaoApi = new KakaoApi();
-		String id = kakaoApi.kakaoDisconnect(this.accessToken);
-		System.out.println("연동해제한 카카오 회원 id:"+id);
-		return gotoPage;
+		// 연동해제 1단계. 접근 토큰 유효성 체크
+		String id = kakaoApi.isTokenValid(this.accessToken);
+		// 2단계. 접근 토큰이 유효하지 않아서 id에 null이 들어온다면 접근 토큰 재발급. 유효하다면 3단계로 가기.
+		if(id.equals("null")) {
+			this.accessToken = kakaoApi.getAccessTokenAgain(this.refreshToken);
+		}
+		// 3단계. 연동해제(접근 토큰 삭제)
+		id = kakaoApi.kakaoDisconnect(this.accessToken);
+		System.out.println("연동해제한 카카오 회원 id: "+id);
+		
+		if(admin.equals("yes"))
+			return gotoPage + "usersList.admin";
+		else
+			return gotoPage + ".main";
 	}
 }
