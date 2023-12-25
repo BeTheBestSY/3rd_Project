@@ -18,7 +18,7 @@ public class UsersAskContoller {
 	private final String viewPage = "usersAsk";
 	
 	@Autowired
-	private UsersDao ud;
+	private UsersDao ud; 
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	public String doAction(Model model) {
