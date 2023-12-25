@@ -29,7 +29,7 @@ public class UsersProfileContoller {
 	public String profile(@RequestParam String u_id, Model model) {
 		UsersBean ub = ud.getUserById(u_id);
 		if(ub == null) {
-			model.addAttribute("msg", "탈퇴한 회원입니다.");
+			model.addAttribute("msg", "탈퇴한 회원입니다."); 
 			return redirect;
 		} 
 		model.addAttribute("ub",ub);
