@@ -43,8 +43,8 @@ public class UsersReportContoller {
 			model.addAttribute("msg", "신고 처리되었습니다.");
 			model.addAttribute("url", url+"?pageNumber="+pageNumber+"&whatColumn="+whatColumn+"&keyword="+keyword);
 			
-			if(ub.getU_report() >= 3) {
-				// 이쪽에서 계정 정지시키는 코드 + 게시글 글제목 rb로 옮기고 제목 변경하는 코드 넣을 예정.
+			if(ub.getU_report() > 3) {
+				// 이쪽에 게시글 글제목 rb로 옮기고 제목 변경하는 코드 넣을 예정.
 				// 마이페이지에서 1:1 문의로 신고 게시글 복원 요청할 수 있도록 처리
 				// 신고자, 신고 사유까지 구현하기엔 시간도 부족하고, 게시판 특화도 아닌데 과하게 공들이는 느낌
 			}

@@ -17,11 +17,9 @@ public class CBoardDetailController {
 	
 	@Autowired
 	private CBoardDao cdao;
-	private UsersDao udao = new UsersDao();
 	 
 	public final String command="/detail.cb";
 	public final String viewPage="cBoardDetail";
-	
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public String toDetailList(
