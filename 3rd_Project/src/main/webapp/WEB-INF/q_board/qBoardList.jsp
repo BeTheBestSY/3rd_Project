@@ -35,7 +35,6 @@
             <h3>상품 문의 게시판</h3>
         </div>
     </div>
-	
 	 <div id="board-search">
 		<div class="container">
             <div class="search-window" style="padding: 20px 15px 10px 15px; background-color: #F7F3ED;">
@@ -70,6 +69,7 @@
 		<th width="8%">조회수</th>
 		<th width="8%">비밀글</th>
 	</tr>
+	<input type="hidden" name="u_id" value="${loginInfo.u_id}" class="form-control" required>
 	<c:if test="${ !empty list }">
 	<c:set var="num" value="${pageInfo.totalCount-pageInfo.beginRow+1}" />
 		<c:forEach var="bb" items="${ list }">
@@ -85,7 +85,7 @@
 						<img src="<%= request.getContextPath() %>/resources/image/level.gif" width="${wid}" height="20">
 						<img src="<%= request.getContextPath() %>/resources/image/re.png" width="2%">
 					</c:if>
-						<a href="detail.qb?q_num=${bb.q_num}&pageNumber=${pageInfo.pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}" id="noneHigtLight">
+						<a href="detail.qb?q_num=${bb.q_num}&pageNumber=${pageInfo.pageNumber}&u_id=${loginInfo.u_id}&whatColumn=${whatColumn}&keyword=${keyword}" id="noneHigtLight">
 							${ bb.q_subject }&nbsp;</a>
 					<c:if test="${ bb.q_readcount >= 10 }">
 						<img src="<%= request.getContextPath() %>/resources/image/hot.png" width="2%">

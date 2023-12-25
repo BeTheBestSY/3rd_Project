@@ -108,5 +108,14 @@ public class QBoardDao {
 	public UsersBean getUserById(String u_id) {
 		return sqlSessionTemplate.selectOne(namespace+".getUserById", u_id);
 	}
+
+	public boolean findU_id(String u_id) {
+		boolean found = false;
+		int count = sqlSessionTemplate.selectOne(namespace+".findU_id", u_id);
+		if(count > 0) {
+			found = true;
+		}
+		return found;
+	}
 	
 }
