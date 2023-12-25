@@ -20,7 +20,7 @@ public class UsersUpdateController {
 	private final String command = "/update.u";
 	private final String command_color = "/updateColor.u";
 	private final String viewPage = "usersUpdateForm";
-	private final String viewPage2 = "redirect";
+	private final String viewPage2 = "redirect"; 
 	
 	@Autowired
 	private UsersDao ud;
