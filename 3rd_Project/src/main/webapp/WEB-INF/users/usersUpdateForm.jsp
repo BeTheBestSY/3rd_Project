@@ -47,7 +47,7 @@
 	
 	<div>
 		<form action="update.u" method="post" onSubmit="return msg()">
-			<input type="hidden" name="u_name" value="${loginInfo.u_name }">
+			<input type="hidden" name="u_name" value="${loginInfo.u_name }"> 
 			<input type="hidden" name="u_id" value="${loginInfo.u_id }">
 			<table id="content_update">
 				<tr style="border-top: 1px solid #D5D5D5; height: 12%;">
@@ -91,7 +91,9 @@
 				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA;">
 					<th><font color="red">*</font> 주소</th>
 					<td>
-						<input type="text" class="form-control" name="u_address" style="display: inline; width: 50%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[0]}" id="sample4_postcode" onClick="zipClick()" placeholder="우편번호" readonly> 
+						<input type="hidden" id="sample4_jibunAddress">
+						<input type="hidden" id="sample4_extraAddress">
+						<input type="text" class="form-control" name="u_address" style="display: inline; width: 50%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[0]}" id="sample4_postcode" onClick="zipClick()" placeholder="우편번호" readonly>
 						<input type="button" class="btn btn-outline-secondary" id="searchBtn" style="margin-bottom: 5px; height: 37px;" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 						<input type="text" class="form-control" name="u_address" style="width: 90%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[1]}" id="sample4_roadAddress" onClick="zipClick()" placeholder="도로명주소" readonly> 
 						<span id="guide" style="color: #999; display: none"></span> 

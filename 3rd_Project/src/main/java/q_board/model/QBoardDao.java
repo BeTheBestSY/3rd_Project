@@ -105,8 +105,8 @@ public class QBoardDao {
 		return sqlSessionTemplate.selectOne(namespace+".didYouJoin", ub);
 	}
 
-	public UsersBean getUserById(String u_id) {
-		return sqlSessionTemplate.selectOne(namespace+".getUserById", u_id);
+	public UsersBean getUserById(String userId) {
+		return sqlSessionTemplate.selectOne(namespace+".getUserById", userId);
 	}
 
 	public boolean findU_id(String u_id) {

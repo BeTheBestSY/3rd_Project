@@ -93,7 +93,6 @@
 						<input type="password" name="c_password" class="form-control" style="width: 35%; resize: none;" placeholder="4자 이내로 입력해주세요." maxlength="4" required>
 					</td>
 				</tr>
-						
 					</table>
 				 <br><br>
 				 <center>

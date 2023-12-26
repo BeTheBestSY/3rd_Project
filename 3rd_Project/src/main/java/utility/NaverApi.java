@@ -32,6 +32,7 @@ public class NaverApi {
 	    String refreshToken = "";
 	    String reqUrl = "https://nid.naver.com/oauth2.0/token";
 	    Map<String, String> tokens = null;
+	    
 	    try{
 	        URL url = new URL(reqUrl);
 	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -78,6 +79,7 @@ public class NaverApi {
 	        tokens = new HashMap<String, String>();
 	        tokens.put("accessToken", accessToken);
 	        tokens.put("refreshToken", refreshToken);
+	        
 	        br.close();
 	        bw.close();
 	    }catch (Exception e){

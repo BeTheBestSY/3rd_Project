@@ -18,6 +18,13 @@
 	body{ 
 		padding-top: 140px;
 	}
+		.secret{
+		background-color:transparent;
+		border :none;
+	}
+	.secret:hover{
+	color: #7C81BB;
+	}
 </style>
 
 <script type="text/javascript">
@@ -25,8 +32,29 @@
 		var keyword = document.getElementById("search");
 		keyword.value = "";
 	}
+	function popup(u_id, loginInfo){
+		if(loginInfo == ''){
+			alert("로그인 후 이용 가능합니다.");
+			location.href="login.u";
+		} else {
+			alert("작성자:"+u_id);
+			window.open("profile.u?u_id="+u_id, '_blank', 'menubars=no, scrollbars=auto');
+		}
+	}
+	function secret(){
+		alert("비밀글은 작성자와 관리자만 확인 가능합니다.");
+	}
 </script>
 
+<%
+	application.setAttribute("flag", false);
+	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
+	String id = "null";
+	
+	if(ub != null){
+		id = ub.getU_id();
+	}
+%>
 <article id="center" style="font-family: 'RIDIBatang';" >
 
 	<div class="page-title">
@@ -35,6 +63,7 @@
             <h3>상품 문의 게시판</h3>
         </div>
     </div>
+	
 	 <div id="board-search">
 		<div class="container">
             <div class="search-window" style="padding: 20px 15px 10px 15px; background-color: #F7F3ED;">
@@ -69,7 +98,6 @@
 		<th width="8%">조회수</th>
 		<th width="8%">비밀글</th>
 	</tr>
-	<input type="hidden" name="u_id" value="${loginInfo.u_id}" class="form-control" required>
 	<c:if test="${ !empty list }">
 	<c:set var="num" value="${pageInfo.totalCount-pageInfo.beginRow+1}" />
 		<c:forEach var="bb" items="${ list }">
@@ -85,29 +113,62 @@
 						<img src="<%= request.getContextPath() %>/resources/image/level.gif" width="${wid}" height="20">
 						<img src="<%= request.getContextPath() %>/resources/image/re.png" width="2%">
 					</c:if>
-						<a href="detail.qb?q_num=${bb.q_num}&pageNumber=${pageInfo.pageNumber}&u_id=${loginInfo.u_id}&whatColumn=${whatColumn}&keyword=${keyword}" id="noneHigtLight">
+					
+				<c:if test="${bb.q_secret == 'N'}">
+					<c:set var="userId" value="<%=id%>" />
+				    <c:choose>
+				         <c:when test="${bb.q_writer != userId && userId != 'admin'}"> <!-- 작성자이거나 관리자일 때 -->
+							<input type="button" value="${ bb.q_subject }" onClick="secret()" class="secret" id="noneHigtLight">
+				        </c:when>
+				         <c:when test="${bb.q_writer == userId || userId=='admin'}"> <!-- 작성자이거나 관리자일 때 -->
+							   <a href="detail.qb?q_num=${bb.q_num}&pageNumber=${pageInfo.pageNumber}&userId=${loginInfo.u_id}&whatColumn=${whatColumn}&keyword=${keyword}" id="noneHigtLight">
+						${ bb.q_subject }&nbsp;</a>
+				        </c:when>
+				        <c:otherwise>
+				         	 <a href="detail.qb?q_num=${bb.q_num}&pageNumber=${pageInfo.pageNumber}&userId=${loginInfo.u_id}&whatColumn=${whatColumn}&keyword=${keyword}" id="noneHigtLight">
+						${ bb.q_subject }&nbsp;</a>
+				        </c:otherwise>
+				    </c:choose>                                            
+				</c:if>
+					
+					<c:if test="${bb.q_secret == 'Y'}">
+					<c:set var="userId" value="<%=id%>" />
+					 <a href="detail.qb?q_num=${bb.q_num}&pageNumber=${pageInfo.pageNumber}&userId=${loginInfo.u_id}&whatColumn=${whatColumn}&keyword=${keyword}" id="noneHigtLight">
 							${ bb.q_subject }&nbsp;</a>
+					</c:if>
+				
 					<c:if test="${ bb.q_readcount >= 10 }">
 						<img src="<%= request.getContextPath() %>/resources/image/hot.png" width="2%">
 					</c:if>
 				</td>
 				<td>
-					<c:if test="${fn:length(bb.q_writer) > 16}">
-						외부 회원
+					<a href="javascript:popup('${bb.q_writer }', '${loginInfo }')" style="text-decoration-line: none;">
+					<c:if test="${bb.q_profileimg eq null }">
+						<img src="resources/image/person.svg" width="20" class="rounded-circle">
+						<c:if test="${fn:length(bb.q_writer) < 16}">
+							${ bb.q_writer }
+						</c:if>
 					</c:if>
-					<c:if test="${fn:length(bb.q_writer) < 16}">
-						${ bb.q_writer }
+					<c:if test="${bb.q_profileimg ne null }">
+						<img src="${bb.q_profileimg }" width="32" height="32" class="rounded-circle">
+						<c:if test="${fn:length(bb.q_writer) > 16}">
+							외부 회원
+						</c:if>
+						<c:if test="${fn:length(bb.q_writer) < 16}">
+							${ bb.q_writer }
+						</c:if>
 					</c:if>
+					</a>
 				</td>
 				<td>
 					<fmt:formatDate value="${bb.q_regdate}" pattern="yyyy-MM-dd"/>
 				</td>
 				<td>${ bb.q_readcount }</td>
 				<td>
-					<c:if test="${bb.q_secret == 'Y'}">
+					<c:if test="${bb.q_secret == 'N'}">
 						<img src="resources/image/secret.png" width="20">
 					</c:if>
-					<c:if test="${bb.q_secret == 'N'}">
+					<c:if test="${bb.q_secret == 'Y'}">
 						-
 					</c:if>
 				</td>

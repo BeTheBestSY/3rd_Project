@@ -7,7 +7,7 @@
 		insert into users
 		values(#{u_id}, #{u_name}, #{u_password}, #{u_phone}, #{u_address}, 
 		0, '미정', #{u_jointype}, default, 
-		#{u_color}, #{u_email}, #{u_profileimg}, #{u_intro})
+		#{u_color}, #{u_email}, #{u_profileimg}, #{u_intro}, #{u_report})
 	</insert>
 	<select id="getUserById" resultType="Users">
 		select * from users
@@ -41,6 +41,9 @@
 		update users
 		set u_color=#{personalColor}
 		where u_id=#{u_id}
+	</update>
+	<update id="updateReport">
+		update users set u_report = u_report+1 where u_id = #{u_id}
 	</update>
 	<delete id="deleteUsers">
 		delete users
