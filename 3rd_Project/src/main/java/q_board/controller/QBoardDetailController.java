@@ -37,7 +37,7 @@ public class QBoardDetailController {
 			@RequestParam("keyword") String keyword,
 			HttpSession session
 			) throws Exception {
-		
+		 
 		QBoardBean bb = qdao.selectContent(q_num);
 		UsersBean ub = qdao.getUserById(u_id);
 		
