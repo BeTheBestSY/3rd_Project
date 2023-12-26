@@ -99,9 +99,9 @@
 										<tr>
 											<td colspan="12">존재하지 않는 회원 입니다.</td>
 										</tr>
-									</c:if>
+									</c:if> 
 									
-									<c:set var="u_num" value="${fn:length(usersLists)}"/>
+									<c:set var="u_num" value="${fn:length(usersLists)}"/> 
 									<c:forEach var="ub" items="${usersLists}">
 										<tr style="height: 30px;"> 
 											<td width="4.4%">
