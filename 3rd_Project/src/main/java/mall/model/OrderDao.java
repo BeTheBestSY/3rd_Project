@@ -57,7 +57,7 @@ public class OrderDao {
 		Map<String, String> map =  new HashMap<String, String>();
 		
 		map.put("o_num", Integer.toString(maxO_num));
-		map.put("p_num", Integer.toString(tc.getP_num()));		
+		map.put("p_num", Integer.toString(tc.getP_num()));
 		map.put("cart_qty", Integer.toString(tc.getCart_qty()));		
 		
 		sqlSessionTemplate.insert(namespace+".insertOrderProd", map);
