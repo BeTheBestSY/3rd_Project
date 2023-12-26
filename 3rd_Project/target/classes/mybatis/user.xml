@@ -49,5 +49,8 @@
 		delete users
 		where u_id=#{u_id}
 	</delete>
-	
+	<select id="getEmail" resultType="String">
+		select u_email from users
+		where u_id=#{u_id} and u_name=#{u_name}
+	</select>
 </mapper>
