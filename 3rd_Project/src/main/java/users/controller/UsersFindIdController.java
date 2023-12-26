@@ -14,7 +14,7 @@ import users.model.UsersBean;
 import users.model.UsersDao;
 
 @Controller
-public class UsersFindIdContoller {
+public class UsersFindIdController {
 	private final String command = "/findid.u";
 	private final String viewPage = "usersFindIdForm";
 	private final String viewPage2 = "usersFindIdResView";

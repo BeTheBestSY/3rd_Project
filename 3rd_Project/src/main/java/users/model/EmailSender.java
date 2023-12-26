@@ -1,5 +1,6 @@
 package users.model;
 
+import javax.activation.FileDataSource;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,12 @@ public class EmailSender {
 		    MimeMessage message = mailSender.createMimeMessage();
 		    MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 		    messageHelper.setTo(email.getToEmail());
-		    messageHelper.setFrom(email.getFromEmail());
-		    messageHelper.setText(email.getContent());
-		    messageHelper.setSubject(email.getTitle());	// 메일제목은 생략이 가능하다
+		    messageHelper.setFrom("Hidden Beauty <"+email.getFromEmail()+">");
+		    messageHelper.setText(email.getContent(), true);
+		    messageHelper.setSubject(email.getTitle());
+		    messageHelper.addInline("image", new FileDataSource("C:/Users/apple2701/git/3rd_Project/3rd_Project/src/main/webapp/resources/image/fyhbLogo.png"));
+
 		    mailSender.send(message);
-		
 		} catch(Exception e){
 		    System.out.println(e);
 		    return "Error";
