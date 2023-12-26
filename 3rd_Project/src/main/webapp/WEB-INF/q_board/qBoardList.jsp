@@ -18,6 +18,13 @@
 	body{ 
 		padding-top: 140px;
 	}
+		.secret{
+		background-color:transparent;
+		border :none;
+	}
+	.secret:hover{
+	color: #7C81BB;
+	}
 </style>
 
 <script type="text/javascript">
@@ -26,7 +33,7 @@
 		keyword.value = "";
 	}
 	function popup(u_id, loginInfo){
-		if(loginInfo == ''){
+		if(loginInfo == ''){ 
 			alert("로그인 후 이용 가능합니다.");
 			location.href="login.u";
 		} else {
@@ -34,8 +41,20 @@
 			window.open("profile.u?u_id="+u_id, '_blank', 'menubars=no, scrollbars=auto');
 		}
 	}
+	function secret(){
+		alert("비밀글은 작성자와 관리자만 확인 가능합니다.");
+	}
 </script>
 
+<%
+	application.setAttribute("flag", false);
+	UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
+	String id = "null";
+	
+	if(ub != null){
+		id = ub.getU_id();
+	}
+%>
 <article id="center" style="font-family: 'RIDIBatang';" >
 
 	<div class="page-title">
@@ -94,8 +113,30 @@
 						<img src="<%= request.getContextPath() %>/resources/image/level.gif" width="${wid}" height="20">
 						<img src="<%= request.getContextPath() %>/resources/image/re.png" width="2%">
 					</c:if>
-						<a href="detail.qb?q_num=${bb.q_num}&pageNumber=${pageInfo.pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}" id="noneHigtLight">
+					
+				<c:if test="${bb.q_secret == 'N'}">
+					<c:set var="userId" value="<%=id%>" />
+				    <c:choose>
+				         <c:when test="${bb.q_writer != userId && userId != 'admin'}"> <!-- 작성자이거나 관리자일 때 -->
+							<input type="button" value="${ bb.q_subject }" onClick="secret()" class="secret" id="noneHigtLight">
+				        </c:when>
+				         <c:when test="${bb.q_writer == userId || userId=='admin'}"> <!-- 작성자이거나 관리자일 때 -->
+							   <a href="detail.qb?q_num=${bb.q_num}&pageNumber=${pageInfo.pageNumber}&userId=${loginInfo.u_id}&whatColumn=${whatColumn}&keyword=${keyword}" id="noneHigtLight">
+						${ bb.q_subject }&nbsp;</a>
+				        </c:when>
+				        <c:otherwise>
+				         	 <a href="detail.qb?q_num=${bb.q_num}&pageNumber=${pageInfo.pageNumber}&userId=${loginInfo.u_id}&whatColumn=${whatColumn}&keyword=${keyword}" id="noneHigtLight">
+						${ bb.q_subject }&nbsp;</a>
+				        </c:otherwise>
+				    </c:choose>                                            
+				</c:if>
+					
+					<c:if test="${bb.q_secret == 'Y'}">
+					<c:set var="userId" value="<%=id%>" />
+					 <a href="detail.qb?q_num=${bb.q_num}&pageNumber=${pageInfo.pageNumber}&userId=${loginInfo.u_id}&whatColumn=${whatColumn}&keyword=${keyword}" id="noneHigtLight">
 							${ bb.q_subject }&nbsp;</a>
+					</c:if>
+				
 					<c:if test="${ bb.q_readcount >= 10 }">
 						<img src="<%= request.getContextPath() %>/resources/image/hot.png" width="2%">
 					</c:if>

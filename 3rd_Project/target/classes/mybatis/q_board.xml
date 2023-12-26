@@ -40,7 +40,11 @@
 			</if>
 			order by q_num asc
 		</select>
-	
+		
+		<select id="findU_id" resultType="int">
+			select count(*) from users where u_id = #{u_id}
+		</select>
+		
 		<select id="selectContent" resultType="QBoard">
 			select * from q_board where q_num = #{q_num}
 		</select>
@@ -49,6 +53,11 @@
 			select count(*) from q_board where q_num=#{q_num} and q_passwrd=#{q_password}
 		</select>
 		
+		<select id="getUserById" resultType="Users">
+			select * from users
+			where u_id=#{u_id}
+		</select>
+	
 		<select id="replyBoard" resultType="QBoard">
 			SELECT q_ref, q_re_step FROM q_board where q_ref = #{q_ref} GROUP BY q_ref, q_re_step HAVING q_re_step >= #{q_re_step}
 		</select>

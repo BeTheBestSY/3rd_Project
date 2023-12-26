@@ -35,7 +35,14 @@ public class AdminDao {
 		
 		return list;
 	}
-	
+	public boolean findU_id(String u_id) {
+		boolean found = false;
+		int count = sqlSessionTemplate.selectOne(nameSpace+"findU_id", u_id);
+		if(count > 0) {
+			found = true;
+		}
+		return found;
+	}
 	public int getTotalCount(Map<String, String> map) {
 		int totalCount = sqlSessionTemplate.selectOne(nameSpace+"getTotalCount",map);
 		return totalCount;
