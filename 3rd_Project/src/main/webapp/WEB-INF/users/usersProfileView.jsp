@@ -32,7 +32,7 @@
 				<img  src="${ub.u_profileimg }" class="border border-5 border-dark-subtle rounded-circle">
 			</c:if>
 		</div>
-		<div class="explain-box" style="border: 1px solid black">
+		<div class="explain-box" style="border: 1px solid black;">
 			haha
 		</div>
 	</div>
