@@ -26,11 +26,13 @@ public class ProductAllListController {
 					HttpServletRequest request,
 					@RequestParam(required = false) String whatColumn,
 					@RequestParam(required = false) String keyword,
+					@RequestParam(required = false) String filter,
 					@RequestParam(required = false) String pageNumber) {
 	
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
+		map.put("filter", filter);
 		 
 		int totalCount = productDao.getTotalCount(map);
 		String url = request.getContextPath()+command;
@@ -39,7 +41,9 @@ public class ProductAllListController {
 		List<ProductBean> productLists = productDao.getAllProductList(map, pageInfo);
 		model.addAttribute("productLists",productLists);
 		model.addAttribute("pageInfo", pageInfo); 
+		model.addAttribute("whatColumn", whatColumn);
 		model.addAttribute("keyword", keyword);
+		model.addAttribute("filter", filter);
 		return viewPage;
 	}
 	

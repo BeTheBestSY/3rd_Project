@@ -46,6 +46,10 @@
 	}
 </style>
 
+<script>
+
+</script>
+
 <div style="font-family: 'MaruBuri-Regular'; font-size: 22pt; font-weight: bold; margin: 45px 0px 20px 0px;">
 로그인이 불가능하신가요?
 </div>
@@ -59,18 +63,18 @@
 	<table id="thisTable">
 		<tr>
 			<th>아이디</th>
-			<td><input type="text" class="formInput" style="width: 265px;" maxlength="16" placeholder="정지된 아이디를 입력하세요."></td>
+			<td><input type="text" name="u_id" class="formInput" value="${param.u_id}" style="width: 265px;" maxlength="16" placeholder="정지된 아이디를 입력하세요." required></td>
 		</tr>
 		<tr>
 			<th>E-mail</th>
-			<td><input type="email" class="formInput" style="width: 265px;" maxlength="20" placeholder="회신받을 이메일을 입력하세요."></td>
+			<td><input type="email" name="u_email" class="formInput" value="${param.u_email}" style="width: 265px;" maxlength="20" placeholder="회신받을 이메일을 입력하세요." required></td>
 		</tr>
 		<tr>
 			<th valign="top" style="padding-top: 5px;">의견소명</th>
-			<td><textarea class="formInput" rows="13" cols="34" style="resize: none;" maxlength="100" placeholder="100자 이내로 입력하세요."></textarea></td>
+			<td><textarea class="formInput" name="rs_content" rows="13" cols="34" style="resize: none;" maxlength="100" placeholder="100자 이내로 입력하세요." required>${param.rs_content}</textarea></td>
 		</tr>
 	</table>
 	<br>
-	<input type="button" id="btn" value="전송하기">
+	<input type="submit" id="btn" value="전송하기">
 </form>
 
