@@ -103,7 +103,7 @@
 									
 									<c:set var="u_num" value="${fn:length(usersLists)}"/>
 									<c:forEach var="ub" items="${usersLists}">
-										<tr style="height: 30px;">
+										<tr style="height: 30px;"> 
 											<td width="4.4%">
 												${u_num }
 												<c:set var="u_num" value="${u_num-1 }"/> 
