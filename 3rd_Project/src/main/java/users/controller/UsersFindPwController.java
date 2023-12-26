@@ -1,6 +1,10 @@
 package users.controller;
 
 
+
+import java.io.UnsupportedEncodingException;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +16,7 @@ import users.model.UsersBean;
 import users.model.UsersDao;
 
 @Controller
-public class UsersFindPwContoller {
+public class UsersFindPwController {
 	private final String command = "/findpw.u";
 	private final String viewPage = "usersFindPwForm";
 	private final String gotoPage = "redirect:/email.u";
@@ -25,16 +29,17 @@ public class UsersFindPwContoller {
 	public String doAction() {
 		return viewPage;
 	}
+	
 	@RequestMapping(value = command, method = RequestMethod.POST)
-	public String doAction2(@ModelAttribute UsersBean ub,
-						Model model) {
-
+	public String doAction2(@ModelAttribute(value = "ub") UsersBean ub,
+						Model model) throws UnsupportedEncodingException {
+		
 		String toEmail = ud.getEmail(ub);
 		if(toEmail.equals("null")) {
 			model.addAttribute("msg", "회원정보에서 이메일을 기입해주세요.");
 			model.addAttribute("url", "findpw.u");
 			return redirect;
 		}
-		return gotoPage + "?toEmail="+toEmail;
+		return gotoPage + "?toEmail="+toEmail+"&u_id="+ub.getU_id();
 	}
 }
