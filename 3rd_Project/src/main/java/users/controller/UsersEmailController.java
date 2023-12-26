@@ -27,7 +27,7 @@ public class UsersEmailController {
 	public String email(@RequestParam String toEmail,
 					@RequestParam String u_id) {
 		
-		//임시 비밀번호 생성
+		//임시 비밀번호 생성 
 		String tempPw = UUID.randomUUID().toString().replace("-", ""); //-를 제거
 		tempPw = tempPw.substring(0,10);
 		// 임시 비밀번호 발급 이메일 발송
