@@ -77,8 +77,8 @@
 					</td>
 					<th align="left" bgcolor="#EDE5D8" width="14%">공개여부</th>
 					<td align="left">
-						<input type="radio" name="q_secret" value="Y" required>&nbsp;&nbsp;비밀글&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="q_secret" value="N" required>&nbsp;&nbsp;공개글
+						<input type="radio" name="q_secret" value="N" required>&nbsp;&nbsp;비밀글&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="q_secret" value="Y" required>&nbsp;&nbsp;공개글
 					</td> 
 				</tr>
 				<tr>

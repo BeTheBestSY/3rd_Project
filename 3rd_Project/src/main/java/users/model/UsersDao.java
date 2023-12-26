@@ -65,6 +65,10 @@ public class UsersDao {
 		return sqlSessionTemplate.update(namespace+".updateReport", u_id);
 	}
 
+	public String getEmail(UsersBean ub) {
+		return sqlSessionTemplate.selectOne(namespace+".getEmail", ub);
+	}
+
 
 	
 }

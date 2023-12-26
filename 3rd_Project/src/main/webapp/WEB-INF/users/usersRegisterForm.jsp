@@ -237,7 +237,7 @@
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th>이메일</th>
 				<td>
-					<input type="text" class="form-control" name="u_email" style="width: 33%; display: inline-block;" value="${fn:split(ub.u_email, '@')[0]}" maxlength="15" required>
+					<input type="text" class="form-control" name="u_email" style="width: 33%; display: inline-block;" value="${fn:split(ub.u_email, '@')[0]}" maxlength="20" required>
 					@
 					<input type="text" class="form-control" id="domainArea" name="u_email" style="width: 33%; display: inline-block;" value="${fn:split(ub.u_email, '@')[1]}" maxlength="15" required>
 					<c:set var="domains">직접 입력,naver.com,daum.net,google.com,hanmail.net</c:set>

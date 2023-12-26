@@ -124,10 +124,10 @@
 				</td>
 				<td>${ bb.q_readcount }</td>
 				<td>
-					<c:if test="${bb.q_secret == 'Y'}">
+					<c:if test="${bb.q_secret == 'N'}">
 						<img src="resources/image/secret.png" width="20">
 					</c:if>
-					<c:if test="${bb.q_secret == 'N'}">
+					<c:if test="${bb.q_secret == 'Y'}">
 						-
 					</c:if>
 				</td>

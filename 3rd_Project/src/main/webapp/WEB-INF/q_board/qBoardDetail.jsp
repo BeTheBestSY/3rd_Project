@@ -36,7 +36,7 @@
 	}
 %>
 
-<c:if test="${bb.q_secret == 'Y'}">
+<c:if test="${bb.q_secret == 'N'}">
 	<c:set var="userId" value="<%=id%>" />
 	<c:if test="${bb.q_writer != userId}">
 		<c:if test="${userId != 'admin'}">
@@ -50,7 +50,7 @@
 
 <br>
 <article id="center" style=" text-align:center; font-family: 'RIDIBatang';">
-
+<input type="hidden" value="<%=id%>" name="userId">
 <div class="page-title">
     <div class="container">
         <br><br>
