@@ -29,7 +29,7 @@ public class UsersFindPwContoller {
 		ub.setU_phone(u_phone);
 		
 		String u_password = ud.findPw(ub);
-		ub.setU_password(u_password);
+		ub.setU_password(u_password); 
 		return viewPage2;
 	}
 }
