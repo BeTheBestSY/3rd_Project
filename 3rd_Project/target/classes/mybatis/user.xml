@@ -27,6 +27,9 @@
 	<insert id="insertFeedback">
 		insert into feedback values(feedback_seq.nextval, #{u_id}, #{u_jointype}, #{fb_content}, #{fb_requestApi})
 	</insert>
+	<insert id="insertRestore">
+		insert into restore values(#{u_id}, #{u_email}, #{rs_content}, default)
+	</insert>
 	<update id="updateUsers">
 		update users
 		set u_phone=#{u_phone}, u_address=#{u_address}, u_color=#{u_color}
