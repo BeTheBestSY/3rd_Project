@@ -29,8 +29,10 @@
 	<div>
 		<span style="font-family: 'MaruBuri-Regular'; font-size: 35pt; font-weight: bold;">비밀번호 찾기</span>
 		<br><br>
-		
-		<c:if test="${ub.u_password eq null }">
+		<span style="font-family: 'RIDIBatang'; font-size: 11pt; line-height: 180%; color: graytext;">
+			<b>${param.toEmail }</b>으로 임시 비밀번호가 발송되었습니다. 로그인 후 반드시 비밀번호를 수정해 주세요.
+		</span>
+		<%-- <c:if test="${ub.u_password eq null }">
 			<br><br>
 			<span style="font-family: 'RIDIBatang'; font-size: 11pt; line-height: 180%; color: graytext;">
 				입력하신 내용과 일치하는 정보를 찾을 수 없습니다.<br>
@@ -63,12 +65,12 @@
 			<tr height="40"><td></td><td>- 아이디 : ${ub.u_id}<br></td></tr>
 			<tr height="40"><td></td><td>- 비밀번호 : <font color="red"><b>${ub.u_password}</b></font><br></td></tr>
 		</table>
-		</c:if>
+		</c:if> --%>
 	
 	</div>
 <br><br>
 
-<input type="button" value="로그인 하러가기" id="btn" onClick="location.href='#'"> 
+<input type="button" value="로그인 하러가기" id="btn" onClick="location.href='login.u'"> 
 
 </div>
 
