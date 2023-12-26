@@ -7,7 +7,7 @@
 
 <%@ include file="../product/productHeader.jsp" %>
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head> 
 <meta charset="UTF-8">
