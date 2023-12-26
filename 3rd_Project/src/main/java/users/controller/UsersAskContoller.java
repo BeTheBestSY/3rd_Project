@@ -4,11 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import c_board.model.CBoardBean;
-import c_board.model.CBoardDao;
-import users.model.UsersBean;
 import users.model.UsersDao;
 
 

@@ -61,6 +61,11 @@
 			where cart_num = #{cart_num} and p_num = #{p_num}
 	</update>
 	
+	<update id="updateCartQty">
+		update cart set cart_qty = #{cart_qty} 
+			where cart_num = #{cart_num} and p_num = #{p_num}
+	</update>
+	
 	<insert id="insertCart">
 		insert into cart 
 			values(#{cart_num},#{p_num},#{cart_qty})
@@ -72,7 +77,7 @@
 	</select>
 	
 	<select id="selectPord" resultType="myProduct">
-		select p_name, p_price, p_num from product
+		select p_name, p_price, p_num, p_stock from product
 			where p_num = #{p_num} 
 	</select>
 	

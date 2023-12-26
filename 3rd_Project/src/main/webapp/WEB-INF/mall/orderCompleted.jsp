@@ -40,7 +40,7 @@
 			FIND YOUR Hidden Beauty를 이용해주셔서 감사합니다.
 		</div>
 		<div style="font-family: 'MaruBuri-Regular'; font-weight: bold; font-size: 20pt;">
-			고객님의 주문이 정상적으로 처리되었습니다.
+			고객님의 주문이 정상적으로 완료되었습니다.
 		</div>
 		<c:if test="${ob.way == '무통장 입금'}"> 
 			<div style="margin-top: 30px; font-size: 11pt;">
