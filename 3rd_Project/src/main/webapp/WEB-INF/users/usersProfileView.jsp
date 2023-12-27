@@ -1,72 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/usersProfileView.css?ver=220619">
 <head>
 	<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
 		rel="stylesheet"
 		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-	<style>
-		img{
-			width: 100%;
-			object-fit: cover;
-		}
-		.profile-container{
-			display: flex;
-			flex-direction: column;
-		}
-		.main-container{ /* profile-container의 flex item */
-			display: flex;
-			flex-wrap: wrap;
-		}
-		.board-container{ /* profile-container의 flex item */
-			flex-basis: 70%;
-			display: flex;
-			flex-wrap: wrap;
-		}
-		.img-box{ /* main-container의 flex item */
-			flex-basis: 40%;
-		}
-		.explain-box{ /* main-container의 flex item */
-			flex-basis: 60%;
-		}
-		.article-box{ /* board-container의 flex item */
-			flex-basis: 100%;
-		} 
-		.link-on, .link{ /* board-container의 flex item */
-			display: inline-block;
-			margin-top: 5%;
-		}
-		.link-on {
-			color: #7C81BB;
-			text-decoration: underline 8px;
-			text-underline-offset : 10px;
-		}
-		.link-on:hover, .link:hover{
-			text-decoration: underline;
-			cursor: pointer;
-		}
-		@font-face {
-		    font-family: 'MaruBuri-Regular';
-		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
-		    font-weight: normal;
-		    font-style: normal;
-		} 
-		@font-face {
-		    font-family: 'RIDIBatang'; 
-		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
-		    font-weight: normal;
-		    font-style: normal;
-		}
-	</style>
+	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+	<!-- moment 라이브러리 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 	<script>
-		function show(e){
+		/* var link-on, link;
+		window.onload = function() {
+			link-on = document.querySelector('.link-on');
+			link = document.querySelector('.link');
+			//link-on.addEventListener('click', alert(1));
+			link.addEventListener('click', () => {alert(1);});
+		}; */
+		function show(e, u_id, type){
 			if(e.className === 'link'){
 				// 기존 'link-on'클래스는 'link'로,
 				document.querySelector('.link-on').className = 'link';
 				// e의 'link'클래스는 'link-on'으로 수정
 				e.className = 'link-on';
 			}
+			$(function() {
+				alert(type);
+				if(type === 'post'){
+					$.ajax({
+						url: 'cBoardAjax.cb?u_id='+u_id,
+						success: function(data) { // 성공적으로 받아왔을 경우
+							$(data).each(function() {
+								var date = new Date(this.c_regdate);
+								var now24Date = moment(date).format("YYYY-MM-DD HH:mm:ss");
+								alert(this.c_num+"/"+this.c_subject+"/"+now24Date+"/"+this.c_readcount);
+							});
+						}
+					});
+				} else{ // 댓글단 글일 경우의 ajax 요청
+					
+				}
+			});
 		}
 	</script>
 </head>
@@ -95,16 +70,15 @@
 		</div>
 		<!--  color="#7C81BB" -->
 		<!-- <font face="RIDIBatang"></font> -->
+		<%-- onclick="show(this,'${ub.u_id }')" --%>
 		<div class="board-container" style="border: 1px solid fuchsia;">
-			<!-- span 말고 div나 p로 고쳐서 해보자 -->
-			<span onclick="show(this)" class="link-on" style="font-family:'RIDIBatang'; margin-left: 5%; ">작성글</span>
-			<span onclick="show(this)" class="link" style="font-family:'RIDIBatang'; margin-left: 3%;">댓글단 글</span>
-			<div class="article-box" style="border: 1px solid black;">
-			
+			<p onclick="show(this,'${ub.u_id }','post')" class="link-on" style="font-family:'RIDIBatang'; margin-left: 5%;">작성글</p>
+			<p onclick="show(this,'${ub.u_id }','comment')" class="link" style="font-family:'RIDIBatang'; margin-left: 3%;">댓글단 글</p>
+			<div class="article-box" style="border: 1px solid black; margin-top: 2%;">
+				<form>
+				
+				</form>
 			</div>
-		</div>
-		<div>
-		
 		</div>
 	</div>
 

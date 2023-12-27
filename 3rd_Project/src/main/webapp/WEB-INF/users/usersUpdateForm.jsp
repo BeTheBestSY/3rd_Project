@@ -78,7 +78,7 @@
 						<c:if test="${loginInfo.u_jointype eq 'S'}">${loginInfo.u_id }</c:if>
 						<c:if test="${loginInfo.u_jointype eq 'N'}">네이버 연동</c:if> 
 						<c:if test="${loginInfo.u_jointype eq 'K'}">카카오 연동</c:if>
-					</td>
+					</td> 
 				</tr>
 				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA; height: 12%;">
 					<th>&nbsp;&nbsp;비밀번호</th>
