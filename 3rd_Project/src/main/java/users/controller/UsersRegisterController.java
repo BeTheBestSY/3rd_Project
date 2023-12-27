@@ -1,6 +1,5 @@
 package users.controller;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +35,15 @@ public class UsersRegisterController {
 		if(!(Boolean) application.getAttribute("flag")) {
 			String u_phone = ub.getU_phone().replace(",","-"); // 010-1234-5678
 			ub.setU_phone(u_phone);
-			System.out.println(ub.getU_address()); // 23104,인천 옹진군 백령면 콩돌로 170,102호
-			// 주소 입력을 안 했을 경우
+			
+			// 주소 입력을 안 했을 경우 => 이제 required 라서 입력 안했을 경우는 없을거야!
+			/*
 			if(ub.getU_address().equals(",,")) {
 				ub.setU_address("-");
 			}
+			*/
 			
+			/* 이 부분 제이쿼리로 띄우는게 나을거 같아서 수정했어요.
 			if(!ub.getU_password().equals(u_rePassword)) {
 				PrintWriter out = response.getWriter();
 				response.setContentType("text/html; charset=UTF-8");
@@ -49,7 +51,14 @@ public class UsersRegisterController {
 				out.flush();
 				return viewPage;
 			}
+			*/
 			ub.setU_jointype("S");
+			
+			String email = ub.getU_email().replace(",", "@");
+			ub.setU_email(email);
+			
+			ub.setU_profileimg("");
+			ub.setU_intro("");
 			ud.register(ub);
 			application.setAttribute("flag", true);
 		}

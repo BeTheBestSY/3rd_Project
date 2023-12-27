@@ -216,8 +216,7 @@ select{
 }
 
 .board-table th, .board-table td {
-  padding: 14px 0;
-  padding-left:15px;
+ 
 }
 
 .board-table tbody td {
@@ -334,14 +333,8 @@ select{
 	height: 6%;
 }
 
-ion-icon {
-    pointer-events: none;
-}
 
-.prd-img{
+.ttl-img, .dtl-img{
 	cursor:pointer
 }
 
-.prd-img:hover{
-	color: #E7B3CE;
-}

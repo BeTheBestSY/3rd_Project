@@ -14,10 +14,6 @@ public class UsersDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 	private String namespace = "sqlField_user";
 
-	public boolean didYouJoin(UsersBean ub) {
-		return sqlSessionTemplate.selectOne(namespace+".didYouJoin", ub);
-	}
-
 	public void register(UsersBean ub) {
 		sqlSessionTemplate.insert(namespace+".register", ub);
 	}
@@ -54,6 +50,27 @@ public class UsersDao {
 
 	public void deleteUsers(String u_id) {
 		sqlSessionTemplate.delete(namespace+".deleteUsers", u_id);
+	}
+
+	public boolean findU_id(String u_id) {
+		boolean found = false;
+		int count = sqlSessionTemplate.selectOne(namespace+".findU_id", u_id);
+		if(count > 0) {
+			found = true;
+		}
+		return found;
+	}
+
+	public int updateReport(String u_id) {
+		return sqlSessionTemplate.update(namespace+".updateReport", u_id);
+	}
+
+	public String getEmail(UsersBean ub) {
+		return sqlSessionTemplate.selectOne(namespace+".getEmail", ub);
+	}
+
+	public void insertRestore(RestoreBean rb) {
+		sqlSessionTemplate.insert(namespace+".insertRestore", rb);
 	}
 
 

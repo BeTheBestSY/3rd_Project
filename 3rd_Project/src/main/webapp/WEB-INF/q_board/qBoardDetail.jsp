@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
 <%@ include file="./../product/productHeader.jsp" %>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardWrite.css">
 <style type="text/css">
@@ -36,21 +36,9 @@
 	}
 %>
 
-<c:if test="${bb.q_secret == 'Y'}">
-	<c:set var="userId" value="<%=id%>" />
-	<c:if test="${bb.q_writer != userId}">
-		<c:if test="${userId != 'admin'}">
-			<script type="text/javascript">
-				alert("비밀글은 작성자와 관리자만 확인 가능합니다.");
-				history.go(-1);
-			</script>
-		</c:if>
-	</c:if>
-</c:if>
-
 <br>
 <article id="center" style=" text-align:center; font-family: 'RIDIBatang';">
-
+<input type="hidden" value="<%=id%>" name="userId">
 <div class="page-title">
     <div class="container">
         <br><br>
@@ -72,7 +60,20 @@
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">작성자</th>
 					<td align="left" height="68" width="38%">
-						${ bb.q_writer}					
+						<c:if test="${joinType == '탈퇴함'}"> 
+							<font color="red"><b>탈퇴한 회원 입니다.</b></font>
+						</c:if>
+						<c:if test="${joinType != '탈퇴함'}"> 
+							<c:if test="${joinType == 'N'}">
+								외부 회원 (네이버)
+							</c:if>
+							<c:if test="${joinType == 'K'}">
+								외부 회원 (카카오)
+							</c:if>
+							<c:if test="${joinType == 'S'}">
+								${ bb.q_writer }
+							</c:if>
+						</c:if>				
 					</td>
 					<th align="left" bgcolor="#EDE5D8" width="14%" >이메일</th>
 					<td align="left" height="68">
@@ -80,9 +81,24 @@
 					</td>
 				</tr>
 				<tr>
+					<th align="left" bgcolor="#EDE5D8" width="10%">문의 유형</th>
+					<td align="left" height="68" width="38%">
+						${bb.q_type}		
+					</td>
+					<th align="left" bgcolor="#EDE5D8" width="14%" >공개 여부</th>
+					<td align="left" height="68">
+						<c:if test="${bb.q_secret == 'Y'}">
+							비밀글
+						</c:if>
+						<c:if test="${bb.q_secret == 'N'}">
+							공개글
+						</c:if>
+					</td>
+				</tr>
+				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%" >내용</th>
 					<td align="left" colspan="3" height="200" valign="top" style="padding-top: 25px;">
-						${ bb.q_content}
+						<pre style="font-family: 'RIDIBatang'; line-height: 170%; font-size: 12pt;">${bb.q_content}</pre>
 					</td>
 				</tr>
 						
@@ -103,6 +119,7 @@
 					<input type="button" value="수정하기" id="btn" onClick="location.href='qUpdate.qb?q_num=${bb.q_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 					<input type="button" value="삭제하기" id="btn" onClick="location.href='qDelete.qb?q_num=${bb.q_num}&pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}'" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 					<input type="button" value="답글달기" id="btn" onClick="goReply(${ bb.q_num },${ bb.q_ref },${ bb.q_re_step },${ bb.q_re_level },${pageNumber}, '${whatColumn}', '${keyword}')" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
+					<input type="button" value="신고하기" id="btn" onClick="#" class="btn btn-dark" style="font-size: 13pt; width: 130px;">&nbsp;
 				</center> 
 			</c:if>
 		</form:form>

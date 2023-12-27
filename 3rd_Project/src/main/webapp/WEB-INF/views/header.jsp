@@ -48,6 +48,7 @@
 	    font-style: normal;
 	}
 </style>
+
 </head>
   
 <body>
@@ -77,21 +78,35 @@
 
 				<!-- 로그인아이콘 & 드롭다운 메뉴 -->
 				<div class="dropdown text-end" style="margin-right: 50px">
-					<a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> 
-						<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
-					</a>
 					<c:if test="${loginInfo == null}">
+						<a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> 
+							<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
+						</a>
 						<ul class="dropdown-menu text-small">
 							<li><a class="dropdown-item" href="login.u">로그인</a></li>
 							<li><a class="dropdown-item" href="register.u">회원가입</a></li>
 						</ul>
 					</c:if>
-					<c:if test="${loginInfo != null}"> 
+					<c:if test="${loginInfo != null}">
+						<a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+							<c:if test="${loginInfo.u_profileimg == null }">
+								<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
+							</c:if> 
+							<c:if test="${loginInfo.u_profileimg != null }">
+								<img src="${loginInfo.u_profileimg}" width="32" height="32" class="rounded-circle">
+							</c:if> 
+						</a>
 						<ul class="dropdown-menu text-small">
 							<li style="text-align: center;"><small>안녕하세요, <b>${loginInfo.u_name }</b>님</small></li>
 							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="mypage.u">마이페이지</a></li>
-							<li><a class="dropdown-item" href="logout.u">로그아웃</a></li>
+							<c:if test="${loginInfo.u_id == 'admin'}">
+								<li><a class="dropdown-item" href=".admin">관리자페이지</a></li>
+								<li><a class="dropdown-item" href="logout.u">로그아웃</a></li>
+							</c:if>
+							<c:if test="${loginInfo.u_id != 'admin'}">
+								<li><a class="dropdown-item" href="mypage.u">마이페이지</a></li>
+								<li><a class="dropdown-item" href="logout.u">로그아웃</a></li>
+							</c:if>
 						</ul>
 					</c:if>
 				</div>

@@ -1,10 +1,13 @@
 package c_board.model;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import users.model.UsersBean;
 import utility.Paging;
 
 
@@ -18,7 +21,7 @@ public class CBoardDao {
 	public List<CBoardBean> getAllBoardList(Paging pageInfo, Map<String, String> map) {
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
 		List<CBoardBean> list = sqlSessionTemplate.selectList(namespace+"getAllBoardList",map,rowBounds);
-		
+		 
 		return list;
 	}
 	
@@ -91,7 +94,17 @@ public class CBoardDao {
 			sqlSessionTemplate.delete(namespace+"deleteBoard",c_num);
 		}
 	}
-	
+
+	public UsersBean getUserByCWriter(String c_writer) {
+		UsersBean ub = sqlSessionTemplate.selectOne(namespace+"getUserByCWriter", c_writer);
+		return ub;
+	}
+
+	public void updateReport(int c_num) {
+		System.out.println("dao c_num : " + c_num);
+		sqlSessionTemplate.update(namespace+"updateReport", c_num);
+	}
+
 	
 	
 }

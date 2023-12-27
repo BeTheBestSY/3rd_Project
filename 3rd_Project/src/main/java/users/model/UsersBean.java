@@ -11,6 +11,10 @@ public class UsersBean {
 	private String u_jointype;
 	private String u_joindate;
 	private String u_color;
+	private String u_email;
+	private String u_profileimg;
+	private String u_intro;
+	private int u_report;
 	
 	public String getU_id() {
 		return u_id;
@@ -71,6 +75,30 @@ public class UsersBean {
 	}
 	public void setU_color(String u_color) {
 		this.u_color = u_color;
+	}
+	public String getU_email() {
+		return u_email;
+	}
+	public void setU_email(String u_email) {
+		this.u_email = u_email;
+	}
+	public String getU_profileimg() {
+		return u_profileimg;
+	}
+	public void setU_profileimg(String u_profileimg) {
+		this.u_profileimg = u_profileimg;
+	}
+	public String getU_intro() {
+		return u_intro;
+	}
+	public void setU_intro(String u_intro) {
+		this.u_intro = u_intro;
+	}
+	public int getU_report() {
+		return u_report;
+	}
+	public void setU_report(int u_report) {
+		this.u_report = u_report;
 	}
 	
 }

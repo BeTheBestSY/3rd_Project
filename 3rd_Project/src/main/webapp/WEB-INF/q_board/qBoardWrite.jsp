@@ -38,7 +38,7 @@
 <br><br><br><br><br>
 
  <div id="board-list">
-		<form:form commandName="bb" action="write.qb" method="post">
+		<form:form commandName="bb" action="write.qb" method="post" onsubmit="enterKey()">
 		      <table class="board-table" style="font-size: 13pt;">
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">제목</th>
@@ -48,12 +48,21 @@
 				</tr>
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">작성자</th>
-					<td align="left">
-						<input type="text" name="q_writer" value="${loginInfo.u_id}" class="form-control" style="width: 85%;" maxlength="5" readonly>
+					<td align="left" width="35%">
+						<c:if test="${joinType == 'N'}">
+							외부 회원 (네이버)
+						</c:if>
+						<c:if test="${joinType == 'K'}">
+							외부 회원 (카카오)
+						</c:if>
+						<c:if test="${joinType == 'S'}">
+							&nbsp;${loginInfo.u_id}
+						</c:if>
+						<input type="hidden" name="q_writer" value="${loginInfo.u_id}" class="form-control" style="width: 85%;" maxlength="5" readonly>
 					</td>
 					<th align="left" bgcolor="#EDE5D8" width="14%">이메일</th>
 					<td align="left">
-						<input type="email" name="q_email" class="form-control" style="width: 85%;"  placeholder="ex) color@gmail.com" required>
+						<input type="email" name="q_email" class="form-control" value="${loginInfo.u_email}" style="width: 86%;" maxlength="30" placeholder="ex) color@gmail.com" required>
 					</td>
 				</tr>
 				<tr>
@@ -68,14 +77,26 @@
 					</td>
 					<th align="left" bgcolor="#EDE5D8" width="14%">공개여부</th>
 					<td align="left">
-						<input type="radio" name="q_secret" value="Y" required>&nbsp;&nbsp;비밀글&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="q_secret" value="N" required>&nbsp;&nbsp;공개글
+						<input type="radio" name="q_secret" value="N" required>&nbsp;&nbsp;비밀글&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="q_secret" value="Y" required>&nbsp;&nbsp;공개글
 					</td> 
 				</tr>
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">내용</th>
 					<td align="left" colspan="3">
-						<textarea rows="10" cols="100" name="q_content" class="form-control" style="width: 94%; resize: none;" required></textarea>
+						<textarea rows="10" cols="100" name="q_content" id="content" class="form-control" style="width: 94%; resize: none;" onkeyup="textCount()" required>${ bb.q_content }</textarea>
+						<span id="count" style="float: right; margin: 5px 65px 0px 0px; color: graytext; font-size: 11pt;">(0/500)</span>
+						<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+						<script>
+							function textCount(){
+								var content = document.getElementById("content").value;
+								if (content.length > 500) {
+					                content = content.substring(0,500);
+					                document.getElementById('content').value = content;
+					            }
+								document.getElementById("count").innerHTML = "("+content.length+"/500)";
+							}
+						</script>
 					</td>
 				</tr>
 				<tr>
@@ -87,12 +108,8 @@
 						
 			 </table>
 			 <br><br>
-<<<<<<< HEAD
-			 
-	 	  	<!-- 로그인 하지 않은 상태면 -->
-=======
-			 	  <!-- 로그인 하지 않은 상태면 -->
->>>>>>> d88c76c04046073760bab0acd41ee25b1e17d588
+
+			<!-- 로그인 하지 않은 상태면 -->
 			<c:if test="${loginInfo.u_id  == null}">
 				<%
 					session.setAttribute("destination", "redirect:/write.qb");
@@ -102,12 +119,7 @@
 					location.href="login.u";
 				</script>
 			</c:if>
-<<<<<<< HEAD
-			
- 			<input type="submit" value="작성 완료" class="btn btn-dark" id="btn">
-		</form>
-	</div>
-=======
+
 			<!-- 로그인 한 상태면 -->
 			<c:if test="${loginInfo.u_id  != null}">
 			 <center>
@@ -115,8 +127,9 @@
 			</center>
 			</c:if>
 		</form:form>
+	</div>
+			
 </div>
->>>>>>> d88c76c04046073760bab0acd41ee25b1e17d588
 </article>
 
 <%@ include file="./../views/footer.jsp" %>

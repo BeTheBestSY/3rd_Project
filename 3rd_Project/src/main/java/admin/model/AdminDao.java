@@ -35,7 +35,14 @@ public class AdminDao {
 		
 		return list;
 	}
-	
+	public boolean findU_id(String u_id) {
+		boolean found = false;
+		int count = sqlSessionTemplate.selectOne(nameSpace+"findU_id", u_id);
+		if(count > 0) {
+			found = true;
+		}
+		return found;
+	}
 	public int getTotalCount(Map<String, String> map) {
 		int totalCount = sqlSessionTemplate.selectOne(nameSpace+"getTotalCount",map);
 		return totalCount;
@@ -71,6 +78,7 @@ public class AdminDao {
 		return bb;
 	}
 	
+	
 	public void deleteBoardC(int c_num) {
 		sqlSessionTemplate.delete(nameSpace+"deleteBoardC",c_num);
 	}
@@ -105,12 +113,18 @@ public class AdminDao {
 			return cb;
 		}
 
+	public int insertCeleb(CelebBean bb) {
 
+		return sqlSessionTemplate.insert(nameSpace+"insertCeleb",bb);
+		
+	}
 	public void deleteCeleb(int cl_num) {
 		sqlSessionTemplate.delete(nameSpace+"deleteCeleb", cl_num);
 	}
 	
-	
+	public int updateCeleb(CelebBean bb) {
+		return sqlSessionTemplate.update(nameSpace+"updateCeleb", bb);
+	}
 	
 	//company
 	public List<CompanyBean> getAllCompany(Paging pageInfo, Map<String, String> map) {
@@ -152,13 +166,14 @@ public class AdminDao {
 	
 	
 	//users
-	public List<UsersBean> getUsers(Map<String, String> map, Paging pageInfo) {
-		System.out.println("getUsers로 넘어온 키워드:"+map.get("keyword"));
+	public List<UsersBean> getUsers(Map<String, String> map) {
+//		System.out.println("getUsers로 넘어온 키워드:"+map.get("keyword"));
 //		if(map.get("keyword").equals("%null%")) {
 //			map.put("keyword", null);
 //		}
-		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
-		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map, rowBounds);
+//		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+//		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map, rowBounds);
+		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map);
 	}
 	
 	public int getTotalUserCount(Map<String, String> map) {
@@ -201,6 +216,18 @@ public class AdminDao {
 
 	public int updateProduct(ProductBean pb) {
 		return sqlSessionTemplate.update(nameSpace+"updateProduct", pb);
+	}
+
+
+	public void replyProc(QBoardBean bb) {
+
+		sqlSessionTemplate.update(nameSpace+"plusStep",bb);
+		
+		bb.setQ_re_step(bb.getQ_re_step()+1);
+		bb.setQ_re_level(bb.getQ_re_level()+1);
+
+		sqlSessionTemplate.insert(nameSpace+"insertReply",bb);
+		
 	}
 
 

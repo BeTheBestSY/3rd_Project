@@ -38,6 +38,7 @@
 <div id="board-list">		
 	<form:form commandName="bb" action="qUpdate.qb" method="post">
 		<input type="hidden" name="q_num" value="${ bb.q_num }">
+		<input type="hidden" name="q_type" value="${ bb.q_type }">
 		<input type="hidden" name="pageNumber" value="${pageNumber}">
 		<input type="hidden" name="whatColumn" value="${whatColumn}">
 		<input type="hidden" name="keyword" value="${keyword}">
@@ -53,18 +54,38 @@
 				</tr>
 				<tr>
 					<th align="left" bgcolor="#EDE5D8">작성자</th>
-					<td align="left">
-						<input type="text" name="q_writer" value="${ bb.q_writer }" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
+					<td align="left" width="35%">
+						<c:if test="${joinType == 'N'}">
+							&nbsp;외부 회원 (네이버)
+						</c:if>
+						<c:if test="${joinType == 'K'}">
+							&nbsp;외부 회원 (카카오)
+						</c:if>
+						<c:if test="${joinType == 'S'}">
+							<input type="text" value="${ bb.q_writer }" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." readonly>
+						</c:if>
+						<input type="hidden" name="q_writer" value="${ bb.q_writer }" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
 					</td>
 					<th align="left" bgcolor="#EDE5D8" width="14%">이메일</th>
 					<td align="left">
-						<input type="email" name="q_email" value="${ bb.q_email }" class="form-control" style="width: 85%;"  placeholder="ex) color@gmail.com" required>
+						<input type="email" name="q_email" value="${ bb.q_email }" class="form-control" style="width: 86%;" maxlength="30" placeholder="ex) color@gmail.com" required>
 					</td>
 				</tr>
 				<tr>
 					<th align="left" bgcolor="#EDE5D8">내용</th>
 					<td align="left" colspan="3">
-						<textarea rows="10" cols="100" name="q_content" class="form-control" style="width: 94%; resize: none;" required>${ bb.q_content }</textarea>
+						<textarea rows="10" cols="100" name="q_content" id="content" class="form-control" style="width: 94%; resize: none;" onkeyup="textCount()" required>${ bb.q_content }</textarea>
+						<span id="count" style="float: right; margin: 5px 65px 0px 0px; color: graytext; font-size: 11pt;">(-/500)</span>
+						<script>
+							function textCount(){
+								var content = document.getElementById("content").value;
+								if (content.length > 500) {
+					                content = content.substring(0,500);
+					                document.getElementById('content').value = content;
+					            }
+								document.getElementById("count").innerHTML = "("+content.length+"/500)";
+							}
+						</script>
 					</td>
 				</tr>
 				<tr>

@@ -111,6 +111,7 @@ a {
 
 .nav__icon {
     font-size: 1.25rem;
+    pointer-events: none;
 }
 
 .nav_name {
@@ -166,3 +167,7 @@ a {
     transform: rotate(180deg);
     transition: .5s;
 }
+
+/* ion-icon {
+    pointer-events: none;
+} */

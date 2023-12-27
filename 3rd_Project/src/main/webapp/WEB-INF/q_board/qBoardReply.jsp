@@ -37,7 +37,7 @@
 <br><br><br><br><br>
 
 <div id="board-list">		
-	<form:form commandName="bb" action="cReply.qb" method="post">
+	<form:form commandName="bb" action="qReply.qb" method="post">
 		<input type="hidden" name="q_num" value="${ bb.q_num }">
 		<input type="hidden" name="pageNumber" value="${pageNumber}">
 		<input type = "hidden" name = "q_ref" value=${bb.q_ref }>
@@ -49,23 +49,59 @@
 					<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">제목</th>
 					<td align="left" colspan="3">
-						<input type="text" name="q_subject" class="form-control" style="width: 94%;" maxlength="20" placeholder="자동으로 [답글] 표시가 생성되니 따로 입력하지 마시고, 20자 이내로 입력해주세요." required>
+						<input type="text" name="q_subject" class="form-control" style="width: 94%;" maxlength="20" placeholder="20자 이내로 입력해주세요." required>
 					</td>
 				</tr>
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">작성자</th>
-					<td align="left">
-						<input type="text" name="q_writer" value="${loginInfo.u_id}" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
+					<td align="left" width="35%">
+						<c:if test="${joinType == 'N'}">
+							외부 회원 (네이버)
+						</c:if>
+						<c:if test="${joinType == 'K'}">
+							외부 회원 (카카오)
+						</c:if>
+						<c:if test="${joinType == 'S'}">
+							&nbsp;${loginInfo.u_id}
+						</c:if>
+						<input type="hidden" name="q_writer" value="${loginInfo.u_id}" class="form-control" style="width: 86%;" maxlength="5" readonly>
 					</td>
 					<th align="left" bgcolor="#EDE5D8" width="14%">이메일</th>
 					<td align="left">
-						<input type="email" name="q_email" class="form-control" style="width: 85%;""  placeholder="ex) color@gmail.com" required>
+						<input type="email" name="q_email" class="form-control" value="${loginInfo.u_email}" style="width: 85%;" maxlength="30" placeholder="ex) color@gmail.com" required>
 					</td>
+				</tr>
+				<tr>
+					<c:set var="types">배송문의,결제문의,교환문의,환불문의,기타</c:set>
+					<th align="left" bgcolor="#EDE5D8" width="10%">문의유형</th>
+					<td align="left">
+						<select name="q_type" class="form-select" style="width: 85%;">
+							<c:forEach var="type" items="${types}">
+								<option value="${type}">${type}
+							</c:forEach>
+						</select>
+					</td>
+					<th align="left" bgcolor="#EDE5D8" width="14%">공개여부</th>
+					<td align="left">
+						<input type="radio" name="q_secret" value="Y" required>&nbsp;&nbsp;비밀글&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="q_secret" value="N" required>&nbsp;&nbsp;공개글
+					</td> 
 				</tr>
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%">내용</th>
 					<td align="left" colspan="3">
-						<textarea rows="10" cols="100" name="q_content" class="form-control" style="width: 94%; resize: none;" required></textarea>
+						<textarea rows="10" cols="100" name="q_content" id="content" class="form-control" style="width: 94%; resize: none;" onkeyup="textCount()" required></textarea>
+						<span id="count" style="float: right; margin: 5px 65px 0px 0px; color: graytext; font-size: 11pt;">(-/500)</span>
+						<script>
+							function textCount(){
+								var content = document.getElementById("content").value;
+								if (content.length > 500) {
+					                content = content.substring(0,500);
+					                document.getElementById('content').value = content;
+					            }
+								document.getElementById("count").innerHTML = "("+content.length+"/500)";
+							}
+						</script>
 					</td>
 				</tr>
 				<tr>

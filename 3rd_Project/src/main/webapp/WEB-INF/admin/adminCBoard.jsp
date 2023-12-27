@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/admin_Q_Board.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/admin_C_Board.css">
 <%@ include file="adminMenu.jsp"%>
 <script type="text/javascript">
 	
@@ -69,7 +69,7 @@
 								<c:set var="wid" value="${bb.c_re_level * 20}"/>
 								<img src="<%= request.getContextPath() %>/resources/image/re.png" width="2%">
 							</c:if>
-								<a href="detail.cb?c_num=${ bb.c_num }&pageNumber=${ pageInfo.pageNumber }" id="noneHigtLight">
+								<a href="cBoardDetail.admin?c_num=${ bb.c_num }&pageNumber=${ pageInfo.pageNumber }" id="noneHigtLight">
 									${ bb.c_subject }&nbsp;</a>
 							<c:if test="${ bb.c_readcount >= 10 }">
 								<img src="<%= request.getContextPath() %>/resources/image/hot.png" width="2%">

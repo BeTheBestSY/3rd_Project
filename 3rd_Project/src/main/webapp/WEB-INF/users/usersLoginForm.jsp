@@ -51,6 +51,18 @@
 	}
 }
 </style>
+<script>
+function goQnA(){ // 브라우저 사이즈 기준으로 팝업창 가운데 뜨게 설정.
+    var popupW = 500;
+	var popupH = 600;
+	var popupX = Math.round(window.screenX + (window.outerWidth/2) - (popupW/2));
+	var popupY = Math.round(window.screenY + (window.outerHeight/2) - (popupH/2));
+	
+	var popupWindow = window.open('ask.u', 'login', 'status=no, height='+popupH+', width='+popupW+', left='+popupX+', top='+popupY);
+	popupWindow.onresize = (_=>{popupWindow.resizeTo(popupW+20,popupH+70);}) // 팝업창으로 열리는 화면은 사이즈 조절하지 못하도록 설정해두기.
+}
+</script>
+
 <div id="center" style="text-align: center;">
 <br><br><br><br>
 <div>
@@ -73,7 +85,7 @@
 				<table>
 					<tr>
 						<td width="20%">아이디</td> 
-						<td width="60%"><input type="text" name="u_id" class="form-control" required></td>
+						<td width="60%"><input type="text" name="u_id" value="${param.u_id }" class="form-control" required></td>
 						<td width="20%" rowspan="2"><input type="submit" value="로그인" id="loginBtn"></td>
 					</tr>
 					<tr>
@@ -106,7 +118,7 @@
 				<div id="verticalLine"></div>
 			</td>
 			<td>
-				<table style="text-align: left; margin-left: 20px; width: 320px;">
+				<table style="text-align: left; margin-left: 20px; width: 320px;" id="loginTable">
 					<tr>
 						<td>아직 회원이 아니신가요?</td>
 						<td><input type="button" value="회원가입" id="etcBtn" onClick="location.href='register.u'"></td>
@@ -118,6 +130,10 @@
 					<tr>
 						<td>비밀번호를 잃어버리셨나요?</td>
 						<td><input type="button" value="비밀번호 찾기" id="etcBtn" onClick="location.href='findpw.u'"></td>
+					</tr>
+					<tr>
+						<td>계정이 정지되셨나요?</td>
+						<td><input type="button" value="문의하기" id="etcBtn" onClick="goQnA()"></td>
 					</tr>
 				</table>
 			</td>

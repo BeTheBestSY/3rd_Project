@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css?ver=220610">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css?ver=2206105">
 <script type="text/javascript">
 	window.onload = function(){
 		const radios = document.querySelectorAll("input[name='filter_btn']");
@@ -16,12 +16,19 @@
 			});
 		});
 	};
-	
+	 
 	function init(){
 		var elem = document.getElementById('search');
 		elem.value = '';
 	}
 </script>
+<style>
+	#btn{
+		width: 80px;
+		font-family: 'RIDIBatang';
+		font-size: 10pt;
+	}
+</style>
 <article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
 <div class="section">
 	<div class="tag">
@@ -42,98 +49,128 @@
 						<button type="submit" class="btn btn-dark">검색</button>
 					</form>
 				</div>
-				<div class="filter_radio">
-					<span style="position:relative;right:26%;bottom:40%;"><input type="radio" name="filter_btn" value="A" <c:if test="${param.filter eq 'A' || param.filter eq null || param.filter eq ''}">checked</c:if> style="width:20px;height:18px;"> 전체 회원</span>
-					<span style="position:relative;right:21%;bottom:40%;"><input type="radio" name="filter_btn" value="S" <c:if test="${param.filter eq 'S'}">checked</c:if> style="width:20px;height:18px;"> 기본</span>
-					<span style="position:relative;right:15%;bottom:40%;"><input type="radio" name="filter_btn" value="N" <c:if test="${param.filter eq 'N'}">checked</c:if> style="width:20px;height:18px;"> 네이버</span>
-					<span style="position:relative;right:10%;bottom:40%;"><input type="radio" name="filter_btn" value="K" <c:if test="${param.filter eq 'K'}">checked</c:if> style="width:20px;height:18px;"> 카카오</span>
+				<div class="filter_radio" style="font-family: 'RIDIBatang'; font-size: 11pt; width: 400px;">
+					<span style="top: -20px; position: relative;"> 
+						<input type="radio" name="filter_btn" value="A" style="padding-top: 6px;" <c:if test="${param.filter eq 'A' || param.filter eq null || param.filter eq ''}">checked</c:if> style="width:20px;height:18px;"> 전체 회원&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="filter_btn" value="S" style="padding-top: 6px;" <c:if test="${param.filter eq 'S'}">checked</c:if> style="width:20px;height:18px;"> 기본&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="filter_btn" value="N" style="padding-top: 6px;" <c:if test="${param.filter eq 'N'}">checked</c:if> style="width:20px;height:18px;"> 네이버&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="filter_btn" value="K" style="padding-top: 6px;" <c:if test="${param.filter eq 'K'}">checked</c:if> style="width:20px;height:18px;"> 카카오
+					</span>
 				</div>
-			</div>
-		</div>
+			</div> 
+		</div> 
 	</div>
 	<div id="board-list" >
 		<div class="container" >
 			<div class="row">
 				<div class="whole1">
-					<div class="topbox1">
-						<table class="board-table" style="font-size: 13pt; text-align: center; table-layout:fixed;">
-							<tr style="background: #f4f4f4;">
-								<th scope="col" class="th-num" style="padding-right: 4%;">번호</th>
-								<th scope="col" class="th-id" style="padding-right: 4%;">아이디</th>
-								<th scope="col" class="th-name" style="padding-right: 12%;">이름</th>
-								<th scope="col" class="th-phone" style="padding-right: 14%;">휴대폰번호</th>
-								<th scope="col" class="th-address" style="padding-left: 11.5%;">주소</th>
-								<th scope="col" class="th-point" style="padding-left: 13.5%;">보유 포인트</th>
-								<th scope="col" class="th-pay" style="padding-left: 11.8%;">결제 수단</th>
-								<th scope="col" class="th-personalc" style="padding-left: 9.5%;">퍼스널컬러</th>
-								<th scope="col" class="th-jointype" style="padding-left: 9%;">가입유형</th>
-								<th scope="col" class="th-joindate" style="padding-left: 7%;">가입일</th>
-								<th scope="col" class="th-delete"></th>
-								<th scope="col" class="th-update"></th>
+					<div class="topbox1"> 
+						<table class="board-table" style="font-size: 12pt; text-align: center; table-layout:fixed;">
+							<tr style="background: #f4f4f4; height: 50px;">
+								<th scope="col" style="width: 68px;">
+									<div style="left: -9px; position: relative; display: inline;">번호</div>  
+								</th>
+								<th scope="col" style="width: 133px;"> 
+									<div style="left: -6px; position: relative; display: inline;">아이디</div>
+								</th>
+								<th scope="col" style="width: 124px;"> 
+									<div style="left: -8px; position: relative; display: inline;">이름</div>
+								</th>
+								<th scope="col" style="width: 160px;">
+									<div style="left: -7px; position: relative; display: inline;">휴대폰번호</div> 
+								</th> 
+								<th scope="col" style="width: 337px;"> 
+									<div style="left: -6px; position: relative; display: inline;">주소</div>
+								</th>
+								<th scope="col" style="width: 121px;">
+									<div style="left: -8px; position: relative; display: inline;">보유 포인트</div> 
+								</th>
+								<th scope="col" style="width: 127px;">
+									<div style="left: -6px; position: relative; display: inline;">퍼스널 컬러</div> 
+								</th>
+								<th scope="col" style="width: 94px;"> 
+									<div style="left: -12px; position: relative; display: inline;">가입유형</div> 
+								</th>
+								<th scope="col" style="width: 143px;">
+									<div style="left: -8px; position: relative; display: inline;">가입일</div> 
+								</th>
+								<th scope="col" style="width: 107px;">
+									<div style="left: -8px; position: relative; display: inline;">회원상태</div>
+								</th>
+								<th scope="col"></th>
 							</tr>
 						</table>
 						<div class="middlebox">
 							<div class="box2 scrollnone">
-								<table class="colr_table2" style="font-size: 13pt; text-align: center;">
+								<table class="colr_table2" style="font-size: 11pt; text-align: center; font-family: 'RIDIBatang';">
 									<c:if test="${empty usersLists }">
 										<tr>
 											<td colspan="12">존재하지 않는 회원 입니다.</td>
 										</tr>
-									</c:if>
+									</c:if> 
 									
-									<c:set var="u_num" value="${fn:length(usersLists) }"/>
-									<c:forEach var="ub" items="${usersLists }">
-										<tr>
-											<td width="6%">
+									<c:set var="u_num" value="${fn:length(usersLists)}"/> 
+									<c:forEach var="ub" items="${usersLists}">
+										<tr style="height: 30px; border: 1px dotted #D5D5D5;"> 
+											<td width="4.4%">
 												${u_num }
-												<c:set var="u_num" value="${u_num-1 }"/>
+												<c:set var="u_num" value="${u_num-1 }"/> 
 											</td>
-											<td width="10%">
+											<td width="8.2%" style="background: cyan;"> 
 												<c:if test="${ub.u_jointype eq 'N' }">
-													네이버 연동 회원
+													네이버 연동
 												</c:if>
 												<c:if test="${ub.u_jointype eq 'K' }">
-													카카오 연동 회원
+													카카오 연동
 												</c:if>
 												<c:if test="${ub.u_jointype eq 'S' }">
-													${ub.u_id }
+													${ub.u_id}
 												</c:if>
 											</td>
-											<td width="8%">${ub.u_name }</td>
-											<td width="17%">${ub.u_phone }</td>
-											<td width="18%">${ub.u_address }</td>
-											<td width="8%">${ub.u_point }</td>
-											<td width="8%">${ub.u_pay }</td>
-											<td width="10%">${ub.u_color }</td>
+											<td width="8%">${ub.u_name}</td>
+											<td width="10%">${ub.u_phone}</td> 
+											<td width="21%">${ub.u_address}</td> 
+											<td width="8%">
+												<fmt:formatNumber value="${ub.u_point}" pattern="#,###" />
+											</td>
+											<td width="8%">${ub.u_color}</td> 
 											<c:if test="${ub.u_jointype eq 'S'}">
-												<td width="8%">기본</td>
+												<td width="6%">기본</td> 
 											</c:if>
 											<c:if test="${ub.u_jointype eq 'N'}">
-												<td width="8%">네이버</td>
+												<td width="6%">네이버</td>
 											</c:if>
 											<c:if test="${ub.u_jointype eq 'K'}">
-												<td width="8%">카카오</td>
+												<td width="6%">카카오</td>
 											</c:if>
-											<td width="17%">${ub.u_joindate }</td>
-											<td>
-												<c:if test="${ub.u_jointype eq 'N' || ub.u_jointype eq 'K'}">
-													<a href="#">
-														<input type="button" class="btn btn-white"  value="연동해제">
-													</a>
-												</c:if>
-												<c:if test="${ub.u_jointype eq 'S'}">
-													<a href="usersDelete.admin?u_id=${ub.u_id }">
-														<input type="button" class="btn btn-white"  value="삭제하기">
-													</a>
-												</c:if>
-												<a href="usersUpdate.admin?u_id=${ub.u_id }">
-													<input type="button" class="btn btn-white"  value="수정하기">
+											<td width="9%">${ub.u_joindate }</td>
+											<td width="7%">
+												<c:if test="${ub.u_report > 5}"><font color="red"><b>정지</b></font></c:if>
+												<c:if test="${ub.u_report <= 5}">-</c:if>
+											</td>
+											<td width="18%">
+												<a href="usersDelete.admin?u_id=${ub.u_id }&u_jointype=${ub.u_jointype}">
+													<input type="button" id="btn" class="btn btn-white" 
+														<c:if test="${ub.u_jointype eq 'N' || ub.u_jointype eq 'K'}">
+															value="연동해제"
+														</c:if>
+														<c:if test="${ub.u_jointype eq 'S'}">
+															value="삭제하기"
+														</c:if>
+													>
 												</a>
+												<a href="usersUpdate.admin?u_id=${ub.u_id }">
+													<input type="button" id="btn" class="btn btn-white"  value="수정하기">
+												</a>
+												<c:if test="${ub.u_report > 5}">
+													<a href="#">
+														<input type="button" id="btn" class="btn btn-white" style="color: red;" value="정지해제">
+													</a>
+												</c:if>
 							 				</td>
 										</tr>
 									</c:forEach>
 								</table>
-								${pageInfo.pagingHtml }
 							</div>
 						</div>
 							

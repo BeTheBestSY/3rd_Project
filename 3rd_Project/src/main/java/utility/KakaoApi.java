@@ -18,10 +18,11 @@ public class KakaoApi {
 	private String redirect_uri = "http%3A%2F%2Flocalhost%3A8080%2Fex20%2Fkakao.u";
 	
 	// access token 받기
-	public String getAccessToken(String code) {
-	    String accessToken = "";
+	public Map<String, String> getAccessToken(String code) {
+		String accessToken = "";
 	    String refreshToken = "";
 	    String reqUrl = "https://kauth.kakao.com/oauth/token";
+	    Map<String, String> tokens = null;
 
 	    try{
 	        URL url = new URL(reqUrl);
@@ -67,13 +68,16 @@ public class KakaoApi {
 	        JSONObject jsonObj = (JSONObject)obj;
 	        accessToken = String.valueOf(jsonObj.get("access_token"));
 	        refreshToken = String.valueOf(jsonObj.get("refresh_token"));
-
+	        tokens = new HashMap<String, String>();
+	        tokens.put("accessToken", accessToken);
+	        tokens.put("refreshToken", refreshToken);
+	        
 	        br.close();
 	        bw.close();
 	    }catch (Exception e){
 	        e.printStackTrace();
 	    }
-	    return accessToken;
+	    return tokens;
 	}
 	
 	// 사용자 정보 받기
@@ -109,10 +113,15 @@ public class KakaoApi {
 	        JSONObject jsonObj = (JSONObject)obj;
 	        Long id = (Long)jsonObj.get("id");
 	        JSONObject kakaoAccount = (JSONObject)jsonObj.get("kakao_account");
+	        String email = String.valueOf(kakaoAccount.get("email"));
 	        JSONObject profile = (JSONObject)(kakaoAccount.get("profile"));
 	        String nickname = String.valueOf(profile.get("nickname"));
-	        userInfo.put("nickname", nickname);
+	        String profile_image_url = String.valueOf(profile.get("profile_image_url"));
+	        
 	        userInfo.put("id", id);
+	        userInfo.put("nickname", nickname);
+	        userInfo.put("email", email);
+	        userInfo.put("profile_image_url", profile_image_url);
 
 	        br.close();
 
@@ -121,19 +130,19 @@ public class KakaoApi {
 	    }
 	    return userInfo;
 	}
-	// 로그아웃
-	public String kakaoLogout(String accessToken) {
-	    String reqUrl = "https://kapi.kakao.com/v1/user/logout";
-	    String id = "";
-	    try{
-	        URL url = new URL(reqUrl);
-	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-	        conn.setRequestMethod("POST");
-	        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
-	        int responseCode = conn.getResponseCode();
 
+	// 연동해제 1단계. 접근 토큰 유효성 체크
+	public String isTokenValid(String accessToken) {
+		String reqValidUrl = "https://kapi.kakao.com/v1/user/access_token_info";
+		String id = "";
+		try {
+			URL url = new URL(reqValidUrl);
+			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+			conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+			int responseCode = conn.getResponseCode();
+			System.out.println("[KakaoApi.isTokenValid] responseCode = "+ responseCode);
 	        BufferedReader br;
-	        if (responseCode >= 200 && responseCode <= 300) {
+	        if (responseCode == 200) {
 	            br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 	        } else {
 	            br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
@@ -148,12 +157,62 @@ public class KakaoApi {
 	        Object obj = parsing.parse(responseSb.toString());
 	        JSONObject jsonObj = (JSONObject)obj;
 	        id = String.valueOf(jsonObj.get("id"));
-	    }catch (Exception e){
-	        e.printStackTrace();
-	    }
-	    return id;
+		}catch (Exception e){
+ 	        e.printStackTrace();
+ 	    }
+		return id;
 	}
-	// 연동해제
+	// 연동해제 2단계. 접근 토큰 재발급
+	public String getAccessTokenAgain(String refreshToken) {
+		String reqUrl = "https://kauth.kakao.com/oauth/token";
+	    String accessToken = "";
+	    try{
+			URL url = new URL(reqUrl);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			
+			conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+			conn.setDoOutput(true);
+			
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+			StringBuilder sb = new StringBuilder();
+			
+			//필수 쿼리 파라미터 세팅
+			sb.append("grant_type=refresh_token");
+			sb.append("&client_id=").append(client_id);
+			sb.append("&refresh_token=").append(refreshToken);
+			
+			bw.write(sb.toString());
+			bw.flush();
+			
+			// 실제 서버로 Request 요청 하는 부분. (응답 코드를 받는다. 200 성공, 나머지 에러)
+			int responseCode = conn.getResponseCode();
+			System.out.println("[KakaoApi.getAccessTokenAgain] responseCode = "+ responseCode);
+			
+			BufferedReader br;
+			if (responseCode == 200) {
+			    br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			} else {
+			    br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+			}
+			
+			String line = "";
+			StringBuilder responseSb = new StringBuilder();
+			while((line = br.readLine()) != null){
+			    responseSb.append(line);
+			}
+			
+			JSONParser parsing = new JSONParser();
+			Object obj = parsing.parse(responseSb.toString());
+			JSONObject jsonObj = (JSONObject)obj;
+			accessToken = String.valueOf(jsonObj.get("access_token"));
+			br.close();
+			bw.close();
+		}catch (Exception e){
+		    e.printStackTrace();
+		}
+		return accessToken;
+	}
+	// 연동해제 3단계. 연동해제(접근 토큰 삭제)
 	public String kakaoDisconnect(String accessToken) {
 		String reqUrl = "https://kapi.kakao.com/v1/user/unlink";
 		String id = "";
@@ -185,6 +244,5 @@ public class KakaoApi {
 		}
 		return id;
 	}
-	
 
 }

@@ -32,6 +32,7 @@ public class NaverApi {
 	    String refreshToken = "";
 	    String reqUrl = "https://nid.naver.com/oauth2.0/token";
 	    Map<String, String> tokens = null;
+	    
 	    try{
 	        URL url = new URL(reqUrl);
 	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -78,6 +79,7 @@ public class NaverApi {
 	        tokens = new HashMap<String, String>();
 	        tokens.put("accessToken", accessToken);
 	        tokens.put("refreshToken", refreshToken);
+	        
 	        br.close();
 	        bw.close();
 	    }catch (Exception e){
@@ -86,7 +88,7 @@ public class NaverApi {
 	    return tokens;
 	}
 	
-	// 사용자 정보 받기
+	// 사용자 정보 받기 
 	public Map<String, Object> getUserInfo(String accessToken) {
 		Map<String, Object> userInfo = new HashMap<String, Object>();
 	    String reqUrl = "https://openapi.naver.com/v1/nid/me";
@@ -119,8 +121,13 @@ public class NaverApi {
 	        JSONObject response = (JSONObject)jsonObj.get("response");
 	        String id = String.valueOf(response.get("id"));
 	        String name = String.valueOf(response.get("name"));
+	        String email = String.valueOf(response.get("email"));
+	        String profile_image = String.valueOf(response.get("profile_image"));
+
 	        userInfo.put("id", id);
 	        userInfo.put("name", name);
+	        userInfo.put("email", email);
+	        userInfo.put("profile_image", profile_image);
 
 	        br.close();
 
