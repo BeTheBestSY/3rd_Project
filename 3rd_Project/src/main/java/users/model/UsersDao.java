@@ -69,6 +69,10 @@ public class UsersDao {
 		return sqlSessionTemplate.selectOne(namespace+".getEmail", ub);
 	}
 
+	public void insertRestore(RestoreBean rb) {
+		sqlSessionTemplate.insert(namespace+".insertRestore", rb);
+	}
+
 
 	
 }

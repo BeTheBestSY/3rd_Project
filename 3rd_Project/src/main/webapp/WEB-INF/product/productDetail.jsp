@@ -326,9 +326,13 @@
 <div style="width: 60%; margin: auto; border-bottom: 1px solid #D5D5D5;"> 
 	<div style="width: 250px; height: 45px; background: #C7C7DB; color: white; text-align: center; display: table-cell; vertical-align: middle; font-family: 'RIDIBatang'; font-size: 15pt;">
 		상세정보
+	</div> 
+	<div style="width: 680px; height: 45px; text-align: center; display: table-cell; vertical-align: middle;"></div> 
+	<div style="width: 200px; height: 45px; text-align: center; display: table-cell; vertical-align: middle; font-family: 'RIDIBatang'; font-size: 12pt;">
+		퍼스널 컬러 - ${pb.p_color} 
 	</div>
 </div>
-<div style="height: 150px;"></div>
+<div style="height: 150px;"></div> 
 
 <div style="width: 100%; text-align: center; padding-bottom: 150px;">
 	<img alt="상세 이미지" src="<%=request.getContextPath() %>/resources/uploadFolder/product/${pb.p_dtlimg}">

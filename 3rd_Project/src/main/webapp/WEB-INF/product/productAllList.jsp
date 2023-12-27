@@ -16,7 +16,8 @@
 <style type="text/css">
 	#search{
 		width: 500px;
-		margin: auto;
+		left: -30px;
+		position: relative;
 	}
 	.bd-placeholder-img {
 		font-size: 1.125rem;
@@ -82,6 +83,13 @@
 	}
 </style>
 
+<script>
+	function filter(whatColumn, keyword){ // 가격 순 조회
+		var filterArea = document.getElementById('filterArea');
+		location.href='productAllList.p?filter='+filterArea.value+'&whatColumn='+whatColumn+'&keyword='+keyword;
+	}
+</script>
+
 </head>
 
 
@@ -90,7 +98,7 @@
 <body>
 	<div id="wrap">
 	
-		<div class="row" style="width: 30%; margin: auto; font-family: 'RIDIBatang'; left: 0px; padding: 70px 0px 30px 0px;">
+		<div class="row" style="width: 30%; margin: auto; font-family: 'RIDIBatang'; left: 0px; padding-top: 70px;">
 			
 			<div class="col-lg-12" style="margin-bottom: 10px;">
 				<section id="drop">
@@ -137,17 +145,27 @@
 				</section>
 			</div>
 			
-			<div class="col-lg-12">
+			<div class="col-lg-6">
 				<form action="productAllList.p" method="get">
 					<div class="input-group mb-3" id="search">
-						<select name ="whatColumn" class="btn btn-outline-secondary dropdown-toggle" style="text-align: left;">
-							<option value="all">:: 검색 ::
+						<select name ="whatColumn" id="whatColumn" class="btn btn-outline-secondary dropdown-toggle" style="text-align: left;">
+							<option value="all">전체
 							<option value="p_brand">브랜드
 							<option value="p_name">이름
 						</select>
-						<input type="text"  name="keyword" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+						<input type="text" name="keyword" id="keyword" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
 						<input class="btn btn-outline-secondary" type="submit" id="button-addon2"  value="검색"> 
 					</div>
+				</form>
+			</div>
+			
+			<div style="left: 480px; top: -51px; position: relative;">
+				<form action="productAllList.p" method="get">
+						<select id="filterArea" class="form-select" style="text-align: left; font-size: 11pt; width: 130px;" onChange="filter('${whatColumn}', '${keyword}')">
+							<option value="">기본
+							<option value="priceH" <c:if test="${filter == 'priceH'}">selected</c:if> >가격 높은순
+							<option value="priceL" <c:if test="${filter == 'priceL'}">selected</c:if> >가격 낮은순
+						</select>
 				</form>
 			</div>
 			
@@ -172,7 +190,7 @@
 					
 					<c:if test="${fn:length(productLists) == 0}">
 						<div class="col">
-						    <div class="card shadow-sm">
+						    <div class="card shadow-sm" style="text-align: center; font-family: 'MaruBuri-Regular';">
 						        <br><br>
 								<b>등록된 상품이 없습니다.</b><br><br>
 							</div>
