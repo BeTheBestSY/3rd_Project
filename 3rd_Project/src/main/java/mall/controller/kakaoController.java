@@ -27,7 +27,7 @@ public class kakaoController {
 	  private String viewPage = "cartList";  
 	
  
-	@RequestMapping(value = command)
+	@RequestMapping(value = command) 
 	@ResponseBody
 	public String kakaopay(
 		 ) {
