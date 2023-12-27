@@ -16,7 +16,7 @@
 		background: #EAEAEA; 
 	}
 	table{
-		width: 100%;
+		width: 100%; 
 	}
 	td{
 		padding: 15px 0px 0px 10px;
