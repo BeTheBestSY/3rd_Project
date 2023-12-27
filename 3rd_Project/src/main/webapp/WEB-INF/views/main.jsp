@@ -9,7 +9,7 @@
 		height: 100px;
 		background: white;
 		border-radius: 15px 15px 15px 15px;
-		box-shadow: 5px 5px 10px 0px #BDBDBD; 
+		box-shadow: 5px 5px 10px 0px #BDBDBD;  
 		text-align: left;
 	}
 	#btn:hover {
