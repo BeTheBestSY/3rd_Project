@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/usersProfileView.css?ver=220619">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/usersProfileView.css?ver=2209976">
 <head>
 	<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -11,37 +11,72 @@
 	<!-- moment 라이브러리 -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 	<script>
-		/* var link-on, link;
 		window.onload = function() {
-			link-on = document.querySelector('.link-on');
-			link = document.querySelector('.link');
-			//link-on.addEventListener('click', alert(1));
-			link.addEventListener('click', () => {alert(1);});
-		}; */
-		function show(e, u_id, type){
-			if(e.className === 'link'){
-				// 기존 'link-on'클래스는 'link'로,
-				document.querySelector('.link-on').className = 'link';
-				// e의 'link'클래스는 'link-on'으로 수정
-				e.className = 'link-on';
-			}
 			$(function() {
-				alert(type);
+				// flag 설정
+				var flag = false;
+				// 작성글을 불러오는 ajax 설정
+				$.ajax({
+					url: 'cBoardAjax.cb?u_id=${u_id}',
+					success: function(data) { // 성공적으로 받아왔을 경우
+						$(data).each(function() {
+							// *** 답글만 달고 글을 쓴 적 없는 사람도 고려해야함.
+							var date = new Date(this.c_regdate);
+							var now24Date = moment(date).format("YYYY-MM-DD");
+							var html = '';
+							html += '<tr>';
+							html += '	<td>'+this.c_num+'</td>';
+							html += '	<td><a href="#">'+this.c_subject+'</a></td>';
+							html += '	<td>'+now24Date+'</td>';
+							html += '	<td>'+this.c_readcount+'</td>';
+							html += '</tr>';
+							$('#post-table').append(html);
+						});
+					}
+				});
+				// 댓글단 글을 불러오는 ajax 설정
+				$.ajax({
+					/* url: '',
+					success: function(data) { // 성공적으로 받아왔을 경우
+						$(data).each(function() {
+							var date = new Date(this.c_regdate);
+							var now24Date = moment(date).format("YYYY-MM-DD");
+							var html = '';
+							html += '<tr>';
+							html += '	<td>'+this.c_num+'</td>';
+							html += '	<td>'+this.c_subject+'</td>';
+							html += '	<td>'+now24Date+'</td>';
+							html += '	<td>'+this.c_readcount+'</td>';
+							html += '</tr>';
+							$('#comment-table').append(html);
+						});
+					} */
+				});
+			});
+		};
+		function convert(e, u_id, type){
+			if(e.className === 'off'){
+				// 기존 'on'클래스를 'off'클래스로 클래스명 변경.
+				document.querySelector('.on').className = 'off';
+				//  클릭이벤트가 발생한 e, 즉 'off'클래스를 'on'클래스로 클래스명 변경.
+				e.className = 'on';
 				if(type === 'post'){
-					$.ajax({
-						url: 'cBoardAjax.cb?u_id='+u_id,
-						success: function(data) { // 성공적으로 받아왔을 경우
-							$(data).each(function() {
-								var date = new Date(this.c_regdate);
-								var now24Date = moment(date).format("YYYY-MM-DD HH:mm:ss");
-								alert(this.c_num+"/"+this.c_subject+"/"+now24Date+"/"+this.c_readcount);
-							});
-						}
-					});
-				} else{ // 댓글단 글일 경우의 ajax 요청
+					document.getElementById('post-list').style.display = 'block';
+					document.getElementById('comment-list').style.display = 'none';
+					
+				} else{
+					document.getElementById('comment-list').style.display = 'block';
+					document.getElementById('post-list').style.display = 'none';
 					
 				}
-			});
+				// 기존 'on'클래스는 보이지 않게 하면서,
+				// 'off'클래스로 클래스명을 변경해준다.
+				//document.querySelector('.on').style.display = 'none';
+				
+				// 클릭이벤트가 발생한 e, 즉 'off'클래스는 보이게 하면서,
+				// 'on'클래스로 클래스명을 변경해준다.
+				//e.style.display = 'block';
+			}
 		}
 	</script>
 </head>
@@ -72,12 +107,36 @@
 		<!-- <font face="RIDIBatang"></font> -->
 		<%-- onclick="show(this,'${ub.u_id }')" --%>
 		<div class="board-container" style="border: 1px solid fuchsia;">
-			<p onclick="show(this,'${ub.u_id }','post')" class="link-on" style="font-family:'RIDIBatang'; margin-left: 5%;">작성글</p>
-			<p onclick="show(this,'${ub.u_id }','comment')" class="link" style="font-family:'RIDIBatang'; margin-left: 3%;">댓글단 글</p>
-			<div class="article-box" style="border: 1px solid black; margin-top: 2%;">
-				<form>
-				
-				</form>
+			<p onclick="convert(this,'${ub.u_id }','post')" class="on" style="font-family:'RIDIBatang'; margin-left: 5%;">작성글</p>
+			<p onclick="convert(this,'${ub.u_id }','comment')" class="off" style="font-family:'RIDIBatang'; margin-left: 3%;">댓글단 글</p>
+			<div class="list-box" style="border: 1px solid black; margin-top: 2%;">
+				<div id="post-list" style="display: block; height: 70%;">
+					<table id="post-table" border="1">
+						<tr>
+							<th></th>
+							<th>제목</th>
+							<th>작성일</th>
+							<th>조회</th>
+						</tr>
+					</table>
+				</div>
+				<div id="comment-list" style="display: none; height: 70%;">
+					<table id="comment-table" border="1">
+						<tr>
+							<th></th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>작성일</th>
+							<th>조회</th>
+						</tr>
+						<!-- 임시로 넣어놓음 -->
+						<tr>
+							<td colspan="5">
+								작성한 댓글이 없습니다.
+							</td>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
