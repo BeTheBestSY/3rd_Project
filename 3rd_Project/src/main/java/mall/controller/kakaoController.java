@@ -29,7 +29,7 @@ public class kakaoController {
  
 	@RequestMapping(value = command)
 	@ResponseBody
-	public String kakaopay(
+	public String kakaopay( 
 		 ) {
 	 
 		try {
