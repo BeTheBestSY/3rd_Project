@@ -49,11 +49,13 @@ public class CBoardWriteController {
 	
 	@RequestMapping(value=command,method=RequestMethod.POST)
 	public String gowrite(
-				HttpServletRequest request,
+				HttpServletRequest request, HttpSession session,
 				@ModelAttribute("bb") 
 				@Valid CBoardBean bb,
 				BindingResult br
 			) {
+		
+		UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
 		
 		if(br.hasErrors()) {
 			return viewPage;
@@ -61,6 +63,17 @@ public class CBoardWriteController {
 		
 		bb.setC_ip(request.getRemoteAddr());
 		bb.setC_regdate(new Timestamp(System.currentTimeMillis()));
+		
+		try {
+			if(ub.getU_profileimg() == null) {
+				bb.setC_profileimg("");
+			} else {
+				bb.setC_profileimg(ub.getU_profileimg());
+			}
+		} catch (NullPointerException e) {
+			bb.setC_profileimg("");
+		}
+		bb.setC_subject_rb("");
 		cdao.writeBoard(bb);
 		return gotoPage;
 		

@@ -9,14 +9,14 @@
 		height: 100px;
 		background: white;
 		border-radius: 15px 15px 15px 15px;
-		box-shadow: 5px 5px 10px 0px #BDBDBD;
+		box-shadow: 5px 5px 10px 0px #BDBDBD;  
 		text-align: left;
 	}
 	#btn:hover {
 		background: #EAEAEA;
-	}
+	} 
 	table{
-		width: 100%;
+		width: 100%; 
 	}
 	td{
 		padding: 15px 0px 0px 10px;
