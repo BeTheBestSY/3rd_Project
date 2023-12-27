@@ -81,8 +81,8 @@ public class KakaoApi {
 	}
 	
 	// 사용자 정보 받기
-	public HashMap<String, Object> getUserInfo(String accessToken) {
-	    HashMap<String, Object> userInfo = new HashMap<>();
+	public Map<String, Object> getUserInfo(String accessToken) {
+	    Map<String, Object> userInfo = new HashMap<String, Object>();
 	    String reqUrl = "https://kapi.kakao.com/v2/user/me";
 	    try{
 	        URL url = new URL(reqUrl);

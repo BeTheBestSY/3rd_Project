@@ -157,6 +157,7 @@ body{
 
 <body>
 
+<<<<<<< HEAD
 	<div id="container">
 		<main>
 			<div class="row g-5">
@@ -182,6 +183,123 @@ body{
 								</strong>
 							</li>
 						</c:forEach>
+=======
+     
+    
+<div class="container">
+  <main>
+ 
+
+      <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary" >주문 상품</span>
+        
+        </h4>  
+        <ul class="list-group mb-3">
+        <c:forEach var="pb" items="${ productList }"  varStatus="loop">
+        	<c:set var="totalAmount" value="${totalAmount + (pb.p_price * list[loop.index].cart_qty)}" />
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div style="margin: 0 !important;">    
+              <span>${pb.p_name }</span><br> 
+              <small class="text-body-secondary">수량 : ${list[loop.index].cart_qty}개</small>
+            </div>
+            <span class="text-body-secondary"> <strong> </strong></span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <span>상품 금액</span>
+            <strong>	
+	            <fmt:formatNumber value="${pb.p_price*list[loop.index].cart_qty}" pattern="#,###" />원
+
+	   		</strong> 
+          </li>
+       </c:forEach>
+          
+           <li class="list-group-item d-flex justify-content-between lh-sm">
+           
+           <span>배송비</span>
+            <strong>
+            	<c:if test="${totalAmount<30000}">
+					3,000원
+				</c:if>
+				<c:if test="${totalAmount>=30000}">
+					0원
+				</c:if>
+			</strong> 
+          
+          </li>
+           <li class="list-group-item d-flex justify-content-between lh-sm">
+            <form class="needs-validation" action="cartOrderCompleted.mall" novalidate>
+            <span>총 결제 금액</span>
+            <strong>
+				<c:if test="${totalAmount<30000}">
+					<fmt:formatNumber value="${totalAmount+3000}" pattern="#,###" />원
+					<input type="hidden" name="totalPrice" value="${totalAmount+3000}">
+				</c:if>
+				<c:if test="${totalAmount>=30000}">
+					<fmt:formatNumber value="${totalAmount}" pattern="#,###" />원
+					<input type="hidden" name="totalPrice" value="${totalAmount}">
+				</c:if>
+				
+				 
+			</strong>
+            
+          </li>   
+        </ul>
+
+       
+      </div>
+      
+       
+      
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">주문 정보 입력</h4>
+       
+        <input type="hidden" name="cart_num" value="<%=session.getId()%>">
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label class="form-label">아이디</label>
+              <input type="text" class="form-control" name="u_id" value="${id}" readonly> 
+            </div>
+
+            <div class="col-sm-6">
+              <label class="form-label">수령인 이름</label>
+              <input type="text" class="form-control" name="o_name" id="lastName" value="${name}" required>
+             
+            </div>
+          </div>
+
+           <br>
+           
+           
+            <div class="row g-3">
+							<div class="col-sm-6">
+								<label class="form-label">수령인 전화번호</label>
+								<br>
+								<c:set var="firstList">010, 011, 016, 017, 018, 019</c:set>
+								<select name="o_phone1" class="form-select" style="width: 29%; display: inline;" required>
+									<c:forEach var="first" items="${firstList}">
+										<option value="${first}" <c:if test="${fn:split(phone, '-')[0] eq first }">selected</c:if>>${first }</option>
+									</c:forEach>
+								</select>
+								-
+								<input type="text" class="form-control" style="width: 29%; display: inline; text-align: center;" name="o_phone2" value="${fn:split(phone, '-')[1]}" maxlength="4" required>
+								-
+								<input type="text" class="form-control" name="o_phone3" style="width: 30%; display: inline; text-align: center;" value="${fn:split(phone, '-')[2]}" maxlength="4" required>
+							</div>
+							<div class="col-sm-6">
+								<label class="form-label">전달 사항</label> 
+								<c:set var="msgs">전달사항 없음,문 앞에 놓아주세요,경비실에 맡겨주세요,선물 포장해주세요 (+2000원)</c:set>
+								<select class="form-select" name="o_message">
+									<c:forEach var="msg" items="${msgs}"> 
+										<option value="${msg}">${msg}
+									</c:forEach> 
+								</select>
+							</div>
+						</div>
+           
+           <br>
+>>>>>>> branch 'Lee' of https://github.com/BeTheBestSY/3rd_Project.git
 
 						<li class="list-group-item d-flex justify-content-between lh-sm">
 							<span>배송비</span>
@@ -312,6 +430,7 @@ body{
 						<h3 class="mb-3"><b>지불 방법</b></h3>
 						<br>
 
+<<<<<<< HEAD
 						<div class="tab-wrapper">
 							<div class="tab-item">
 								<input type="radio" id="tab1" value="무통장 입금" name="way" checked="checked"> 
@@ -391,6 +510,11 @@ body{
 	</div>
 	
 s<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+=======
+  
+</div>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script><script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+>>>>>>> branch 'Lee' of https://github.com/BeTheBestSY/3rd_Project.git
 <script>
 $(document).ready(function() {
   // 초기에는 유효성 메시지를 숨깁니다

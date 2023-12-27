@@ -345,6 +345,7 @@ body{
 									카카오페이 결제 오픈 준비중입니다.<br>
 									QR 결제 팝업 창이 바로 노출되지 않으니 참고하시길 바라며,<br>
 									결제 상품 확인 후 주문해주시면 담당자가 확인 후 추후 안내 도와드리겠습니다.<br>
+<<<<<<< HEAD
 									daas
 									<button id="apibtn">버튼</button>
  <a href="kakaopay33.mall">asd</a>
@@ -371,11 +372,15 @@ body{
 					
 				 
 					</script>
+=======
+									
+							
+>>>>>>> branch 'Lee' of https://github.com/BeTheBestSY/3rd_Project.git
 								</div>
 							</div>
 							
 						</div>
-
+<input type="hidden" name="cart_qty" value="${cart_qty}">
 						<hr class="my-4">
 						<button class="w-100 btn btn-primary btn-lg" style="margin-bottom: 100px;" type="submit">주문 완료</button>
 					</form>
@@ -385,7 +390,7 @@ body{
 		</main>
 	</div>
 	
-s<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 $(document).ready(function() {
   // 초기에는 유효성 메시지를 숨깁니다
