@@ -66,7 +66,7 @@
 			</div>
 		</div>
 		<div class="board-container" style="border: 1px solid fuchsia;">
-			<a href="#"><u>작성글</u></a>
+			<a href="#">작성글</a>
 			<a href="#"><u>댓글단 글</u></a>
 		</div>
 		<div>
