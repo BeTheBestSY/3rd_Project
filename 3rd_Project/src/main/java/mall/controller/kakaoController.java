@@ -34,7 +34,7 @@ public class kakaoController {
 	 
 		try {
 			URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
-			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			HttpURLConnection con = (HttpURLConnection) url.openConnection(); 
 			con.setRequestMethod("POST");
 			con.setRequestProperty("Authorization", "KakaoAK c7071b092e71bb5252ca96cf0e27bd41");
 			con.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
