@@ -324,6 +324,12 @@
 			</if>
 		</if>
 	</select>
+	<select id="getAllRestore" resultType="users.model.RestoreBean">
+		select * from restore order by rs_num desc
+	</select>
+	<select id="getRestoreCount" resultType="int">
+		select count(*) from restore
+	</select>
 	<delete id="deleteUsers">
 		delete users
 		where u_id=#{u_id}
@@ -334,6 +340,9 @@
 	</select>
 	<update id="resetReport">
 		update users set u_report = 0 where u_id = #{u_id}
+	</update>
+	<update id="restoreDone">
+		update restore set rs_done = 'Y' where u_id = #{u_id}
 	</update>
 	
 	<!-- product -->

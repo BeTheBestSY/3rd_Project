@@ -9,7 +9,7 @@
 	}
 	#content_update{
 		width: 90%; 
-		height: 430px;
+		height: 630px;
 		text-align: left;
 	}
 </style>
@@ -25,6 +25,16 @@
 		else
 			return false;
 	}
+	function inputDomain(){
+		var select = document.getElementById("selectDomain");
+		var domainArea = document.getElementById("domainArea");
+		
+		domainArea.value = "";
+		if(select.value != "직접 입력"){
+			domainArea.value = select.value;
+		}
+	}
+
 </script>
 
 <%@ include file="usersMypageMenuTop.jsp" %>
@@ -49,12 +59,20 @@
 		<form action="update.u" method="post" onSubmit="return msg()">
 			<input type="hidden" name="u_name" value="${loginInfo.u_name }"> 
 			<input type="hidden" name="u_id" value="${loginInfo.u_id }">
+			
 			<table id="content_update">
 				<tr style="border-top: 1px solid #D5D5D5; height: 12%;">
+					<td rowspan="2">사진 들어갈 곳</td>
+					<th>자기소개</th>
+				</tr>
+				<tr style="height: 160px;">
+					<td>자기소개 들어갈 곳</td>
+				</tr>
+				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA; height: 12%;">
 					<th>&nbsp;&nbsp;이름</th>
 					<td>${loginInfo.u_name}</td>
 				</tr>
-				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA; height: 13%;">
+				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA; height: 12%;">
 					<th>&nbsp;&nbsp;아이디</th>
 					<td>
 						<c:if test="${loginInfo.u_jointype eq 'S'}">${loginInfo.u_id }</c:if>
@@ -62,7 +80,7 @@
 						<c:if test="${loginInfo.u_jointype eq 'K'}">카카오 연동</c:if>
 					</td>
 				</tr>
-				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA; height: 13%;">
+				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA; height: 12%;">
 					<th>&nbsp;&nbsp;비밀번호</th>
 					<td>
 						<c:if test="${loginInfo.u_jointype eq 'S'}">
@@ -73,7 +91,21 @@
 						</c:if>
 					</td>
 				</tr>
-				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA; height: 13%;">
+				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA; height: 12%;">
+					<th>&nbsp;&nbsp;이메일</th>
+					<td>
+						<input type="text" class="form-control" name="u_email" value="${fn:split(loginInfo.u_email, '@')[0]}" style="width: 20%; display: inline-block;" value="${fn:split(ub.u_email, '@')[0]}" maxlength="20" required>
+						@
+						<input type="text" class="form-control" id="domainArea" value="${fn:split(loginInfo.u_email, '@')[1]}" name="u_email" style="width: 20%; display: inline-block;" value="${fn:split(ub.u_email, '@')[1]}" maxlength="15" required>
+						<c:set var="domains">직접 입력,naver.com,daum.net,google.com,hanmail.net</c:set>
+						<select class="form-select" id="selectDomain" style="width: 20%; display: inline-block;" onchange="inputDomain()">
+							<c:forEach var="domain" items="${domains}">
+								<option value="${domain}">${domain}
+							</c:forEach>
+						</select>
+					</td>
+				</tr>
+				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA; height: 12%;">
 					<th><font color="red">*</font> 전화번호</th>
 					<td>
 						<c:set var="firstList">010, 011, 016, 017, 018, 019</c:set>
@@ -89,7 +121,7 @@
 						</td>
 				</tr>
 				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA;">
-					<th><font color="red">*</font> 주소</th>
+					<th style="height: 145px;"><font color="red">*</font> 주소</th>
 					<td>
 						<input type="hidden" id="sample4_jibunAddress">
 						<input type="hidden" id="sample4_extraAddress">
@@ -105,7 +137,7 @@
 							<input type="text" name="u_pay" value="" placeholder="" required>
 						</td>
 				</tr> -->
-				<tr style="border-bottom: 1px solid #D5D5D5; height: 13%;"> 
+				<tr style="border-bottom: 1px solid #D5D5D5; height: 12%;"> 
 					<th><font color="red">*</font> 퍼스널 컬러</th>
 					<td>
 						<c:set var="pcList">잘 모르겠음,봄 라이트,봄 브라이트,여름 라이트,여름 브라이트,여름 뮤트,가을 뮤트,가을 스트롱,가을 딥,겨울 브라이트,겨울 딥</c:set>
