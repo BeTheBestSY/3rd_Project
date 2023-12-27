@@ -88,7 +88,7 @@ public class NaverApi {
 	
 	// 사용자 정보 받기
 	public Map<String, Object> getUserInfo(String accessToken) {
-		HashMap<String, Object> userInfo = new HashMap<>();
+		Map<String, Object> userInfo = new HashMap<String, Object>();
 	    String reqUrl = "https://openapi.naver.com/v1/nid/me";
 	    try{
 	        URL url = new URL(reqUrl);

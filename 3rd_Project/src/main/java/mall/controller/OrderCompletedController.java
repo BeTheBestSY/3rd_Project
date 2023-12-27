@@ -7,12 +7,16 @@ import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import mall.model.KakaoApproveResponse;
 import mall.model.OrderBean;
 import mall.model.OrderDao;
 import mall.model.OrdersProduct;
@@ -27,6 +31,7 @@ public class OrderCompletedController {
 
 	private final String command = "/orderCompleted.mall";
 	private String viewPage = "orderCompleted";
+	private String kakaopay = "kakaopay";
 	
 	@Autowired
 	private OrderDao dao;
@@ -36,6 +41,8 @@ public class OrderCompletedController {
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	public String list(
+			@RequestParam(value ="cart_qty", required = false) String cart_qty,
+
 			@RequestParam(value ="cart_num", required = false) String cart_num,
 			
 			@RequestParam(value = "u_id", required = false) String u_id,
@@ -59,7 +66,10 @@ public class OrderCompletedController {
 			@RequestParam(value = "totalPrice", required = false) String totalPrice,
 			@RequestParam(value = "totalPoint", required = false) String totalPoint,
 			
-			HttpServletRequest request, Model model) {
+			HttpServletRequest request,
+			Model model,
+			HttpSession session
+			) {
 		 
 		OrderBean ob = new OrderBean();
 		
@@ -109,13 +119,29 @@ public class OrderCompletedController {
 			dao.deleteTemp(cart_num);
 			application.setAttribute("flag", true);
 		} 
-		
+ 
+	 
 		model.addAttribute("ob", ob); // 주문 정보가 담긴 객체 '주문완료' 페이지로 전달.
 		model.addAttribute("deli", deli); // 배송비 정보 담아서 전달
 		model.addAttribute("totalPrice", totalPrice); // 총 합계금액 정보 담아서 전달
 		model.addAttribute("totalPoint", totalPoint); // 총 포인트 적립금액 정보 담아서 전달
 		
-		return viewPage;
+		
+		if(way.equals("무통장 입금")) {
+			return viewPage;
+		}else {
+			
+			KakaoApproveResponse kao = new KakaoApproveResponse();
+			
+			kao.getAmount().setTotal(Integer.parseInt(totalPrice));
+			kao.setPartner_order_id( "KAKAOHB"+MaxO_num);
+			kao.setPartner_user_id(u_id);
+			
+			session.setAttribute("kao", kao);
+			session.setAttribute("o_num", MaxO_num);
+			
+			return kakaopay;
+		}
 	}
 
 }

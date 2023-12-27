@@ -65,6 +65,7 @@ public class OrderController {
 		model.addAttribute("name", ub.getU_name());
 		model.addAttribute("id", id);
 		model.addAttribute("phone", ub.getU_phone());
+		model.addAttribute("cart_qty", cart_qty);
 		
 		return viewPage;
 		

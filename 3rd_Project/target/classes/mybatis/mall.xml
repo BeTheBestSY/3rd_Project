@@ -93,4 +93,23 @@
 		update product set p_salevolume = p_salevolume + #{cart_qty} 
 			where p_num = #{p_num}
 	</update>
+	
+	<select id="selectOrders" resultType="mall.model.OrderBean">
+		select * from orders
+			where o_num = #{o_num} 
+	</select>
+	
+	
+	<select id="selectPoint" resultType="int">
+		select p_point from product
+			where p_num = #{p_num} 
+	</select>
+	
+	<delete id="deleteOrder">
+		delete from orders where o_num = #{o_num}
+	</delete>
+	
+	<delete id="deleteOrderProd">
+		delete from ordersProduct where o_num = #{o_num}
+	</delete>
 </mapper>
