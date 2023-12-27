@@ -104,6 +104,14 @@ public class CBoardDao {
 		System.out.println("dao c_num : " + c_num);
 		sqlSessionTemplate.update(namespace+"updateReport", c_num);
 	}
+	// 임시로 만듬
+	public List<CBoardBean> getBoardById2(String u_id) {
+		return sqlSessionTemplate.selectList(namespace+"getBoardById", u_id);
+	}
+	// 임시로 만듬 2
+	public int getTotalCountById2(String u_id) {
+		return sqlSessionTemplate.selectOne(namespace+"getTotalCountById", u_id);
+	}
 
 	
 	
