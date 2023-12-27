@@ -34,7 +34,7 @@
 						});
 					}
 				});
-				// 댓글단 글을 불러오는 ajax 설정 
+				// 댓글단 글을 불러오는 ajax 설정
 				$.ajax({
 					/* url: '',
 					success: function(data) { // 성공적으로 받아왔을 경우
