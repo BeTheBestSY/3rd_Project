@@ -34,7 +34,7 @@
 				   </form>
 		        </div>
 		    </div>
-    
+     
  <div id="board-list" >
         <div class="container" >
         <div class="row">
