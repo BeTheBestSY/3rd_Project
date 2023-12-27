@@ -14,7 +14,7 @@
 	}
 	#btn:hover {
 		background: #EAEAEA; 
-	}
+	} 
 	table{
 		width: 100%; 
 	}
