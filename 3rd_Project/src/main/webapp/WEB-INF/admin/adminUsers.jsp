@@ -58,7 +58,7 @@
 					</span>
 				</div>
 			</div>
-		</div>
+		</div> 
 	</div>
 	<div id="board-list" >
 		<div class="container" >
