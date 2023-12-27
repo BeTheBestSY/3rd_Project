@@ -17,7 +17,6 @@ import utility.KakaoApi;
 @Controller
 public class UsersKakaoController {
 	private final String command = "/kakao.u";
-//	private final String commandOut = "/outkakao.u";
 	private final String commandDis = "/diskakao.u";
 	
 	private final String viewPage = "usersWelcomeView2";
@@ -83,15 +82,6 @@ public class UsersKakaoController {
 	    else 
 	    	return viewPage;
 	}
-//	
-//	// 로그아웃
-//	@RequestMapping(value = commandOut)
-//	public String kakaoLogout() {
-//		KakaoApi kakaoApi = new KakaoApi();
-//		String id = kakaoApi.kakaoLogout(this.accessToken);
-//		System.out.println("로그아웃한 카카오 회원 id:"+id);
-//		return gotoPage;
-//	}
 	
 	// 연동해제
 	@RequestMapping(value = commandDis)
