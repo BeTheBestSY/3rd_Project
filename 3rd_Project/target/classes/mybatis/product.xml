@@ -25,22 +25,30 @@
 	</select>
 	
 	<select id="getAllProductList" resultType="myProduct">
-		select * from product
+		select * from product 
 		
 		<if test="whatColumn=='p_brand'">
-		where p_brand like #{keyword}
+		where p_brand like #{keyword} 
 		</if>
 		
 		<if test="whatColumn=='p_name'">
-		where p_name like #{keyword}
+		where p_name like #{keyword} 
 		</if>
 		
 		<if test="whatColumn=='p_color'">
-		where p_color like #{keyword}
+		where p_color like #{keyword} 
 		</if>
 		
 		<if test="whatColumn=='all'">
-		where p_brand like #{keyword} or p_name like #{keyword} or p_color like #{keyword}
+		where p_brand like #{keyword} or p_name like #{keyword} or p_color like #{keyword} 
+		</if>
+		
+		<if test="filter=='priceH'">
+		order by p_price desc
+		</if>
+		
+		<if test="filter=='priceL'">
+		order by p_price
 		</if>
 		 
 	</select>

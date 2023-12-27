@@ -237,7 +237,7 @@
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th>이메일</th>
 				<td>
-					<input type="text" class="form-control" name="u_email" style="width: 33%; display: inline-block;" value="${fn:split(ub.u_email, '@')[0]}" maxlength="15" required>
+					<input type="text" class="form-control" name="u_email" style="width: 33%; display: inline-block;" value="${fn:split(ub.u_email, '@')[0]}" maxlength="20" required>
 					@
 					<input type="text" class="form-control" id="domainArea" name="u_email" style="width: 33%; display: inline-block;" value="${fn:split(ub.u_email, '@')[1]}" maxlength="15" required>
 					<c:set var="domains">직접 입력,naver.com,daum.net,google.com,hanmail.net</c:set>
@@ -251,6 +251,8 @@
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th>주소</th>
 				<td>
+					<input type="hidden" id="sample4_jibunAddress">
+					<input type="hidden" id="sample4_extraAddress">
 					<input type="text" class="form-control" style="width: 70%; display: inline; margin-bottom: 10px;" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[0]}" id="sample4_postcode" placeholder="먼저 우편번호 찾기 버튼을 눌러주세요." onClick="zipClick()" readonly>
 					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" id="searchBtn"><br>
 					<input type="text" class="form-control" name="u_address" value="${ub.u_address eq '-' ? '': fn:split(ub.u_address, ',')[1]}" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom: 10px;" onClick="zipClick()" readonly>

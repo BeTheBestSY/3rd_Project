@@ -37,7 +37,11 @@ public class UsersLoginController {
 		
 		UsersBean ub = ud.getUserById(u_id);
 		if(ud.getUserById(u_id) != null) { // 가입한 회원이라면
-			if(!ub.getU_password().equals(u_password)) { // 비밀번호가 틀렸다면
+			
+			if(ub.getU_report() > 5) {
+				model.addAttribute("msg","정지된 계정으로는 로그인 하실 수 없습니다.");
+				model.addAttribute("url",command+"?u_id="+u_id);
+			} else if(!ub.getU_password().equals(u_password)) { // 비밀번호가 틀렸다면
 				model.addAttribute("msg","비밀번호가 틀렸습니다.");
 				model.addAttribute("url",command+"?u_id="+u_id);
 			} else { // 비밀번호가 맞다면
@@ -52,6 +56,8 @@ public class UsersLoginController {
 					return gotoPage;
 				}
 			}
+			
+			
 		} else { // 가입하지 않은 회원이라면
 			model.addAttribute("msg","존재하지 않는 회원입니다.");
 			model.addAttribute("url",command+"?u_id="+u_id);

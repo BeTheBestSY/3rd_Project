@@ -1,6 +1,6 @@
 package users.controller;
 
-import javax.servlet.http.HttpSession;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,9 +13,10 @@ import users.model.UsersBean;
 import users.model.UsersDao;
 
 @Controller
-public class UsersProfileContoller {
+public class UsersProfileController {
 	private final String command = "profile.u";
 	private final String viewPage = "usersProfileView";
+	private final String redirect = "redirect";
 	
 	@Autowired
 	private UsersDao ud;
@@ -23,6 +24,10 @@ public class UsersProfileContoller {
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	public String profile(@RequestParam String u_id, Model model) {
 		UsersBean ub = ud.getUserById(u_id);
+		if(ub == null) {
+			model.addAttribute("msg", "탈퇴한 회원입니다."); 
+			return redirect;
+		} 
 		model.addAttribute("ub",ub);
 		return viewPage;
 	}

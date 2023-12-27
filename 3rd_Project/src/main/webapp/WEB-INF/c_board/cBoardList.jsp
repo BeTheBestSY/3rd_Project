@@ -25,13 +25,12 @@
 		var keyword = document.getElementById("search");
 		keyword.value = "";
 	}
-	function popup(u_id, loginInfo){
+	function popup(u_id, loginInfo, pageNumber){
 		if(loginInfo == ''){
-			alert("로그인 후 이용 가능합니다.");
+			alert('로그인 후 이용 가능합니다.');
 			location.href="login.u";
 		} else {
-			alert("작성자:"+u_id);
-			window.open("profile.u?u_id="+u_id, '_blank', 'menubars=no, scrollbars=auto');
+			window.open('profile.u?u_id='+u_id, '프로필', 'menubar=no, toolbar=no, scrollbars=auto, resizable=no, width=500, height=650');
 		}
 	}
 </script>
@@ -98,7 +97,7 @@
 					</c:if>
 				</td>
 				<td>
-					<a href="javascript:popup('${bb.c_writer }', '${loginInfo }')" style="text-decoration-line: none;">
+					<a href="javascript:popup('${bb.c_writer }', '${loginInfo }', '${pageInfo.pageNumber}')" style="text-decoration-line: none;">
 					<c:if test="${bb.c_profileimg eq null }">
 						<img src="resources/image/person.svg" width="20" class="rounded-circle">
 						<c:if test="${fn:length(bb.c_writer) < 16}">
@@ -117,6 +116,14 @@
 					</a>
 				</td>
 				<td>
+					<%-- <c:set var="now" value="<%= new java.util.Date() %>" />
+					<fmt:formatDate value="${now}" pattern="yyyy-MM-dd"/>
+					<c:set var="regdate" value="<fmt:formatDate value='${bb.c_regdate}' pattern='yyyy-MM-dd'/>" />
+					
+					<c:if test="${regdate eq now}">
+						
+					</c:if> --%>
+					<%-- ${bb.c_regdate } --%>
 					<fmt:formatDate value="${bb.c_regdate}" pattern="yyyy-MM-dd"/>
 				</td>
 				<td>${ bb.c_readcount }</td>

@@ -124,5 +124,3 @@
     <br>
 <br><br>
 </article>
-
-

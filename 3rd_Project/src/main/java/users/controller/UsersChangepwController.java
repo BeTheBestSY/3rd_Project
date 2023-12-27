@@ -13,7 +13,7 @@ import users.model.UsersBean;
 import users.model.UsersDao;
 
 @Controller
-public class UsersChangepwContoller {
+public class UsersChangepwController {
 	private final String command = "changepw.u";
 	private final String viewPage = "usersChangepwForm";
 	private final String gotoPage = "redirect";
@@ -29,14 +29,13 @@ public class UsersChangepwContoller {
 	}
 	
 	@RequestMapping(value = command, method = RequestMethod.POST)
-	public String doAction2(@RequestParam String old_password,
+	public String doAction2(@RequestParam String u_id,
+						@RequestParam String old_password,
 						@RequestParam String new_password,
 						@RequestParam String new_password_chk,
 						HttpSession session,
 						Model model) {
 		
-		UsersBean loginInfo = (UsersBean)session.getAttribute("loginInfo");
-		String u_id = loginInfo.getU_id();
 		UsersBean ub = ud.getUserById(u_id);
 		
 		if(ub.getU_password().equals(old_password)) {

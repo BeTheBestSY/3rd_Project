@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="adminMenu.jsp"%>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminCompanyUpdate.css">
-
+<%@ include file="adminMenu.jsp"%>
 <style>
 input[type="text"], select, email, textarea {
   font-size: 15px;
@@ -42,11 +41,13 @@ table{
 	}
 
 
-		function init(){
-			var elem = document.getElementById('keyword');
-			elem.value = '';
-		}
+	function init(){
+		var elem = document.getElementById('keyword');
+		elem.value = '';
+	}
 	
+	function sub(){
+	}
 </script>
 
 <article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
@@ -57,7 +58,7 @@ table{
 </div>
 <br>
 <div id="board-list">		
-	<form:form commandName="bb" action="qReply.admin" method="post">
+	<form:form commandName="bb" action="qReply.admin" method="post" >
 		<input type="hidden" name="q_num" value="${ bb.q_num }">
 		<input type="hidden" name="pageNumber" value="${pageNumber}">
 		<input type = "hidden" name = "q_ref" value=${bb.q_ref }>
@@ -72,24 +73,8 @@ table{
 						<input type="text" name="q_subject" class="form-control" style="width: 94%;" maxlength="20" placeholder="20자 이내로 입력해주세요." required>
 					</td>
 				</tr>
-				<tr>
-					<th align="left" bgcolor="#EDE5D8" width="10%">작성자</th>
-					<td align="left" width="35%">
-						<c:if test="${joinType == 'N'}">
-							외부 회원 (네이버)
-						</c:if>
-						<c:if test="${joinType == 'K'}">
-							외부 회원 (카카오)
-						</c:if>
-						<c:if test="${joinType == 'S'}">
-							&nbsp;${loginInfo.u_id}
-						</c:if>
-						<input type="hidden" name="q_writer" value="admin" class="form-control" style="width: 86%;" maxlength="5" readonly>admin
-					</td>
-					<th align="left" bgcolor="#EDE5D8" width="14%">이메일</th>
-					<td align="left">
-						<input type="hidden" name="q_email" class="color@gmail.com" style="width: 85%;"  placeholder="ex) color@gmail.com" readonly>color@gmail.com
-					</td>
+						<input type="hidden" name="q_writer" value="admin" class="form-control" style="width: 86%;" maxlength="5" readonly>
+						<input type="hidden" name="q_email" value="color@gmail.com" style="width: 85%;"  placeholder="ex) color@gmail.com" readonly>
 				</tr>
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" >내용</th>
@@ -105,7 +90,7 @@ table{
 					</table>
 				 <br><br>
 				 <center>
-						<input type="submit" id="btn" value="답글 작성" class="btn btn-white" style="font-size: 13pt; height:60px; width: 130px;">&nbsp;
+						<input type="submit" id="btn" value="답글 작성" onClick="sub()" class="btn btn-white" style="font-size: 13pt; height:60px; width: 130px;">&nbsp;
 		 </center>
 	</form:form>
 </div>

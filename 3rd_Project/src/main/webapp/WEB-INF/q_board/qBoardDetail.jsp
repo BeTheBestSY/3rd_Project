@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
 <%@ include file="./../product/productHeader.jsp" %>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/qBoardWrite.css">
 <style type="text/css">
@@ -36,21 +36,9 @@
 	}
 %>
 
-<c:if test="${bb.q_secret == 'Y'}">
-	<c:set var="userId" value="<%=id%>" />
-	<c:if test="${bb.q_writer != userId}">
-		<c:if test="${userId != 'admin'}">
-			<script type="text/javascript">
-				alert("비밀글은 작성자와 관리자만 확인 가능합니다.");
-				history.go(-1);
-			</script>
-		</c:if>
-	</c:if>
-</c:if>
-
 <br>
 <article id="center" style=" text-align:center; font-family: 'RIDIBatang';">
-
+<input type="hidden" value="<%=id%>" name="userId">
 <div class="page-title">
     <div class="container">
         <br><br>
@@ -99,10 +87,10 @@
 					</td>
 					<th align="left" bgcolor="#EDE5D8" width="14%" >공개 여부</th>
 					<td align="left" height="68">
-						<c:if test="${bb.q_secret == 'N'}">
+						<c:if test="${bb.q_secret == 'Y'}">
 							비밀글
 						</c:if>
-						<c:if test="${bb.q_secret == 'Y'}">
+						<c:if test="${bb.q_secret == 'N'}">
 							공개글
 						</c:if>
 					</td>
@@ -110,7 +98,7 @@
 				<tr>
 					<th align="left" bgcolor="#EDE5D8" width="10%" >내용</th>
 					<td align="left" colspan="3" height="200" valign="top" style="padding-top: 25px;">
-						<pre style="font-family: 'RIDIBatang'; line-height: 170%;">${bb.q_content}</pre>
+						<pre style="font-family: 'RIDIBatang'; line-height: 170%; font-size: 12pt;">${bb.q_content}</pre>
 					</td>
 				</tr>
 						

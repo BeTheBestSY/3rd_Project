@@ -36,6 +36,8 @@
 		select * from q_board where q_num = #{q_num}
 	</select>
 	
+	
+	
 	<delete id="deleteBoard">
 		delete from q_board where q_num = #{q_num}
 	</delete>

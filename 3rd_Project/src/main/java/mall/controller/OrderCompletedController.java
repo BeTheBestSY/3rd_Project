@@ -97,12 +97,12 @@ public class OrderCompletedController {
 		int MaxO_num = 0;
 		MaxO_num = dao.selectMaxO_num();
 		MaxO_num = MaxO_num+1;
-		 
+		
 		ob.setO_num(MaxO_num);
 		
 		if(!(Boolean)application.getAttribute("flag")) {
-			TempCart tc =dao.selectTemp(cart_num); 
-			dao.insertOrderProd(tc,MaxO_num);
+			TempCart tc = dao.selectTemp(cart_num); 
+			dao.insertOrderProd(tc, MaxO_num);
 			dao.insertOrderInfo(ob);
 			dao.downStockPord(tc);
 			dao.upSalevolumePord(tc);
