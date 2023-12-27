@@ -230,6 +230,10 @@ public class AdminDao {
 		
 	}
 
+	public void resetReport(String u_id) {
+		sqlSessionTemplate.update(nameSpace+"resetReport", u_id);
+	}
+
 
 	
 
