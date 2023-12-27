@@ -57,7 +57,7 @@
 						<input type="radio" name="filter_btn" value="K" style="padding-top: 6px;" <c:if test="${param.filter eq 'K'}">checked</c:if> style="width:20px;height:18px;"> 카카오
 					</span>
 				</div>
-			</div>
+			</div> 
 		</div> 
 	</div>
 	<div id="board-list" >
