@@ -1,10 +1,14 @@
 package users.model;
 
+import java.util.Date;
+
 public class RestoreBean {
+	private int rs_num;
 	private String u_id;
 	private String u_email;
 	private String rs_content;
 	private String rs_date;
+	private String rs_done;
 	
 	public String getU_id() {
 		return u_id;
@@ -29,6 +33,18 @@ public class RestoreBean {
 	}
 	public void setRs_date(String rs_date) {
 		this.rs_date = rs_date;
+	}
+	public int getRs_num() {
+		return rs_num;
+	}
+	public void setRs_num(int rs_num) {
+		this.rs_num = rs_num;
+	}
+	public String getRs_done() {
+		return rs_done;
+	}
+	public void setRs_done(String rs_done) {
+		this.rs_done = rs_done;
 	}
 	
 }

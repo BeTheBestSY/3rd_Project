@@ -30,7 +30,7 @@
 			alert('로그인 후 이용 가능합니다.');
 			location.href="login.u";
 		} else {
-			window.open('profile.u?u_id='+u_id, '_blank', 'menubars=no, scrollbars=auto');
+			window.open('profile.u?u_id='+u_id, '프로필', 'menubar=no, toolbar=no, scrollbars=auto, resizable=no, width=500, height=650');
 		}
 	}
 </script>
@@ -116,6 +116,14 @@
 					</a>
 				</td>
 				<td>
+					<%-- <c:set var="now" value="<%= new java.util.Date() %>" />
+					<fmt:formatDate value="${now}" pattern="yyyy-MM-dd"/>
+					<c:set var="regdate" value="<fmt:formatDate value='${bb.c_regdate}' pattern='yyyy-MM-dd'/>" />
+					
+					<c:if test="${regdate eq now}">
+						
+					</c:if> --%>
+					<%-- ${bb.c_regdate } --%>
 					<fmt:formatDate value="${bb.c_regdate}" pattern="yyyy-MM-dd"/>
 				</td>
 				<td>${ bb.c_readcount }</td>
