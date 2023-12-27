@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import c_board.model.CBoardBean;
 import c_board.model.CBoardDao;
@@ -23,6 +24,7 @@ public class CBoardListController {
 	private CBoardDao cdao;
 	  
 	public final String command="/cBoardList.cb";
+	public final String ajaxCommand="/cBoardAjax.cb";
 	public final String viewPage="cBoardList";
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
@@ -58,6 +60,19 @@ public class CBoardListController {
 		model.addAttribute("keyword",keyword);
 		
 		return viewPage;
+	}
+	
+	@RequestMapping(value=ajaxCommand)
+	@ResponseBody
+	public List<CBoardBean> getCBoard(@RequestParam String u_id) {
+		//Map<String, String> map = new HashMap<String, String>();
+		//map.put("u_id", u_id);
+//		int totalCount = cdao.getTotalCountById2(u_id);
+		List<CBoardBean> ajaxList = cdao.getBoardById2(u_id);
+		for(CBoardBean cb:ajaxList) {
+			System.out.println("cb.getC_regdate():"+cb.getC_regdate());
+		}
+		return ajaxList;
 	}
 }
  
