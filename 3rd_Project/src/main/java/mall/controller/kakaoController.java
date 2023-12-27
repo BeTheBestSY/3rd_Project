@@ -30,7 +30,7 @@ public class kakaoController {
 	@RequestMapping(value = command)
 	@ResponseBody
 	public String kakaopay( 
-		 ) {
+		 ) { 
 	 
 		try {
 			URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
