@@ -46,7 +46,7 @@ public class CBoardListController {
 //		for(CBoardBean cb:list) {
 //			System.out.println("CBoardBean의 c_regdate: " + formatter.format(cb.getC_regdate()));
 //			// registerdate를 포맷팅에서 다시 세팅
-//		}
+//		} 
 		// 현재 날짜 구하기
 //		Date now = new Date();
 		//System.out.println(formatter.format(now));
