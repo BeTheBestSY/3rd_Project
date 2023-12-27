@@ -479,10 +479,9 @@ function hideLoading() {
           <img class="file-upload-image" id="face-image" src="#" alt="your image" />
           <div class="image-title-wrap">
             <button type="button" onclick="removeUpload()" class="remove-image">다시 선택하기</button>
-	            
-	            
+            
 	            <div id="loading-overlay">
-				  <div>로딩 중...</div>
+				  
 				</div>
 		            
           </div>
@@ -496,12 +495,6 @@ function hideLoading() {
 		<div id="label-container"></div>
 		<br><br><br><br><br>
 		
-		
-		
-		
-
-
-
 		<div id="elseArea" style="display: none; margin: auto; font-family: 'RIDIBatang'; position: relative; background: #EFF0F7;">
 			<div class="row" style="width: 60%; margin: auto;">
 				<div class="col-lg-6" id="result" style="height: 500px;" onClick="go_update()">
