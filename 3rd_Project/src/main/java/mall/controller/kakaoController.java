@@ -1,15 +1,21 @@
 package mall.controller;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
- 
- 
-
 import org.springframework.stereotype.Controller;
- 
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +33,6 @@ public class kakaoController {
  
 	@RequestMapping(value = command) 
 	@ResponseBody
-<<<<<<< HEAD
 	public String kakaopay( 
 		 ) { 
 	 
@@ -85,7 +90,10 @@ public class kakaoController {
 		
 		return "{\"result\":\"NO\"}";
 		}
-=======
+	private String convertToQueryString(MultiValueMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	public String kakaopay(
 			HttpSession session
 		 ) {
@@ -115,7 +123,6 @@ public class kakaoController {
 		                requestEntity,
 		                String.class);
      
->>>>>>> branch 'you' of https://github.com/BeTheBestSY/3rd_Project.git
 
 		        if (responseEntity.getStatusCode().equals(HttpStatus.OK)) {
 		            // 성공적인 경우, JSON 문자열을 그대로 반환하거나 필요에 따라 처리
