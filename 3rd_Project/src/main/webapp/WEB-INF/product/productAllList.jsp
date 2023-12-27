@@ -151,7 +151,7 @@
 						<select name ="whatColumn" id="whatColumn" class="btn btn-outline-secondary dropdown-toggle" style="text-align: left;">
 							<option value="all">전체
 							<option value="p_brand">브랜드
-							<option value="p_name">이름
+							<option value="p_name">제품명
 						</select>
 						<input type="text" name="keyword" id="keyword" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
 						<input class="btn btn-outline-secondary" type="submit" id="button-addon2"  value="검색"> 

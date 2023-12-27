@@ -58,9 +58,20 @@ public class QBoardWriteController {
 		
 		qb.setQ_ip(request.getRemoteAddr());
 		qb.setQ_regdate(new Timestamp(System.currentTimeMillis()));
+		
+		try {
+			if(ub.getU_profileimg() == null) {
+				qb.setQ_profileimg("");
+			} else {
+				qb.setQ_profileimg(ub.getU_profileimg());
+			}
+		} catch(NullPointerException e) {
+			qb.setQ_profileimg("");
+		}
+		
 		qdao.writeBoard(qb);
 		model.addAttribute("bb", qb);
-		model.addAttribute("joinType",joinType);
+		model.addAttribute("joinType",joinType); 
 		
 		return gotoPage;
 		
