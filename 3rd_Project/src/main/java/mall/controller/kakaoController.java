@@ -44,7 +44,7 @@ public class kakaoController {
 			
 			map.add("cid", "TC0ONETIME");
 			map.add("partner_order_id", "KAO20230318001");
-			map.add("partner_user_id", "kakaopayTest");
+			map.add("partner_user_id", "kakaopayTest"); 
 			map.add("item_name","커피");
 			map.add("quantity", "1");
 		    map.add("total_amount", "5000");
