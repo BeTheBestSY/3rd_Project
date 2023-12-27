@@ -28,7 +28,7 @@
 		insert into feedback values(feedback_seq.nextval, #{u_id}, #{u_jointype}, #{fb_content}, #{fb_requestApi})
 	</insert>
 	<insert id="insertRestore">
-		insert into restore values(#{u_id}, #{u_email}, #{rs_content}, default)
+		insert into restore values(restore_seq.nextval,#{u_id}, #{u_email}, #{rs_content}, default, 'N')
 	</insert>
 	<update id="updateUsers">
 		update users

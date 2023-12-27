@@ -21,15 +21,39 @@
 		var elem = document.getElementById('search');
 		elem.value = '';
 	}
+	function seeReport(){
+		var popupW = 800;
+		var popupH = 500;
+		var popupX = Math.round(window.screenX + (window.outerWidth/2) - (popupW/2));
+		var popupY = Math.round(window.screenY + (window.outerHeight/2) - (popupH/2));
+		
+		var popupWindow = window.open('seeReport.admin', 'login', 'status=no, height='+popupH+', width='+popupW+', left='+popupX+', top='+popupY);
+		popupWindow.onresize = (_=>{popupWindow.resizeTo(popupW+20,popupH+70);}) // 팝업창으로 열리는 화면은 사이즈 조절하지 못하도록 설정해두기.
+	}
 </script>
 <style>
 	#btn{
 		width: 80px;
-		font-family: 'RIDIBatang';
+		font-family: 'RIDIBatang'; 
 		font-size: 10pt;
 	}
+	#btn:hover{
+		color: white; 
+	}
+	#btn2{
+		font-family: 'RIDIBatang';
+		font-size: 10pt;
+		padding: 5px 15px 5px 15px;
+		border: 1px solid #A6A6A6;
+		border-radius: 8px;
+		background: white;
+	}
+	#btn2:hover {
+		background: #E4E4E4;
+		cursor: pointer;
+	}
 </style>
-<article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
+<article id="center" style="top: -15px; position: relative; text-align:center; font-family: 'MaruBuri-Regular';" >
 <div class="section">
 	<div class="tag">
 		<h4>회원 관리</h4>
@@ -50,12 +74,16 @@
 					</form>
 				</div>
 				<div class="filter_radio" style="font-family: 'RIDIBatang'; font-size: 11pt; width: 400px;">
-					<span style="top: -20px; position: relative;"> 
+					<span style="top: -20px; position: relative;">
 						<input type="radio" name="filter_btn" value="A" style="padding-top: 6px;" <c:if test="${param.filter eq 'A' || param.filter eq null || param.filter eq ''}">checked</c:if> style="width:20px;height:18px;"> 전체 회원&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" name="filter_btn" value="S" style="padding-top: 6px;" <c:if test="${param.filter eq 'S'}">checked</c:if> style="width:20px;height:18px;"> 기본&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" name="filter_btn" value="N" style="padding-top: 6px;" <c:if test="${param.filter eq 'N'}">checked</c:if> style="width:20px;height:18px;"> 네이버&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="filter_btn" value="K" style="padding-top: 6px;" <c:if test="${param.filter eq 'K'}">checked</c:if> style="width:20px;height:18px;"> 카카오
+						<input type="radio" name="filter_btn" value="K" style="padding-top: 6px;" <c:if test="${param.filter eq 'K'}">checked</c:if> style="width:20px;height:18px;"> 카카오&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="filter_btn" value="R" style="padding-top: 6px;" <c:if test="${param.filter eq 'R'}">checked</c:if> style="width:20px;height:18px;"> 정지
 					</span>
+				</div>
+				<div style="position: absolute; left: 1573px; top: 195px; height: 20px;">
+					<input type="button" id="btn2" value="정지해제 요청 관리" onClick="seeReport()">
 				</div>
 			</div> 
 		</div> 
@@ -104,8 +132,8 @@
 							<div class="box2 scrollnone">
 								<table class="colr_table2" style="font-size: 11pt; text-align: center; font-family: 'RIDIBatang';">
 									<c:if test="${empty usersLists }">
-										<tr>
-											<td colspan="12">존재하지 않는 회원 입니다.</td>
+										<tr style="height: 30px;">
+											<td colspan="12">일치하는 회원이 존재하지 않습니다.</td>
 										</tr>
 									</c:if> 
 									
@@ -116,7 +144,7 @@
 												${u_num }
 												<c:set var="u_num" value="${u_num-1 }"/> 
 											</td>
-											<td width="8.2%" style="background: cyan;"> 
+											<td width="8.2%"> 
 												<c:if test="${ub.u_jointype eq 'N' }">
 													네이버 연동
 												</c:if>
@@ -155,18 +183,16 @@
 															value="연동해제"
 														</c:if>
 														<c:if test="${ub.u_jointype eq 'S'}">
-															value="삭제하기"
+															value="회원삭제"
 														</c:if>
 													>
 												</a>
 												<a href="usersUpdate.admin?u_id=${ub.u_id }">
-													<input type="button" id="btn" class="btn btn-white"  value="수정하기">
+													<input type="button" id="btn" class="btn btn-white"  value="정보수정">
 												</a>
-												<c:if test="${ub.u_report > 5}">
-													<a href="#">
-														<input type="button" id="btn" class="btn btn-white" style="color: red;" value="정지해제">
-													</a>
-												</c:if>
+												<a href="javascript:if(${ub.u_report <= 5}){alert('정지 회원이 아닙니다.');}else{location.href='report.admin?u_id=${ub.u_id }&filter=${param.filter}&whatColumn=${param.whatColumn}&keyword=${param.keyword}'}">
+													<input type="button" id="btn" class="btn btn-white" style="color: red;" value="정지해제">
+												</a>
 							 				</td>
 										</tr>
 									</c:forEach>

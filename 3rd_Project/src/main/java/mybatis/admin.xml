@@ -230,11 +230,17 @@
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
 				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
+				</if>
 			</if>
 			<if test="whatColumn == 'u_name'">
 				where u_name like #{keyword}
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
+				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
 				</if>
 			</if>
 			<if test="whatColumn == 'u_id'">
@@ -242,17 +248,26 @@
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
 				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
+				</if>
 			</if>
 			<if test="whatColumn == 'u_phone'">
 				where u_phone like #{keyword}
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
 				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
+				</if>
 			</if>
 		</if>
 		<if test='keyword == ""'>
 			<if test='filter == "S" or filter == "N" or filter == "K"'>
 				where u_jointype = #{filter}
+			</if>
+			<if test='filter == "R"'>
+				where u_report not in(0,1,2,3,4,5)
 			</if>
 		</if>
 	</select>
@@ -268,11 +283,17 @@
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
 				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
+				</if>
 			</if>
 			<if test="whatColumn == 'u_name'">
 				where u_name like #{keyword}
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
+				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
 				</if>
 			</if>
 			<if test="whatColumn == 'u_id'">
@@ -280,11 +301,17 @@
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
 				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
+				</if>
 			</if>
 			<if test="whatColumn == 'u_phone'">
 				where u_phone like #{keyword}
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
+				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
 				</if>
 			</if>
 		</if>
@@ -292,7 +319,16 @@
 			<if test='filter == "S" or filter == "N" or filter == "K"'>
 				where u_jointype = #{filter}
 			</if>
+			<if test='filter == "R"'>
+				where u_report not in(0,1,2,3,4,5)
+			</if>
 		</if>
+	</select>
+	<select id="getAllRestore" resultType="users.model.RestoreBean">
+		select * from restore order by rs_num desc
+	</select>
+	<select id="getRestoreCount" resultType="int">
+		select count(*) from restore
 	</select>
 	<delete id="deleteUsers">
 		delete users
@@ -302,6 +338,12 @@
 		select * from users
 		where u_id=#{u_id}
 	</select>
+	<update id="resetReport">
+		update users set u_report = 0 where u_id = #{u_id}
+	</update>
+	<update id="restoreDone">
+		update restore set rs_done = 'Y' where u_id = #{u_id}
+	</update>
 	
 	<!-- product -->
 	
