@@ -43,7 +43,7 @@ public class CBoardListController {
 		
 		List<CBoardBean> list = cdao.getAllBoardList(pageInfo,map);
 //		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-//		for(CBoardBean cb:list) {
+//		for(CBoardBean cb:list) { 
 //			System.out.println("CBoardBean의 c_regdate: " + formatter.format(cb.getC_regdate()));
 //			// registerdate를 포맷팅에서 다시 세팅
 //		}
