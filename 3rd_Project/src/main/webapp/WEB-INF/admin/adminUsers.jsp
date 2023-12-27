@@ -25,7 +25,7 @@
 <style>
 	#btn{
 		width: 80px;
-		font-family: 'RIDIBatang';
+		font-family: 'RIDIBatang'; 
 		font-size: 10pt;
 	}
 	#btn2{
