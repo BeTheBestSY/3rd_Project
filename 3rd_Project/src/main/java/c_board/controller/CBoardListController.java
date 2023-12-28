@@ -95,7 +95,7 @@ public class CBoardListController {
 			valueByHashMap.put("c_readcount", cb.getC_readcount());
 			System.out.println("valueByHashMap(해시맵 형태):"+valueByHashMap);
 			
-			valueByJSONObject = new JSONObject(valueByHashMap);
+			//valueByJSONObject = new JSONObject(valueByHashMap);
 			System.out.println("valueByJSONObject(json 형태):"+valueByJSONObject);
 			
 			// 2�떒怨�. 
@@ -104,7 +104,7 @@ public class CBoardListController {
 //			valueOfC_numByHashMap = new LinkedHashMap<String, Object>();
 			valueOfC_numByHashMap.put(String.valueOf(cb.getC_num()), valueByJSONObject);
 			System.out.println("valueOfC_numByHashMap(해시맵 형태):"+valueOfC_numByHashMap);
-			valueOfC_numByJSONObject = new JSONObject(valueOfC_numByHashMap);
+			//valueOfC_numByJSONObject = new JSONObject(valueOfC_numByHashMap);
 			System.out.println("valueOfC_numByJSONObject(json 형태):"+valueOfC_numByJSONObject);
 		}
 		
@@ -113,7 +113,7 @@ public class CBoardListController {
 		resultHashMap.put("pagingHtml", pageInfo.getPagingHtml());
 		System.out.println("resultHashMap(해시맵 형태):"+resultHashMap);
 		
-		resultJSONObject = new JSONObject(resultHashMap);
+		//resultJSONObject = new JSONObject(resultHashMap);
 		System.out.println("resultJSONObject(json 형태):"+resultJSONObject);
 		return resultJSONObject;
 	}

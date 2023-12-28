@@ -288,6 +288,63 @@ public class AdminDao {
 	}
 
 
+	public String memberSelect() {
+		String member = sqlSessionTemplate.selectOne(nameSpace+"memberSelect");
+		return member;
+	}
+
+
+	public String col1Select(String string) {
+		String col1 = sqlSessionTemplate.selectOne(nameSpace+"col1Select",string);
+		return col1;
+	}
+	
+	public String col2Select(String string) {
+		String col2 = sqlSessionTemplate.selectOne(nameSpace+"col2Select",string);
+		return col2;
+	}
+	
+	public String col3Select(String string) {
+		String col3 = sqlSessionTemplate.selectOne(nameSpace+"col3Select",string);
+		return col3;
+	}
+	
+	public String col4Select(String string) {
+		String col4 = sqlSessionTemplate.selectOne(nameSpace+"col4Select",string);
+		return col4;
+	}
+	
+	public String col5Select(String string) {
+		String col5 = sqlSessionTemplate.selectOne(nameSpace+"col5Select",string);
+		return col5;
+	}
+	
+	public String col6Select(String string) {
+		String col6 = sqlSessionTemplate.selectOne(nameSpace+"col6Select",string);
+		return col6;
+	}
+	
+	public String col7Select(String string) {
+		String col7 = sqlSessionTemplate.selectOne(nameSpace+"col7Select",string);
+		return col7;
+	}
+	
+	public String col8Select(String string) {
+		String col8 = sqlSessionTemplate.selectOne(nameSpace+"col8Select",string);
+		return col8;
+	}
+	
+	public String col9Select(String string) {
+		String col9 = sqlSessionTemplate.selectOne(nameSpace+"col9Select",string);
+		return col9;
+	}
+	
+	public String col10Select(String string) {
+		String col10 = sqlSessionTemplate.selectOne(nameSpace+"col10Select",string);
+		return col10;
+	}
+
+
 	
 
 
