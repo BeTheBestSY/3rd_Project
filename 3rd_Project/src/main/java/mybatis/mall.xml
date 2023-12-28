@@ -33,7 +33,27 @@
 	</select>
 	
 	<select id="getOrdersByU_id" resultType="mall.model.OrderBean">
-		select * from orders where u_id = #{u_id}
+		select * from orders where u_id = #{u_id} order by o_num desc
+	</select>
+	
+	<select id="getOrdersCountByU_id" resultType="int">
+		select count(*) from orders where u_id = #{u_id}
+	</select>
+
+	<select id="getAllOrdersProduct2"
+		resultType="mall.model.OrdersProductBean">
+		select * from ordersProduct
+		where o_num = #{o_num}
+	</select>
+
+	<select id="selectPord2" resultType="myProduct">
+		select p_name, p_price, p_num, p_point from product
+		where p_num = #{p_num}
+	</select>
+
+	<select id="getOneOrder2" resultType="mall.model.OrderBean">
+		select * from orders
+		where o_num = #{o_num}
 	</select>
 	
 	<delete id="deleteTemp">
@@ -48,7 +68,7 @@
 	<insert id="insertOrderInfo">
 		insert into orders
 			values(#{o_num},#{u_id},#{o_phone},#{o_name},#{o_message},#{o_addr},
-			#{o_date},#{o_status},#{pay_bank},#{pay_name},#{way})
+			#{o_date},#{o_status},#{o_totalamount},#{pay_bank},#{pay_name},#{way})
 	</insert>
 	
 	<select id="selectMaxO_num" resultType="int">

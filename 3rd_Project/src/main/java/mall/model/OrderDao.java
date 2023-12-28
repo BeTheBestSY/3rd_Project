@@ -5,12 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import product.model.ProductBean;
 import users.model.UsersBean;
+import utility.Paging;
 
 @Component("orderDao")
 public class OrderDao {
@@ -144,9 +146,30 @@ public class OrderDao {
 		
 	}
 
-	public List<OrderBean> getOrdersByU_id(String u_id) {
-		List<OrderBean> obList = sqlSessionTemplate.selectList(namespace+".getOrdersByU_id", u_id);
+	public List<OrderBean> getOrdersByU_id(String u_id, Paging pageInfo) {
+		RowBounds rowbounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+		List<OrderBean> obList = sqlSessionTemplate.selectList(namespace+".getOrdersByU_id", u_id, rowbounds);
 		return obList;
+	}
+
+	public int getOrdersCountByU_id(String u_id) {
+		int count = sqlSessionTemplate.selectOne(namespace+".getOrdersCountByU_id", u_id);
+		return count;
+	}
+	
+	public List<OrdersProductBean> getAllOrdersProduct2(String o_num) {
+		List<OrdersProductBean> ordProdlist = sqlSessionTemplate.selectList(namespace+".getAllOrdersProduct2", o_num);
+		return ordProdlist;
+	}
+	
+	public ProductBean selectPord2(String p_num) {
+		ProductBean pb = sqlSessionTemplate.selectOne(namespace+".selectPord2", p_num);
+		return pb;
+	}
+	
+	public OrderBean getOneOrder2(String o_num) {
+		OrderBean ob = sqlSessionTemplate.selectOne(namespace+".getOneOrder2", o_num);
+		return ob;
 	}
 	 
 }
