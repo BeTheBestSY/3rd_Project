@@ -179,7 +179,7 @@ public class Paging {
 			String keyword) {	//,String whologin	
 
 		if(  _pageNumber == null || _pageNumber.equals("null") || _pageNumber.equals("")  ){
-			System.out.println("_pageNumber:"+_pageNumber); // null
+			//System.out.println("_pageNumber:"+_pageNumber); // null
 			_pageNumber = "1" ;
 		}
 		this.pageNumber = Integer.parseInt( _pageNumber ) ; 
@@ -214,13 +214,13 @@ public class Paging {
 		this.beginPage = ( this.pageNumber - 1 ) / this.pageCount * this.pageCount + 1  ;
 		this.endPage = this.beginPage + this.pageCount - 1 ;
 		
-		System.out.println("pageNumber:"+pageNumber+"/totalPage:"+totalPage);	
+		//System.out.println("pageNumber:"+pageNumber+"/totalPage:"+totalPage);	
 		
 		if( this.endPage > this.totalPage ){
 			this.endPage = this.totalPage ;
 		}
 		
-		System.out.println("pageNumber2:"+pageNumber+"/totalPage2:"+totalPage);	
+		//System.out.println("pageNumber2:"+pageNumber+"/totalPage2:"+totalPage);	
 		this.url = url ; //  /ex/list.ab
 		this.whatColumn = whatColumn ;
 		this.keyword = keyword ;
@@ -231,6 +231,92 @@ public class Paging {
 		//맨처음 이전 123 [다음]맨 끝
 	}//생성자
 	
+	// Ajax용 페이징 생성자
+	public Paging(String pageNumber, String pageSize, int totalCount, String url ) {
+		System.out.println("Ajax Paging() 호출중 ...");
+		if(pageNumber == null) {
+			pageNumber = "1";
+		}
+		this.pageNumber = Integer.parseInt(pageNumber); 
+		if(pageSize == null) {
+			pageSize = "5";
+		}
+		this.pageSize = Integer.parseInt(pageSize); 
+		// 굳이 ajax용 페이징 생성자 만들 필요 없긴 함. 원래 paging 생성자에 if문 추가하면 되는데 시간상 나중에..
+		this.limit = this.pageSize; // 한 페이지에 보여줄 레코드 갯수
+
+		this.totalCount = totalCount ; //총 페이지 수
+								//Math.ceil >>> 실수 값 반 올림
+		this.totalPage = (int)Math.ceil((double)this.totalCount / this.pageSize) ;
+		
+		this.beginRow = ( this.pageNumber - 1 )  * this.pageSize  + 1 ;
+		this.endRow =  this.pageNumber * this.pageSize ;
+		
+		//삭제할 때 필요한 작업, 삭제 후에 이동할 위치
+		if( this.pageNumber > this.totalPage ){
+			this.pageNumber = this.totalPage ;
+		}
+		//건너 뛸 레코드 개수 : offset
+		//if 3페이지를 볼 거면 4개를 건너 뛰어야 함
+		this.offset = (this.pageNumber - 1) * this.pageSize ; 
+		
+		if( this.endRow > this.totalCount ){
+			this.endRow = this.totalCount  ;
+		}
+		//beginPage	: 보이는 시작 페이지, 만약 1페이지를 보고 있다면 1
+		//endPage	: 보이는 끝 페이지, 만약 1페이지를 보고 있다면 3
+		this.beginPage = ( this.pageNumber - 1 ) / this.pageCount * this.pageCount + 1  ;
+		this.endPage = this.beginPage + this.pageCount - 1 ;
+		
+		if( this.endPage > this.totalPage ){
+			this.endPage = this.totalPage ;
+		}
+		this.url = url ; //  /ex/list.ab
+		System.out.println("this.pageNumber:"+this.pageNumber);
+		System.out.println("this.pageSize:"+this.pageSize);
+		System.out.println("this.offset:"+this.offset);
+		System.out.println("this.limit:"+this.limit);
+		this.pagingHtml = getAjaxPagingHtml(url) ;
+	}
+	
+	private String getAjaxPagingHtml(String url) {
+		System.out.println("getAjaxPagingHtml() 함수 호출중...");
+		String result = "" ;
+		if (this.beginPage != 1) {
+			result += "&nbsp;<a href='" + url  
+					+ "&pageNumber=" + ( 1 ) + "&pageSize=" + this.pageSize 
+					+ "' style='text-decoration: none; color: black;'>[처음으로]</a>&nbsp;" ;
+			result += "&nbsp;<a href='" + url 
+					+ "&pageNumber=" + (this.beginPage - 1 ) + "&pageSize=" + this.pageSize 
+					+ "' style='text-decoration: none; color: black;'>[이전]</a>&nbsp;" ;
+		}
+		//가운데
+		for (int i = this.beginPage; i <= this.endPage ; i++) {
+			if ( i == this.pageNumber ) {
+				result += "&nbsp;<font style='text-decoration: none; background: #EDE5D8; font-size: 10pt;'>&nbsp;" + i + "&nbsp;</font>"	;
+						
+			} else {
+				result += "&nbsp;<a href='" + url   
+						+ "&pageNumber=" + i + "&pageSize=" + this.pageSize 
+						+ "' style='text-decoration: none; color: black; font-size: 10pt;'>&nbsp;" + i + "&nbsp;</a>" ;
+			}
+		}
+		//다음, 맨 끝
+		if ( this.endPage != this.totalPage) { 
+			
+			result += "&nbsp;<a href='" + url  
+					+ "&pageNumber=" + (this.endPage + 1 ) + "&pageSize=" + this.pageSize 
+					+ "' style='text-decoration: none; color: black;'>[다음]</a>&nbsp;" ;
+			
+			result += "&nbsp;<a href='" + url  
+					+ "&pageNumber=" + (this.totalPage ) + "&pageSize=" + this.pageSize 
+					+ "' style='text-decoration: none; color: black;'>[맨 끝으로]</a>&nbsp;" ;
+		}
+		System.out.println("pagingHtml: "+result);
+		return result ;
+	}
+
+
 	private String getPagingHtml( String url ){ //페이징 문자열을 만든다.
 //		System.out.println("getPagingHtml url:"+url); 
 		
@@ -273,6 +359,7 @@ public class Paging {
 					+ added_param + "' style='text-decoration: none; color: black;'>[맨 끝으로]</a>&nbsp;" ;
 		}		
 //		System.out.println("result2:"+result);
+		
 		return result ;
 	}	
 	

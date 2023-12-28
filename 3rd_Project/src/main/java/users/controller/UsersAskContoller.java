@@ -30,8 +30,7 @@ public class UsersAskContoller {
 		UsersBean ub = ud.getUserById(rb.getU_id());
 
 		if(ub == null) { 
-			model.addAttribute("msg", "가입되지 않은 아이디입니다.\n네이버, 카카오 연동 계정은 개인정보 정책 상 저희쪽에서 로그인하신 아이디를 알 수 없습니다.\n"
-					+ "외부 사이트 연동 계정 문의 시 ssangyong@fyhd.com 으로 메일 부탁 드립니다.");
+			model.addAttribute("msg", "가입되지 않은 아이디입니다.");
 			model.addAttribute("url", "ask.u?u_id="+rb.getU_id()+"&u_email="+rb.getU_email()+"&rs_content="+rb.getRs_content());
 		} else {
 			
