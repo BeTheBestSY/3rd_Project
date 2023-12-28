@@ -29,7 +29,7 @@ public class UsersAskContoller {
 		
 		UsersBean ub = ud.getUserById(rb.getU_id());
 		if(ub == null) {
-			model.addAttribute("msg", "가입되지 않은 아이디입니다.");
+			model.addAttribute("msg", "가입되지 않은 아이디입니다."); 
 			model.addAttribute("url", "ask.u?u_id="+rb.getU_id()+"&u_email="+rb.getU_email()+"&rs_content="+rb.getRs_content());
 		} else {
 			
