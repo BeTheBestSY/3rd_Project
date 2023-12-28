@@ -29,6 +29,7 @@ public class UsersProfileController {
 			return redirect;
 		} 
 		model.addAttribute("ub",ub);
+		model.addAttribute("u_id",u_id);
 		return viewPage;
 	}
 }

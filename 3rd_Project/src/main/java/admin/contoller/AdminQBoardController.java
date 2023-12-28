@@ -72,13 +72,11 @@ public class AdminQBoardController {
 	@RequestMapping(value=deleteCommand,method=RequestMethod.GET)
 	public String delete(
 				Model model,
-				@RequestParam("q_num") int q_num,
-				@RequestParam("pageNumber") int pageNumber
+				@RequestParam("q_num") int q_num
 			) {
 		
 		QBoardBean bb = adminDao.selectContent(q_num);
 		
-		model.addAttribute("pageNumber",pageNumber);
 		model.addAttribute("bb",bb);
 		
 		adminDao.deleteBoard(q_num);

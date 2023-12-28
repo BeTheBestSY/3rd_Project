@@ -74,11 +74,17 @@
 
 </style>
 
-
-
+  
+<script>
+// 페이지가 열리자마자 한 번만 이동
+if (!localStorage.getItem('alreadyRedirected')) {
+    location.href = 'selectFeedback.admin';
+    localStorage.setItem('alreadyRedirected', 'true');
+}
+</script>
 <body>
 
-<article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
+<article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >  
 	<div class="section">
 		<div id="userInfo">
 		<div id="user">
@@ -116,10 +122,10 @@
 	new Chart(ctx, {
 		type: 'bar',
 		data: {
-			labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+			labels: ['컨텐츠부족', '이용불편', '관리부실', '구매상품없음', '비매너사용자', '새계정', '기타'],
 			datasets: [{
 				label: '# of Votes',
-				data: [12, 19, 3, 5, 2, 3],
+				data: [${fb1}, ${fb2}, ${fb3}, ${fb4}, ${fb5}, ${fb6}, ${etc}],
 				borderWidth: 1
 			}]
 		},
@@ -182,12 +188,12 @@
 	var config = new Chart(document.getElementById("feedbackChart").getContext('2d'),{
 		type: 'bar',   // 차트의 종류를 선언한다.
 		data: {
-			labels: ['콘텐츠 부족', '이용 불편', '관리 부족', '상품 부족', '비매너 사용자', '새 계정 생성'],
+			labels: ['컨텐츠부족', '이용불편', '관리부실', '구매상품없음', '비매너사용자', '새계정', '기타'],
 			datasets: [{                                       // datasets 값의 배열을 추가하면 그림2와 같이 하나의 canvas에 두가지 데이터를 출력할 수 있다.
 				label: ''   
 				, backgroundColor: 'rgba(255, 99, 132, 0.2)'
 				, borderColor: 'rgb(255, 99, 132)'
-				, data: [51, 33, 20, 25, 15, 40]
+				, data: [${fb1}, ${fb2}, ${fb3}, ${fb4}, ${fb5}, ${fb6}, ${etc}]
 				, fill: true
 			}]
 		},

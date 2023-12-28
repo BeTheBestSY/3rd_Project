@@ -230,11 +230,17 @@
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
 				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
+				</if>
 			</if>
 			<if test="whatColumn == 'u_name'">
 				where u_name like #{keyword}
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
+				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
 				</if>
 			</if>
 			<if test="whatColumn == 'u_id'">
@@ -242,17 +248,26 @@
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
 				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
+				</if>
 			</if>
 			<if test="whatColumn == 'u_phone'">
 				where u_phone like #{keyword}
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
 				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
+				</if>
 			</if>
 		</if>
 		<if test='keyword == ""'>
 			<if test='filter == "S" or filter == "N" or filter == "K"'>
 				where u_jointype = #{filter}
+			</if>
+			<if test='filter == "R"'>
+				where u_report not in(0,1,2,3,4,5)
 			</if>
 		</if>
 	</select>
@@ -268,11 +283,17 @@
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
 				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
+				</if>
 			</if>
 			<if test="whatColumn == 'u_name'">
 				where u_name like #{keyword}
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
+				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
 				</if>
 			</if>
 			<if test="whatColumn == 'u_id'">
@@ -280,11 +301,17 @@
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
 				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
+				</if>
 			</if>
 			<if test="whatColumn == 'u_phone'">
 				where u_phone like #{keyword}
 				<if test='filter == "S" or filter == "N" or filter == "K"'>
 					and u_jointype = #{filter}
+				</if>
+				<if test='filter == "R"'>
+					and u_report not in(0,1,2,3,4,5)
 				</if>
 			</if>
 		</if>
@@ -292,7 +319,16 @@
 			<if test='filter == "S" or filter == "N" or filter == "K"'>
 				where u_jointype = #{filter}
 			</if>
+			<if test='filter == "R"'>
+				where u_report not in(0,1,2,3,4,5)
+			</if>
 		</if>
+	</select>
+	<select id="getAllRestore" resultType="users.model.RestoreBean">
+		select * from restore order by rs_num desc
+	</select>
+	<select id="getRestoreCount" resultType="int">
+		select count(*) from restore
 	</select>
 	<delete id="deleteUsers">
 		delete users
@@ -302,6 +338,12 @@
 		select * from users
 		where u_id=#{u_id}
 	</select>
+	<update id="resetReport">
+		update users set u_report = 0 where u_id = #{u_id}
+	</update>
+	<update id="restoreDone">
+		update restore set rs_done = 'Y' where u_id = #{u_id}
+	</update>
 	
 	<!-- product -->
 	
@@ -442,5 +484,56 @@
 			update users
 				set u_point = u_point+#{p_point} where u_id = #{u_id}
 		</update>
+	
+	
+	
+	<!-- feedback -->
+		<select id="fb1Select" resultType="String">
+				SELECT COUNT(*) FROM feedback
+					WHERE fb_content =
+					  '흥미로운 컨텐츠가 부족해요.'
+		</select>
+		
+		<select id="fb2Select" resultType="String">
+				SELECT COUNT(*) FROM feedback
+					WHERE fb_content =
+					  '웹 사이트를 이용하기가 불편해요.'
+		</select>
+		
+		<select id="fb3Select" resultType="String">
+				SELECT COUNT(*) FROM feedback
+					WHERE fb_content =
+					  '관리가 잘 되지 않는 것 같아요.'
+		</select>
+		
+		<select id="fb4Select" resultType="String">
+				SELECT COUNT(*) FROM feedback
+					WHERE fb_content =
+					  '사고 싶은 물품이 없어요.'
+		</select>
+		
+		<select id="fb5Select" resultType="String">
+				SELECT COUNT(*) FROM feedback
+					WHERE fb_content =
+					  '비매너 사용자를 만났어요.'
+		</select>
+		
+		<select id="fb6Select" resultType="String">
+				SELECT COUNT(*) FROM feedback
+					WHERE fb_content =
+					  '새 계정을 만들고 싶어요.'
+		</select>
+		
+		<select id="etcSelect" resultType="String">
+				SELECT COUNT(*) FROM feedback
+					WHERE fb_content NOT IN (
+					  '흥미로운 컨텐츠가 부족해요.',
+					  '웹 사이트를 이용하기가 불편해요.',
+					  '관리가 잘 되지 않는 것 같아요.',
+					  '사고 싶은 물품이 없어요.',
+					  '비매너 사용자를 만났어요.',
+					  '새 계정을 만들고 싶어요.'
+					)
+		</select>
 	
 </mapper> 

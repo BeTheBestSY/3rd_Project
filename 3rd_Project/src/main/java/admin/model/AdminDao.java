@@ -12,6 +12,7 @@ import celeb.model.CelebBean;
 import company.model.CompanyBean;
 import product.model.ProductBean;
 import q_board.model.QBoardBean;
+import users.model.RestoreBean;
 import users.model.UsersBean;
 import utility.Paging;
 
@@ -228,6 +229,62 @@ public class AdminDao {
 
 		sqlSessionTemplate.insert(nameSpace+"insertReply",bb);
 		
+	}
+
+	public void resetReport(String u_id) {
+		sqlSessionTemplate.update(nameSpace+"resetReport", u_id);
+	}
+
+
+	public List<RestoreBean> getAllRestore(Paging pageInfo) {
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		List<RestoreBean> rbList = sqlSessionTemplate.selectList(nameSpace+"getAllRestore");
+		return rbList;
+	}
+
+	public void restoreDone(String u_id) {
+		sqlSessionTemplate.update(nameSpace+"restoreDone", u_id);
+	}
+
+	public int getRestoreCount() {
+		int count = sqlSessionTemplate.selectOne(nameSpace+"getRestoreCount");
+		return count;
+	}
+
+
+	public String fb1Select(String string) {
+		String fb1 = sqlSessionTemplate.selectOne(nameSpace+"fb1Select", string);
+		return fb1;
+	}
+
+
+	public String fb2Select(String string) {
+		String fb2 = sqlSessionTemplate.selectOne(nameSpace+"fb2Select", string);
+		return fb2;
+	}
+	
+	public String fb3Select(String string) {
+		String fb3 = sqlSessionTemplate.selectOne(nameSpace+"fb3Select", string);
+		return fb3;
+	}
+	
+	public String fb4Select(String string) {
+		String fb4 = sqlSessionTemplate.selectOne(nameSpace+"fb4Select", string);
+		return fb4;
+	}
+	
+	public String fb5Select(String string) {
+		String fb5 = sqlSessionTemplate.selectOne(nameSpace+"fb5Select", string);
+		return fb5;
+	}
+	public String fb6Select(String string) {
+		String fb6 = sqlSessionTemplate.selectOne(nameSpace+"fb6Select", string);
+		return fb6;
+	}
+	
+	public String etcSelect() {
+		String etc = sqlSessionTemplate.selectOne(nameSpace+"etcSelect");
+		return etc;
 	}
 
 
