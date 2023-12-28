@@ -2,6 +2,7 @@ package c_board.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -74,36 +75,46 @@ public class CBoardListController {
 		Paging pageInfo = new Paging(null, "5", totalCount, url);
 		List<CBoardBean> ajaxList = cdao.getBoardById(pageInfo, map);
 		
-		HashMap<String, Object> valueByHashMap = null;
+		Map<String, Object> valueByHashMap = null;
 		JSONObject valueByJSONObject = null;
 
-		HashMap<String, Object> resultHashMap = new HashMap<String, Object>();
+		Map<String, Object> valueOfC_numByHashMap = new LinkedHashMap<String, Object>();
+		JSONObject valueOfC_numByJSONObject = null;
+		
+		Map<String, Object> resultHashMap = new LinkedHashMap<String, Object>();
 		JSONObject resultJSONObject = null;
 		
 		System.out.println("ajaxList.size():"+ajaxList.size());
+		
 		for(CBoardBean cb:ajaxList) {
-			// ajaxList�쓽 size留뚰겮 valueByHashMap媛앹껜 留뚮뱾湲�.
-			valueByHashMap = new HashMap<String, Object>();
-			// 1�떒怨�.
+			// ajaxList의 size만큼 valueByHashMap객체 생성.
+			valueByHashMap = new LinkedHashMap<String, Object>();
+			// 1단계.
 			valueByHashMap.put("c_subject", cb.getC_subject());
 			valueByHashMap.put("c_regdate", cb.getC_regdate());
 			valueByHashMap.put("c_readcount", cb.getC_readcount());
-			System.out.println("valueByHashMap(�빐�떆留� �삎�깭):"+valueByHashMap);
+			System.out.println("valueByHashMap(해시맵 형태):"+valueByHashMap);
 			
-			// �빐�떆留듭쓣 �젣�씠�뒯�삤釉뚯젥�듃濡� �떎�슫罹먯뒪�똿 => �뿉�윭 new JSONObject(hashmap)
-			valueByJSONObject = (JSONObject)valueByHashMap;
-			System.out.println("valueByJSONObject(json �삎�깭):"+valueByJSONObject);
+			valueByJSONObject = new JSONObject(valueByHashMap);
+			System.out.println("valueByJSONObject(json 형태):"+valueByJSONObject);
 			
 			// 2�떒怨�. 
 			resultHashMap.put(String.valueOf(cb.getC_num()), valueByJSONObject);
+			// 2단계.
+//			valueOfC_numByHashMap = new LinkedHashMap<String, Object>();
+			valueOfC_numByHashMap.put(String.valueOf(cb.getC_num()), valueByJSONObject);
+			System.out.println("valueOfC_numByHashMap(해시맵 형태):"+valueOfC_numByHashMap);
+			valueOfC_numByJSONObject = new JSONObject(valueOfC_numByHashMap);
+			System.out.println("valueOfC_numByJSONObject(json 형태):"+valueOfC_numByJSONObject);
 		}
-		// 3�떒怨�. 媛��옣 留덉�留됱뿉 pagingHtml�쓣 put
-		resultHashMap.put("pagingHtml", pageInfo.getPagingHtml());
-		System.out.println("resultHashMap(�빐�떆留� �삎�깭):"+resultHashMap);
 		
-		// �빐�떆留듭쓣 �젣�씠�뒯�삤釉뚯젥�듃濡� �떎�슫罹먯뒪�똿
-		resultJSONObject = (JSONObject)resultHashMap;
-		System.out.println("resultJSONObject(json �삎�깭):"+resultJSONObject);
+		resultHashMap.put("c_num", valueOfC_numByJSONObject);
+		// 3단계.
+		resultHashMap.put("pagingHtml", pageInfo.getPagingHtml());
+		System.out.println("resultHashMap(해시맵 형태):"+resultHashMap);
+		
+		resultJSONObject = new JSONObject(resultHashMap);
+		System.out.println("resultJSONObject(json 형태):"+resultJSONObject);
 		return resultJSONObject;
 	}
 }
