@@ -17,7 +17,7 @@
 					url: 'cBoardAjax.cb?c_writer=${c_writer}',
 					success: function(data) { // 성공적으로 받아왔을 경우
 						alert(data);
-						/* $(data).each(function() {
+						/* $(data).each(function() { 
 							// *** 답글만 달고 글을 쓴 적 없는 사람도 고려해야함.
 							var date = new Date(this.c_regdate);
 							var now24Date = moment(date).format("YYYY-MM-DD");
