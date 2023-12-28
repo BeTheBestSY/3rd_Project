@@ -27,6 +27,8 @@ public class FeedbackController {
 		String fb6 = adminDao.fb6Select("새 계정을 만들고 싶어요.");
 		String etc = adminDao.etcSelect();
 		
+		String member = adminDao.memberSelect();
+		
 		
 		System.out.println(fb1+"fb1");
 		System.out.println(fb2+"fb2");
@@ -35,6 +37,20 @@ public class FeedbackController {
 		System.out.println(fb5+"fb5");
 		System.out.println(fb6+"fb6");
 		System.out.println(etc+"etc");
+		
+		
+		String col1 = adminDao.col1Select("봄 라이트");
+		String col2 = adminDao.col2Select("봄 브라이트");
+		String col3 = adminDao.col3Select("여름 라이트");
+		String col4 = adminDao.col4Select("여름 브라이트");
+		String col5 = adminDao.col5Select("여름 뮤트");
+		String col6 = adminDao.col6Select("가을 뮤트");
+		String col7 = adminDao.col7Select("가을 스트롱");
+		String col8 = adminDao.col8Select("가을 딥");
+		String col9 = adminDao.col9Select("겨울 브라이트");
+		String col10 = adminDao.col10Select("겨울 딥");
+		
+		
 
 		model.addAttribute("fb1", fb1);
 		model.addAttribute("fb2", fb2);
@@ -43,6 +59,19 @@ public class FeedbackController {
 		model.addAttribute("fb5", fb5);
 		model.addAttribute("fb6", fb6);
 		model.addAttribute("etc", etc);
+
+		model.addAttribute("member", member);
+		
+		model.addAttribute("col1", col1);
+		model.addAttribute("col2", col2);
+		model.addAttribute("col3", col3);
+		model.addAttribute("col4", col4);
+		model.addAttribute("col5", col5);
+		model.addAttribute("col6", col6);
+		model.addAttribute("col7", col7);
+		model.addAttribute("col8", col8);
+		model.addAttribute("col9", col9);
+		model.addAttribute("col0", col10);
 		
 		return viewPage;
 		
