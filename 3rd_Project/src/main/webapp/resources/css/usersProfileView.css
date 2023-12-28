@@ -26,7 +26,9 @@ img{
 	align-item: center; */
 }
 .list-box{ /* board-container의 flex item */
-	flex-basis: content;
+	/* flex-basis: 100%; */
+	flex-basis: 600px;
+	height: 80%;
 	margin: 0 auto;
 } 
 .on, .off{ /* board-container의 flex item */
@@ -40,6 +42,7 @@ img{
 .on:hover, .off:hover{
 	cursor: pointer;
 }
+
 @font-face {
     font-family: 'MaruBuri-Regular';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
