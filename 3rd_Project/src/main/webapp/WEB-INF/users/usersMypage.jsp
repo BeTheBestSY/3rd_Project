@@ -13,6 +13,17 @@
 	    font-weight: normal;
     	font-style: normal;
 	}
+	#pfArea{
+		border-radius: 50%;
+		width: 150px; 
+		height: 150px; 
+		background-image: url('resources/uploadFolder/users/${loginInfo.u_profileimg}');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		left: -10px;
+		position: relative;
+	}
 </style>
 
 <%@ include file="usersMypageMenuTop.jsp" %>
@@ -30,9 +41,16 @@
 	<li><big>회원정보 조회</big></li>
 	<br><br>
 	<div>
-		<table style="width: 90%; height: 225px; text-align: left;" id="content">
+		<table style="width: 95%; height: 225px; text-align: left;" id="content">
 			<tr style="border-top: 1px solid #D5D5D5;">
-				<td rowspan="5" width="18%">사진 들어갈 곳</td>
+				<td rowspan="5" width="18%" valign="middle">
+					<c:if test="${loginInfo.u_profileimg != null}">
+						<div id="pfArea"></div>
+					</c:if>
+					<c:if test="${loginInfo.u_profileimg == null}">
+						<img src="resources/image/person.svg" width="85%" class="rounded-circle">
+					</c:if>
+				</td>
 				<th>아이디</th>
 				<td>
 					<c:if test="${loginInfo.u_jointype eq 'S' }">${loginInfo.u_id}</c:if>
