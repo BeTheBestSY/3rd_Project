@@ -34,7 +34,7 @@ public class CBoardDeleteController {
 				@RequestParam("pageNumber") int pageNumber,
 				@RequestParam(value="whatColumn", required=false) String whatColumn,
 				@RequestParam(value="keyword", required=false) String keyword
-			) {
+			) { 
 		
 		CBoardBean bb = cdao.selectContent(c_num);
 		
