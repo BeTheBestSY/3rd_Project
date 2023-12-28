@@ -94,7 +94,7 @@
 			 <div id="order">
 				  <div class="orderInfo">
 				 	<canvas id="orderChart" width="590px" height="430px"></canvas>
-				  </div>
+				  </div>  
 			 </div>
 		</div>
 		<div id="feedback">

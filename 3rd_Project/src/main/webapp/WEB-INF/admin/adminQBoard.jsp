@@ -101,7 +101,7 @@
 							<fmt:formatDate value="${bb.q_regdate}" pattern="yyyy-MM-dd"/>
 						</td>
 						<td>
-						
+					 	
 							<a href="qBoardDelete.admin?q_num=${bb.q_num}&pageNumber=${pageInfo.pageNumber}">
 								<input type="button" class="btn btn-white"  value="삭제하기">
 							</a>
