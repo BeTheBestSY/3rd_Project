@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import c_board.model.CBoardBean;
 import c_board.model.CBoardDao;
@@ -23,6 +24,7 @@ public class CBoardListController {
 	private CBoardDao cdao;
 	  
 	public final String command="/cBoardList.cb";
+	public final String ajaxCommand="/cBoardAjax.cb";
 	public final String viewPage="cBoardList";
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
@@ -47,7 +49,7 @@ public class CBoardListController {
 //			System.out.println("CBoardBean의 c_regdate: " + formatter.format(cb.getC_regdate()));
 //			// registerdate를 포맷팅에서 다시 세팅
 //		}
-		// 현재 날짜 구하기
+		// 현재 날짜 구하기 
 //		Date now = new Date();
 		//System.out.println(formatter.format(now));
 //		model.addAttribute("now",formatter.format(now));
@@ -58,6 +60,19 @@ public class CBoardListController {
 		model.addAttribute("keyword",keyword);
 		
 		return viewPage;
+	}
+	
+	@RequestMapping(value=ajaxCommand)
+	@ResponseBody
+	public List<CBoardBean> getCBoard(@RequestParam String u_id) {
+		//Map<String, String> map = new HashMap<String, String>();
+		//map.put("u_id", u_id);
+//		int totalCount = cdao.getTotalCountById2(u_id);
+		List<CBoardBean> ajaxList = cdao.getBoardById2(u_id);
+		for(CBoardBean cb:ajaxList) {
+			System.out.println("cb.getC_regdate():"+cb.getC_regdate());
+		}
+		return ajaxList;
 	}
 }
  

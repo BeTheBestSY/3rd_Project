@@ -1,46 +1,84 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/usersProfileView.css?ver=2209976">
 <head>
 	<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
 		rel="stylesheet"
 		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-	<style>
-		img{
-			width: 100%;
-			object-fit: cover;
+	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+	<!-- moment 라이브러리 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+	<script>
+		window.onload = function() {
+			$(function() {
+				// flag 설정
+				var flag = false;
+				// 작성글을 불러오는 ajax 설정
+				$.ajax({
+					url: 'cBoardAjax.cb?u_id=${u_id}',
+					success: function(data) { // 성공적으로 받아왔을 경우
+						$(data).each(function() {
+							// *** 답글만 달고 글을 쓴 적 없는 사람도 고려해야함.
+							var date = new Date(this.c_regdate);
+							var now24Date = moment(date).format("YYYY-MM-DD");
+							var html = '';
+							html += '<tr>';
+							html += '	<td>'+this.c_num+'</td>';
+							html += '	<td><a href="#">'+this.c_subject+'</a></td>';
+							html += '	<td>'+now24Date+'</td>';
+							html += '	<td>'+this.c_readcount+'</td>';
+							html += '</tr>';
+							$('#post-table').append(html);
+						});
+					}
+				});
+				// 댓글단 글을 불러오는 ajax 설정 
+				$.ajax({
+					/* url: '',
+					success: function(data) { // 성공적으로 받아왔을 경우
+						$(data).each(function() {
+							var date = new Date(this.c_regdate);
+							var now24Date = moment(date).format("YYYY-MM-DD");
+							var html = '';
+							html += '<tr>';
+							html += '	<td>'+this.c_num+'</td>';
+							html += '	<td>'+this.c_subject+'</td>';
+							html += '	<td>'+now24Date+'</td>';
+							html += '	<td>'+this.c_readcount+'</td>';
+							html += '</tr>';
+							$('#comment-table').append(html);
+						});
+					} */
+				});
+			});
+		};
+		function convert(e, u_id, type){
+			if(e.className === 'off'){
+				// 기존 'on'클래스를 'off'클래스로 클래스명 변경.
+				document.querySelector('.on').className = 'off';
+				//  클릭이벤트가 발생한 e, 즉 'off'클래스를 'on'클래스로 클래스명 변경.
+				e.className = 'on';
+				if(type === 'post'){
+					document.getElementById('post-list').style.display = 'block';
+					document.getElementById('comment-list').style.display = 'none';
+					
+				} else{
+					document.getElementById('comment-list').style.display = 'block';
+					document.getElementById('post-list').style.display = 'none';
+					
+				}
+				// 기존 'on'클래스는 보이지 않게 하면서,
+				// 'off'클래스로 클래스명을 변경해준다.
+				//document.querySelector('.on').style.display = 'none';
+				
+				// 클릭이벤트가 발생한 e, 즉 'off'클래스는 보이게 하면서,
+				// 'on'클래스로 클래스명을 변경해준다.
+				//e.style.display = 'block';
+			}
 		}
-		.profile-container{
-			display: flex;
-			flex-direction: column;
-		}
-		.main-container{ /* profile-container의 flex item */
-			display:flex;
-			flex-wrap: wrap;
-		}
-		.board-container{ /* profile-container의 flex item */
-			flex-basis: 70%;
-		}
-		.img-box{ /* main-container의 flex item */
-			flex-basis: 40%;
-		}
-		.explain-box{ /* main-container의 flex item */
-			flex-basis: 60%;
-		}
-		@font-face {
-		    font-family: 'MaruBuri-Regular';
-		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
-		    font-weight: normal;
-		    font-style: normal;
-		} 
-		@font-face {
-		    font-family: 'RIDIBatang'; 
-		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
-		    font-weight: normal;
-		    font-style: normal;
-		}
-	</style>
+	</script>
 </head>
 <body>
 	<!-- border-dark-subtle: 테두리 색상 -->
@@ -56,7 +94,7 @@
 					<img  src="${ub.u_profileimg }" class="border border-5 border-dark-subtle rounded-circle">
 				</c:if>
 			</div>
-			<div class="explain-box" style="border: 1px solid black;">
+			<div class="explain-box" style="border: 1px solid black; font-family: 'MaruBuri-Regular';">
 				방문: <br> <!-- user 칼럼에 방문 수 칼럼 추가해야.. -->
 				작성글:<br> <!-- 작성글 수 -->
 				댓글단 글:<br> <!-- 댓글단 글 수 -->
@@ -65,12 +103,41 @@
 				자기소개: ${ub.u_intro }<br>
 			</div>
 		</div>
+		<!--  color="#7C81BB" -->
+		<!-- <font face="RIDIBatang"></font> -->
+		<%-- onclick="show(this,'${ub.u_id }')" --%>
 		<div class="board-container" style="border: 1px solid fuchsia;">
-			<a href="#">작성글</a>
-			<a href="#"><u>댓글단 글</u></a>
-		</div>
-		<div>
-		
+			<p onclick="convert(this,'${ub.u_id }','post')" class="on" style="font-family:'RIDIBatang'; margin-left: 5%;">작성글</p>
+			<p onclick="convert(this,'${ub.u_id }','comment')" class="off" style="font-family:'RIDIBatang'; margin-left: 3%;">댓글단 글</p>
+			<div class="list-box" style="border: 1px solid black; margin-top: 2%;">
+				<div id="post-list" style="display: block; height: 70%;">
+					<table id="post-table" border="1">
+						<tr>
+							<th></th>
+							<th>제목</th>
+							<th>작성일</th>
+							<th>조회</th>
+						</tr>
+					</table>
+				</div>
+				<div id="comment-list" style="display: none; height: 70%;">
+					<table id="comment-table" border="1">
+						<tr>
+							<th></th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>작성일</th>
+							<th>조회</th>
+						</tr>
+						<!-- 임시로 넣어놓음 -->
+						<tr>
+							<td colspan="5">
+								작성한 댓글이 없습니다.
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
 

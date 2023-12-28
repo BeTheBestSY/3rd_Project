@@ -198,6 +198,7 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.0</version>
 		</dependency>
+		
 		<!-- JSONObject, JSONParser 오류나면 삭제 될 수도..-->
 		<!--기본 org.json  -->
 		<dependency>
@@ -225,6 +226,18 @@
 		    <version>1.2</version>
 		</dependency>
 		
+		<!-- JSON -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.8.5</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

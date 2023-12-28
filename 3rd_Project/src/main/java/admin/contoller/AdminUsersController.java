@@ -1,24 +1,16 @@
 package admin.contoller;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import admin.model.AdminDao;
 import users.model.UsersBean;
-import utility.Paging;
+
 
 @Controller
 public class AdminUsersController {
@@ -29,6 +21,7 @@ public class AdminUsersController {
 	private final String viewPage = "adminUsers";
 	private final String viewPage2 = "adminUsersUpdateForm";
 	private final String redirect = "redirect";
+	
 	@Autowired
 	private AdminDao ad;
 	
@@ -59,47 +52,12 @@ public class AdminUsersController {
 		} else{
 			map.put("keyword", "%"+keyword+"%");
 		}
-		
-		//int totalCount = ad.getTotalUserCount(map);
-		//System.out.println("토탈카운트:"+totalCount);
-		//String url = request.getContextPath()+command;
-		//Paging pageInfo = new Paging(pageNumber, "10", totalCount, url, whatColumn, keyword);
-		
-		// --------------- pagingHtml에 filter 쿼리스트링 추가하기 --------------- 
-		//String pagingHtml = pageInfo.getPagingHtml();
-		//System.out.println("\n원래 pagingHtml:"+pagingHtml);
-		//ArrayList<Integer> indexes = new ArrayList<Integer>(); // 찾은 인덱스들을 저장할 ArrayList
-		//StringBuffer pagingSB = new StringBuffer(pagingHtml); // pagingHtml 중간에 문자열을 삽입하기 위한 StringBuffer
-		
-		//Matcher matcher = Pattern.compile("' style").matcher(pagingHtml);
-		/*
-		while (matcher.find()) {
-			System.out.println("원래 인덱스:"+matcher.start());
-			indexes.add(matcher.start());
-		}
-		
-		
-		String queryParam = "&filter="+filter;
-		System.out.println("\nfilter쿼리스트링의 길이:"+queryParam.length());
-		for(int i=0; i<indexes.size(); ++i) {//Integer idx:indexes
-			int idx = indexes.get(i);
-			idx += queryParam.length()*i;
-			System.out.println("쿼리스트링의 길이가 반영된 인덱스:"+idx);
-			indexes.set(i, idx);
-			pagingSB.insert(idx, queryParam);
-		}
-		System.out.println("filter파라미터가 추가된 pagingHtml:"+pagingSB.toString());
-		pageInfo.setPagingHtml(pagingSB.toString());
-		// -----------------------------------------------------------------
-		*/
-		
-		//List<UsersBean> usersLists = ad.getUsers(map, pageInfo);
 		List<UsersBean> usersLists = ad.getUsers(map);
 		model.addAttribute("usersLists", usersLists);
-		//model.addAttribute("pageInfo", pageInfo);
 		
 		return viewPage;
 	}
+	
 	@RequestMapping(value = delCommand)
 	public String delete(@RequestParam String u_id,
 						@RequestParam String u_jointype,

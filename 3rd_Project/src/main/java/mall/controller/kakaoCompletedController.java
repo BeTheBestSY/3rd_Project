@@ -1,4 +1,6 @@
 package mall.controller;
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpEntity;
@@ -41,7 +43,7 @@ public class kakaoCompletedController {
 	public String afterPayRequest(@RequestParam("pg_token") String pg_token,
 			@CookieValue(value ="tid", required = false) String tid,
 			  HttpSession session,
-			  Model model) throws JsonMappingException, JsonProcessingException {
+			  Model model) throws IOException {
 		KakaoApproveResponse kar = (KakaoApproveResponse)session.getAttribute("kao");
 		
 		System.out.println(pg_token+"pg_token");
