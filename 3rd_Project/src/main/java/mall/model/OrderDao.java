@@ -130,10 +130,7 @@ public class OrderDao {
 	}
 
 	public  int selectPoint(String string) {
-		
-		
 		int p_point = sqlSessionTemplate.selectOne(namespace+".selectPoint", string);
-		
 		return p_point;
 	}
 
@@ -145,6 +142,11 @@ public class OrderDao {
 	public void deleteOrderProd(int o_num) {
 		sqlSessionTemplate.delete(namespace+".deleteOrderProd", o_num);
 		
+	}
+
+	public List<OrderBean> getOrdersByU_id(String u_id) {
+		List<OrderBean> obList = sqlSessionTemplate.selectList(namespace+".getOrdersByU_id", u_id);
+		return obList;
 	}
 	 
 }

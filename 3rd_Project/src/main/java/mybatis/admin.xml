@@ -485,4 +485,55 @@
 				set u_point = u_point+#{p_point} where u_id = #{u_id}
 		</update>
 	
+	
+	
+	<!-- feedback -->
+		<select id="fb1Select" resultType="String">
+				SELECT COUNT(*) FROM feedback
+					WHERE fb_content =
+					  '흥미로운 컨텐츠가 부족해요.'
+		</select>
+		
+		<select id="fb2Select" resultType="String">
+				SELECT COUNT(*) FROM feedback
+					WHERE fb_content =
+					  '웹 사이트를 이용하기가 불편해요.'
+		</select>
+		
+		<select id="fb3Select" resultType="String">
+				SELECT COUNT(*) FROM feedback
+					WHERE fb_content =
+					  '관리가 잘 되지 않는 것 같아요.'
+		</select>
+		
+		<select id="fb4Select" resultType="String">
+				SELECT COUNT(*) FROM feedback
+					WHERE fb_content =
+					  '사고 싶은 물품이 없어요.'
+		</select>
+		
+		<select id="fb5Select" resultType="String">
+				SELECT COUNT(*) FROM feedback
+					WHERE fb_content =
+					  '비매너 사용자를 만났어요.'
+		</select>
+		
+		<select id="fb6Select" resultType="String">
+				SELECT COUNT(*) FROM feedback
+					WHERE fb_content =
+					  '새 계정을 만들고 싶어요.'
+		</select>
+		
+		<select id="etcSelect" resultType="String">
+				SELECT COUNT(*) FROM feedback
+					WHERE fb_content NOT IN (
+					  '흥미로운 컨텐츠가 부족해요.',
+					  '웹 사이트를 이용하기가 불편해요.',
+					  '관리가 잘 되지 않는 것 같아요.',
+					  '사고 싶은 물품이 없어요.',
+					  '비매너 사용자를 만났어요.',
+					  '새 계정을 만들고 싶어요.'
+					)
+		</select>
+	
 </mapper> 

@@ -94,7 +94,7 @@ public class CBoardListController {
 			valueByJSONObject = (JSONObject)valueByHashMap;
 			System.out.println("valueByJSONObject(json �삎�깭):"+valueByJSONObject);
 			
-			// 2�떒怨�.
+			// 2�떒怨�. 
 			resultHashMap.put(String.valueOf(cb.getC_num()), valueByJSONObject);
 		}
 		// 3�떒怨�. 媛��옣 留덉�留됱뿉 pagingHtml�쓣 put

@@ -118,7 +118,6 @@
 					<th scope="col">수량</th>
 					<th scope="col">가격</th>
 					<th scope="col">배송비</th>
-					<th scope="col">주문금액</th>
 					<th scope="col">선택</th>
 				</tr>
 			</thead>
@@ -150,14 +149,7 @@
 									0원
 								</c:if>
 							</td>
-							<td>
-								<c:if test="${pb.p_price*list[loop.index].cart_qty < 30000}">
-									<fmt:formatNumber value="${pb.p_price*list[loop.index].cart_qty + 3000}" pattern="#,###" />원
-								</c:if>
-								<c:if test="${pb.p_price*list[loop.index].cart_qty >= 30000}">
-									<fmt:formatNumber value="${pb.p_price*list[loop.index].cart_qty}" pattern="#,###" />원
-								</c:if>
-							</td>
+							 
 							<td>
 								<input type="button" id="btn2" value="삭제하기" onClick="location.href='cartDelete.mall?p_num=${pb.p_num}'"><br>
 								<input type="button" id="btn2" value="바로구매" onClick="location.href='order.mall?p_num=${pb.p_num}&id=${loginInfo.u_id}&cart_num=<%=cart_num%>&oqty=${list[loop.index].cart_qty}'">

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import c_board.model.CBoardBean;
 import c_board.model.CBoardDao;
+import mall.model.OrderBean;
+import mall.model.OrderDao;
 import q_board.model.QBoardBean;
 import q_board.model.QBoardDao;
 import users.model.FeedbackBean;
@@ -34,6 +36,8 @@ public class UsersMypageController {
 	private CBoardDao cd;
 	@Autowired
 	private QBoardDao qd;
+	@Autowired
+	private OrderDao od;
 	
 	private final String command = "/mypage.u";
 	private final String command_delForm = "/deleteForm.u";
@@ -215,7 +219,7 @@ public class UsersMypageController {
 	public String q_boardUpdateForm(Model model, @RequestParam("q_num") int q_num, @RequestParam("pageNumber") int pageNumber) {
 		QBoardBean qb = qd.selectContent(q_num);
 		model.addAttribute("qb", qb);
-		model.addAttribute("pageNumber", pageNumber);
+		model.addAttribute("pageNumber", pageNumber); 
 		return viewPage_q_boardUpdate;
 	}
 	
@@ -227,7 +231,13 @@ public class UsersMypageController {
 	}
 	
 	@RequestMapping(value = command_order, method = RequestMethod.GET)
-	public String order() {
+	public String order(HttpSession session, Model model) {
+		
+		UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
+		List<OrderBean> obList = od.getOrdersByU_id(ub.getU_id());
+		
+		model.addAttribute("obList", obList);
+		
 		return viewPage_order;
 	}
 	

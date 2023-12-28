@@ -32,8 +32,12 @@
 		select * from ordersProduct where o_num = #{o_num}
 	</select>
 	
+	<select id="getOrdersByU_id" resultType="mall.model.OrderBean">
+		select * from orders where u_id = #{u_id}
+	</select>
+	
 	<delete id="deleteTemp">
-		delete from temp_cart where cart_num = #{cart_num} 
+		delete from temp_cart where cart_num = #{cart_num}
 	</delete>
 	
 	<insert id="insertOrderProd">
