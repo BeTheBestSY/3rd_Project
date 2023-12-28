@@ -30,6 +30,7 @@ img{
 	flex-basis: 600px;
 	height: 80%;
 	margin: 0 auto;
+	margin-top: 2%;
 } 
 .on, .off{ /* board-container의 flex item */
 	margin-top: 5%;
