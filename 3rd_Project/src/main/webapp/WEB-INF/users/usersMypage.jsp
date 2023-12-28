@@ -84,7 +84,7 @@
 			</tr>
 			<tr style="border-bottom: 1px solid #D5D5D5;">
 				<th>자기소개</th>
-				<td colspan="3">자기소개 들어갈 곳</td>
+				<td colspan="3">${loginInfo.u_intro}</td>
 			</tr>
 		</table>
 	</div>

@@ -66,9 +66,9 @@ public class AdminOrderController {
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");  
 		
-		System.out.println(pageNumber+"pageNumberì˜´?@???");
-		System.out.println(whatColumn+"whatColumnì˜´?@???");
-		System.out.println(keyword+"keywordì˜´?@???");
+		System.out.println(pageNumber+"pageNumber¿È?@???");
+		System.out.println(whatColumn+"whatColumn¿È?@???");
+		System.out.println(keyword+"keyword¿È?@???");
 		
 		int totalCount = dao.getTotalCountOrder(map);
 		String url = request.getContextPath()+command;
@@ -97,7 +97,7 @@ public class AdminOrderController {
 			Model model
 						) {
 		
-		List<OrdersProductBean> ordProdlist = dao.getAllOrdersProduct(o_num);//1ì´ìƒ ë ˆì½”ë“œ, ì—¬ëŸ¬ ê°œ ê°€ëŠ¥
+		List<OrdersProductBean> ordProdlist = dao.getAllOrdersProduct(o_num);//1ÀÌ»ó ·¹ÄÚµå, ¿©·¯ °³ °¡´É
 		
 		List<ProductBean> prodList = new ArrayList<ProductBean>();
 		
@@ -108,7 +108,7 @@ public class AdminOrderController {
 			prodList.add(pb);
 		}
 		
-		OrderBean ob =  dao.getOneOrder(o_num);//ì£¼ë¬¸ì •ë³´ëŠ” í•˜ë‚˜ë§Œ
+		OrderBean ob =  dao.getOneOrder(o_num);//ÁÖ¹®Á¤º¸´Â ÇÏ³ª¸¸
 		
 		model.addAttribute("ob", ob);
 		model.addAttribute("prodList", prodList);
@@ -132,45 +132,45 @@ public class AdminOrderController {
 			Model model,
 			HttpServletRequest request
 						) throws IOException {
-		System.out.println("pageNumber ë„˜ì–´ì˜¤ë‚˜ìš”: "+pageNumber);
-		System.out.println("whatColumn ë„˜ì–´ì˜¤ë‚˜ìš”: "+whatColumn);
-		System.out.println("keyword ë„˜ì–´ì˜¤ë‚˜ìš”: "+keyword);
+		System.out.println("pageNumber ³Ñ¾î¿À³ª¿ä: "+pageNumber);
+		System.out.println("whatColumn ³Ñ¾î¿À³ª¿ä: "+whatColumn);
+		System.out.println("keyword ³Ñ¾î¿À³ª¿ä: "+keyword);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		
 		String stasus = dao.selectOrderStatus(o_num);
 		System.out.println("stasus: "+stasus);
 
-		if(stasus.equals("ì£¼ë¬¸ì™„ë£Œ")) {
+		if(stasus.equals("ÁÖ¹®¿Ï·á")) {
 			
-			dao.updateOrderStatus(o_num);//ì£¼ë¬¸ì™„ë£Œ => ë² ì†¡ì™„ë£Œ
+			dao.updateOrderStatus(o_num);//ÁÖ¹®¿Ï·á => º£¼Û¿Ï·á
 			
-			List<OrdersProductBean> ordProdlist = dao.getAllOrdersProduct(o_num);//o_numìœ¼ë¡œ p_num ë‹´ì•„ì˜¤ê¸°
+			List<OrdersProductBean> ordProdlist = dao.getAllOrdersProduct(o_num);//o_numÀ¸·Î p_num ´ã¾Æ¿À±â
 			
 			List<ProductBean> prodList = new ArrayList<ProductBean>();
 			
-			System.out.println(ordProdlist.size()+"ordProdlist.size()ì™€");
+			System.out.println(ordProdlist.size()+"ordProdlist.size()¿Í");
 			for(int i = 0; i<ordProdlist.size(); i++) {
 				
 				ProductBean pb  =	dao.selectPord(Integer.toString(ordProdlist.get(i).getP_num()));
 				
-				prodList.add(pb);//í•˜ë‚˜ì”© p_numìœ¼ë¡œ p_pointì •ë³´ ê°€ì ¸ì˜¤ê¸°
+				prodList.add(pb);//ÇÏ³ª¾¿ p_numÀ¸·Î p_pointÁ¤º¸ °¡Á®¿À±â
 			}		
 					
-			System.out.println(prodList.size()+"prodList.size()ê°€ ê°™ë‚˜ìš©?");
+			System.out.println(prodList.size()+"prodList.size()°¡ °°³ª¿ë?");
 			
 			for(int i = 0; i<prodList.size(); i++) {
 				
 				dao.updateUsersPoint(Integer.toString(prodList.get(i).getP_point()),u_id);
 			}	
 			
-		}else if(stasus.equals("ì£¼ë¬¸ì·¨ì†Œ")) {
-			model.addAttribute("msg", "ì·¨ì†Œëœ ì£¼ë¬¸ì…ë‹ˆë‹¤.");
+		}else if(stasus.equals("ÁÖ¹®Ãë¼Ò")) {
+			model.addAttribute("msg", "Ãë¼ÒµÈ ÁÖ¹®ÀÔ´Ï´Ù.");
 			model.addAttribute("url", request.getContextPath()+"/"+command+"?pageNumber="+pageNumber+"&keyword="+keyword+"&whatColumn="+whatColumn);
 			return redirect;
 			
-		}else if(stasus.equals("ë°°ì†¡ì™„ë£Œ")) {
-			model.addAttribute("msg", "ì´ë¯¸ ë°°ì†¡ì´ ì™„ë£Œëœ ì£¼ë¬¸ì…ë‹ˆë‹¤.");
+		}else if(stasus.equals("¹è¼Û¿Ï·á")) {
+			model.addAttribute("msg", "ÀÌ¹Ì ¹è¼ÛÀÌ ¿Ï·áµÈ ÁÖ¹®ÀÔ´Ï´Ù.");
 			model.addAttribute("url", request.getContextPath()+"/"+command+"?pageNumber="+pageNumber+"&keyword="+keyword+"&whatColumn="+whatColumn);
 			return redirect;
 		}

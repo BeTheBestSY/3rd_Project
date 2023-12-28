@@ -89,7 +89,7 @@ if (!localStorage.getItem('alreadyRedirected')) {
 		<div id="userInfo">
 		<div id="user">
 			 <div class="userCount" >
-			 	<p style="font-weight:bold; font-size:30px;">회원 수 - 22명</p>
+			 	<p style="font-weight:bold; font-size:30px;">회원 수 - ${member}명</p>
 			 	<img src="<%= request.getContextPath() %>/resources/image/people-circle-outline.svg" width="42%">
 			 </div>
 			 <div class="visitCount">
@@ -150,7 +150,7 @@ if (!localStorage.getItem('alreadyRedirected')) {
 				label: '수량'   
 				, backgroundColor: 'rgba(178, 204, 255, 0.2)'
 				, borderColor: 'rgb(67, 116, 217)'
-				, data: [51, 33, 60, 25, 80, 40, 77, 100, 50, 34]
+				, data: [${col1}, ${col2}, ${col3}, ${col4}, ${col5}, ${col6}, ${col7}, ${col8}, ${col9}, ${col10}]
 				, fill: true
 			}]
 		},
