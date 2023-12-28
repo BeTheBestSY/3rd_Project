@@ -219,7 +219,7 @@ public class UsersMypageController {
 	public String q_boardUpdateForm(Model model, @RequestParam("q_num") int q_num, @RequestParam("pageNumber") int pageNumber) {
 		QBoardBean qb = qd.selectContent(q_num);
 		model.addAttribute("qb", qb);
-		model.addAttribute("pageNumber", pageNumber);
+		model.addAttribute("pageNumber", pageNumber); 
 		return viewPage_q_boardUpdate;
 	}
 	

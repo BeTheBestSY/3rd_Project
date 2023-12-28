@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/usersProfileView.css?ver=2209976">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/usersProfileView.css?ver=2209982">
 <head>
 	<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -13,25 +13,24 @@
 	<script>
 		window.onload = function() {
 			$(function() {
-				// flag 설정
-				var flag = false;
-				// 작성글을 불러오는 ajax 설정
 				$.ajax({
-					url: 'cBoardAjax.cb?u_id=${u_id}',
+					url: 'cBoardAjax.cb?c_writer=${c_writer}',
 					success: function(data) { // 성공적으로 받아왔을 경우
-						$(data).each(function() {
+						alert(data);
+						/* $(data).each(function() { 
 							// *** 답글만 달고 글을 쓴 적 없는 사람도 고려해야함.
 							var date = new Date(this.c_regdate);
 							var now24Date = moment(date).format("YYYY-MM-DD");
 							var html = '';
 							html += '<tr>';
-							html += '	<td>'+this.c_num+'</td>';
-							html += '	<td><a href="#">'+this.c_subject+'</a></td>';
-							html += '	<td>'+now24Date+'</td>';
-							html += '	<td>'+this.c_readcount+'</td>';
+							html += '	<td width="3%" align="center">'+this.c_num+'</td>';
+							html += '	<td width="10%"><a href="#">'+this.c_subject+'</a></td>';
+							html += '	<td width="5%" align="center">'+now24Date+'</td>';
+							html += '	<td width="5%" align="center">'+this.c_readcount+'</td>';
 							html += '</tr>';
 							$('#post-table').append(html);
 						});
+						$('#post-list').append('${pagingHtml}'); */
 					}
 				});
 				// 댓글단 글을 불러오는 ajax 설정 
@@ -83,7 +82,7 @@
 <body>
 	<!-- border-dark-subtle: 테두리 색상 -->
 	<!-- Today, 방문수, 작성글, 댓글단 글, 퍼스널컬러, 조인데이트, 자기소개, -->
-	<div class="profile-container" style="border: 1px solid blue; width: 70%; height: 80%; margin: auto; position: relative; top: 10%;">
+	<div class="profile-container" style="border: 1px solid blue; width: 80%; height: 80%; margin: auto; position: relative; top: 10%;">
 		<h1 style="font-family: 'RIDIBatang';">${ub.u_id }의 프로필</h1>
 		<div class="main-container" style="border: 1px solid green;">
 			<div class="img-box" style="border: 1px solid red;">
@@ -110,7 +109,7 @@
 			<p onclick="convert(this,'${ub.u_id }','post')" class="on" style="font-family:'RIDIBatang'; margin-left: 5%;">작성글</p>
 			<p onclick="convert(this,'${ub.u_id }','comment')" class="off" style="font-family:'RIDIBatang'; margin-left: 3%;">댓글단 글</p>
 			<div class="list-box" style="border: 1px solid black; margin-top: 2%;">
-				<div id="post-list" style="display: block; height: 70%;">
+				<div id="post-list" style="display: block;">
 					<table id="post-table" border="1">
 						<tr>
 							<th></th>
@@ -119,8 +118,9 @@
 							<th>조회</th>
 						</tr>
 					</table>
+					${pageInfo.pagingHtml }
 				</div>
-				<div id="comment-list" style="display: none; height: 70%;">
+				<div id="comment-list" style="display: none; width: 100%; height: 70%;">
 					<table id="comment-table" border="1">
 						<tr>
 							<th></th>
