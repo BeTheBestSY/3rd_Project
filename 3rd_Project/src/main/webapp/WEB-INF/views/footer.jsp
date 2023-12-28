@@ -95,7 +95,7 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(주)쌍용교육센터 H반 환감탈태조 FIND YOUR Hidden Beauty | 신고번호 : 제 2023-서울마포-00000호<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공동대표 4인 : 김수연, 박혜주, 황다온, 이유진 (TEL : 02-336-8546 / FAX : 02-334-5405)
 		</div>
-		<img src="resources/image/syLogo.png" width="230" style="left: 975px; top: -30px; position: relative;" onclick="location.href='https://www.sist.co.kr/index.jsp'">
+		<img src="resources/image/fyhbLogo.png" width="230" style="left: 975px; top: -30px; position: relative;" onclick="location.href='https://www.sist.co.kr/index.jsp'">
 	</div>
 </div>
 
