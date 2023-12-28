@@ -2,12 +2,9 @@ package utility;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -15,18 +12,16 @@ import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 public class NaverApi {
 	private String client_id = "7e2tSZMcps1aVtINdSJv";
 	private String client_secret = "A98jpGEn8v";
 	private String redirect_uri = "http%3A%2F%2Flocalhost%3A8080%2Fex20%2Fnaver.u";
+	// �꽕�씠踰꾨뒗 蹂꾨룄�쓽 濡쒓렇�븘�썐 api媛� �뾾�쓬. �꽕�씠踰� �씠�쇅�쓽 �꽌鍮꾩뒪�뿉�꽌 濡쒓렇�븘�썐 �븯�뒗 寃껋쓣 �뿀�슜 x
+	// �뿰�룞�빐�젣 �븷 寃쎌슦, �넗�겙�씠 �쑀�슚�븳吏� 癒쇱� 寃�利앺븳 �떎�쓬 �쑀�슚�븳 �넗�겙�쑝濡� 媛깆떊�븯�뿬 �뿰�룞�빐�젣 泥섎━
+	// �넗洹� �궘�젣媛� 怨� �뿰�룞�빐�젣�엫.
 	
-	// 네이버는 별도의 로그아웃 api가 없음. 네이버 이외의 서비스에서 로그아웃 하는 것을 허용 x
-	// 연동해제 할 경우, 토큰이 유효한지 먼저 검증한 다음 유효한 토큰으로 갱신하여 연동해제 처리
-	// 토근 삭제가 곧 연동해제임.
-	
-	// access token 받기
+	// access token 諛쏄린
 	public Map<String, String> getAccessToken(String code, String state) {
 	    String accessToken = "";
 	    String refreshToken = "";
@@ -36,14 +31,14 @@ public class NaverApi {
 	    try{
 	        URL url = new URL(reqUrl);
 	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-	        conn.setDoOutput(true); //OutputStream으로 POST 데이터를 넘겨주겠다는 옵션.
+	        conn.setDoOutput(true); //OutputStream�쑝濡� POST �뜲�씠�꽣瑜� �꽆寃⑥＜寃좊떎�뒗 �샃�뀡.
 	        
-	        // Request Body에 Data를 담기위해 OutputStream 객체를 생성.
+	        // Request Body�뿉 Data瑜� �떞湲곗쐞�빐 OutputStream 媛앹껜瑜� �깮�꽦.
 	        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
-	        // StringBuilder는 변경 가능한 문자열을 만들어준다.
+	        // StringBuilder�뒗 蹂�寃� 媛��뒫�븳 臾몄옄�뿴�쓣 留뚮뱾�뼱以��떎.
 	        StringBuilder sb = new StringBuilder();
 	        
-	        //필수 쿼리 파라미터 세팅
+	        //�븘�닔 荑쇰━ �뙆�씪誘명꽣 �꽭�똿
 	        sb.append("grant_type=authorization_code");
 	        sb.append("&client_id=").append(client_id);
 	        sb.append("&client_secret=").append(client_secret);
@@ -54,7 +49,7 @@ public class NaverApi {
 	        bw.write(sb.toString());
 	        bw.flush();
 	        
-	        // 실제 서버로 Request 요청 하는 부분. (응답 코드를 받는다. 200 성공, 나머지 에러)
+	        // �떎�젣 �꽌踰꾨줈 Request �슂泥� �븯�뒗 遺�遺�. (�쓳�떟 肄붾뱶瑜� 諛쏅뒗�떎. 200 �꽦怨�, �굹癒몄� �뿉�윭)
 	        int responseCode = conn.getResponseCode();
 	        System.out.println("[NaverApi.getAccessToken] responseCode = "+ responseCode);
 	        
@@ -88,9 +83,8 @@ public class NaverApi {
 	    return tokens;
 	}
 	
-	// 사용자 정보 받기
 	public Map<String, Object> getUserInfo(String accessToken) {
-		HashMap<String, Object> userInfo = new HashMap<>();
+		HashMap<String, Object> userInfo = new HashMap<String, Object>();
 	    String reqUrl = "https://openapi.naver.com/v1/nid/me";
 	    try{
 	        URL url = new URL(reqUrl);
@@ -101,7 +95,6 @@ public class NaverApi {
 	        int responseCode = conn.getResponseCode();
 	        System.out.println("[NaverApi.getUserInfo] responseCode = "+ responseCode);
 	        
-	        // 응답 받아오기
 	        BufferedReader br;
 	        if (responseCode >= 200 && responseCode <= 300) {
 	            br = new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8"));
@@ -137,7 +130,6 @@ public class NaverApi {
 	    return userInfo;
 	}
 	
-	// 연동해제 1단계. 접근 토큰 유효성 체크
 	public String isTokenValid(String accessToken) {
 		String reqValidUrl = "https://openapi.naver.com/v1/nid/me";
 		String message = "";
@@ -163,27 +155,27 @@ public class NaverApi {
 	        Object obj = parsing.parse(responseSb.toString());
 	        JSONObject jsonObj = (JSONObject)obj;
 	        message = String.valueOf(jsonObj.get("message"));
-	        System.out.println("접근토큰 유효성 체크 결과 메시지: "+message);// 유효하면 success
+	        System.out.println("�젒洹쇳넗�겙 �쑀�슚�꽦 泥댄겕 寃곌낵 硫붿떆吏�: "+message);// �쑀�슚�븯硫� success
 		}catch (Exception e){
  	        e.printStackTrace();
  	    }
 		return message;
 	}
-	// 연동해제 2단계. 접근 토큰 재발급
+	// �뿰�룞�빐�젣 2�떒怨�. �젒洹� �넗�겙 �옱諛쒓툒
 	public String getAccessTokenAgain(String refreshToken) {
 		String reqUrl = "https://nid.naver.com/oauth2.0/token";
 		String accessToken = "";
 		try{
  	        URL url = new URL(reqUrl);
  	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
- 	        conn.setDoOutput(true); //OutputStream으로 POST 데이터를 넘겨주겠다는 옵션.
+ 	        conn.setDoOutput(true); //OutputStream�쑝濡� POST �뜲�씠�꽣瑜� �꽆寃⑥＜寃좊떎�뒗 �샃�뀡.
  	        
- 	        // Request Body에 Data를 담기위해 OutputStream 객체를 생성.
+ 	        // Request Body�뿉 Data瑜� �떞湲곗쐞�빐 OutputStream 媛앹껜瑜� �깮�꽦.
  	        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
- 	        // StringBuilder는 변경 가능한 문자열을 만들어준다.
+ 	        // StringBuilder�뒗 蹂�寃� 媛��뒫�븳 臾몄옄�뿴�쓣 留뚮뱾�뼱以��떎.
  	        StringBuilder sb = new StringBuilder();
  	        
- 	        //필수 쿼리 파라미터 세팅
+ 	        //�븘�닔 荑쇰━ �뙆�씪誘명꽣 �꽭�똿
  	        sb.append("grant_type=refresh_token");
  	        sb.append("&client_id=").append(client_id);
  	        sb.append("&client_secret=").append(client_secret);
@@ -192,7 +184,7 @@ public class NaverApi {
  	        bw.write(sb.toString());
  	        bw.flush();
  	        
- 	        // 실제 서버로 Request 요청 하는 부분. (응답 코드를 받는다. 200 성공, 나머지 에러)
+ 	        // �떎�젣 �꽌踰꾨줈 Request �슂泥� �븯�뒗 遺�遺�. (�쓳�떟 肄붾뱶瑜� 諛쏅뒗�떎. 200 �꽦怨�, �굹癒몄� �뿉�윭)
  	        int responseCode = conn.getResponseCode();
  	        System.out.println("[NaverApi.getAccessTokenAgain] responseCode = "+ responseCode);
  	        
@@ -212,7 +204,7 @@ public class NaverApi {
  	        JSONParser parsing = new JSONParser();
  	        Object obj = parsing.parse(responseSb.toString());
  	        JSONObject jsonObj = (JSONObject)obj;
- 	        accessToken = String.valueOf(jsonObj.get("access_token")); // 갱신된 접근 토큰 받기
+ 	        accessToken = String.valueOf(jsonObj.get("access_token")); // 媛깆떊�맂 �젒洹� �넗�겙 諛쏄린
  	        br.close();
  	        bw.close();
  	    }catch (Exception e){
@@ -220,7 +212,7 @@ public class NaverApi {
  	    }
 		return accessToken;
 	}
-	// 연동해제 3단계. 연동해제(접근 토큰 삭제)
+	// �뿰�룞�빐�젣 3�떒怨�. �뿰�룞�빐�젣(�젒洹� �넗�겙 �궘�젣)
 	public String naverDisconnect(String accessToken) {
 		String reqUrl = "https://nid.naver.com/oauth2.0/token";
 //		String deletedToken = "";
@@ -228,14 +220,14 @@ public class NaverApi {
 		try {
 			URL url = new URL(reqUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-	        conn.setDoOutput(true); //OutputStream으로 POST 데이터를 넘겨주겠다는 옵션.
+	        conn.setDoOutput(true); //OutputStream�쑝濡� POST �뜲�씠�꽣瑜� �꽆寃⑥＜寃좊떎�뒗 �샃�뀡.
 	        
-	        // Request Body에 Data를 담기위해 OutputStream 객체를 생성.
+	        // Request Body�뿉 Data瑜� �떞湲곗쐞�빐 OutputStream 媛앹껜瑜� �깮�꽦.
 	        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
-	        // StringBuilder는 변경 가능한 문자열을 만들어준다.
+	        // StringBuilder�뒗 蹂�寃� 媛��뒫�븳 臾몄옄�뿴�쓣 留뚮뱾�뼱以��떎.
 	        StringBuilder sb = new StringBuilder();
 	        
-	        //필수 쿼리 파라미터 세팅
+	        //�븘�닔 荑쇰━ �뙆�씪誘명꽣 �꽭�똿
 	        sb.append("grant_type=delete");
 	        sb.append("&client_id=").append(client_id);
 	        sb.append("&client_secret=").append(client_secret);
@@ -245,7 +237,7 @@ public class NaverApi {
 	        bw.write(sb.toString());
 	        bw.flush();
 	        
-	        // 실제 서버로 Request 요청 하는 부분. (응답 코드를 받는다. 200 성공, 나머지 에러)
+	        // �떎�젣 �꽌踰꾨줈 Request �슂泥� �븯�뒗 遺�遺�. (�쓳�떟 肄붾뱶瑜� 諛쏅뒗�떎. 200 �꽦怨�, �굹癒몄� �뿉�윭)
 	        int responseCode = conn.getResponseCode();
 	        System.out.println("[NaverApi.deleteToken] responseCode = "+ responseCode);
 	        
@@ -265,8 +257,7 @@ public class NaverApi {
 	        JSONParser parsing = new JSONParser();
 	        Object obj = parsing.parse(responseSb.toString());
 	        JSONObject jsonObj = (JSONObject)obj;
-//	        deletedToken = String.valueOf(jsonObj.get("access_token")); // 삭제처리된 접근 토큰 받기
-	        result = String.valueOf(jsonObj.get("result")); // 삭제처리 성공하면 'success' 리턴
+	        result = String.valueOf(jsonObj.get("result"));
 	        br.close();
 	        bw.close();
 

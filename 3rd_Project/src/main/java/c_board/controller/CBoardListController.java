@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,10 +48,10 @@ public class CBoardListController {
 		List<CBoardBean> list = cdao.getAllBoardList(pageInfo,map);
 //		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 //		for(CBoardBean cb:list) {
-//			System.out.println("CBoardBean의 c_regdate: " + formatter.format(cb.getC_regdate()));
-//			// registerdate를 포맷팅에서 다시 세팅
+//			System.out.println("CBoardBean�쓽 c_regdate: " + formatter.format(cb.getC_regdate()));
+//			// registerdate瑜� �룷留룻똿�뿉�꽌 �떎�떆 �꽭�똿
 //		}
-		// 현재 날짜 구하기 
+		// �쁽�옱 �궇吏� 援ы븯湲� 
 //		Date now = new Date();
 		//System.out.println(formatter.format(now));
 //		model.addAttribute("now",formatter.format(now));
@@ -64,15 +66,45 @@ public class CBoardListController {
 	
 	@RequestMapping(value=ajaxCommand)
 	@ResponseBody
-	public List<CBoardBean> getCBoard(@RequestParam String u_id) {
-		//Map<String, String> map = new HashMap<String, String>();
-		//map.put("u_id", u_id);
-//		int totalCount = cdao.getTotalCountById2(u_id);
-		List<CBoardBean> ajaxList = cdao.getBoardById2(u_id);
+	public JSONObject getCBoard(@RequestParam String c_writer, HttpServletRequest request, Model model) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("c_writer", c_writer);
+		int totalCount = cdao.getTotalCountById(map);
+		String url = request.getContextPath() + "/cBoardAjax.cb?c_writer="+c_writer; ///ex/list.ab
+		Paging pageInfo = new Paging(null, "5", totalCount, url);
+		List<CBoardBean> ajaxList = cdao.getBoardById(pageInfo, map);
+		
+		HashMap<String, Object> valueByHashMap = null;
+		JSONObject valueByJSONObject = null;
+
+		HashMap<String, Object> resultHashMap = new HashMap<String, Object>();
+		JSONObject resultJSONObject = null;
+		
+		System.out.println("ajaxList.size():"+ajaxList.size());
 		for(CBoardBean cb:ajaxList) {
-			System.out.println("cb.getC_regdate():"+cb.getC_regdate());
+			// ajaxList�쓽 size留뚰겮 valueByHashMap媛앹껜 留뚮뱾湲�.
+			valueByHashMap = new HashMap<String, Object>();
+			// 1�떒怨�.
+			valueByHashMap.put("c_subject", cb.getC_subject());
+			valueByHashMap.put("c_regdate", cb.getC_regdate());
+			valueByHashMap.put("c_readcount", cb.getC_readcount());
+			System.out.println("valueByHashMap(�빐�떆留� �삎�깭):"+valueByHashMap);
+			
+			// �빐�떆留듭쓣 �젣�씠�뒯�삤釉뚯젥�듃濡� �떎�슫罹먯뒪�똿 => �뿉�윭 new JSONObject(hashmap)
+			valueByJSONObject = (JSONObject)valueByHashMap;
+			System.out.println("valueByJSONObject(json �삎�깭):"+valueByJSONObject);
+			
+			// 2�떒怨�.
+			resultHashMap.put(String.valueOf(cb.getC_num()), valueByJSONObject);
 		}
-		return ajaxList;
+		// 3�떒怨�. 媛��옣 留덉�留됱뿉 pagingHtml�쓣 put
+		resultHashMap.put("pagingHtml", pageInfo.getPagingHtml());
+		System.out.println("resultHashMap(�빐�떆留� �삎�깭):"+resultHashMap);
+		
+		// �빐�떆留듭쓣 �젣�씠�뒯�삤釉뚯젥�듃濡� �떎�슫罹먯뒪�똿
+		resultJSONObject = (JSONObject)resultHashMap;
+		System.out.println("resultJSONObject(json �삎�깭):"+resultJSONObject);
+		return resultJSONObject;
 	}
 }
  

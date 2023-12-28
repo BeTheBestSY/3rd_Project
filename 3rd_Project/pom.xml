@@ -4,9 +4,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.spring</groupId>
-	<artifactId>ex</artifactId>
+	<artifactId>ex20</artifactId>
 	<name>3rd_Project</name>
-	<packaging>war</packaging> 
+	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<java-version>1.6</java-version>
@@ -201,17 +201,17 @@
 		
 		<!-- JSONObject, JSONParser 오류나면 삭제 될 수도..-->
 		<!--기본 org.json  -->
-		<dependency>
+		<!-- <dependency>
 		    <groupId>org.json</groupId>
 		    <artifactId>json</artifactId>
 		    <version>20180813</version>
-		</dependency>
+		</dependency> -->
 	
 		<!-- 구글 json 라이브러리  -->
 		<dependency>
 		  <groupId>com.googlecode.json-simple</groupId>
 		  <artifactId>json-simple</artifactId>
-		  <version>1.1</version>
+		  <version>1.1.1</version>
 		</dependency>
 		
 		<!-- 메일 관련 -->

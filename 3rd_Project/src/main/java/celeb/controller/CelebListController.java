@@ -39,8 +39,7 @@ public class CelebListController {
 		String url = request.getContextPath()+command;
 		Paging pageInfo = new Paging(pageNumber, ps, totalCount, url, whatColumn, keyword);
 		
-		List<CelebBean> celebLists = cdao.getAllCelebList(map, pageInfo);
-		System.out.println(celebLists = celebLists);
+		List<CelebBean> celebLists = cdao.getAllCelebList(map, pageInfo); 
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("celebLists",celebLists);
 		model.addAttribute("pageInfo", pageInfo); 
