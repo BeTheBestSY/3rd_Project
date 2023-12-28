@@ -2,19 +2,62 @@
     pageEncoding="UTF-8"%>
 
 <style>
-	#content_update th{
-		text-align: left; 
-		background: #F6F6F6;
-		padding-left: 20px;
-	}
-	#content_update{
-		width: 90%; 
-		height: 630px;
-		text-align: left;
-	}
+#content_update th {
+	text-align: left;
+	background: #F6F6F6;
+	padding-left: 20px;
+}
+
+#content_update {
+	width: 90%;
+	height: 730px;
+	text-align: left;
+}
+
+#profileImg {
+	border-radius: 50%; 
+	width: 130px;
+	height: 130px; 
+	background-image: url('resources/image/no-image.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	left: -10px;
+	position: relative;
+}
 </style>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
+	var profile, profileImg, profileImgName;
+	window.onload = function(){
+		profile = document.getElementById('profile');
+		profileImg = document.getElementById('profileImg');
+		profileImgName = document.getElementById('profileImgName');
+		
+		profileImg.addEventListener('click', () => profile.click());
+		
+		/* input에 파일이 업로드되면 change event 가 발생 */
+		profile.addEventListener('change', getProfileImage); // getProfileImage 함수 등록
+		
+		function getProfileImage(e) {
+			var profilePathSplit = profile.value.split('\\'); // 프로필 이미지의 경로를 구분자 '\\'로 나누기
+			var profileName = profilePathSplit[profilePathSplit.length-1];
+			alert("들어온 프로필 이미지의 이름: "+profileName);
+			
+	     	const file = e.currentTarget.files[0];
+	      	const reader = new FileReader(); // file을 담을 변수
+	      	reader.readAsDataURL(file);
+	      	reader.onload = (e) => {
+	      		// 파일이 로드되면 이미지를 해당 파일로 고치기
+	      		profileImg.setAttribute('src', e.target.result);
+	      		profileImgName.innerHTML='<a href="javascript:deleteProfileImg();" style="text-decoration: none; font-size: 10pt;"><font color="red">x</font></a> '+profileName;
+	        };
+	    }
+	};
+	function deleteProfileImg(){
+		profileImg.setAttribute('src', '<%=request.getContextPath()%>/resources/image/no-image.jpg');
+		profileImgName.innerHTML='<a href="javascript:deleteProfileImg();" style="text-decoration: none; font-size: 10pt;"><font color="red">x</font></a><span style="font-size: 10pt;">&nbsp;사진을 등록하세요</span>';
+	}
 	function zipClick(){
 		document.getElementById("searchBtn").click();
 	}
@@ -56,17 +99,38 @@
 	</c:if>
 	
 	<div>
-		<form action="update.u" method="post" onSubmit="return msg()">
+		<form action="update.u" method="post" onSubmit="return msg()" enctype="multipart/form-data">
 			<input type="hidden" name="u_name" value="${loginInfo.u_name }"> 
 			<input type="hidden" name="u_id" value="${loginInfo.u_id }">
 			
 			<table id="content_update">
-				<tr style="border-top: 1px solid #D5D5D5; height: 12%;">
-					<td rowspan="2">사진 들어갈 곳</td>
-					<th>자기소개</th>
+				<tr style="border-top: 1px solid #D5D5D5; height: 10%; margin: 0px; padding-left: 10px;">
+					<td rowspan="2" width="20%" style="border-right: 1px dotted #EAEAEA;">
+						<c:if test="${loginInfo.u_profileimg != null}">
+							<input type="hidden" name="img_before" value="${loginInfo.u_profileimg}">
+							<input id="profile" type="file" name="upload_img" accept="image/*" style="display: none">
+							<br>
+							<img id="profileImg" alt="프로필이미지" src="<%=request.getContextPath()%>/resources/uploadFolder/users/${loginInfo.u_profileimg}" style="cursor:pointer; top: -5px; position: relative; object-fit: cover;" class="rounded-circle"><br>
+							<span id="profileImgName">
+							<a href="javascript:deleteProfileImg();" style="text-decoration: none; font-size: 10pt;"><font color="red">x</font></a> ${loginInfo.u_profileimg}</span>
+						</c:if>
+						<c:if test="${loginInfo.u_profileimg == null}">
+							<input type="hidden" name="img_before" value="${loginInfo.u_profileimg}">
+							<input id="profile" type="file" name="upload_img" accept="image/*" style="display: none">
+							<br>
+							<img id="profileImg" alt="프로필이미지" src="resources/image/no-image.jpg" style="cursor:pointer; top: -5px; position: relative; object-fit: cover;"><br>
+							<span id="profileImgName">
+								<a href="javascript:deleteProfileImg();" style="text-decoration: none; font-size: 10pt;"><font color="red">x</font></a>
+								<span style="font-size: 10pt;">&nbsp;사진을 등록하세요</span>
+							</span>
+						</c:if>
+					</td>
+					<th>&nbsp;&nbsp;자기소개</th> 
 				</tr>
-				<tr style="height: 160px;">
-					<td>자기소개 들어갈 곳</td>
+				<tr style="height: 130px;">
+					<td> 
+						<textarea name="u_intro" class="form-control" style="width: 97%; height: 100px; resize: none; font-size: 11pt;" placeholder="30자 이내의 간단한 자기소개를 등록해주세요." maxlength="30">${loginInfo.u_intro}</textarea>
+					</td>
 				</tr>
 				<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA; height: 12%;">
 					<th>&nbsp;&nbsp;이름</th>
