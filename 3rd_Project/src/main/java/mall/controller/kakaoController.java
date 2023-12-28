@@ -48,7 +48,7 @@ public class kakaoController {
 		        // 파라미터, 헤더
 		        HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(parameters, this.getHeaders());
  
-		        // 외부에 보낼 url 
+		        // 외부에 보낼 url
 		        RestTemplate restTemplate = new RestTemplate();
 		        
 		        ResponseEntity<String> responseEntity = restTemplate.postForEntity(
