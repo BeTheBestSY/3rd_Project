@@ -28,7 +28,6 @@ public class EmailSender {
 
 		    mailSender.send(message);
 		} catch(Exception e){
-		    System.out.println(e);
 		    return "Error";
 		}
 		return "Sucess";
