@@ -25,12 +25,12 @@
 		var keyword = document.getElementById("search");
 		keyword.value = "";
 	}
-	function popup(u_id, loginInfo, pageNumber){
+	function popup(c_writer, loginInfo, pageNumber){
 		if(loginInfo == ''){
 			alert('로그인 후 이용 가능합니다.');
 			location.href="login.u";
 		} else {
-			window.open('profile.u?u_id='+u_id, '프로필', 'menubar=no, toolbar=no, scrollbars=auto, resizable=no, width=500, height=650');
+			window.open('profile.u?c_writer='+c_writer, '프로필', 'menubar=no, toolbar=no, scrollbars=auto, resizable=no, width=500, height=650');
 		}
 	}
 </script>
