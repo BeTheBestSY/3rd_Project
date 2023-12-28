@@ -14,55 +14,66 @@
 		window.onload = function() {
 			$(function() {
 				$.ajax({
-					url: 'cBoardAjax.cb?c_writer=${c_writer}',
-					dataType:'json',
-					success: function(data) { // 성공적으로 받아왔을 경우
-						alert(data);
-						/* $(data).each(funcion() {
-							alert(this.pagingHtml)
-						}); */
-						/* $(data).each(function() { 
+					url: 'postAjax.cb?c_writer=${c_writer}',
+					success: function(post) { // 성공적으로 받아왔을 경우
+						post.forEach(function(e){
 							// *** 답글만 달고 글을 쓴 적 없는 사람도 고려해야함.
-							var date = new Date(this.c_regdate);
-							var now24Date = moment(date).format("YYYY-MM-DD");
-							var html = '';
-							html += '<tr>';
-							html += '	<td width="3%" align="center">'+this.c_num+'</td>';
-							html += '	<td width="10%"><a href="#">'+this.c_subject+'</a></td>';
-							html += '	<td width="5%" align="center">'+now24Date+'</td>';
-							html += '	<td width="5%" align="center">'+this.c_readcount+'</td>';
-							html += '</tr>';
-							$('#post-table').append(html);
+							if(e.c_num != null){
+								var date = new Date(e.c_regdate);
+								var now24Date = moment(date).format("YYYY-MM-DD");
+								var html = '';
+								
+								html += '<tr>';
+								html += '	<td width="3%" align="center">'+e.c_num+'</td>';
+								html += '	<td width="10%"><a href="#">'+e.c_subject+'</a></td>';
+								html += '	<td width="5%" align="center">'+now24Date+'</td>';
+								html += '	<td width="5%" align="center">'+e.c_readcount+'</td>';
+								html += '</tr>';
+								$('#post-table').append(html);
+							} else{
+								if(e.pagingHtml === ''){
+									$('#post-table').append('작성한 글이 없습니다.');
+								} else{
+									$('#post-list').append(e.pagingHtml);
+								}
+							}
 						});
-						$('#post-list').append('${pagingHtml}'); */
 					}
 				});
 				// 댓글단 글을 불러오는 ajax 설정 
-				//$.ajax({
-					/* url: '',
-					success: function(data) { // 성공적으로 받아왔을 경우
-						$(data).each(function() {
-							var date = new Date(this.c_regdate);
-							var now24Date = moment(date).format("YYYY-MM-DD");
-							var html = '';
-							html += '<tr>';
-							html += '	<td>'+this.c_num+'</td>';
-							html += '	<td>'+this.c_subject+'</td>';
-							html += '	<td>'+now24Date+'</td>';
-							html += '	<td>'+this.c_readcount+'</td>';
-							html += '</tr>';
-							$('#comment-table').append(html);
+				$.ajax({
+					url: 'commentAjax.cb?c_writer=${c_writer}',
+					success: function(comment) { // 성공적으로 받아왔을 경우
+						comment.forEach(function(e){
+							if(e.c_num != null){
+								var date = new Date(e.c_regdate);
+								var now24Date = moment(date).format("YYYY-MM-DD");
+								var html = '';
+								
+								html += '<tr>';
+								html += '	<td width="3%" align="center">'+e.c_num+'</td>';
+								html += '	<td width="10%"><a href="#">'+e.c_subject+'</a></td>';
+								html += '	<td width="5%" align="center">'+now24Date+'</td>';
+								html += '	<td width="5%" align="center">'+e.c_readcount+'</td>';
+								html += '</tr>';
+								$('#comment-table').append(html);
+							} else{
+								if(e.pagingHtml === ''){
+									$('#comment-table').append('작성한 글이 없습니다.');
+								} else{
+									$('#comment-list').append(e.pagingHtml);
+								}
+							}
 						});
-					} */
-				//});
+					}
+				});
 			});
 		};
 		function convert(e, u_id, type){
 			if(e.className === 'off'){
-				// 기존 'on'클래스를 'off'클래스로 클래스명 변경.
-				document.querySelector('.on').className = 'off';
-				//  클릭이벤트가 발생한 e, 즉 'off'클래스를 'on'클래스로 클래스명 변경.
-				e.className = 'on';
+				document.querySelector('.on').className = 'off'; // 기존 'on'클래스를 'off'클래스로 클래스명 변경.
+				e.className = 'on'; //  클릭이벤트가 발생한 e, 즉 'off'클래스를 'on'클래스로 클래스명 변경.
+				
 				if(type === 'post'){
 					document.getElementById('post-list').style.display = 'block';
 					document.getElementById('comment-list').style.display = 'none';
@@ -72,13 +83,6 @@
 					document.getElementById('post-list').style.display = 'none';
 					
 				}
-				// 기존 'on'클래스는 보이지 않게 하면서,
-				// 'off'클래스로 클래스명을 변경해준다.
-				//document.querySelector('.on').style.display = 'none';
-				
-				// 클릭이벤트가 발생한 e, 즉 'off'클래스는 보이게 하면서,
-				// 'on'클래스로 클래스명을 변경해준다.
-				//e.style.display = 'block';
 			}
 		}
 	</script>
@@ -112,7 +116,7 @@
 		<div class="board-container" style="border: 1px solid fuchsia;">
 			<p onclick="convert(this,'${ub.u_id }','post')" class="on" style="font-family:'RIDIBatang'; margin-left: 5%;">작성글</p>
 			<p onclick="convert(this,'${ub.u_id }','comment')" class="off" style="font-family:'RIDIBatang'; margin-left: 3%;">댓글단 글</p>
-			<div class="list-box" style="border: 1px solid black; margin-top: 2%;">
+			<div class="list-box" style="border: 1px solid black;">
 				<div id="post-list" style="display: block;">
 					<table id="post-table" border="1">
 						<tr>
@@ -122,9 +126,8 @@
 							<th>조회</th>
 						</tr>
 					</table>
-					${pageInfo.pagingHtml }
 				</div>
-				<div id="comment-list" style="display: none; width: 100%; height: 70%;">
+				<div id="comment-list" style="display: none;">
 					<table id="comment-table" border="1">
 						<tr>
 							<th></th>
@@ -132,12 +135,6 @@
 							<th>작성자</th>
 							<th>작성일</th>
 							<th>조회</th>
-						</tr>
-						<!-- 임시로 넣어놓음 -->
-						<tr>
-							<td colspan="5">
-								작성한 댓글이 없습니다.
-							</td>
 						</tr>
 					</table>
 				</div>
