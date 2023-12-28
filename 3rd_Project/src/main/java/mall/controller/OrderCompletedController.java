@@ -1,29 +1,20 @@
 package mall.controller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import mall.model.KakaoApproveResponse;
 import mall.model.OrderBean;
 import mall.model.OrderDao;
-import mall.model.OrdersProduct;
 import mall.model.TempCart;
-import product.model.ProductBean;
 import users.model.UsersBean;
-import users.model.UsersDao;
 
 
 @Controller
@@ -63,7 +54,7 @@ public class OrderCompletedController {
 			@RequestParam(value = "pay_bank", required = false) String pay_bank,
 			@RequestParam(value = "pay_name", required = false) String pay_name,
 			@RequestParam(value = "deli", required = false) String deli,
-			@RequestParam(value = "totalPrice", required = false) String totalPrice,
+			@RequestParam(value = "totalPrice", required = false) int totalPrice,
 			@RequestParam(value = "totalPoint", required = false) String totalPoint,
 			
 			HttpServletRequest request,
@@ -109,6 +100,7 @@ public class OrderCompletedController {
 		MaxO_num = MaxO_num+1;
 		
 		ob.setO_num(MaxO_num);
+		ob.setO_totalamount(totalPrice);
 		
 		if(!(Boolean)application.getAttribute("flag")) {
 			TempCart tc = dao.selectTemp(cart_num); 
@@ -118,8 +110,7 @@ public class OrderCompletedController {
 			dao.upSalevolumePord(tc);
 			dao.deleteTemp(cart_num);
 			application.setAttribute("flag", true);
-		} 
- 
+		}
 	 
 		model.addAttribute("ob", ob); // 주문 정보가 담긴 객체 '주문완료' 페이지로 전달.
 		model.addAttribute("deli", deli); // 배송비 정보 담아서 전달
@@ -133,7 +124,7 @@ public class OrderCompletedController {
 			
 			KakaoApproveResponse kao = new KakaoApproveResponse();
 			
-			kao.getAmount().setTotal(Integer.parseInt(totalPrice));
+			kao.getAmount().setTotal(totalPrice);
 			kao.setPartner_order_id( "KAKAOHB"+MaxO_num);
 			kao.setPartner_user_id(u_id);
 			

@@ -118,7 +118,6 @@
 					<th scope="col">수량</th>
 					<th scope="col">가격</th>
 					<th scope="col">배송비</th>
-					<th scope="col">주문금액</th>
 					<th scope="col">선택</th>
 				</tr>
 			</thead>
@@ -148,14 +147,6 @@
 								</c:if>
 								<c:if test="${totalAmount >= 30000}">
 									0원
-								</c:if>
-							</td>
-							<td>
-								<c:if test="${pb.p_price*list[loop.index].cart_qty < 30000}">
-									<fmt:formatNumber value="${pb.p_price*list[loop.index].cart_qty + 3000}" pattern="#,###" />원
-								</c:if>
-								<c:if test="${pb.p_price*list[loop.index].cart_qty >= 30000}">
-									<fmt:formatNumber value="${pb.p_price*list[loop.index].cart_qty}" pattern="#,###" />원
 								</c:if>
 							</td>
 							<td>

@@ -10,7 +10,15 @@ public class OrderBean {
 	private String o_addr;
 	private String o_date;
 	private String o_status;
+	private int o_totalamount;
 	private String pay_bank;
+	
+	public int getO_totalamount() {
+		return o_totalamount;
+	}
+	public void setO_totalamount(int o_totalamount) {
+		this.o_totalamount = o_totalamount;
+	}
 	public String getO_message() {
 		return o_message;
 	}
