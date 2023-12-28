@@ -183,6 +183,7 @@ public class AdminProductController {
 							@RequestParam String exist_ttl,
 							@RequestParam String exist_dtl,
 							Model model) throws IOException {
+		
 		System.out.println("기존 타이틀이미지:"+exist_ttl);
 		System.out.println("기존 디테일이미지:"+exist_dtl);
 		System.out.println("새로운 타이틀이미지:"+pb.getP_ttlimg());
