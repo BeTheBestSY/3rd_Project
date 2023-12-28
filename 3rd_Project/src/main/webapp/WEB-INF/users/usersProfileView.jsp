@@ -15,8 +15,12 @@
 			$(function() {
 				$.ajax({
 					url: 'cBoardAjax.cb?c_writer=${c_writer}',
+					dataType:'json',
 					success: function(data) { // 성공적으로 받아왔을 경우
 						alert(data);
+						/* $(data).each(funcion() {
+							alert(this.pagingHtml)
+						}); */
 						/* $(data).each(function() { 
 							// *** 답글만 달고 글을 쓴 적 없는 사람도 고려해야함.
 							var date = new Date(this.c_regdate);
@@ -34,7 +38,7 @@
 					}
 				});
 				// 댓글단 글을 불러오는 ajax 설정 
-				$.ajax({
+				//$.ajax({
 					/* url: '',
 					success: function(data) { // 성공적으로 받아왔을 경우
 						$(data).each(function() {
@@ -50,7 +54,7 @@
 							$('#comment-table').append(html);
 						});
 					} */
-				});
+				//});
 			});
 		};
 		function convert(e, u_id, type){
