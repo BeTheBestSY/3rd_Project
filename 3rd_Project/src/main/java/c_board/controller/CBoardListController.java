@@ -1,13 +1,10 @@
 package c_board.controller;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +24,8 @@ public class CBoardListController {
 	private CBoardDao cdao;
 	  
 	public final String command="/cBoardList.cb";
-	public final String ajaxCommand="/cBoardAjax.cb";
+	public final String postCmd="postAjax.cb";
+	public final String commentCmd="commentAjax.cb";
 	public final String viewPage="cBoardList";
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
@@ -65,57 +63,62 @@ public class CBoardListController {
 		return viewPage;
 	}
 	
-	@RequestMapping(value=ajaxCommand)
+	@RequestMapping(value=postCmd)
 	@ResponseBody
-	public JSONObject getCBoard(@RequestParam String c_writer, HttpServletRequest request, Model model) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("c_writer", c_writer);
-		int totalCount = cdao.getTotalCountById(map);
-		String url = request.getContextPath() + "/cBoardAjax.cb?c_writer="+c_writer; ///ex/list.ab
-		Paging pageInfo = new Paging(null, "5", totalCount, url);
-		List<CBoardBean> ajaxList = cdao.getBoardById(pageInfo, map);
+	public List<Map<String, Object>> getPost(@RequestParam String c_writer, 
+											@RequestParam(required = false) String pageNumber,
+											HttpServletRequest request, Model model) {
+		System.out.println("postAjax.cb 요청 처리 중...");
+		int totalCount = cdao.getTotalCountOfMainPost(c_writer);
+		System.out.println("작성글의 totalCount: "+totalCount);
+		Paging pageInfo = new Paging(pageNumber, totalCount, postCmd);
+		List<CBoardBean> postList = cdao.getBoardOfMainPost(pageInfo, c_writer);
 		
-		Map<String, Object> valueByHashMap = null;
-		JSONObject valueByJSONObject = null;
-
-		Map<String, Object> valueOfC_numByHashMap = new LinkedHashMap<String, Object>();
-		JSONObject valueOfC_numByJSONObject = null;
+		System.out.println("postList.size():"+postList.size());
+		Map<String, Object> postElement = null;
+		Map<String, Object> pagingElement = new HashMap<String, Object>();
+		List<Map<String, Object>> result = new ArrayList<Map<String,Object>>();
 		
-		Map<String, Object> resultHashMap = new LinkedHashMap<String, Object>();
-		JSONObject resultJSONObject = null;
-		
-		System.out.println("ajaxList.size():"+ajaxList.size());
-		
-		for(CBoardBean cb:ajaxList) {
-			// ajaxList의 size만큼 valueByHashMap객체 생성.
-			valueByHashMap = new LinkedHashMap<String, Object>();
-			// 1단계.
-			valueByHashMap.put("c_subject", cb.getC_subject());
-			valueByHashMap.put("c_regdate", cb.getC_regdate());
-			valueByHashMap.put("c_readcount", cb.getC_readcount());
-			System.out.println("valueByHashMap(해시맵 형태):"+valueByHashMap);
-			
-			//valueByJSONObject = new JSONObject(valueByHashMap);
-			System.out.println("valueByJSONObject(json 형태):"+valueByJSONObject);
-			
-			// 2�떒怨�. 
-			resultHashMap.put(String.valueOf(cb.getC_num()), valueByJSONObject);
-			// 2단계.
-//			valueOfC_numByHashMap = new LinkedHashMap<String, Object>();
-			valueOfC_numByHashMap.put(String.valueOf(cb.getC_num()), valueByJSONObject);
-			System.out.println("valueOfC_numByHashMap(해시맵 형태):"+valueOfC_numByHashMap);
-			//valueOfC_numByJSONObject = new JSONObject(valueOfC_numByHashMap);
-			System.out.println("valueOfC_numByJSONObject(json 형태):"+valueOfC_numByJSONObject);
+		for(CBoardBean cb:postList) {
+			postElement = new HashMap<String, Object>();
+			postElement.put("c_num", cb.getC_num());
+			postElement.put("c_subject", cb.getC_subject());
+			postElement.put("c_regdate", cb.getC_regdate());
+			postElement.put("c_readcount", cb.getC_readcount());
+			result.add(postElement);
 		}
+		pagingElement.put("pagingHtml", pageInfo.getPagingHtml());
+		result.add(pagingElement);
+		System.out.println("postList의 result: "+result+"\n");
+		return result;
+	}
+	
+	@RequestMapping(value=commentCmd)
+	@ResponseBody
+	public List<Map<String, Object>> getComment(@RequestParam String c_writer, @RequestParam(required = false) String pageNumber, HttpServletRequest request, Model model) {
+		System.out.println("commentAjax.cb 요청 처리 중...");
+		int totalCount = cdao.getTotalCountOfComment(c_writer);
+		System.out.println("답글의 totalCount: "+totalCount);
+		Paging pageInfo = new Paging(pageNumber, totalCount, commentCmd);
+		List<CBoardBean> commentList = cdao.getBoardOfComment(pageInfo, c_writer);
 		
-		resultHashMap.put("c_num", valueOfC_numByJSONObject);
-		// 3단계.
-		resultHashMap.put("pagingHtml", pageInfo.getPagingHtml());
-		System.out.println("resultHashMap(해시맵 형태):"+resultHashMap);
+		System.out.println("commentList.size():"+commentList.size());
+		Map<String, Object> commentElement = null;
+		Map<String, Object> pagingElement = new HashMap<String, Object>();
+		List<Map<String, Object>> result = new ArrayList<Map<String,Object>>();
 		
-		//resultJSONObject = new JSONObject(resultHashMap);
-		System.out.println("resultJSONObject(json 형태):"+resultJSONObject);
-		return resultJSONObject;
+		for(CBoardBean cb:commentList) {
+			commentElement = new HashMap<String, Object>();
+			commentElement.put("c_num", cb.getC_num());
+			commentElement.put("c_subject", cb.getC_subject());
+			commentElement.put("c_regdate", cb.getC_regdate());
+			commentElement.put("c_readcount", cb.getC_readcount());
+			result.add(commentElement);
+		}
+		pagingElement.put("pagingHtml", pageInfo.getPagingHtml());
+		result.add(pagingElement);
+		System.out.println("commentList의 result: "+result+"\n");
+		return result;
 	}
 }
  

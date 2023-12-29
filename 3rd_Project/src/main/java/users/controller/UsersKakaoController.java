@@ -97,9 +97,9 @@ public class UsersKakaoController {
 		id = kakaoApi.kakaoDisconnect(this.accessToken);
 		System.out.println("연동해제한 카카오 회원 id: "+id);
 		
-		if(admin.equals("yes"))
-			return gotoPage + "usersList.admin";
-		else
+		if(admin == null)
 			return gotoPage + ".main";
+		else
+			return gotoPage + "usersList.admin";
 	}
 }

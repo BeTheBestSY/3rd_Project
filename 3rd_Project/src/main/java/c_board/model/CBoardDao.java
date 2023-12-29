@@ -105,5 +105,27 @@ public class CBoardDao {
 		sqlSessionTemplate.update(namespace+"updateReport", c_num);
 	}
 
+	public int getTotalCountOfMainPost(String c_writer) {
+		return sqlSessionTemplate.selectOne(namespace+"getTotalCountOfMainPost", c_writer);
+	}
+
+	public List<CBoardBean> getBoardOfMainPost(Paging pageInfo, String c_writer) {
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		return sqlSessionTemplate.selectList(namespace+"getBoardOfMainPost", c_writer, rowBounds);
+	}
+
+	public int getTotalCountOfComment(String c_writer) {
+		return sqlSessionTemplate.selectOne(namespace+"getTotalCountOfComment", c_writer);
+	}
+
+	public List<CBoardBean> getBoardOfComment(Paging pageInfo, String c_writer) {
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		return sqlSessionTemplate.selectList(namespace+"getBoardOfComment", c_writer, rowBounds);
+	}
+
+	public String getMainPost(int c_ref) {
+		return sqlSessionTemplate.selectOne(namespace+"getMainPost", c_ref);
+	}
+
 	
 }

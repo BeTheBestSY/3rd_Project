@@ -93,11 +93,10 @@ public class UsersNaverController {
 		// 3단계. 연동해제(접근 토큰 삭제)
 		String result = naverApi.naverDisconnect(this.accessToken);
 		System.out.println(result+": 네이버 연동해제 성공");
-		// 4단계. 삭제된 접근 토큰으로 갱신 토큰이 발급되는지 확인 => 보류
 		
-		if(admin.equals("yes"))
-			return gotoPage + "usersList.admin";
-		else
+		if(admin == null)
 			return gotoPage + ".main";
+		else
+			return gotoPage + "usersList.admin";
 	}
 }

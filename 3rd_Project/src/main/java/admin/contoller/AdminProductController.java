@@ -73,7 +73,7 @@ public class AdminProductController {
 		int totalCount = ad.getTotalPrdCount(map);
 		System.out.println("토탈카운트:"+totalCount);
 		String url = request.getContextPath()+command;
-		Paging pageInfo = new Paging(pageNumber, "10", totalCount, url, whatColumn, keyword);
+		Paging pageInfo = new Paging(pageNumber, "30", totalCount, url, whatColumn, keyword);
 		
 		// --------------- pagingHtml에 filter 쿼리스트링 추가하기 ---------------
 		String pagingHtml = pageInfo.getPagingHtml();

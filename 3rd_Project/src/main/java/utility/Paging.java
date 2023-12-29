@@ -232,16 +232,16 @@ public class Paging {
 	}//생성자
 	
 	// Ajax용 페이징 생성자
-	public Paging(String pageNumber, String pageSize, int totalCount, String url ) {
+	public Paging(String pageNumber, int totalCount, String url) {
 		System.out.println("Ajax Paging() 호출중 ...");
 		if(pageNumber == null) {
 			pageNumber = "1";
 		}
 		this.pageNumber = Integer.parseInt(pageNumber); 
-		if(pageSize == null) {
-			pageSize = "5";
-		}
-		this.pageSize = Integer.parseInt(pageSize); 
+//		if(pageSize == null) {
+//			pageSize = "5";
+//		}
+		this.pageSize = 5; 
 		// 굳이 ajax용 페이징 생성자 만들 필요 없긴 함. 원래 paging 생성자에 if문 추가하면 되는데 시간상 나중에..
 		this.limit = this.pageSize; // 한 페이지에 보여줄 레코드 갯수
 
@@ -271,7 +271,7 @@ public class Paging {
 		if( this.endPage > this.totalPage ){
 			this.endPage = this.totalPage ;
 		}
-		this.url = url ; //  /ex/list.ab
+		//this.url = url ; 
 		System.out.println("this.pageNumber:"+this.pageNumber);
 		System.out.println("this.pageSize:"+this.pageSize);
 		System.out.println("this.offset:"+this.offset);
@@ -283,34 +283,22 @@ public class Paging {
 		System.out.println("getAjaxPagingHtml() 함수 호출중...");
 		String result = "" ;
 		if (this.beginPage != 1) {
-			result += "&nbsp;<a href='" + url  
-					+ "&pageNumber=" + ( 1 ) + "&pageSize=" + this.pageSize 
-					+ "' style='text-decoration: none; color: black;'>[처음으로]</a>&nbsp;" ;
-			result += "&nbsp;<a href='" + url 
-					+ "&pageNumber=" + (this.beginPage - 1 ) + "&pageSize=" + this.pageSize 
-					+ "' style='text-decoration: none; color: black;'>[이전]</a>&nbsp;" ;
+			result += "&nbsp;<a href='javascript:ajax(\""+url+"\", 1)' style='text-decoration: none; color: black;'>[처음으로]</a>&nbsp;";
+			result += "&nbsp;<a href='javascript:ajax(\""+url+"\", "+(this.beginPage-1)+")' style='text-decoration: none; color: black;'>[이전]</a>&nbsp;";
 		}
 		//가운데
 		for (int i = this.beginPage; i <= this.endPage ; i++) {
 			if ( i == this.pageNumber ) {
-				result += "&nbsp;<font style='text-decoration: none; background: #EDE5D8; font-size: 10pt;'>&nbsp;" + i + "&nbsp;</font>"	;
+				result += "&nbsp;<font style='text-decoration: none; background: #EDE5D8; font-size: 10pt;'>&nbsp;"+ i +"&nbsp;</font>";
 						
 			} else {
-				result += "&nbsp;<a href='" + url   
-						+ "&pageNumber=" + i + "&pageSize=" + this.pageSize 
-						+ "' style='text-decoration: none; color: black; font-size: 10pt;'>&nbsp;" + i + "&nbsp;</a>" ;
+				result += "&nbsp;<a href='javascript:ajax(\""+url+"\", "+ i +")' style='text-decoration: none; color: black;'>&nbsp;"+ i +"&nbsp;</a>";
 			}
 		}
 		//다음, 맨 끝
 		if ( this.endPage != this.totalPage) { 
-			
-			result += "&nbsp;<a href='" + url  
-					+ "&pageNumber=" + (this.endPage + 1 ) + "&pageSize=" + this.pageSize 
-					+ "' style='text-decoration: none; color: black;'>[다음]</a>&nbsp;" ;
-			
-			result += "&nbsp;<a href='" + url  
-					+ "&pageNumber=" + (this.totalPage ) + "&pageSize=" + this.pageSize 
-					+ "' style='text-decoration: none; color: black;'>[맨 끝으로]</a>&nbsp;" ;
+			result += "&nbsp;<a href='javascript:ajax(\""+url+"\", "+ (this.endPage+1) +")' style='text-decoration: none; color: black;'>[다음]</a>&nbsp;";
+			result += "&nbsp;<a href='javascript:ajax(\""+url+"\", "+ this.totalPage +")' style='text-decoration: none; color: black;'>[맨 끝으로]</a>&nbsp;";
 		}
 		System.out.println("pagingHtml: "+result);
 		return result ;
