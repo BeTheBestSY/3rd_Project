@@ -23,7 +23,7 @@ public class UsersProfileController {
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	public String profile(@RequestParam String c_writer, Model model) {
-		UsersBean ub = ud.getUserById(c_writer);
+		UsersBean ub = ud.getUserById(c_writer); 
 		if(ub == null) {
 			model.addAttribute("msg", "탈퇴한 회원입니다."); 
 			return redirect;
