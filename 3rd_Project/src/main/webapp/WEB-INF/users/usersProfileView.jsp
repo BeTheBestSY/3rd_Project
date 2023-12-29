@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/usersProfileView.css?ver=2209982">
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/usersProfileView.css?ver=2209998">
 <head>
 	<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -89,27 +90,46 @@
 </head>
 <body>
 	<!-- border-dark-subtle: 테두리 색상 -->
+	<!-- border border-5 border-dark-subtle  -->
 	<!-- Today, 방문수, 작성글, 댓글단 글, 퍼스널컬러, 조인데이트, 자기소개, -->
 	<div class="profile-container" style="border: 1px solid blue; width: 80%; height: 80%; margin: auto; position: relative; top: 10%;">
-		<h1 style="font-family: 'RIDIBatang';">${ub.u_id }의 프로필</h1>
-		<div class="main-container" style="border: 1px solid green;">
-			<div class="img-box" style="border: 1px solid red;">
+		<div class="main-container">
+			<div class="img-box">
 				<c:if test="${ub.u_profileimg eq null }">
-					<img  src="resources/image/person.svg" class="border border-5 border-dark-subtle rounded-circle">
+					<img  src="resources/image/person.svg" class="rounded-circle">
 				</c:if>
 				<c:if test="${ub.u_profileimg ne null }">
-					<img  src="${ub.u_profileimg }" class="border border-5 border-dark-subtle rounded-circle">
+					<img  src="${ub.u_profileimg }" class="rounded-circle">
 				</c:if>
 			</div>
-			<div class="explain-box" style="border: 1px solid black; font-family: 'MaruBuri-Regular';">
-				방문: <br> <!-- user 칼럼에 방문 수 칼럼 추가해야.. -->
-				작성글:<br> <!-- 작성글 수 -->
-				댓글단 글:<br> <!-- 댓글단 글 수 -->
-				퍼스널컬러: ${ub.u_color }<br>
-				가입일: ${ub.u_joindate }<br>
-				자기소개: ${ub.u_intro }<br>
+			<div class="explain-box" style="font-family: 'RIDIBatang';">
+				<h1>
+					<c:if test="${ub.u_jointype eq 'N' }">네이버 연동 회원</c:if>
+					<c:if test="${ub.u_jointype eq 'K' }">카카오 연동 회원</c:if>
+					<c:if test="${ub.u_jointype eq 'S' }">${ub.u_id }</c:if>
+				</h1>
+				<font>${ub.u_color } </font>
+				<c:if test="${fn:contains(ub.u_color, '봄')}">
+					<img src="resources/image/spring-mainImg.png">
+				</c:if>
+				<c:if test="${fn:contains(ub.u_color, '여름')}">
+					<img src="resources/image/summer-mainImg.png">
+				</c:if>
+				<c:if test="${fn:contains(ub.u_color, '가을')}">
+					<img src="resources/image/fall-mainImg.png">
+				</c:if>
+				<c:if test="${fn:contains(ub.u_color, '겨울')}">
+					<img src="resources/image/winter-mainImg.png">
+				</c:if>
+				<%-- <c:if test="${fn:contains(ub.u_color, '잘')}">
+					여기는 물음표 이미지 구해와야함.
+				</c:if> --%> <br>
+				<font>방문 </font><b>5</b>&nbsp;&nbsp;<!-- user 칼럼에 방문 수 칼럼 추가해야.. -->
+				<font>작성글 </font><b>33</b>&nbsp;&nbsp;<!-- 작성글 수 -->
+				<font>댓글단 글 </font><b>2</b><br> <!-- 댓글단 글 수 -->
+				<font style="font-family: 'MaruBuri-Regular';">${ub.u_intro }</font><br>
 			</div>
-		</div>
+		</div><hr>
 		<!--  color="#7C81BB" -->
 		<!-- <font face="RIDIBatang"></font> -->
 		<%-- onclick="show(this,'${ub.u_id }')" --%>

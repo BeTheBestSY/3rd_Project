@@ -49,6 +49,7 @@
 					</c:if>
 					<c:if test="${loginInfo.u_profileimg == null}">
 						<img src="resources/image/person.svg" width="85%" class="rounded-circle">
+						<img src="resources/image/person.svg" width="85%" class="rounded-circle">
 					</c:if>
 				</td>
 				<th>아이디</th>

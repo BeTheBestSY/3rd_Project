@@ -92,7 +92,7 @@
 	<br><br>
 	<c:if test="${loginInfo.u_jointype != 'S' && loginInfo.u_phone == ''}">
 		<span style="font-size: 11pt; line-height: 180%;">
-		<u>네이버, 카카오, 구글 연동</u>으로 가입하신 회원님은 <font style="color: red;">필수 정보를 반드시 업데이트</font> 해 주셔야 정상적으로 이용하실 수 있습니다.<br>
+		<u>네이버, 카카오 연동</u>으로 가입하신 회원님은 <font style="color: red;">필수 정보를 반드시 업데이트</font> 해 주셔야 정상적으로 이용하실 수 있습니다.<br>
 		번거로우시더라도 잠깐 시간 내시어 정보 업데이트 부탁 드립니다. :)
 		</span>
 		<br><br><br> 
@@ -110,9 +110,25 @@
 							<input type="hidden" name="img_before" value="${loginInfo.u_profileimg}">
 							<input id="profile" type="file" name="upload_img" accept="image/*" style="display: none">
 							<br>
-							<img id="profileImg" alt="프로필이미지" src="<%=request.getContextPath()%>/resources/uploadFolder/users/${loginInfo.u_profileimg}" style="cursor:pointer; top: -5px; position: relative; object-fit: cover;" class="rounded-circle"><br>
+							<img id="profileImg" alt="프로필이미지" 
+							<c:if test="${loginInfo.u_jointype eq 'N' || loginInfo.u_jointype eq 'K' }">
+								src="${loginInfo.u_profileimg}" 
+							</c:if>
+							<c:if test="${loginInfo.u_jointype eq 'S'}">
+								src="<%=request.getContextPath()%>/resources/uploadFolder/users/${loginInfo.u_profileimg}" 
+							</c:if>
+							style="cursor:pointer; top: -5px; position: relative; object-fit: cover;" class="rounded-circle">
+							<br>
 							<span id="profileImgName">
-							<a href="javascript:deleteProfileImg();" style="text-decoration: none; font-size: 10pt;"><font color="red">x</font></a> ${loginInfo.u_profileimg}</span>
+								<a href="javascript:deleteProfileImg();" style="text-decoration: none; font-size: 10pt;">
+									<font color="red">x</font>
+								</a> 
+								<c:if test="${loginInfo.u_jointype eq 'N' || loginInfo.u_jointype eq 'K' }">
+									<c:set var="profile" value="${fn:split(loginInfo.u_profileimg,'/')}" />
+									${profile[fn:length(profile)-1] }
+								</c:if>
+								<c:if test="${loginInfo.u_jointype eq 'S'}">${loginInfo.u_profileimg}</c:if>
+							</span>
 						</c:if>
 						<c:if test="${loginInfo.u_profileimg == null}">
 							<input type="hidden" name="img_before" value="${loginInfo.u_profileimg}">
@@ -195,12 +211,6 @@
 						<span id="guide" style="color: #999; display: none"></span> 
 						<input type="text" class="form-control" name="u_address" style="width: 90%; margin-bottom: 5px;" value="${loginInfo.u_address eq '-' ? '': fn:split(loginInfo.u_address, ',')[2]}" id="sample4_detailAddress" placeholder="상세주소" required></td>
 				</tr>
-				<!-- <tr>
-						<th>* 결제수단</th>
-						<td>
-							<input type="text" name="u_pay" value="" placeholder="" required>
-						</td>
-				</tr> -->
 				<tr style="border-bottom: 1px solid #D5D5D5; height: 12%;"> 
 					<th><font color="red">*</font> 퍼스널 컬러</th>
 					<td>
