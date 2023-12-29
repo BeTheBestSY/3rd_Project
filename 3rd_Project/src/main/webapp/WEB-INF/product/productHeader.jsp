@@ -20,7 +20,7 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
 		<a href="qBoardList.qb" id="none_under"> 문의 게시판</a>
 		<div style="display: inline; left: 763px; position: relative;">  
-			<input type="text" id="searchBar" placeholder="Search" style="border: none; border-bottom: 1px solid black; position: absolute; left: -185px; top: -2px; display: none; background: white; border-radius: 5px 5px 0px 0px; font-family: 'RIDIBatang';">&nbsp;&nbsp;
+			<input type="text" id="searchBar" onKeyUp="goSearch()" placeholder="Search" style="border: none; border-bottom: 1px solid black; position: absolute; left: -185px; top: -2px; display: none; background: white; border-radius: 5px 5px 0px 0px; font-family: 'RIDIBatang';">&nbsp;&nbsp;
 			<a href="javascript:display()" style="text-decoration: none;">
 				<img src="resources/image/search.png" width="23">&nbsp;&nbsp; 
 			</a>
@@ -35,6 +35,14 @@
 					con.style.display = "block";
 				} else {
 					con.style.display = "none";
+				}
+			}
+			
+			function goSearch(){
+				var keyword = document.getElementById("searchBar").value;
+				if(window.event.keyCode == 13){
+					alert(keyword);
+					location.href="productAllList.p?whatColumn=all&keyword="+keyword;
 				}
 			}
 		</script>

@@ -5,6 +5,13 @@
 	#content tr{
 		height: 40px;
 	}
+	#none_under{
+		text-decoration: none; 
+		color: black;
+	}
+	#none_under{
+		color: graytext;
+	}
 </style>
 
 <%@ include file="usersMypageMenuTop.jsp" %>
@@ -42,7 +49,7 @@
 							<c:set var="num" value="${num-1}" />
 						</td>
 						<td>
-							<a href="orderDetail.u?o_num=${ob.o_num}&pageNumber=${pageNumber}">
+							<a href="orderDetail.u?o_num=${ob.o_num}&pageNumber=${pageNumber}" id="none_under">
 								${ob.o_num}
 							</a>
 						</td>
