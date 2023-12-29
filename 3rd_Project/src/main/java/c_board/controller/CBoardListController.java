@@ -24,8 +24,8 @@ public class CBoardListController {
 	private CBoardDao cdao;
 	  
 	public final String command="/cBoardList.cb";
-	public final String postCmd="/postAjax.cb";
-	public final String commentCmd="/commentAjax.cb";
+	public final String postCmd="postAjax.cb";
+	public final String commentCmd="commentAjax.cb";
 	public final String viewPage="cBoardList";
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
@@ -68,18 +68,18 @@ public class CBoardListController {
 	public List<Map<String, Object>> getPost(@RequestParam String c_writer, 
 											@RequestParam(required = false) String pageNumber,
 											HttpServletRequest request, Model model) {
+		System.out.println("postAjax.cb 요청 처리 중...");
 		int totalCount = cdao.getTotalCountOfMainPost(c_writer);
-		System.out.println("totalCount: "+totalCount);
-		String url = request.getContextPath() + "/postAjax.cb?c_writer="+c_writer; ///ex/list.ab
-		Paging pageInfo = new Paging(pageNumber, "5", totalCount, url);
-		List<CBoardBean> ajaxList = cdao.getBoardOfMainPost(pageInfo, c_writer);
+		System.out.println("작성글의 totalCount: "+totalCount);
+		Paging pageInfo = new Paging(pageNumber, totalCount, postCmd);
+		List<CBoardBean> postList = cdao.getBoardOfMainPost(pageInfo, c_writer);
 		
-		System.out.println("ajaxList.size():"+ajaxList.size());
+		System.out.println("postList.size():"+postList.size());
 		Map<String, Object> postElement = null;
 		Map<String, Object> pagingElement = new HashMap<String, Object>();
 		List<Map<String, Object>> result = new ArrayList<Map<String,Object>>();
 		
-		for(CBoardBean cb:ajaxList) {
+		for(CBoardBean cb:postList) {
 			postElement = new HashMap<String, Object>();
 			postElement.put("c_num", cb.getC_num());
 			postElement.put("c_subject", cb.getC_subject());
@@ -89,25 +89,25 @@ public class CBoardListController {
 		}
 		pagingElement.put("pagingHtml", pageInfo.getPagingHtml());
 		result.add(pagingElement);
-		System.out.println("result: "+result);
+		System.out.println("postList의 result: "+result+"\n");
 		return result;
 	}
 	
 	@RequestMapping(value=commentCmd)
 	@ResponseBody
 	public List<Map<String, Object>> getComment(@RequestParam String c_writer, @RequestParam(required = false) String pageNumber, HttpServletRequest request, Model model) {
+		System.out.println("commentAjax.cb 요청 처리 중...");
 		int totalCount = cdao.getTotalCountOfComment(c_writer);
-		System.out.println("totalCount: "+totalCount);
-		String url = request.getContextPath() + "/commentAjax.cb?c_writer="+c_writer; ///ex/list.ab
-		Paging pageInfo = new Paging(pageNumber, "5", totalCount, url);
-		List<CBoardBean> ajaxList = cdao.getBoardOfComment(pageInfo, c_writer);
+		System.out.println("답글의 totalCount: "+totalCount);
+		Paging pageInfo = new Paging(pageNumber, totalCount, commentCmd);
+		List<CBoardBean> commentList = cdao.getBoardOfComment(pageInfo, c_writer);
 		
-		System.out.println("ajaxList.size():"+ajaxList.size());
+		System.out.println("commentList.size():"+commentList.size());
 		Map<String, Object> commentElement = null;
 		Map<String, Object> pagingElement = new HashMap<String, Object>();
 		List<Map<String, Object>> result = new ArrayList<Map<String,Object>>();
 		
-		for(CBoardBean cb:ajaxList) {
+		for(CBoardBean cb:commentList) {
 			commentElement = new HashMap<String, Object>();
 			commentElement.put("c_num", cb.getC_num());
 			commentElement.put("c_subject", cb.getC_subject());
@@ -117,7 +117,7 @@ public class CBoardListController {
 		}
 		pagingElement.put("pagingHtml", pageInfo.getPagingHtml());
 		result.add(pagingElement);
-		System.out.println("result: "+result);
+		System.out.println("commentList의 result: "+result+"\n");
 		return result;
 	}
 }

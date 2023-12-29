@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import c_board.model.CBoardDao;
 import users.model.UsersBean;
 import users.model.UsersDao;
 
@@ -20,7 +21,8 @@ public class UsersProfileController {
 	
 	@Autowired
 	private UsersDao ud;
-	
+	@Autowired
+	private CBoardDao cb;
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	public String profile(@RequestParam String c_writer, Model model) {
 		UsersBean ub = ud.getUserById(c_writer); 
@@ -30,6 +32,8 @@ public class UsersProfileController {
 		} 
 		model.addAttribute("ub",ub);
 		model.addAttribute("c_writer",c_writer);
+		model.addAttribute("postCount",cb.getTotalCountOfMainPost(c_writer));
+		model.addAttribute("commentCount",cb.getTotalCountOfComment(c_writer));
 		return viewPage;
 	}
 }
