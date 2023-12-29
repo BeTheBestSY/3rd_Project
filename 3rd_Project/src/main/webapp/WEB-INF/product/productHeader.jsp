@@ -7,7 +7,7 @@
 		color: black;
 	}
 </style>
-
+ 
 <%@ include file="../views/header.jsp" %>
 	
 	<!-- 상단 메뉴바 --> 
