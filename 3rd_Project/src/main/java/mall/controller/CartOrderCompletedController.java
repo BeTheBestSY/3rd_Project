@@ -71,7 +71,7 @@ public class CartOrderCompletedController {
 			Model model,
 			HttpSession session) {
 		 
-		 System.out.println(totalPrice+"totalPrice´Â?");
+		 System.out.println(totalPrice+"totalPriceëŠ”?");
 		OrderBean ob = new OrderBean();
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -82,16 +82,16 @@ public class CartOrderCompletedController {
 		ob.setO_message(o_message);
 		ob.setWay(way);
 		if(pay_bank.equals("")) {
-			ob.setPay_bank("´Ù¸¥ °áÁ¦ ¹æ¹ı ¼±ÅÃ");
-			ob.setPay_name("´Ù¸¥ °áÁ¦ ¹æ¹ı ¼±ÅÃ");
+			ob.setPay_bank("ë‹¤ë¥¸ ê²°ì œ ë°©ë²• ì„ íƒ");
+			ob.setPay_name("ë‹¤ë¥¸ ê²°ì œ ë°©ë²• ì„ íƒ");
 		}else {
 			ob.setPay_bank(pay_bank);
 			ob.setPay_name(pay_name);
 		}
 	 
-		ob.setO_status("ÁÖ¹®¿Ï·á");
+		ob.setO_status("ì£¼ë¬¸ì™„ë£Œ");
 		ob.setO_date(currentDate);
-		ob.setO_status("ÁÖ¹®¿Ï·á");
+		ob.setO_status("ì£¼ë¬¸ì™„ë£Œ");
 		ob.setO_phone(o_phone1+"-"+o_phone2+"-"+o_phone3);
 		
 		if(addr1.length() < 4) {
@@ -124,14 +124,14 @@ public class CartOrderCompletedController {
 			application.setAttribute("flag", true);
 		} 
 		
-		model.addAttribute("ob", ob); // ÁÖ¹® Á¤º¸°¡ ´ã±ä °´Ã¼ 'ÁÖ¹®¿Ï·á' ÆäÀÌÁö·Î Àü´Ş.
-		model.addAttribute("deli", deli); // ¹è¼Ûºñ Á¤º¸ ´ã¾Æ¼­ Àü´Ş
-		model.addAttribute("totalPrice", totalPrice); // ÃÑ ÇÕ°è±İ¾× Á¤º¸ ´ã¾Æ¼­ Àü´Ş
-		model.addAttribute("totalPoint", totalPoint); // ÃÑ Æ÷ÀÎÆ® Àû¸³±İ¾× Á¤º¸ ´ã¾Æ¼­ Àü´Ş
-		System.out.println(cart_num+"cart_num¹ºµ¥");
+		model.addAttribute("ob", ob); // ì£¼ë¬¸ ì •ë³´ê°€ ë‹´ê¸´ ê°ì²´ 'ì£¼ë¬¸ì™„ë£Œ' í˜ì´ì§€ë¡œ ì „ë‹¬.
+		model.addAttribute("deli", deli); // ë°°ì†¡ë¹„ ì •ë³´ ë‹´ì•„ì„œ ì „ë‹¬
+		model.addAttribute("totalPrice", totalPrice); // ì´ í•©ê³„ê¸ˆì•¡ ì •ë³´ ë‹´ì•„ì„œ ì „ë‹¬
+		model.addAttribute("totalPoint", totalPoint); // ì´ í¬ì¸íŠ¸ ì ë¦½ê¸ˆì•¡ ì •ë³´ ë‹´ì•„ì„œ ì „ë‹¬
+		System.out.println(cart_num+"cart_numë­”ë°");
 		dao.deleteAllCart(cart_num);
 		
-		if(way.equals("¹«ÅëÀå ÀÔ±İ")) {
+		if(way.equals("ë¬´í†µì¥ ì…ê¸ˆ")) {
 			return viewPage;
 		}else {
 			

@@ -1,27 +1,23 @@
 package mall.controller;
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+ 
+ 
+
 import org.springframework.stereotype.Controller;
+ 
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody; 
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
+
 import mall.model.KakaoApproveResponse;
 import mall.model.KakaoReadyResponse;
-
 
 @Controller
 public class kakaoController {
@@ -29,91 +25,30 @@ public class kakaoController {
 	  private String cid = "TC0ONETIME";  
 	  private KakaoReadyResponse kakaoReady;
  
-	@RequestMapping(value = command) 
+	@RequestMapping(value = command)
 	@ResponseBody
-	public String kakaopay( 
-		 ) { 
-	 
-		try {
-			URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
-			HttpURLConnection con = (HttpURLConnection) url.openConnection(); 
-			con.setRequestMethod("POST");
-			con.setRequestProperty("Authorization", "KakaoAK c7071b092e71bb5252ca96cf0e27bd41");
-			con.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-			con.setDoOutput(true);
-			
-			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
-			
-			map.add("cid", "TC0ONETIME");
-			map.add("partner_order_id", "KAO20230318001");
-			map.add("partner_user_id", "kakaopayTest"); 
-			map.add("item_name","Ä¿ÇÇ");
-			map.add("quantity", "1");
-		    map.add("total_amount", "5000");
-		    map.add("tax_free_amount", "0");
-		    map.add("approval_url", "http://localhost:8080/pay/success"); // °áÁ¦½ÂÀÎ½Ã ³Ñ¾î°¥ url
-		    map.add("cancel_url", "http://localhost:8080/pay/cancel"); // °áÁ¦Ãë¼Ò½Ã ³Ñ¾î°¥ url
-		    map.add("fail_url", "http://localhost:8080/pay/fail"); // °áÁ¦ ½ÇÆĞ½Ã ³Ñ¾î°¥ url
-		    
-		    String queryString = convertToQueryString(map);
-		    
-		    OutputStream outputStream  = con.getOutputStream();
-		    DataOutputStream dos = new DataOutputStream(outputStream);
-		    dos.writeBytes(queryString);
-		    
-		    dos.close();
-		    
-		    int result = con.getResponseCode();
-		    
-		    InputStream inputStream;
-		    
-		    if(result == 200) {
-		    	inputStream = con.getInputStream();
-		    }else {
-		    	inputStream = con.getErrorStream();
-		    }
-		    
-		    InputStreamReader reader = new InputStreamReader(inputStream);
-		    BufferedReader buffer = new BufferedReader(reader);
-		    return buffer.readLine();
-		    
-		} catch (MalformedURLException e) {
-			 
-			e.printStackTrace();
-		} catch (IOException e) {
-			
-			 
-			e.printStackTrace();
-		}
-		
-		return "{\"result\":\"NO\"}";
-		}
-	private String convertToQueryString(MultiValueMap<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	public String kakaopay(
 			HttpSession session
 		 ) {
 		KakaoApproveResponse kar = (KakaoApproveResponse)session.getAttribute("kao");
 		   
-		         // Ä«Ä«¿ÀÆäÀÌ ¿äÃ» ¾ç½Ä
+		         // ì¹´ì¹´ì˜¤í˜ì´ ìš”ì²­ ì–‘ì‹
 			MultiValueMap<String, String> parameters = new LinkedMultiValueMap<String, String>();
 		        parameters.add("cid", cid);
-		        parameters.add("partner_order_id", kar.getPartner_order_id());//ÁÖ¹®¹øÈ£
-		        parameters.add("partner_user_id", kar.getPartner_user_id());//È¸¿ø ¾ÆÀÌµğ
-		        parameters.add("item_name", "Hidden Beauty »óÇ°");//»óÇ°¸í
-		        parameters.add("quantity", "1");//ÁÖ¹® ¼ö·®
-		        parameters.add("total_amount", Integer.toString(kar.getAmount().getTotal()));//ÃÑ ±İ¾×
-		        parameters.add("vat_amount", "0");//ºÎ°¡¼¼
-		        parameters.add("tax_free_amount", "0");//»óÇ° ºñ°ú¼¼ ±İ¾×
-		        parameters.add("approval_url", "http://localhost:8080/ex20/pay/success.mall"); // °áÁ¦½ÂÀÎ½Ã ³Ñ¾î°¥ url
-		        parameters.add("cancel_url", "http://localhost:8080/ex20/pay/cancel.mall"); // °áÁ¦Ãë¼Ò½Ã ³Ñ¾î°¥ url
-			    parameters.add("fail_url", "http://localhost:8080/ex20/pay/fail.mall"); // °áÁ¦ ½ÇÆĞ½Ã ³Ñ¾î°¥ url
-		        // ÆÄ¶ó¹ÌÅÍ, Çì´õ
+		        parameters.add("partner_order_id", kar.getPartner_order_id());//ì£¼ë¬¸ë²ˆí˜¸
+		        parameters.add("partner_user_id", kar.getPartner_user_id());//íšŒì› ì•„ì´ë””
+		        parameters.add("item_name", "Hidden Beauty ìƒí’ˆ");//ìƒí’ˆëª…
+		        parameters.add("quantity", "1");//ì£¼ë¬¸ ìˆ˜ëŸ‰
+		        parameters.add("total_amount", Integer.toString(kar.getAmount().getTotal()));//ì´ ê¸ˆì•¡
+		        parameters.add("vat_amount", "0");//ë¶€ê°€ì„¸
+		        parameters.add("tax_free_amount", "0");//ìƒí’ˆ ë¹„ê³¼ì„¸ ê¸ˆì•¡
+		        parameters.add("approval_url", "http://localhost:8080/ex20/pay/success.mall"); // ê²°ì œìŠ¹ì¸ì‹œ ë„˜ì–´ê°ˆ url
+		        parameters.add("cancel_url", "http://localhost:8080/ex20/pay/cancel.mall"); // ê²°ì œì·¨ì†Œì‹œ ë„˜ì–´ê°ˆ url
+			    parameters.add("fail_url", "http://localhost:8080/ex20/pay/fail.mall"); // ê²°ì œ ì‹¤íŒ¨ì‹œ ë„˜ì–´ê°ˆ url
+		        // íŒŒë¼ë¯¸í„°, í—¤ë”
 		        HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(parameters, this.getHeaders());
  
-		        // ¿ÜºÎ¿¡ º¸³¾ url
+		        // ì™¸ë¶€ì— ë³´ë‚¼ url
 		        RestTemplate restTemplate = new RestTemplate();
 		        
 		        ResponseEntity<String> responseEntity = restTemplate.postForEntity(
@@ -123,10 +58,10 @@ public class kakaoController {
      
 
 		        if (responseEntity.getStatusCode().equals(HttpStatus.OK)) {
-		            // ¼º°øÀûÀÎ °æ¿ì, JSON ¹®ÀÚ¿­À» ±×´ë·Î ¹İÈ¯ÇÏ°Å³ª ÇÊ¿ä¿¡ µû¶ó Ã³¸®
+		            // ì„±ê³µì ì¸ ê²½ìš°, JSON ë¬¸ìì—´ì„ ê·¸ëŒ€ë¡œ ë°˜í™˜í•˜ê±°ë‚˜ í•„ìš”ì— ë”°ë¼ ì²˜ë¦¬
 		            return responseEntity.getBody();
 		        } else {
-		            // ½ÇÆĞÇÑ °æ¿ì, ¿À·ù Ã³¸®
+		            // ì‹¤íŒ¨í•œ ê²½ìš°, ì˜¤ë¥˜ ì²˜ë¦¬
 		            return "{\"result\":\"NO\"}"; 
 		        }
 		
@@ -136,7 +71,7 @@ public class kakaoController {
 	
     
     /**
-     * Ä«Ä«¿À ¿ä±¸ Çì´õ°ª
+     * ì¹´ì¹´ì˜¤ ìš”êµ¬ í—¤ë”ê°’
      */
     private HttpHeaders getHeaders() {
         HttpHeaders httpHeaders = new HttpHeaders();
