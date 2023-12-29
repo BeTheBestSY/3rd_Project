@@ -271,7 +271,7 @@ public class Paging {
 		if( this.endPage > this.totalPage ){
 			this.endPage = this.totalPage ;
 		}
-		//this.url = url ;
+		//this.url = url ; 
 		System.out.println("this.pageNumber:"+this.pageNumber);
 		System.out.println("this.pageSize:"+this.pageSize);
 		System.out.println("this.offset:"+this.offset);
