@@ -118,7 +118,7 @@ public class AdminProductController {
 							HttpServletRequest request) throws UnsupportedEncodingException {
 		System.out.println("insert하려는 상품의 타이틀이미지:"+pb.getP_ttlimg());
 		System.out.println("insert하려는 상품의 디테일이미지:"+pb.getP_dtlimg());
-		 
+		
 		int res = ad.insertProduct(pb);
 		if(res == 1) {
 			model.addAttribute("msg", "상품이 성공적으로 추가되었습니다.");
