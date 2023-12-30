@@ -48,6 +48,10 @@ public class QBoardDetailController {
 		model.addAttribute("keyword",keyword);
 		model.addAttribute("bb",bb);
 		model.addAttribute("joinType", joinType);
+		
+		
+		
+		
 			qdao.updateReadcount(q_num);
 		return viewPage;
 		

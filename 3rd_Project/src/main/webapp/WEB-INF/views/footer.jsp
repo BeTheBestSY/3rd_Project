@@ -95,7 +95,7 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(주)쌍용교육센터 H반 환감탈태조 FIND YOUR Hidden Beauty | 신고번호 : 제 2023-서울마포-00000호<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공동대표 4인 : 김수연, 박혜주, 황다온, 이유진 (TEL : 02-336-8546 / FAX : 02-334-5405)
 		</div>
-		<img src="resources/image/syLogo.png" width="230" style="left: 975px; top: -30px; position: relative;" onclick="location.href='https://www.sist.co.kr/index.jsp'">
+		<img src="resources/image/fyhbLogo.png" width="230" style="left: 975px; top: -30px; position: relative;" onclick="location.href='https://www.sist.co.kr/index.jsp'">
 	</div>
 </div>
 
@@ -107,13 +107,13 @@
 </body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다. 
     function sample4_execDaumPostcode() {
         new daum.Postcode({
         	
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
+				
                 // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
                 var roadAddr = data.roadAddress; // 도로명 주소 변수

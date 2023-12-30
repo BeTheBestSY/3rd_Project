@@ -9,6 +9,7 @@ public class QBoardBean {
 	private int q_num;
 	private String q_type;
 	private String q_writer;
+	private String q_profileimg;
 	private String q_email;
 	private String q_subject;
 	private String q_password;
@@ -25,12 +26,14 @@ public class QBoardBean {
 
 	}
 	
-	public QBoardBean(int q_num, String q_writer, String q_email, String q_subject, String q_password,
-			Timestamp q_regdate, int q_readcount, int q_ref, int q_re_step, int q_re_level, String q_content,
-			String q_ip) {
+	public QBoardBean(int q_num, String q_type, String q_writer, String q_profileimg, String q_email, String q_subject,
+			String q_password, Timestamp q_regdate, int q_readcount, int q_ref, int q_re_step, int q_re_level,
+			String q_content, String q_ip, String q_secret) {
 		super();
 		this.q_num = q_num;
+		this.q_type = q_type;
 		this.q_writer = q_writer;
+		this.q_profileimg = q_profileimg;
 		this.q_email = q_email;
 		this.q_subject = q_subject;
 		this.q_password = q_password;
@@ -41,9 +44,16 @@ public class QBoardBean {
 		this.q_re_level = q_re_level;
 		this.q_content = q_content;
 		this.q_ip = q_ip;
+		this.q_secret = q_secret;
 	}
 
+	public String getQ_profileimg() {
+		return q_profileimg;
+	}
 
+	public void setQ_profileimg(String q_profileimg) {
+		this.q_profileimg = q_profileimg;
+	}
 
 	public int getQ_num() {
 		return q_num;

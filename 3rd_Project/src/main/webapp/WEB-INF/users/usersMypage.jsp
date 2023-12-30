@@ -13,6 +13,17 @@
 	    font-weight: normal;
     	font-style: normal;
 	}
+	#pfArea{
+		border-radius: 50%;
+		width: 150px; 
+		height: 150px; 
+		background-image: url('resources/uploadFolder/users/${loginInfo.u_profileimg}');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		left: -10px;
+		position: relative;
+	}
 </style>
 
 <%@ include file="usersMypageMenuTop.jsp" %>
@@ -30,19 +41,31 @@
 	<li><big>회원정보 조회</big></li>
 	<br><br>
 	<div>
-		<table style="width: 90%; height: 170px; text-align: left;" id="content">
+		<table style="width: 95%; height: 225px; text-align: left;" id="content">
 			<tr style="border-top: 1px solid #D5D5D5;">
+				<td rowspan="5" width="18%" valign="middle">
+					<c:if test="${loginInfo.u_profileimg != null}">
+						<div id="pfArea"></div>
+					</c:if>
+					<c:if test="${loginInfo.u_profileimg == null}">
+						<img src="resources/image/person.svg" width="85%" class="rounded-circle">
+						<img src="resources/image/person.svg" width="85%" class="rounded-circle">
+					</c:if>
+				</td>
 				<th>아이디</th>
-				<td colspan="3">
+				<td>
 					<c:if test="${loginInfo.u_jointype eq 'S' }">${loginInfo.u_id}</c:if>
 					<c:if test="${loginInfo.u_jointype eq 'N' }">네이버 연동</c:if> <c:if
-						test="${loginInfo.u_jointype eq 'K' }">카카오 연동</c:if></td>
+						test="${loginInfo.u_jointype eq 'K' }">카카오 연동</c:if>
+				</td>
+				<th>이메일</th>
+				<td>${loginInfo.u_email}</td>
 			</tr>
 			<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA;">
 				<th width="15%">이름</th>
-				<td width="35%">${loginInfo.u_name}</td>
+				<td width="23%">${loginInfo.u_name}</td>
 				<th width="15%">전화번호</th>
-				<td width="35%">
+				<td width="23%">
 					${loginInfo.u_phone}
 					<c:if test="${loginInfo.u_phone eq '' }"><font color="red">필수 입력 사항입니다.</font></c:if>
 				</td>
@@ -54,11 +77,15 @@
 				<th>보유 포인트</th>
 				<td>${loginInfo.u_point} points</td>
 			</tr>
-			<tr style="border-bottom: 1px solid #D5D5D5;">
+			<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA;">
 				<th>주소</th>
 				<td colspan="3">${fn:split(loginInfo.u_address, ',')[1] }
 					${fn:split(loginInfo.u_address, ',')[2] }
 					(${fn:split(loginInfo.u_address, ',')[0] })</td>
+			</tr>
+			<tr style="border-bottom: 1px solid #D5D5D5;">
+				<th>자기소개</th>
+				<td colspan="3">${loginInfo.u_intro}</td>
 			</tr>
 		</table>
 	</div>

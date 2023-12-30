@@ -4,7 +4,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import mall.model.CartBean;
 import mall.model.CartDao;
+import mall.model.KakaoApproveResponse;
 import mall.model.OrderBean;
 import mall.model.OrderDao;
 import mall.model.TempCart;
 import product.model.ProductBean;
+import users.model.UsersBean;
 
 
 @Controller
@@ -25,12 +30,16 @@ public class CartOrderCompletedController {
 
 	private final String command = "/cartOrderCompleted.mall";
 	private String viewPage = "orderCompleted";
+	private String kakaopay = "kakaopay";
 	
 	@Autowired
 	private OrderDao dao; 
 	
 	@Autowired
 	private CartDao cartDao; 
+	
+	@Autowired
+	private ServletContext application;
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	public String list(
@@ -42,6 +51,8 @@ public class CartOrderCompletedController {
 			@RequestParam(value = "o_phone2", required = false) String o_phone2,
 			@RequestParam(value = "o_phone3", required = false) String o_phone3,
 			
+			@RequestParam(value = "o_message", required = false) String o_message,
+			
 			@RequestParam(value = "addr1", required = false) String addr1,
 			@RequestParam(value = "addr2", required = false) String addr2,
 			@RequestParam(value = "addr3", required = false) String addr3,
@@ -51,11 +62,16 @@ public class CartOrderCompletedController {
 			@RequestParam(value = "way", required = false) String way,
 			@RequestParam(value = "pay_bank", required = false) String pay_bank,
 			@RequestParam(value = "pay_name", required = false) String pay_name,
+			@RequestParam(value = "deli", required = false) String deli,
+			@RequestParam(value = "totalPrice", required = false) int totalPrice,
+			@RequestParam(value = "totalPoint", required = false) String totalPoint,
+
 			
 			HttpServletRequest request,
-			Model model) {
+			Model model,
+			HttpSession session) {
 		 
-		 
+		 System.out.println(totalPrice+"totalPrice¥¬?");
 		OrderBean ob = new OrderBean();
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -63,45 +79,73 @@ public class CartOrderCompletedController {
 		
 		ob.setU_id(u_id);
 		ob.setO_name(o_name);
+		ob.setO_message(o_message);
 		ob.setWay(way);
 		if(pay_bank.equals("")) {
-			ob.setPay_bank("Îã§Î•∏ Í≤∞Ï†ú Î∞©Î≤ï ÏÑ†ÌÉù");
-			ob.setPay_name("Îã§Î•∏ Í≤∞Ï†ú Î∞©Î≤ï ÏÑ†ÌÉù");
+			ob.setPay_bank("¥Ÿ∏• ∞·¡¶ πÊπ˝ º±≈√");
+			ob.setPay_name("¥Ÿ∏• ∞·¡¶ πÊπ˝ º±≈√");
 		}else {
 			ob.setPay_bank(pay_bank);
 			ob.setPay_name(pay_name);
 		}
 	 
+		ob.setO_status("¡÷πÆøœ∑·");
 		ob.setO_date(currentDate);
+		ob.setO_status("¡÷πÆøœ∑·");
 		ob.setO_phone(o_phone1+"-"+o_phone2+"-"+o_phone3);
-		ob.setO_addr(addr1+addr2+addr3+addr4+addr5);
-		 int MaxO_num = 0;
-		 MaxO_num = dao.selectMaxO_num();
-		 
-		 MaxO_num = MaxO_num+1;
+		
+		if(addr1.length() < 4) {
+			UsersBean ub = dao.selectUser(u_id);
+			ob.setO_addr(ub.getU_address());
+		} else {
+			addr1 = addr1.replace(",", "");
+			addr2 = addr2.replace(",", "");
+			addr5 = addr5.replace(",", "");
+			ob.setO_addr(addr1+", "+addr2+", "+addr5);
+		}
+		
+		int MaxO_num = 0;
+		MaxO_num = dao.selectMaxO_num();
+		MaxO_num = MaxO_num+1;
 		 
 		ob.setO_num(MaxO_num);
-  
-		if(ob.getWay().equals("Î¨¥ÌÜµÏû• ÏûÖÍ∏à")) {
+		ob.setO_totalamount(totalPrice);
 			
-			List<CartBean> list = cartDao.selectCart2(cart_num);
-			
+		List<CartBean> list = cartDao.selectCart2(cart_num);
+		
+		if(!(Boolean)application.getAttribute("flag")) {
 			for(int i = 0; i<list.size(); i++) {
-
 				dao.downStockPord(list.get(i));
 				dao.upSalevolumePord(list.get(i));
-				
 				dao.insertCartOrderPord(list.get(i),MaxO_num);
- 
 			}
-			 
 			dao.insertOrderInfo(ob);
+			dao.deleteAllCart(cart_num);
+			application.setAttribute("flag", true);
+		} 
 		
-		}
-System.out.println(cart_num+"cart_numÎ≠îÎç∞");
+		model.addAttribute("ob", ob); // ¡÷πÆ ¡§∫∏∞° ¥„±‰ ∞¥√º '¡÷πÆøœ∑·' ∆‰¿Ã¡ˆ∑Œ ¿¸¥ﬁ.
+		model.addAttribute("deli", deli); // πËº€∫Ò ¡§∫∏ ¥„æ∆º≠ ¿¸¥ﬁ
+		model.addAttribute("totalPrice", totalPrice); // √— «’∞Ë±›æ◊ ¡§∫∏ ¥„æ∆º≠ ¿¸¥ﬁ
+		model.addAttribute("totalPoint", totalPoint); // √— ∆˜¿Œ∆Æ ¿˚∏≥±›æ◊ ¡§∫∏ ¥„æ∆º≠ ¿¸¥ﬁ
+		System.out.println(cart_num+"cart_numπ∫µ•");
 		dao.deleteAllCart(cart_num);
 		
-		return viewPage;
+		if(way.equals("π´≈Î¿Â ¿‘±›")) {
+			return viewPage;
+		}else {
+			
+			KakaoApproveResponse kao = new KakaoApproveResponse();
+			
+			kao.getAmount().setTotal(totalPrice);
+			kao.setPartner_order_id( "KAKAOHB"+MaxO_num);
+			kao.setPartner_user_id(u_id);
+			
+			session.setAttribute("kao", kao);
+			session.setAttribute("o_num", MaxO_num);
+			
+			return kakaopay;
+		}
 	}
 
 }

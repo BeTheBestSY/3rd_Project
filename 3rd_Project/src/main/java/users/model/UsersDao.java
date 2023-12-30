@@ -61,6 +61,18 @@ public class UsersDao {
 		return found;
 	}
 
+	public int updateReport(String u_id) {
+		return sqlSessionTemplate.update(namespace+".updateReport", u_id);
+	}
+
+	public String getEmail(UsersBean ub) {
+		return sqlSessionTemplate.selectOne(namespace+".getEmail", ub);
+	}
+
+	public void insertRestore(RestoreBean rb) {
+		sqlSessionTemplate.insert(namespace+".insertRestore", rb);
+	}
+
 
 	
 }

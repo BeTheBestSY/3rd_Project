@@ -48,6 +48,7 @@
 	    font-style: normal;
 	}
 </style>
+
 </head>
   
 <body>
@@ -79,7 +80,7 @@
 				<div class="dropdown text-end" style="margin-right: 50px">
 					<c:if test="${loginInfo == null}">
 						<a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> 
-							<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
+							<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle" style="object-fit: cover;">
 						</a>
 						<ul class="dropdown-menu text-small">
 							<li><a class="dropdown-item" href="login.u">로그인</a></li>
@@ -92,7 +93,14 @@
 								<img src="resources/image/person.svg" width="32" height="32" class="rounded-circle">
 							</c:if> 
 							<c:if test="${loginInfo.u_profileimg != null }">
-								<img src="${loginInfo.u_profileimg}" width="32" height="32" class="rounded-circle">
+								<img 
+									<c:if test="${loginInfo.u_jointype eq 'N' || loginInfo.u_jointype eq 'K' }">
+										src="${loginInfo.u_profileimg}" 
+									</c:if>
+									<c:if test="${loginInfo.u_jointype eq 'S'}">
+										src="resources/uploadFolder/users/${loginInfo.u_profileimg}" 
+									</c:if>
+									width="32" height="32" class="rounded-circle">
 							</c:if> 
 						</a>
 						<ul class="dropdown-menu text-small">

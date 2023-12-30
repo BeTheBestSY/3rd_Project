@@ -216,8 +216,7 @@ select{
 }
 
 .board-table th, .board-table td {
-  padding: 14px 0;
-  padding-left:15px;
+ 
 }
 
 .board-table tbody td {
@@ -339,3 +338,6 @@ select{
 	cursor:pointer
 }
 
+ion-icon {
+    pointer-events: none;
+}

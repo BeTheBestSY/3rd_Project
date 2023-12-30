@@ -1,15 +1,18 @@
 package mall.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import product.model.ProductBean;
 import users.model.UsersBean;
+import utility.Paging;
 
 @Component("orderDao")
 public class OrderDao {
@@ -57,7 +60,7 @@ public class OrderDao {
 		Map<String, String> map =  new HashMap<String, String>();
 		
 		map.put("o_num", Integer.toString(maxO_num));
-		map.put("p_num", Integer.toString(tc.getP_num()));		
+		map.put("p_num", Integer.toString(tc.getP_num()));
 		map.put("cart_qty", Integer.toString(tc.getCart_qty()));		
 		
 		sqlSessionTemplate.insert(namespace+".insertOrderProd", map);
@@ -120,6 +123,53 @@ public class OrderDao {
 	public int getPriceByPnum(int p_num) {
 		int price = sqlSessionTemplate.selectOne(namespace+".getPriceByPnum", p_num);
 		return price;
+	}
+
+	public OrderBean selectOrders(int o_num) {
+		OrderBean ob = sqlSessionTemplate.selectOne(namespace+".selectOrders", o_num);
+		
+		return ob;
+	}
+
+	public  int selectPoint(String string) {
+		int p_point = sqlSessionTemplate.selectOne(namespace+".selectPoint", string);
+		return p_point;
+	}
+
+	public void deleteOrder(int o_num) {
+		sqlSessionTemplate.delete(namespace+".deleteOrder", o_num);
+		
+	}
+
+	public void deleteOrderProd(int o_num) {
+		sqlSessionTemplate.delete(namespace+".deleteOrderProd", o_num);
+		
+	}
+
+	public List<OrderBean> getOrdersByU_id(String u_id, Paging pageInfo) {
+		RowBounds rowbounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+		List<OrderBean> obList = sqlSessionTemplate.selectList(namespace+".getOrdersByU_id", u_id, rowbounds);
+		return obList;
+	}
+
+	public int getOrdersCountByU_id(String u_id) {
+		int count = sqlSessionTemplate.selectOne(namespace+".getOrdersCountByU_id", u_id);
+		return count;
+	}
+	
+	public List<OrdersProductBean> getAllOrdersProduct2(String o_num) {
+		List<OrdersProductBean> ordProdlist = sqlSessionTemplate.selectList(namespace+".getAllOrdersProduct2", o_num);
+		return ordProdlist;
+	}
+	
+	public ProductBean selectPord2(String p_num) {
+		ProductBean pb = sqlSessionTemplate.selectOne(namespace+".selectPord2", p_num);
+		return pb;
+	}
+	
+	public OrderBean getOneOrder2(String o_num) {
+		OrderBean ob = sqlSessionTemplate.selectOne(namespace+".getOneOrder2", o_num);
+		return ob;
 	}
 	 
 }

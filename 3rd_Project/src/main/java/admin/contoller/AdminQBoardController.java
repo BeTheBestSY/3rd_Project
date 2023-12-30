@@ -72,13 +72,11 @@ public class AdminQBoardController {
 	@RequestMapping(value=deleteCommand,method=RequestMethod.GET)
 	public String delete(
 				Model model,
-				@RequestParam("q_num") int q_num,
-				@RequestParam("pageNumber") int pageNumber
+				@RequestParam("q_num") int q_num
 			) {
 		
 		QBoardBean bb = adminDao.selectContent(q_num);
 		
-		model.addAttribute("pageNumber",pageNumber);
 		model.addAttribute("bb",bb);
 		
 		adminDao.deleteBoard(q_num);
@@ -155,7 +153,9 @@ public class AdminQBoardController {
 			
 			return viewPageR;
 		}
-		
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html; charset=UTF-8");
+	
 		bb.setQ_ref(q_ref);
 		bb.setQ_subject("[답글] "+bb.getQ_subject());
 		bb.setQ_re_step(q_re_step);

@@ -73,7 +73,7 @@ public class AdminProductController {
 		int totalCount = ad.getTotalPrdCount(map);
 		System.out.println("토탈카운트:"+totalCount);
 		String url = request.getContextPath()+command;
-		Paging pageInfo = new Paging(pageNumber, "10", totalCount, url, whatColumn, keyword);
+		Paging pageInfo = new Paging(pageNumber, "30", totalCount, url, whatColumn, keyword);
 		
 		// --------------- pagingHtml에 filter 쿼리스트링 추가하기 ---------------
 		String pagingHtml = pageInfo.getPagingHtml();
@@ -183,6 +183,7 @@ public class AdminProductController {
 							@RequestParam String exist_ttl,
 							@RequestParam String exist_dtl,
 							Model model) throws IOException {
+		
 		System.out.println("기존 타이틀이미지:"+exist_ttl);
 		System.out.println("기존 디테일이미지:"+exist_dtl);
 		System.out.println("새로운 타이틀이미지:"+pb.getP_ttlimg());

@@ -1,4 +1,6 @@
 package users.model;
+import org.springframework.web.multipart.MultipartFile;
+
 
 public class UsersBean {
 	private String u_id;
@@ -14,6 +16,19 @@ public class UsersBean {
 	private String u_email;
 	private String u_profileimg;
 	private String u_intro;
+	private int u_report;
+	private MultipartFile upload_img;
+	
+	public MultipartFile getUpload_img() {
+		return upload_img;
+	}
+	public void setUpload_img(MultipartFile upload_img) {
+		this.upload_img = upload_img;
+		if(this.upload_img != null) { // 파일을 선택했다면
+			System.out.println("업로드 할 프로필이미지:"+upload_img.getOriginalFilename());
+			this.u_profileimg = upload_img.getOriginalFilename();
+		}
+	}
 	
 	public String getU_id() {
 		return u_id;
@@ -92,6 +107,12 @@ public class UsersBean {
 	}
 	public void setU_intro(String u_intro) {
 		this.u_intro = u_intro;
+	}
+	public int getU_report() {
+		return u_report;
+	}
+	public void setU_report(int u_report) {
+		this.u_report = u_report;
 	}
 	
 }

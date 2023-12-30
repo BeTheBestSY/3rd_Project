@@ -27,7 +27,7 @@
                     <a href=".main" class="nav__logo">Hidden Beauty</a>
                 </div>
                 <div class="nav__list">
-                    <a href=".admin" class="nav__link collapse" title="메인">
+                    <a href="selectFeedback.admin" class="nav__link collapse" title="메인">
                         <ion-icon name="home" class="nav__icon"></ion-icon>
                         <span class="nav_name">&nbsp;메인</span>
                     </a>

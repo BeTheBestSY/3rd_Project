@@ -1,7 +1,7 @@
 package admin.model;
 import java.util.List;
 import java.util.Map;
-
+ 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +12,7 @@ import celeb.model.CelebBean;
 import company.model.CompanyBean;
 import product.model.ProductBean;
 import q_board.model.QBoardBean;
+import users.model.RestoreBean;
 import users.model.UsersBean;
 import utility.Paging;
 
@@ -35,7 +36,14 @@ public class AdminDao {
 		
 		return list;
 	}
-	
+	public boolean findU_id(String u_id) {
+		boolean found = false;
+		int count = sqlSessionTemplate.selectOne(nameSpace+"findU_id", u_id);
+		if(count > 0) {
+			found = true;
+		}
+		return found;
+	}
 	public int getTotalCount(Map<String, String> map) {
 		int totalCount = sqlSessionTemplate.selectOne(nameSpace+"getTotalCount",map);
 		return totalCount;
@@ -159,13 +167,14 @@ public class AdminDao {
 	
 	
 	//users
-	public List<UsersBean> getUsers(Map<String, String> map, Paging pageInfo) {
-		System.out.println("getUsers로 넘어온 키워드:"+map.get("keyword"));
+	public List<UsersBean> getUsers(Map<String, String> map) {
+//		System.out.println("getUsers로 넘어온 키워드:"+map.get("keyword"));
 //		if(map.get("keyword").equals("%null%")) {
 //			map.put("keyword", null);
 //		}
-		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
-		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map, rowBounds);
+//		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+//		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map, rowBounds);
+		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map);
 	}
 	
 	public int getTotalUserCount(Map<String, String> map) {
@@ -220,6 +229,119 @@ public class AdminDao {
 
 		sqlSessionTemplate.insert(nameSpace+"insertReply",bb);
 		
+	}
+
+	public void resetReport(String u_id) {
+		sqlSessionTemplate.update(nameSpace+"resetReport", u_id);
+	}
+
+
+	public List<RestoreBean> getAllRestore(Paging pageInfo) {
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		List<RestoreBean> rbList = sqlSessionTemplate.selectList(nameSpace+"getAllRestore");
+		return rbList;
+	}
+
+	public void restoreDone(String u_id) {
+		sqlSessionTemplate.update(nameSpace+"restoreDone", u_id);
+	}
+
+	public int getRestoreCount() {
+		int count = sqlSessionTemplate.selectOne(nameSpace+"getRestoreCount");
+		return count;
+	}
+
+
+	public String fb1Select(String string) {
+		String fb1 = sqlSessionTemplate.selectOne(nameSpace+"fb1Select", string);
+		return fb1;
+	}
+
+
+	public String fb2Select(String string) {
+		String fb2 = sqlSessionTemplate.selectOne(nameSpace+"fb2Select", string);
+		return fb2;
+	}
+	
+	public String fb3Select(String string) {
+		String fb3 = sqlSessionTemplate.selectOne(nameSpace+"fb3Select", string);
+		return fb3;
+	}
+	
+	public String fb4Select(String string) {
+		String fb4 = sqlSessionTemplate.selectOne(nameSpace+"fb4Select", string);
+		return fb4;
+	}
+	
+	public String fb5Select(String string) {
+		String fb5 = sqlSessionTemplate.selectOne(nameSpace+"fb5Select", string);
+		return fb5;
+	}
+	public String fb6Select(String string) {
+		String fb6 = sqlSessionTemplate.selectOne(nameSpace+"fb6Select", string);
+		return fb6;
+	}
+	
+	public String etcSelect() {
+		String etc = sqlSessionTemplate.selectOne(nameSpace+"etcSelect");
+		return etc;
+	}
+
+
+	public String memberSelect() {
+		String member = sqlSessionTemplate.selectOne(nameSpace+"memberSelect");
+		return member;
+	}
+
+
+	public String col1Select(String string) {
+		String col1 = sqlSessionTemplate.selectOne(nameSpace+"col1Select",string);
+		return col1;
+	}
+	
+	public String col2Select(String string) {
+		String col2 = sqlSessionTemplate.selectOne(nameSpace+"col2Select",string);
+		return col2;
+	}
+	
+	public String col3Select(String string) {
+		String col3 = sqlSessionTemplate.selectOne(nameSpace+"col3Select",string);
+		return col3;
+	}
+	
+	public String col4Select(String string) {
+		String col4 = sqlSessionTemplate.selectOne(nameSpace+"col4Select",string);
+		return col4;
+	}
+	
+	public String col5Select(String string) {
+		String col5 = sqlSessionTemplate.selectOne(nameSpace+"col5Select",string);
+		return col5;
+	}
+	
+	public String col6Select(String string) {
+		String col6 = sqlSessionTemplate.selectOne(nameSpace+"col6Select",string);
+		return col6;
+	}
+	
+	public String col7Select(String string) {
+		String col7 = sqlSessionTemplate.selectOne(nameSpace+"col7Select",string);
+		return col7;
+	}
+	
+	public String col8Select(String string) {
+		String col8 = sqlSessionTemplate.selectOne(nameSpace+"col8Select",string);
+		return col8;
+	}
+	
+	public String col9Select(String string) {
+		String col9 = sqlSessionTemplate.selectOne(nameSpace+"col9Select",string);
+		return col9;
+	}
+	
+	public String col10Select(String string) {
+		String col10 = sqlSessionTemplate.selectOne(nameSpace+"col10Select",string);
+		return col10;
 	}
 
 

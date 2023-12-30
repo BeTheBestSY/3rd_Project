@@ -17,11 +17,9 @@ public class CBoardDetailController {
 	
 	@Autowired
 	private CBoardDao cdao;
-	private UsersDao udao = new UsersDao();
 	 
 	public final String command="/detail.cb";
 	public final String viewPage="cBoardDetail";
-	
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public String toDetailList(
@@ -39,9 +37,7 @@ public class CBoardDetailController {
 		
 		try {
 			joinType = ub.getU_jointype(); // 테이블에 유저 정보가 없으면? => 탈퇴한 회원입니다 노출되게
-		} catch(NullPointerException e){
-			
-		}
+		} catch(NullPointerException e){}
 		
 		model.addAttribute("pageNumber",pageNumber);
 		model.addAttribute("whatColumn",whatColumn);

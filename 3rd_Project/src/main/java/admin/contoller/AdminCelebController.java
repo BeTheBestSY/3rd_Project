@@ -157,13 +157,11 @@ public class AdminCelebController {
 	@RequestMapping(value=deleteCommand,method=RequestMethod.GET)
 	public String delete(
 				Model model,
-				@RequestParam("cl_num") int cl_num,
-				@RequestParam("pageNumber") int pageNumber
+				@RequestParam("cl_num") int cl_num
 			) {
 		
 		CelebBean bb = adminDao.getSelectOneCeleb(cl_num);
 		
-		model.addAttribute("pageNumber",pageNumber);
 		model.addAttribute("bb",bb);
 		
 		adminDao.deleteCeleb(cl_num);

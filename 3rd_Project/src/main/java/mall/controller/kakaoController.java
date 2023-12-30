@@ -1,40 +1,42 @@
 package mall.controller;
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
-
+import javax.servlet.http.HttpSession;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseBody; 
+import org.springframework.web.client.RestTemplate;
+import mall.model.KakaoApproveResponse;
+import mall.model.KakaoReadyResponse;
+
 
 @Controller
 public class kakaoController {
 	private final String command = "/kakaopay33.mall";
-	private final String cancel = "pay/cancel.mall";
-	  private String viewPage = "cartList";  
-	
+	  private String cid = "TC0ONETIME";  
+	  private KakaoReadyResponse kakaoReady;
  
-	@RequestMapping(value = command)
+	@RequestMapping(value = command) 
 	@ResponseBody
-	public String kakaopay(
-		 ) {
+	public String kakaopay( 
+		 ) { 
 	 
 		try {
 			URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
-			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			HttpURLConnection con = (HttpURLConnection) url.openConnection(); 
 			con.setRequestMethod("POST");
 			con.setRequestProperty("Authorization", "KakaoAK c7071b092e71bb5252ca96cf0e27bd41");
 			con.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
@@ -44,14 +46,14 @@ public class kakaoController {
 			
 			map.add("cid", "TC0ONETIME");
 			map.add("partner_order_id", "KAO20230318001");
-			map.add("partner_user_id", "kakaopayTest");
-			map.add("item_name","Ïª§Ìîº");
+			map.add("partner_user_id", "kakaopayTest"); 
+			map.add("item_name","ƒø««");
 			map.add("quantity", "1");
 		    map.add("total_amount", "5000");
 		    map.add("tax_free_amount", "0");
-		    map.add("approval_url", "http://localhost:8080/pay/success"); // Í≤∞Ï†úÏäπÏù∏Ïãú ÎÑòÏñ¥Í∞à url
-		    map.add("cancel_url", "http://localhost:8080/pay/cancel"); // Í≤∞Ï†úÏ∑®ÏÜåÏãú ÎÑòÏñ¥Í∞à url
-		    map.add("fail_url", "http://localhost:8080/pay/fail"); // Í≤∞Ï†ú Ïã§Ìå®Ïãú ÎÑòÏñ¥Í∞à url
+		    map.add("approval_url", "http://localhost:8080/pay/success"); // ∞·¡¶Ω¬¿ŒΩ√ ≥—æÓ∞• url
+		    map.add("cancel_url", "http://localhost:8080/pay/cancel"); // ∞·¡¶√Îº“Ω√ ≥—æÓ∞• url
+		    map.add("fail_url", "http://localhost:8080/pay/fail"); // ∞·¡¶ Ω«∆–Ω√ ≥—æÓ∞• url
 		    
 		    String queryString = convertToQueryString(map);
 		    
@@ -86,36 +88,64 @@ public class kakaoController {
 		
 		return "{\"result\":\"NO\"}";
 		}
+	private String convertToQueryString(MultiValueMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public String kakaopay(
+			HttpSession session
+		 ) {
+		KakaoApproveResponse kar = (KakaoApproveResponse)session.getAttribute("kao");
+		   
+		         // ƒ´ƒ´ø¿∆‰¿Ã ø‰√ª æÁΩƒ
+			MultiValueMap<String, String> parameters = new LinkedMultiValueMap<String, String>();
+		        parameters.add("cid", cid);
+		        parameters.add("partner_order_id", kar.getPartner_order_id());//¡÷πÆπ¯»£
+		        parameters.add("partner_user_id", kar.getPartner_user_id());//»∏ø¯ æ∆¿Ãµ
+		        parameters.add("item_name", "Hidden Beauty ªÛ«∞");//ªÛ«∞∏Ì
+		        parameters.add("quantity", "1");//¡÷πÆ ºˆ∑Æ
+		        parameters.add("total_amount", Integer.toString(kar.getAmount().getTotal()));//√— ±›æ◊
+		        parameters.add("vat_amount", "0");//∫Œ∞°ºº
+		        parameters.add("tax_free_amount", "0");//ªÛ«∞ ∫Ò∞˙ºº ±›æ◊
+		        parameters.add("approval_url", "http://localhost:8080/ex20/pay/success.mall"); // ∞·¡¶Ω¬¿ŒΩ√ ≥—æÓ∞• url
+		        parameters.add("cancel_url", "http://localhost:8080/ex20/pay/cancel.mall"); // ∞·¡¶√Îº“Ω√ ≥—æÓ∞• url
+			    parameters.add("fail_url", "http://localhost:8080/ex20/pay/fail.mall"); // ∞·¡¶ Ω«∆–Ω√ ≥—æÓ∞• url
+		        // ∆ƒ∂ÛπÃ≈Õ, «Ï¥ı
+		        HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(parameters, this.getHeaders());
+ 
+		        // ø‹∫Œø° ∫∏≥æ url
+		        RestTemplate restTemplate = new RestTemplate();
+		        
+		        ResponseEntity<String> responseEntity = restTemplate.postForEntity(
+		                "https://kapi.kakao.com/v1/payment/ready",
+		                requestEntity,
+		                String.class);
+     
 
-		private String convertToQueryString(MultiValueMap<String, Object> map) {
-			StringBuilder queryString = new StringBuilder();
-		
-		    for (String key : map.keySet()) {
-		        for (Object value : map.get(key)) {
-		            try {
-		                queryString.append(URLEncoder.encode(key, "UTF-8"));
-		                queryString.append("=");
-		                queryString.append(URLEncoder.encode(value.toString(), "UTF-8"));
-		                queryString.append("&");
-		            } catch (UnsupportedEncodingException e) {
-		                e.printStackTrace(); // Handle the exception according to your needs
-		            }
+		        if (responseEntity.getStatusCode().equals(HttpStatus.OK)) {
+		            // º∫∞¯¿˚¿Œ ∞ÊøÏ, JSON πÆ¿⁄ø≠¿ª ±◊¥Î∑Œ π›»Ø«œ∞≈≥™ « ø‰ø° µ˚∂Û √≥∏Æ
+		            return responseEntity.getBody();
+		        } else {
+		            // Ω«∆–«— ∞ÊøÏ, ø¿∑˘ √≥∏Æ
+		            return "{\"result\":\"NO\"}"; 
 		        }
-		    }
 		
-		    // Remove the trailing "&" character
-		    if (queryString.length() > 0) {
-		        queryString.deleteCharAt(queryString.length() - 1);
-		    }
 		
-		    return queryString.toString();
-		}
-		
-		@RequestMapping(value = cancel)
-		public String as() {
-			
-			return viewPage;
-			
-		}
 	
+	}
+	
+    
+    /**
+     * ƒ´ƒ´ø¿ ø‰±∏ «Ï¥ı∞™
+     */
+    private HttpHeaders getHeaders() {
+        HttpHeaders httpHeaders = new HttpHeaders();
+
+        String auth = "KakaoAK " + "c7071b092e71bb5252ca96cf0e27bd41";
+
+        httpHeaders.set("Authorization", auth);
+        httpHeaders.set("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+
+        return httpHeaders;
+    }
 }
