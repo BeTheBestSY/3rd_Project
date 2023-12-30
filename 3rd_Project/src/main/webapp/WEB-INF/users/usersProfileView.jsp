@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/usersProfileView.css?ver=2209953">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/usersProfileView.css?ver=2209967">
 <head>
 	<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -27,7 +27,9 @@
 								
 								html += '<tr>';
 								html += '	<td>'+e.c_num+'</td>';
-								html += '	<td><a href="#">'+e.c_subject+'</a></td>';
+								html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
+								//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
+								//html += '	<td><a href="detail.cb?c_num='+e.c_num+'">'+e.c_subject+'</a></td>';
 								html += '	<td>'+now24Date+'</td>';
 								html += '	<td>'+e.c_readcount+'</td>';
 								html += '</tr>';
@@ -55,7 +57,8 @@
 								
 								html += '<tr>';
 								html += '	<td>'+e.c_num+'</td>';
-								html += '	<td><a href="#">'+e.c_subject+'</a></td>';
+								html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
+								//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
 								html += '	<td>'+now24Date+'</td>';
 								html += '	<td>'+e.c_readcount+'</td>';
 								html += '</tr>';
@@ -70,9 +73,11 @@
 						});
 					}
 				});
+				checkEvent();
 			});
 		};
 		function ajax(url, pageNumber){
+			console.log("ajax 함수 호출..");
 			var postOrComment = '';
 			if(url === 'postAjax.cb'){
 				postOrComment = 'post';
@@ -82,7 +87,8 @@
 			$.ajax({
 				url: url+'?c_writer=${c_writer}&pageNumber='+pageNumber,
 				async: false,
-				success: function(element) { // 성공적으로 받아왔을 경우
+				success: function(element) {
+					$('#'+postOrComment+'-table').html('');
 					element.forEach(function(e){
 						if(e.c_num != null){
 							var date = new Date(e.c_regdate);
@@ -91,21 +97,35 @@
 							
 							html += '<tr>';
 							html += '	<td>'+e.c_num+'</td>';
-							html += '	<td><a href="#">'+e.c_subject+'</a></td>';
+							html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
+							//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
 							html += '	<td>'+now24Date+'</td>';
 							html += '	<td>'+e.c_readcount+'</td>';
 							html += '</tr>';
 							
-							//$('#'+postOrComment+'-table').html(''); // 여기서부터 하면 됨~~~
 							$('#'+postOrComment+'-table').append(html);
 						} else{
-							// 기존 페이지 삭제하고 이거 추가.
 							$('#'+postOrComment+'-page').html('');
 							$('#'+postOrComment+'-page').append(e.pagingHtml);
 						}
 					});
 				}
 			});
+			checkEvent();
+		}
+		function checkEvent(){
+			const subjects = document.querySelectorAll('.subject');
+			subjects.forEach((subject) => {
+				subject.addEventListener('click', (e) => {
+					
+				});
+			});
+		}
+		var count = 0;
+		function open(c_num){
+			++count;
+			//alert('넘어오는 c_num:'+c_num);
+			//window.open('detail.cb?c_num='+c_num);
 		}
 		function convert(e, u_id, type){
 			if(e.className === 'off'){
@@ -179,23 +199,27 @@
 			<p onclick="convert(this,'${ub.u_id }','comment')" class="off" style="margin-left: 3%;">답글</p>
 			<div class="list-box">
 				<div id="post-list" style="display: block;">
-					<table id="post-table">
+					<table>
 						<tr>
 							<th width="3%"></th>
 							<th width="10%">제목</th>
 							<th width="5%">작성일</th>
 							<th width="5%">조회</th>
 						</tr>
+						<tbody id="post-table">
+						</tbody>
 					</table>
 				</div>
 				<div id="comment-list" style="display: none;">
-					<table id="comment-table">
+					<table>
 						<tr>
 							<th width="3%"></th>
 							<th width="10%">제목</th>
 							<th width="5%">작성일</th>
 							<th width="5%">조회</th>
 						</tr>
+						<tbody id="comment-table">
+						</tbody>
 					</table>
 				</div>
 			</div>
