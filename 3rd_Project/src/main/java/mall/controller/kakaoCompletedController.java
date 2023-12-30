@@ -96,6 +96,7 @@ public class kakaoCompletedController {
 	            return approveResponse;
 	           
 	}
+	
     
     /**
      * 카카오 요구 헤더값

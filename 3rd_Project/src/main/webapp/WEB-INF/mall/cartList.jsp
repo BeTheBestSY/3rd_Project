@@ -149,10 +149,6 @@
 									0원
 								</c:if>
 							</td>
-<<<<<<< HEAD
-							 
-=======
->>>>>>> branch 'SY' of https://github.com/BeTheBestSY/3rd_Project.git
 							<td>
 								<input type="button" id="btn2" value="삭제하기" onClick="location.href='cartDelete.mall?p_num=${pb.p_num}'"><br>
 								<input type="button" id="btn2" value="바로구매" onClick="location.href='order.mall?p_num=${pb.p_num}&id=${loginInfo.u_id}&cart_num=<%=cart_num%>&oqty=${list[loop.index].cart_qty}'">

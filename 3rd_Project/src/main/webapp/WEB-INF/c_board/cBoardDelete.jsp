@@ -25,7 +25,7 @@
 <div style="width: 100%; text-align: center;">
 	<div class="container" style="font-family: 'MaruBuri-Regular'; font-size: 25pt; font-weight: bold;">
 		<br><br>
-		문의글 삭제
+		후기 삭제
 	</div>
 </div>
 

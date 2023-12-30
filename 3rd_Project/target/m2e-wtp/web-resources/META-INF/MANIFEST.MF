@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: hdaon
+=======
+Built-By: yumay
+>>>>>>> branch 'master' of https://github.com/BeTheBestSY/3rd_Project.git
 Build-Jdk: 12.0.2
 Created-By: Maven Integration for Eclipse
 
