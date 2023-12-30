@@ -23,7 +23,7 @@ public class AdminDao {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	private String nameSpace = "sqlField_admin.";
-	
+	 
 	public AdminDao() {}
 
 	
