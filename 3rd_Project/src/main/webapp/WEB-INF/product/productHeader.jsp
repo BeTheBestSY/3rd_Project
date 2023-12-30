@@ -41,7 +41,7 @@
 			function goSearch(){
 				var keyword = document.getElementById("searchBar").value;
 				if(window.event.keyCode == 13){
-					alert(keyword);
+					//alert(keyword);
 					location.href="productAllList.p?whatColumn=all&keyword="+keyword;
 				}
 			}

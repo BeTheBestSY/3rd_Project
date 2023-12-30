@@ -49,7 +49,7 @@
 							<c:set var="num" value="${num-1}" />
 						</td>
 						<td>
-							<a href="orderDetail.u?o_num=${ob.o_num}&pageNumber=${pageNumber}" id="none_under">
+							<a href="orderDetail.u?o_num=${ob.o_num}&pageNumber=${pageNumber}&num=${num}" id="none_under">
 								${ob.o_num}
 							</a>
 						</td>
