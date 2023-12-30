@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import c_board.model.CBoardDao;
 import users.model.UsersBean;
 import users.model.UsersDao;
- 
+
 @Controller
 public class UsersProfileController {
 	private final String command = "profile.u";
