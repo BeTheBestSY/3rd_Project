@@ -256,26 +256,24 @@ public class UsersMypageController {
 	
 	@RequestMapping(value = command_orderDetail, method = RequestMethod.GET)
 	public String orderDetail(HttpSession session, Model model,
-							@RequestParam("o_num") String o_num, @RequestParam(value="pageNumber", required=false) String pageNumber) {
-		
+							@RequestParam("o_num") String o_num, @RequestParam("num") String num, 
+							@RequestParam(value="pageNumber", required=false) String pageNumber) {
 
-		List<OrdersProductBean> ordProdlist = od.getAllOrdersProduct2(o_num);//1이상 레코드, 여러 개 가능
+		List<OrdersProductBean> ordProdlist = od.getAllOrdersProduct2(o_num);
 		
 		List<ProductBean> prodList = new ArrayList<ProductBean>();
-		
 		for(int i = 0; i<ordProdlist.size(); i++) {
-			
 			ProductBean pb  =	od.selectPord2(Integer.toString(ordProdlist.get(i).getP_num()));
-			
 			prodList.add(pb);
 		}
 		
-		OrderBean ob =  od.getOneOrder2(o_num);//주문정보는 하나만
+		OrderBean ob =  od.getOneOrder2(o_num);
 		
 		model.addAttribute("ob", ob);
 		model.addAttribute("prodList", prodList);
 		model.addAttribute("ordProdlist", ordProdlist);
 		model.addAttribute("pageNumber", pageNumber);
+		model.addAttribute("num", num+1);
 		
 		return viewPage_orderDetail;
 	}
