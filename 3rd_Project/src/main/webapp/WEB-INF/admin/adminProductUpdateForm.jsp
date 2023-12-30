@@ -46,6 +46,7 @@
 		detail.addEventListener('change', getDetailImage); // getDetailImage 함수 등록
 		
 		function getTitleImage(e) {
+			alert(title.value);
 			var ttlPathSplit = title.value.split('\\'); // 타이틀 이미지의 경로를 구분자 '\\'로 나누기
 			var ttlName = ttlPathSplit[ttlPathSplit.length-1];
 			alert("들어온 타이틀이미지의 이름: "+ttlName);
@@ -164,11 +165,11 @@
 							<input id="detail" type="file" name="upload_dtl" accept="image/*" style="display: none"> 
 							<br>
 							* 타이틀이미지 업로드<br> <!-- 기존 타이틀 이미지가 올라가있다. -->
-							<img id="ttl_img" alt="타이틀이미지" src="<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_ttlimg  }" style="width:15%; height: 35%; cursor:pointer;"><br>
+							<img id="ttl_img" alt="타이틀이미지" src="<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_ttlimg }" style="width:15%; height: 35%; cursor:pointer;"><br>
 							<span id="ttl_name"><a href="javascript:deleteTtlImg();"><font color="red">x</font></a> ${pb.p_ttlimg }</span>
 							<br><br>
 							* 디테일이미지 업로드<br> <!-- 기존 디테일 이미지가 올라가있다. -->
-							<img id="dtl_img" alt="디테일이미지" src="<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_dtlimg  }" style="width:15%; height: 35%; cursor:pointer;"><br>
+							<img id="dtl_img" alt="디테일이미지" src="<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_dtlimg }" style="width:15%; height: 35%; cursor:pointer;"><br>
 							<span id="dtl_name"><a href="javascript:deleteDtlImg();"><font color="red">x</font></a> ${pb.p_dtlimg }</span>
 							<br><br>
 							

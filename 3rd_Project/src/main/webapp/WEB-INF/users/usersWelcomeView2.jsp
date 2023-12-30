@@ -112,5 +112,5 @@
  우선 필수 회원정보를 업데이트 해 주세요!
 
 <br><br>
-<a href="update.u"><input type="button" id="btn" value="업데이트 하러가기"></a>
+<a href="update.u?u_id=${loginInfo.u_id }"><input type="button" id="btn" value="업데이트 하러가기"></a>
 </div>
