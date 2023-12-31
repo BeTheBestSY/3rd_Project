@@ -85,13 +85,13 @@ table{
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
 					<th width="20%"><font color="red">*</font> 진단 비용</th>
 					<td width="80%">
-						<input type="text" class="form-control" name="cmp_price" style="width:20%;" value="${bb.cmp_price }" required> 원
+						<input type="text" class="form-control" name="cmp_price" style="width:20%;" value=" <fmt:formatNumber pattern="#,###" value='${bb.cmp_price }'/>" required> 원
 					</td>
 				</tr>
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
 					<th width="20%"><font color="red">*</font> 지하철 역</th>
 					<td width="80%">
-						<input type="text" class="form-control" name="cmp_station"  class="form-control"  value="${bb.cmp_station }" required>
+						<input type="text" class="form-control" name="cmp_station"  class="form-control"  value="${bb.cmp_station }" pattern="#,###" required>
 					</td>
 				</tr>
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">

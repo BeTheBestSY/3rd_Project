@@ -89,7 +89,7 @@
 											<td style="padding-left:4%;">${cb.cmp_num}</td>
 											<td style="padding-left:5%;">${cb.cmp_name}</td>
 											<td>${cb.cmp_addr}</td>
-											<td>${cb.cmp_price}원</td>
+											<td><fmt:formatNumber value="${cb.cmp_price}" pattern="#,###" />원</td>
 											<td>${cb.cmp_station}</td>
 											<td>
 												<input type="button" class="btn btn-white"  value="삭제하기" onClick="del(${cb.cmp_num},${pageInfo.pageNumber})">

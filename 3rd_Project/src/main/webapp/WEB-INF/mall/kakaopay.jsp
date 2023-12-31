@@ -5,9 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+    #apibtn {
+       
+      /* 필요에 따라 다른 스타일을 추가할 수 있습니다. */
+      border: none;
+      padding: 0; /* 내부 여백 제거 */
+      cursor: pointer;
+    }
+
+</style>
 </head>
 <body onload="">
-		<button id="apibtn">버튼</button>
+	<button id="apibtn">
+		<img alt="" src="<%=request.getContextPath() %>/resources/image/kakaobtn.png">
+	</button>
 
 					<script type="text/javascript" src="<%= request.getContextPath() %>/resources/js/jquery.js"></script>
 					<script type="text/javascript">
