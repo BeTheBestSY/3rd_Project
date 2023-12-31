@@ -27,6 +27,9 @@
 								
 								html += '<tr>';
 								html += '	<td>'+e.c_num+'</td>';
+								html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
+								//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
+								//html += '	<td><a href="detail.cb?c_num='+e.c_num+'">'+e.c_subject+'</a></td>';
 								html += '	<td><a class="subject" href="javascript:gotoPage('+e.c_num+')">';
 								if(e.c_subject.length > 15)
 									html += e.c_subject.substr(0, 15)+'...';
@@ -60,6 +63,8 @@
 								
 								html += '<tr>';
 								html += '	<td>'+e.c_num+'</td>';
+								html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
+								//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
 								html += '	<td><a class="subject" href="javascript:gotoPage('+e.c_num+')">';
 								if(e.c_subject.length > 15)
 									html += e.c_subject.substr(0, 15)+'...';
@@ -80,6 +85,7 @@
 						});
 					}
 				});
+				checkEvent();
 			});
 		};
 		function ajax(url, pageNumber){
@@ -103,6 +109,8 @@
 							
 							html += '<tr>';
 							html += '	<td>'+e.c_num+'</td>';
+							html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
+							//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
 							html += '	<td><a class="subject" href="javascript:gotoPage('+e.c_num+')">';
 							if(e.c_subject.length > 15)
 								html += e.c_subject.substr(0, 15)+'...';
@@ -121,6 +129,21 @@
 					});
 				}
 			});
+			checkEvent();
+		}
+		function checkEvent(){
+			const subjects = document.querySelectorAll('.subject');
+			subjects.forEach((subject) => {
+				subject.addEventListener('click', (e) => {
+					
+				});
+			});
+		}
+		var count = 0;
+		function open(c_num){
+			++count;
+			//alert('넘어오는 c_num:'+c_num);
+			//window.open('detail.cb?c_num='+c_num);
 		}
 		function gotoPage(c_num){
 			window.open('detail.cb?c_num='+c_num);
@@ -227,4 +250,3 @@
 	</div>
 
 </body>
-
