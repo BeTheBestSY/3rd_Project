@@ -338,6 +338,11 @@
 		select * from users
 		where u_id=#{u_id}
 	</select>
+	<update id="updateUsersById">
+		update users
+		set u_name=#{u_name}, u_phone=#{u_phone}, u_email=#{u_email}, u_address=#{u_address}, u_color=#{u_color} 
+		where u_id=#{u_id}
+	</update>
 	<update id="resetReport">
 		update users set u_report = 0 where u_id = #{u_id}
 	</update>

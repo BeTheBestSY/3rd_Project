@@ -102,7 +102,7 @@ public class UsersMypageController {
 		
 		ud.deleteUsers(u_id);
 		session.invalidate();
-		// 유저의 프로필 사진 업로드 폴더에서 내리기
+		// 유저의 프로필 사진 업로드 폴더에서 내리기 => 이거 아직 안함!!!
 		
 		model.addAttribute("msg", "탈퇴 처리되었습니다. 이용해주셔서 감사합니다.");
 		if(u_jointype.equals("N")) {

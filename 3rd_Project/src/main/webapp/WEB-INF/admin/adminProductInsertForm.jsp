@@ -1,35 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminCompanyUpdate.css?ver=220610">
-<style>
-	input[type="text"], select, textarea {
-	  font-size: 15px;
-	  width: 300px;
-	  height:35px;
-	  border: none;
-	  border-bottom: solid #aaaaaa 1px;
-	  padding-bottom: 3px;
-	  padding-left: 10px;
-	  position: relative;
-	  background: #f8f9f7;
-	  z-index: 5;
-	  border-radius:5px;
-	}
-	
-	#searchBtn{
-	margin-top:13px;
-	}
-	
-	table th{
-		text-align:left;
-	}
-	
-	.board-table{
-	margin-top:20px;
-	}
-}
-</style>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminCompanyUpdate.css?ver=220633">
 <script type="text/javascript">
 	var title, detail, ttlImg, dtlImg, ttlSpan, dtlSpan;
 	window.onload = function(){
@@ -105,7 +77,6 @@
 			<h4>상품 추가</h4>
 		</div>
 		<div id="center" style="text-align: center;">
-			<br><br><br><br>
 			<div>
 				<form action="productInsert.admin" method="post" enctype="multipart/form-data" onSubmit="return checkImg()">
 				<table class="board-table">
@@ -114,11 +85,13 @@
 						<td>
 							<input type="text" class="form-control" name="p_brand" required>
 						</td>
-					</tr>
-					<tr>
 						<th>이름</th>
+						<td colspan="2">
+							<input type="text" id="name-input" class="form-control" name="p_name" required>
+						</td>
+						<th>퍼스널컬러</th>
 						<td>
-							<input type="text" class="form-control" name="p_name" style="width: 55%;" required>
+							<input type="text" class="form-control" name="p_color" required>
 						</td>
 					</tr>
 					<tr>
@@ -126,10 +99,8 @@
 						<td>
 							<input type="text" class="form-control" name="p_price" required>
 						</td>
-					</tr>
-					<tr>
 						<th>지급포인트</th>
-						<td>
+						<td colspan="4">
 							<input type="text" class="form-control" name="p_point" required>
 						</td>
 					</tr>
@@ -138,17 +109,9 @@
 						<td>
 							<input type="text" class="form-control" name="p_stock" required>
 						</td>
-					</tr>
-					<tr>
 						<th>누적판매량</th>
-						<td>
+						<td colspan="4" style="border-bottom: 1px solid #e7e7e7;">
 							<input type="text" class="form-control" name="p_salevolume" required>
-						</td>
-					</tr>
-					<tr>
-						<th>퍼스널컬러</th>
-						<td>
-							<input type="text" class="form-control" name="p_color" required>
 						</td>
 					</tr>
 					<tr>
@@ -156,27 +119,28 @@
 						<td>
 							<textarea class="form-control" name="p_contents" placeholder="제품설명 입력" required></textarea>
 						</td>
-					</tr>
-					<tr>
 						<th>제품사진</th>
-						<td height="50%">
+						<td>
 							<input id="title" type="file" name="upload_ttl" accept="image/*" style="display: none">
-							<input id="detail" type="file" name="upload_dtl" accept="image/*" style="display: none">
-							<br>
-							* 타이틀이미지 업로드<br>
-							<img id="ttl_img" alt="타이틀이미지" src="<%=request.getContextPath()%>/resources/image/no-image.jpg" style="width:15%; height: 35%; cursor:pointer;"><br>
+							* 타이틀이미지 업로드<br><br>
+							<img id="ttl_img" alt="타이틀이미지" src="<%=request.getContextPath()%>/resources/image/no-image.jpg">
+							<br><br>
 							<span id="ttl_name"></span>
 							<br><br>
-							* 디테일이미지 업로드<br>
-							<img id="dtl_img" alt="디테일이미지" src="<%=request.getContextPath()%>/resources/image/no-image.jpg" style="width:15%; height: 35%; cursor:pointer;"><br>
+						</td>
+						<td>
+							<input id="detail" type="file" name="upload_dtl" accept="image/*" style="display: none">
+							* 디테일이미지 업로드<br><br>
+							<img id="dtl_img" alt="디테일이미지" src="<%=request.getContextPath()%>/resources/image/no-image.jpg">
+							<br><br>
 							<span id="dtl_name"></span>
 							<br><br>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2" align="center">
+						<td colspan="8" align="center">
 							<br><br>
-							<input type="submit" value="추가하기" id="subBtn" style="cursor:pointer;">
+							<input type="submit" value="추가하기" id="subBtn" class="btn btn-white">
 						</td>
 					</tr>
 				</table>

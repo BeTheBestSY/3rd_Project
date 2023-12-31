@@ -226,7 +226,7 @@ public class AdminProductController {
 		} else {
 			System.out.println("update res:"+res);
 			model.addAttribute("msg", "상품 수정 실패. DB 확인 요망.");
-			model.addAttribute("url", "productUpdate.admin");
+			model.addAttribute("url", "productUpdate.admin?p_num="+pb.getP_num());
 		}
 		return redirect;
 	}
