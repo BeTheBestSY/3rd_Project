@@ -34,47 +34,48 @@ public class UsersUpdateController {
 	ServletContext servletContext;
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
-	public String doAction() {
+	public String doAction(@RequestParam String u_id, Model model) {
+		UsersBean ub = ud.getUserById(u_id);
+		model.addAttribute("ub", ub);
 		return viewPage;
 	}
 	
 	@RequestMapping(value = command, method = RequestMethod.POST)
-	public String doAction2(@ModelAttribute(value = "ub") UsersBean ub, HttpServletResponse response, HttpSession session, Model model,
-			@RequestParam("img_before") String img_before) throws IOException {
-		
+	public String doAction2(@ModelAttribute(value = "ub") UsersBean ub,
+							HttpServletResponse response, 
+							HttpSession session, 
+							Model model,
+							@RequestParam("img_before") String img_before) throws IOException {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html; charset=UTF-8");
-		System.out.println("u_phone : " + ub.getU_phone());
+		System.out.println("수정하려는 u_phone : " + ub.getU_phone());
 		String u_phone = ub.getU_phone().replace(",","-"); // 010-1234-5678
 		String u_email = ub.getU_email().replace(",","@");
 		ub.setU_phone(u_phone);
 		ub.setU_email(u_email);
 		
-		System.out.println("기존 타이틀이미지:"+img_before);
+		System.out.println("기존 프로필이미지:"+img_before);
 		System.out.println("받아온 프로필 이미지:"+ub.getU_profileimg());
 		String uploadPath = servletContext.getRealPath("/resources/uploadFolder/users/");
 		File destBefore = new File(uploadPath+File.separator+img_before);
-		
-		try {
+		if(ub.getU_profileimg() == null) {
+			ub.setU_profileimg(img_before);
+		} else {
 			destBefore.delete();
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		
-		if(ud.updateUsers(ub) > 0) {
-			
+		int res = ud.updateUsers(ub);
+		if(res > 0) {
+			System.out.println("res:"+res);
 			System.out.println("uploadPath:"+uploadPath);
-			File destTitle = new File(uploadPath+File.separator+ub.getU_profileimg());
-			MultipartFile u_profileImg = ub.getUpload_img();
-			
-			try {
-				u_profileImg.transferTo(destTitle); //destTitle에 ttl_img 올려라.
-			} catch (Exception e) {
-				e.printStackTrace();
+			File destProfile= new File(uploadPath+File.separator+ub.getU_profileimg());
+			if(ub.getUpload_img() != null) {
+				MultipartFile u_profileImg = ub.getUpload_img();
+				u_profileImg.transferTo(destProfile); // destTitle 업로드하기.
 			}
 			
 			model.addAttribute("msg", "수정되었습니다.");
-			model.addAttribute("url", "mypage.u");
+			model.addAttribute("url", "mypage.u?u_id="+ub.getU_id());
 			return viewPage2;
 		} else {
 			out.print("<script>alert('수정 실패. 관리자에게 문의하세요.');</script>");
@@ -95,7 +96,7 @@ public class UsersUpdateController {
 			//out.print("<script>alert('수정되었습니다.');</script>");
 			//out.flush();
 			model.addAttribute("msg", "수정되었습니다.");
-			model.addAttribute("url", "mypage.u");
+			model.addAttribute("url", "mypage.u?u_id="+ub.getU_id());
 			return viewPage2;
 		} else {
 			out.print("<script>alert('수정 실패. 관리자에게 문의하세요.');</script>");

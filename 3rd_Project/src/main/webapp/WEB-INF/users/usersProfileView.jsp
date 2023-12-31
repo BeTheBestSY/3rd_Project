@@ -30,6 +30,12 @@
 								html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
 								//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
 								//html += '	<td><a href="detail.cb?c_num='+e.c_num+'">'+e.c_subject+'</a></td>';
+								html += '	<td><a class="subject" href="javascript:gotoPage('+e.c_num+')">';
+								if(e.c_subject.length > 15)
+									html += e.c_subject.substr(0, 15)+'...';
+								else
+									html += e.c_subject;
+								html += '</a></td>';
 								html += '	<td>'+now24Date+'</td>';
 								html += '	<td>'+e.c_readcount+'</td>';
 								html += '</tr>';
@@ -59,6 +65,12 @@
 								html += '	<td>'+e.c_num+'</td>';
 								html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
 								//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
+								html += '	<td><a class="subject" href="javascript:gotoPage('+e.c_num+')">';
+								if(e.c_subject.length > 15)
+									html += e.c_subject.substr(0, 15)+'...';
+								else
+									html += e.c_subject;
+								html += '</a></td>';
 								html += '	<td>'+now24Date+'</td>';
 								html += '	<td>'+e.c_readcount+'</td>';
 								html += '</tr>';
@@ -99,6 +111,12 @@
 							html += '	<td>'+e.c_num+'</td>';
 							html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
 							//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
+							html += '	<td><a class="subject" href="javascript:gotoPage('+e.c_num+')">';
+							if(e.c_subject.length > 15)
+								html += e.c_subject.substr(0, 15)+'...';
+							else
+								html += e.c_subject;
+							html += '</a></td>';
 							html += '	<td>'+now24Date+'</td>';
 							html += '	<td>'+e.c_readcount+'</td>';
 							html += '</tr>';
@@ -127,6 +145,9 @@
 			//alert('넘어오는 c_num:'+c_num);
 			//window.open('detail.cb?c_num='+c_num);
 		}
+		function gotoPage(c_num){
+			window.open('detail.cb?c_num='+c_num);
+		}
 		function convert(e, u_id, type){
 			if(e.className === 'off'){
 				document.querySelector('.on').className = 'off'; // 기존 'on'클래스를 'off'클래스로 클래스명 변경.
@@ -149,11 +170,11 @@
 		}
 	</script>
 </head>
-<body>
+<body style="margin: auto;">
 	<!-- border-dark-subtle: 테두리 색상 -->
 	<!-- border border-5 border-dark-subtle  -->
 	<!-- Today, 방문수, 작성글, 댓글단 글, 퍼스널컬러, 조인데이트, 자기소개, -->
-	<div class="profile-container" style="border: 1px solid blue; width: 80%; height: 80%; margin: auto; position: relative; top: 10%;">
+	<div class="profile-container">
 		<div class="main-container">
 			<div class="img-box">
 				<c:if test="${ub.u_profileimg eq null }">
@@ -164,11 +185,11 @@
 				</c:if>
 			</div>
 			<div class="explain-box" style="font-family: 'RIDIBatang';">
-				<h1>
-					<c:if test="${ub.u_jointype eq 'N' }">네이버 연동 회원</c:if>
-					<c:if test="${ub.u_jointype eq 'K' }">카카오 연동 회원</c:if>
-					<c:if test="${ub.u_jointype eq 'S' }">${ub.u_id }</c:if>
-				</h1>
+				<h1 style="background-color: #7C81BB">
+					<c:if test="${ub.u_jointype eq 'N' }">&nbsp;네이버 연동 회원&nbsp;</c:if>
+					<c:if test="${ub.u_jointype eq 'K' }">&nbsp;카카오 연동 회원&nbsp;</c:if>
+					<c:if test="${ub.u_jointype eq 'S' }">&nbsp;${ub.u_id }&nbsp;</c:if>
+				</h1><br>
 				<font>${ub.u_color } </font>
 				<c:if test="${fn:contains(ub.u_color, '봄')}">
 					<img src="resources/image/spring-mainImg.png">

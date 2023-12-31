@@ -88,20 +88,26 @@ public class ProductBean {
 		return upload_ttl;
 	}
 	public void setUpload_ttl(MultipartFile upload_ttl) {
-		this.upload_ttl = upload_ttl;
-		if(this.upload_ttl != null) { // 파일을 선택했다면
+		System.out.println("upload_ttl.getOriginalFilename():"+upload_ttl.getOriginalFilename());
+		if(!upload_ttl.getOriginalFilename().isEmpty()) { // 파일을 선택했다면
+			this.upload_ttl = upload_ttl;
 			System.out.println("업로드 할 타이틀이미지:"+upload_ttl.getOriginalFilename());
 			this.p_ttlimg = upload_ttl.getOriginalFilename();
+		} else {
+			System.out.println("타이틀이미지는 수정없이 그대로 감.");
 		}
 	}
 	public MultipartFile getUpload_dtl() {
 		return upload_dtl;
 	}
 	public void setUpload_dtl(MultipartFile upload_dtl) {
-		this.upload_dtl = upload_dtl;
-		if(this.upload_dtl != null) { // 파일을 선택했다면
-			System.out.println("업로드 할 디테일이미지:"+upload_dtl.getOriginalFilename());
+		System.out.println("upload_dtl.getOriginalFilename():"+upload_dtl.getOriginalFilename());
+		if(!upload_dtl.getOriginalFilename().isEmpty()) { // 파일을 선택했다면
+			this.upload_dtl = upload_dtl;
+			System.out.println("업로드 할 디테일이미지:"+upload_dtl.getOriginalFilename()+"\n");
 			this.p_dtlimg = upload_dtl.getOriginalFilename();
+		} else {
+			System.out.println("디테일이미지는 수정없이 그대로 감.\n");
 		}
 	}
 	

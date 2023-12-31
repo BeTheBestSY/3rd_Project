@@ -74,12 +74,9 @@ public class UsersMypageController {
 	
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
-	public String doAction(HttpSession session) {
-		UsersBean ub_origin = (UsersBean)session.getAttribute("loginInfo");
-		UsersBean ub_new = ud.getUserById(ub_origin.getU_id());
-		session.setAttribute("loginInfo", ub_new); 
-		// 마이페이지 들어갈 때 마다 DB에서 정보 받아와서 새로 loginInfo 설정.
-		// 이렇게 안하면 수정사항이 제대로 반영이 안되더라구.
+	public String doAction(@RequestParam String u_id, Model model) {
+		UsersBean ub = ud.getUserById(u_id);
+		model.addAttribute("ub", ub);
 		return viewPage;
 	}
 	
@@ -105,6 +102,8 @@ public class UsersMypageController {
 		
 		ud.deleteUsers(u_id);
 		session.invalidate();
+		// 유저의 프로필 사진 업로드 폴더에서 내리기
+		
 		model.addAttribute("msg", "탈퇴 처리되었습니다. 이용해주셔서 감사합니다.");
 		if(u_jointype.equals("N")) {
 			// 네이버 연동 해제
@@ -256,28 +255,26 @@ public class UsersMypageController {
 	
 	@RequestMapping(value = command_orderDetail, method = RequestMethod.GET)
 	public String orderDetail(HttpSession session, Model model,
-							@RequestParam("o_num") String o_num, @RequestParam(value="pageNumber", required=false) String pageNumber) {
-		
+							@RequestParam("o_num") String o_num, @RequestParam("num") String num, 
+							@RequestParam(value="pageNumber", required=false) String pageNumber) {
 
-		List<OrdersProductBean> ordProdlist = od.getAllOrdersProduct2(o_num);//1이상 레코드, 여러 개 가능
+		List<OrdersProductBean> ordProdlist = od.getAllOrdersProduct2(o_num);
 		
 		List<ProductBean> prodList = new ArrayList<ProductBean>();
-		
 		for(int i = 0; i<ordProdlist.size(); i++) {
-			
 			ProductBean pb  =	od.selectPord2(Integer.toString(ordProdlist.get(i).getP_num()));
-			
 			prodList.add(pb);
 		}
 		
-		OrderBean ob =  od.getOneOrder2(o_num);//주문정보는 하나만
+		OrderBean ob =  od.getOneOrder2(o_num);
 		
 		model.addAttribute("ob", ob);
 		model.addAttribute("prodList", prodList);
 		model.addAttribute("ordProdlist", ordProdlist);
 		model.addAttribute("pageNumber", pageNumber);
+		model.addAttribute("num", num+1);
 		
 		return viewPage_orderDetail;
 	}
-	
+	 
 }

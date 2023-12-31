@@ -111,7 +111,7 @@
 								<li><a class="dropdown-item" href="logout.u">로그아웃</a></li>
 							</c:if>
 							<c:if test="${loginInfo.u_id != 'admin'}">
-								<li><a class="dropdown-item" href="mypage.u">마이페이지</a></li>
+								<li><a class="dropdown-item" href="mypage.u?u_id=${loginInfo.u_id }">마이페이지</a></li>
 								<li><a class="dropdown-item" href="logout.u">로그아웃</a></li>
 							</c:if>
 						</ul>
