@@ -70,6 +70,14 @@ img{
 .board-container #post-page, .board-container #comment-page{
 	margin: 0 auto;
 }
+.subject{
+	text-decoration: none;
+	color: black;
+}
+.subject:hover{
+	color: #7C81BB;
+	cursor: pointer;
+}
 /* font 관련 설정 */
 @font-face {
     font-family: 'MaruBuri-Regular';

@@ -25,11 +25,9 @@ public class CBoardDetailController {
 	public String toDetailList(
 			Model model,
 			@RequestParam("c_num") int c_num,
-			@RequestParam("pageNumber") int pageNumber,
-			@RequestParam("whatColumn") String whatColumn,
-			@RequestParam("keyword") String keyword
-			) throws Exception {
-		
+			@RequestParam(value = "pageNumber", required = false) String pageNumber,
+			@RequestParam(value = "whatColumn", required = false) String whatColumn,
+			@RequestParam(value = "keyword", required = false) String keyword) throws Exception {
 		cdao.updateReadcount(c_num);
 		CBoardBean bb = cdao.selectContent(c_num);
 		UsersBean ub = cdao.getUserByCWriter(bb.getC_writer());
@@ -46,7 +44,6 @@ public class CBoardDetailController {
 		model.addAttribute("joinType", joinType);
 		
 		return viewPage;
-		
-		
+			
 	}
 }
