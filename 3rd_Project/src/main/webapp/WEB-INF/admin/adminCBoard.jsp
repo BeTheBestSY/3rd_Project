@@ -69,6 +69,7 @@
 							<c:set var="wid" value="0"/>
 							<c:if test="${ bb.c_re_level > 0 }">
 								<c:set var="wid" value="${bb.c_re_level * 20}"/>
+								<img src="<%= request.getContextPath() %>/resources/image/level.gif" width="${wid}" height="20">
 								<img src="<%= request.getContextPath() %>/resources/image/re.png" width="2%">
 							</c:if>
 								<a href="cBoardDetail.admin?c_num=${ bb.c_num }&pageNumber=${ pageInfo.pageNumber }" id="noneHigtLight">
