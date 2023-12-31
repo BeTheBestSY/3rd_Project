@@ -338,3 +338,6 @@ select{
 	cursor:pointer
 }
 
+ion-icon {
+    pointer-events: none;
+}

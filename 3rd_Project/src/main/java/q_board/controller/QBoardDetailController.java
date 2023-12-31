@@ -32,7 +32,7 @@ public class QBoardDetailController {
 			@RequestParam("whatColumn") String whatColumn,
 			@RequestParam("keyword") String keyword
 			) throws Exception {
-		
+ 		
 		QBoardBean bb = qdao.selectContent(q_num);
 		UsersBean ub = qdao.getUserByQWriter(bb.getQ_writer());
 		

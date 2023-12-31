@@ -76,7 +76,8 @@
 							<c:set var="wid" value="0"/>
 							<c:if test="${ bb.q_re_level > 0 }">
 								<c:set var="wid" value="${bb.q_re_level * 20}"/>
-								<img src="<%= request.getContextPath() %>/resources/image/re.png" width="2%">
+								<img src="<%= request.getContextPath() %>/resources/image/level.gif" width="${wid}" height="20">
+								<img src="<%= request.getContextPath() %>/resources/image/re.png" width="3%">
 							</c:if>
 							<c:if test="${ bb.q_re_step == 0 }">
 								<a href="qBoardDetail.admin?q_num=${ bb.q_num }&pageNumber=${ pageInfo.pageNumber }" id="noneHigtLight">

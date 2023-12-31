@@ -473,7 +473,7 @@
 		<select id="selectPord" resultType="myProduct">
 			select p_name, p_price, p_num, p_point from product
 				where p_num = #{p_num} 
-		</select>
+		</select> 
 		
 		<select id="getOneOrder" resultType="mall.model.OrderBean">
 			select * from orders

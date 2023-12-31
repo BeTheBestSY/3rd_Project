@@ -108,7 +108,7 @@ function goQnA(){ // 브라우저 사이즈 기준으로 팝업창 가운데 뜨
 				%>
 				<div id="IdLogin" align="left">
 					<!-- 네이버 로그인 버튼 생성 위치 -->
-					&nbsp;&nbsp;<a href="<%=apiURL%>"><img  height="50" src="<%=request.getContextPath()%>/resources/image/btnW_완성형.png"></a>
+					&nbsp;&nbsp;<a href="<%=apiURL%>"><img  height="50" src="<%=request.getContextPath()%>/resources/image/btnW_naver.png"></a>
 					<!-- 카카오 로그인 버튼 생성 위치 -->
 					<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=a8d5622ce00b9080e03be1948663093a&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fex20%2Fkakao.u"><img  height="48" src="<%=request.getContextPath()%>/resources/image/kakao_login_medium_narrow.png"></a>
 				</div>

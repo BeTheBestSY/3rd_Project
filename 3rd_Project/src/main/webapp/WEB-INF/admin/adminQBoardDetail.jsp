@@ -83,10 +83,10 @@ table{
 					</td>
 					<th align="left" bgcolor="#EDE5D8" width="14%" >공개 여부</th>
 					<td align="left" height="50">
-						<c:if test="${bb.q_secret == 'N'}">
+						<c:if test="${bb.q_secret == 'Y'}">
 							비밀글
 						</c:if>
-						<c:if test="${bb.q_secret == 'Y'}">
+						<c:if test="${bb.q_secret == 'N'}">
 							공개글
 						</c:if>
 					</td>

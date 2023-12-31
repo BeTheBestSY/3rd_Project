@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/usersProfileView.css?ver=2209982">
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/usersProfileView.css?ver=2209967">
 <head>
 	<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -13,137 +14,239 @@
 	<script>
 		window.onload = function() {
 			$(function() {
+				// 작성글을 불러오는 ajax 설정 
 				$.ajax({
-					url: 'cBoardAjax.cb?c_writer=${c_writer}',
-					dataType:'json',
-					success: function(data) { // 성공적으로 받아왔을 경우
-						alert(data);
-						/* $(data).each(funcion() {
-							alert(this.pagingHtml)
-						}); */
-						/* $(data).each(function() { 
-							// *** 답글만 달고 글을 쓴 적 없는 사람도 고려해야함.
-							var date = new Date(this.c_regdate);
-							var now24Date = moment(date).format("YYYY-MM-DD");
-							var html = '';
-							html += '<tr>';
-							html += '	<td width="3%" align="center">'+this.c_num+'</td>';
-							html += '	<td width="10%"><a href="#">'+this.c_subject+'</a></td>';
-							html += '	<td width="5%" align="center">'+now24Date+'</td>';
-							html += '	<td width="5%" align="center">'+this.c_readcount+'</td>';
-							html += '</tr>';
-							$('#post-table').append(html);
+					url: 'postAjax.cb?c_writer=${c_writer}',
+					async: false,
+					success: function(post) { // 성공적으로 받아왔을 경우
+						post.forEach(function(e){
+							if(e.c_num != null){
+								var date = new Date(e.c_regdate);
+								var now24Date = moment(date).format("YYYY-MM-DD");
+								var html = '';
+								
+								html += '<tr>';
+								html += '	<td>'+e.c_num+'</td>';
+								html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
+								//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
+								//html += '	<td><a href="detail.cb?c_num='+e.c_num+'">'+e.c_subject+'</a></td>';
+								html += '	<td><a class="subject" href="javascript:gotoPage('+e.c_num+')">';
+								if(e.c_subject.length > 15)
+									html += e.c_subject.substr(0, 15)+'...';
+								else
+									html += e.c_subject;
+								html += '</a></td>';
+								html += '	<td>'+now24Date+'</td>';
+								html += '	<td>'+e.c_readcount+'</td>';
+								html += '</tr>';
+								$('#post-table').append(html);
+							} else{
+								if(e.pagingHtml === ''){
+									$('#post-table').append('<tr><td colspan="4">작성한 글이 없습니다.</td></tr>');
+								} else{
+									$('#post-page').append(e.pagingHtml);
+								}
+							}
 						});
-						$('#post-list').append('${pagingHtml}'); */
 					}
 				});
-				// 댓글단 글을 불러오는 ajax 설정 
-				//$.ajax({
-					/* url: '',
-					success: function(data) { // 성공적으로 받아왔을 경우
-						$(data).each(function() {
-							var date = new Date(this.c_regdate);
-							var now24Date = moment(date).format("YYYY-MM-DD");
-							var html = '';
-							html += '<tr>';
-							html += '	<td>'+this.c_num+'</td>';
-							html += '	<td>'+this.c_subject+'</td>';
-							html += '	<td>'+now24Date+'</td>';
-							html += '	<td>'+this.c_readcount+'</td>';
-							html += '</tr>';
-							$('#comment-table').append(html);
+				// 답글을 불러오는 ajax 설정 
+				$.ajax({
+					url: 'commentAjax.cb?c_writer=${c_writer}',
+					async: false,
+					success: function(comment) { // 성공적으로 받아왔을 경우
+						comment.forEach(function(e){
+							if(e.c_num != null){
+								var date = new Date(e.c_regdate);
+								var now24Date = moment(date).format("YYYY-MM-DD");
+								var html = '';
+								
+								html += '<tr>';
+								html += '	<td>'+e.c_num+'</td>';
+								html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
+								//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
+								html += '	<td><a class="subject" href="javascript:gotoPage('+e.c_num+')">';
+								if(e.c_subject.length > 15)
+									html += e.c_subject.substr(0, 15)+'...';
+								else
+									html += e.c_subject;
+								html += '</a></td>';
+								html += '	<td>'+now24Date+'</td>';
+								html += '	<td>'+e.c_readcount+'</td>';
+								html += '</tr>';
+								$('#comment-table').append(html);
+							} else{
+								if(e.pagingHtml === ''){
+									$('#comment-table').append('<tr><td colspan="4">작성한 댓글이 없습니다.</td></tr>');
+								} else{
+									$('#comment-page').append(e.pagingHtml);
+								}
+							}
 						});
-					} */
-				//});
+					}
+				});
+				checkEvent();
 			});
 		};
+		function ajax(url, pageNumber){
+			console.log("ajax 함수 호출..");
+			var postOrComment = '';
+			if(url === 'postAjax.cb'){
+				postOrComment = 'post';
+			} else{
+				postOrComment = 'comment';
+			}
+			$.ajax({
+				url: url+'?c_writer=${c_writer}&pageNumber='+pageNumber,
+				async: false,
+				success: function(element) {
+					$('#'+postOrComment+'-table').html('');
+					element.forEach(function(e){
+						if(e.c_num != null){
+							var date = new Date(e.c_regdate);
+							var now24Date = moment(date).format("YYYY-MM-DD");
+							var html = '';
+							
+							html += '<tr>';
+							html += '	<td>'+e.c_num+'</td>';
+							html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
+							//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
+							html += '	<td><a class="subject" href="javascript:gotoPage('+e.c_num+')">';
+							if(e.c_subject.length > 15)
+								html += e.c_subject.substr(0, 15)+'...';
+							else
+								html += e.c_subject;
+							html += '</a></td>';
+							html += '	<td>'+now24Date+'</td>';
+							html += '	<td>'+e.c_readcount+'</td>';
+							html += '</tr>';
+							
+							$('#'+postOrComment+'-table').append(html);
+						} else{
+							$('#'+postOrComment+'-page').html('');
+							$('#'+postOrComment+'-page').append(e.pagingHtml);
+						}
+					});
+				}
+			});
+			checkEvent();
+		}
+		function checkEvent(){
+			const subjects = document.querySelectorAll('.subject');
+			subjects.forEach((subject) => {
+				subject.addEventListener('click', (e) => {
+					
+				});
+			});
+		}
+		var count = 0;
+		function open(c_num){
+			++count;
+			//alert('넘어오는 c_num:'+c_num);
+			//window.open('detail.cb?c_num='+c_num);
+		}
+		function gotoPage(c_num){
+			window.open('detail.cb?c_num='+c_num);
+		}
 		function convert(e, u_id, type){
 			if(e.className === 'off'){
-				// 기존 'on'클래스를 'off'클래스로 클래스명 변경.
-				document.querySelector('.on').className = 'off';
-				//  클릭이벤트가 발생한 e, 즉 'off'클래스를 'on'클래스로 클래스명 변경.
-				e.className = 'on';
+				document.querySelector('.on').className = 'off'; // 기존 'on'클래스를 'off'클래스로 클래스명 변경.
+				e.className = 'on'; //  클릭이벤트가 발생한 e, 즉 'off'클래스를 'on'클래스로 클래스명 변경.
+				
 				if(type === 'post'){
 					document.getElementById('post-list').style.display = 'block';
+					document.getElementById('post-page').style.display = 'block';
 					document.getElementById('comment-list').style.display = 'none';
+					document.getElementById('comment-page').style.display = 'none';
 					
 				} else{
 					document.getElementById('comment-list').style.display = 'block';
+					document.getElementById('comment-page').style.display = 'block';
 					document.getElementById('post-list').style.display = 'none';
+					document.getElementById('post-page').style.display = 'none';
 					
 				}
-				// 기존 'on'클래스는 보이지 않게 하면서,
-				// 'off'클래스로 클래스명을 변경해준다.
-				//document.querySelector('.on').style.display = 'none';
-				
-				// 클릭이벤트가 발생한 e, 즉 'off'클래스는 보이게 하면서,
-				// 'on'클래스로 클래스명을 변경해준다.
-				//e.style.display = 'block';
 			}
 		}
 	</script>
 </head>
-<body>
+<body style="margin: auto;">
 	<!-- border-dark-subtle: 테두리 색상 -->
+	<!-- border border-5 border-dark-subtle  -->
 	<!-- Today, 방문수, 작성글, 댓글단 글, 퍼스널컬러, 조인데이트, 자기소개, -->
-	<div class="profile-container" style="border: 1px solid blue; width: 80%; height: 80%; margin: auto; position: relative; top: 10%;">
-		<h1 style="font-family: 'RIDIBatang';">${ub.u_id }의 프로필</h1>
-		<div class="main-container" style="border: 1px solid green;">
-			<div class="img-box" style="border: 1px solid red;">
+	<div class="profile-container">
+		<div class="main-container">
+			<div class="img-box">
 				<c:if test="${ub.u_profileimg eq null }">
-					<img  src="resources/image/person.svg" class="border border-5 border-dark-subtle rounded-circle">
+					<img  src="resources/image/person.svg" class="rounded-circle">
 				</c:if>
 				<c:if test="${ub.u_profileimg ne null }">
-					<img  src="${ub.u_profileimg }" class="border border-5 border-dark-subtle rounded-circle">
+					<img  src="${ub.u_profileimg }" class="rounded-circle">
 				</c:if>
 			</div>
-			<div class="explain-box" style="border: 1px solid black; font-family: 'MaruBuri-Regular';">
-				방문: <br> <!-- user 칼럼에 방문 수 칼럼 추가해야.. -->
-				작성글:<br> <!-- 작성글 수 -->
-				댓글단 글:<br> <!-- 댓글단 글 수 -->
-				퍼스널컬러: ${ub.u_color }<br>
-				가입일: ${ub.u_joindate }<br>
-				자기소개: ${ub.u_intro }<br>
+			<div class="explain-box" style="font-family: 'RIDIBatang';">
+				<h1 style="background-color: #7C81BB">
+					<c:if test="${ub.u_jointype eq 'N' }">&nbsp;네이버 연동 회원&nbsp;</c:if>
+					<c:if test="${ub.u_jointype eq 'K' }">&nbsp;카카오 연동 회원&nbsp;</c:if>
+					<c:if test="${ub.u_jointype eq 'S' }">&nbsp;${ub.u_id }&nbsp;</c:if>
+				</h1><br>
+				<font>${ub.u_color } </font>
+				<c:if test="${fn:contains(ub.u_color, '봄')}">
+					<img src="resources/image/spring-mainImg.png">
+				</c:if>
+				<c:if test="${fn:contains(ub.u_color, '여름')}">
+					<img src="resources/image/summer-mainImg.png">
+				</c:if>
+				<c:if test="${fn:contains(ub.u_color, '가을')}">
+					<img src="resources/image/fall-mainImg.png">
+				</c:if>
+				<c:if test="${fn:contains(ub.u_color, '겨울')}">
+					<img src="resources/image/winter-mainImg.png">
+				</c:if>
+				<%-- <c:if test="${fn:contains(ub.u_color, '잘')}">
+					여기는 물음표 이미지 구해와야함.
+				</c:if> --%> <br>
+				<font>방문 </font><b>5</b>&nbsp;&nbsp;<!-- user 칼럼에 방문 수 칼럼 추가해야.. -->
+				<font>작성글 </font><b>${postCount }</b>&nbsp;&nbsp;<!-- 작성글 수 -->
+				<font>답글 </font><b>${commentCount }</b><br> <!-- 댓글단 글 수 -->
+				<font>${ub.u_intro }</font><br>
 			</div>
 		</div>
 		<!--  color="#7C81BB" -->
 		<!-- <font face="RIDIBatang"></font> -->
 		<%-- onclick="show(this,'${ub.u_id }')" --%>
-		<div class="board-container" style="border: 1px solid fuchsia;">
-			<p onclick="convert(this,'${ub.u_id }','post')" class="on" style="font-family:'RIDIBatang'; margin-left: 5%;">작성글</p>
-			<p onclick="convert(this,'${ub.u_id }','comment')" class="off" style="font-family:'RIDIBatang'; margin-left: 3%;">댓글단 글</p>
-			<div class="list-box" style="border: 1px solid black; margin-top: 2%;">
+		<div class="board-container" style="font-family:'RIDIBatang';">
+			<p onclick="convert(this,'${ub.u_id }','post')" class="on" style="margin-left: 5%;">작성글</p>
+			<p onclick="convert(this,'${ub.u_id }','comment')" class="off" style="margin-left: 3%;">답글</p>
+			<div class="list-box">
 				<div id="post-list" style="display: block;">
-					<table id="post-table" border="1">
+					<table>
 						<tr>
-							<th></th>
-							<th>제목</th>
-							<th>작성일</th>
-							<th>조회</th>
+							<th width="3%"></th>
+							<th width="10%">제목</th>
+							<th width="5%">작성일</th>
+							<th width="5%">조회</th>
 						</tr>
+						<tbody id="post-table">
+						</tbody>
 					</table>
-					${pageInfo.pagingHtml }
 				</div>
-				<div id="comment-list" style="display: none; width: 100%; height: 70%;">
-					<table id="comment-table" border="1">
+				<div id="comment-list" style="display: none;">
+					<table>
 						<tr>
-							<th></th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>작성일</th>
-							<th>조회</th>
+							<th width="3%"></th>
+							<th width="10%">제목</th>
+							<th width="5%">작성일</th>
+							<th width="5%">조회</th>
 						</tr>
-						<!-- 임시로 넣어놓음 -->
-						<tr>
-							<td colspan="5">
-								작성한 댓글이 없습니다.
-							</td>
-						</tr>
+						<tbody id="comment-table">
+						</tbody>
 					</table>
 				</div>
 			</div>
+			<div id="post-page" style="display: block;"></div>
+			<div id="comment-page" style="display: none;"></div>
 		</div>
 	</div>
 
 </body>
-

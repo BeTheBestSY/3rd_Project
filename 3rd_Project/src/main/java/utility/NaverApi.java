@@ -17,9 +17,6 @@ public class NaverApi {
 	private String client_id = "7e2tSZMcps1aVtINdSJv";
 	private String client_secret = "A98jpGEn8v";
 	private String redirect_uri = "http%3A%2F%2Flocalhost%3A8080%2Fex20%2Fnaver.u";
-	// �꽕�씠踰꾨뒗 蹂꾨룄�쓽 濡쒓렇�븘�썐 api媛� �뾾�쓬. �꽕�씠踰� �씠�쇅�쓽 �꽌鍮꾩뒪�뿉�꽌 濡쒓렇�븘�썐 �븯�뒗 寃껋쓣 �뿀�슜 x
-	// �뿰�룞�빐�젣 �븷 寃쎌슦, �넗�겙�씠 �쑀�슚�븳吏� 癒쇱� 寃�利앺븳 �떎�쓬 �쑀�슚�븳 �넗�겙�쑝濡� 媛깆떊�븯�뿬 �뿰�룞�빐�젣 泥섎━
-	// �넗洹� �궘�젣媛� 怨� �뿰�룞�빐�젣�엫.
 	
 	// access token 諛쏄린
 	public Map<String, String> getAccessToken(String code, String state) {
@@ -155,7 +152,7 @@ public class NaverApi {
 	        Object obj = parsing.parse(responseSb.toString());
 	        JSONObject jsonObj = (JSONObject)obj;
 	        message = String.valueOf(jsonObj.get("message"));
-	        System.out.println("�젒洹쇳넗�겙 �쑀�슚�꽦 泥댄겕 寃곌낵 硫붿떆吏�: "+message);// �쑀�슚�븯硫� success
+	        System.out.println("유효한 토큰인지 확인: "+message);// �쑀�슚�븯硫� success
 		}catch (Exception e){
  	        e.printStackTrace();
  	    }
@@ -184,7 +181,6 @@ public class NaverApi {
  	        bw.write(sb.toString());
  	        bw.flush();
  	        
- 	        // �떎�젣 �꽌踰꾨줈 Request �슂泥� �븯�뒗 遺�遺�. (�쓳�떟 肄붾뱶瑜� 諛쏅뒗�떎. 200 �꽦怨�, �굹癒몄� �뿉�윭)
  	        int responseCode = conn.getResponseCode();
  	        System.out.println("[NaverApi.getAccessTokenAgain] responseCode = "+ responseCode);
  	        
@@ -212,22 +208,17 @@ public class NaverApi {
  	    }
 		return accessToken;
 	}
-	// �뿰�룞�빐�젣 3�떒怨�. �뿰�룞�빐�젣(�젒洹� �넗�겙 �궘�젣)
 	public String naverDisconnect(String accessToken) {
 		String reqUrl = "https://nid.naver.com/oauth2.0/token";
-//		String deletedToken = "";
 		String result = "";
 		try {
 			URL url = new URL(reqUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	        conn.setDoOutput(true); //OutputStream�쑝濡� POST �뜲�씠�꽣瑜� �꽆寃⑥＜寃좊떎�뒗 �샃�뀡.
 	        
-	        // Request Body�뿉 Data瑜� �떞湲곗쐞�빐 OutputStream 媛앹껜瑜� �깮�꽦.
 	        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
-	        // StringBuilder�뒗 蹂�寃� 媛��뒫�븳 臾몄옄�뿴�쓣 留뚮뱾�뼱以��떎.
 	        StringBuilder sb = new StringBuilder();
 	        
-	        //�븘�닔 荑쇰━ �뙆�씪誘명꽣 �꽭�똿
 	        sb.append("grant_type=delete");
 	        sb.append("&client_id=").append(client_id);
 	        sb.append("&client_secret=").append(client_secret);
@@ -237,7 +228,6 @@ public class NaverApi {
 	        bw.write(sb.toString());
 	        bw.flush();
 	        
-	        // �떎�젣 �꽌踰꾨줈 Request �슂泥� �븯�뒗 遺�遺�. (�쓳�떟 肄붾뱶瑜� 諛쏅뒗�떎. 200 �꽦怨�, �굹癒몄� �뿉�윭)
 	        int responseCode = conn.getResponseCode();
 	        System.out.println("[NaverApi.deleteToken] responseCode = "+ responseCode);
 	        

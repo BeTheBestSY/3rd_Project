@@ -1,4 +1,5 @@
 package users.controller;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,9 @@ import c_board.model.CBoardBean;
 import c_board.model.CBoardDao;
 import mall.model.OrderBean;
 import mall.model.OrderDao;
+import mall.model.OrdersProduct;
+import mall.model.OrdersProductBean;
+import product.model.ProductBean;
 import q_board.model.QBoardBean;
 import q_board.model.QBoardDao;
 import users.model.FeedbackBean;
@@ -53,6 +57,7 @@ public class UsersMypageController {
 	private final String command_q_boardDetail = "/q_boardDetail.u";
 	private final String command_q_boardUpdate = "/q_boardUpdate.u";
 	private final String command_order = "/order.u";
+	private final String command_orderDetail = "/orderDetail.u";
 	private final String viewPage = "usersMypage";
 	private final String viewPage_delForm = "usersMypageDelId";
 	private final String viewPage_del = "redirect";
@@ -65,15 +70,13 @@ public class UsersMypageController {
 	private final String viewPage_q_boardDetail = "usersMypageQboardDetail";
 	private final String viewPage_q_boardUpdate = "usersMypageQboardUpdate";
 	private final String viewPage_order = "usersMypageOrder";
+	private final String viewPage_orderDetail = "usersMypageOrderDetail";
 	
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
-	public String doAction(HttpSession session) {
-		UsersBean ub_origin = (UsersBean)session.getAttribute("loginInfo");
-		UsersBean ub_new = ud.getUserById(ub_origin.getU_id());
-		session.setAttribute("loginInfo", ub_new); 
-		// 마이페이지 들어갈 때 마다 DB에서 정보 받아와서 새로 loginInfo 설정.
-		// 이렇게 안하면 수정사항이 제대로 반영이 안되더라구.
+	public String doAction(@RequestParam String u_id, Model model) {
+		UsersBean ub = ud.getUserById(u_id);
+		model.addAttribute("ub", ub);
 		return viewPage;
 	}
 	
@@ -99,6 +102,8 @@ public class UsersMypageController {
 		
 		ud.deleteUsers(u_id);
 		session.invalidate();
+		// 유저의 프로필 사진 업로드 폴더에서 내리기
+		
 		model.addAttribute("msg", "탈퇴 처리되었습니다. 이용해주셔서 감사합니다.");
 		if(u_jointype.equals("N")) {
 			// 네이버 연동 해제
@@ -219,7 +224,7 @@ public class UsersMypageController {
 	public String q_boardUpdateForm(Model model, @RequestParam("q_num") int q_num, @RequestParam("pageNumber") int pageNumber) {
 		QBoardBean qb = qd.selectContent(q_num);
 		model.addAttribute("qb", qb);
-		model.addAttribute("pageNumber", pageNumber); 
+		model.addAttribute("pageNumber", pageNumber);
 		return viewPage_q_boardUpdate;
 	}
 	
@@ -231,14 +236,45 @@ public class UsersMypageController {
 	}
 	
 	@RequestMapping(value = command_order, method = RequestMethod.GET)
-	public String order(HttpSession session, Model model) {
+	public String order(HttpServletRequest request, HttpSession session, Model model, @RequestParam(value="pageNumber", required=false) String pageNumber) {
 		
 		UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
-		List<OrderBean> obList = od.getOrdersByU_id(ub.getU_id());
+		
+		String url = request.getContextPath()+command_order;
+		int totalCount = od.getOrdersCountByU_id(ub.getU_id());
+		Paging pageInfo = new Paging(pageNumber, "5", totalCount, url, "", "");
+		
+		List<OrderBean> obList = od.getOrdersByU_id(ub.getU_id(), pageInfo);
 		
 		model.addAttribute("obList", obList);
+		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("pageNumber", pageInfo.getPageNumber());
 		
 		return viewPage_order;
 	}
 	
+	@RequestMapping(value = command_orderDetail, method = RequestMethod.GET)
+	public String orderDetail(HttpSession session, Model model,
+							@RequestParam("o_num") String o_num, @RequestParam("num") String num, 
+							@RequestParam(value="pageNumber", required=false) String pageNumber) {
+
+		List<OrdersProductBean> ordProdlist = od.getAllOrdersProduct2(o_num);
+		
+		List<ProductBean> prodList = new ArrayList<ProductBean>();
+		for(int i = 0; i<ordProdlist.size(); i++) {
+			ProductBean pb  =	od.selectPord2(Integer.toString(ordProdlist.get(i).getP_num()));
+			prodList.add(pb);
+		}
+		
+		OrderBean ob =  od.getOneOrder2(o_num);
+		
+		model.addAttribute("ob", ob);
+		model.addAttribute("prodList", prodList);
+		model.addAttribute("ordProdlist", ordProdlist);
+		model.addAttribute("pageNumber", pageNumber);
+		model.addAttribute("num", num+1);
+		
+		return viewPage_orderDetail;
+	}
+	 
 }

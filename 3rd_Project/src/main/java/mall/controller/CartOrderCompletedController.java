@@ -63,7 +63,7 @@ public class CartOrderCompletedController {
 			@RequestParam(value = "pay_bank", required = false) String pay_bank,
 			@RequestParam(value = "pay_name", required = false) String pay_name,
 			@RequestParam(value = "deli", required = false) String deli,
-			@RequestParam(value = "totalPrice", required = false) String totalPrice,
+			@RequestParam(value = "totalPrice", required = false) int totalPrice,
 			@RequestParam(value = "totalPoint", required = false) String totalPoint,
 
 			
@@ -109,7 +109,7 @@ public class CartOrderCompletedController {
 		MaxO_num = MaxO_num+1;
 		 
 		ob.setO_num(MaxO_num);
-  
+		ob.setO_totalamount(totalPrice);
 			
 		List<CartBean> list = cartDao.selectCart2(cart_num);
 		
@@ -137,7 +137,7 @@ public class CartOrderCompletedController {
 			
 			KakaoApproveResponse kao = new KakaoApproveResponse();
 			
-			kao.getAmount().setTotal(Integer.parseInt(totalPrice));
+			kao.getAmount().setTotal(totalPrice);
 			kao.setPartner_order_id( "KAKAOHB"+MaxO_num);
 			kao.setPartner_user_id(u_id);
 			
