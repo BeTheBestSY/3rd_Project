@@ -342,9 +342,8 @@ body{
 								<input type="radio" id="tab2" name="way" value="카카오 페이">
 								<label for="tab2" class="tab-label">카카오 페이</label>
 								<div class="tab-content" style="padding-top: 30px; line-height: 180%; font-size: 11pt;">
-									카카오페이 결제 오픈 준비중입니다.<br>
-									QR 결제 팝업 창이 바로 노출되지 않으니 참고하시길 바라며,<br>
-									결제 상품 확인 후 주문해주시면 담당자가 확인 후 추후 안내 도와드리겠습니다.<br>
+									 결제 상품과 주문 정보를 확인 후 주문 완료 버튼을 눌러주세요.
+									  
 
 								</div>
 							</div>
