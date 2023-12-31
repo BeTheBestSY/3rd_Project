@@ -135,7 +135,7 @@
 							<input type="hidden" name="exist_dtl" value="${pb.p_dtlimg }">
 							<input id="detail" type="file" name="upload_dtl" accept="image/*" style="display: none"> 
 							* 디테일이미지 업로드<br><br> <!-- 기존 디테일 이미지가 올라가있다. -->
-							<img id="dtl_img" alt="디테일이미지" src="<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_dtlimg }"><br><br> 
+							<img id="dtl_img" alt="디테일이미지" src="<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_dtlimg }"><br><br>
 							<span id="dtl_name"><a href="javascript:deleteDtlImg();"><font color="red">x</font></a> ${pb.p_dtlimg }</span>
 							<br><br>
 						</td>
