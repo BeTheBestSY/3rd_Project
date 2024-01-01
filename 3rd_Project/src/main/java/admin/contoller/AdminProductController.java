@@ -184,20 +184,26 @@ public class AdminProductController {
 							@RequestParam String exist_dtl,
 							Model model) throws IOException {
 		
-		System.out.println("기존 타이틀이미지:"+exist_ttl);
-		System.out.println("기존 디테일이미지:"+exist_dtl);
-		System.out.println("새로운 타이틀이미지:"+pb.getP_ttlimg());
-		System.out.println("새로운 디테일이미지:"+pb.getP_dtlimg());
+		System.out.println("타이틀 기존/수정:"+exist_ttl+"/"+pb.getP_ttlimg());
+		System.out.println("디테일 기존/수정:"+exist_dtl+"/"+pb.getP_dtlimg());
+		
 		// 기존 타이틀이미지, 디테일이미지를 업로드 폴더에서 내리는 작업
 		String uploadPath = servletContext.getRealPath("/resources/uploadFolder/product/");
 		File destTitle = new File(uploadPath+File.separator+exist_ttl);
 		File destDetail = new File(uploadPath+File.separator+exist_dtl);
 		
-		try {
+		// 이미지 수정 작업이 이루어졌는지 체크.
+		// 이미지 수정이 있었으면 기존이미지를 지우고,
+		// 없었으면 기존 이미지로 다시 set한다.
+		if(pb.getP_ttlimg() == null) {
+			pb.setP_ttlimg(exist_ttl);
+		} else {
 			destTitle.delete();
+		}
+		if(pb.getP_dtlimg() == null) {
+			pb.setP_dtlimg(exist_dtl);
+		} else {
 			destDetail.delete();
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		// 새로운 타이틀이미지, 디테일이미지 포함 나머지들을 업데이트하는 작업
 		int res = ad.updateProduct(pb);
@@ -207,20 +213,20 @@ public class AdminProductController {
 			destTitle = new File(uploadPath+File.separator+pb.getP_ttlimg());
 			destDetail = new File(uploadPath+File.separator+pb.getP_dtlimg());
 			
-			MultipartFile ttl_img = pb.getUpload_ttl();
-			MultipartFile dtl_img = pb.getUpload_dtl();
-			
-			try {
-				ttl_img.transferTo(destTitle); //destTitle에 ttl_img 올려라.
-				dtl_img.transferTo(destDetail); //destDetail에 dtl_img 올려라.
-			} catch (Exception e) {
-				e.printStackTrace();
+			if(pb.getUpload_ttl() != null) {
+				MultipartFile ttl_img = pb.getUpload_ttl();
+				ttl_img.transferTo(destTitle); // destTitle 업로드하기.
 			}
+			if(pb.getUpload_dtl() != null) {
+				MultipartFile dtl_img = pb.getUpload_dtl();
+				dtl_img.transferTo(destDetail); // destDetail 업로드하기.
+			}
+			
 
 		} else {
 			System.out.println("update res:"+res);
 			model.addAttribute("msg", "상품 수정 실패. DB 확인 요망.");
-			model.addAttribute("url", "productUpdate.admin");
+			model.addAttribute("url", "productUpdate.admin?p_num="+pb.getP_num());
 		}
 		return redirect;
 	}

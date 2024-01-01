@@ -63,7 +63,8 @@
 						<c:if test="${joinType == 'S'}">
 							${loginInfo.u_id}
 						</c:if>
-						<input type="hidden" name="c_writer" value="${loginInfo.u_id}" class="form-control" style="width: 85%;" maxlength="5" placeholder="5자 이내로 입력해주세요." required>
+						<input type="hidden" name="c_writer" value="${loginInfo.u_id}">
+						<input type="hidden" name="c_profileimg" value="${loginInfo.u_profileimg}">
 					</td>
 					<th align="left" bgcolor="#EDE5D8" width="14%">이메일</th>
 					<td align="left">

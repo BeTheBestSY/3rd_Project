@@ -215,17 +215,11 @@ select{
   width: 100px;
 }
 
-.board-table th, .board-table td {
- 
-}
-
 .board-table tbody td {
   border-top: 1px solid #e7e7e7;
 }
 
 .board-table tbody th {
-  padding-left: 28px;
-  padding-right: 14px;
   border-top: 1px solid #e7e7e7;
 }
 

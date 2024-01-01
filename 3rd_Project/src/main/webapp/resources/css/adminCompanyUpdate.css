@@ -22,9 +22,6 @@
 	  align:center;
       background-color: #aaa;
       width: 95%;
-      height: 95%;
-      line-height: 100px;
-      text-align: center;
       padding: 20px;
       margin-left:30px;
       background: #fff;
@@ -34,10 +31,10 @@
 
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  box-shadow: 1px 1px 1px 1px #eee, 1px 1px 1px rgba(94, 104, 121, .288);
-  white-space: nowrap
+	border-collapse: collapse;
+	border-spacing: 0;
+	box-shadow: 1px 1px 1px 1px #eee, 1px 1px 1px rgba(94, 104, 121, .288);
+	white-space: nowrap;
 }
 
 .err {
@@ -55,10 +52,10 @@ table {
 
 
 .board-table {
-  font-size: 13px;
-  width: 50%;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+	font-size: 13px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	margin-top: 20px;
 }
 
 .board-table a {
@@ -75,7 +72,8 @@ table {
 
 .board-table th, .board-table td {
   padding: 14px 0;
-  padding-left:15px;
+  padding-left: 15px;
+  padding-right: 20px;
   font-size:17px;
 }
 
@@ -84,14 +82,14 @@ table {
 }
 
 .board-table tbody th {
-  padding-left: 28px;
-  padding-right: 14px;
-  border-top: 1px solid #e7e7e7;
+  	padding-left: 28px;
+  	border-top: 1px solid #e7e7e7;
 }
 
 .board-table tbody th p{
-  display: none;
+  	display: none;
 }
+
 
 .btn {
   display: inline-block;
@@ -181,4 +179,36 @@ a{
   width: 1px;
   height: 1px;
 }
-    
+input[type="text"], select, textarea{
+	font-size: 15px;
+	height:35px;
+	border: none;
+	border-bottom: solid #aaaaaa 1px;
+	padding-bottom: 3px;
+	padding-left: 10px;
+	position: relative;
+	background: #f8f9f7;
+	z-index: 5;
+	border-radius:5px;
+}
+textarea{
+	width: 300px;
+	height: 150px;
+	position: relative;
+	bottom: 60px;
+	resize: none;
+}
+#ttl_img, #dtl_img{
+	max-width: 200px;
+	min-width: 200px;
+	max-height: 200px; 
+	min-height: 200px;
+	cursor:pointer;
+}
+#name-input{
+	width: 450px;
+}
+table th{
+	text-align:left;
+}
+
