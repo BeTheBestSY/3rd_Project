@@ -123,7 +123,7 @@ public class CBoardDao {
 		return sqlSessionTemplate.selectList(namespace+"getBoardOfComment", c_writer, rowBounds);
 	}
 
-	public String getMainPost(int c_ref) { 
+	public String getMainPost(int c_ref) {
 		return sqlSessionTemplate.selectOne(namespace+"getMainPost", c_ref);
 	}
 
