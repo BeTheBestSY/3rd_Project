@@ -265,7 +265,7 @@ public class UsersMypageController {
 			prodList.add(pb);
 		} 
 		
-		OrderBean ob =  od.getOneOrder2(o_num);
+		OrderBean ob =  od.getOneOrder2(o_num); 
 		
 		model.addAttribute("ob", ob);
 		model.addAttribute("prodList", prodList);
