@@ -97,7 +97,6 @@ public class UsersMypageController {
 		} else if(u_jointype.equals("N") || u_jointype.equals("K")) {
 			fb.setFb_requestApi("yes");
 		}
-		
 		fd.insertFeedback(fb);
 		
 		ud.deleteUsers(u_id);

@@ -45,7 +45,10 @@
 			<tr style="border-top: 1px solid #D5D5D5;">
 				<td rowspan="5" width="18%" valign="middle">
 					<c:if test="${ub.u_profileimg != null}">
-						<img src="<%=request.getContextPath()%>/resources/uploadFolder/users/${ub.u_profileimg }" width="85%" class="rounded-circle">
+						<img src=
+						<c:if test="${ub.u_jointype == 'N' or ub.u_jointype == 'K' }">"${ub.u_profileimg }"</c:if>
+						<c:if test="${ub.u_jointype == 'S'}">"<%=request.getContextPath()%>/resources/uploadFolder/users/${ub.u_profileimg }"</c:if>
+						 width="85%" class="rounded-circle">
 					</c:if>
 					<c:if test="${ub.u_profileimg == null}">
 						<img src="resources/image/person.svg" width="85%" class="rounded-circle">

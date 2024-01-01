@@ -108,7 +108,10 @@
 							<input type="hidden" name="img_before" value="${ub.u_profileimg}">
 							<input id="profile" type="file" name="upload_img" accept="image/*" style="display: none">
 							<br>
-							<img id="profileImg" alt="프로필이미지" src="<%=request.getContextPath()%>/resources/uploadFolder/users/${ub.u_profileimg}" style="cursor:pointer; top: -5px; position: relative; object-fit: cover;" class="rounded-circle">
+							<img id="profileImg" alt="프로필이미지" src=
+							<c:if test="${ub.u_jointype == 'N' or ub.u_jointype == 'K' }">"${ub.u_profileimg }"</c:if>
+							<c:if test="${ub.u_jointype == 'S'}">"<%=request.getContextPath()%>/resources/uploadFolder/users/${ub.u_profileimg}"</c:if>
+							 style="cursor:pointer; top: -5px; position: relative; object-fit: cover;" class="rounded-circle">
 							<br>
 							<span id="profileImgName">
 								<a href="javascript:deleteProfileImg();" style="text-decoration: none; font-size: 10pt;">

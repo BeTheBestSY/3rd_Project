@@ -1,13 +1,24 @@
 package users.controller;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import users.model.UsersBean;
 import users.model.UsersDao;
@@ -30,7 +41,7 @@ public class UsersNaverController {
 	// 로그인
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	public String naverLogin(@RequestParam String code, @RequestParam String state,
-							HttpSession session) {
+							HttpSession session, HttpServletResponse response) {
 		NaverApi naverApi = new NaverApi();
 		boolean flag = false;
 		// 1. 인가 코드 받기
@@ -45,7 +56,6 @@ public class UsersNaverController {
 	    String id = String.valueOf(userInfo.get("id"));
 	    String email = String.valueOf(userInfo.get("email"));
 	    String profileImg = String.valueOf(userInfo.get("profile_image"));
-	    
 	    System.out.println("name = " + name);
 	    System.out.println("id = " + id);
 	    System.out.println("email = " + email);
