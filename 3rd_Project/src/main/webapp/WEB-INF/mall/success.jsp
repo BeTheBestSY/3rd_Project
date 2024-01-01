@@ -11,7 +11,7 @@
  	font-family: 'RIDIBatang'; 
  	font-size: 12pt;"
  }
-</style>
+</style> 
 
 <title>카카오페이결제완료</title>
 </head>
