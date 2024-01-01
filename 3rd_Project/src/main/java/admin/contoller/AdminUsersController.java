@@ -87,6 +87,13 @@ public class AdminUsersController {
 	}
 	@RequestMapping(value = upCommand, method = RequestMethod.POST)
 	public String update(@ModelAttribute("ub") UsersBean ub, Model model) {
+		String[] emailParts = ub.getU_email().split(",");
+		String u_email = emailParts[0] + "@" + emailParts[1];
+		ub.setU_email(u_email);
+		
+		String[] phoneParts = ub.getU_phone().split(",");
+		String u_phone = phoneParts[0] + "-" + phoneParts[1] + "-" + phoneParts[2];
+		ub.setU_phone(u_phone);
 		int res = ad.updateUsersById(ub);
 		if(res == 1) {
 			model.addAttribute("msg", "회원정보가 성공적으로 수정되었습니다.");

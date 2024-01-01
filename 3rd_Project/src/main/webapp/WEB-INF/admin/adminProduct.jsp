@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css?ver=22023477">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css?ver=22023493">
 <script type="text/javascript">
 	window.onload = function(){
 		const radios = document.querySelectorAll("input[name='filter_btn']");
@@ -83,15 +83,15 @@
 					<div class="topbox1">
 						<table class="board-table" style="font-size: 13pt; text-align: center; table-layout:fixed;">
 							<tr style="background: #f4f4f4;">
-								<th scope="col" class="th-num" style="padding-left: 2.7%;">번호</th>
-								<th scope="col" class="th-brand" style="padding-left: 3%;">브랜드</th>
-								<th scope="col" class="th-name" style="padding-left: 12%;">이름</th>
-								<th scope="col" class="th-price" style="padding-left: 16.3%;">가격</th>
-								<th scope="col" class="th-stock" style="padding-left: 11.5%;">재고수량</th>
-								<th scope="col" class="th-salevolume" style="padding-left: 7%;">누적판매량</th>
-								<th scope="col" class="th-personalc" style="padding-right: 0.1%;">퍼스널컬러</th>
-								<th scope="col" class="th-delete"></th>
-								<th scope="col" class="th-update"></th>
+								<th scope="col" class="th-num" style="width: 5%;">번호</th>
+								<th scope="col" class="th-brand" style="width: 12%;">브랜드</th>
+								<th scope="col" class="th-name" style="width: 36%;">이름</th>
+								<th scope="col" class="th-price" style="width: 5%;">가격</th>
+								<th scope="col" class="th-stock" style="width: 7%;padding-left: 1.5%;">재고수량</th>
+								<th scope="col" class="th-salevolume" style="width: 8%;">누적판매량</th>
+								<th scope="col" class="th-personalc" style="width: 8%;padding-right: 0.5%;">퍼스널컬러</th>
+								<th scope="col" class="th-delete" style="width: 9%;"></th>
+								<th scope="col" class="th-update" style="width: 9%;"></th>
 							</tr>
 							
 						</table>
@@ -106,9 +106,9 @@
 									
 									<c:forEach var="pb" items="${prodLists }">
 										<tr>
-											<td width="30px">${pb.p_num }</td>
-											<td width="70px">${pb.p_brand }</td>
-											<td width="90px">${pb.p_name }&nbsp;&nbsp;
+											<td style="width: 50px;padding: 0 30px;">${pb.p_num }</td>
+											<td style="width: 200px;padding: 0 20px;">${pb.p_brand }</td>
+											<td>${pb.p_name }&nbsp;&nbsp;
 												<span class="ttl-img" onClick="imgPopup('<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_ttlimg }')">
 													<font color="#C98BA4" title="${pb.p_ttlimg }">
 														<ion-icon name="image-outline"></ion-icon>
@@ -120,11 +120,11 @@
 													</font>
 												</span>
 											</td>
-											<td width="50px">${pb.p_price }</td>
-											<td width="50px">${pb.p_stock }</td>
-											<td width="50px">${pb.p_salevolume }</td>
-											<td width="13%">${pb.p_color }</td>
-							 				<td width="15%">
+											<td style="padding-left: 20px;padding-right: 55px;">${pb.p_price }</td>
+											<td style="padding-right: 60px;">${pb.p_stock }</td>
+											<td style="padding: 0 20px;">${pb.p_salevolume }</td>
+											<td style="padding: 0 20px;">${pb.p_color }</td>
+							 				<td>
 												<input type="button" class="btn btn-white" value="삭제하기" onClick="delBtn('${pb.p_num }')">
 							 					<a href="productUpdate.admin?p_num=${pb.p_num }">
 													<input type="button" class="btn btn-white" value="수정하기">

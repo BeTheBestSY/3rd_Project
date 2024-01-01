@@ -27,9 +27,6 @@
 								
 								html += '<tr>';
 								html += '	<td>'+e.c_num+'</td>';
-								html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
-								//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
-								//html += '	<td><a href="detail.cb?c_num='+e.c_num+'">'+e.c_subject+'</a></td>';
 								html += '	<td><a class="subject" href="javascript:gotoPage('+e.c_num+')">';
 								if(e.c_subject.length > 15)
 									html += e.c_subject.substr(0, 15)+'...';
@@ -63,8 +60,6 @@
 								
 								html += '<tr>';
 								html += '	<td>'+e.c_num+'</td>';
-								html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
-								//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
 								html += '	<td><a class="subject" href="javascript:gotoPage('+e.c_num+')">';
 								if(e.c_subject.length > 15)
 									html += e.c_subject.substr(0, 15)+'...';
@@ -109,14 +104,12 @@
 							
 							html += '<tr>';
 							html += '	<td>'+e.c_num+'</td>';
-							html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
-							//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
 							html += '	<td><a class="subject" href="javascript:gotoPage('+e.c_num+')">';
 							if(e.c_subject.length > 15)
 								html += e.c_subject.substr(0, 15)+'...';
 							else
 								html += e.c_subject;
-							html += '</a></td>';
+							html += '	</a></td>';
 							html += '	<td>'+now24Date+'</td>';
 							html += '	<td>'+e.c_readcount+'</td>';
 							html += '</tr>';
@@ -138,12 +131,6 @@
 					
 				});
 			});
-		}
-		var count = 0;
-		function open(c_num){
-			++count;
-			//alert('넘어오는 c_num:'+c_num);
-			//window.open('detail.cb?c_num='+c_num);
 		}
 		function gotoPage(c_num){
 			window.open('detail.cb?c_num='+c_num);
@@ -171,9 +158,6 @@
 	</script>
 </head>
 <body style="margin: auto;">
-	<!-- border-dark-subtle: 테두리 색상 -->
-	<!-- border border-5 border-dark-subtle  -->
-	<!-- Today, 방문수, 작성글, 댓글단 글, 퍼스널컬러, 조인데이트, 자기소개, -->
 	<div class="profile-container">
 		<div class="main-container">
 			<div class="img-box">
@@ -207,14 +191,11 @@
 					여기는 물음표 이미지 구해와야함.
 				</c:if> --%> <br>
 				<font>방문 </font><b>5</b>&nbsp;&nbsp;<!-- user 칼럼에 방문 수 칼럼 추가해야.. -->
-				<font>작성글 </font><b>${postCount }</b>&nbsp;&nbsp;<!-- 작성글 수 -->
-				<font>답글 </font><b>${commentCount }</b><br> <!-- 댓글단 글 수 -->
+				<font>작성글 </font><b>${postCount }</b>&nbsp;&nbsp;
+				<font>답글 </font><b>${commentCount }</b><br>
 				<font>${ub.u_intro }</font><br>
 			</div>
 		</div>
-		<!--  color="#7C81BB" -->
-		<!-- <font face="RIDIBatang"></font> -->
-		<%-- onclick="show(this,'${ub.u_id }')" --%>
 		<div class="board-container" style="font-family:'RIDIBatang';">
 			<p onclick="convert(this,'${ub.u_id }','post')" class="on" style="margin-left: 5%;">작성글</p>
 			<p onclick="convert(this,'${ub.u_id }','comment')" class="off" style="margin-left: 3%;">답글</p>

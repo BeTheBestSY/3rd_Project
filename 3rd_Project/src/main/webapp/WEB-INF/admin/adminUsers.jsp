@@ -188,7 +188,7 @@
 													>
 												</a>
 												<a href="usersUpdate.admin?u_id=${ub.u_id }">
-													<input type="button" id="btn" class="btn btn-white"  value="정보수정">
+													<input type="button" id="btn" class="btn btn-white" value="정보수정">
 												</a>
 												<a href="javascript:if(${ub.u_report <= 5}){alert('정지 회원이 아닙니다.');}else{location.href='report.admin?u_id=${ub.u_id }&filter=${param.filter}&whatColumn=${param.whatColumn}&keyword=${param.keyword}'}">
 													<input type="button" id="btn" class="btn btn-white" style="color: red;" value="정지해제">

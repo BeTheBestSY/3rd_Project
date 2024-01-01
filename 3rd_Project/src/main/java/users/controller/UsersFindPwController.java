@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import users.model.UsersBean;
 import users.model.UsersDao;
@@ -31,15 +32,20 @@ public class UsersFindPwController {
 	}
 	
 	@RequestMapping(value = command, method = RequestMethod.POST)
-	public String doAction2(@ModelAttribute(value = "ub") UsersBean ub,
+	public String doAction2(@RequestParam String u_id,
+						@RequestParam String u_name,
 						Model model) throws UnsupportedEncodingException {
-		
-		String toEmail = ud.getEmail(ub);
-		if(toEmail.equals("null")) {
+		UsersBean ub = ud.getUserById(u_id);
+		if(ub == null) {
+			model.addAttribute("msg", "존재하지 않는 회원입니다.");
+			model.addAttribute("url", "findpw.u");
+			return redirect;
+		}
+		if(ub.getU_email().equals("null")) {
 			model.addAttribute("msg", "회원정보에서 이메일을 기입해주세요.");
 			model.addAttribute("url", "findpw.u");
 			return redirect;
 		}
-		return gotoPage + "?toEmail="+toEmail+"&u_id="+ub.getU_id();
+		return gotoPage + "?toEmail="+ub.getU_email()+"&u_id="+ub.getU_id();
 	}
 }

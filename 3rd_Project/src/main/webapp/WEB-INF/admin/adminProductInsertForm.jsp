@@ -91,7 +91,12 @@
 						</td>
 						<th>퍼스널컬러</th>
 						<td>
-							<input type="text" class="form-control" name="p_color" required>
+							<c:set var="pcList">봄 라이트,봄 브라이트,여름 라이트,여름 브라이트,여름 뮤트,가을 뮤트,가을 스트롱,가을 딥,겨울 브라이트,겨울 딥</c:set>
+							<select name="p_color">
+								<c:forEach var="pc" items="${pcList }">
+									<option value="${pc }">${pc }</option>
+								</c:forEach>
+							</select>
 						</td>
 					</tr>
 					<tr>
