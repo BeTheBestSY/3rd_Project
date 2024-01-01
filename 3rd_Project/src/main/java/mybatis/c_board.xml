@@ -89,7 +89,7 @@
 	</update>
 	
 	<insert id="insertReply">
-		insert into c_board(c_num,c_writer,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip) values(cboard_seq.nextval,#{c_writer},#{c_email},#{c_subject},#{c_password},#{c_regdate},#{c_ref},#{c_re_step},#{c_re_level},#{c_content},#{c_ip})
+		insert into c_board(c_num,c_writer,c_profileimg,c_email,c_subject,c_password,c_regdate,c_ref,c_re_step,c_re_level,c_content,c_ip) values(cboard_seq.nextval,#{c_writer},#{c_profileimg},#{c_email},#{c_subject},#{c_password},#{c_regdate},#{c_ref},#{c_re_step},#{c_re_level},#{c_content},#{c_ip})
 	</insert>
 	
 	<delete id="deleteBoard">
@@ -122,4 +122,5 @@
 		select c_subject from c_board
 		where c_ref=#{C_ref} and c_re_step=0
 	</select>
+	
 </mapper> 
