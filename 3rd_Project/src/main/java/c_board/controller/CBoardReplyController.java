@@ -83,6 +83,7 @@ public class CBoardReplyController {
 		int c_num = bb.getC_num();
 		UsersBean ub = (UsersBean)session.getAttribute("loginInfo");
 		
+		
 		String joinType = "탈퇴함";
 		try {
 			joinType = ub.getU_jointype();
@@ -106,7 +107,7 @@ public class CBoardReplyController {
 		bb.setC_re_level(c_re_level);
 		bb.setC_ip(request.getRemoteAddr());
 		bb.setC_regdate(new Timestamp(System.currentTimeMillis()));
-		
+		System.out.println("답글 작성자의 프로필:"+bb.getC_profileimg());
 		cdao.replyProc(bb);
 		
 		return gotoPage+"?pageNumber="+pageNumber+"&whatColumn="+whatColumn+"&keyword="+keyword;

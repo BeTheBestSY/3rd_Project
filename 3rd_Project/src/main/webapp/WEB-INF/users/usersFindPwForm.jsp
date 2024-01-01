@@ -60,19 +60,6 @@
 				<td>이름</td>
 				<td><input type="text" class="form-control" style="width: 98%;" name="u_name" required></td>
 			</tr>
-			<%-- <tr>
-				<td>전화번호</td>
-				<td>
-					<c:set var="firstList">010, 011, 016, 017, 018, 019</c:set>
-					<select name="u_phone" class="form-select" style="display: inline; width: 29%">
-						<c:forEach var="first" items="${firstList }">
-							<option value="${first }">${first }</option>
-						</c:forEach>
-					</select> - 
-					<input type="text" name="u_phone" class="form-control" style="width: 29%; display: inline;" maxlength="4" size="6" required> - 
-					<input type="text" name="u_phone" class="form-control" style="width: 29%; display: inline;" maxlength="4" size="6" required>
-				</td>
-			</tr> --%>
 			<tr align="center">
 				<td colspan="2"><br><input type="submit" id="btn" value="임시 비밀번호 발송"></td>
 			</tr>

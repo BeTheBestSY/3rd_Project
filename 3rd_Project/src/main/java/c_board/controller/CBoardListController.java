@@ -45,16 +45,6 @@ public class CBoardListController {
 		Paging pageInfo = new Paging(pageNumber,null,totalCount,url,whatColumn,keyword);
 		
 		List<CBoardBean> list = cdao.getAllBoardList(pageInfo,map);
-//		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-//		for(CBoardBean cb:list) {
-//			System.out.println("CBoardBean�쓽 c_regdate: " + formatter.format(cb.getC_regdate()));
-//			// registerdate瑜� �룷留룻똿�뿉�꽌 �떎�떆 �꽭�똿
-//		}
-		// �쁽�옱 �궇吏� 援ы븯湲� 
-//		Date now = new Date();
-		//System.out.println(formatter.format(now));
-//		model.addAttribute("now",formatter.format(now));
-//		model.addAttribute("now",now);
 		model.addAttribute("list",list);
 		model.addAttribute("pageInfo",pageInfo);
 		model.addAttribute("whatColumn",whatColumn);

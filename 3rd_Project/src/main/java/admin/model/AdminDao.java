@@ -344,6 +344,10 @@ public class AdminDao {
 		return col10;
 	}
 
+	public int updateUsersById(UsersBean ub) {
+		return sqlSessionTemplate.update(nameSpace+"updateUsersById",ub);
+	}
+
 
 	
 

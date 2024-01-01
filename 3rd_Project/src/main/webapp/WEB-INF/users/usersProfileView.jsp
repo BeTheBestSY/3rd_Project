@@ -14,7 +14,7 @@
 	<script>
 		window.onload = function() {
 			$(function() {
-				// 작성글을 불러오는 ajax 설정 
+				// 작성글을 불러오는 ajax 설정
 				$.ajax({
 					url: 'postAjax.cb?c_writer=${c_writer}',
 					async: false,
@@ -27,9 +27,12 @@
 								
 								html += '<tr>';
 								html += '	<td>'+e.c_num+'</td>';
-								html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
-								//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
-								//html += '	<td><a href="detail.cb?c_num='+e.c_num+'">'+e.c_subject+'</a></td>';
+								html += '	<td><a class="subject" href="javascript:gotoPage('+e.c_num+')">';
+								if(e.c_subject.length > 15)
+									html += e.c_subject.substr(0, 15)+'...';
+								else
+									html += e.c_subject;
+								html += '</a></td>';
 								html += '	<td>'+now24Date+'</td>';
 								html += '	<td>'+e.c_readcount+'</td>';
 								html += '</tr>';
@@ -57,8 +60,12 @@
 								
 								html += '<tr>';
 								html += '	<td>'+e.c_num+'</td>';
-								html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
-								//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
+								html += '	<td><a class="subject" href="javascript:gotoPage('+e.c_num+')">';
+								if(e.c_subject.length > 15)
+									html += e.c_subject.substr(0, 15)+'...';
+								else
+									html += e.c_subject;
+								html += '</a></td>';
 								html += '	<td>'+now24Date+'</td>';
 								html += '	<td>'+e.c_readcount+'</td>';
 								html += '</tr>';
@@ -97,8 +104,12 @@
 							
 							html += '<tr>';
 							html += '	<td>'+e.c_num+'</td>';
-							html += '	<td><a class="subject">'+e.c_subject+'</a></td>';
-							//html += '	<td><a class="subject" href="javascript:open('+e.c_num+')">'+e.c_subject+'</a></td>';
+							html += '	<td><a class="subject" href="javascript:gotoPage('+e.c_num+')">';
+							if(e.c_subject.length > 15)
+								html += e.c_subject.substr(0, 15)+'...';
+							else
+								html += e.c_subject;
+							html += '	</a></td>';
 							html += '	<td>'+now24Date+'</td>';
 							html += '	<td>'+e.c_readcount+'</td>';
 							html += '</tr>';
@@ -121,11 +132,8 @@
 				});
 			});
 		}
-		var count = 0;
-		function open(c_num){
-			++count;
-			//alert('넘어오는 c_num:'+c_num);
-			//window.open('detail.cb?c_num='+c_num);
+		function gotoPage(c_num){
+			window.open('detail.cb?c_num='+c_num);
 		}
 		function convert(e, u_id, type){
 			if(e.className === 'off'){
@@ -149,11 +157,8 @@
 		}
 	</script>
 </head>
-<body>
-	<!-- border-dark-subtle: 테두리 색상 -->
-	<!-- border border-5 border-dark-subtle  -->
-	<!-- Today, 방문수, 작성글, 댓글단 글, 퍼스널컬러, 조인데이트, 자기소개, -->
-	<div class="profile-container" style="border: 1px solid blue; width: 80%; height: 80%; margin: auto; position: relative; top: 10%;">
+<body style="margin: auto;">
+	<div class="profile-container">
 		<div class="main-container">
 			<div class="img-box">
 				<c:if test="${ub.u_profileimg eq null }">
@@ -164,11 +169,11 @@
 				</c:if>
 			</div>
 			<div class="explain-box" style="font-family: 'RIDIBatang';">
-				<h1>
-					<c:if test="${ub.u_jointype eq 'N' }">네이버 연동 회원</c:if>
-					<c:if test="${ub.u_jointype eq 'K' }">카카오 연동 회원</c:if>
-					<c:if test="${ub.u_jointype eq 'S' }">${ub.u_id }</c:if>
-				</h1>
+				<h1 style="background-color: #7C81BB">
+					<c:if test="${ub.u_jointype eq 'N' }">&nbsp;네이버 연동 회원&nbsp;</c:if>
+					<c:if test="${ub.u_jointype eq 'K' }">&nbsp;카카오 연동 회원&nbsp;</c:if>
+					<c:if test="${ub.u_jointype eq 'S' }">&nbsp;${ub.u_id }&nbsp;</c:if>
+				</h1><br>
 				<font>${ub.u_color } </font>
 				<c:if test="${fn:contains(ub.u_color, '봄')}">
 					<img src="resources/image/spring-mainImg.png">
@@ -186,14 +191,11 @@
 					여기는 물음표 이미지 구해와야함.
 				</c:if> --%> <br>
 				<font>방문 </font><b>5</b>&nbsp;&nbsp;<!-- user 칼럼에 방문 수 칼럼 추가해야.. -->
-				<font>작성글 </font><b>${postCount }</b>&nbsp;&nbsp;<!-- 작성글 수 -->
-				<font>답글 </font><b>${commentCount }</b><br> <!-- 댓글단 글 수 -->
+				<font>작성글 </font><b>${postCount }</b>&nbsp;&nbsp;
+				<font>답글 </font><b>${commentCount }</b><br>
 				<font>${ub.u_intro }</font><br>
 			</div>
 		</div>
-		<!--  color="#7C81BB" -->
-		<!-- <font face="RIDIBatang"></font> -->
-		<%-- onclick="show(this,'${ub.u_id }')" --%>
 		<div class="board-container" style="font-family:'RIDIBatang';">
 			<p onclick="convert(this,'${ub.u_id }','post')" class="on" style="margin-left: 5%;">작성글</p>
 			<p onclick="convert(this,'${ub.u_id }','comment')" class="off" style="margin-left: 3%;">답글</p>
@@ -229,4 +231,3 @@
 	</div>
 
 </body>
-

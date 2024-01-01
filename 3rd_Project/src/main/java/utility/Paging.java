@@ -289,7 +289,7 @@ public class Paging {
 		//가운데
 		for (int i = this.beginPage; i <= this.endPage ; i++) {
 			if ( i == this.pageNumber ) {
-				result += "&nbsp;<font style='text-decoration: none; background: #EDE5D8; font-size: 10pt;'>&nbsp;"+ i +"&nbsp;</font>";
+				result += "&nbsp;<font style='text-decoration: none; background: #7C81BB; font-size: 10pt;'>&nbsp;"+ i +"&nbsp;</font>";
 						
 			} else {
 				result += "&nbsp;<a href='javascript:ajax(\""+url+"\", "+ i +")' style='text-decoration: none; color: black;'>&nbsp;"+ i +"&nbsp;</a>";
