@@ -120,7 +120,7 @@
 													</font>
 												</span>
 											</td>
-											<td style="padding-left: 20px;padding-right: 55px;">${pb.p_price }</td>
+											<td style="padding-left: 20px;padding-right: 55px;"><fmt:formatNumber value="${pb.p_price }" pattern="#,###" />원</td>
 											<td style="padding-right: 60px;">${pb.p_stock }</td>
 											<td style="padding: 0 20px;">${pb.p_salevolume }</td>
 											<td style="padding: 0 20px;">${pb.p_color }</td>
