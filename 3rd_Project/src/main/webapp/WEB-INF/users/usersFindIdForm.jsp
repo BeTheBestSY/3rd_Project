@@ -28,6 +28,9 @@
 		background: #BDBDBD;
 		color: white;
 	}
+	body{
+		margin-top: 90px;
+	}
 </style>
 
 <div id="center" style="text-align: center;">
