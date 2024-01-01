@@ -14,7 +14,7 @@
 	<script>
 		window.onload = function() {
 			$(function() {
-				// 작성글을 불러오는 ajax 설정 
+				// 작성글을 불러오는 ajax 설정
 				$.ajax({
 					url: 'postAjax.cb?c_writer=${c_writer}',
 					async: false,
