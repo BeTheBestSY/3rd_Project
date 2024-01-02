@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css?ver=2206105">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css?ver=22023494">
 <script type="text/javascript">
 	window.onload = function(){
 		const radios = document.querySelectorAll("input[name='filter_btn']");

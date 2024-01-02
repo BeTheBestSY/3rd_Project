@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css?ver=22023493">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminProduct.css?ver=22023494">
 <script type="text/javascript">
 	window.onload = function(){
 		const radios = document.querySelectorAll("input[name='filter_btn']");
@@ -109,22 +109,22 @@
 											<td style="width: 50px;padding: 0 30px;">${pb.p_num }</td>
 											<td style="width: 200px;padding: 0 20px;">${pb.p_brand }</td>
 											<td>${pb.p_name }&nbsp;&nbsp;
-												<span class="ttl-img" onClick="imgPopup('<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_ttlimg }')">
-													<font color="#C98BA4" title="${pb.p_ttlimg }">
-														<ion-icon name="image-outline"></ion-icon>
+												<a class="ttl-img" title="${pb.p_ttlimg }" href="javascript:imgPopup('<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_ttlimg }')">
+													<font color="#C98BA4">
+														<ion-icon name="image-outline" style="pointer-events: none;"></ion-icon>
 													</font>
-												</span>
-												<span class="dtl-img" onClick="imgPopup('<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_dtlimg }')">
-													<font color="#E7B3CE" title="${pb.p_dtlimg }">
-														<ion-icon name="image-outline"></ion-icon>
+												</a>
+												<a class="dtl-img" title="${pb.p_dtlimg }" href="javascript:imgPopup('<%=request.getContextPath()%>/resources/uploadFolder/product/${pb.p_dtlimg }')">
+													<font color="#E7B3CE">
+														<ion-icon name="image-outline" style="pointer-events: none;"></ion-icon>
 													</font>
-												</span>
+												</a>
 											</td>
 											<td style="padding-left: 20px;padding-right: 55px;"><fmt:formatNumber value="${pb.p_price }" pattern="#,###" />원</td>
 											<td style="padding-right: 60px;">${pb.p_stock }</td>
 											<td style="padding: 0 20px;">${pb.p_salevolume }</td>
 											<td style="padding: 0 20px;">${pb.p_color }</td>
-							 				<td>
+							 				<td> 
 												<input type="button" class="btn btn-white" value="삭제하기" onClick="delBtn('${pb.p_num }')">
 							 					<a href="productUpdate.admin?p_num=${pb.p_num }">
 													<input type="button" class="btn btn-white" value="수정하기">

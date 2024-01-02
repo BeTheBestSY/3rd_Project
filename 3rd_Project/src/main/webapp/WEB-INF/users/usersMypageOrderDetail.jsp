@@ -104,7 +104,7 @@
 					<th width="20%">입금자명</th>
 					<td width="80%">
 						${ob.pay_name} 
-					</td>
+					</td> 
 				</tr>
 				<tr>
 					<td colspan="2" align="center"> 
