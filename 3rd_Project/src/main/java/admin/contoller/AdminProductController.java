@@ -51,7 +51,7 @@ public class AdminProductController {
 						@RequestParam(required = false) String pageNumber,
 						Model model,
 						HttpServletRequest request) {
-		System.out.println("=======productList.admin 요청=======");
+		System.out.println("=======productList.admin 요청======="); 
 		if(filter == null) {
 			filter = "";
 		}
