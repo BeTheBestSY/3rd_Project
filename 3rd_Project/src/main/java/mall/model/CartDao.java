@@ -62,6 +62,7 @@ public class CartDao {
 	}
 
 	public void updateCartQty(CartBean cb) {
+		System.out.println("updateCartQty 들어옴");
 		sqlSessionTemplate.update(namespace+".updateCartQty", cb);
 	}
 

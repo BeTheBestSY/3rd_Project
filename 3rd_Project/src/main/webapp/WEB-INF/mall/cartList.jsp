@@ -90,6 +90,8 @@
 		}
 		
 		if(cart_qty > p_stock){
+			alert("cart_qty : " + cart_qty);
+			alert("p_stock : " + p_stock);
 			alert(p_stock+" 이하의 숫자만 입력 가능합니다.");
 			return;
 		}
@@ -139,7 +141,7 @@
 							<td>
 								<input type="number" id="cart_qty" class="form-control" min="1" max="${pb.p_stock}" value="${list[loop.index].cart_qty}" style="width: 70px; height: 31px; display: inline;">
 								<input type="button" value="수정" style="width: 40px; font-size: 10pt;" onClick="goUpQty('${pb.p_num}', '${pb.p_stock}')">
-							</td> 
+							 </td>
 							<td><fmt:formatNumber value="${pb.p_price}" pattern="#,###" />원</td>
 							<td>
 								<c:if test="${totalAmount < 30000}">
