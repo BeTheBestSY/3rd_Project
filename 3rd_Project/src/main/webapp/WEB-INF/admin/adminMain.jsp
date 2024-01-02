@@ -3,9 +3,6 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminMain.css">
 <%@ include file="adminMenu.jsp"%>
 
-<div>
-  <canvas id="myChart"></canvas>
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
@@ -110,9 +107,7 @@ if (!localStorage.getItem('alreadyRedirected')) {
 	</div>
 </article>
 
-<div>
-  <canvas id="myChart"></canvas>
-</div>
+
  
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 

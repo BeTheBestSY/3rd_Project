@@ -190,7 +190,7 @@
 				<%-- <c:if test="${fn:contains(ub.u_color, '잘')}">
 					여기는 물음표 이미지 구해와야함.
 				</c:if> --%> <br>
-				<font>방문 </font><b>5</b>&nbsp;&nbsp;<!-- user 칼럼에 방문 수 칼럼 추가해야.. -->
+				<!-- <font>방문 </font><b>5</b>&nbsp;&nbsp; --><!-- user 칼럼에 방문 수 칼럼 추가해야.. -->
 				<font>작성글 </font><b>${postCount }</b>&nbsp;&nbsp;
 				<font>답글 </font><b>${commentCount }</b><br>
 				<font>${ub.u_intro }</font><br>

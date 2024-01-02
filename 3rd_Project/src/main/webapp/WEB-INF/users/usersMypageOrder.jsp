@@ -36,7 +36,7 @@
 			
 			<c:if test="${fn:length(obList) == 0}">
 				<tr>
-					<td>주문내역이 존재하지 않습니다.</td>
+					<td colspan="5">주문내역이 존재하지 않습니다.</td>
 				</tr>
 			</c:if>
 			

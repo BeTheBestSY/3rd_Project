@@ -82,7 +82,7 @@
 				<div class="whole1">
 					<div class="topbox1">
 						<table class="board-table" style="font-size: 13pt; text-align: center; table-layout:fixed;">
-							<tr style="background: #f4f4f4;">
+							<tr style="background: #f4f4f4; height: 50px;">
 								<th scope="col" class="th-num" style="width: 5%;">번호</th>
 								<th scope="col" class="th-brand" style="width: 12%;">브랜드</th>
 								<th scope="col" class="th-name" style="width: 36%;">이름</th>

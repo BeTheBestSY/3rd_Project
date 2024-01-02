@@ -27,7 +27,8 @@ public class UsersFindPwController {
 	private UsersDao ud;
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
-	public String doAction() {
+	public String doAction(@RequestParam(required = false) String u_id,
+						@RequestParam(required = false) String u_name) {
 		return viewPage;
 	}
 	
@@ -37,13 +38,18 @@ public class UsersFindPwController {
 						Model model) throws UnsupportedEncodingException {
 		UsersBean ub = ud.getUserById(u_id);
 		if(ub == null) {
-			model.addAttribute("msg", "존재하지 않는 회원입니다.");
+			model.addAttribute("msg", "존재하지 않는 회원입니다."); 
 			model.addAttribute("url", "findpw.u");
 			return redirect;
 		}
 		if(ub.getU_email().equals("null")) {
 			model.addAttribute("msg", "회원정보에서 이메일을 기입해주세요.");
 			model.addAttribute("url", "findpw.u");
+			return redirect;
+		}
+		if(!ub.getU_name().equals(u_name)) {
+			model.addAttribute("msg", "이름을 다시 확인하세요.");
+			model.addAttribute("url", "findpw.u?u_id="+u_id+"&u_name="+u_name);
 			return redirect;
 		}
 		return gotoPage + "?toEmail="+ub.getU_email()+"&u_id="+ub.getU_id();
