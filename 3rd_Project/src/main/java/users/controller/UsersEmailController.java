@@ -2,6 +2,7 @@ package users.controller;
 
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,7 @@ public class UsersEmailController {
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	public String email(@RequestParam String toEmail,
-					@RequestParam String u_id) {
+					@RequestParam String u_id, HttpServletRequest request) {
 		
 		//임시 비밀번호 생성 
 		String tempPw = UUID.randomUUID().toString().replace("-", ""); //-를 제거
