@@ -116,14 +116,6 @@
 					</a>
 				</td>
 				<td>
-					<%-- <c:set var="now" value="<%= new java.util.Date() %>" />
-					<fmt:formatDate value="${now}" pattern="yyyy-MM-dd"/>
-					<c:set var="regdate" value="<fmt:formatDate value='${bb.c_regdate}' pattern='yyyy-MM-dd'/>" />
-					
-					<c:if test="${regdate eq now}">
-						
-					</c:if> --%>
-					<%-- ${bb.c_regdate } --%>
 					<fmt:formatDate value="${bb.c_regdate}" pattern="yyyy-MM-dd"/>
 				</td>
 				<td>${ bb.c_readcount }</td>
