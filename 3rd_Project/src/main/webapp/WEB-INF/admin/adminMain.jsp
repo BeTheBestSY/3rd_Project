@@ -8,13 +8,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
 
-<script>
-// 페이지가 열리자마자 한 번만 이동
-if (!localStorage.getItem('alreadyRedirected')) {
-    location.href = 'selectFeedback.admin';
-    localStorage.setItem('alreadyRedirected', 'true');
-}
-</script>
+
 <style>
 
 #userInfo{
