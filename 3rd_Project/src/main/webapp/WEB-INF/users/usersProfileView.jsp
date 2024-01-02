@@ -165,7 +165,7 @@
 					<img  src="resources/image/person.svg" class="rounded-circle">
 				</c:if>
 				<c:if test="${ub.u_profileimg ne null }">
-					<img  src="${ub.u_profileimg }" class="rounded-circle">
+					<img  src="resources/uploadFolder/users/${ub.u_profileimg }" class="rounded-circle">
 				</c:if>
 			</div>
 			<div class="explain-box" style="font-family: 'RIDIBatang';">

@@ -57,6 +57,7 @@ public class UsersUpdateController {
 		System.out.println("기존 프로필이미지:"+img_before);
 		System.out.println("받아온 프로필 이미지:"+ub.getU_profileimg());
 		String uploadPath = servletContext.getRealPath("/resources/uploadFolder/users/");
+		System.out.println("uploadPath : " + uploadPath);
 		File destBefore = new File(uploadPath+File.separator+img_before);
 		if(ub.getU_profileimg() == null) {
 			ub.setU_profileimg(img_before);

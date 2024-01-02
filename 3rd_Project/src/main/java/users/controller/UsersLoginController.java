@@ -51,7 +51,11 @@ public class UsersLoginController {
 					return adminPage;
 				else {
 					if(session.getAttribute("destination") != null) {
-						return String.valueOf(session.getAttribute("destination"));
+						if(String.valueOf(session.getAttribute("destination")).equals(".main")) {
+							return "redirect:/"+String.valueOf(session.getAttribute("destination"));
+						} else {
+							return String.valueOf(session.getAttribute("destination"));
+						}
 					}
 					return gotoPage;
 				}
