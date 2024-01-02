@@ -28,7 +28,7 @@ public class UsersBean {
 			System.out.println("업로드 할 프로필이미지:"+upload_img.getOriginalFilename());
 			this.u_profileimg = upload_img.getOriginalFilename();
 		} else {
-			System.out.println("프로필 수정 안함.");
+			System.out.println("프로필 수정 안함."); 
 		}
 	}
 	
