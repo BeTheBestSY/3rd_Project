@@ -12,6 +12,7 @@ import celeb.model.CelebBean;
 import company.model.CompanyBean;
 import product.model.ProductBean;
 import q_board.model.QBoardBean;
+import users.model.RestoreBean;
 import users.model.UsersBean;
 import utility.Paging;
 
@@ -166,13 +167,14 @@ public class AdminDao {
 	
 	
 	//users
-	public List<UsersBean> getUsers(Map<String, String> map, Paging pageInfo) {
-		System.out.println("getUsers로 넘어온 키워드:"+map.get("keyword"));
+	public List<UsersBean> getUsers(Map<String, String> map) {
+//		System.out.println("getUsers로 넘어온 키워드:"+map.get("keyword"));
 //		if(map.get("keyword").equals("%null%")) {
 //			map.put("keyword", null);
 //		}
-		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
-		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map, rowBounds);
+//		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+//		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map, rowBounds);
+		return sqlSessionTemplate.selectList(nameSpace+"getUsers", map);
 	}
 	
 	public int getTotalUserCount(Map<String, String> map) {
@@ -227,6 +229,26 @@ public class AdminDao {
 
 		sqlSessionTemplate.insert(nameSpace+"insertReply",bb);
 		
+	}
+
+	public void resetReport(String u_id) {
+		sqlSessionTemplate.update(nameSpace+"resetReport", u_id);
+	}
+
+
+	public List<RestoreBean> getAllRestore(Paging pageInfo) {
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		List<RestoreBean> rbList = sqlSessionTemplate.selectList(nameSpace+"getAllRestore");
+		return rbList;
+	}
+
+	public void restoreDone(String u_id) {
+		sqlSessionTemplate.update(nameSpace+"restoreDone", u_id);
+	}
+
+	public int getRestoreCount() {
+		int count = sqlSessionTemplate.selectOne(nameSpace+"getRestoreCount");
+		return count;
 	}
 
 

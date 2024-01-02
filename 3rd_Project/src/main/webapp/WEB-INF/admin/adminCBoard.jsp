@@ -4,8 +4,10 @@
 <%@ include file="adminMenu.jsp"%>
 <script type="text/javascript">
 	
-	function goDelete(c_num,pageNumber){
-		location.href="cBoardDelete.admin?c_num="+c_num+"&pageNumber="+pageNumber;
+	function delBtn(c_num,pageNumber){
+		if(confirm('정말로 삭제하시겠습니까?')){
+			location.href="cBoardDelete.admin?c_num="+c_num+"&pageNumber="+pageNumber;
+		}
 	}
 	
 </script>
@@ -34,7 +36,7 @@
 				   </form>
 		        </div>
 		    </div>
-    
+ 
  <div id="board-list" >
         <div class="container" >
         <div class="row">
@@ -81,9 +83,7 @@
 							<fmt:formatDate value="${bb.c_regdate}" pattern="yyyy-MM-dd"/>
 						</td>
 						<td>
-							<a href="cBoardDelete.admin?c_num=${bb.c_num}&pageNumber=${pageInfo.pageNumber}">
-								<input type="button" class="btn btn-white"  value="삭제하기">
-							</a>
+								<input type="button" class="btn btn-white"  value="삭제하기" onClick="delBtn('${bb.c_num }','${ pageInfo.pageNumber }')">
 		 				</td>
 					</tr>
 				</c:forEach>

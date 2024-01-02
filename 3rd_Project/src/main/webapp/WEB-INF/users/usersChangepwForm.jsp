@@ -34,6 +34,7 @@
 	<br><br>
 	<div>
 	<form action="changepw.u" method="post" onSubmit="return msg()">
+		<input type="hidden" name="u_id" value="${loginInfo.u_id }">
 		<table id="updatePw">
 			<tr style="border-top: 1px solid #D5D5D5;">
 				<th>기존 비밀번호</th>

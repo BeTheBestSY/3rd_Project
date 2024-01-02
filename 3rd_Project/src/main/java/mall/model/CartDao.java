@@ -33,9 +33,7 @@ public class CartDao {
 	}
 
 	public void updateCart(CartBean cb) {
-		 
 		sqlSessionTemplate.update(namespace+".updateCart", cb);
-		
 	}
 
 	public List<CartBean> selectCart2(String cart_num) {
@@ -53,9 +51,18 @@ public class CartDao {
 	}
 
 	public void deleteCart(String p_num) {
-		
 		 sqlSessionTemplate.delete(namespace+".deleteCart", p_num);
-			
+	}
+
+	public void deleteChkCart(int[] checks) {
+		for(int i=0; i<checks.length; i++) {
+			System.out.println("checks[i] : "+checks[i]);
+			sqlSessionTemplate.delete(namespace+".deleteCart", checks[i]);
+		}
+	}
+
+	public void updateCartQty(CartBean cb) {
+		sqlSessionTemplate.update(namespace+".updateCartQty", cb);
 	}
 
 	 

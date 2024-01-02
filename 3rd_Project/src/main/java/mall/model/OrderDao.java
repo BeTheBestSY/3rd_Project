@@ -1,5 +1,6 @@
 package mall.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,7 +58,7 @@ public class OrderDao {
 		Map<String, String> map =  new HashMap<String, String>();
 		
 		map.put("o_num", Integer.toString(maxO_num));
-		map.put("p_num", Integer.toString(tc.getP_num()));		
+		map.put("p_num", Integer.toString(tc.getP_num()));
 		map.put("cart_qty", Integer.toString(tc.getCart_qty()));		
 		
 		sqlSessionTemplate.insert(namespace+".insertOrderProd", map);
@@ -120,6 +121,30 @@ public class OrderDao {
 	public int getPriceByPnum(int p_num) {
 		int price = sqlSessionTemplate.selectOne(namespace+".getPriceByPnum", p_num);
 		return price;
+	}
+
+	public OrderBean selectOrders(int o_num) {
+		OrderBean ob = sqlSessionTemplate.selectOne(namespace+".selectOrders", o_num);
+		
+		return ob;
+	}
+
+	public  int selectPoint(String string) {
+		
+		
+		int p_point = sqlSessionTemplate.selectOne(namespace+".selectPoint", string);
+		
+		return p_point;
+	}
+
+	public void deleteOrder(int o_num) {
+		sqlSessionTemplate.delete(namespace+".deleteOrder", o_num);
+		
+	}
+
+	public void deleteOrderProd(int o_num) {
+		sqlSessionTemplate.delete(namespace+".deleteOrderProd", o_num);
+		
 	}
 	 
 }

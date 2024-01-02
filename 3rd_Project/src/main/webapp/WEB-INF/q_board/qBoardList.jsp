@@ -33,7 +33,7 @@
 		keyword.value = "";
 	}
 	function popup(u_id, loginInfo){
-		if(loginInfo == ''){
+		if(loginInfo == ''){ 
 			alert("로그인 후 이용 가능합니다.");
 			location.href="login.u";
 		} else {
@@ -117,7 +117,7 @@
 				<c:if test="${bb.q_secret == 'N'}">
 					<c:set var="userId" value="<%=id%>" />
 				    <c:choose>
-				         <c:when test="${bb.q_writer != userId && userId != 'admin'}"> <!-- 작성자이거나 관리자일 때 -->
+				        <c:when test="${bb.q_writer != userId && userId != 'admin'}"> <!-- 작성자이거나 관리자일 때 -->
 							<input type="button" value="${ bb.q_subject }" onClick="secret()" class="secret" id="noneHigtLight">
 				        </c:when>
 				         <c:when test="${bb.q_writer == userId || userId=='admin'}"> <!-- 작성자이거나 관리자일 때 -->
@@ -133,10 +133,9 @@
 					
 					<c:if test="${bb.q_secret == 'Y'}">
 					<c:set var="userId" value="<%=id%>" />
-					 <a href="detail.qb?q_num=${bb.q_num}&pageNumber=${pageInfo.pageNumber}&userId=${loginInfo.u_id}&whatColumn=${whatColumn}&keyword=${keyword}" id="noneHigtLight">
+					<a href="detail.qb?q_num=${bb.q_num}&pageNumber=${pageInfo.pageNumber}&userId=${loginInfo.u_id}&whatColumn=${whatColumn}&keyword=${keyword}" id="noneHigtLight">
 							${ bb.q_subject }&nbsp;</a>
 					</c:if>
-				
 					<c:if test="${ bb.q_readcount >= 10 }">
 						<img src="<%= request.getContextPath() %>/resources/image/hot.png" width="2%">
 					</c:if>

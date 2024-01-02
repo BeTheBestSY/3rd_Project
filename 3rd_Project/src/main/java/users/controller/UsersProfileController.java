@@ -1,10 +1,6 @@
 package users.controller;
 
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +13,7 @@ import users.model.UsersBean;
 import users.model.UsersDao;
 
 @Controller
-public class UsersProfileContoller {
+public class UsersProfileController {
 	private final String command = "profile.u";
 	private final String viewPage = "usersProfileView";
 	private final String redirect = "redirect";
@@ -33,6 +29,7 @@ public class UsersProfileContoller {
 			return redirect;
 		} 
 		model.addAttribute("ub",ub);
+		model.addAttribute("u_id",u_id);
 		return viewPage;
 	}
 }

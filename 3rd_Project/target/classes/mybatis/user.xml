@@ -27,9 +27,12 @@
 	<insert id="insertFeedback">
 		insert into feedback values(feedback_seq.nextval, #{u_id}, #{u_jointype}, #{fb_content}, #{fb_requestApi})
 	</insert>
+	<insert id="insertRestore">
+		insert into restore values(restore_seq.nextval,#{u_id}, #{u_email}, #{rs_content}, default, 'N')
+	</insert>
 	<update id="updateUsers">
 		update users
-		set u_phone=#{u_phone}, u_address=#{u_address}, u_color=#{u_color}
+		set u_phone=#{u_phone}, u_address=#{u_address}, u_color=#{u_color}, u_email=#{u_email}, u_profileimg = #{u_profileimg}, u_intro = #{u_intro}
 		where u_id=#{u_id}
 	</update>
 		<update id="updatePassword">
@@ -49,5 +52,8 @@
 		delete users
 		where u_id=#{u_id}
 	</delete>
-	
+	<select id="getEmail" resultType="String">
+		select u_email from users
+		where u_id=#{u_id} and u_name=#{u_name}
+	</select>
 </mapper>
