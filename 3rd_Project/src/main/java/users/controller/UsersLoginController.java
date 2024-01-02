@@ -20,7 +20,7 @@ public class UsersLoginController {
 	private final String command = "login.u";
 	private final String viewPage = "usersLoginForm";
 	private final String gotoPage = "redirect:/.main";
-	private final String adminPage = "redirect:/.admin";
+	private final String adminPage = "redirect:/selectFeedback.admin";
 	private final String redirect = "redirect";
 	@Autowired
 	private UsersDao ud;

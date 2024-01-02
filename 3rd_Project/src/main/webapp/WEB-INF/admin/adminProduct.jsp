@@ -124,7 +124,7 @@
 											<td style="padding-right: 60px;">${pb.p_stock }</td>
 											<td style="padding: 0 20px;">${pb.p_salevolume }</td>
 											<td style="padding: 0 20px;">${pb.p_color }</td>
-							 				<td>
+							 				<td> 
 												<input type="button" class="btn btn-white" value="삭제하기" onClick="delBtn('${pb.p_num }')">
 							 					<a href="productUpdate.admin?p_num=${pb.p_num }">
 													<input type="button" class="btn btn-white" value="수정하기">

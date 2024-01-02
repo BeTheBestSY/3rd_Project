@@ -71,7 +71,7 @@ public class FeedbackController {
 		model.addAttribute("col7", col7);
 		model.addAttribute("col8", col8);
 		model.addAttribute("col9", col9);
-		model.addAttribute("col0", col10);
+		model.addAttribute("col10", col10);
 		
 		return viewPage;
 		
