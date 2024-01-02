@@ -230,7 +230,7 @@
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
 				<th>비밀번호 확인</th>
-				<td>
+				<td> 
 					<input type="password" class="form-control" name="u_rePassword" id="u_rePassword" maxlength="16" onkeyup="isSame()" required style="width: 550px;">
 					<div style="display: none; padding: 5px 0px 0px 5px; font-size: 10pt;" id="pwMessage">확인</div>
 					<!-- <font style="color: green;"><ion-icon name="checkmark-circle-outline"></ion-icon></font>
