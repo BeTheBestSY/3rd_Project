@@ -105,7 +105,7 @@
 					<tr>
 						<th>가격</th>
 						<td>
-							<input type="text" class="form-control" name="p_price" value="<fmt:formatNumber value="${pb.p_price }" pattern="#,###" />" required>
+							<input type="text" class="form-control" name="p_price" value="${pb.p_price }" required>
 						</td>
 						<th>지급포인트</th>
 						<td colspan="4">

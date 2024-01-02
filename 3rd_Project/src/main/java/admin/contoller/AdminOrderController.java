@@ -66,9 +66,9 @@ public class AdminOrderController {
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");  
 		
-		System.out.println(pageNumber+"pageNumber¿È?@???");
-		System.out.println(whatColumn+"whatColumn¿È?@???");
-		System.out.println(keyword+"keyword¿È?@???");
+		System.out.println(pageNumber+"pageNumberï¿½ï¿½?@???");
+		System.out.println(whatColumn+"whatColumnï¿½ï¿½?@???");
+		System.out.println(keyword+"keywordï¿½ï¿½?@???");
 		
 		int totalCount = dao.getTotalCountOrder(map);
 		String url = request.getContextPath()+command;
@@ -97,7 +97,7 @@ public class AdminOrderController {
 			Model model
 						) {
 		
-		List<OrdersProductBean> ordProdlist = dao.getAllOrdersProduct(o_num);//1ÀÌ»ó ·¹ÄÚµå, ¿©·¯ °³ °¡´É
+		List<OrdersProductBean> ordProdlist = dao.getAllOrdersProduct(o_num);//1ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½Úµï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
 		List<ProductBean> prodList = new ArrayList<ProductBean>();
 		
@@ -108,7 +108,7 @@ public class AdminOrderController {
 			prodList.add(pb);
 		}
 		
-		OrderBean ob =  dao.getOneOrder(o_num);//ÁÖ¹®Á¤º¸´Â ÇÏ³ª¸¸
+		OrderBean ob =  dao.getOneOrder(o_num);//ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½
 		
 		model.addAttribute("ob", ob);
 		model.addAttribute("prodList", prodList);
@@ -132,49 +132,49 @@ public class AdminOrderController {
 			Model model,
 			HttpServletRequest request
 						) throws IOException {
-		System.out.println("pageNumber ³Ñ¾î¿À³ª¿ä: "+pageNumber);
-		System.out.println("whatColumn ³Ñ¾î¿À³ª¿ä: "+whatColumn);
-		System.out.println("keyword ³Ñ¾î¿À³ª¿ä: "+keyword);
+		System.out.println("pageNumber ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: "+pageNumber);
+		System.out.println("whatColumn ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: "+whatColumn);
+		System.out.println("keyword ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: "+keyword);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		
 		String stasus = dao.selectOrderStatus(o_num);
 		System.out.println("stasus: "+stasus);
 
-		if(stasus.equals("ÁÖ¹®¿Ï·á")) {
+		if(stasus.equals("ì£¼ë¬¸ì™„ë£Œ")) {
 			
-			dao.updateOrderStatus(o_num);//ÁÖ¹®¿Ï·á => º£¼Û¿Ï·á
+			dao.updateOrderStatus(o_num);//ï¿½Ö¹ï¿½ï¿½Ï·ï¿½ => ï¿½ï¿½ï¿½Û¿Ï·ï¿½
 			
-			List<OrdersProductBean> ordProdlist = dao.getAllOrdersProduct(o_num);//o_numÀ¸·Î p_num ´ã¾Æ¿À±â
+			List<OrdersProductBean> ordProdlist = dao.getAllOrdersProduct(o_num);//o_numï¿½ï¿½ï¿½ï¿½ p_num ï¿½ï¿½Æ¿ï¿½ï¿½ï¿½
 			
 			List<ProductBean> prodList = new ArrayList<ProductBean>();
 			
-			System.out.println(ordProdlist.size()+"ordProdlist.size()¿Í");
+			System.out.println(ordProdlist.size()+"ordProdlist.size()ï¿½ï¿½");
 			for(int i = 0; i<ordProdlist.size(); i++) {
 				
 				ProductBean pb  =	dao.selectPord(Integer.toString(ordProdlist.get(i).getP_num()));
 				
-				prodList.add(pb);//ÇÏ³ª¾¿ p_numÀ¸·Î p_pointÁ¤º¸ °¡Á®¿À±â
+				prodList.add(pb);//ï¿½Ï³ï¿½ï¿½ï¿½ p_numï¿½ï¿½ï¿½ï¿½ p_pointï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			}		
 					
-			System.out.println(prodList.size()+"prodList.size()°¡ °°³ª¿ë?");
+			System.out.println(prodList.size()+"prodList.size()ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?");
 			
 			for(int i = 0; i<prodList.size(); i++) {
 				
 				dao.updateUsersPoint(Integer.toString(prodList.get(i).getP_point()),u_id);
 			}	
 			
-		}else if(stasus.equals("ÁÖ¹®Ãë¼Ò")) {
-			model.addAttribute("msg", "Ãë¼ÒµÈ ÁÖ¹®ÀÔ´Ï´Ù.");
+		}else if(stasus.equals("ì£¼ë¬¸ì·¨ì†Œ")) {
+			model.addAttribute("msg", "ì·¨ì†Œëœ ë‚´ì—­ìž…ë‹ˆë‹¤.");
 			model.addAttribute("url", request.getContextPath()+"/"+command+"?pageNumber="+pageNumber+"&keyword="+keyword+"&whatColumn="+whatColumn);
 			return redirect;
 			
-		}else if(stasus.equals("¹è¼Û¿Ï·á")) {
-			model.addAttribute("msg", "ÀÌ¹Ì ¹è¼ÛÀÌ ¿Ï·áµÈ ÁÖ¹®ÀÔ´Ï´Ù.");
+		}else if(stasus.equals("ë°°ì†¡ì™„ë£Œ")) {
+			model.addAttribute("msg", "ì´ë¯¸ ë°°ì†¡ ì™„ë£Œëœ ìƒí’ˆìž…ë‹ˆë‹¤.");
 			model.addAttribute("url", request.getContextPath()+"/"+command+"?pageNumber="+pageNumber+"&keyword="+keyword+"&whatColumn="+whatColumn);
 			return redirect;
 		}
-		
+		  
 		return upPage+"?pageNumber="+pageNumber+"&keyword="+keyword+"&whatColumn="+whatColumn;
 		
 		
