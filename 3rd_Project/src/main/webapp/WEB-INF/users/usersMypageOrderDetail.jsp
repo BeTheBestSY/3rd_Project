@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ include file="usersMypageMenuTop.jsp" %>
 
-<article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
+<article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular'; left: -300px; position: relative;" >
 	<div class="section" style="height: 150%">
-		<div id="tag" style="margin-right:83%; font-size: 2em;">
-			<h6>${num}번 주문 내역</h6>
-			 
+		<div id="tag" style="font-size: 2em; width: 70%;">
+			<h3><b>${num}번 주문 내역</b></h3>
 		</div>
-		  
+		 <br><br>
 	<div id="center" style="text-align: center;">
 			 
-			<table class="board-table">
+			<table class="board-table" style="width: 70%; height: 600px;">
 				<tr style="border-top: 2px solid graytext; padding:10px;">
 					<th width="20%">아이디</th>
 					<td width="80%">
@@ -103,18 +103,14 @@
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
 					<th width="20%">입금자명</th>
 					<td width="80%">
-						${ob.pay_name}
-					</td>
-				</tr> 
+						${ob.pay_name} 
+					</td> 
+				</tr>
 				<tr>
 					<td colspan="2" align="center"> 
 						<br>
-						<form action="orderList.admin">
-						 <input type="hidden" name="pageNumber" value="${pageNumber}">
-						 <input type="hidden" name="keyword" value="${keyword}">
-						 <input type="hidden" name="whatColumn" value="${whatColumn}">
-							<input type="submit" value="돌아가기" class="btn btn-white" style="margin-bottom:11px; height: 39px; width:150px;">
-						</form>
+						<!-- <input type="button" value="주문취소" class="btn btn-white" style="margin-bottom:11px; height: 39px; width:150px;" onClick=""> -->
+						<input type="button" value="돌아가기" class="btn btn-white" style="margin-bottom:11px; height: 39px; width:150px;" onClick="javascript:history.go(-1);">
 					</td>
 				</tr>
 			</table>
@@ -122,3 +118,5 @@
 		</div>
 	</div>
 </article>
+
+<%@ include file="usersMypageMenuBottom.jsp" %>

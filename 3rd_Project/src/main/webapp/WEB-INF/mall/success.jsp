@@ -13,7 +13,7 @@
  }
 </style> 
 
-<title>카카오페이결제완료</title>
+<title>카카오페이 결제완료</title>
 </head>
 <body>
 
