@@ -38,7 +38,7 @@ public class UsersFindPwController {
 						Model model) throws UnsupportedEncodingException {
 		UsersBean ub = ud.getUserById(u_id);
 		if(ub == null) {
-			model.addAttribute("msg", "존재하지 않는 회원입니다.");
+			model.addAttribute("msg", "존재하지 않는 회원입니다."); 
 			model.addAttribute("url", "findpw.u");
 			return redirect;
 		}
