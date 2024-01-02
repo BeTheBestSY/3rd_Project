@@ -103,7 +103,7 @@
 				<tr style="border-top: 1px solid #BDBDBD; padding:10px;">
 					<th width="20%">입금자명</th>
 					<td width="80%">
-						${ob.pay_name}
+						${ob.pay_name} 
 					</td>
 				</tr>
 				<tr>
