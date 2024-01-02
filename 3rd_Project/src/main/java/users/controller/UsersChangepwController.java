@@ -36,7 +36,7 @@ public class UsersChangepwController {
 						HttpSession session,
 						Model model) {
 		
-		UsersBean ub = ud.getUserById(u_id);
+		UsersBean ub = ud.getUserById(u_id); 
 		
 		if(ub.getU_password().equals(old_password)) {
 			if(new_password.equals(new_password_chk)) {
