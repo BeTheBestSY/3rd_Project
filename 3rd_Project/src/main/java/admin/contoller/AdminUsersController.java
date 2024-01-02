@@ -94,6 +94,8 @@ public class AdminUsersController {
 		String[] phoneParts = ub.getU_phone().split(",");
 		String u_phone = phoneParts[0] + "-" + phoneParts[1] + "-" + phoneParts[2];
 		ub.setU_phone(u_phone);
+		String u_address = ub.getU_address().replace(","," ");
+		ub.setU_address(u_address);
 		int res = ad.updateUsersById(ub);
 		if(res == 1) {
 			model.addAttribute("msg", "회원정보가 성공적으로 수정되었습니다.");
