@@ -5,10 +5,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<style>
+ body{
+ 	font-family: 'RIDIBatang'; 
+ 	font-size: 12pt;"
+ }
+</style> 
+
 <title>카카오페이결제완료</title>
 </head>
 <body>
-카카오페이 결제가 정상적으로 완료되었습니다.<br>
+
+<big>카카오페이 결제가 정상적으로 완료되었습니다.</big>
+<br><br>
 결제일시: ${approvedAt}<br>
 <%
 KakaoApproveResponse kar = (KakaoApproveResponse)session.getAttribute("kao");

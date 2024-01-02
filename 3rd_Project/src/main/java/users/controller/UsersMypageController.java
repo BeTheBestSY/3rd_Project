@@ -263,9 +263,9 @@ public class UsersMypageController {
 		for(int i = 0; i<ordProdlist.size(); i++) {
 			ProductBean pb  =	od.selectPord2(Integer.toString(ordProdlist.get(i).getP_num()));
 			prodList.add(pb);
-		}
+		} 
 		
-		OrderBean ob =  od.getOneOrder2(o_num);
+		OrderBean ob =  od.getOneOrder2(o_num); 
 		
 		model.addAttribute("ob", ob);
 		model.addAttribute("prodList", prodList);
