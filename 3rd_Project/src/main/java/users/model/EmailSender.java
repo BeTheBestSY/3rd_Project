@@ -2,6 +2,8 @@ package users.model;
 
 import javax.activation.FileDataSource;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -15,6 +17,8 @@ public class EmailSender {
 	
 	@Autowired
 	private JavaMailSender mailSender;
+	@Autowired
+	private ServletContext servletContext;
 	
 	public String sendMail(Email email) {
 		try {
@@ -24,7 +28,9 @@ public class EmailSender {
 		    messageHelper.setFrom("Hidden Beauty <"+email.getFromEmail()+">");
 		    messageHelper.setText(email.getContent(), true);
 		    messageHelper.setSubject(email.getTitle());
-		    messageHelper.addInline("image", new FileDataSource("C:/Users/apple2701/git/3rd_Project/3rd_Project/src/main/webapp/resources/image/fyhbLogo.png"));
+		    String imagePath = servletContext.getRealPath("/resources/image/fyhbLogo.png"); 
+		    System.out.println(imagePath);
+		    messageHelper.addInline("image", new FileDataSource(imagePath));
 
 		    mailSender.send(message);
 		} catch(Exception e){
