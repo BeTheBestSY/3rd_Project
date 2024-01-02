@@ -134,7 +134,7 @@ public class AdminCelebController {
 		// 새로운 타이틀이미지, 디테일이미지 포함 나머지들을 업데이트하는 작업
 		int res = adminDao.updateCeleb(bb);
 		if(res == 1) {
-			model.addAttribute("msg", "이미지가 성공적으로 수정되었습니다.");
+			model.addAttribute("msg", "성공적으로 수정되었습니다.");
 			model.addAttribute("url", "celebList.admin");
 			destTitle = new File(uploadPath+File.separator+bb.getCl_image());
 			
@@ -148,7 +148,7 @@ public class AdminCelebController {
 
 		} else {
 			System.out.println("update res:"+res);
-			model.addAttribute("msg", "이미지 수정 실패. DB 확인 요망.");
+			model.addAttribute("msg", "수정 실패. DB 확인 요망.");
 			model.addAttribute("url", "celebUpdate.admin");
 		}
 		return redirect;
