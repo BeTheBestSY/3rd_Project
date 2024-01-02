@@ -17,6 +17,21 @@
 		}
 	}
 	
+	function imgPopup(url){
+		var img = new Image();
+		img.src = url;
+		img.onload = function(){
+			var imgWidth = img.width;
+			var imgHeight = img.height;
+			var winWidth = imgWidth+25;
+			var popupImg = window.open('', '_blank', 
+					'width='+imgWidth+
+					', height='+imgHeight+
+					', menubars=no, scrollbars=auto'
+					);
+			popupImg.document.write('<img src="'+url+'" width="'+winWidth+'">');
+		}
+	}
 </script>
 <article id="center" style=" text-align:center; font-family: 'MaruBuri-Regular';" >
 <div class="section">
@@ -73,11 +88,16 @@
 											<td style="padding-left:6%;">${cb.cl_name}</td>
 											<td>${cb.cl_color}</td>
 											<td>${cb.cl_image}&nbsp;&nbsp;
-												<span class="prd-img" title="연예인 이미지">
+												<!-- <span class="prd-img" title="연예인 이미지">
 													<font color="#C98BA4">
 														<ion-icon name="image-outline"></ion-icon>
 													</font>
-												</span>
+												</span> -->
+												<a class="prd-img" title="연예인 이미지" href="javascript:imgPopup('<%=request.getContextPath()%>/resources/uploadFolder/celeb/${cb.cl_image}')">
+													<font color="#C98BA4">
+														<ion-icon name="image-outline"></ion-icon>
+													</font>
+												</a>
 											</td>
 											
 											<td style="padding-left:25%;">
