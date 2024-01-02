@@ -161,7 +161,7 @@
 	<div class="profile-container">
 		<div class="main-container">
 			<div class="img-box">
-				<c:if test="${ub.u_profileimg eq null }">
+				<c:if test="${ub.u_profileimg eq null }"> 
 					<img  src="resources/image/person.svg" class="rounded-circle">
 				</c:if>
 				<c:if test="${ub.u_profileimg ne null }">
