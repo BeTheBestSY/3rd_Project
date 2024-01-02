@@ -54,11 +54,11 @@
 		<table>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" class="form-control" style="width: 98%;" name="u_id" required></td>
+				<td><input type="text" class="form-control" style="width: 98%;" name="u_id" value="${param.u_id }" required></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" class="form-control" style="width: 98%;" name="u_name" required></td>
+				<td><input type="text" class="form-control" style="width: 98%;" name="u_name" value="${param.u_name }" required></td>
 			</tr>
 			<tr align="center">
 				<td colspan="2"><br><input type="submit" id="btn" value="임시 비밀번호 발송"></td>
