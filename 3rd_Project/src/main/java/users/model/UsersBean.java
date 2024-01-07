@@ -23,7 +23,7 @@ public class UsersBean {
 		return upload_img;
 	}
 	public void setUpload_img(MultipartFile upload_img) {
-		if(!upload_img.getOriginalFilename().isEmpty()) { // 파일을 선택했다면 
+		if(!upload_img.getOriginalFilename().isEmpty()) { // 파일을 선택했다면
 			this.upload_img = upload_img;
 			System.out.println("업로드 할 프로필이미지:"+upload_img.getOriginalFilename());
 			this.u_profileimg = upload_img.getOriginalFilename();
