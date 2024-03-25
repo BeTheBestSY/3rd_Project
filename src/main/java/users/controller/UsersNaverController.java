@@ -44,7 +44,7 @@ public class UsersNaverController {
 							HttpSession session, HttpServletResponse response) {
 		NaverApi naverApi = new NaverApi();
 		boolean flag = false;
-		// 1. 인가 코드 받기
+		// 1. 인가 코드 받기 
 		// 2. 토큰 받기
 		Map<String, String> tokens = naverApi.getAccessToken(code, state);
 		this.accessToken = tokens.get("accessToken");
