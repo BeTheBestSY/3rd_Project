@@ -72,7 +72,7 @@ public class UsersUpdateController {
 			File destProfile= new File(uploadPath+File.separator+ub.getU_profileimg());
 			if(ub.getUpload_img() != null) {
 				MultipartFile u_profileImg = ub.getUpload_img();
-				u_profileImg.transferTo(destProfile); // destTitle 업로드하기.
+				u_profileImg.transferTo(destProfile);
 			}
 			
 			model.addAttribute("msg", "수정되었습니다.");

@@ -1,8 +1,11 @@
 package users.controller;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +45,8 @@ public class UsersMypageController {
 	private QBoardDao qd;
 	@Autowired
 	private OrderDao od;
+	@Autowired
+	ServletContext servletContext;
 	
 	private final String command = "/mypage.u";
 	private final String command_delForm = "/deleteForm.u";
@@ -81,12 +86,15 @@ public class UsersMypageController {
 	}
 	
 	@RequestMapping(value = command_delForm, method = RequestMethod.GET)
-	public String delForm(HttpSession session) {
+	public String delForm(@RequestParam String u_id, Model model) {
+		UsersBean ub = ud.getUserById(u_id);
+		model.addAttribute("ub",ub);
 		return viewPage_delForm; 
 	}
 	
 	@RequestMapping(value = command_del, method = RequestMethod.POST)
 	public String delId(@RequestParam String u_id, @RequestParam String reason, @RequestParam String u_jointype, Model model, HttpSession session) {
+
 		FeedbackBean fb = new FeedbackBean();
 		fb.setU_id(u_id);
 		fb.setU_jointype(u_jointype);
@@ -99,9 +107,19 @@ public class UsersMypageController {
 		}
 		fd.insertFeedback(fb);
 		
+		// 유저 프로필 사진 내리기
+		UsersBean ub = ud.getUserById(u_id);
+		String uploadPath = servletContext.getRealPath("/resources/uploadFolder/users/");
+		File userImg = new File(uploadPath+File.separator+ub.getU_profileimg());
+		
+		try {
+			userImg.delete();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		ud.deleteUsers(u_id);
 		session.invalidate();
-		// 유저의 프로필 사진 업로드 폴더에서 내리기 => 이거 아직 안함!!!
 		
 		model.addAttribute("msg", "탈퇴 처리되었습니다. 이용해주셔서 감사합니다.");
 		if(u_jointype.equals("N")) {

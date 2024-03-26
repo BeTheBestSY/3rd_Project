@@ -50,7 +50,7 @@
 				<ul id="list">
 					<li><a href="mypage.u?u_id=${loginInfo.u_id }" id="none_under">회원정보 조회</a></li>
 					<li><a href="update.u?u_id=${loginInfo.u_id }" id="none_under">회원정보 수정</a></li>
-					<li><a href="deleteForm.u" id="none_under">회원탈퇴</a></li>
+					<li><a href="deleteForm.u?u_id=${loginInfo.u_id }" id="none_under">회원탈퇴</a></li>
 				</ul>
 				<br>
 				

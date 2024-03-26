@@ -150,7 +150,7 @@ public class AdminProductController {
 		// 삭제한 타이틀이미지, 디테일이미지를 업로드 폴더에서 내리는 작업
 		ProductBean pb = ad.getProductByNum(p_num);
 		String uploadPath = servletContext.getRealPath("/resources/uploadFolder/product/");
-		System.out.println("uploadPath:"+uploadPath);
+		
 		File destTitle = new File(uploadPath+File.separator+pb.getP_ttlimg());
 		File destDetail = new File(uploadPath+File.separator+pb.getP_dtlimg());
 		
