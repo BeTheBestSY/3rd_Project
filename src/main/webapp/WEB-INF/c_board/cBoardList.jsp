@@ -104,7 +104,7 @@
 							${ bb.c_writer }
 						</c:if>
 					</c:if>
-					<c:if test="${bb.c_profileimg ne null }"> 
+					<c:if test="${bb.c_profileimg ne null }">
 						<img src="resources/uploadFolder/users/${bb.c_profileimg}" width="20" height="20" class="rounded-circle">
 						<c:if test="${fn:length(bb.c_writer) > 16}">
 							외부 회원

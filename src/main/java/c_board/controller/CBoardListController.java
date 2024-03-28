@@ -45,6 +45,7 @@ public class CBoardListController {
 		Paging pageInfo = new Paging(pageNumber,null,totalCount,url,whatColumn,keyword);
 		
 		List<CBoardBean> list = cdao.getAllBoardList(pageInfo,map);
+		
 		model.addAttribute("list",list);
 		model.addAttribute("pageInfo",pageInfo);
 		model.addAttribute("whatColumn",whatColumn);

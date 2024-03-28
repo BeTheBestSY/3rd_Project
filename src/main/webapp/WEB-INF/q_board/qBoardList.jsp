@@ -148,7 +148,7 @@
 						</c:if>
 					</c:if>
 					<c:if test="${bb.q_profileimg ne null }">
-						<img src="${bb.q_profileimg }" width="32" height="32" class="rounded-circle">
+						<img src="resources/uploadFolder/users/${bb.q_profileimg }" width="32" height="32" class="rounded-circle">
 						<c:if test="${fn:length(bb.q_writer) > 16}">
 							외부 회원
 						</c:if>

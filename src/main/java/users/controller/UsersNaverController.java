@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -33,6 +34,9 @@ public class UsersNaverController {
 	
 	@Autowired
 	private UsersDao ud;
+//	@Autowired
+//	private ServletContext servletContext;
+	
 	private String accessToken;
 	private String refreshToken;
 	
@@ -59,7 +63,10 @@ public class UsersNaverController {
 	    System.out.println("email = " + email);
 	    System.out.println("profileImg = " + profileImg);
 	    System.out.println("accessToken = " + this.accessToken);
-	   // String uploadPath = servletContext.getRealPath("/resources/uploadFolder/product/");  
+	    
+	    //String uploadPath = servletContext.getRealPath("/resources/uploadFolder/users/");
+	    //File profile = new File(uploadPath+File.separator+profileImg);
+	    
 	    UsersBean ub = new UsersBean();
       	ub.setU_id(id);
       	ub.setU_name(name);
