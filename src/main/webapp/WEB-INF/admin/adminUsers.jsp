@@ -82,7 +82,7 @@
 						<input type="radio" name="filter_btn" value="R" style="padding-top: 6px;" <c:if test="${param.filter eq 'R'}">checked</c:if> style="width:20px;height:18px;"> 정지
 					</span>
 				</div>
-				<div style="position: absolute; left: 1573px; top: 195px; height: 20px;">
+				<div style="position: absolute; left: 1500px; top: 195px; height: 20px;">
 					<input type="button" id="btn2" value="정지해제 요청 관리" onClick="seeReport()">
 				</div>
 			</div> 
