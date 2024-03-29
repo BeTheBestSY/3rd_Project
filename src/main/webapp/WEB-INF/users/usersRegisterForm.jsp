@@ -162,7 +162,7 @@
 			if(u_password == u_rePassword){
 				$('#u_rePassword').css("border-color","green");
 				pwSame = true;
-				$('#pwMessage').html("일치합니다.");
+				$('#pwMessage').html("<font color='green'>일치합니다.</font>");
 			} else {
 				$('#u_rePassword').css("border-color","red");
 				pwSame = false;
@@ -224,8 +224,6 @@
 				<th>비밀번호</th>
 				<td>
 					<input type="password" class="form-control" name="u_password" id="u_password" value="${ub.u_password }" placeholder="영문 대소문자/숫자 사용, 8자~16자" pattern="^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,16}$" maxlength="16" required style="width: 550px;">
-					<!-- <font style="color: green;"><ion-icon name="checkmark-circle-outline"></ion-icon></font> -->
-					<!-- <font style="color: red;"><ion-icon name="close-circle-outline"></ion-icon></font> -->
 				</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
@@ -233,8 +231,6 @@
 				<td> 
 					<input type="password" class="form-control" name="u_rePassword" id="u_rePassword" maxlength="16" onkeyup="isSame()" required style="width: 550px;">
 					<div style="display: none; padding: 5px 0px 0px 5px; font-size: 10pt;" id="pwMessage">확인</div>
-					<!-- <font style="color: green;"><ion-icon name="checkmark-circle-outline"></ion-icon></font>
-					<font style="color: red;"><ion-icon name="close-circle-outline"></ion-icon></font> -->
 				</td>
 			</tr>
 			<tr style="border-top: 1px solid #BDBDBD;">
