@@ -80,13 +80,20 @@ public class UsersNaverController {
       		ud.register(ub);
       	}
       	session.setAttribute("loginInfo", ub);
+
       	if(flag) {
+      		System.out.println("3");
       		if(session.getAttribute("destination") != null) {
+      			System.out.println("destination: " + session.getAttribute("destination"));
+      			System.out.println("3-1");
       			return String.valueOf(session.getAttribute("destination"));
       		} else {
+      			System.out.println("3-2");
+      			System.out.println("이미 가입한 회원이므로 메인화면으로 이동.");
       			return gotoPage; // 메인화면
       		}
       	} else {
+      		System.out.println("4");
       		return viewPage; // 웰컴화면
       	}
 	}

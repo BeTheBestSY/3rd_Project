@@ -76,6 +76,7 @@ public class UsersMypageController {
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	public String doAction(@RequestParam String u_id, Model model) {
 		UsersBean ub = ud.getUserById(u_id);
+		System.out.println("ub.u_email: "+ ub.getU_email());
 		model.addAttribute("ub", ub);
 		return viewPage;
 	}
