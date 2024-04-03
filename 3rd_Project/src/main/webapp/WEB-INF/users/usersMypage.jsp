@@ -61,7 +61,9 @@
 						test="${ub.u_jointype eq 'K' }">카카오 연동</c:if>
 				</td>
 				<th>이메일</th>
-				<td>${loginInfo.u_email}</td>
+				<td>
+					${ub.u_email}
+				</td>
 			</tr>
 			<tr style="border-top: 1px dotted #EAEAEA; border-bottom: 1px dotted #EAEAEA;">
 				<th width="15%">이름</th>

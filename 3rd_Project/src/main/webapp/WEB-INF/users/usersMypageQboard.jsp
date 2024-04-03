@@ -102,7 +102,7 @@
 									<img src="<%= request.getContextPath() %>/resources/image/hot.png" width="2%">
 								</c:if>
 							</td>
-							<td style="border-right: 1px dotted #D5D5D5;">v</td>
+							<td style="border-right: 1px dotted #D5D5D5;"></td>
 							<td style="border-right: 1px dotted #D5D5D5;"><fmt:formatDate value="${qb.q_regdate}" pattern="yyyy-MM-dd"/></td>
 							<td style="border-right: 1px dotted #D5D5D5;">${qb.q_readcount}</td>
 							<td style="border-right: 1px dotted #D5D5D5;">${qb.q_password}</td>

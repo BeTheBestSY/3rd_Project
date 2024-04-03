@@ -42,7 +42,7 @@
 		function getProfileImage(e) {
 			var profilePathSplit = profile.value.split('\\'); // 프로필 이미지의 경로를 구분자 '\\'로 나누기
 			var profileName = profilePathSplit[profilePathSplit.length-1];
-			alert("들어온 프로필 이미지의 이름: "+profileName);
+			//alert("들어온 프로필 이미지의 이름: "+profileName);
 			
 	     	const file = e.currentTarget.files[0];
 	      	const reader = new FileReader(); // file을 담을 변수

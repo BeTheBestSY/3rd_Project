@@ -23,7 +23,7 @@
 		function getTitleImage(e) {
 			var ttlPathSplit = title.value.split('\\'); // 타이틀 이미지의 경로를 구분자 '\\'로 나누기
 			var ttlName = ttlPathSplit[ttlPathSplit.length-1];
-			alert("들어온 타이틀이미지의 이름: "+ttlName);
+			//alert("들어온 타이틀이미지의 이름: "+ttlName);
 			
 	     	const file = e.currentTarget.files[0];
 	      	const reader = new FileReader(); // file을 담을 변수
@@ -38,7 +38,7 @@
 		function getDetailImage(e) {
 			var dtlPathSplit = detail.value.split('\\'); // 디테일 이미지의 경로를 구분자 '\\'로 나누기
 			var dtlName = dtlPathSplit[dtlPathSplit.length-1];
-			alert("들어온 디테일이미지의 이름: "+dtlName);
+			//alert("들어온 디테일이미지의 이름: "+dtlName);
 			
 	     	const file = e.currentTarget.files[0];
 	      	const reader = new FileReader(); // file을 담을 변수

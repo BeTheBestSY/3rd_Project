@@ -55,7 +55,7 @@
 						<option value="c_writer" <c:if test="${whatColumn == 'c_writer'}">selected</c:if>>작성자</option>
 						<option value="c_content" <c:if test="${whatColumn == 'c_content'}">selected</c:if>>내용</option>
 					</select>
-				 	<input id="search" type="text" name="keyword" value="<c:if test="${keyword != 'null'}">${keyword}</c:if>" placeholder="검색어를 입력해주세요.">
+				 	<input id="search" type="text" name="keyword" value="<c:if test="${keyword != 'null' && keyword != 'undefined'}">${keyword}</c:if>" placeholder="검색어를 입력해주세요.">
 					<button type="submit" class="btn btn-dark">검색</button>
 				</form>
             	</div>
@@ -104,8 +104,8 @@
 							${ bb.c_writer }
 						</c:if>
 					</c:if>
-					<c:if test="${bb.c_profileimg ne null }">
-						<img src="${bb.c_profileimg }" width="32" height="32" class="rounded-circle">
+					<c:if test="${bb.c_profileimg ne null }"> 
+						<img src="resources/uploadFolder/users/${bb.c_profileimg}" width="20" height="20" class="rounded-circle">
 						<c:if test="${fn:length(bb.c_writer) > 16}">
 							외부 회원
 						</c:if>

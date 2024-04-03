@@ -69,7 +69,7 @@ table{
 			function getCelebImage(e) {
 				var celebPathSplit = celeb.value.split('\\'); // 타이틀 이미지의 경로를 구분자 '\\'로 나누기
 				var celebName = celebPathSplit[celebPathSplit.length-1];
-				alert("들어온 타이틀이미지의 이름: "+celebName);
+				//alert("들어온 타이틀이미지의 이름: "+celebName);
 				
 		     	const file = e.currentTarget.files[0];
 		      	const reader = new FileReader(); // file을 담을 변수
