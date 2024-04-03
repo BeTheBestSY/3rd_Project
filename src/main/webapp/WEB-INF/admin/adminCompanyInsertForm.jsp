@@ -29,7 +29,6 @@ table th{
 margin-top:20px;
 }
 table{
-		margin: auto; 
 		width: 800px;
 		height: 650px;
 		font-family: 'RIDIBatang';
@@ -49,7 +48,7 @@ table{
 			<h4>진단 회사 추가</h4>
 		</div>
 		
-	<div id="center" style="text-align: center;">
+		<div id="center" style="text-align: center;">
 			<form action="companyInsert.admin" method="post">
 			<table class="board-table">
 				<tr style="border-top: 2px solid graytext; padding:10px;">

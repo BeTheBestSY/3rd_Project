@@ -29,7 +29,6 @@ table th{
 margin-top:20px;
 }
 table{
-		margin: auto; 
 		width: 800px;
 		height: 650px;
 		font-family: 'RIDIBatang';

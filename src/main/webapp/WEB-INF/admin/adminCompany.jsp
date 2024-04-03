@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="adminMenu.jsp"%>
 
-<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminCompany.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/adminCompany.css?ver=220234922344">
 
 <script type="text/javascript">
 
